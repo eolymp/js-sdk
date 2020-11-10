@@ -8,6 +8,6 @@ export class Cognito {
     }
 
     IntrospectUser() {
-        return this.twirp.call("eolymp.cognito.Cognito/IntrospectUser", {})
+        return this.twirp.call("eolymp.cognito.Service/IntrospectUser", {})
     }
 }

@@ -1,6 +1,6 @@
 import {Twirp} from "./twirp"
 
-export class Compete {
+export class Judge {
     private readonly twirp: Twirp;
 
     constructor(twirp: Twirp) {
@@ -8,51 +8,51 @@ export class Compete {
     }
 
     CreateContest(input: CreateContestInput): Promise<CreateContestOutput> {
-        return this.twirp.call("eolymp.compete.Compete/CreateContest", input);
+        return this.twirp.call("eolymp.judge.Service/CreateContest", input);
     }
 
     ImportProblem(input: ImportProblemInput): Promise<ImportProblemOutput> {
-        return this.twirp.call("eolymp.compete.Compete/ImportProblem", input);
+        return this.twirp.call("eolymp.judge.Service/ImportProblem", input);
     }
 
     DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput> {
-        return this.twirp.call("eolymp.compete.Compete/DeleteProblem", input);
+        return this.twirp.call("eolymp.judge.Service/DeleteProblem", input);
     }
 
     SyncProblem(input: SyncProblemInput): Promise<SyncProblemOutput> {
-        return this.twirp.call("eolymp.compete.Compete/SyncProblem", input);
+        return this.twirp.call("eolymp.judge.Service/SyncProblem", input);
     }
 
     StartContest(input: StartContestInput): Promise<StartContestOutput> {
-        return this.twirp.call("eolymp.compete.Compete/StartContest", input);
+        return this.twirp.call("eolymp.judge.Service/StartContest", input);
     }
 
     CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput> {
-        return this.twirp.call("eolymp.compete.Compete/CreateSubmission", input)
+        return this.twirp.call("eolymp.judge.Service/CreateSubmission", input)
     }
 
     DescribeSubmission(input: DescribeSubmissionInput): Promise<DescribeSubmissionOutput> {
-        return this.twirp.call("eolymp.compete.Compete/DescribeSubmission", input)
+        return this.twirp.call("eolymp.judge.Service/DescribeSubmission", input)
     }
 
     DescribeContest(input: DescribeContestInput): Promise<DescribeContestOutput> {
-        return this.twirp.call("eolymp.compete.Compete/DescribeContest", input)
+        return this.twirp.call("eolymp.judge.Service/DescribeContest", input)
     }
 
     ListContests(input: ListContestsInput): Promise<ListContestsOutput> {
-        return this.twirp.call("eolymp.compete.Compete/ListContests", input)
+        return this.twirp.call("eolymp.judge.Service/ListContests", input)
     }
 
     ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput> {
-        return this.twirp.call("eolymp.compete.Compete/ListProblems", input)
+        return this.twirp.call("eolymp.judge.Service/ListProblems", input)
     }
 
     ListParticipants(input: ListParticipantsInput): Promise<ListParticipantsOutput> {
-        return this.twirp.call("eolymp.compete.Compete/ListParticipants", input)
+        return this.twirp.call("eolymp.judge.Service/ListParticipants", input)
     }
 
     ListSubmissions(input: ListSubmissionsInput): Promise<ListSubmissionsOutput> {
-        return this.twirp.call("eolymp.compete.Compete/ListSubmissions", input)
+        return this.twirp.call("eolymp.judge.Service/ListSubmissions", input)
     }
 }
 

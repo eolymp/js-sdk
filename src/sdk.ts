@@ -1,14 +1,14 @@
-import {Executor} from "./executor";
+import {Playground} from "./playground";
 import {Cognito} from "./cognito";
-import {Compete} from "./compete";
+import {Judge} from "./judge";
 import {OAuth} from "./oauth";
 import {Client} from "./client";
 import {Twirp} from "./twirp";
 
 export class SDK {
-    public readonly executor: Executor;
+    public readonly playground: Playground;
     public readonly cognito: Cognito;
-    public readonly compete: Compete;
+    public readonly judge: Judge;
     public readonly oauth: OAuth;
     public readonly graphql: (query: string, variables: any) => Promise<any>;
     public readonly token: (token: string|null) => void;
@@ -19,9 +19,9 @@ export class SDK {
     constructor(client: Client) {
         this.client = client;
         this.twirp = new Twirp(this.client);
-        this.executor = new Executor(this.twirp);
+        this.playground = new Playground(this.twirp);
         this.cognito = new Cognito(this.twirp);
-        this.compete = new Compete(this.twirp);
+        this.judge = new Judge(this.twirp);
         this.oauth = new OAuth(this.client);
 
         // make graphql query
