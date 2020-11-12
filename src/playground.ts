@@ -8,11 +8,11 @@ export class Playground {
     }
 
     CreateRun(input: CreateRunInput): Promise<CreateRunOutput> {
-        return this.twirp.call("eolymp.playground.Service/CreateRun", input);
+        return this.twirp.call("eolymp.playground.Playground/CreateRun", input);
     }
 
     DescribeRun(input: DescribeRunInput): Promise<DescribeRunOutput> {
-        return this.twirp.call("eolymp.playground.Service/DescribeRun", input)
+        return this.twirp.call("eolymp.playground.Playground/DescribeRun", input)
     }
 }
 
