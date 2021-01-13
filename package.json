@@ -1,6 +1,6 @@
 {
   "name": "@eolymp/js-sdk",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "JavaScript SDK for Eolymp API",
   "repository": "https://github.com/eolymp/js-sdk.git",
   "author": "Sergey Kolodyazhnyy <sergey.kolodyazhnyy@gmail.com>",
@@ -9,9 +9,6 @@
     "build": "tsc",
     "prepare": "yarn run build"
   },
-  "files": [
-    "dist"
-  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   }
