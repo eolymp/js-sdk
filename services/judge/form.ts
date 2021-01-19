@@ -3,34 +3,34 @@
 
 
 export type Form = {
-    fields?: Form_Field[];
+  fields?: Form_Field[];
 }
 
 export type Form_Field = {
-    id?: string;
-    description?: Form_Field_Description[];
-    type?: string;
-    required?: boolean;
-    regexp?: string;
-    min?: number;
-    max?: number;
-    choices?: string[];
+  id?: string;
+  description?: Form_Field_Description[];
+  type?: string;
+  required?: boolean;
+  regexp?: string;
+  min?: number;
+  max?: number;
+  choices?: string[];
 }
 
 export type Form_Field_Description = {
-    default?: boolean;
-    locale?: string;
-    label?: string;
-    help?: string;
-    choices?: string[];
+  default?: boolean;
+  locale?: string;
+  label?: string;
+  help?: string;
+  choices?: string[];
 }
 
 export type Registration = {
-    data?: Registration_Data[];
+  data?: Registration_Data[];
 }
 
 export type Registration_Data = {
-    fieldId?: string;
-    value?: string;
+  fieldId?: string;
+  value?: string;
 }
 

@@ -3,10 +3,10 @@
 
 
 export type Reply = {
-    id?: string;
-    ticketId?: string;
-    userId?: string;
-    message?: string;
-    createdAt?: string;
+  id?: string;
+  ticketId?: string;
+  userId?: string;
+  message?: string;
+  createdAt?: string;
 }
 

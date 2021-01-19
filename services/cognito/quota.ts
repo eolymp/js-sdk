@@ -3,7 +3,7 @@
 
 
 export type Quota = {
-    value?: number;
-    unlimited?: boolean;
+  value?: number;
+  unlimited?: boolean;
 }
 

@@ -3,8 +3,8 @@
 
 
 export type Permission = {
-    problemId?: string;
-    userId?: string;
-    role?: string;
+  problemId?: string;
+  userId?: string;
+  role?: string;
 }
 

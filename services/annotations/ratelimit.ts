@@ -3,7 +3,7 @@
 
 
 export type RateLimit = {
-    limit?: number;
-    burst?: number;
+  limit?: number;
+  burst?: number;
 }
 

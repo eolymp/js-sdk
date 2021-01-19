@@ -3,8 +3,8 @@
 
 
 export type Problem = {
-    id?: string;
-    index?: number;
-    enabled?: boolean;
+  id?: string;
+  index?: number;
+  enabled?: boolean;
 }
 

@@ -3,12 +3,12 @@
 
 
 export type Test = {
-    id?: string;
-    testsetId?: string;
-    index?: number;
-    example?: boolean;
-    score?: number;
-    inputObjectId?: string;
-    answerObjectId?: string;
+  id?: string;
+  testsetId?: string;
+  index?: number;
+  example?: boolean;
+  score?: number;
+  inputObjectId?: string;
+  answerObjectId?: string;
 }
 

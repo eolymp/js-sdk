@@ -3,25 +3,25 @@
 
 
 export type Http = {
-    rules?: HttpRule[];
-    fullyDecodeReservedExpansion?: boolean;
+  rules?: HttpRule[];
+  fullyDecodeReservedExpansion?: boolean;
 }
 
 export type HttpRule = {
-    selector?: string;
-    get?: string;
-    put?: string;
-    post?: string;
-    delete?: string;
-    patch?: string;
-    custom?: CustomHttpPattern;
-    body?: string;
-    responseBody?: string;
-    additionalBindings?: HttpRule[];
+  selector?: string;
+  get?: string;
+  put?: string;
+  post?: string;
+  delete?: string;
+  patch?: string;
+  custom?: CustomHttpPattern;
+  body?: string;
+  responseBody?: string;
+  additionalBindings?: HttpRule[];
 }
 
 export type CustomHttpPattern = {
-    kind?: string;
-    path?: string;
+  kind?: string;
+  path?: string;
 }
 

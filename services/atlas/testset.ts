@@ -3,13 +3,13 @@
 
 
 export type Testset = {
-    id?: string;
-    problemId?: string;
-    index?: number;
-    timeLimit?: number;
-    memoryLimit?: number;
-    fileSizeLimit?: number;
-    dependencies?: string[];
-    scoringMode?: string;
+  id?: string;
+  problemId?: string;
+  index?: number;
+  timeLimit?: number;
+  memoryLimit?: number;
+  fileSizeLimit?: number;
+  dependencies?: string[];
+  scoringMode?: string;
 }
 

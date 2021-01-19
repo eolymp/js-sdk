@@ -3,25 +3,25 @@
 
 
 export type Status = {
-    reference?: string;
-    origin?: string;
-    type?: string;
-    error?: string;
-    failure?: string;
-    runs?: Status_Run[];
-    signature?: string;
-    version?: number;
+  reference?: string;
+  origin?: string;
+  type?: string;
+  error?: string;
+  failure?: string;
+  runs?: Status_Run[];
+  signature?: string;
+  version?: number;
 }
 
 export type Status_Run = {
-    reference?: string;
-    status?: string;
-    timeUsage?: number;
-    memoryUsage?: number;
-    exitCode?: number;
-    signal?: number;
-    output?: string;
-    stderr?: string;
-    verifierLog?: string;
+  reference?: string;
+  status?: string;
+  timeUsage?: number;
+  memoryUsage?: number;
+  exitCode?: number;
+  signal?: number;
+  output?: string;
+  stderr?: string;
+  verifierLog?: string;
 }
 

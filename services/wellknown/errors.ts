@@ -3,27 +3,27 @@
 
 
 export type ErrorReport = {
-    reportId?: string;
+  reportId?: string;
 }
 
 export type InvalidArgument = {
-    argumentPath?: string;
-    validation?: Validation[];
+  argumentPath?: string;
+  validation?: Validation[];
 }
 
 export type Validation = {
-    argumentPath?: string[];
-    errorMessage?: string;
-    localization?: ErrorLocalization;
+  argumentPath?: string[];
+  errorMessage?: string;
+  localization?: ErrorLocalization;
 }
 
 export type QuotaExceeded = {
-    quota?: number;
-    usage?: number;
+  quota?: number;
+  usage?: number;
 }
 
 export type ErrorLocalization = {
-    phraseKey?: string;
-    phraseParams?: Record<string, string>;
+  phraseKey?: string;
+  phraseParams?: Record<string, string>;
 }
 

@@ -3,16 +3,16 @@
 
 
 export type Run = {
-    id?: string;
-    lang?: string;
-    source?: string;
-    input?: string;
-    status?: string;
-    error?: string;
-    exitCode?: number;
-    signal?: number;
-    timeUsage?: number;
-    memoryUsage?: number;
-    output?: string;
+  id?: string;
+  lang?: string;
+  source?: string;
+  input?: string;
+  status?: string;
+  error?: string;
+  exitCode?: number;
+  signal?: number;
+  timeUsage?: number;
+  memoryUsage?: number;
+  output?: string;
 }
 

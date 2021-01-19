@@ -3,6 +3,6 @@
 
 
 export type Scope = {
-    scope?: string[];
+  scope?: string[];
 }
 

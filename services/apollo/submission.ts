@@ -3,24 +3,24 @@
 
 
 export type Submission = {
-    id?: string;
-    problemId?: string;
-    userId?: string;
-    submittedAt?: string;
-    lang?: string;
-    source?: string;
-    status?: string;
-    error?: string;
-    score?: number;
-    runs?: Submission_Run[];
+  id?: string;
+  problemId?: string;
+  userId?: string;
+  submittedAt?: string;
+  lang?: string;
+  source?: string;
+  status?: string;
+  error?: string;
+  score?: number;
+  runs?: Submission_Run[];
 }
 
 export type Submission_Run = {
-    id?: string;
-    timeUsage?: number;
-    memoryUsage?: number;
-    testIndex?: number;
-    testId?: string;
-    status?: string;
+  id?: string;
+  timeUsage?: number;
+  memoryUsage?: number;
+  testIndex?: number;
+  testId?: string;
+  status?: string;
 }
 

@@ -3,37 +3,37 @@
 
 
 export type ExpressionID = {
-    is?: string;
-    value?: string;
+  is?: string;
+  value?: string;
 }
 
 export type ExpressionInt = {
-    is?: string;
-    value?: number;
+  is?: string;
+  value?: number;
 }
 
 export type ExpressionFloat = {
-    is?: string;
-    value?: number;
+  is?: string;
+  value?: number;
 }
 
 export type ExpressionString = {
-    is?: string;
-    value?: string;
+  is?: string;
+  value?: string;
 }
 
 export type ExpressionEnum = {
-    is?: string;
-    value?: string;
+  is?: string;
+  value?: string;
 }
 
 export type ExpressionBool = {
-    is?: string;
-    value?: boolean;
+  is?: string;
+  value?: boolean;
 }
 
 export type ExpressionTimestamp = {
-    is?: string;
-    value?: string;
+  is?: string;
+  value?: string;
 }
 

@@ -3,14 +3,14 @@
 
 
 export type Contest = {
-    id?: string;
-    name?: string;
-    type?: string;
-    startsAt?: string;
-    endsAt?: string;
-    duration?: number;
-    status?: string;
-    public?: boolean;
-    domain?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  startsAt?: string;
+  endsAt?: string;
+  duration?: number;
+  status?: string;
+  public?: boolean;
+  domain?: string;
 }
 

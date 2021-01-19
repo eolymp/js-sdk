@@ -3,10 +3,10 @@
 
 
 export type Verifier = {
-    type?: string;
-    lang?: string;
-    source?: string;
-    precision?: number;
-    caseSensitive?: boolean;
+  type?: string;
+  lang?: string;
+  source?: string;
+  precision?: number;
+  caseSensitive?: boolean;
 }
 
