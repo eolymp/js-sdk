@@ -1,14 +1,14 @@
 {
   "name": "@eolymp/js-sdk",
-  "version": "0.1.5-2",
+  "version": "0.1.5-3",
   "description": "JavaScript SDK for Eolymp API",
   "repository": "https://github.com/eolymp/js-sdk.git",
   "author": "Sergey Kolodyazhnyy <sergey.kolodyazhnyy@gmail.com>",
   "license": "MIT",
   "files": [
-    "lib/**/*.js",
-    "lib/**/*.js.map",
-    "lib/**/*.d.ts"
+    "**/*.js",
+    "**/*.js.map",
+    "**/*.d.ts"
   ],
   "scripts": {
     "build": "tsc",
