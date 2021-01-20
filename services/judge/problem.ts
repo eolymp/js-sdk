@@ -11,6 +11,7 @@ export type Problem = {
   timeLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
+  submitLimit?: number;
 }
 
 export type Statement = {

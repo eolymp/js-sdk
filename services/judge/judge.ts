@@ -77,6 +77,10 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/SyncProblem", input);
   }
 
+  UpdateProblem(input: UpdateProblemInput): Promise<UpdateProblemOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateProblem", input);
+  }
+
   ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListProblems", input);
   }
@@ -265,6 +269,7 @@ export type ImportProblemInput = {
   contestId?: string;
   importId?: string;
   index?: number;
+  submitLimit?: number;
 }
 
 export type ImportProblemOutput = {
@@ -276,6 +281,14 @@ export type SyncProblemInput = {
 }
 
 export type SyncProblemOutput = Record<string, unknown>;
+
+export type UpdateProblemInput = {
+  problemId?: string;
+  index?: number;
+  submitLimit?: number;
+}
+
+export type UpdateProblemOutput = Record<string, unknown>;
 
 export type DeleteProblemInput = {
   problemId?: string;

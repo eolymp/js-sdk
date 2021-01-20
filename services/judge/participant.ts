@@ -21,5 +21,6 @@ export type Participant_Score = {
   penalty?: number;
   solved?: boolean;
   percentage?: number;
+  submits?: number;
 }
 
