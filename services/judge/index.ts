@@ -1,3 +1,4 @@
+export * from './announcement'
 export * from './contest'
 export * from './events'
 export * from './form'

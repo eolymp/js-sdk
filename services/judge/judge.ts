@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-eolymp for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
+import { Announcement } from "./announcement"
 import { Contest } from "./contest"
 import { Form, Registration } from "./form"
 import { Participant } from "./participant"
@@ -187,6 +188,34 @@ export class Judge {
 
   UpdateReply(input: UpdateReplyInput): Promise<UpdateReplyOutput> {
     return this.cli.call("eolymp.judge.Judge/UpdateReply", input);
+  }
+
+  CreateAnnouncement(input: CreateAnnouncementInput): Promise<CreateAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/CreateAnnouncement", input);
+  }
+
+  UpdateAnnouncement(input: UpdateAnnouncementInput): Promise<UpdateAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateAnnouncement", input);
+  }
+
+  DeleteAnnouncement(input: DeleteAnnouncementInput): Promise<DeleteAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteAnnouncement", input);
+  }
+
+  ReadAnnouncement(input: ReadAnnouncementInput): Promise<ReadAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/ReadAnnouncement", input);
+  }
+
+  DescribeAnnouncement(input: DescribeAnnouncementInput): Promise<DescribeAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncement", input);
+  }
+
+  DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput): Promise<DescribeAnnouncementStatusOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncementStatus", input);
+  }
+
+  ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
   }
 }
 
@@ -573,5 +602,66 @@ export type DescribeRegistrationInput = {
 
 export type DescribeRegistrationOutput = {
   registration?: Registration;
+}
+
+export type CreateAnnouncementInput = {
+  contestId?: string;
+  announcement?: Announcement;
+}
+
+export type CreateAnnouncementOutput = {
+  id?: string;
+}
+
+export type UpdateAnnouncementInput = {
+  announcementId?: string;
+  announcement?: Announcement;
+}
+
+export type UpdateAnnouncementOutput = Record<string, unknown>;
+
+export type DeleteAnnouncementInput = {
+  announcementId?: string;
+}
+
+export type DeleteAnnouncementOutput = Record<string, unknown>;
+
+export type ReadAnnouncementInput = {
+  announcementId?: string;
+}
+
+export type ReadAnnouncementOutput = Record<string, unknown>;
+
+export type DescribeAnnouncementInput = {
+  announcementId?: string;
+}
+
+export type DescribeAnnouncementOutput = {
+  announcement?: Announcement;
+}
+
+export type DescribeAnnouncementStatusInput = {
+  announcementId?: string;
+}
+
+export type DescribeAnnouncementStatusOutput = {
+  isRead?: boolean;
+}
+
+export type ListAnnouncementsInput = {
+  contestId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListAnnouncementsInput_Filter;
+}
+
+export type ListAnnouncementsInput_Filter = {
+  id?: ExpressionID[];
+  isRead?: ExpressionBool[];
+}
+
+export type ListAnnouncementsOutput = {
+  total?: number;
+  items?: Announcement[];
 }
 
