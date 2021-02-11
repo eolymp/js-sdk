@@ -2,11 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Verifier = {
-  type?: string;
+export type Runtime = {
+  id?: string;
   lang?: string;
-  source?: string;
-  precision?: number;
-  caseSensitive?: boolean;
+  version?: string;
+  name?: string;
+  deprecated?: boolean;
 }
 
