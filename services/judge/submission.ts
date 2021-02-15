@@ -37,6 +37,11 @@ export type Submission_Group = {
   cost?: number;
   score?: number;
   scoringMode?: string;
+  feedbackPolicy?: string;
+  avgTimeUsage?: number;
+  maxTimeUsage?: number;
+  avgMemoryUsage?: number;
+  maxMemoryUsage?: number;
   runs?: Submission_Run[];
 }
 

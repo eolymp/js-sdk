@@ -11,5 +11,6 @@ export type Testset = {
   fileSizeLimit?: number;
   dependencies?: number[];
   scoringMode?: string;
+  feedbackPolicy?: string;
 }
 

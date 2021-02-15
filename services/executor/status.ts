@@ -24,5 +24,6 @@ export type Status_Run = {
   output?: string;
   stderr?: string;
   verifierLog?: string;
+  interactorLog?: string;
 }
 
