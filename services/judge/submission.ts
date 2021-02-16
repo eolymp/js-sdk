@@ -38,10 +38,8 @@ export type Submission_Group = {
   score?: number;
   scoringMode?: string;
   feedbackPolicy?: string;
-  avgTimeUsage?: number;
-  maxTimeUsage?: number;
-  avgMemoryUsage?: number;
-  maxMemoryUsage?: number;
+  timeUsage?: number;
+  memoryUsage?: number;
   runs?: Submission_Run[];
 }
 
