@@ -142,6 +142,10 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/IntrospectParticipant", input);
   }
 
+  JoinContest(input: JoinContestInput): Promise<JoinContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/JoinContest", input);
+  }
+
   StartContest(input: StartContestInput): Promise<StartContestOutput> {
     return this.cli.call("eolymp.judge.Judge/StartContest", input);
   }
@@ -303,6 +307,12 @@ export type CloseContestInput = {
 }
 
 export type CloseContestOutput = Record<string, unknown>;
+
+export type JoinContestInput = {
+  contestId?: string;
+}
+
+export type JoinContestOutput = Record<string, unknown>;
 
 export type StartContestInput = {
   contestId?: string;
