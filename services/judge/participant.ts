@@ -15,6 +15,7 @@ export type Participant = {
   startedIn?: number;
   completeAt?: string;
   completeIn?: number;
+  passcode?: string;
 }
 
 export type Participant_Score = {

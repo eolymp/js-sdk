@@ -126,6 +126,22 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
   }
 
+  VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
+  }
+
+  EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
+  }
+
+  ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
+  }
+
+  RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
+  }
+
   RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput> {
     return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input);
   }
@@ -420,6 +436,36 @@ export type RemoveParticipantInput = {
 }
 
 export type RemoveParticipantOutput = Record<string, unknown>;
+
+export type VerifyPasscodeInput = {
+  contestId?: string;
+}
+
+export type VerifyPasscodeOutput = {
+  required?: boolean;
+  valid?: boolean;
+}
+
+export type EnterPasscodeInput = {
+  contestId?: string;
+  passcode?: string;
+}
+
+export type EnterPasscodeOutput = Record<string, unknown>;
+
+export type ResetPasscodeInput = {
+  participantId?: string;
+}
+
+export type ResetPasscodeOutput = {
+  passcode?: string;
+}
+
+export type RemovePasscodeInput = {
+  participantId?: string;
+}
+
+export type RemovePasscodeOutput = Record<string, unknown>;
 
 export type ListParticipantsInput = {
   contestId?: string;
