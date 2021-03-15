@@ -32,6 +32,10 @@ export class Executor {
   ListRuntime(input: ListRuntimeInput): Promise<ListRuntimeOutput> {
     return this.cli.call("eolymp.executor.Executor/ListRuntime", input);
   }
+
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.executor.Executor/DescribeCodeTemplate", input);
+  }
 }
 
 export type CreateTaskInput = {
@@ -84,5 +88,13 @@ export type ListRuntimeInput_Filter = {
 
 export type ListRuntimeOutput = {
   items?: Runtime[];
+}
+
+export type DescribeCodeTemplateInput = {
+  runtimeId?: string;
+}
+
+export type DescribeCodeTemplateOutput = {
+  template?: string;
 }
 

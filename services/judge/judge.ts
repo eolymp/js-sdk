@@ -253,6 +253,10 @@ export class Judge {
   ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
   }
+
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
+  }
 }
 
 export type CreateContestInput = {
@@ -762,5 +766,14 @@ export type ListAnnouncementsInput_Filter = {
 export type ListAnnouncementsOutput = {
   total?: number;
   items?: Announcement[];
+}
+
+export type DescribeCodeTemplateInput = {
+  problemId?: string;
+  runtimeId?: string;
+}
+
+export type DescribeCodeTemplateOutput = {
+  template?: string;
 }
 
