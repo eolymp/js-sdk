@@ -26,6 +26,7 @@ export type Submission_Run = {
   index?: number;
   testId?: string;
   cost?: number;
+  score?: number;
   status?: string;
 }
 

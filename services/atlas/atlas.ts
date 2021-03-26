@@ -6,6 +6,7 @@ import { Verifier } from "../executor/verifier"
 import { Permission } from "./permission"
 import { Problem } from "./problem"
 import { Statement } from "./statement"
+import { Template } from "./template"
 import { Test } from "./test"
 import { Testset } from "./testset"
 
@@ -126,6 +127,26 @@ export class Atlas {
 
   ListPermissions(input: ListPermissionsInput): Promise<ListPermissionsOutput> {
     return this.cli.call("eolymp.atlas.Atlas/ListPermissions", input);
+  }
+
+  CreateCodeTemplate(input: CreateCodeTemplateInput): Promise<CreateCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateCodeTemplate", input);
+  }
+
+  UpdateCodeTemplate(input: UpdateCodeTemplateInput): Promise<UpdateCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateCodeTemplate", input);
+  }
+
+  DeleteCodeTemplate(input: DeleteCodeTemplateInput): Promise<DeleteCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteCodeTemplate", input);
+  }
+
+  ListCodeTemplates(input: ListCodeTemplatesInput): Promise<ListCodeTemplatesOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListCodeTemplates", input);
+  }
+
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
   }
 }
 
@@ -337,4 +358,43 @@ export type RevokePermissionInput = {
 }
 
 export type RevokePermissionOutput = Record<string, unknown>;
+
+export type CreateCodeTemplateInput = {
+  problemId?: string;
+  template?: Template;
+}
+
+export type CreateCodeTemplateOutput = {
+  templateId?: string;
+}
+
+export type UpdateCodeTemplateInput = {
+  templateId?: string;
+  template?: Template;
+}
+
+export type UpdateCodeTemplateOutput = Record<string, unknown>;
+
+export type DeleteCodeTemplateInput = {
+  templateId?: string;
+}
+
+export type DeleteCodeTemplateOutput = Record<string, unknown>;
+
+export type ListCodeTemplatesInput = {
+  problemId?: string;
+}
+
+export type ListCodeTemplatesOutput = {
+  total?: number;
+  items?: Template[];
+}
+
+export type DescribeCodeTemplateInput = {
+  templateId?: string;
+}
+
+export type DescribeCodeTemplateOutput = {
+  template?: Template;
+}
 

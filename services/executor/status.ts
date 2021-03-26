@@ -17,6 +17,7 @@ export type Status = {
 export type Status_Run = {
   reference?: string;
   status?: string;
+  score?: number;
   timeUsage?: number;
   memoryUsage?: number;
   exitCode?: number;
