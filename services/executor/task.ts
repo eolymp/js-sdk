@@ -13,9 +13,6 @@ export type Task = {
   useFileIo?: boolean;
   redirectStderrToStdout?: boolean;
   constraints?: Task_Constraint[];
-  timeLimit?: number;
-  memoryLimit?: number;
-  fileSizeLimit?: number;
   verifier?: Verifier;
   interactor?: Interactor;
   runs?: Task_Run[];
@@ -42,7 +39,8 @@ export type Task_Precondition = {
 
 export type Task_Constraint = {
   selector?: string[];
-  timeLimit?: number;
+  wallTimeLimit?: number;
+  cpuTimeLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
 }

@@ -11,7 +11,8 @@ export type Run = {
   error?: string;
   exitCode?: number;
   signal?: number;
-  timeUsage?: number;
+  wallTimeUsage?: number;
+  cpuTimeUsage?: number;
   memoryUsage?: number;
   output?: string;
 }

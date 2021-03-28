@@ -21,7 +21,8 @@ export type Submission = {
 
 export type Submission_Run = {
   id?: string;
-  timeUsage?: number;
+  wallTimeUsage?: number;
+  cpuTimeUsage?: number;
   memoryUsage?: number;
   index?: number;
   testId?: string;
@@ -39,7 +40,8 @@ export type Submission_Group = {
   score?: number;
   scoringMode?: string;
   feedbackPolicy?: string;
-  timeUsage?: number;
+  wallTimeUsage?: number;
+  cpuTimeUsage?: number;
   memoryUsage?: number;
   runs?: Submission_Run[];
 }

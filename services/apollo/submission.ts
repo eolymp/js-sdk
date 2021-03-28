@@ -17,7 +17,8 @@ export type Submission = {
 
 export type Submission_Run = {
   id?: string;
-  timeUsage?: number;
+  wallTimeUsage?: number;
+  cpuTimeUsage?: number;
   memoryUsage?: number;
   testIndex?: number;
   testId?: string;
