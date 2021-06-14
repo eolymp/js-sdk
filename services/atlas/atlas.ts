@@ -3,9 +3,14 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
+import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
+import { Category } from "./category"
 import { Permission } from "./permission"
 import { Problem } from "./problem"
+import { Score } from "./score"
+import { Solution } from "./solution"
 import { Statement } from "./statement"
+import { Submission } from "./submission"
 import { Template } from "./template"
 import { Test } from "./test"
 import { Testset } from "./testset"
@@ -148,11 +153,95 @@ export class Atlas {
   DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
     return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
   }
+
+  CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
+  }
+
+  UpdateSolution(input: UpdateSolutionInput): Promise<UpdateSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateSolution", input);
+  }
+
+  DeleteSolution(input: DeleteSolutionInput): Promise<DeleteSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteSolution", input);
+  }
+
+  ListSolutions(input: ListSolutionsInput): Promise<ListSolutionsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListSolutions", input);
+  }
+
+  DescribeSolution(input: DescribeSolutionInput): Promise<DescribeSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeSolution", input);
+  }
+
+  PublishSolution(input: PublishSolutionInput): Promise<PublishSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/PublishSolution", input);
+  }
+
+  UnpublishSolution(input: UnpublishSolutionInput): Promise<UnpublishSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UnpublishSolution", input);
+  }
+
+  ApproveSolution(input: ApproveSolutionInput): Promise<ApproveSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ApproveSolution", input);
+  }
+
+  RefuseSolution(input: RefuseSolutionInput): Promise<RefuseSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/RefuseSolution", input);
+  }
+
+  CreateCategory(input: CreateCategoryInput): Promise<CreateCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateCategory", input);
+  }
+
+  UpdateCategory(input: UpdateCategoryInput): Promise<UpdateCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateCategory", input);
+  }
+
+  DeleteCategory(input: DeleteCategoryInput): Promise<DeleteCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteCategory", input);
+  }
+
+  ListCategories(input: ListCategoriesInput): Promise<ListCategoriesOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListCategories", input);
+  }
+
+  DescribeCategory(input: DescribeCategoryInput): Promise<DescribeCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeCategory", input);
+  }
+
+  AssignCategory(input: AssignCategoryInput): Promise<AssignCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/AssignCategory", input);
+  }
+
+  UnassignCategory(input: UnassignCategoryInput): Promise<UnassignCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UnassignCategory", input);
+  }
+
+  CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateSubmission", input);
+  }
+
+  DescribeSubmission(input: DescribeSubmissionInput): Promise<DescribeSubmissionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input);
+  }
+
+  DescribeScore(input: DescribeScoreInput): Promise<DescribeScoreOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input);
+  }
 }
 
 export type ListProblemsInput = {
   offset?: number;
   size?: number;
+  filters?: ListProblemsInput_Filter;
+}
+
+export type ListProblemsInput_Filter = {
+  id?: ExpressionID[];
+  categoryId?: ExpressionID[];
+  isVisible?: ExpressionBool[];
+  isPrivate?: ExpressionBool[];
 }
 
 export type ListProblemsOutput = {
@@ -396,5 +485,168 @@ export type DescribeCodeTemplateInput = {
 
 export type DescribeCodeTemplateOutput = {
   template?: Template;
+}
+
+export type CreateSolutionInput = {
+  problemId?: string;
+  solution?: Solution;
+}
+
+export type CreateSolutionOutput = {
+  solutionId?: string;
+}
+
+export type UpdateSolutionInput = {
+  solutionId?: string;
+  solution?: Solution;
+}
+
+export type UpdateSolutionOutput = Record<string, unknown>;
+
+export type DeleteSolutionInput = {
+  solutionId?: string;
+}
+
+export type DeleteSolutionOutput = Record<string, unknown>;
+
+export type ListSolutionsInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListSolutionsInput_Filter;
+}
+
+export type ListSolutionsInput_Filter = {
+  id?: ExpressionID[];
+  problemId?: ExpressionID[];
+  authorId?: ExpressionID[];
+  moderationStatus?: ExpressionEnum[];
+  published?: ExpressionBool[];
+  lang?: ExpressionEnum[];
+}
+
+export type ListSolutionsOutput = {
+  total?: number;
+  items?: Solution[];
+}
+
+export type DescribeSolutionInput = {
+  solutionId?: string;
+}
+
+export type DescribeSolutionOutput = {
+  solution?: Solution;
+}
+
+export type PublishSolutionInput = {
+  solutionId?: string;
+}
+
+export type PublishSolutionOutput = Record<string, unknown>;
+
+export type UnpublishSolutionInput = {
+  solutionId?: string;
+}
+
+export type UnpublishSolutionOutput = Record<string, unknown>;
+
+export type ApproveSolutionInput = {
+  solutionId?: string;
+}
+
+export type ApproveSolutionOutput = Record<string, unknown>;
+
+export type RefuseSolutionInput = {
+  solutionId?: string;
+  comment?: string;
+}
+
+export type RefuseSolutionOutput = Record<string, unknown>;
+
+export type ListCategoriesInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListCategoriesInput_Filter;
+}
+
+export type ListCategoriesInput_Filter = {
+  id?: ExpressionID[];
+  parentId?: ExpressionID[];
+  isVisible?: ExpressionBool[];
+}
+
+export type ListCategoriesOutput = {
+  total?: number;
+  items?: Category[];
+}
+
+export type CreateCategoryInput = {
+  category?: Category;
+}
+
+export type CreateCategoryOutput = {
+  categoryId?: string;
+}
+
+export type UpdateCategoryInput = {
+  categoryId?: string;
+  category?: Category;
+}
+
+export type UpdateCategoryOutput = Record<string, unknown>;
+
+export type DeleteCategoryInput = {
+  categoryId?: string;
+}
+
+export type DeleteCategoryOutput = Record<string, unknown>;
+
+export type DescribeCategoryInput = {
+  categoryId?: string;
+}
+
+export type DescribeCategoryOutput = {
+  category?: Category;
+}
+
+export type AssignCategoryInput = {
+  categoryId?: string;
+  problemId?: string;
+  index?: number;
+}
+
+export type AssignCategoryOutput = Record<string, unknown>;
+
+export type UnassignCategoryInput = {
+  categoryId?: string;
+  problemId?: string;
+}
+
+export type UnassignCategoryOutput = Record<string, unknown>;
+
+export type CreateSubmissionInput = {
+  problemId?: string;
+  lang?: string;
+  source?: string;
+}
+
+export type CreateSubmissionOutput = {
+  submissionId?: string;
+}
+
+export type DescribeSubmissionInput = {
+  submissionId?: string;
+}
+
+export type DescribeSubmissionOutput = {
+  submission?: Submission;
+}
+
+export type DescribeScoreInput = {
+  problemId?: string;
+  userId?: string;
+}
+
+export type DescribeScoreOutput = {
+  score?: Score;
 }
 

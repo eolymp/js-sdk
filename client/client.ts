@@ -83,7 +83,11 @@ export class Client {
         });
     }
 
+    graphql<R>(query: string, variables: Record<string, any>) {
+        return this.do<R>("POST", "/graphql", JSON.stringify({query, variables}));
+    }
+
     call<R, E>(method: string, input: R): Promise<E> {
-        return this.do("POST", "/twirp/" + method, JSON.stringify(input))
+        return this.do<E>("POST", "/twirp/" + method, JSON.stringify(input))
     }
 }
