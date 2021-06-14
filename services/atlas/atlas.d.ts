@@ -1,8 +1,13 @@
 import { Interactor } from "../executor/interactor";
 import { Verifier } from "../executor/verifier";
+import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression";
+import { Category } from "./category";
 import { Permission } from "./permission";
 import { Problem } from "./problem";
+import { Score } from "./score";
+import { Solution } from "./solution";
 import { Statement } from "./statement";
+import { Submission } from "./submission";
 import { Template } from "./template";
 import { Test } from "./test";
 import { Testset } from "./testset";
@@ -44,10 +49,36 @@ export declare class Atlas {
     DeleteCodeTemplate(input: DeleteCodeTemplateInput): Promise<DeleteCodeTemplateOutput>;
     ListCodeTemplates(input: ListCodeTemplatesInput): Promise<ListCodeTemplatesOutput>;
     DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
+    CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput>;
+    UpdateSolution(input: UpdateSolutionInput): Promise<UpdateSolutionOutput>;
+    DeleteSolution(input: DeleteSolutionInput): Promise<DeleteSolutionOutput>;
+    ListSolutions(input: ListSolutionsInput): Promise<ListSolutionsOutput>;
+    DescribeSolution(input: DescribeSolutionInput): Promise<DescribeSolutionOutput>;
+    PublishSolution(input: PublishSolutionInput): Promise<PublishSolutionOutput>;
+    UnpublishSolution(input: UnpublishSolutionInput): Promise<UnpublishSolutionOutput>;
+    ApproveSolution(input: ApproveSolutionInput): Promise<ApproveSolutionOutput>;
+    RefuseSolution(input: RefuseSolutionInput): Promise<RefuseSolutionOutput>;
+    CreateCategory(input: CreateCategoryInput): Promise<CreateCategoryOutput>;
+    UpdateCategory(input: UpdateCategoryInput): Promise<UpdateCategoryOutput>;
+    DeleteCategory(input: DeleteCategoryInput): Promise<DeleteCategoryOutput>;
+    ListCategories(input: ListCategoriesInput): Promise<ListCategoriesOutput>;
+    DescribeCategory(input: DescribeCategoryInput): Promise<DescribeCategoryOutput>;
+    AssignCategory(input: AssignCategoryInput): Promise<AssignCategoryOutput>;
+    UnassignCategory(input: UnassignCategoryInput): Promise<UnassignCategoryOutput>;
+    CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput>;
+    DescribeSubmission(input: DescribeSubmissionInput): Promise<DescribeSubmissionOutput>;
+    DescribeScore(input: DescribeScoreInput): Promise<DescribeScoreOutput>;
 }
 export declare type ListProblemsInput = {
     offset?: number;
     size?: number;
+    filters?: ListProblemsInput_Filter;
+};
+export declare type ListProblemsInput_Filter = {
+    id?: ExpressionID[];
+    categoryId?: ExpressionID[];
+    isVisible?: ExpressionBool[];
+    isPrivate?: ExpressionBool[];
 };
 export declare type ListProblemsOutput = {
     total?: number;
@@ -228,5 +259,128 @@ export declare type DescribeCodeTemplateInput = {
 };
 export declare type DescribeCodeTemplateOutput = {
     template?: Template;
+};
+export declare type CreateSolutionInput = {
+    problemId?: string;
+    solution?: Solution;
+};
+export declare type CreateSolutionOutput = {
+    solutionId?: string;
+};
+export declare type UpdateSolutionInput = {
+    solutionId?: string;
+    solution?: Solution;
+};
+export declare type UpdateSolutionOutput = Record<string, unknown>;
+export declare type DeleteSolutionInput = {
+    solutionId?: string;
+};
+export declare type DeleteSolutionOutput = Record<string, unknown>;
+export declare type ListSolutionsInput = {
+    offset?: number;
+    size?: number;
+    filters?: ListSolutionsInput_Filter;
+};
+export declare type ListSolutionsInput_Filter = {
+    id?: ExpressionID[];
+    problemId?: ExpressionID[];
+    authorId?: ExpressionID[];
+    moderationStatus?: ExpressionEnum[];
+    published?: ExpressionBool[];
+    lang?: ExpressionEnum[];
+};
+export declare type ListSolutionsOutput = {
+    total?: number;
+    items?: Solution[];
+};
+export declare type DescribeSolutionInput = {
+    solutionId?: string;
+};
+export declare type DescribeSolutionOutput = {
+    solution?: Solution;
+};
+export declare type PublishSolutionInput = {
+    solutionId?: string;
+};
+export declare type PublishSolutionOutput = Record<string, unknown>;
+export declare type UnpublishSolutionInput = {
+    solutionId?: string;
+};
+export declare type UnpublishSolutionOutput = Record<string, unknown>;
+export declare type ApproveSolutionInput = {
+    solutionId?: string;
+};
+export declare type ApproveSolutionOutput = Record<string, unknown>;
+export declare type RefuseSolutionInput = {
+    solutionId?: string;
+    comment?: string;
+};
+export declare type RefuseSolutionOutput = Record<string, unknown>;
+export declare type ListCategoriesInput = {
+    offset?: number;
+    size?: number;
+    filters?: ListCategoriesInput_Filter;
+};
+export declare type ListCategoriesInput_Filter = {
+    id?: ExpressionID[];
+    parentId?: ExpressionID[];
+    isVisible?: ExpressionBool[];
+};
+export declare type ListCategoriesOutput = {
+    total?: number;
+    items?: Category[];
+};
+export declare type CreateCategoryInput = {
+    category?: Category;
+};
+export declare type CreateCategoryOutput = {
+    categoryId?: string;
+};
+export declare type UpdateCategoryInput = {
+    categoryId?: string;
+    category?: Category;
+};
+export declare type UpdateCategoryOutput = Record<string, unknown>;
+export declare type DeleteCategoryInput = {
+    categoryId?: string;
+};
+export declare type DeleteCategoryOutput = Record<string, unknown>;
+export declare type DescribeCategoryInput = {
+    categoryId?: string;
+};
+export declare type DescribeCategoryOutput = {
+    category?: Category;
+};
+export declare type AssignCategoryInput = {
+    categoryId?: string;
+    problemId?: string;
+    index?: number;
+};
+export declare type AssignCategoryOutput = Record<string, unknown>;
+export declare type UnassignCategoryInput = {
+    categoryId?: string;
+    problemId?: string;
+};
+export declare type UnassignCategoryOutput = Record<string, unknown>;
+export declare type CreateSubmissionInput = {
+    problemId?: string;
+    lang?: string;
+    source?: string;
+};
+export declare type CreateSubmissionOutput = {
+    submissionId?: string;
+};
+export declare type DescribeSubmissionInput = {
+    submissionId?: string;
+};
+export declare type DescribeSubmissionOutput = {
+    submission?: Submission;
+};
+export declare type DescribeScoreInput = {
+    problemId?: string;
+    userId?: string;
+};
+export declare type DescribeScoreOutput = {
+    score?: Score;
 };
 export {};

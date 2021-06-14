@@ -103,6 +103,63 @@ class Atlas {
     DescribeCodeTemplate(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
     }
+    CreateSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
+    }
+    UpdateSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateSolution", input);
+    }
+    DeleteSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteSolution", input);
+    }
+    ListSolutions(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListSolutions", input);
+    }
+    DescribeSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeSolution", input);
+    }
+    PublishSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/PublishSolution", input);
+    }
+    UnpublishSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UnpublishSolution", input);
+    }
+    ApproveSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ApproveSolution", input);
+    }
+    RefuseSolution(input) {
+        return this.cli.call("eolymp.atlas.Atlas/RefuseSolution", input);
+    }
+    CreateCategory(input) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateCategory", input);
+    }
+    UpdateCategory(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateCategory", input);
+    }
+    DeleteCategory(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteCategory", input);
+    }
+    ListCategories(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListCategories", input);
+    }
+    DescribeCategory(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeCategory", input);
+    }
+    AssignCategory(input) {
+        return this.cli.call("eolymp.atlas.Atlas/AssignCategory", input);
+    }
+    UnassignCategory(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UnassignCategory", input);
+    }
+    CreateSubmission(input) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateSubmission", input);
+    }
+    DescribeSubmission(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input);
+    }
+    DescribeScore(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input);
+    }
 }
 exports.Atlas = Atlas;
 //# sourceMappingURL=atlas.js.map

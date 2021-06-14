@@ -57,6 +57,9 @@ class Client {
             return Promise.resolve(response.json());
         });
     }
+    graphql(query, variables) {
+        return this.do("POST", "/graphql", JSON.stringify({ query, variables }));
+    }
     call(method, input) {
         return this.do("POST", "/twirp/" + method, JSON.stringify(input));
     }

@@ -1,5 +1,5 @@
-import { Score } from "./score";
-import { Submission } from "./submission";
+import { Score } from "../atlas/score";
+import { Submission } from "../atlas/submission";
 export declare type SubmissionCompletedEvent = {
     submission?: Submission;
     update?: boolean;
