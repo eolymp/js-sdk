@@ -19,7 +19,7 @@ export class Client {
     do<T>(method: string, path: string, body: string, headers: Record<string, string> = {}): Promise<T> {
         const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
 
-        const auth: Record<string, string> = this.token ? {} : {
+        const auth: Record<string, string> = !this.token ? {} : {
             'Authorization': 'Bearer ' + this.token
         };
 
