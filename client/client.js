@@ -14,7 +14,7 @@ class Client {
     }
     do(method, path, body, headers = {}) {
         const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
-        const auth = this.token ? {} : {
+        const auth = !this.token ? {} : {
             'Authorization': 'Bearer ' + this.token
         };
         const params = {
