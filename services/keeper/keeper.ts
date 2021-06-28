@@ -38,13 +38,18 @@ export type DescribeObjectInput = {
   key?: string;
 }
 
-export type DescribeObjectOutput = Record<string, unknown>;
+export type DescribeObjectOutput = {
+  size?: number;
+}
 
 export type DownloadObjectInput = {
   key?: string;
+  offset?: number;
+  size?: number;
 }
 
 export type DownloadObjectOutput = {
   data?: string;
+  size?: number;
 }
 
