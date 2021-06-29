@@ -19,6 +19,18 @@ class Atlas {
     DescribeProblem(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
     }
+    MakeProblemVisible(input) {
+        return this.cli.call("eolymp.atlas.Atlas/MakeProblemVisible", input);
+    }
+    MakeProblemInvisible(input) {
+        return this.cli.call("eolymp.atlas.Atlas/MakeProblemInvisible", input);
+    }
+    MakeProblemPublic(input) {
+        return this.cli.call("eolymp.atlas.Atlas/MakeProblemPublic", input);
+    }
+    MakeProblemPrivate(input) {
+        return this.cli.call("eolymp.atlas.Atlas/MakeProblemPrivate", input);
+    }
     ListExamples(input) {
         return this.cli.call("eolymp.atlas.Atlas/ListExamples", input);
     }

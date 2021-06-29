@@ -21,6 +21,10 @@ export declare class Atlas {
     DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput>;
     ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput>;
     DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput>;
+    MakeProblemVisible(input: MakeProblemVisibleInput): Promise<MakeProblemVisibleOutput>;
+    MakeProblemInvisible(input: MakeProblemInvisibleInput): Promise<MakeProblemInvisibleOutput>;
+    MakeProblemPublic(input: MakeProblemPublicInput): Promise<MakeProblemPublicOutput>;
+    MakeProblemPrivate(input: MakeProblemPrivateInput): Promise<MakeProblemPrivateOutput>;
     ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput>;
     UpdateVerifier(input: UpdateVerifierInput): Promise<UpdateVerifierOutput>;
     DescribeVerifier(input: DescribeVerifierInput): Promise<DescribeVerifierOutput>;
@@ -383,4 +387,20 @@ export declare type DescribeScoreInput = {
 export declare type DescribeScoreOutput = {
     score?: Score;
 };
+export declare type MakeProblemVisibleInput = {
+    problemId?: string;
+};
+export declare type MakeProblemVisibleOutput = Record<string, unknown>;
+export declare type MakeProblemInvisibleInput = {
+    problemId?: string;
+};
+export declare type MakeProblemInvisibleOutput = Record<string, unknown>;
+export declare type MakeProblemPublicInput = {
+    problemId?: string;
+};
+export declare type MakeProblemPublicOutput = Record<string, unknown>;
+export declare type MakeProblemPrivateInput = {
+    problemId?: string;
+};
+export declare type MakeProblemPrivateOutput = Record<string, unknown>;
 export {};
