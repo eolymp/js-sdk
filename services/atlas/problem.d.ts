@@ -1,5 +1,6 @@
 export declare type Problem = {
     id?: string;
     index?: number;
-    enabled?: boolean;
+    visible?: boolean;
+    private?: boolean;
 };

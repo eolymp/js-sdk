@@ -17,11 +17,16 @@ export declare type CreateObjectOutput = {
 export declare type DescribeObjectInput = {
     key?: string;
 };
-export declare type DescribeObjectOutput = Record<string, unknown>;
+export declare type DescribeObjectOutput = {
+    size?: number;
+};
 export declare type DownloadObjectInput = {
     key?: string;
+    offset?: number;
+    size?: number;
 };
 export declare type DownloadObjectOutput = {
     data?: string;
+    size?: number;
 };
 export {};

@@ -42,6 +42,22 @@ export class Atlas {
     return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
   }
 
+  MakeProblemVisible(input: MakeProblemVisibleInput): Promise<MakeProblemVisibleOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/MakeProblemVisible", input);
+  }
+
+  MakeProblemInvisible(input: MakeProblemInvisibleInput): Promise<MakeProblemInvisibleOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/MakeProblemInvisible", input);
+  }
+
+  MakeProblemPublic(input: MakeProblemPublicInput): Promise<MakeProblemPublicOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/MakeProblemPublic", input);
+  }
+
+  MakeProblemPrivate(input: MakeProblemPrivateInput): Promise<MakeProblemPrivateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/MakeProblemPrivate", input);
+  }
+
   ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput> {
     return this.cli.call("eolymp.atlas.Atlas/ListExamples", input);
   }
@@ -649,4 +665,28 @@ export type DescribeScoreInput = {
 export type DescribeScoreOutput = {
   score?: Score;
 }
+
+export type MakeProblemVisibleInput = {
+  problemId?: string;
+}
+
+export type MakeProblemVisibleOutput = Record<string, unknown>;
+
+export type MakeProblemInvisibleInput = {
+  problemId?: string;
+}
+
+export type MakeProblemInvisibleOutput = Record<string, unknown>;
+
+export type MakeProblemPublicInput = {
+  problemId?: string;
+}
+
+export type MakeProblemPublicOutput = Record<string, unknown>;
+
+export type MakeProblemPrivateInput = {
+  problemId?: string;
+}
+
+export type MakeProblemPrivateOutput = Record<string, unknown>;
 
