@@ -1,4 +1,4 @@
-import {BadRequestError, InternalServerError, NotFoundError, UnauthorizedError} from "./errors";
+import {BadRequestError, ForbiddenError, InternalServerError, NotFoundError, UnauthorizedError} from "./errors";
 
 export class Client {
     private readonly url: string;
@@ -49,6 +49,13 @@ export class Client {
                   .json()
                   .then(({ error }) => Promise.reject(new UnauthorizedError(error)))
                   .catch((e) => Promise.reject(e instanceof UnauthorizedError ? e : new UnauthorizedError('unauthorized')));
+            }
+
+            if (response.status === 403) {
+                return response
+                  .json()
+                  .then(({ error }) => Promise.reject(new ForbiddenError(error)))
+                  .catch((e) => Promise.reject(e instanceof ForbiddenError ? e : new ForbiddenError('forbidden')));
             }
 
             if (response.status >= 400 && response.status < 500) {

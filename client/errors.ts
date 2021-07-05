@@ -9,6 +9,17 @@ export class UnauthorizedError implements Error {
     }
 }
 
+// ForbiddenError
+export class ForbiddenError implements Error {
+    message: string;
+    name: string;
+
+    constructor(message: string) {
+        this.message = message;
+        this.name = 'ForbiddenError';
+    }
+}
+
 // InternalServerError returned when server could not process request due to an internal error
 export class InternalServerError implements Error {
     name: string;
