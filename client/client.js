@@ -38,6 +38,12 @@ class Client {
                     .then(({ error }) => Promise.reject(new errors_1.UnauthorizedError(error)))
                     .catch((e) => Promise.reject(e instanceof errors_1.UnauthorizedError ? e : new errors_1.UnauthorizedError('unauthorized')));
             }
+            if (response.status === 403) {
+                return response
+                    .json()
+                    .then(({ error }) => Promise.reject(new errors_1.ForbiddenError(error)))
+                    .catch((e) => Promise.reject(e instanceof errors_1.ForbiddenError ? e : new errors_1.ForbiddenError('forbidden')));
+            }
             if (response.status >= 400 && response.status < 500) {
                 return response
                     .json()

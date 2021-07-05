@@ -3,6 +3,11 @@ export declare class UnauthorizedError implements Error {
     name: string;
     constructor(message: string);
 }
+export declare class ForbiddenError implements Error {
+    message: string;
+    name: string;
+    constructor(message: string);
+}
 export declare class InternalServerError implements Error {
     name: string;
     code: string;
