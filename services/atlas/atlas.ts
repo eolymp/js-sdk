@@ -3,8 +3,9 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
-import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 import { Category } from "./category"
+import { Change } from "./change"
 import { Permission } from "./permission"
 import { Problem } from "./problem"
 import { Score } from "./score"
@@ -42,20 +43,12 @@ export class Atlas {
     return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
   }
 
-  MakeProblemVisible(input: MakeProblemVisibleInput): Promise<MakeProblemVisibleOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/MakeProblemVisible", input);
+  UpdateVisibility(input: UpdateVisibilityInput): Promise<UpdateVisibilityOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input);
   }
 
-  MakeProblemInvisible(input: MakeProblemInvisibleInput): Promise<MakeProblemInvisibleOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/MakeProblemInvisible", input);
-  }
-
-  MakeProblemPublic(input: MakeProblemPublicInput): Promise<MakeProblemPublicOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/MakeProblemPublic", input);
-  }
-
-  MakeProblemPrivate(input: MakeProblemPrivateInput): Promise<MakeProblemPrivateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/MakeProblemPrivate", input);
+  UpdatePrivacy(input: UpdatePrivacyInput): Promise<UpdatePrivacyOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input);
   }
 
   ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput> {
@@ -168,6 +161,10 @@ export class Atlas {
 
   DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
     return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
+  }
+
+  ListChanges(input: ListChangesInput): Promise<ListChangesOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
   }
 
   CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput> {
@@ -666,27 +663,37 @@ export type DescribeScoreOutput = {
   score?: Score;
 }
 
-export type MakeProblemVisibleInput = {
+export type UpdateVisibilityInput = {
   problemId?: string;
+  visible?: boolean;
 }
 
-export type MakeProblemVisibleOutput = Record<string, unknown>;
+export type UpdateVisibilityOutput = Record<string, unknown>;
 
-export type MakeProblemInvisibleInput = {
+export type UpdatePrivacyInput = {
   problemId?: string;
+  private?: boolean;
 }
 
-export type MakeProblemInvisibleOutput = Record<string, unknown>;
+export type UpdatePrivacyOutput = Record<string, unknown>;
 
-export type MakeProblemPublicInput = {
+export type ListChangesInput = {
   problemId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListChangesInput_Filter;
 }
 
-export type MakeProblemPublicOutput = Record<string, unknown>;
-
-export type MakeProblemPrivateInput = {
-  problemId?: string;
+export type ListChangesInput_Filter = {
+  id?: ExpressionID[];
+  ipAddress?: ExpressionID[];
+  userId?: ExpressionID[];
+  timestamp?: ExpressionTimestamp[];
+  type?: ExpressionEnum[];
 }
 
-export type MakeProblemPrivateOutput = Record<string, unknown>;
+export type ListChangesOutput = {
+  total?: number;
+  items?: Change[];
+}
 

@@ -1,7 +1,8 @@
 import { Interactor } from "../executor/interactor";
 import { Verifier } from "../executor/verifier";
-import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression";
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression";
 import { Category } from "./category";
+import { Change } from "./change";
 import { Permission } from "./permission";
 import { Problem } from "./problem";
 import { Score } from "./score";
@@ -21,10 +22,8 @@ export declare class Atlas {
     DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput>;
     ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput>;
     DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput>;
-    MakeProblemVisible(input: MakeProblemVisibleInput): Promise<MakeProblemVisibleOutput>;
-    MakeProblemInvisible(input: MakeProblemInvisibleInput): Promise<MakeProblemInvisibleOutput>;
-    MakeProblemPublic(input: MakeProblemPublicInput): Promise<MakeProblemPublicOutput>;
-    MakeProblemPrivate(input: MakeProblemPrivateInput): Promise<MakeProblemPrivateOutput>;
+    UpdateVisibility(input: UpdateVisibilityInput): Promise<UpdateVisibilityOutput>;
+    UpdatePrivacy(input: UpdatePrivacyInput): Promise<UpdatePrivacyOutput>;
     ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput>;
     UpdateVerifier(input: UpdateVerifierInput): Promise<UpdateVerifierOutput>;
     DescribeVerifier(input: DescribeVerifierInput): Promise<DescribeVerifierOutput>;
@@ -53,6 +52,7 @@ export declare class Atlas {
     DeleteCodeTemplate(input: DeleteCodeTemplateInput): Promise<DeleteCodeTemplateOutput>;
     ListCodeTemplates(input: ListCodeTemplatesInput): Promise<ListCodeTemplatesOutput>;
     DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
+    ListChanges(input: ListChangesInput): Promise<ListChangesOutput>;
     CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput>;
     UpdateSolution(input: UpdateSolutionInput): Promise<UpdateSolutionOutput>;
     DeleteSolution(input: DeleteSolutionInput): Promise<DeleteSolutionOutput>;
@@ -387,20 +387,31 @@ export declare type DescribeScoreInput = {
 export declare type DescribeScoreOutput = {
     score?: Score;
 };
-export declare type MakeProblemVisibleInput = {
+export declare type UpdateVisibilityInput = {
     problemId?: string;
+    visible?: boolean;
 };
-export declare type MakeProblemVisibleOutput = Record<string, unknown>;
-export declare type MakeProblemInvisibleInput = {
+export declare type UpdateVisibilityOutput = Record<string, unknown>;
+export declare type UpdatePrivacyInput = {
     problemId?: string;
+    private?: boolean;
 };
-export declare type MakeProblemInvisibleOutput = Record<string, unknown>;
-export declare type MakeProblemPublicInput = {
+export declare type UpdatePrivacyOutput = Record<string, unknown>;
+export declare type ListChangesInput = {
     problemId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListChangesInput_Filter;
 };
-export declare type MakeProblemPublicOutput = Record<string, unknown>;
-export declare type MakeProblemPrivateInput = {
-    problemId?: string;
+export declare type ListChangesInput_Filter = {
+    id?: ExpressionID[];
+    ipAddress?: ExpressionID[];
+    userId?: ExpressionID[];
+    timestamp?: ExpressionTimestamp[];
+    type?: ExpressionEnum[];
 };
-export declare type MakeProblemPrivateOutput = Record<string, unknown>;
+export declare type ListChangesOutput = {
+    total?: number;
+    items?: Change[];
+};
 export {};

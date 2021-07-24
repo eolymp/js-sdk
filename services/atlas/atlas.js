@@ -19,17 +19,11 @@ class Atlas {
     DescribeProblem(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
     }
-    MakeProblemVisible(input) {
-        return this.cli.call("eolymp.atlas.Atlas/MakeProblemVisible", input);
+    UpdateVisibility(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input);
     }
-    MakeProblemInvisible(input) {
-        return this.cli.call("eolymp.atlas.Atlas/MakeProblemInvisible", input);
-    }
-    MakeProblemPublic(input) {
-        return this.cli.call("eolymp.atlas.Atlas/MakeProblemPublic", input);
-    }
-    MakeProblemPrivate(input) {
-        return this.cli.call("eolymp.atlas.Atlas/MakeProblemPrivate", input);
+    UpdatePrivacy(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input);
     }
     ListExamples(input) {
         return this.cli.call("eolymp.atlas.Atlas/ListExamples", input);
@@ -114,6 +108,9 @@ class Atlas {
     }
     DescribeCodeTemplate(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
+    }
+    ListChanges(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
     }
     CreateSolution(input) {
         return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
