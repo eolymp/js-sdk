@@ -52,6 +52,7 @@ export declare class Atlas {
     DeleteCodeTemplate(input: DeleteCodeTemplateInput): Promise<DeleteCodeTemplateOutput>;
     ListCodeTemplates(input: ListCodeTemplatesInput): Promise<ListCodeTemplatesOutput>;
     DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
+    DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput>;
     ListChanges(input: ListChangesInput): Promise<ListChangesOutput>;
     CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput>;
     UpdateSolution(input: UpdateSolutionInput): Promise<UpdateSolutionOutput>;
@@ -264,6 +265,29 @@ export declare type DescribeCodeTemplateInput = {
 export declare type DescribeCodeTemplateOutput = {
     template?: Template;
 };
+export declare type DescribeChangeInput = {
+    changeId?: string;
+};
+export declare type DescribeChangeOutput = {
+    change?: Change;
+};
+export declare type ListChangesInput = {
+    problemId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListChangesInput_Filter;
+};
+export declare type ListChangesInput_Filter = {
+    id?: ExpressionID[];
+    ipAddress?: ExpressionID[];
+    userId?: ExpressionID[];
+    timestamp?: ExpressionTimestamp[];
+    type?: ExpressionEnum[];
+};
+export declare type ListChangesOutput = {
+    total?: number;
+    items?: Change[];
+};
 export declare type CreateSolutionInput = {
     problemId?: string;
     solution?: Solution;
@@ -397,21 +421,4 @@ export declare type UpdatePrivacyInput = {
     private?: boolean;
 };
 export declare type UpdatePrivacyOutput = Record<string, unknown>;
-export declare type ListChangesInput = {
-    problemId?: string;
-    offset?: number;
-    size?: number;
-    filters?: ListChangesInput_Filter;
-};
-export declare type ListChangesInput_Filter = {
-    id?: ExpressionID[];
-    ipAddress?: ExpressionID[];
-    userId?: ExpressionID[];
-    timestamp?: ExpressionTimestamp[];
-    type?: ExpressionEnum[];
-};
-export declare type ListChangesOutput = {
-    total?: number;
-    items?: Change[];
-};
 export {};

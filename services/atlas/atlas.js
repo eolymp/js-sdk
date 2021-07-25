@@ -109,6 +109,9 @@ class Atlas {
     DescribeCodeTemplate(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
     }
+    DescribeChange(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input);
+    }
     ListChanges(input) {
         return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
     }

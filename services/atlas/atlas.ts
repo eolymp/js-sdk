@@ -163,6 +163,10 @@ export class Atlas {
     return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
   }
 
+  DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input);
+  }
+
   ListChanges(input: ListChangesInput): Promise<ListChangesOutput> {
     return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
   }
@@ -500,6 +504,34 @@ export type DescribeCodeTemplateOutput = {
   template?: Template;
 }
 
+export type DescribeChangeInput = {
+  changeId?: string;
+}
+
+export type DescribeChangeOutput = {
+  change?: Change;
+}
+
+export type ListChangesInput = {
+  problemId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListChangesInput_Filter;
+}
+
+export type ListChangesInput_Filter = {
+  id?: ExpressionID[];
+  ipAddress?: ExpressionID[];
+  userId?: ExpressionID[];
+  timestamp?: ExpressionTimestamp[];
+  type?: ExpressionEnum[];
+}
+
+export type ListChangesOutput = {
+  total?: number;
+  items?: Change[];
+}
+
 export type CreateSolutionInput = {
   problemId?: string;
   solution?: Solution;
@@ -676,24 +708,4 @@ export type UpdatePrivacyInput = {
 }
 
 export type UpdatePrivacyOutput = Record<string, unknown>;
-
-export type ListChangesInput = {
-  problemId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListChangesInput_Filter;
-}
-
-export type ListChangesInput_Filter = {
-  id?: ExpressionID[];
-  ipAddress?: ExpressionID[];
-  userId?: ExpressionID[];
-  timestamp?: ExpressionTimestamp[];
-  type?: ExpressionEnum[];
-}
-
-export type ListChangesOutput = {
-  total?: number;
-  items?: Change[];
-}
 
