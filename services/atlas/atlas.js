@@ -115,6 +115,12 @@ class Atlas {
     ListChanges(input) {
         return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
     }
+    ListProblemTop(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input);
+    }
+    DescribeProblemGrading(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input);
+    }
     CreateSolution(input) {
         return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
     }

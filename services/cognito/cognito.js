@@ -43,6 +43,18 @@ class Cognito {
     IntrospectQuota(input) {
         return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input);
     }
+    IntrospectRoles(input) {
+        return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input);
+    }
+    ListRoles(input) {
+        return this.cli.call("eolymp.cognito.Cognito/ListRoles", input);
+    }
+    UpdateRoles(input) {
+        return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input);
+    }
+    ListServiceEntitlements(input) {
+        return this.cli.call("eolymp.cognito.Cognito/ListServiceEntitlements", input);
+    }
 }
 exports.Cognito = Cognito;
 //# sourceMappingURL=cognito.js.map

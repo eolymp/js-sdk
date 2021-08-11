@@ -1,7 +1,7 @@
 export declare type Contest = {
     id?: string;
     name?: string;
-    type?: string;
+    scoringMode?: string;
     startsAt?: string;
     startsIn?: number;
     endsAt?: string;

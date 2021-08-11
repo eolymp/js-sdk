@@ -63,6 +63,22 @@ export class Cognito {
   IntrospectQuota(input: IntrospectQuotaInput): Promise<IntrospectQuotaOutput> {
     return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input);
   }
+
+  IntrospectRoles(input: IntrospectRolesInput): Promise<IntrospectRolesOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input);
+  }
+
+  ListRoles(input: ListRolesInput): Promise<ListRolesOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/ListRoles", input);
+  }
+
+  UpdateRoles(input: UpdateRolesInput): Promise<UpdateRolesOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input);
+  }
+
+  ListServiceEntitlements(input: ListServiceEntitlementsInput): Promise<ListServiceEntitlementsOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/ListServiceEntitlements", input);
+  }
 }
 
 export type CreateTokenInput = {
@@ -74,6 +90,7 @@ export type CreateTokenInput = {
   code?: string;
   codeVerifier?: string;
   scope?: string;
+  refreshToken?: string;
 }
 
 export type CreateTokenOutput = {
@@ -81,6 +98,7 @@ export type CreateTokenOutput = {
   type?: string;
   expiresAt?: string;
   scopes?: string[];
+  refreshToken?: string;
   userId?: string;
   username?: string;
 }
@@ -208,4 +226,31 @@ export type CompleteRecoverInput = {
 }
 
 export type CompleteRecoverOutput = Record<string, unknown>;
+
+export type IntrospectRolesInput = Record<string, unknown>;
+
+export type IntrospectRolesOutput = {
+  roles?: string[];
+}
+
+export type ListRolesInput = {
+  userId?: string;
+}
+
+export type ListRolesOutput = {
+  roles?: string[];
+}
+
+export type UpdateRolesInput = {
+  userId?: string;
+  roles?: string[];
+}
+
+export type UpdateRolesOutput = Record<string, unknown>;
+
+export type ListServiceEntitlementsInput = Record<string, unknown>;
+
+export type ListServiceEntitlementsOutput = {
+  entitlements?: string[];
+}
 

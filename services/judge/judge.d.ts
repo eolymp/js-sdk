@@ -274,8 +274,6 @@ export declare type CreateSubmissionOutput = {
 };
 export declare type ListSubmissionsInput = {
     contestId?: string;
-    problemId?: string;
-    participantId?: string;
     offset?: number;
     size?: number;
     filters?: ListSubmissionsInput_Filter;
@@ -348,8 +346,6 @@ export declare type ListTicketsInput_Filter = {
     isReadByOwner?: ExpressionBool[];
     isOpen?: ExpressionBool[];
     own?: ExpressionBool[];
-    isRead?: ExpressionBool[];
-    needsReply?: ExpressionBool[];
 };
 export declare type ListTicketsOutput = {
     total?: number;
@@ -404,7 +400,6 @@ export declare type DescribeRuntimeOutput = {
     runtime?: string[];
 };
 export declare type SubmitRegistrationInput = {
-    contestId?: string;
     participantId?: string;
     registration?: Registration;
 };

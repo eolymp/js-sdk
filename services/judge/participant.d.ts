@@ -20,4 +20,7 @@ export declare type Participant_Score = {
     solved?: boolean;
     percentage?: number;
     submits?: number;
+    attempts?: number;
+    solvedAt?: string;
+    solvedIn?: number;
 };

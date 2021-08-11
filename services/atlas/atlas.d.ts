@@ -54,6 +54,8 @@ export declare class Atlas {
     DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
     DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput>;
     ListChanges(input: ListChangesInput): Promise<ListChangesOutput>;
+    ListProblemTop(input: ListProblemTopInput): Promise<ListProblemTopOutput>;
+    DescribeProblemGrading(input: DescribeProblemGradingInput): Promise<DescribeProblemGradingOutput>;
     CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput>;
     UpdateSolution(input: UpdateSolutionInput): Promise<UpdateSolutionOutput>;
     DeleteSolution(input: DeleteSolutionInput): Promise<DeleteSolutionOutput>;
@@ -287,6 +289,22 @@ export declare type ListChangesInput_Filter = {
 export declare type ListChangesOutput = {
     total?: number;
     items?: Change[];
+};
+export declare type ListProblemTopInput = {
+    problemId?: string;
+};
+export declare type ListProblemTopOutput = {
+    items?: Submission[];
+};
+export declare type DescribeProblemGradingInput = {
+    problemId?: string;
+};
+export declare type DescribeProblemGradingOutput = {
+    ranges?: DescribeProblemGradingOutput_Range[];
+};
+export declare type DescribeProblemGradingOutput_Range = {
+    grade?: number;
+    upperBound?: number;
 };
 export declare type CreateSolutionInput = {
     problemId?: string;

@@ -171,6 +171,14 @@ export class Atlas {
     return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
   }
 
+  ListProblemTop(input: ListProblemTopInput): Promise<ListProblemTopOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input);
+  }
+
+  DescribeProblemGrading(input: DescribeProblemGradingInput): Promise<DescribeProblemGradingOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input);
+  }
+
   CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput> {
     return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
   }
@@ -530,6 +538,27 @@ export type ListChangesInput_Filter = {
 export type ListChangesOutput = {
   total?: number;
   items?: Change[];
+}
+
+export type ListProblemTopInput = {
+  problemId?: string;
+}
+
+export type ListProblemTopOutput = {
+  items?: Submission[];
+}
+
+export type DescribeProblemGradingInput = {
+  problemId?: string;
+}
+
+export type DescribeProblemGradingOutput = {
+  ranges?: DescribeProblemGradingOutput_Range[];
+}
+
+export type DescribeProblemGradingOutput_Range = {
+  grade?: number;
+  upperBound?: number;
 }
 
 export type CreateSolutionInput = {

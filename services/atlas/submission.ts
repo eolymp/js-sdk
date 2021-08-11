@@ -15,6 +15,10 @@ export type Submission = {
   cost?: number;
   score?: number;
   percentage?: number;
+  wallTimeUsage?: number;
+  cpuTimeUsage?: number;
+  memoryUsage?: number;
+  resourceUsage?: number;
   groups?: Submission_Group[];
 }
 
@@ -23,6 +27,7 @@ export type Submission_Run = {
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
   memoryUsage?: number;
+  resourceUsage?: number;
   index?: number;
   testId?: string;
   cost?: number;
@@ -42,6 +47,7 @@ export type Submission_Group = {
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
   memoryUsage?: number;
+  resourceUsage?: number;
   runs?: Submission_Run[];
 }
 
