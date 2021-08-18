@@ -64,6 +64,9 @@ class Judge {
     DescribeProblem(input) {
         return this.cli.call("eolymp.judge.Judge/DescribeProblem", input);
     }
+    DescribeCodeTemplate(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
+    }
     ListStatements(input) {
         return this.cli.call("eolymp.judge.Judge/ListStatements", input);
     }
@@ -180,9 +183,6 @@ class Judge {
     }
     ListAnnouncements(input) {
         return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
-    }
-    DescribeCodeTemplate(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
     }
 }
 exports.Judge = Judge;

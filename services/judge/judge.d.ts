@@ -32,6 +32,7 @@ export declare class Judge {
     UpdateProblem(input: UpdateProblemInput): Promise<UpdateProblemOutput>;
     ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput>;
     DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput>;
+    DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
     ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput>;
     ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput>;
     DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput>;
@@ -71,7 +72,6 @@ export declare class Judge {
     DescribeAnnouncement(input: DescribeAnnouncementInput): Promise<DescribeAnnouncementOutput>;
     DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput): Promise<DescribeAnnouncementStatusOutput>;
     ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput>;
-    DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
 }
 export declare type CreateContestInput = {
     contest?: Contest;

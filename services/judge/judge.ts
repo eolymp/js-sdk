@@ -98,6 +98,10 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DescribeProblem", input);
   }
 
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
+  }
+
   ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListStatements", input);
   }
@@ -252,10 +256,6 @@ export class Judge {
 
   ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
-  }
-
-  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
   }
 }
 
