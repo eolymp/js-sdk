@@ -9,13 +9,13 @@ export declare class Ranker {
     CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput>;
     UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput>;
     RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput>;
-    AssignContest(input: AssignContestInput): Promise<AssignContestOutput>;
-    UnassignContest(input: UnassignContestInput): Promise<UnassignContestOutput>;
     DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput>;
     LookupScoreboard(input: LookupScoreboardInput): Promise<LookupScoreboardOutput>;
     DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
     ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput>;
     ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput>;
+    AssignContest(input: AssignContestInput): Promise<AssignContestOutput>;
+    UnassignContest(input: UnassignContestInput): Promise<UnassignContestOutput>;
 }
 export declare type CreateScoreboardInput = {
     scoreboard?: Scoreboard;

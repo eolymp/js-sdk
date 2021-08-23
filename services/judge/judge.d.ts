@@ -72,6 +72,7 @@ export declare class Judge {
     DescribeAnnouncement(input: DescribeAnnouncementInput): Promise<DescribeAnnouncementOutput>;
     DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput): Promise<DescribeAnnouncementStatusOutput>;
     ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput>;
+    ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput>;
 }
 export declare type CreateContestInput = {
     contest?: Contest;
@@ -462,5 +463,14 @@ export declare type DescribeCodeTemplateInput = {
 };
 export declare type DescribeCodeTemplateOutput = {
     template?: string;
+};
+export declare type ListEntitlementsInput = {
+    contestId?: string;
+    submissionId?: string;
+    ticketId?: string;
+    participantId?: string;
+};
+export declare type ListEntitlementsOutput = {
+    entitlements?: string[];
 };
 export {};

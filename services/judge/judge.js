@@ -184,6 +184,9 @@ class Judge {
     ListAnnouncements(input) {
         return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
     }
+    ListEntitlements(input) {
+        return this.cli.call("eolymp.judge.Judge/ListEntitlements", input);
+    }
 }
 exports.Judge = Judge;
 //# sourceMappingURL=judge.js.map

@@ -16,12 +16,6 @@ class Ranker {
     RebuildScoreboard(input) {
         return this.cli.call("eolymp.ranker.Ranker/RebuildScoreboard", input);
     }
-    AssignContest(input) {
-        return this.cli.call("eolymp.ranker.Ranker/AssignContest", input);
-    }
-    UnassignContest(input) {
-        return this.cli.call("eolymp.ranker.Ranker/UnassignContest", input);
-    }
     DeleteScoreboard(input) {
         return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input);
     }
@@ -36,6 +30,12 @@ class Ranker {
     }
     ListScoreboardRows(input) {
         return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input);
+    }
+    AssignContest(input) {
+        return this.cli.call("eolymp.ranker.Ranker/AssignContest", input);
+    }
+    UnassignContest(input) {
+        return this.cli.call("eolymp.ranker.Ranker/UnassignContest", input);
     }
 }
 exports.Ranker = Ranker;

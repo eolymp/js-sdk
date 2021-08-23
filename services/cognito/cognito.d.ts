@@ -133,6 +133,7 @@ export declare type UpdateEmailOutput = {
 export declare type StartRecoveryInput = {
     email?: string;
     captcha?: string;
+    locale?: string;
 };
 export declare type StartRecoveryOutput = {
     emailRecoveryHint?: string;

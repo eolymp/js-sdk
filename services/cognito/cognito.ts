@@ -213,6 +213,7 @@ export type UpdateEmailOutput = {
 export type StartRecoveryInput = {
   email?: string;
   captcha?: string;
+  locale?: string;
 }
 
 export type StartRecoveryOutput = {

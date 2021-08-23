@@ -27,4 +27,9 @@ export declare type Scoreboard_Contest = {
     name?: string;
     index?: number;
     visible?: boolean;
+    problems?: Scoreboard_Contest_Problem[];
+};
+export declare type Scoreboard_Contest_Problem = {
+    problemId?: string;
+    name?: string;
 };

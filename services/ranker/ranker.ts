@@ -27,14 +27,6 @@ export class Ranker {
     return this.cli.call("eolymp.ranker.Ranker/RebuildScoreboard", input);
   }
 
-  AssignContest(input: AssignContestInput): Promise<AssignContestOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/AssignContest", input);
-  }
-
-  UnassignContest(input: UnassignContestInput): Promise<UnassignContestOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/UnassignContest", input);
-  }
-
   DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput> {
     return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input);
   }
@@ -53,6 +45,14 @@ export class Ranker {
 
   ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput> {
     return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input);
+  }
+
+  AssignContest(input: AssignContestInput): Promise<AssignContestOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/AssignContest", input);
+  }
+
+  UnassignContest(input: UnassignContestInput): Promise<UnassignContestOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/UnassignContest", input);
   }
 }
 
