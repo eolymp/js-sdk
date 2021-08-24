@@ -2,17 +2,20 @@ import {BadRequestError, ForbiddenError, InternalServerError, NotFoundError, Una
 
 export class Client {
     private readonly url: string;
+    private readonly headers: Record<string, string>;
     private token?: string;
 
-    constructor(url: string, token?: string) {
+    constructor(url: string, token?: string, headers?: Record<string, string>) {
         if (!url.endsWith('/')) {
             url += '/';
         }
 
         this.url = url;
+        this.token = token;
+        this.headers = headers || {};
     }
 
-    authorize(token?: string) {
+    authenticate(token?: string) {
         this.token = token;
     }
 
@@ -29,6 +32,7 @@ export class Client {
             credentials: 'omit',
             headers: {
                 'Content-Type': 'application/json',
+                ...this.headers,
                 ...auth,
                 ...(headers || {}),
             },

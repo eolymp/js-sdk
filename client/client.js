@@ -3,13 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const errors_1 = require("./errors");
 class Client {
-    constructor(url, token) {
+    constructor(url, token, headers) {
         if (!url.endsWith('/')) {
             url += '/';
         }
         this.url = url;
+        this.token = token;
+        this.headers = headers || {};
     }
-    authorize(token) {
+    authenticate(token) {
         this.token = token;
     }
     do(method, path, body, headers = {}) {
@@ -21,7 +23,7 @@ class Client {
             method: method,
             mode: 'cors',
             credentials: 'omit',
-            headers: Object.assign(Object.assign({ 'Content-Type': 'application/json' }, auth), (headers || {})),
+            headers: Object.assign(Object.assign(Object.assign({ 'Content-Type': 'application/json' }, this.headers), auth), (headers || {})),
             redirect: 'follow',
             body: body,
         };
