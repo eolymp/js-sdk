@@ -16,6 +16,12 @@ class Cognito {
     CreateAuthorization(input) {
         return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input);
     }
+    RevokeToken(input) {
+        return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input);
+    }
+    Signout(input) {
+        return this.cli.call("eolymp.cognito.Cognito/Signout", input);
+    }
     CreateUser(input) {
         return this.cli.call("eolymp.cognito.Cognito/CreateUser", input);
     }
@@ -52,8 +58,8 @@ class Cognito {
     UpdateRoles(input) {
         return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input);
     }
-    ListServiceEntitlements(input) {
-        return this.cli.call("eolymp.cognito.Cognito/ListServiceEntitlements", input);
+    ListEntitlements(input) {
+        return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input);
     }
 }
 exports.Cognito = Cognito;

@@ -28,6 +28,14 @@ export class Cognito {
     return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input);
   }
 
+  RevokeToken(input: RevokeTokenInput): Promise<RevokeTokenOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input);
+  }
+
+  Signout(input: SignoutInput): Promise<SignoutOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/Signout", input);
+  }
+
   CreateUser(input: CreateUserInput): Promise<CreateUserOutput> {
     return this.cli.call("eolymp.cognito.Cognito/CreateUser", input);
   }
@@ -76,8 +84,8 @@ export class Cognito {
     return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input);
   }
 
-  ListServiceEntitlements(input: ListServiceEntitlementsInput): Promise<ListServiceEntitlementsOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListServiceEntitlements", input);
+  ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input);
   }
 }
 
@@ -249,9 +257,21 @@ export type UpdateRolesInput = {
 
 export type UpdateRolesOutput = Record<string, unknown>;
 
-export type ListServiceEntitlementsInput = Record<string, unknown>;
+export type ListEntitlementsInput = Record<string, unknown>;
 
-export type ListServiceEntitlementsOutput = {
+export type ListEntitlementsOutput = {
   entitlements?: string[];
 }
+
+export type RevokeTokenInput = {
+  token?: string;
+}
+
+export type RevokeTokenOutput = Record<string, unknown>;
+
+export type SignoutInput = {
+  everywhere?: boolean;
+}
+
+export type SignoutOutput = Record<string, unknown>;
 

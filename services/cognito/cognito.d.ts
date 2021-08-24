@@ -10,6 +10,8 @@ export declare class Cognito {
     CreateToken(input: CreateTokenInput): Promise<CreateTokenOutput>;
     IntrospectToken(input: IntrospectTokenInput): Promise<IntrospectTokenOutput>;
     CreateAuthorization(input: CreateAuthorizationInput): Promise<CreateAuthorizationOutput>;
+    RevokeToken(input: RevokeTokenInput): Promise<RevokeTokenOutput>;
+    Signout(input: SignoutInput): Promise<SignoutOutput>;
     CreateUser(input: CreateUserInput): Promise<CreateUserOutput>;
     VerifyEmail(input: VerifyEmailInput): Promise<VerifyEmailOutput>;
     UpdateEmail(input: UpdateEmailInput): Promise<UpdateEmailOutput>;
@@ -22,7 +24,7 @@ export declare class Cognito {
     IntrospectRoles(input: IntrospectRolesInput): Promise<IntrospectRolesOutput>;
     ListRoles(input: ListRolesInput): Promise<ListRolesOutput>;
     UpdateRoles(input: UpdateRolesInput): Promise<UpdateRolesOutput>;
-    ListServiceEntitlements(input: ListServiceEntitlementsInput): Promise<ListServiceEntitlementsOutput>;
+    ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput>;
 }
 export declare type CreateTokenInput = {
     grantType?: string;
@@ -159,8 +161,16 @@ export declare type UpdateRolesInput = {
     roles?: string[];
 };
 export declare type UpdateRolesOutput = Record<string, unknown>;
-export declare type ListServiceEntitlementsInput = Record<string, unknown>;
-export declare type ListServiceEntitlementsOutput = {
+export declare type ListEntitlementsInput = Record<string, unknown>;
+export declare type ListEntitlementsOutput = {
     entitlements?: string[];
 };
+export declare type RevokeTokenInput = {
+    token?: string;
+};
+export declare type RevokeTokenOutput = Record<string, unknown>;
+export declare type SignoutInput = {
+    everywhere?: boolean;
+};
+export declare type SignoutOutput = Record<string, unknown>;
 export {};
