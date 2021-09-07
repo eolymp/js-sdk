@@ -88,18 +88,6 @@ class Judge {
     DisableParticipant(input) {
         return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
     }
-    VerifyPasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
-    }
-    EnterPasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
-    }
-    ResetPasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
-    }
-    RemovePasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
-    }
     RemoveParticipant(input) {
         return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input);
     }
@@ -117,6 +105,18 @@ class Judge {
     }
     StartContest(input) {
         return this.cli.call("eolymp.judge.Judge/StartContest", input);
+    }
+    VerifyPasscode(input) {
+        return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
+    }
+    EnterPasscode(input) {
+        return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
+    }
+    ResetPasscode(input) {
+        return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
+    }
+    RemovePasscode(input) {
+        return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
     }
     CreateSubmission(input) {
         return this.cli.call("eolymp.judge.Judge/CreateSubmission", input);
@@ -183,6 +183,36 @@ class Judge {
     }
     ListAnnouncements(input) {
         return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
+    }
+    CreateScoreboard(input) {
+        return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input);
+    }
+    UpdateScoreboard(input) {
+        return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input);
+    }
+    DeleteScoreboard(input) {
+        return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input);
+    }
+    DescribeScoreboard(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input);
+    }
+    DescribeDefaultScoreboard(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input);
+    }
+    ListScoreboards(input) {
+        return this.cli.call("eolymp.judge.Judge/ListScoreboards", input);
+    }
+    DescribeScoreboardRow(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input);
+    }
+    DescribeDefaultScoreboardRow(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input);
+    }
+    ListScoreboardRows(input) {
+        return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input);
+    }
+    ListDefaultScoreboardRows(input) {
+        return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input);
     }
     ListEntitlements(input) {
         return this.cli.call("eolymp.judge.Judge/ListEntitlements", input);

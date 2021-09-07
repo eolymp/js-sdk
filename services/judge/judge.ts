@@ -8,6 +8,7 @@ import { Form, Registration } from "./form"
 import { Participant } from "./participant"
 import { Problem, Statement, Test } from "./problem"
 import { Reply } from "./reply"
+import { Scoreboard, Scoreboard_Row } from "./scoreboard"
 import { Submission } from "./submission"
 import { Ticket } from "./ticket"
 
@@ -130,22 +131,6 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
   }
 
-  VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
-  }
-
-  EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
-  }
-
-  ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
-  }
-
-  RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
-  }
-
   RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput> {
     return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input);
   }
@@ -168,6 +153,22 @@ export class Judge {
 
   StartContest(input: StartContestInput): Promise<StartContestOutput> {
     return this.cli.call("eolymp.judge.Judge/StartContest", input);
+  }
+
+  VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
+  }
+
+  EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
+  }
+
+  ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
+  }
+
+  RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
   }
 
   CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput> {
@@ -256,6 +257,46 @@ export class Judge {
 
   ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
+  }
+
+  CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input);
+  }
+
+  UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input);
+  }
+
+  DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input);
+  }
+
+  DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input);
+  }
+
+  DescribeDefaultScoreboard(input: DescribeDefaultScoreboardInput): Promise<DescribeDefaultScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input);
+  }
+
+  ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListScoreboards", input);
+  }
+
+  DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input);
+  }
+
+  DescribeDefaultScoreboardRow(input: DescribeDefaultScoreboardRowInput): Promise<DescribeDefaultScoreboardRowOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input);
+  }
+
+  ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input);
+  }
+
+  ListDefaultScoreboardRows(input: ListDefaultScoreboardRowsInput): Promise<ListDefaultScoreboardRowsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input);
   }
 
   ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput> {
@@ -774,6 +815,106 @@ export type DescribeCodeTemplateInput = {
 
 export type DescribeCodeTemplateOutput = {
   template?: string;
+}
+
+export type CreateScoreboardInput = {
+  contestId?: string;
+  scoreboard?: Scoreboard;
+}
+
+export type CreateScoreboardOutput = {
+  scoreboardId?: string;
+}
+
+export type UpdateScoreboardInput = {
+  scoreboardId?: string;
+  scoreboard?: Scoreboard;
+}
+
+export type UpdateScoreboardOutput = Record<string, unknown>;
+
+export type DeleteScoreboardInput = {
+  scoreboardId?: string;
+}
+
+export type DeleteScoreboardOutput = Record<string, unknown>;
+
+export type DescribeScoreboardInput = {
+  scoreboardId?: string;
+}
+
+export type DescribeScoreboardOutput = {
+  scoreboard?: Scoreboard;
+}
+
+export type DescribeDefaultScoreboardInput = {
+  contestId?: string;
+}
+
+export type DescribeDefaultScoreboardOutput = {
+  scoreboard?: Scoreboard;
+}
+
+export type ListScoreboardsInput = {
+  contestId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListScoreboardsInput_Filter;
+}
+
+export type ListScoreboardsInput_Filter = {
+  id?: ExpressionID[];
+}
+
+export type ListScoreboardsOutput = {
+  total?: number;
+  items?: Scoreboard[];
+}
+
+export type DescribeScoreboardRowInput = {
+  scoreboardId?: string;
+  participantId?: string;
+}
+
+export type DescribeScoreboardRowOutput = {
+  row?: Scoreboard_Row;
+}
+
+export type DescribeDefaultScoreboardRowInput = {
+  contestId?: string;
+  participantId?: string;
+}
+
+export type DescribeDefaultScoreboardRowOutput = {
+  row?: Scoreboard_Row;
+}
+
+export type ListScoreboardRowsInput = {
+  scoreboardId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListScoreboardRowsInput_Filter;
+}
+
+export type ListScoreboardRowsInput_Filter = {
+  participantId?: ExpressionID[];
+}
+
+export type ListScoreboardRowsOutput = {
+  total?: number;
+  items?: Scoreboard_Row[];
+}
+
+export type ListDefaultScoreboardRowsInput = {
+  contestId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListScoreboardRowsInput_Filter;
+}
+
+export type ListDefaultScoreboardRowsOutput = {
+  total?: number;
+  items?: Scoreboard_Row[];
 }
 
 export type ListEntitlementsInput = {

@@ -5,6 +5,7 @@ import { Form, Registration } from "./form";
 import { Participant } from "./participant";
 import { Problem, Statement, Test } from "./problem";
 import { Reply } from "./reply";
+import { Scoreboard, Scoreboard_Row } from "./scoreboard";
 import { Submission } from "./submission";
 import { Ticket } from "./ticket";
 interface Client {
@@ -40,16 +41,16 @@ export declare class Judge {
     AddParticipant(input: AddParticipantInput): Promise<AddParticipantOutput>;
     EnableParticipant(input: EnableParticipantInput): Promise<EnableParticipantOutput>;
     DisableParticipant(input: DisableParticipantInput): Promise<DisableParticipantOutput>;
-    VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput>;
-    EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput>;
-    ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput>;
-    RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput>;
     RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput>;
     ListParticipants(input: ListParticipantsInput): Promise<ListParticipantsOutput>;
     DescribeParticipant(input: DescribeParticipantInput): Promise<DescribeParticipantOutput>;
     IntrospectParticipant(input: IntrospectParticipantInput): Promise<IntrospectParticipantOutput>;
     JoinContest(input: JoinContestInput): Promise<JoinContestOutput>;
     StartContest(input: StartContestInput): Promise<StartContestOutput>;
+    VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput>;
+    EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput>;
+    ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput>;
+    RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput>;
     CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput>;
     ListSubmissions(input: ListSubmissionsInput): Promise<ListSubmissionsOutput>;
     DescribeSubmission(input: DescribeSubmissionInput): Promise<DescribeSubmissionOutput>;
@@ -72,6 +73,16 @@ export declare class Judge {
     DescribeAnnouncement(input: DescribeAnnouncementInput): Promise<DescribeAnnouncementOutput>;
     DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput): Promise<DescribeAnnouncementStatusOutput>;
     ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput>;
+    CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput>;
+    UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput>;
+    DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput>;
+    DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
+    DescribeDefaultScoreboard(input: DescribeDefaultScoreboardInput): Promise<DescribeDefaultScoreboardOutput>;
+    ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput>;
+    DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput>;
+    DescribeDefaultScoreboardRow(input: DescribeDefaultScoreboardRowInput): Promise<DescribeDefaultScoreboardRowOutput>;
+    ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput>;
+    ListDefaultScoreboardRows(input: ListDefaultScoreboardRowsInput): Promise<ListDefaultScoreboardRowsOutput>;
     ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput>;
 }
 export declare type CreateContestInput = {
@@ -463,6 +474,84 @@ export declare type DescribeCodeTemplateInput = {
 };
 export declare type DescribeCodeTemplateOutput = {
     template?: string;
+};
+export declare type CreateScoreboardInput = {
+    contestId?: string;
+    scoreboard?: Scoreboard;
+};
+export declare type CreateScoreboardOutput = {
+    scoreboardId?: string;
+};
+export declare type UpdateScoreboardInput = {
+    scoreboardId?: string;
+    scoreboard?: Scoreboard;
+};
+export declare type UpdateScoreboardOutput = Record<string, unknown>;
+export declare type DeleteScoreboardInput = {
+    scoreboardId?: string;
+};
+export declare type DeleteScoreboardOutput = Record<string, unknown>;
+export declare type DescribeScoreboardInput = {
+    scoreboardId?: string;
+};
+export declare type DescribeScoreboardOutput = {
+    scoreboard?: Scoreboard;
+};
+export declare type DescribeDefaultScoreboardInput = {
+    contestId?: string;
+};
+export declare type DescribeDefaultScoreboardOutput = {
+    scoreboard?: Scoreboard;
+};
+export declare type ListScoreboardsInput = {
+    contestId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListScoreboardsInput_Filter;
+};
+export declare type ListScoreboardsInput_Filter = {
+    id?: ExpressionID[];
+};
+export declare type ListScoreboardsOutput = {
+    total?: number;
+    items?: Scoreboard[];
+};
+export declare type DescribeScoreboardRowInput = {
+    scoreboardId?: string;
+    participantId?: string;
+};
+export declare type DescribeScoreboardRowOutput = {
+    row?: Scoreboard_Row;
+};
+export declare type DescribeDefaultScoreboardRowInput = {
+    contestId?: string;
+    participantId?: string;
+};
+export declare type DescribeDefaultScoreboardRowOutput = {
+    row?: Scoreboard_Row;
+};
+export declare type ListScoreboardRowsInput = {
+    scoreboardId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListScoreboardRowsInput_Filter;
+};
+export declare type ListScoreboardRowsInput_Filter = {
+    participantId?: ExpressionID[];
+};
+export declare type ListScoreboardRowsOutput = {
+    total?: number;
+    items?: Scoreboard_Row[];
+};
+export declare type ListDefaultScoreboardRowsInput = {
+    contestId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListScoreboardRowsInput_Filter;
+};
+export declare type ListDefaultScoreboardRowsOutput = {
+    total?: number;
+    items?: Scoreboard_Row[];
 };
 export declare type ListEntitlementsInput = {
     contestId?: string;
