@@ -4,9 +4,11 @@
 
 export type Scoreboard = {
   id?: string;
+  name?: string;
   default?: boolean;
   visible?: boolean;
-  scoringMode?: string;
+  type?: string;
+  status?: string;
   freezeTime?: string;
   freezeIn?: number;
 }

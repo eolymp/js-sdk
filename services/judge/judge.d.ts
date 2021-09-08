@@ -87,6 +87,7 @@ export declare class Judge {
 }
 export declare type CreateContestInput = {
     contest?: Contest;
+    type?: string;
 };
 export declare type CreateContestOutput = {
     contestId?: string;
@@ -511,6 +512,9 @@ export declare type ListScoreboardsInput = {
 };
 export declare type ListScoreboardsInput_Filter = {
     id?: ExpressionID[];
+    visible?: ExpressionBool[];
+    default?: ExpressionBool[];
+    type?: ExpressionEnum[];
 };
 export declare type ListScoreboardsOutput = {
     total?: number;
@@ -538,6 +542,13 @@ export declare type ListScoreboardRowsInput = {
 };
 export declare type ListScoreboardRowsInput_Filter = {
     participantId?: ExpressionID[];
+    userId?: ExpressionID[];
+    username?: ExpressionString[];
+    status?: ExpressionEnum[];
+    score?: ExpressionFloat[];
+    penalty?: ExpressionFloat[];
+    startedAt?: ExpressionTimestamp[];
+    completeAt?: ExpressionTimestamp[];
 };
 export declare type ListScoreboardRowsOutput = {
     total?: number;
