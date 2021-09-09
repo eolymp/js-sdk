@@ -3,6 +3,8 @@ export declare type Scoreboard = {
     name?: string;
     default?: boolean;
     visible?: boolean;
+    attemptPenalty?: number;
+    useContestTime?: boolean;
     type?: string;
     status?: string;
     freezeTime?: string;

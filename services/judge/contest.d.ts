@@ -10,3 +10,10 @@ export declare type Contest = {
     public?: boolean;
     domain?: string;
 };
+export declare type Contest_Appearance = {
+    title?: string;
+    tagline?: string;
+    logoImage?: string;
+    primaryColor?: string;
+    secondaryColor?: string;
+};

@@ -1,6 +1,7 @@
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression";
+import { Activity } from "./activity";
 import { Announcement } from "./announcement";
-import { Contest } from "./contest";
+import { Contest, Contest_Appearance } from "./contest";
 import { Form, Registration } from "./form";
 import { Participant } from "./participant";
 import { Problem, Statement, Test } from "./problem";
@@ -26,6 +27,8 @@ export declare class Judge {
     DescribeRegistrationForm(input: DescribeRegistrationFormInput): Promise<DescribeRegistrationFormOutput>;
     ConfigureRuntime(input: ConfigureRuntimeInput): Promise<ConfigureRuntimeOutput>;
     DescribeRuntime(input: DescribeRuntimeInput): Promise<DescribeRuntimeOutput>;
+    ConfigureAppearance(input: ConfigureAppearanceInput): Promise<ConfigureAppearanceOutput>;
+    DescribeAppearance(input: DescribeAppearanceInput): Promise<DescribeAppearanceOutput>;
     SubmitRegistration(input: SubmitRegistrationInput): Promise<SubmitRegistrationOutput>;
     DescribeRegistration(input: DescribeRegistrationInput): Promise<DescribeRegistrationOutput>;
     ImportProblem(input: ImportProblemInput): Promise<ImportProblemOutput>;
@@ -85,6 +88,7 @@ export declare class Judge {
     ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput>;
     ListDefaultScoreboardRows(input: ListDefaultScoreboardRowsInput): Promise<ListDefaultScoreboardRowsOutput>;
     ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput>;
+    ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput>;
 }
 export declare type CreateContestInput = {
     contest?: Contest;
@@ -113,6 +117,7 @@ export declare type LookupContestInput = {
 };
 export declare type LookupContestOutput = {
     contest?: Contest;
+    appearance?: Contest_Appearance;
 };
 export declare type ListContestsInput = {
     offset?: number;
@@ -577,5 +582,25 @@ export declare type ListEntitlementsInput = {
 };
 export declare type ListEntitlementsOutput = {
     entitlements?: string[];
+};
+export declare type ListActivitiesInput = {
+    contestId?: string;
+    offset?: number;
+    size?: number;
+};
+export declare type ListActivitiesOutput = {
+    total?: number;
+    items?: Activity[];
+};
+export declare type ConfigureAppearanceInput = {
+    contestId?: string;
+    appearance?: Contest_Appearance;
+};
+export declare type ConfigureAppearanceOutput = Record<string, unknown>;
+export declare type DescribeAppearanceInput = {
+    contestId?: string;
+};
+export declare type DescribeAppearanceOutput = {
+    appearance?: Contest_Appearance;
 };
 export {};

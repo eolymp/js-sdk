@@ -2,8 +2,9 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
+import { Activity } from "./activity"
 import { Announcement } from "./announcement"
-import { Contest } from "./contest"
+import { Contest, Contest_Appearance } from "./contest"
 import { Form, Registration } from "./form"
 import { Participant } from "./participant"
 import { Problem, Statement, Test } from "./problem"
@@ -69,6 +70,14 @@ export class Judge {
 
   DescribeRuntime(input: DescribeRuntimeInput): Promise<DescribeRuntimeOutput> {
     return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input);
+  }
+
+  ConfigureAppearance(input: ConfigureAppearanceInput): Promise<ConfigureAppearanceOutput> {
+    return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input);
+  }
+
+  DescribeAppearance(input: DescribeAppearanceInput): Promise<DescribeAppearanceOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input);
   }
 
   SubmitRegistration(input: SubmitRegistrationInput): Promise<SubmitRegistrationOutput> {
@@ -306,6 +315,10 @@ export class Judge {
   ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListEntitlements", input);
   }
+
+  ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListActivities", input);
+  }
 }
 
 export type CreateContestInput = {
@@ -344,6 +357,7 @@ export type LookupContestInput = {
 
 export type LookupContestOutput = {
   contest?: Contest;
+  appearance?: Contest_Appearance;
 }
 
 export type ListContestsInput = {
@@ -947,5 +961,31 @@ export type ListEntitlementsInput = {
 
 export type ListEntitlementsOutput = {
   entitlements?: string[];
+}
+
+export type ListActivitiesInput = {
+  contestId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListActivitiesOutput = {
+  total?: number;
+  items?: Activity[];
+}
+
+export type ConfigureAppearanceInput = {
+  contestId?: string;
+  appearance?: Contest_Appearance;
+}
+
+export type ConfigureAppearanceOutput = Record<string, unknown>;
+
+export type DescribeAppearanceInput = {
+  contestId?: string;
+}
+
+export type DescribeAppearanceOutput = {
+  appearance?: Contest_Appearance;
 }
 

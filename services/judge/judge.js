@@ -43,6 +43,12 @@ class Judge {
     DescribeRuntime(input) {
         return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input);
     }
+    ConfigureAppearance(input) {
+        return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input);
+    }
+    DescribeAppearance(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input);
+    }
     SubmitRegistration(input) {
         return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input);
     }
@@ -219,6 +225,9 @@ class Judge {
     }
     ListEntitlements(input) {
         return this.cli.call("eolymp.judge.Judge/ListEntitlements", input);
+    }
+    ListActivities(input) {
+        return this.cli.call("eolymp.judge.Judge/ListActivities", input);
     }
 }
 exports.Judge = Judge;

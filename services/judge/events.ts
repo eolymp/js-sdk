@@ -11,6 +11,7 @@ export type SubmissionCompletedEvent = {
 
 export type RebuildScoreboardEvent = {
   scoreboardId?: string;
+  activityId?: string;
 }
 
 export type TicketCreatedEvent = {

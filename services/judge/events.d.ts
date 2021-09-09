@@ -6,6 +6,7 @@ export declare type SubmissionCompletedEvent = {
 };
 export declare type RebuildScoreboardEvent = {
     scoreboardId?: string;
+    activityId?: string;
 };
 export declare type TicketCreatedEvent = {
     ticket?: Ticket;

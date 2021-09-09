@@ -15,3 +15,11 @@ export type Contest = {
   domain?: string;
 }
 
+export type Contest_Appearance = {
+  title?: string;
+  tagline?: string;
+  logoImage?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+}
+
