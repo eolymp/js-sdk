@@ -190,6 +190,9 @@ class Judge {
     UpdateScoreboard(input) {
         return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input);
     }
+    RebuildScoreboard(input) {
+        return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input);
+    }
     DeleteScoreboard(input) {
         return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input);
     }

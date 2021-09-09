@@ -9,6 +9,10 @@ export type SubmissionCompletedEvent = {
   submission?: Submission;
 }
 
+export type RebuildScoreboardEvent = {
+  scoreboardId?: string;
+}
+
 export type TicketCreatedEvent = {
   ticket?: Ticket;
 }

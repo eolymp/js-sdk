@@ -4,6 +4,9 @@ import { Ticket } from "./ticket";
 export declare type SubmissionCompletedEvent = {
     submission?: Submission;
 };
+export declare type RebuildScoreboardEvent = {
+    scoreboardId?: string;
+};
 export declare type TicketCreatedEvent = {
     ticket?: Ticket;
 };

@@ -75,6 +75,7 @@ export declare class Judge {
     ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput>;
     CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput>;
     UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput>;
+    RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput>;
     DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput>;
     DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
     DescribeDefaultScoreboard(input: DescribeDefaultScoreboardInput): Promise<DescribeDefaultScoreboardOutput>;
@@ -488,6 +489,10 @@ export declare type UpdateScoreboardInput = {
     scoreboard?: Scoreboard;
 };
 export declare type UpdateScoreboardOutput = Record<string, unknown>;
+export declare type RebuildScoreboardInput = {
+    scoreboardId?: string;
+};
+export declare type RebuildScoreboardOutput = Record<string, unknown>;
 export declare type DeleteScoreboardInput = {
     scoreboardId?: string;
 };
