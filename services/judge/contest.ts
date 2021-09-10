@@ -11,7 +11,8 @@ export type Contest = {
   endsIn?: number;
   duration?: number;
   status?: string;
-  public?: boolean;
+  visibility?: string;
+  participationMode?: string;
   domain?: string;
 }
 

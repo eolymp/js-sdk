@@ -373,6 +373,7 @@ export type ListContestsInput_Filter = {
   startsAt?: ExpressionTimestamp[];
   endsAt?: ExpressionTimestamp[];
   public?: ExpressionBool[];
+  visibility?: ExpressionEnum[];
 }
 
 export type ListContestsOutput = {

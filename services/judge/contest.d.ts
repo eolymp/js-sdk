@@ -7,7 +7,8 @@ export declare type Contest = {
     endsIn?: number;
     duration?: number;
     status?: string;
-    public?: boolean;
+    visibility?: string;
+    participationMode?: string;
     domain?: string;
 };
 export declare type Contest_Appearance = {

@@ -131,6 +131,7 @@ export declare type ListContestsInput_Filter = {
     startsAt?: ExpressionTimestamp[];
     endsAt?: ExpressionTimestamp[];
     public?: ExpressionBool[];
+    visibility?: ExpressionEnum[];
 };
 export declare type ListContestsOutput = {
     items?: Contest[];
