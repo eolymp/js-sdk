@@ -2,14 +2,9 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Member = {
+export type Permission = {
   id?: string;
-  name?: string;
-  disabled?: boolean;
-  users?: Member_User[];
-}
-
-export type Member_User = {
+  role?: string;
   userId?: string;
 }
 

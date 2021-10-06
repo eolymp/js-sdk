@@ -8,20 +8,21 @@ export type Problem = {
   score?: number;
   baseId?: string;
   contestId?: string;
+  feedbackPolicy?: string;
   timeLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
   submitLimit?: number;
 }
 
-export type Statement = {
+export type Problem_Statement = {
   locale?: string;
   title?: string;
   content?: string;
   format?: string;
 }
 
-export type Test = {
+export type Problem_Test = {
   index?: number;
   example?: boolean;
   inputObjectId?: string;
