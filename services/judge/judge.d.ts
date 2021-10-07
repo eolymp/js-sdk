@@ -3,8 +3,8 @@ import { Activity } from "./activity";
 import { Announcement } from "./announcement";
 import { Contest, Contest_Appearance } from "./contest";
 import { Form, Registration } from "./form";
-import { Participant } from "./participant";
-import { Problem, Statement, Test } from "./problem";
+import { Participant, Participant_User } from "./participant";
+import { Problem, Problem_Statement, Problem_Test } from "./problem";
 import { Reply } from "./reply";
 import { Scoreboard, Scoreboard_Row } from "./scoreboard";
 import { Submission } from "./submission";
@@ -200,17 +200,19 @@ export declare type ListStatementsInput = {
 };
 export declare type ListStatementsOutput = {
     total?: number;
-    items?: Statement[];
+    items?: Problem_Statement[];
 };
 export declare type ListExamplesInput = {
     problemId?: string;
 };
 export declare type ListExamplesOutput = {
     total?: number;
-    items?: Test[];
+    items?: Problem_Test[];
 };
 export declare type AddParticipantInput = {
     contestId?: string;
+    name?: string;
+    users?: Participant_User[];
     userId?: string;
 };
 export declare type AddParticipantOutput = {
@@ -261,7 +263,7 @@ export declare type ListParticipantsInput = {
 export declare type ListParticipantsInput_Filter = {
     id?: ExpressionID[];
     userId?: ExpressionID[];
-    username?: ExpressionString[];
+    name?: ExpressionString[];
     status?: ExpressionEnum[];
     score?: ExpressionFloat[];
     penalty?: ExpressionFloat[];
@@ -554,7 +556,7 @@ export declare type ListScoreboardRowsInput = {
 export declare type ListScoreboardRowsInput_Filter = {
     participantId?: ExpressionID[];
     userId?: ExpressionID[];
-    username?: ExpressionString[];
+    name?: ExpressionString[];
     status?: ExpressionEnum[];
     score?: ExpressionFloat[];
     penalty?: ExpressionFloat[];

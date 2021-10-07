@@ -9,5 +9,8 @@ export type Space = {
   image?: string;
   type?: string;
   plan?: string;
+  membership?: string;
+  minTeamSize?: number;
+  maxTeamSize?: number;
 }
 

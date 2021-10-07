@@ -4,18 +4,19 @@ export declare type Problem = {
     score?: number;
     baseId?: string;
     contestId?: string;
+    feedbackPolicy?: string;
     timeLimit?: number;
     memoryLimit?: number;
     fileSizeLimit?: number;
     submitLimit?: number;
 };
-export declare type Statement = {
+export declare type Problem_Statement = {
     locale?: string;
     title?: string;
     content?: string;
     format?: string;
 };
-export declare type Test = {
+export declare type Problem_Test = {
     index?: number;
     example?: boolean;
     inputObjectId?: string;

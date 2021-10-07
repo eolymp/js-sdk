@@ -25,6 +25,21 @@ class Universe {
     ListSpaces(input) {
         return this.cli.call("eolymp.universe.Universe/ListSpaces", input);
     }
+    GrantPermission(input) {
+        return this.cli.call("eolymp.universe.Universe/GrantPermission", input);
+    }
+    RevokePermission(input) {
+        return this.cli.call("eolymp.universe.Universe/RevokePermission", input);
+    }
+    DescribePermission(input) {
+        return this.cli.call("eolymp.universe.Universe/DescribePermission", input);
+    }
+    IntrospectPermission(input) {
+        return this.cli.call("eolymp.universe.Universe/IntrospectPermission", input);
+    }
+    ListPermissions(input) {
+        return this.cli.call("eolymp.universe.Universe/ListPermissions", input);
+    }
     AddMember(input) {
         return this.cli.call("eolymp.universe.Universe/AddMember", input);
     }

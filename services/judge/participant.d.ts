@@ -1,7 +1,9 @@
 export declare type Participant = {
     id?: string;
-    userId?: string;
     contestId?: string;
+    name?: string;
+    users?: Participant_User[];
+    userId?: string;
     username?: string;
     status?: string;
     startedAt?: string;
@@ -9,4 +11,7 @@ export declare type Participant = {
     completeAt?: string;
     completeIn?: number;
     passcode?: string;
+};
+export declare type Participant_User = {
+    userId?: string;
 };
