@@ -1,30 +1,47 @@
 import {BadRequestError, ForbiddenError, InternalServerError, NotFoundError, UnauthorizedError} from "./errors";
 
+export class Options {
+    token?: string;
+    space?: string;
+    headers?: Record<string, string>;
+}
+
 export class Client {
     private readonly url: string;
     private readonly headers: Record<string, string>;
     private token?: string;
+    private space?: string;
 
-    constructor(url: string, token?: string, headers?: Record<string, string>) {
+    constructor(url: string, opts: Options = {}) {
         if (!url.endsWith('/')) {
             url += '/';
         }
 
         this.url = url;
-        this.token = token;
-        this.headers = headers || {};
+        this.token = opts.token;
+        this.space = opts.space;
+        this.headers = opts.headers || {};
     }
 
-    authenticate(token?: string) {
+    setToken(token?: string) {
         this.token = token;
+    }
+
+    setSpace(space?: string) {
+        this.space = space;
     }
 
     do<T>(method: string, path: string, body: string, headers: Record<string, string> = {}): Promise<T> {
         const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
 
-        const auth: Record<string, string> = !this.token ? {} : {
-            'Authorization': 'Bearer ' + this.token
-        };
+        const auth: Record<string, string> = {}
+        if (this.token) {
+            auth['Authorization'] = 'Bearer ' + this.token
+        }
+
+        if (this.space) {
+            auth['Eolymp-Space'] = this.space
+        }
 
         const params: RequestInit = {
             method: method,
@@ -33,7 +50,7 @@ export class Client {
             headers: {
                 'Content-Type': 'application/json',
                 ...this.headers,
-                ...auth,
+                ...(auth || {}),
                 ...(headers || {}),
             },
             redirect: 'follow',
@@ -99,6 +116,6 @@ export class Client {
     }
 
     call<R, E>(method: string, input: R): Promise<E> {
-        return this.do<E>("POST", "/twirp/" + method, JSON.stringify(input))
+        return this.do<E>("POST", "/" + method, JSON.stringify(input))
     }
 }

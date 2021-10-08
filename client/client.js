@@ -1,29 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Client = void 0;
+exports.Client = exports.Options = void 0;
 const errors_1 = require("./errors");
+class Options {
+}
+exports.Options = Options;
 class Client {
-    constructor(url, token, headers) {
+    constructor(url, opts = {}) {
         if (!url.endsWith('/')) {
             url += '/';
         }
         this.url = url;
-        this.token = token;
-        this.headers = headers || {};
+        this.token = opts.token;
+        this.space = opts.space;
+        this.headers = opts.headers || {};
     }
-    authenticate(token) {
+    setToken(token) {
         this.token = token;
+    }
+    setSpace(space) {
+        this.space = space;
     }
     do(method, path, body, headers = {}) {
         const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
-        const auth = !this.token ? {} : {
-            'Authorization': 'Bearer ' + this.token
-        };
+        const auth = {};
+        if (this.token) {
+            auth['Authorization'] = 'Bearer ' + this.token;
+        }
+        if (this.space) {
+            auth['Eolymp-Space'] = this.space;
+        }
         const params = {
             method: method,
             mode: 'cors',
             credentials: 'omit',
-            headers: Object.assign(Object.assign(Object.assign({ 'Content-Type': 'application/json' }, this.headers), auth), (headers || {})),
+            headers: Object.assign(Object.assign(Object.assign({ 'Content-Type': 'application/json' }, this.headers), (auth || {})), (headers || {})),
             redirect: 'follow',
             body: body,
         };
@@ -69,7 +80,7 @@ class Client {
         return this.do("POST", "/graphql", JSON.stringify({ query, variables }));
     }
     call(method, input) {
-        return this.do("POST", "/twirp/" + method, JSON.stringify(input));
+        return this.do("POST", "/" + method, JSON.stringify(input));
     }
 }
 exports.Client = Client;
