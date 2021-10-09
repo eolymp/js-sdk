@@ -14,6 +14,7 @@ export type Contest = {
   visibility?: string;
   participationMode?: string;
   domain?: string;
+  spaceId?: string;
 }
 
 export type Contest_Appearance = {

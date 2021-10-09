@@ -10,6 +10,7 @@ export declare type Contest = {
     visibility?: string;
     participationMode?: string;
     domain?: string;
+    spaceId?: string;
 };
 export declare type Contest_Appearance = {
     title?: string;
