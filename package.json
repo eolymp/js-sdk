@@ -1,6 +1,6 @@
 {
   "name": "@eolymp/js-sdk",
-  "version": "0.2.0-1",
+  "version": "0.2.0-2",
   "description": "JavaScript SDK for Eolymp API",
   "repository": "https://github.com/eolymp/js-sdk.git",
   "author": "Sergey Kolodyazhnyy <sergey.kolodyazhnyy@gmail.com>",
