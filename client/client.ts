@@ -1,16 +1,12 @@
 import {BadRequestError, ForbiddenError, InternalServerError, NotFoundError, UnauthorizedError} from "./errors";
 
 export class Options {
-    token?: string;
-    space?: string;
     headers?: Record<string, string>;
 }
 
 export class Client {
     private readonly url: string;
     private readonly headers: Record<string, string>;
-    private token?: string;
-    private space?: string;
 
     constructor(url: string, opts: Options = {}) {
         if (!url.endsWith('/')) {
@@ -18,30 +14,11 @@ export class Client {
         }
 
         this.url = url;
-        this.token = opts.token;
-        this.space = opts.space;
         this.headers = opts.headers || {};
-    }
-
-    setToken(token?: string) {
-        this.token = token;
-    }
-
-    setSpace(space?: string) {
-        this.space = space;
     }
 
     do<T>(method: string, path: string, body: string, headers: Record<string, string> = {}): Promise<T> {
         const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
-
-        const auth: Record<string, string> = {}
-        if (this.token) {
-            auth['Authorization'] = 'Bearer ' + this.token
-        }
-
-        if (this.space) {
-            auth['Eolymp-Space'] = this.space
-        }
 
         const params: RequestInit = {
             method: method,
@@ -50,7 +27,6 @@ export class Client {
             headers: {
                 'Content-Type': 'application/json',
                 ...this.headers,
-                ...(auth || {}),
                 ...(headers || {}),
             },
             redirect: 'follow',
