@@ -3,7 +3,7 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
-import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionTimestamp } from "../wellknown/expression"
 import { Category } from "./category"
 import { Change } from "./change"
 import { Permission } from "./permission"
@@ -267,6 +267,7 @@ export type ListProblemsInput_Filter = {
   categoryId?: ExpressionID[];
   isVisible?: ExpressionBool[];
   isPrivate?: ExpressionBool[];
+  number?: ExpressionInt[];
 }
 
 export type ListProblemsOutput = {
@@ -276,6 +277,7 @@ export type ListProblemsOutput = {
 
 export type CreateProblemInput = {
   problem?: Problem;
+  statement?: Statement;
 }
 
 export type CreateProblemOutput = {

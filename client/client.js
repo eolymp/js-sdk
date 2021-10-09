@@ -11,30 +11,15 @@ class Client {
             url += '/';
         }
         this.url = url;
-        this.token = opts.token;
-        this.space = opts.space;
         this.headers = opts.headers || {};
-    }
-    setToken(token) {
-        this.token = token;
-    }
-    setSpace(space) {
-        this.space = space;
     }
     do(method, path, body, headers = {}) {
         const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
-        const auth = {};
-        if (this.token) {
-            auth['Authorization'] = 'Bearer ' + this.token;
-        }
-        if (this.space) {
-            auth['Eolymp-Space'] = this.space;
-        }
         const params = {
             method: method,
             mode: 'cors',
             credentials: 'omit',
-            headers: Object.assign(Object.assign(Object.assign({ 'Content-Type': 'application/json' }, this.headers), (auth || {})), (headers || {})),
+            headers: Object.assign(Object.assign({ 'Content-Type': 'application/json' }, this.headers), (headers || {})),
             redirect: 'follow',
             body: body,
         };

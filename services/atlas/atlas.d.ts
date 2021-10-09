@@ -1,6 +1,6 @@
 import { Interactor } from "../executor/interactor";
 import { Verifier } from "../executor/verifier";
-import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression";
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionTimestamp } from "../wellknown/expression";
 import { Category } from "./category";
 import { Change } from "./change";
 import { Permission } from "./permission";
@@ -86,6 +86,7 @@ export declare type ListProblemsInput_Filter = {
     categoryId?: ExpressionID[];
     isVisible?: ExpressionBool[];
     isPrivate?: ExpressionBool[];
+    number?: ExpressionInt[];
 };
 export declare type ListProblemsOutput = {
     total?: number;
@@ -93,6 +94,7 @@ export declare type ListProblemsOutput = {
 };
 export declare type CreateProblemInput = {
     problem?: Problem;
+    statement?: Statement;
 };
 export declare type CreateProblemOutput = {
     problemId?: string;
