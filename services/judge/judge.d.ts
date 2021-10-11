@@ -44,6 +44,7 @@ export declare class Judge {
     AddParticipant(input: AddParticipantInput): Promise<AddParticipantOutput>;
     EnableParticipant(input: EnableParticipantInput): Promise<EnableParticipantOutput>;
     DisableParticipant(input: DisableParticipantInput): Promise<DisableParticipantOutput>;
+    UpdateParticipant(input: UpdateParticipantInput): Promise<UpdateParticipantOutput>;
     RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput>;
     ListParticipants(input: ListParticipantsInput): Promise<ListParticipantsOutput>;
     DescribeParticipant(input: DescribeParticipantInput): Promise<DescribeParticipantOutput>;
@@ -226,6 +227,12 @@ export declare type DisableParticipantInput = {
     participantId?: string;
 };
 export declare type DisableParticipantOutput = Record<string, unknown>;
+export declare type UpdateParticipantInput = {
+    participantId?: string;
+    name?: string;
+    users?: Participant_User[];
+};
+export declare type UpdateParticipantOutput = Record<string, unknown>;
 export declare type RemoveParticipantInput = {
     participantId?: string;
 };

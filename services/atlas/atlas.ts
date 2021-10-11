@@ -3,7 +3,8 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
-import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionTimestamp } from "../wellknown/expression"
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
+import { Attachment } from "./attachment"
 import { Category } from "./category"
 import { Change } from "./change"
 import { Permission } from "./permission"
@@ -161,6 +162,26 @@ export class Atlas {
 
   DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
     return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
+  }
+
+  CreateAttachment(input: CreateAttachmentInput): Promise<CreateAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input);
+  }
+
+  UpdateAttachment(input: UpdateAttachmentInput): Promise<UpdateAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input);
+  }
+
+  DeleteAttachment(input: DeleteAttachmentInput): Promise<DeleteAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input);
+  }
+
+  ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input);
+  }
+
+  DescribeAttachment(input: DescribeAttachmentInput): Promise<DescribeAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input);
   }
 
   DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput> {
@@ -512,6 +533,53 @@ export type DescribeCodeTemplateInput = {
 
 export type DescribeCodeTemplateOutput = {
   template?: Template;
+}
+
+export type CreateAttachmentInput = {
+  problemId?: string;
+  attachment?: Attachment;
+}
+
+export type CreateAttachmentOutput = {
+  attachmentId?: string;
+}
+
+export type UpdateAttachmentInput = {
+  attachmentId?: string;
+  attachment?: Attachment;
+}
+
+export type UpdateAttachmentOutput = Record<string, unknown>;
+
+export type DeleteAttachmentInput = {
+  attachmentId?: string;
+}
+
+export type DeleteAttachmentOutput = Record<string, unknown>;
+
+export type ListAttachmentsInput = {
+  problemId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListAttachmentsInput_Filter;
+}
+
+export type ListAttachmentsInput_Filter = {
+  id?: ExpressionID[];
+  name?: ExpressionString[];
+}
+
+export type ListAttachmentsOutput = {
+  total?: number;
+  items?: Attachment[];
+}
+
+export type DescribeAttachmentInput = {
+  attachmentId?: string;
+}
+
+export type DescribeAttachmentOutput = {
+  attachment?: Attachment;
 }
 
 export type DescribeChangeInput = {

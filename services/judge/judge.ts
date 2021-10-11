@@ -140,6 +140,10 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
   }
 
+  UpdateParticipant(input: UpdateParticipantInput): Promise<UpdateParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input);
+  }
+
   RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput> {
     return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input);
   }
@@ -501,6 +505,14 @@ export type DisableParticipantInput = {
 }
 
 export type DisableParticipantOutput = Record<string, unknown>;
+
+export type UpdateParticipantInput = {
+  participantId?: string;
+  name?: string;
+  users?: Participant_User[];
+}
+
+export type UpdateParticipantOutput = Record<string, unknown>;
 
 export type RemoveParticipantInput = {
   participantId?: string;

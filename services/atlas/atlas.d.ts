@@ -1,6 +1,7 @@
 import { Interactor } from "../executor/interactor";
 import { Verifier } from "../executor/verifier";
-import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionTimestamp } from "../wellknown/expression";
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression";
+import { Attachment } from "./attachment";
 import { Category } from "./category";
 import { Change } from "./change";
 import { Permission } from "./permission";
@@ -52,6 +53,11 @@ export declare class Atlas {
     DeleteCodeTemplate(input: DeleteCodeTemplateInput): Promise<DeleteCodeTemplateOutput>;
     ListCodeTemplates(input: ListCodeTemplatesInput): Promise<ListCodeTemplatesOutput>;
     DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
+    CreateAttachment(input: CreateAttachmentInput): Promise<CreateAttachmentOutput>;
+    UpdateAttachment(input: UpdateAttachmentInput): Promise<UpdateAttachmentOutput>;
+    DeleteAttachment(input: DeleteAttachmentInput): Promise<DeleteAttachmentOutput>;
+    ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput>;
+    DescribeAttachment(input: DescribeAttachmentInput): Promise<DescribeAttachmentOutput>;
     DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput>;
     ListChanges(input: ListChangesInput): Promise<ListChangesOutput>;
     ListProblemTop(input: ListProblemTopInput): Promise<ListProblemTopOutput>;
@@ -268,6 +274,42 @@ export declare type DescribeCodeTemplateInput = {
 };
 export declare type DescribeCodeTemplateOutput = {
     template?: Template;
+};
+export declare type CreateAttachmentInput = {
+    problemId?: string;
+    attachment?: Attachment;
+};
+export declare type CreateAttachmentOutput = {
+    attachmentId?: string;
+};
+export declare type UpdateAttachmentInput = {
+    attachmentId?: string;
+    attachment?: Attachment;
+};
+export declare type UpdateAttachmentOutput = Record<string, unknown>;
+export declare type DeleteAttachmentInput = {
+    attachmentId?: string;
+};
+export declare type DeleteAttachmentOutput = Record<string, unknown>;
+export declare type ListAttachmentsInput = {
+    problemId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListAttachmentsInput_Filter;
+};
+export declare type ListAttachmentsInput_Filter = {
+    id?: ExpressionID[];
+    name?: ExpressionString[];
+};
+export declare type ListAttachmentsOutput = {
+    total?: number;
+    items?: Attachment[];
+};
+export declare type DescribeAttachmentInput = {
+    attachmentId?: string;
+};
+export declare type DescribeAttachmentOutput = {
+    attachment?: Attachment;
 };
 export declare type DescribeChangeInput = {
     changeId?: string;

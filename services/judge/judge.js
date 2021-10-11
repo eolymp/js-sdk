@@ -94,6 +94,9 @@ class Judge {
     DisableParticipant(input) {
         return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
     }
+    UpdateParticipant(input) {
+        return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input);
+    }
     RemoveParticipant(input) {
         return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input);
     }

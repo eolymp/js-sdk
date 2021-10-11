@@ -109,6 +109,21 @@ class Atlas {
     DescribeCodeTemplate(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
     }
+    CreateAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input);
+    }
+    UpdateAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input);
+    }
+    DeleteAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input);
+    }
+    ListAttachments(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input);
+    }
+    DescribeAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input);
+    }
     DescribeChange(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input);
     }

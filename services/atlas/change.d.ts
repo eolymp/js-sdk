@@ -1,5 +1,6 @@
 import { Interactor } from "../executor/interactor";
 import { Verifier } from "../executor/verifier";
+import { Attachment } from "./attachment";
 import { Permission } from "./permission";
 import { Problem } from "./problem";
 import { Statement } from "./statement";
@@ -29,6 +30,9 @@ export declare type Change = {
     createTemplate?: Change_CreateTemplate;
     updateTemplate?: Change_UpdateTemplate;
     deleteTemplate?: Change_DeleteTemplate;
+    createAttachment?: Change_CreateAttachment;
+    updateAttachment?: Change_UpdateAttachment;
+    deleteAttachment?: Change_DeleteAttachment;
     grantPermission?: Change_GrantPermission;
     revokePermission?: Change_RevokePermission;
 };
@@ -89,6 +93,16 @@ export declare type Change_UpdateTemplate = {
 };
 export declare type Change_DeleteTemplate = {
     before?: Template;
+};
+export declare type Change_CreateAttachment = {
+    after?: Attachment;
+};
+export declare type Change_UpdateAttachment = {
+    before?: Attachment;
+    after?: Attachment;
+};
+export declare type Change_DeleteAttachment = {
+    before?: Attachment;
 };
 export declare type Change_GrantPermission = {
     after?: Permission;

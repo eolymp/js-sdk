@@ -3,6 +3,7 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
+import { Attachment } from "./attachment"
 import { Permission } from "./permission"
 import { Problem } from "./problem"
 import { Statement } from "./statement"
@@ -33,6 +34,9 @@ export type Change = {
   createTemplate?: Change_CreateTemplate;
   updateTemplate?: Change_UpdateTemplate;
   deleteTemplate?: Change_DeleteTemplate;
+  createAttachment?: Change_CreateAttachment;
+  updateAttachment?: Change_UpdateAttachment;
+  deleteAttachment?: Change_DeleteAttachment;
   grantPermission?: Change_GrantPermission;
   revokePermission?: Change_RevokePermission;
 }
@@ -110,6 +114,19 @@ export type Change_UpdateTemplate = {
 
 export type Change_DeleteTemplate = {
   before?: Template;
+}
+
+export type Change_CreateAttachment = {
+  after?: Attachment;
+}
+
+export type Change_UpdateAttachment = {
+  before?: Attachment;
+  after?: Attachment;
+}
+
+export type Change_DeleteAttachment = {
+  before?: Attachment;
 }
 
 export type Change_GrantPermission = {

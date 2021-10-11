@@ -2,15 +2,10 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Statement = {
+export type Attachment = {
   id?: string;
   problemId?: string;
-  locale?: string;
-  title?: string;
-  content?: string;
-  downloadLink?: string;
-  format?: string;
-  author?: string;
-  source?: string;
+  name?: string;
+  link?: string;
 }
 
