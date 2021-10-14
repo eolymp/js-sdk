@@ -93,7 +93,6 @@ export declare class Judge {
 }
 export declare type CreateContestInput = {
     contest?: Contest;
-    type?: string;
 };
 export declare type CreateContestOutput = {
     contestId?: string;
@@ -133,6 +132,7 @@ export declare type ListContestsInput_Filter = {
     endsAt?: ExpressionTimestamp[];
     public?: ExpressionBool[];
     visibility?: ExpressionEnum[];
+    format?: ExpressionEnum[];
 };
 export declare type ListContestsOutput = {
     items?: Contest[];
@@ -534,7 +534,6 @@ export declare type ListScoreboardsInput_Filter = {
     id?: ExpressionID[];
     visible?: ExpressionBool[];
     default?: ExpressionBool[];
-    type?: ExpressionEnum[];
 };
 export declare type ListScoreboardsOutput = {
     total?: number;

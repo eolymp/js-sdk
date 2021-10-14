@@ -9,6 +9,7 @@ export declare type Contest = {
     status?: string;
     visibility?: string;
     participationMode?: string;
+    format?: string;
     domain?: string;
     spaceId?: string;
 };

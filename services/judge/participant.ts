@@ -14,6 +14,7 @@ export type Participant = {
   startedIn?: number;
   completeAt?: string;
   completeIn?: number;
+  bonusTime?: number;
   passcode?: string;
 }
 
