@@ -20,6 +20,7 @@ export type Problem_Statement = {
   title?: string;
   content?: string;
   format?: string;
+  downloadLink?: string;
 }
 
 export type Problem_Test = {
@@ -28,5 +29,11 @@ export type Problem_Test = {
   inputObjectId?: string;
   answerObjectId?: string;
   score?: number;
+}
+
+export type Problem_Attachment = {
+  id?: string;
+  name?: string;
+  link?: string;
 }
 

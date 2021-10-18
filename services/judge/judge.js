@@ -76,6 +76,9 @@ class Judge {
     ListStatements(input) {
         return this.cli.call("eolymp.judge.Judge/ListStatements", input);
     }
+    ListAttachments(input) {
+        return this.cli.call("eolymp.judge.Judge/ListAttachments", input);
+    }
     ListExamples(input) {
         return this.cli.call("eolymp.judge.Judge/ListExamples", input);
     }

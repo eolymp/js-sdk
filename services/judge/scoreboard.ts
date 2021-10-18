@@ -27,7 +27,6 @@ export type Scoreboard_Score = {
   penalty?: number;
   solved?: boolean;
   percentage?: number;
-  submits?: number;
   attempts?: number;
   solvedAt?: string;
   solvedIn?: number;

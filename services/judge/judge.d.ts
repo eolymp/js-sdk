@@ -4,7 +4,7 @@ import { Announcement } from "./announcement";
 import { Contest, Contest_Appearance } from "./contest";
 import { Form, Registration } from "./form";
 import { Participant, Participant_User } from "./participant";
-import { Problem, Problem_Statement, Problem_Test } from "./problem";
+import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem";
 import { Reply } from "./reply";
 import { Scoreboard, Scoreboard_Row } from "./scoreboard";
 import { Submission } from "./submission";
@@ -38,6 +38,7 @@ export declare class Judge {
     DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput>;
     DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
     ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput>;
+    ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput>;
     ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput>;
     DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput>;
     RetestProblem(input: RetestProblemInput): Promise<RetestProblemOutput>;
@@ -203,6 +204,13 @@ export declare type ListStatementsOutput = {
     total?: number;
     items?: Problem_Statement[];
 };
+export declare type ListAttachmentsInput = {
+    problemId?: string;
+};
+export declare type ListAttachmentsOutput = {
+    total?: number;
+    items?: Problem_Attachment[];
+};
 export declare type ListExamplesInput = {
     problemId?: string;
 };
@@ -229,8 +237,10 @@ export declare type DisableParticipantInput = {
 export declare type DisableParticipantOutput = Record<string, unknown>;
 export declare type UpdateParticipantInput = {
     participantId?: string;
+    patch?: string;
     name?: string;
     users?: Participant_User[];
+    bonusTime?: number;
 };
 export declare type UpdateParticipantOutput = Record<string, unknown>;
 export declare type RemoveParticipantInput = {

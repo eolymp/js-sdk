@@ -7,7 +7,7 @@ import { Announcement } from "./announcement"
 import { Contest, Contest_Appearance } from "./contest"
 import { Form, Registration } from "./form"
 import { Participant, Participant_User } from "./participant"
-import { Problem, Problem_Statement, Problem_Test } from "./problem"
+import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Reply } from "./reply"
 import { Scoreboard, Scoreboard_Row } from "./scoreboard"
 import { Submission } from "./submission"
@@ -114,6 +114,10 @@ export class Judge {
 
   ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListStatements", input);
+  }
+
+  ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListAttachments", input);
   }
 
   ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput> {
@@ -474,6 +478,15 @@ export type ListStatementsOutput = {
   items?: Problem_Statement[];
 }
 
+export type ListAttachmentsInput = {
+  problemId?: string;
+}
+
+export type ListAttachmentsOutput = {
+  total?: number;
+  items?: Problem_Attachment[];
+}
+
 export type ListExamplesInput = {
   problemId?: string;
 }
@@ -508,8 +521,10 @@ export type DisableParticipantOutput = Record<string, unknown>;
 
 export type UpdateParticipantInput = {
   participantId?: string;
+  patch?: string;
   name?: string;
   users?: Participant_User[];
+  bonusTime?: number;
 }
 
 export type UpdateParticipantOutput = Record<string, unknown>;

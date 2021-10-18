@@ -15,6 +15,7 @@ export declare type Problem_Statement = {
     title?: string;
     content?: string;
     format?: string;
+    downloadLink?: string;
 };
 export declare type Problem_Test = {
     index?: number;
@@ -22,4 +23,9 @@ export declare type Problem_Test = {
     inputObjectId?: string;
     answerObjectId?: string;
     score?: number;
+};
+export declare type Problem_Attachment = {
+    id?: string;
+    name?: string;
+    link?: string;
 };

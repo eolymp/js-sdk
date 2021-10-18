@@ -12,13 +12,21 @@ export type Participant = {
   status?: string;
   startedAt?: string;
   startedIn?: number;
+  endAt?: string;
+  endIn?: number;
   completeAt?: string;
   completeIn?: number;
   bonusTime?: number;
   passcode?: string;
+  submits?: Participant_Submit[];
 }
 
 export type Participant_User = {
   userId?: string;
+}
+
+export type Participant_Submit = {
+  problemId?: string;
+  counter?: number;
 }
 
