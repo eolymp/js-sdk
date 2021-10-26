@@ -28,14 +28,23 @@ class Ranker {
     ListScoreboards(input) {
         return this.cli.call("eolymp.ranker.Ranker/ListScoreboards", input);
     }
+    DescribeScoreboardRow(input) {
+        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardRow", input);
+    }
     ListScoreboardRows(input) {
         return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input);
     }
-    AssignContest(input) {
-        return this.cli.call("eolymp.ranker.Ranker/AssignContest", input);
+    AddScoreboardColumn(input) {
+        return this.cli.call("eolymp.ranker.Ranker/AddScoreboardColumn", input);
     }
-    UnassignContest(input) {
-        return this.cli.call("eolymp.ranker.Ranker/UnassignContest", input);
+    DeleteScoreboardColumn(input) {
+        return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboardColumn", input);
+    }
+    DescribeScoreboardColumn(input) {
+        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardColumn", input);
+    }
+    ListScoreboardColumns(input) {
+        return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input);
     }
 }
 exports.Ranker = Ranker;

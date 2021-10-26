@@ -1,5 +1,5 @@
 import { ExpressionID } from "../wellknown/expression";
-import { Scoreboard, Scoreboard_Contest, Scoreboard_Row } from "./scoreboard";
+import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard";
 interface Client {
     call<R, E>(method: string, args: R): Promise<E>;
 }
@@ -13,9 +13,12 @@ export declare class Ranker {
     LookupScoreboard(input: LookupScoreboardInput): Promise<LookupScoreboardOutput>;
     DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
     ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput>;
+    DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput>;
     ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput>;
-    AssignContest(input: AssignContestInput): Promise<AssignContestOutput>;
-    UnassignContest(input: UnassignContestInput): Promise<UnassignContestOutput>;
+    AddScoreboardColumn(input: AddScoreboardColumnInput): Promise<AddScoreboardColumnOutput>;
+    DeleteScoreboardColumn(input: DeleteScoreboardColumnInput): Promise<DeleteScoreboardColumnOutput>;
+    DescribeScoreboardColumn(input: DescribeScoreboardColumnInput): Promise<DescribeScoreboardColumnOutput>;
+    ListScoreboardColumns(input: ListScoreboardColumnsInput): Promise<ListScoreboardColumnsOutput>;
 }
 export declare type CreateScoreboardInput = {
     scoreboard?: Scoreboard;
@@ -32,16 +35,6 @@ export declare type RebuildScoreboardInput = {
     scoreboardId?: string;
 };
 export declare type RebuildScoreboardOutput = Record<string, unknown>;
-export declare type AssignContestInput = {
-    scoreboardId?: string;
-    contest?: Scoreboard_Contest;
-};
-export declare type AssignContestOutput = Record<string, unknown>;
-export declare type UnassignContestInput = {
-    scoreboardId?: string;
-    contestId?: string;
-};
-export declare type UnassignContestOutput = Record<string, unknown>;
 export declare type DeleteScoreboardInput = {
     scoreboardId?: string;
 };
@@ -70,11 +63,41 @@ export declare type ListScoreboardsOutput = {
     total?: number;
     items?: Scoreboard[];
 };
+export declare type DescribeScoreboardRowInput = {
+    rowId?: string;
+};
+export declare type DescribeScoreboardRowOutput = {
+    row?: Scoreboard_Row;
+};
 export declare type ListScoreboardRowsInput = {
     scoreboardId?: string;
 };
 export declare type ListScoreboardRowsOutput = {
     total?: number;
     items?: Scoreboard_Row[];
+};
+export declare type AddScoreboardColumnInput = {
+    scoreboardId?: string;
+    column?: Scoreboard_Column;
+};
+export declare type AddScoreboardColumnOutput = {
+    columnId?: string;
+};
+export declare type DeleteScoreboardColumnInput = {
+    columnId?: string;
+};
+export declare type DeleteScoreboardColumnOutput = Record<string, unknown>;
+export declare type DescribeScoreboardColumnInput = {
+    columnId?: string;
+};
+export declare type DescribeScoreboardColumnOutput = {
+    column?: Scoreboard_Column;
+};
+export declare type ListScoreboardColumnsInput = {
+    scoreboardId?: string;
+};
+export declare type ListScoreboardColumnsOutput = {
+    total?: number;
+    items?: Scoreboard_Column[];
 };
 export {};

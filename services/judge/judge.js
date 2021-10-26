@@ -217,6 +217,12 @@ class Judge {
     ListScoreboards(input) {
         return this.cli.call("eolymp.judge.Judge/ListScoreboards", input);
     }
+    DescribeScoreboardHeader(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input);
+    }
+    DescribeScoreboardFooter(input) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input);
+    }
     DescribeScoreboardRow(input) {
         return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input);
     }

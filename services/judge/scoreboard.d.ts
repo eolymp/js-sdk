@@ -1,5 +1,6 @@
 export declare type Scoreboard = {
     id?: string;
+    contestId?: string;
     name?: string;
     default?: boolean;
     visible?: boolean;
@@ -11,8 +12,11 @@ export declare type Scoreboard = {
 export declare type Scoreboard_Row = {
     participantId?: string;
     scoreboardId?: string;
+    name?: string;
     score?: number;
     penalty?: number;
+    rank?: number;
+    rankLower?: number;
     breakdown?: Scoreboard_Score[];
 };
 export declare type Scoreboard_Score = {

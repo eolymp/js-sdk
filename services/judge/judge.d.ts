@@ -85,6 +85,8 @@ export declare class Judge {
     DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
     DescribeDefaultScoreboard(input: DescribeDefaultScoreboardInput): Promise<DescribeDefaultScoreboardOutput>;
     ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput>;
+    DescribeScoreboardHeader(input: DescribeScoreboardHeaderInput): Promise<DescribeScoreboardHeaderOutput>;
+    DescribeScoreboardFooter(input: DescribeScoreboardFooterInput): Promise<DescribeScoreboardFooterOutput>;
     DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput>;
     DescribeDefaultScoreboardRow(input: DescribeDefaultScoreboardRowInput): Promise<DescribeDefaultScoreboardRowOutput>;
     ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput>;
@@ -376,6 +378,8 @@ export declare type ListTicketsInput = {
     offset?: number;
     size?: number;
     filters?: ListTicketsInput_Filter;
+    sort?: string;
+    order?: string;
 };
 export declare type ListTicketsInput_Filter = {
     id?: ExpressionID[];
@@ -548,6 +552,27 @@ export declare type ListScoreboardsInput_Filter = {
 export declare type ListScoreboardsOutput = {
     total?: number;
     items?: Scoreboard[];
+};
+export declare type DescribeScoreboardHeaderInput = {
+    scoreboardId?: string;
+};
+export declare type DescribeScoreboardHeaderOutput = {
+    problems?: DescribeScoreboardHeaderOutput_Problem[];
+};
+export declare type DescribeScoreboardHeaderOutput_Problem = {
+    problemId?: string;
+    shortName?: string;
+};
+export declare type DescribeScoreboardFooterInput = {
+    scoreboardId?: string;
+};
+export declare type DescribeScoreboardFooterOutput = {
+    problems?: DescribeScoreboardFooterOutput_Problem[];
+};
+export declare type DescribeScoreboardFooterOutput_Problem = {
+    problemId?: string;
+    totalAttempts?: number;
+    successAttempts?: number;
 };
 export declare type DescribeScoreboardRowInput = {
     scoreboardId?: string;
