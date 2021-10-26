@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
-import { Scoreboard, Scoreboard_Contest, Scoreboard_Row } from "./scoreboard"
+import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
 
 interface Client {
   call<R, E>(method: string, args: R): Promise<E>;
@@ -43,16 +43,28 @@ export class Ranker {
     return this.cli.call("eolymp.ranker.Ranker/ListScoreboards", input);
   }
 
+  DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardRow", input);
+  }
+
   ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput> {
     return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input);
   }
 
-  AssignContest(input: AssignContestInput): Promise<AssignContestOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/AssignContest", input);
+  AddScoreboardColumn(input: AddScoreboardColumnInput): Promise<AddScoreboardColumnOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/AddScoreboardColumn", input);
   }
 
-  UnassignContest(input: UnassignContestInput): Promise<UnassignContestOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/UnassignContest", input);
+  DeleteScoreboardColumn(input: DeleteScoreboardColumnInput): Promise<DeleteScoreboardColumnOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboardColumn", input);
+  }
+
+  DescribeScoreboardColumn(input: DescribeScoreboardColumnInput): Promise<DescribeScoreboardColumnOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardColumn", input);
+  }
+
+  ListScoreboardColumns(input: ListScoreboardColumnsInput): Promise<ListScoreboardColumnsOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input);
   }
 }
 
@@ -76,20 +88,6 @@ export type RebuildScoreboardInput = {
 }
 
 export type RebuildScoreboardOutput = Record<string, unknown>;
-
-export type AssignContestInput = {
-  scoreboardId?: string;
-  contest?: Scoreboard_Contest;
-}
-
-export type AssignContestOutput = Record<string, unknown>;
-
-export type UnassignContestInput = {
-  scoreboardId?: string;
-  contestId?: string;
-}
-
-export type UnassignContestOutput = Record<string, unknown>;
 
 export type DeleteScoreboardInput = {
   scoreboardId?: string;
@@ -128,6 +126,14 @@ export type ListScoreboardsOutput = {
   items?: Scoreboard[];
 }
 
+export type DescribeScoreboardRowInput = {
+  rowId?: string;
+}
+
+export type DescribeScoreboardRowOutput = {
+  row?: Scoreboard_Row;
+}
+
 export type ListScoreboardRowsInput = {
   scoreboardId?: string;
 }
@@ -135,5 +141,37 @@ export type ListScoreboardRowsInput = {
 export type ListScoreboardRowsOutput = {
   total?: number;
   items?: Scoreboard_Row[];
+}
+
+export type AddScoreboardColumnInput = {
+  scoreboardId?: string;
+  column?: Scoreboard_Column;
+}
+
+export type AddScoreboardColumnOutput = {
+  columnId?: string;
+}
+
+export type DeleteScoreboardColumnInput = {
+  columnId?: string;
+}
+
+export type DeleteScoreboardColumnOutput = Record<string, unknown>;
+
+export type DescribeScoreboardColumnInput = {
+  columnId?: string;
+}
+
+export type DescribeScoreboardColumnOutput = {
+  column?: Scoreboard_Column;
+}
+
+export type ListScoreboardColumnsInput = {
+  scoreboardId?: string;
+}
+
+export type ListScoreboardColumnsOutput = {
+  total?: number;
+  items?: Scoreboard_Column[];
 }
 

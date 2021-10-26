@@ -304,6 +304,14 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/ListScoreboards", input);
   }
 
+  DescribeScoreboardHeader(input: DescribeScoreboardHeaderInput): Promise<DescribeScoreboardHeaderOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input);
+  }
+
+  DescribeScoreboardFooter(input: DescribeScoreboardFooterInput): Promise<DescribeScoreboardFooterOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input);
+  }
+
   DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput> {
     return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input);
   }
@@ -700,6 +708,8 @@ export type ListTicketsInput = {
   offset?: number;
   size?: number;
   filters?: ListTicketsInput_Filter;
+  sort?: string;
+  order?: string;
 }
 
 export type ListTicketsInput_Filter = {
@@ -926,6 +936,33 @@ export type ListScoreboardsInput_Filter = {
 export type ListScoreboardsOutput = {
   total?: number;
   items?: Scoreboard[];
+}
+
+export type DescribeScoreboardHeaderInput = {
+  scoreboardId?: string;
+}
+
+export type DescribeScoreboardHeaderOutput = {
+  problems?: DescribeScoreboardHeaderOutput_Problem[];
+}
+
+export type DescribeScoreboardHeaderOutput_Problem = {
+  problemId?: string;
+  shortName?: string;
+}
+
+export type DescribeScoreboardFooterInput = {
+  scoreboardId?: string;
+}
+
+export type DescribeScoreboardFooterOutput = {
+  problems?: DescribeScoreboardFooterOutput_Problem[];
+}
+
+export type DescribeScoreboardFooterOutput_Problem = {
+  problemId?: string;
+  totalAttempts?: number;
+  successAttempts?: number;
 }
 
 export type DescribeScoreboardRowInput = {

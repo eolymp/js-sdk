@@ -7,38 +7,38 @@ export type Scoreboard = {
   key?: string;
   name?: string;
   scoringMode?: string;
-  contests?: Scoreboard_Contest[];
 }
 
 export type Scoreboard_Row = {
+  id?: string;
   name?: string;
   userId?: string;
   score?: number;
   penalty?: number;
-  scores?: Scoreboard_Row_Score[];
+  values?: Scoreboard_Row_Value[];
 }
 
-export type Scoreboard_Row_Score = {
-  contestId?: string;
-  problemId?: string;
-  attempts?: number;
-  solvedIn?: number;
-  solvedAt?: string;
+export type Scoreboard_Row_Value = {
+  id?: string;
+  columnId?: string;
   score?: number;
   penalty?: number;
   percentage?: number;
+  attempts?: number;
+  solvedIn?: number;
 }
 
-export type Scoreboard_Contest = {
-  contestId?: string;
+export type Scoreboard_Column = {
+  id?: string;
+  parentId?: string;
+  key?: string;
   name?: string;
+  shortName?: string;
+  type?: string;
   index?: number;
   visible?: boolean;
-  problems?: Scoreboard_Contest_Problem[];
-}
-
-export type Scoreboard_Contest_Problem = {
-  problemId?: string;
-  name?: string;
+  contestScoreboardId?: string;
+  contestProblemId?: string;
+  columns?: Scoreboard_Column[];
 }
 
