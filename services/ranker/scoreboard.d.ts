@@ -2,7 +2,7 @@ export declare type Scoreboard = {
     id?: string;
     key?: string;
     name?: string;
-    scoringMode?: string;
+    format?: string;
 };
 export declare type Scoreboard_Row = {
     id?: string;

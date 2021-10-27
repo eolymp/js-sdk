@@ -6,7 +6,7 @@ export type Scoreboard = {
   id?: string;
   key?: string;
   name?: string;
-  scoringMode?: string;
+  format?: string;
 }
 
 export type Scoreboard_Row = {
