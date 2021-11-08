@@ -2,6 +2,7 @@ export declare type Attribute = {
     key?: string;
     description?: Attribute_Description[];
     type?: string;
+    index?: number;
     required?: boolean;
     hidden?: boolean;
     regexp?: string;
