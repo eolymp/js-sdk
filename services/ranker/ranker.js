@@ -19,9 +19,6 @@ class Ranker {
     DeleteScoreboard(input) {
         return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input);
     }
-    LookupScoreboard(input) {
-        return this.cli.call("eolymp.ranker.Ranker/LookupScoreboard", input);
-    }
     DescribeScoreboard(input) {
         return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboard", input);
     }
@@ -45,6 +42,9 @@ class Ranker {
     }
     ListScoreboardColumns(input) {
         return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input);
+    }
+    ListActivities(input) {
+        return this.cli.call("eolymp.ranker.Ranker/ListActivities", input);
     }
 }
 exports.Ranker = Ranker;

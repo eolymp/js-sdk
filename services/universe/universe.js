@@ -40,24 +40,6 @@ class Universe {
     ListPermissions(input) {
         return this.cli.call("eolymp.universe.Universe/ListPermissions", input);
     }
-    AddMember(input) {
-        return this.cli.call("eolymp.universe.Universe/AddMember", input);
-    }
-    UpdateMember(input) {
-        return this.cli.call("eolymp.universe.Universe/UpdateMember", input);
-    }
-    RemoveMember(input) {
-        return this.cli.call("eolymp.universe.Universe/RemoveMember", input);
-    }
-    DescribeMember(input) {
-        return this.cli.call("eolymp.universe.Universe/DescribeMember", input);
-    }
-    IntrospectMember(input) {
-        return this.cli.call("eolymp.universe.Universe/IntrospectMember", input);
-    }
-    ListMembers(input) {
-        return this.cli.call("eolymp.universe.Universe/ListMembers", input);
-    }
 }
 exports.Universe = Universe;
 //# sourceMappingURL=universe.js.map

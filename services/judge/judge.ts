@@ -896,7 +896,9 @@ export type RebuildScoreboardInput = {
   scoreboardId?: string;
 }
 
-export type RebuildScoreboardOutput = Record<string, unknown>;
+export type RebuildScoreboardOutput = {
+  activityId?: string;
+}
 
 export type DeleteScoreboardInput = {
   scoreboardId?: string;

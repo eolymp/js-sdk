@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Member } from "./member"
 import { Permission } from "./permission"
 import { Space } from "./space"
 
@@ -59,30 +58,6 @@ export class Universe {
 
   ListPermissions(input: ListPermissionsInput): Promise<ListPermissionsOutput> {
     return this.cli.call("eolymp.universe.Universe/ListPermissions", input);
-  }
-
-  AddMember(input: AddMemberInput): Promise<AddMemberOutput> {
-    return this.cli.call("eolymp.universe.Universe/AddMember", input);
-  }
-
-  UpdateMember(input: UpdateMemberInput): Promise<UpdateMemberOutput> {
-    return this.cli.call("eolymp.universe.Universe/UpdateMember", input);
-  }
-
-  RemoveMember(input: RemoveMemberInput): Promise<RemoveMemberOutput> {
-    return this.cli.call("eolymp.universe.Universe/RemoveMember", input);
-  }
-
-  DescribeMember(input: DescribeMemberInput): Promise<DescribeMemberOutput> {
-    return this.cli.call("eolymp.universe.Universe/DescribeMember", input);
-  }
-
-  IntrospectMember(input: IntrospectMemberInput): Promise<IntrospectMemberOutput> {
-    return this.cli.call("eolymp.universe.Universe/IntrospectMember", input);
-  }
-
-  ListMembers(input: ListMembersInput): Promise<ListMembersOutput> {
-    return this.cli.call("eolymp.universe.Universe/ListMembers", input);
   }
 }
 
@@ -190,62 +165,5 @@ export type ListPermissionsInput_Filter = {
 export type ListPermissionsOutput = {
   total?: number;
   items?: Permission[];
-}
-
-export type AddMemberInput = {
-  spaceId?: string;
-  member?: Member;
-}
-
-export type AddMemberOutput = {
-  memberId?: string;
-}
-
-export type UpdateMemberInput = {
-  memberId?: string;
-  member?: Member;
-}
-
-export type UpdateMemberOutput = Record<string, unknown>;
-
-export type RemoveMemberInput = {
-  memberId?: string;
-}
-
-export type RemoveMemberOutput = Record<string, unknown>;
-
-export type DescribeMemberInput = {
-  memberId?: string;
-}
-
-export type DescribeMemberOutput = {
-  member?: Member;
-}
-
-export type IntrospectMemberInput = {
-  spaceId?: string;
-}
-
-export type IntrospectMemberOutput = {
-  member?: Member;
-}
-
-export type ListMembersInput = {
-  spaceId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListMembersInput_Filter;
-}
-
-export type ListMembersInput_Filter = {
-  id?: ExpressionID[];
-  userId?: ExpressionID[];
-  disabled?: ExpressionBool[];
-  name?: ExpressionString[];
-}
-
-export type ListMembersOutput = {
-  total?: number;
-  items?: Member[];
 }
 

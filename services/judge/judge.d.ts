@@ -521,7 +521,9 @@ export declare type UpdateScoreboardOutput = Record<string, unknown>;
 export declare type RebuildScoreboardInput = {
     scoreboardId?: string;
 };
-export declare type RebuildScoreboardOutput = Record<string, unknown>;
+export declare type RebuildScoreboardOutput = {
+    activityId?: string;
+};
 export declare type DeleteScoreboardInput = {
     scoreboardId?: string;
 };

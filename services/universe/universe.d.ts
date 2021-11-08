@@ -1,5 +1,4 @@
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression";
-import { Member } from "./member";
 import { Permission } from "./permission";
 import { Space } from "./space";
 interface Client {
@@ -19,12 +18,6 @@ export declare class Universe {
     DescribePermission(input: DescribePermissionInput): Promise<DescribePermissionOutput>;
     IntrospectPermission(input: IntrospectPermissionInput): Promise<IntrospectPermissionOutput>;
     ListPermissions(input: ListPermissionsInput): Promise<ListPermissionsOutput>;
-    AddMember(input: AddMemberInput): Promise<AddMemberOutput>;
-    UpdateMember(input: UpdateMemberInput): Promise<UpdateMemberOutput>;
-    RemoveMember(input: RemoveMemberInput): Promise<RemoveMemberOutput>;
-    DescribeMember(input: DescribeMemberInput): Promise<DescribeMemberOutput>;
-    IntrospectMember(input: IntrospectMemberInput): Promise<IntrospectMemberOutput>;
-    ListMembers(input: ListMembersInput): Promise<ListMembersOutput>;
 }
 export declare type CreateSpaceInput = {
     space?: Space;
@@ -107,49 +100,5 @@ export declare type ListPermissionsInput_Filter = {
 export declare type ListPermissionsOutput = {
     total?: number;
     items?: Permission[];
-};
-export declare type AddMemberInput = {
-    spaceId?: string;
-    member?: Member;
-};
-export declare type AddMemberOutput = {
-    memberId?: string;
-};
-export declare type UpdateMemberInput = {
-    memberId?: string;
-    member?: Member;
-};
-export declare type UpdateMemberOutput = Record<string, unknown>;
-export declare type RemoveMemberInput = {
-    memberId?: string;
-};
-export declare type RemoveMemberOutput = Record<string, unknown>;
-export declare type DescribeMemberInput = {
-    memberId?: string;
-};
-export declare type DescribeMemberOutput = {
-    member?: Member;
-};
-export declare type IntrospectMemberInput = {
-    spaceId?: string;
-};
-export declare type IntrospectMemberOutput = {
-    member?: Member;
-};
-export declare type ListMembersInput = {
-    spaceId?: string;
-    offset?: number;
-    size?: number;
-    filters?: ListMembersInput_Filter;
-};
-export declare type ListMembersInput_Filter = {
-    id?: ExpressionID[];
-    userId?: ExpressionID[];
-    disabled?: ExpressionBool[];
-    name?: ExpressionString[];
-};
-export declare type ListMembersOutput = {
-    total?: number;
-    items?: Member[];
 };
 export {};

@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
+import { Activity } from "./activity"
 import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
 
 interface Client {
@@ -29,10 +30,6 @@ export class Ranker {
 
   DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput> {
     return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input);
-  }
-
-  LookupScoreboard(input: LookupScoreboardInput): Promise<LookupScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/LookupScoreboard", input);
   }
 
   DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput> {
@@ -66,6 +63,10 @@ export class Ranker {
   ListScoreboardColumns(input: ListScoreboardColumnsInput): Promise<ListScoreboardColumnsOutput> {
     return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input);
   }
+
+  ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/ListActivities", input);
+  }
 }
 
 export type CreateScoreboardInput = {
@@ -87,7 +88,9 @@ export type RebuildScoreboardInput = {
   scoreboardId?: string;
 }
 
-export type RebuildScoreboardOutput = Record<string, unknown>;
+export type RebuildScoreboardOutput = {
+  activityId?: string;
+}
 
 export type DeleteScoreboardInput = {
   scoreboardId?: string;
@@ -95,16 +98,9 @@ export type DeleteScoreboardInput = {
 
 export type DeleteScoreboardOutput = Record<string, unknown>;
 
-export type LookupScoreboardInput = {
-  key?: string;
-}
-
-export type LookupScoreboardOutput = {
-  scoreboard?: Scoreboard;
-}
-
 export type DescribeScoreboardInput = {
   scoreboardId?: string;
+  scoreboardKey?: string;
 }
 
 export type DescribeScoreboardOutput = {
@@ -127,7 +123,8 @@ export type ListScoreboardsOutput = {
 }
 
 export type DescribeScoreboardRowInput = {
-  rowId?: string;
+  scoreboardId?: string;
+  userId?: string;
 }
 
 export type DescribeScoreboardRowOutput = {
@@ -136,6 +133,13 @@ export type DescribeScoreboardRowOutput = {
 
 export type ListScoreboardRowsInput = {
   scoreboardId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListScoreboardRowsInput_Filter;
+}
+
+export type ListScoreboardRowsInput_Filter = {
+  userId?: ExpressionID[];
 }
 
 export type ListScoreboardRowsOutput = {
@@ -173,5 +177,16 @@ export type ListScoreboardColumnsInput = {
 export type ListScoreboardColumnsOutput = {
   total?: number;
   items?: Scoreboard_Column[];
+}
+
+export type ListActivitiesInput = {
+  scoreboardId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListActivitiesOutput = {
+  total?: number;
+  items?: Activity[];
 }
 

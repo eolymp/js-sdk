@@ -7,9 +7,16 @@ export type Member = {
   name?: string;
   disabled?: boolean;
   users?: Member_User[];
+  values?: Member_Value[];
 }
 
 export type Member_User = {
   userId?: string;
+}
+
+export type Member_Value = {
+  attribute?: string;
+  valueString?: string;
+  valueNumber?: number;
 }
 

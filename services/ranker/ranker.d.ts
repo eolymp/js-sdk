@@ -1,4 +1,5 @@
 import { ExpressionID } from "../wellknown/expression";
+import { Activity } from "./activity";
 import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard";
 interface Client {
     call<R, E>(method: string, args: R): Promise<E>;
@@ -10,7 +11,6 @@ export declare class Ranker {
     UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput>;
     RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput>;
     DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput>;
-    LookupScoreboard(input: LookupScoreboardInput): Promise<LookupScoreboardOutput>;
     DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
     ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput>;
     DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput>;
@@ -19,6 +19,7 @@ export declare class Ranker {
     DeleteScoreboardColumn(input: DeleteScoreboardColumnInput): Promise<DeleteScoreboardColumnOutput>;
     DescribeScoreboardColumn(input: DescribeScoreboardColumnInput): Promise<DescribeScoreboardColumnOutput>;
     ListScoreboardColumns(input: ListScoreboardColumnsInput): Promise<ListScoreboardColumnsOutput>;
+    ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput>;
 }
 export declare type CreateScoreboardInput = {
     scoreboard?: Scoreboard;
@@ -34,19 +35,16 @@ export declare type UpdateScoreboardOutput = Record<string, unknown>;
 export declare type RebuildScoreboardInput = {
     scoreboardId?: string;
 };
-export declare type RebuildScoreboardOutput = Record<string, unknown>;
+export declare type RebuildScoreboardOutput = {
+    activityId?: string;
+};
 export declare type DeleteScoreboardInput = {
     scoreboardId?: string;
 };
 export declare type DeleteScoreboardOutput = Record<string, unknown>;
-export declare type LookupScoreboardInput = {
-    key?: string;
-};
-export declare type LookupScoreboardOutput = {
-    scoreboard?: Scoreboard;
-};
 export declare type DescribeScoreboardInput = {
     scoreboardId?: string;
+    scoreboardKey?: string;
 };
 export declare type DescribeScoreboardOutput = {
     scoreboard?: Scoreboard;
@@ -64,13 +62,20 @@ export declare type ListScoreboardsOutput = {
     items?: Scoreboard[];
 };
 export declare type DescribeScoreboardRowInput = {
-    rowId?: string;
+    scoreboardId?: string;
+    userId?: string;
 };
 export declare type DescribeScoreboardRowOutput = {
     row?: Scoreboard_Row;
 };
 export declare type ListScoreboardRowsInput = {
     scoreboardId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListScoreboardRowsInput_Filter;
+};
+export declare type ListScoreboardRowsInput_Filter = {
+    userId?: ExpressionID[];
 };
 export declare type ListScoreboardRowsOutput = {
     total?: number;
@@ -99,5 +104,14 @@ export declare type ListScoreboardColumnsInput = {
 export declare type ListScoreboardColumnsOutput = {
     total?: number;
     items?: Scoreboard_Column[];
+};
+export declare type ListActivitiesInput = {
+    scoreboardId?: string;
+    offset?: number;
+    size?: number;
+};
+export declare type ListActivitiesOutput = {
+    total?: number;
+    items?: Activity[];
 };
 export {};
