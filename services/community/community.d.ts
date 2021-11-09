@@ -1,12 +1,14 @@
 import { ExpressionBool, ExpressionID, ExpressionString } from "../wellknown/expression";
 import { Attribute } from "./attribute";
-import { Member } from "./member";
+import { Member, Member_Value } from "./member";
 interface Client {
     call<R, E>(method: string, args: R): Promise<E>;
 }
 export declare class Community {
     private readonly cli;
     constructor(cli: Client);
+    JoinSpace(input: JoinSpaceInput): Promise<JoinSpaceOutput>;
+    LeaveSpace(input: LeaveSpaceInput): Promise<LeaveSpaceOutput>;
     AddMember(input: AddMemberInput): Promise<AddMemberOutput>;
     UpdateMember(input: UpdateMemberInput): Promise<UpdateMemberOutput>;
     RemoveMember(input: RemoveMemberInput): Promise<RemoveMemberOutput>;
@@ -19,6 +21,15 @@ export declare class Community {
     DescribeAttribute(input: DescribeAttributeInput): Promise<DescribeAttributeOutput>;
     ListAttributes(input: ListAttributesInput): Promise<ListAttributesOutput>;
 }
+export declare type JoinSpaceInput = {
+    name?: string;
+    values?: Member_Value[];
+};
+export declare type JoinSpaceOutput = {
+    memberId?: string;
+};
+export declare type LeaveSpaceInput = Record<string, unknown>;
+export declare type LeaveSpaceOutput = Record<string, unknown>;
 export declare type AddMemberInput = {
     member?: Member;
 };

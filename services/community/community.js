@@ -7,6 +7,12 @@ class Community {
     constructor(cli) {
         this.cli = cli;
     }
+    JoinSpace(input) {
+        return this.cli.call("eolymp.community.Community/JoinSpace", input);
+    }
+    LeaveSpace(input) {
+        return this.cli.call("eolymp.community.Community/LeaveSpace", input);
+    }
     AddMember(input) {
         return this.cli.call("eolymp.community.Community/AddMember", input);
     }

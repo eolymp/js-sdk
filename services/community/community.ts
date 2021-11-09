@@ -3,7 +3,7 @@
 
 import { ExpressionBool, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Attribute } from "./attribute"
-import { Member } from "./member"
+import { Member, Member_Value } from "./member"
 
 interface Client {
   call<R, E>(method: string, args: R): Promise<E>;
@@ -14,6 +14,14 @@ export class Community {
 
   constructor(cli: Client) {
     this.cli = cli;
+  }
+
+  JoinSpace(input: JoinSpaceInput): Promise<JoinSpaceOutput> {
+    return this.cli.call("eolymp.community.Community/JoinSpace", input);
+  }
+
+  LeaveSpace(input: LeaveSpaceInput): Promise<LeaveSpaceOutput> {
+    return this.cli.call("eolymp.community.Community/LeaveSpace", input);
   }
 
   AddMember(input: AddMemberInput): Promise<AddMemberOutput> {
@@ -60,6 +68,19 @@ export class Community {
     return this.cli.call("eolymp.community.Community/ListAttributes", input);
   }
 }
+
+export type JoinSpaceInput = {
+  name?: string;
+  values?: Member_Value[];
+}
+
+export type JoinSpaceOutput = {
+  memberId?: string;
+}
+
+export type LeaveSpaceInput = Record<string, unknown>;
+
+export type LeaveSpaceOutput = Record<string, unknown>;
 
 export type AddMemberInput = {
   member?: Member;
