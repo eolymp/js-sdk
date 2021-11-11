@@ -6,7 +6,7 @@ import { Activity } from "./activity"
 import { Announcement } from "./announcement"
 import { Contest, Contest_Appearance } from "./contest"
 import { Form, Registration } from "./form"
-import { Participant, Participant_User } from "./participant"
+import { Participant } from "./participant"
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Reply } from "./reply"
 import { Scoreboard, Scoreboard_Row } from "./scoreboard"
@@ -506,9 +506,8 @@ export type ListExamplesOutput = {
 
 export type AddParticipantInput = {
   contestId?: string;
+  memberId?: string;
   name?: string;
-  users?: Participant_User[];
-  userId?: string;
 }
 
 export type AddParticipantOutput = {
@@ -531,7 +530,6 @@ export type UpdateParticipantInput = {
   participantId?: string;
   patch?: string;
   name?: string;
-  users?: Participant_User[];
   bonusTime?: number;
 }
 
@@ -584,7 +582,7 @@ export type ListParticipantsInput = {
 
 export type ListParticipantsInput_Filter = {
   id?: ExpressionID[];
-  userId?: ExpressionID[];
+  memberId?: ExpressionID[];
   name?: ExpressionString[];
   status?: ExpressionEnum[];
   score?: ExpressionFloat[];
@@ -994,7 +992,7 @@ export type ListScoreboardRowsInput = {
 
 export type ListScoreboardRowsInput_Filter = {
   participantId?: ExpressionID[];
-  userId?: ExpressionID[];
+  memberId?: ExpressionID[];
   name?: ExpressionString[];
   status?: ExpressionEnum[];
   score?: ExpressionFloat[];

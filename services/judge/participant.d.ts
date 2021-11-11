@@ -1,10 +1,8 @@
 export declare type Participant = {
     id?: string;
     contestId?: string;
+    memberId?: string;
     name?: string;
-    users?: Participant_User[];
-    userId?: string;
-    username?: string;
     status?: string;
     startedAt?: string;
     startedIn?: number;
@@ -15,9 +13,6 @@ export declare type Participant = {
     bonusTime?: number;
     passcode?: string;
     submits?: Participant_Submit[];
-};
-export declare type Participant_User = {
-    userId?: string;
 };
 export declare type Participant_Submit = {
     problemId?: string;

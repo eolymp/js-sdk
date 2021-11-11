@@ -5,10 +5,8 @@
 export type Participant = {
   id?: string;
   contestId?: string;
+  memberId?: string;
   name?: string;
-  users?: Participant_User[];
-  userId?: string;
-  username?: string;
   status?: string;
   startedAt?: string;
   startedIn?: number;
@@ -19,10 +17,6 @@ export type Participant = {
   bonusTime?: number;
   passcode?: string;
   submits?: Participant_Submit[];
-}
-
-export type Participant_User = {
-  userId?: string;
 }
 
 export type Participant_Submit = {
