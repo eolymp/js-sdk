@@ -124,7 +124,7 @@ export type ListScoreboardsOutput = {
 
 export type DescribeScoreboardRowInput = {
   scoreboardId?: string;
-  userId?: string;
+  memberId?: string;
 }
 
 export type DescribeScoreboardRowOutput = {
@@ -139,7 +139,7 @@ export type ListScoreboardRowsInput = {
 }
 
 export type ListScoreboardRowsInput_Filter = {
-  userId?: ExpressionID[];
+  memberId?: ExpressionID[];
 }
 
 export type ListScoreboardRowsOutput = {

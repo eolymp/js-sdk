@@ -13,6 +13,12 @@ class Community {
     LeaveSpace(input) {
         return this.cli.call("eolymp.community.Community/LeaveSpace", input);
     }
+    RegisterMember(input) {
+        return this.cli.call("eolymp.community.Community/RegisterMember", input);
+    }
+    IntrospectMember(input) {
+        return this.cli.call("eolymp.community.Community/IntrospectMember", input);
+    }
     AddMember(input) {
         return this.cli.call("eolymp.community.Community/AddMember", input);
     }
@@ -24,9 +30,6 @@ class Community {
     }
     DescribeMember(input) {
         return this.cli.call("eolymp.community.Community/DescribeMember", input);
-    }
-    IntrospectMember(input) {
-        return this.cli.call("eolymp.community.Community/IntrospectMember", input);
     }
     ListMembers(input) {
         return this.cli.call("eolymp.community.Community/ListMembers", input);

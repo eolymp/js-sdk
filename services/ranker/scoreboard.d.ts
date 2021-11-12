@@ -7,7 +7,7 @@ export declare type Scoreboard = {
 export declare type Scoreboard_Row = {
     id?: string;
     name?: string;
-    userId?: string;
+    memberId?: string;
     score?: number;
     penalty?: number;
     values?: Scoreboard_Row_Value[];

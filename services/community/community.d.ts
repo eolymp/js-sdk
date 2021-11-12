@@ -1,4 +1,4 @@
-import { ExpressionBool, ExpressionID, ExpressionString } from "../wellknown/expression";
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression";
 import { Attribute } from "./attribute";
 import { Member, Member_Value } from "./member";
 interface Client {
@@ -9,11 +9,12 @@ export declare class Community {
     constructor(cli: Client);
     JoinSpace(input: JoinSpaceInput): Promise<JoinSpaceOutput>;
     LeaveSpace(input: LeaveSpaceInput): Promise<LeaveSpaceOutput>;
+    RegisterMember(input: RegisterMemberInput): Promise<RegisterMemberOutput>;
+    IntrospectMember(input: IntrospectMemberInput): Promise<IntrospectMemberOutput>;
     AddMember(input: AddMemberInput): Promise<AddMemberOutput>;
     UpdateMember(input: UpdateMemberInput): Promise<UpdateMemberOutput>;
     RemoveMember(input: RemoveMemberInput): Promise<RemoveMemberOutput>;
     DescribeMember(input: DescribeMemberInput): Promise<DescribeMemberOutput>;
-    IntrospectMember(input: IntrospectMemberInput): Promise<IntrospectMemberOutput>;
     ListMembers(input: ListMembersInput): Promise<ListMembersOutput>;
     AddAttribute(input: AddAttributeInput): Promise<AddAttributeOutput>;
     UpdateAttribute(input: UpdateAttributeInput): Promise<UpdateAttributeOutput>;
@@ -28,6 +29,10 @@ export declare type JoinSpaceInput = {
 export declare type JoinSpaceOutput = {
     memberId?: string;
 };
+export declare type RegisterMemberInput = {
+    values?: Member_Value[];
+};
+export declare type RegisterMemberOutput = Record<string, unknown>;
 export declare type LeaveSpaceInput = Record<string, unknown>;
 export declare type LeaveSpaceOutput = Record<string, unknown>;
 export declare type AddMemberInput = {
@@ -90,7 +95,18 @@ export declare type DescribeAttributeInput = {
 export declare type DescribeAttributeOutput = {
     attribute?: Attribute;
 };
-export declare type ListAttributesInput = Record<string, unknown>;
+export declare type ListAttributesInput = {
+    offset?: number;
+    size?: number;
+    filters?: ListAttributesInput_Filter;
+};
+export declare type ListAttributesInput_Filter = {
+    id?: ExpressionID[];
+    key?: ExpressionEnum[];
+    hidden?: ExpressionBool[];
+    required?: ExpressionBool[];
+    type?: ExpressionEnum[];
+};
 export declare type ListAttributesOutput = {
     total?: number;
     items?: Attribute[];

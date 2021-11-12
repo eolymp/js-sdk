@@ -12,7 +12,7 @@ export type Scoreboard = {
 export type Scoreboard_Row = {
   id?: string;
   name?: string;
-  userId?: string;
+  memberId?: string;
   score?: number;
   penalty?: number;
   values?: Scoreboard_Row_Value[];

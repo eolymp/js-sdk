@@ -63,7 +63,7 @@ export declare type ListScoreboardsOutput = {
 };
 export declare type DescribeScoreboardRowInput = {
     scoreboardId?: string;
-    userId?: string;
+    memberId?: string;
 };
 export declare type DescribeScoreboardRowOutput = {
     row?: Scoreboard_Row;
@@ -75,7 +75,7 @@ export declare type ListScoreboardRowsInput = {
     filters?: ListScoreboardRowsInput_Filter;
 };
 export declare type ListScoreboardRowsInput_Filter = {
-    userId?: ExpressionID[];
+    memberId?: ExpressionID[];
 };
 export declare type ListScoreboardRowsOutput = {
     total?: number;
