@@ -26,6 +26,8 @@ export type Scoreboard_Row_Value = {
   percentage?: number;
   attempts?: number;
   solvedIn?: number;
+  valueString?: string;
+  valueNumber?: number;
 }
 
 export type Scoreboard_Column = {
@@ -39,6 +41,7 @@ export type Scoreboard_Column = {
   visible?: boolean;
   contestScoreboardId?: string;
   contestProblemId?: string;
+  communityAttributeKey?: string;
   columns?: Scoreboard_Column[];
 }
 
