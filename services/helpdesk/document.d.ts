@@ -1,6 +1,6 @@
-import { Content } from "../typewriter/content";
+import { Container } from "../typewriter/block";
 export declare type Document = {
     path?: string;
-    content?: Content[];
+    content?: Container;
     labels?: string[];
 };

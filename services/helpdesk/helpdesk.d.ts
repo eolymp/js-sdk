@@ -17,7 +17,6 @@ export declare type DescribeDocumentOutput = {
     document?: Document;
 };
 export declare type CreateDocumentInput = {
-    path?: string;
     document?: Document;
 };
 export declare type CreateDocumentOutput = Record<string, unknown>;

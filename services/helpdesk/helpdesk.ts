@@ -40,7 +40,6 @@ export type DescribeDocumentOutput = {
 }
 
 export type CreateDocumentInput = {
-  path?: string;
   document?: Document;
 }
 
