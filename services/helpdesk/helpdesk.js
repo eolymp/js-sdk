@@ -10,6 +10,9 @@ class Helpdesk {
     DescribeDocument(input) {
         return this.cli.call("eolymp.helpdesk.Helpdesk/DescribeDocument", input);
     }
+    ListDocuments(input) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/ListDocuments", input);
+    }
     CreateDocument(input) {
         return this.cli.call("eolymp.helpdesk.Helpdesk/CreateDocument", input);
     }
@@ -18,6 +21,15 @@ class Helpdesk {
     }
     DeleteDocument(input) {
         return this.cli.call("eolymp.helpdesk.Helpdesk/DeleteDocument", input);
+    }
+    DescribePath(input) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/DescribePath", input);
+    }
+    ListPaths(input) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/ListPaths", input);
+    }
+    ListParents(input) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/ListParents", input);
     }
 }
 exports.Helpdesk = Helpdesk;
