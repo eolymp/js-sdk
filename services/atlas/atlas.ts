@@ -3,10 +3,8 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
-import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Attachment } from "./attachment"
+import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
 import { Category } from "./category"
-import { Change } from "./change"
 import { Permission } from "./permission"
 import { Problem } from "./problem"
 import { Score } from "./score"
@@ -42,14 +40,6 @@ export class Atlas {
 
   DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput> {
     return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
-  }
-
-  UpdateVisibility(input: UpdateVisibilityInput): Promise<UpdateVisibilityOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input);
-  }
-
-  UpdatePrivacy(input: UpdatePrivacyInput): Promise<UpdatePrivacyOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input);
   }
 
   ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput> {
@@ -164,42 +154,6 @@ export class Atlas {
     return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
   }
 
-  CreateAttachment(input: CreateAttachmentInput): Promise<CreateAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input);
-  }
-
-  UpdateAttachment(input: UpdateAttachmentInput): Promise<UpdateAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input);
-  }
-
-  DeleteAttachment(input: DeleteAttachmentInput): Promise<DeleteAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input);
-  }
-
-  ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input);
-  }
-
-  DescribeAttachment(input: DescribeAttachmentInput): Promise<DescribeAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input);
-  }
-
-  DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input);
-  }
-
-  ListChanges(input: ListChangesInput): Promise<ListChangesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
-  }
-
-  ListProblemTop(input: ListProblemTopInput): Promise<ListProblemTopOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input);
-  }
-
-  DescribeProblemGrading(input: DescribeProblemGradingInput): Promise<DescribeProblemGradingOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input);
-  }
-
   CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput> {
     return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
   }
@@ -288,7 +242,6 @@ export type ListProblemsInput_Filter = {
   categoryId?: ExpressionID[];
   isVisible?: ExpressionBool[];
   isPrivate?: ExpressionBool[];
-  number?: ExpressionInt[];
 }
 
 export type ListProblemsOutput = {
@@ -298,7 +251,6 @@ export type ListProblemsOutput = {
 
 export type CreateProblemInput = {
   problem?: Problem;
-  statement?: Statement;
 }
 
 export type CreateProblemOutput = {
@@ -535,102 +487,6 @@ export type DescribeCodeTemplateOutput = {
   template?: Template;
 }
 
-export type CreateAttachmentInput = {
-  problemId?: string;
-  attachment?: Attachment;
-}
-
-export type CreateAttachmentOutput = {
-  attachmentId?: string;
-}
-
-export type UpdateAttachmentInput = {
-  attachmentId?: string;
-  attachment?: Attachment;
-}
-
-export type UpdateAttachmentOutput = Record<string, unknown>;
-
-export type DeleteAttachmentInput = {
-  attachmentId?: string;
-}
-
-export type DeleteAttachmentOutput = Record<string, unknown>;
-
-export type ListAttachmentsInput = {
-  problemId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListAttachmentsInput_Filter;
-}
-
-export type ListAttachmentsInput_Filter = {
-  id?: ExpressionID[];
-  name?: ExpressionString[];
-}
-
-export type ListAttachmentsOutput = {
-  total?: number;
-  items?: Attachment[];
-}
-
-export type DescribeAttachmentInput = {
-  attachmentId?: string;
-}
-
-export type DescribeAttachmentOutput = {
-  attachment?: Attachment;
-}
-
-export type DescribeChangeInput = {
-  changeId?: string;
-}
-
-export type DescribeChangeOutput = {
-  change?: Change;
-}
-
-export type ListChangesInput = {
-  problemId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListChangesInput_Filter;
-}
-
-export type ListChangesInput_Filter = {
-  id?: ExpressionID[];
-  ipAddress?: ExpressionID[];
-  userId?: ExpressionID[];
-  timestamp?: ExpressionTimestamp[];
-  type?: ExpressionEnum[];
-}
-
-export type ListChangesOutput = {
-  total?: number;
-  items?: Change[];
-}
-
-export type ListProblemTopInput = {
-  problemId?: string;
-}
-
-export type ListProblemTopOutput = {
-  items?: Submission[];
-}
-
-export type DescribeProblemGradingInput = {
-  problemId?: string;
-}
-
-export type DescribeProblemGradingOutput = {
-  ranges?: DescribeProblemGradingOutput_Range[];
-}
-
-export type DescribeProblemGradingOutput_Range = {
-  grade?: number;
-  upperBound?: number;
-}
-
 export type CreateSolutionInput = {
   problemId?: string;
   solution?: Solution;
@@ -793,18 +649,4 @@ export type DescribeScoreInput = {
 export type DescribeScoreOutput = {
   score?: Score;
 }
-
-export type UpdateVisibilityInput = {
-  problemId?: string;
-  visible?: boolean;
-}
-
-export type UpdateVisibilityOutput = Record<string, unknown>;
-
-export type UpdatePrivacyInput = {
-  problemId?: string;
-  private?: boolean;
-}
-
-export type UpdatePrivacyOutput = Record<string, unknown>;
 

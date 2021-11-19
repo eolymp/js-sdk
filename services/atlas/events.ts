@@ -3,8 +3,6 @@
 
 import { Permission } from "./permission"
 import { Problem } from "./problem"
-import { Score } from "./score"
-import { Submission } from "./submission"
 
 export type ProblemUpdatedEvent = {
   problem?: Problem;
@@ -22,14 +20,5 @@ export type PermissionsUpdatedEvent = {
 export type PermissionsDeletedEvent = {
   problemId?: string;
   userId?: string;
-}
-
-export type SubmissionCompleteEvent = {
-  submission?: Submission;
-  update?: boolean;
-}
-
-export type ScoreUpdatedEvent = {
-  score?: Score;
 }
 

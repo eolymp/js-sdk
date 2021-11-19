@@ -2,11 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type User = {
+export type Score = {
   id?: string;
-  username?: string;
-  name?: string;
-  picture?: string;
-  country?: string;
+  problemId?: string;
+  userId?: string;
+  acceptedAt?: string;
+  score?: number;
 }
 

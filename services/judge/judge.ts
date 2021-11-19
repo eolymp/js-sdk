@@ -2,14 +2,12 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Activity } from "./activity"
 import { Announcement } from "./announcement"
-import { Contest, Contest_Appearance } from "./contest"
+import { Contest } from "./contest"
 import { Form, Registration } from "./form"
 import { Participant } from "./participant"
-import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
+import { Problem, Statement, Test } from "./problem"
 import { Reply } from "./reply"
-import { Scoreboard, Scoreboard_Row } from "./scoreboard"
 import { Submission } from "./submission"
 import { Ticket } from "./ticket"
 
@@ -72,14 +70,6 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input);
   }
 
-  ConfigureAppearance(input: ConfigureAppearanceInput): Promise<ConfigureAppearanceOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input);
-  }
-
-  DescribeAppearance(input: DescribeAppearanceInput): Promise<DescribeAppearanceOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input);
-  }
-
   SubmitRegistration(input: SubmitRegistrationInput): Promise<SubmitRegistrationOutput> {
     return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input);
   }
@@ -108,16 +98,8 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DescribeProblem", input);
   }
 
-  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
-  }
-
   ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListStatements", input);
-  }
-
-  ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListAttachments", input);
   }
 
   ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput> {
@@ -144,8 +126,20 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
   }
 
-  UpdateParticipant(input: UpdateParticipantInput): Promise<UpdateParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input);
+  VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
+  }
+
+  EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
+  }
+
+  ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
+  }
+
+  RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
   }
 
   RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput> {
@@ -170,22 +164,6 @@ export class Judge {
 
   StartContest(input: StartContestInput): Promise<StartContestOutput> {
     return this.cli.call("eolymp.judge.Judge/StartContest", input);
-  }
-
-  VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
-  }
-
-  EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
-  }
-
-  ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
-  }
-
-  RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
   }
 
   CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput> {
@@ -276,64 +254,8 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
   }
 
-  CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input);
-  }
-
-  UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input);
-  }
-
-  RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input);
-  }
-
-  DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input);
-  }
-
-  DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input);
-  }
-
-  DescribeDefaultScoreboard(input: DescribeDefaultScoreboardInput): Promise<DescribeDefaultScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input);
-  }
-
-  ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListScoreboards", input);
-  }
-
-  DescribeScoreboardHeader(input: DescribeScoreboardHeaderInput): Promise<DescribeScoreboardHeaderOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input);
-  }
-
-  DescribeScoreboardFooter(input: DescribeScoreboardFooterInput): Promise<DescribeScoreboardFooterOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input);
-  }
-
-  DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input);
-  }
-
-  DescribeDefaultScoreboardRow(input: DescribeDefaultScoreboardRowInput): Promise<DescribeDefaultScoreboardRowOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input);
-  }
-
-  ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input);
-  }
-
-  ListDefaultScoreboardRows(input: ListDefaultScoreboardRowsInput): Promise<ListDefaultScoreboardRowsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input);
-  }
-
-  ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListEntitlements", input);
-  }
-
-  ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListActivities", input);
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
   }
 }
 
@@ -372,7 +294,6 @@ export type LookupContestInput = {
 
 export type LookupContestOutput = {
   contest?: Contest;
-  appearance?: Contest_Appearance;
 }
 
 export type ListContestsInput = {
@@ -388,8 +309,6 @@ export type ListContestsInput_Filter = {
   startsAt?: ExpressionTimestamp[];
   endsAt?: ExpressionTimestamp[];
   public?: ExpressionBool[];
-  visibility?: ExpressionEnum[];
-  format?: ExpressionEnum[];
 }
 
 export type ListContestsOutput = {
@@ -483,16 +402,7 @@ export type ListStatementsInput = {
 
 export type ListStatementsOutput = {
   total?: number;
-  items?: Problem_Statement[];
-}
-
-export type ListAttachmentsInput = {
-  problemId?: string;
-}
-
-export type ListAttachmentsOutput = {
-  total?: number;
-  items?: Problem_Attachment[];
+  items?: Statement[];
 }
 
 export type ListExamplesInput = {
@@ -501,13 +411,12 @@ export type ListExamplesInput = {
 
 export type ListExamplesOutput = {
   total?: number;
-  items?: Problem_Test[];
+  items?: Test[];
 }
 
 export type AddParticipantInput = {
   contestId?: string;
-  memberId?: string;
-  name?: string;
+  userId?: string;
 }
 
 export type AddParticipantOutput = {
@@ -525,15 +434,6 @@ export type DisableParticipantInput = {
 }
 
 export type DisableParticipantOutput = Record<string, unknown>;
-
-export type UpdateParticipantInput = {
-  participantId?: string;
-  patch?: string;
-  name?: string;
-  bonusTime?: number;
-}
-
-export type UpdateParticipantOutput = Record<string, unknown>;
 
 export type RemoveParticipantInput = {
   participantId?: string;
@@ -582,8 +482,8 @@ export type ListParticipantsInput = {
 
 export type ListParticipantsInput_Filter = {
   id?: ExpressionID[];
-  memberId?: ExpressionID[];
-  name?: ExpressionString[];
+  userId?: ExpressionID[];
+  username?: ExpressionString[];
   status?: ExpressionEnum[];
   score?: ExpressionFloat[];
   penalty?: ExpressionFloat[];
@@ -624,6 +524,8 @@ export type CreateSubmissionOutput = {
 
 export type ListSubmissionsInput = {
   contestId?: string;
+  problemId?: string;
+  participantId?: string;
   offset?: number;
   size?: number;
   filters?: ListSubmissionsInput_Filter;
@@ -706,8 +608,6 @@ export type ListTicketsInput = {
   offset?: number;
   size?: number;
   filters?: ListTicketsInput_Filter;
-  sort?: string;
-  order?: string;
 }
 
 export type ListTicketsInput_Filter = {
@@ -718,6 +618,8 @@ export type ListTicketsInput_Filter = {
   isReadByOwner?: ExpressionBool[];
   isOpen?: ExpressionBool[];
   own?: ExpressionBool[];
+  isRead?: ExpressionBool[];
+  needsReply?: ExpressionBool[];
 }
 
 export type ListTicketsOutput = {
@@ -790,6 +692,7 @@ export type DescribeRuntimeOutput = {
 }
 
 export type SubmitRegistrationInput = {
+  contestId?: string;
   participantId?: string;
   registration?: Registration;
 }
@@ -872,186 +775,5 @@ export type DescribeCodeTemplateInput = {
 
 export type DescribeCodeTemplateOutput = {
   template?: string;
-}
-
-export type CreateScoreboardInput = {
-  contestId?: string;
-  scoreboard?: Scoreboard;
-}
-
-export type CreateScoreboardOutput = {
-  scoreboardId?: string;
-}
-
-export type UpdateScoreboardInput = {
-  scoreboardId?: string;
-  scoreboard?: Scoreboard;
-}
-
-export type UpdateScoreboardOutput = Record<string, unknown>;
-
-export type RebuildScoreboardInput = {
-  scoreboardId?: string;
-}
-
-export type RebuildScoreboardOutput = {
-  activityId?: string;
-}
-
-export type DeleteScoreboardInput = {
-  scoreboardId?: string;
-}
-
-export type DeleteScoreboardOutput = Record<string, unknown>;
-
-export type DescribeScoreboardInput = {
-  scoreboardId?: string;
-}
-
-export type DescribeScoreboardOutput = {
-  scoreboard?: Scoreboard;
-}
-
-export type DescribeDefaultScoreboardInput = {
-  contestId?: string;
-}
-
-export type DescribeDefaultScoreboardOutput = {
-  scoreboard?: Scoreboard;
-}
-
-export type ListScoreboardsInput = {
-  contestId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListScoreboardsInput_Filter;
-}
-
-export type ListScoreboardsInput_Filter = {
-  id?: ExpressionID[];
-  visible?: ExpressionBool[];
-  default?: ExpressionBool[];
-}
-
-export type ListScoreboardsOutput = {
-  total?: number;
-  items?: Scoreboard[];
-}
-
-export type DescribeScoreboardHeaderInput = {
-  scoreboardId?: string;
-}
-
-export type DescribeScoreboardHeaderOutput = {
-  problems?: DescribeScoreboardHeaderOutput_Problem[];
-}
-
-export type DescribeScoreboardHeaderOutput_Problem = {
-  problemId?: string;
-  shortName?: string;
-}
-
-export type DescribeScoreboardFooterInput = {
-  scoreboardId?: string;
-}
-
-export type DescribeScoreboardFooterOutput = {
-  problems?: DescribeScoreboardFooterOutput_Problem[];
-}
-
-export type DescribeScoreboardFooterOutput_Problem = {
-  problemId?: string;
-  totalAttempts?: number;
-  successAttempts?: number;
-}
-
-export type DescribeScoreboardRowInput = {
-  scoreboardId?: string;
-  participantId?: string;
-}
-
-export type DescribeScoreboardRowOutput = {
-  row?: Scoreboard_Row;
-}
-
-export type DescribeDefaultScoreboardRowInput = {
-  contestId?: string;
-  participantId?: string;
-}
-
-export type DescribeDefaultScoreboardRowOutput = {
-  row?: Scoreboard_Row;
-}
-
-export type ListScoreboardRowsInput = {
-  scoreboardId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListScoreboardRowsInput_Filter;
-}
-
-export type ListScoreboardRowsInput_Filter = {
-  participantId?: ExpressionID[];
-  memberId?: ExpressionID[];
-  name?: ExpressionString[];
-  status?: ExpressionEnum[];
-  score?: ExpressionFloat[];
-  penalty?: ExpressionFloat[];
-  startedAt?: ExpressionTimestamp[];
-  completeAt?: ExpressionTimestamp[];
-}
-
-export type ListScoreboardRowsOutput = {
-  total?: number;
-  items?: Scoreboard_Row[];
-}
-
-export type ListDefaultScoreboardRowsInput = {
-  contestId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListScoreboardRowsInput_Filter;
-}
-
-export type ListDefaultScoreboardRowsOutput = {
-  total?: number;
-  items?: Scoreboard_Row[];
-}
-
-export type ListEntitlementsInput = {
-  contestId?: string;
-  submissionId?: string;
-  ticketId?: string;
-  participantId?: string;
-}
-
-export type ListEntitlementsOutput = {
-  entitlements?: string[];
-}
-
-export type ListActivitiesInput = {
-  contestId?: string;
-  offset?: number;
-  size?: number;
-}
-
-export type ListActivitiesOutput = {
-  total?: number;
-  items?: Activity[];
-}
-
-export type ConfigureAppearanceInput = {
-  contestId?: string;
-  appearance?: Contest_Appearance;
-}
-
-export type ConfigureAppearanceOutput = Record<string, unknown>;
-
-export type DescribeAppearanceInput = {
-  contestId?: string;
-}
-
-export type DescribeAppearanceOutput = {
-  appearance?: Contest_Appearance;
 }
 

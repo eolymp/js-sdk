@@ -9,13 +9,10 @@ export type Submission = {
   submittedAt?: string;
   lang?: string;
   source?: string;
-  signature?: string;
   status?: string;
   error?: string;
-  cost?: number;
   score?: number;
-  percentage?: number;
-  groups?: Submission_Group[];
+  runs?: Submission_Run[];
 }
 
 export type Submission_Run = {
@@ -23,25 +20,8 @@ export type Submission_Run = {
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
   memoryUsage?: number;
-  index?: number;
+  testIndex?: number;
   testId?: string;
-  cost?: number;
-  score?: number;
   status?: string;
-}
-
-export type Submission_Group = {
-  index?: number;
-  testsetId?: string;
-  status?: string;
-  dependencies?: number[];
-  cost?: number;
-  score?: number;
-  scoringMode?: string;
-  feedbackPolicy?: string;
-  wallTimeUsage?: number;
-  cpuTimeUsage?: number;
-  memoryUsage?: number;
-  runs?: Submission_Run[];
 }
 

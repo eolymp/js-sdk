@@ -8,32 +8,24 @@ export type Problem = {
   score?: number;
   baseId?: string;
   contestId?: string;
-  feedbackPolicy?: string;
   timeLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
   submitLimit?: number;
 }
 
-export type Problem_Statement = {
+export type Statement = {
   locale?: string;
   title?: string;
   content?: string;
   format?: string;
-  downloadLink?: string;
 }
 
-export type Problem_Test = {
+export type Test = {
   index?: number;
   example?: boolean;
   inputObjectId?: string;
   answerObjectId?: string;
   score?: number;
-}
-
-export type Problem_Attachment = {
-  id?: string;
-  name?: string;
-  link?: string;
 }
 

@@ -28,14 +28,6 @@ export class Cognito {
     return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input);
   }
 
-  RevokeToken(input: RevokeTokenInput): Promise<RevokeTokenOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input);
-  }
-
-  Signout(input: SignoutInput): Promise<SignoutOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/Signout", input);
-  }
-
   CreateUser(input: CreateUserInput): Promise<CreateUserOutput> {
     return this.cli.call("eolymp.cognito.Cognito/CreateUser", input);
   }
@@ -71,22 +63,6 @@ export class Cognito {
   IntrospectQuota(input: IntrospectQuotaInput): Promise<IntrospectQuotaOutput> {
     return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input);
   }
-
-  IntrospectRoles(input: IntrospectRolesInput): Promise<IntrospectRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input);
-  }
-
-  ListRoles(input: ListRolesInput): Promise<ListRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListRoles", input);
-  }
-
-  UpdateRoles(input: UpdateRolesInput): Promise<UpdateRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input);
-  }
-
-  ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input);
-  }
 }
 
 export type CreateTokenInput = {
@@ -98,7 +74,6 @@ export type CreateTokenInput = {
   code?: string;
   codeVerifier?: string;
   scope?: string;
-  refreshToken?: string;
 }
 
 export type CreateTokenOutput = {
@@ -106,7 +81,6 @@ export type CreateTokenOutput = {
   type?: string;
   expiresAt?: string;
   scopes?: string[];
-  refreshToken?: string;
   userId?: string;
   username?: string;
 }
@@ -221,7 +195,6 @@ export type UpdateEmailOutput = {
 export type StartRecoveryInput = {
   email?: string;
   captcha?: string;
-  locale?: string;
 }
 
 export type StartRecoveryOutput = {
@@ -235,43 +208,4 @@ export type CompleteRecoverInput = {
 }
 
 export type CompleteRecoverOutput = Record<string, unknown>;
-
-export type IntrospectRolesInput = Record<string, unknown>;
-
-export type IntrospectRolesOutput = {
-  roles?: string[];
-}
-
-export type ListRolesInput = {
-  userId?: string;
-}
-
-export type ListRolesOutput = {
-  roles?: string[];
-}
-
-export type UpdateRolesInput = {
-  userId?: string;
-  roles?: string[];
-}
-
-export type UpdateRolesOutput = Record<string, unknown>;
-
-export type ListEntitlementsInput = Record<string, unknown>;
-
-export type ListEntitlementsOutput = {
-  entitlements?: string[];
-}
-
-export type RevokeTokenInput = {
-  token?: string;
-}
-
-export type RevokeTokenOutput = Record<string, unknown>;
-
-export type SignoutInput = {
-  everywhere?: boolean;
-}
-
-export type SignoutOutput = Record<string, unknown>;
 

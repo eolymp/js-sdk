@@ -1,12 +1,10 @@
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression";
-import { Activity } from "./activity";
 import { Announcement } from "./announcement";
-import { Contest, Contest_Appearance } from "./contest";
+import { Contest } from "./contest";
 import { Form, Registration } from "./form";
 import { Participant } from "./participant";
-import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem";
+import { Problem, Statement, Test } from "./problem";
 import { Reply } from "./reply";
-import { Scoreboard, Scoreboard_Row } from "./scoreboard";
 import { Submission } from "./submission";
 import { Ticket } from "./ticket";
 interface Client {
@@ -27,8 +25,6 @@ export declare class Judge {
     DescribeRegistrationForm(input: DescribeRegistrationFormInput): Promise<DescribeRegistrationFormOutput>;
     ConfigureRuntime(input: ConfigureRuntimeInput): Promise<ConfigureRuntimeOutput>;
     DescribeRuntime(input: DescribeRuntimeInput): Promise<DescribeRuntimeOutput>;
-    ConfigureAppearance(input: ConfigureAppearanceInput): Promise<ConfigureAppearanceOutput>;
-    DescribeAppearance(input: DescribeAppearanceInput): Promise<DescribeAppearanceOutput>;
     SubmitRegistration(input: SubmitRegistrationInput): Promise<SubmitRegistrationOutput>;
     DescribeRegistration(input: DescribeRegistrationInput): Promise<DescribeRegistrationOutput>;
     ImportProblem(input: ImportProblemInput): Promise<ImportProblemOutput>;
@@ -36,26 +32,23 @@ export declare class Judge {
     UpdateProblem(input: UpdateProblemInput): Promise<UpdateProblemOutput>;
     ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput>;
     DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput>;
-    DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
     ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput>;
-    ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput>;
     ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput>;
     DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput>;
     RetestProblem(input: RetestProblemInput): Promise<RetestProblemOutput>;
     AddParticipant(input: AddParticipantInput): Promise<AddParticipantOutput>;
     EnableParticipant(input: EnableParticipantInput): Promise<EnableParticipantOutput>;
     DisableParticipant(input: DisableParticipantInput): Promise<DisableParticipantOutput>;
-    UpdateParticipant(input: UpdateParticipantInput): Promise<UpdateParticipantOutput>;
+    VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput>;
+    EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput>;
+    ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput>;
+    RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput>;
     RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput>;
     ListParticipants(input: ListParticipantsInput): Promise<ListParticipantsOutput>;
     DescribeParticipant(input: DescribeParticipantInput): Promise<DescribeParticipantOutput>;
     IntrospectParticipant(input: IntrospectParticipantInput): Promise<IntrospectParticipantOutput>;
     JoinContest(input: JoinContestInput): Promise<JoinContestOutput>;
     StartContest(input: StartContestInput): Promise<StartContestOutput>;
-    VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput>;
-    EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput>;
-    ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput>;
-    RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput>;
     CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput>;
     ListSubmissions(input: ListSubmissionsInput): Promise<ListSubmissionsOutput>;
     DescribeSubmission(input: DescribeSubmissionInput): Promise<DescribeSubmissionOutput>;
@@ -78,21 +71,7 @@ export declare class Judge {
     DescribeAnnouncement(input: DescribeAnnouncementInput): Promise<DescribeAnnouncementOutput>;
     DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput): Promise<DescribeAnnouncementStatusOutput>;
     ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput>;
-    CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput>;
-    UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput>;
-    RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput>;
-    DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput>;
-    DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
-    DescribeDefaultScoreboard(input: DescribeDefaultScoreboardInput): Promise<DescribeDefaultScoreboardOutput>;
-    ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput>;
-    DescribeScoreboardHeader(input: DescribeScoreboardHeaderInput): Promise<DescribeScoreboardHeaderOutput>;
-    DescribeScoreboardFooter(input: DescribeScoreboardFooterInput): Promise<DescribeScoreboardFooterOutput>;
-    DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput>;
-    DescribeDefaultScoreboardRow(input: DescribeDefaultScoreboardRowInput): Promise<DescribeDefaultScoreboardRowOutput>;
-    ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput>;
-    ListDefaultScoreboardRows(input: ListDefaultScoreboardRowsInput): Promise<ListDefaultScoreboardRowsOutput>;
-    ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput>;
-    ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput>;
+    DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
 }
 export declare type CreateContestInput = {
     contest?: Contest;
@@ -120,7 +99,6 @@ export declare type LookupContestInput = {
 };
 export declare type LookupContestOutput = {
     contest?: Contest;
-    appearance?: Contest_Appearance;
 };
 export declare type ListContestsInput = {
     offset?: number;
@@ -134,8 +112,6 @@ export declare type ListContestsInput_Filter = {
     startsAt?: ExpressionTimestamp[];
     endsAt?: ExpressionTimestamp[];
     public?: ExpressionBool[];
-    visibility?: ExpressionEnum[];
-    format?: ExpressionEnum[];
 };
 export declare type ListContestsOutput = {
     items?: Contest[];
@@ -204,26 +180,18 @@ export declare type ListStatementsInput = {
 };
 export declare type ListStatementsOutput = {
     total?: number;
-    items?: Problem_Statement[];
-};
-export declare type ListAttachmentsInput = {
-    problemId?: string;
-};
-export declare type ListAttachmentsOutput = {
-    total?: number;
-    items?: Problem_Attachment[];
+    items?: Statement[];
 };
 export declare type ListExamplesInput = {
     problemId?: string;
 };
 export declare type ListExamplesOutput = {
     total?: number;
-    items?: Problem_Test[];
+    items?: Test[];
 };
 export declare type AddParticipantInput = {
     contestId?: string;
-    memberId?: string;
-    name?: string;
+    userId?: string;
 };
 export declare type AddParticipantOutput = {
     participantId?: string;
@@ -236,13 +204,6 @@ export declare type DisableParticipantInput = {
     participantId?: string;
 };
 export declare type DisableParticipantOutput = Record<string, unknown>;
-export declare type UpdateParticipantInput = {
-    participantId?: string;
-    patch?: string;
-    name?: string;
-    bonusTime?: number;
-};
-export declare type UpdateParticipantOutput = Record<string, unknown>;
 export declare type RemoveParticipantInput = {
     participantId?: string;
 };
@@ -279,8 +240,8 @@ export declare type ListParticipantsInput = {
 };
 export declare type ListParticipantsInput_Filter = {
     id?: ExpressionID[];
-    memberId?: ExpressionID[];
-    name?: ExpressionString[];
+    userId?: ExpressionID[];
+    username?: ExpressionString[];
     status?: ExpressionEnum[];
     score?: ExpressionFloat[];
     penalty?: ExpressionFloat[];
@@ -313,6 +274,8 @@ export declare type CreateSubmissionOutput = {
 };
 export declare type ListSubmissionsInput = {
     contestId?: string;
+    problemId?: string;
+    participantId?: string;
     offset?: number;
     size?: number;
     filters?: ListSubmissionsInput_Filter;
@@ -376,8 +339,6 @@ export declare type ListTicketsInput = {
     offset?: number;
     size?: number;
     filters?: ListTicketsInput_Filter;
-    sort?: string;
-    order?: string;
 };
 export declare type ListTicketsInput_Filter = {
     id?: ExpressionID[];
@@ -387,6 +348,8 @@ export declare type ListTicketsInput_Filter = {
     isReadByOwner?: ExpressionBool[];
     isOpen?: ExpressionBool[];
     own?: ExpressionBool[];
+    isRead?: ExpressionBool[];
+    needsReply?: ExpressionBool[];
 };
 export declare type ListTicketsOutput = {
     total?: number;
@@ -441,6 +404,7 @@ export declare type DescribeRuntimeOutput = {
     runtime?: string[];
 };
 export declare type SubmitRegistrationInput = {
+    contestId?: string;
     participantId?: string;
     registration?: Registration;
 };
@@ -503,148 +467,5 @@ export declare type DescribeCodeTemplateInput = {
 };
 export declare type DescribeCodeTemplateOutput = {
     template?: string;
-};
-export declare type CreateScoreboardInput = {
-    contestId?: string;
-    scoreboard?: Scoreboard;
-};
-export declare type CreateScoreboardOutput = {
-    scoreboardId?: string;
-};
-export declare type UpdateScoreboardInput = {
-    scoreboardId?: string;
-    scoreboard?: Scoreboard;
-};
-export declare type UpdateScoreboardOutput = Record<string, unknown>;
-export declare type RebuildScoreboardInput = {
-    scoreboardId?: string;
-};
-export declare type RebuildScoreboardOutput = {
-    activityId?: string;
-};
-export declare type DeleteScoreboardInput = {
-    scoreboardId?: string;
-};
-export declare type DeleteScoreboardOutput = Record<string, unknown>;
-export declare type DescribeScoreboardInput = {
-    scoreboardId?: string;
-};
-export declare type DescribeScoreboardOutput = {
-    scoreboard?: Scoreboard;
-};
-export declare type DescribeDefaultScoreboardInput = {
-    contestId?: string;
-};
-export declare type DescribeDefaultScoreboardOutput = {
-    scoreboard?: Scoreboard;
-};
-export declare type ListScoreboardsInput = {
-    contestId?: string;
-    offset?: number;
-    size?: number;
-    filters?: ListScoreboardsInput_Filter;
-};
-export declare type ListScoreboardsInput_Filter = {
-    id?: ExpressionID[];
-    visible?: ExpressionBool[];
-    default?: ExpressionBool[];
-};
-export declare type ListScoreboardsOutput = {
-    total?: number;
-    items?: Scoreboard[];
-};
-export declare type DescribeScoreboardHeaderInput = {
-    scoreboardId?: string;
-};
-export declare type DescribeScoreboardHeaderOutput = {
-    problems?: DescribeScoreboardHeaderOutput_Problem[];
-};
-export declare type DescribeScoreboardHeaderOutput_Problem = {
-    problemId?: string;
-    shortName?: string;
-};
-export declare type DescribeScoreboardFooterInput = {
-    scoreboardId?: string;
-};
-export declare type DescribeScoreboardFooterOutput = {
-    problems?: DescribeScoreboardFooterOutput_Problem[];
-};
-export declare type DescribeScoreboardFooterOutput_Problem = {
-    problemId?: string;
-    totalAttempts?: number;
-    successAttempts?: number;
-};
-export declare type DescribeScoreboardRowInput = {
-    scoreboardId?: string;
-    participantId?: string;
-};
-export declare type DescribeScoreboardRowOutput = {
-    row?: Scoreboard_Row;
-};
-export declare type DescribeDefaultScoreboardRowInput = {
-    contestId?: string;
-    participantId?: string;
-};
-export declare type DescribeDefaultScoreboardRowOutput = {
-    row?: Scoreboard_Row;
-};
-export declare type ListScoreboardRowsInput = {
-    scoreboardId?: string;
-    offset?: number;
-    size?: number;
-    filters?: ListScoreboardRowsInput_Filter;
-};
-export declare type ListScoreboardRowsInput_Filter = {
-    participantId?: ExpressionID[];
-    memberId?: ExpressionID[];
-    name?: ExpressionString[];
-    status?: ExpressionEnum[];
-    score?: ExpressionFloat[];
-    penalty?: ExpressionFloat[];
-    startedAt?: ExpressionTimestamp[];
-    completeAt?: ExpressionTimestamp[];
-};
-export declare type ListScoreboardRowsOutput = {
-    total?: number;
-    items?: Scoreboard_Row[];
-};
-export declare type ListDefaultScoreboardRowsInput = {
-    contestId?: string;
-    offset?: number;
-    size?: number;
-    filters?: ListScoreboardRowsInput_Filter;
-};
-export declare type ListDefaultScoreboardRowsOutput = {
-    total?: number;
-    items?: Scoreboard_Row[];
-};
-export declare type ListEntitlementsInput = {
-    contestId?: string;
-    submissionId?: string;
-    ticketId?: string;
-    participantId?: string;
-};
-export declare type ListEntitlementsOutput = {
-    entitlements?: string[];
-};
-export declare type ListActivitiesInput = {
-    contestId?: string;
-    offset?: number;
-    size?: number;
-};
-export declare type ListActivitiesOutput = {
-    total?: number;
-    items?: Activity[];
-};
-export declare type ConfigureAppearanceInput = {
-    contestId?: string;
-    appearance?: Contest_Appearance;
-};
-export declare type ConfigureAppearanceOutput = Record<string, unknown>;
-export declare type DescribeAppearanceInput = {
-    contestId?: string;
-};
-export declare type DescribeAppearanceOutput = {
-    appearance?: Contest_Appearance;
 };
 export {};

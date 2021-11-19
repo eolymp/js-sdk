@@ -11,10 +11,6 @@ export declare type Submission = {
     cost?: number;
     score?: number;
     percentage?: number;
-    wallTimeUsage?: number;
-    cpuTimeUsage?: number;
-    memoryUsage?: number;
-    resourceUsage?: number;
     groups?: Submission_Group[];
 };
 export declare type Submission_Run = {
@@ -22,7 +18,6 @@ export declare type Submission_Run = {
     wallTimeUsage?: number;
     cpuTimeUsage?: number;
     memoryUsage?: number;
-    resourceUsage?: number;
     index?: number;
     testId?: string;
     cost?: number;
@@ -41,6 +36,5 @@ export declare type Submission_Group = {
     wallTimeUsage?: number;
     cpuTimeUsage?: number;
     memoryUsage?: number;
-    resourceUsage?: number;
     runs?: Submission_Run[];
 };
