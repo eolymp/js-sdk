@@ -106,14 +106,15 @@ export type DescribePathOutput = {
 
 export type ListPathsInput = {
   preferredLocales?: string[];
-  searchQuery?: string;
   offset?: number;
   size?: number;
   filters?: ListPathsInput_Filter;
 }
 
 export type ListPathsInput_Filter = {
+  query?: string;
   path?: ExpressionString[];
+  label?: ExpressionEnum[];
 }
 
 export type ListPathsOutput = {
