@@ -27,6 +27,10 @@ export type CreateRunInput = {
   lang?: string;
   source?: string;
   input?: string;
+  inputContent?: string;
+  inputObjectId?: string;
+  atlasProblemId?: string;
+  judgeProblemId?: string;
 }
 
 export type CreateRunOutput = {

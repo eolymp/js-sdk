@@ -4,7 +4,7 @@
 
 export type Problem = {
   id?: string;
-  index?: number;
+  number?: number;
   visible?: boolean;
   private?: boolean;
 }

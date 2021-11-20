@@ -1,7 +1,9 @@
 import { Interactor } from "../executor/interactor";
 import { Verifier } from "../executor/verifier";
-import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression";
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression";
+import { Attachment } from "./attachment";
 import { Category } from "./category";
+import { Change } from "./change";
 import { Permission } from "./permission";
 import { Problem } from "./problem";
 import { Score } from "./score";
@@ -21,6 +23,8 @@ export declare class Atlas {
     DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput>;
     ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput>;
     DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput>;
+    UpdateVisibility(input: UpdateVisibilityInput): Promise<UpdateVisibilityOutput>;
+    UpdatePrivacy(input: UpdatePrivacyInput): Promise<UpdatePrivacyOutput>;
     ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput>;
     UpdateVerifier(input: UpdateVerifierInput): Promise<UpdateVerifierOutput>;
     DescribeVerifier(input: DescribeVerifierInput): Promise<DescribeVerifierOutput>;
@@ -49,6 +53,15 @@ export declare class Atlas {
     DeleteCodeTemplate(input: DeleteCodeTemplateInput): Promise<DeleteCodeTemplateOutput>;
     ListCodeTemplates(input: ListCodeTemplatesInput): Promise<ListCodeTemplatesOutput>;
     DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
+    CreateAttachment(input: CreateAttachmentInput): Promise<CreateAttachmentOutput>;
+    UpdateAttachment(input: UpdateAttachmentInput): Promise<UpdateAttachmentOutput>;
+    DeleteAttachment(input: DeleteAttachmentInput): Promise<DeleteAttachmentOutput>;
+    ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput>;
+    DescribeAttachment(input: DescribeAttachmentInput): Promise<DescribeAttachmentOutput>;
+    DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput>;
+    ListChanges(input: ListChangesInput): Promise<ListChangesOutput>;
+    ListProblemTop(input: ListProblemTopInput): Promise<ListProblemTopOutput>;
+    DescribeProblemGrading(input: DescribeProblemGradingInput): Promise<DescribeProblemGradingOutput>;
     CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput>;
     UpdateSolution(input: UpdateSolutionInput): Promise<UpdateSolutionOutput>;
     DeleteSolution(input: DeleteSolutionInput): Promise<DeleteSolutionOutput>;
@@ -79,6 +92,7 @@ export declare type ListProblemsInput_Filter = {
     categoryId?: ExpressionID[];
     isVisible?: ExpressionBool[];
     isPrivate?: ExpressionBool[];
+    number?: ExpressionInt[];
 };
 export declare type ListProblemsOutput = {
     total?: number;
@@ -86,6 +100,7 @@ export declare type ListProblemsOutput = {
 };
 export declare type CreateProblemInput = {
     problem?: Problem;
+    statement?: Statement;
 };
 export declare type CreateProblemOutput = {
     problemId?: string;
@@ -260,6 +275,81 @@ export declare type DescribeCodeTemplateInput = {
 export declare type DescribeCodeTemplateOutput = {
     template?: Template;
 };
+export declare type CreateAttachmentInput = {
+    problemId?: string;
+    attachment?: Attachment;
+};
+export declare type CreateAttachmentOutput = {
+    attachmentId?: string;
+};
+export declare type UpdateAttachmentInput = {
+    attachmentId?: string;
+    attachment?: Attachment;
+};
+export declare type UpdateAttachmentOutput = Record<string, unknown>;
+export declare type DeleteAttachmentInput = {
+    attachmentId?: string;
+};
+export declare type DeleteAttachmentOutput = Record<string, unknown>;
+export declare type ListAttachmentsInput = {
+    problemId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListAttachmentsInput_Filter;
+};
+export declare type ListAttachmentsInput_Filter = {
+    id?: ExpressionID[];
+    name?: ExpressionString[];
+};
+export declare type ListAttachmentsOutput = {
+    total?: number;
+    items?: Attachment[];
+};
+export declare type DescribeAttachmentInput = {
+    attachmentId?: string;
+};
+export declare type DescribeAttachmentOutput = {
+    attachment?: Attachment;
+};
+export declare type DescribeChangeInput = {
+    changeId?: string;
+};
+export declare type DescribeChangeOutput = {
+    change?: Change;
+};
+export declare type ListChangesInput = {
+    problemId?: string;
+    offset?: number;
+    size?: number;
+    filters?: ListChangesInput_Filter;
+};
+export declare type ListChangesInput_Filter = {
+    id?: ExpressionID[];
+    ipAddress?: ExpressionID[];
+    userId?: ExpressionID[];
+    timestamp?: ExpressionTimestamp[];
+    type?: ExpressionEnum[];
+};
+export declare type ListChangesOutput = {
+    total?: number;
+    items?: Change[];
+};
+export declare type ListProblemTopInput = {
+    problemId?: string;
+};
+export declare type ListProblemTopOutput = {
+    items?: Submission[];
+};
+export declare type DescribeProblemGradingInput = {
+    problemId?: string;
+};
+export declare type DescribeProblemGradingOutput = {
+    ranges?: DescribeProblemGradingOutput_Range[];
+};
+export declare type DescribeProblemGradingOutput_Range = {
+    grade?: number;
+    upperBound?: number;
+};
 export declare type CreateSolutionInput = {
     problemId?: string;
     solution?: Solution;
@@ -383,4 +473,14 @@ export declare type DescribeScoreInput = {
 export declare type DescribeScoreOutput = {
     score?: Score;
 };
+export declare type UpdateVisibilityInput = {
+    problemId?: string;
+    visible?: boolean;
+};
+export declare type UpdateVisibilityOutput = Record<string, unknown>;
+export declare type UpdatePrivacyInput = {
+    problemId?: string;
+    private?: boolean;
+};
+export declare type UpdatePrivacyOutput = Record<string, unknown>;
 export {};

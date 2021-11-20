@@ -10,6 +10,8 @@ export declare class Cognito {
     CreateToken(input: CreateTokenInput): Promise<CreateTokenOutput>;
     IntrospectToken(input: IntrospectTokenInput): Promise<IntrospectTokenOutput>;
     CreateAuthorization(input: CreateAuthorizationInput): Promise<CreateAuthorizationOutput>;
+    RevokeToken(input: RevokeTokenInput): Promise<RevokeTokenOutput>;
+    Signout(input: SignoutInput): Promise<SignoutOutput>;
     CreateUser(input: CreateUserInput): Promise<CreateUserOutput>;
     VerifyEmail(input: VerifyEmailInput): Promise<VerifyEmailOutput>;
     UpdateEmail(input: UpdateEmailInput): Promise<UpdateEmailOutput>;
@@ -19,6 +21,10 @@ export declare class Cognito {
     DescribeUser(input: DescribeUserInput): Promise<DescribeUserOutput>;
     ListUsers(input: ListUsersInput): Promise<ListUsersOutput>;
     IntrospectQuota(input: IntrospectQuotaInput): Promise<IntrospectQuotaOutput>;
+    IntrospectRoles(input: IntrospectRolesInput): Promise<IntrospectRolesOutput>;
+    ListRoles(input: ListRolesInput): Promise<ListRolesOutput>;
+    UpdateRoles(input: UpdateRolesInput): Promise<UpdateRolesOutput>;
+    ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput>;
 }
 export declare type CreateTokenInput = {
     grantType?: string;
@@ -29,12 +35,14 @@ export declare type CreateTokenInput = {
     code?: string;
     codeVerifier?: string;
     scope?: string;
+    refreshToken?: string;
 };
 export declare type CreateTokenOutput = {
     token?: string;
     type?: string;
     expiresAt?: string;
     scopes?: string[];
+    refreshToken?: string;
     userId?: string;
     username?: string;
 };
@@ -127,6 +135,7 @@ export declare type UpdateEmailOutput = {
 export declare type StartRecoveryInput = {
     email?: string;
     captcha?: string;
+    locale?: string;
 };
 export declare type StartRecoveryOutput = {
     emailRecoveryHint?: string;
@@ -137,4 +146,31 @@ export declare type CompleteRecoverInput = {
     password?: string;
 };
 export declare type CompleteRecoverOutput = Record<string, unknown>;
+export declare type IntrospectRolesInput = Record<string, unknown>;
+export declare type IntrospectRolesOutput = {
+    roles?: string[];
+};
+export declare type ListRolesInput = {
+    userId?: string;
+};
+export declare type ListRolesOutput = {
+    roles?: string[];
+};
+export declare type UpdateRolesInput = {
+    userId?: string;
+    roles?: string[];
+};
+export declare type UpdateRolesOutput = Record<string, unknown>;
+export declare type ListEntitlementsInput = Record<string, unknown>;
+export declare type ListEntitlementsOutput = {
+    entitlements?: string[];
+};
+export declare type RevokeTokenInput = {
+    token?: string;
+};
+export declare type RevokeTokenOutput = Record<string, unknown>;
+export declare type SignoutInput = {
+    everywhere?: boolean;
+};
+export declare type SignoutOutput = Record<string, unknown>;
 export {};

@@ -19,6 +19,12 @@ class Atlas {
     DescribeProblem(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
     }
+    UpdateVisibility(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input);
+    }
+    UpdatePrivacy(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input);
+    }
     ListExamples(input) {
         return this.cli.call("eolymp.atlas.Atlas/ListExamples", input);
     }
@@ -102,6 +108,33 @@ class Atlas {
     }
     DescribeCodeTemplate(input) {
         return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
+    }
+    CreateAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input);
+    }
+    UpdateAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input);
+    }
+    DeleteAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input);
+    }
+    ListAttachments(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input);
+    }
+    DescribeAttachment(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input);
+    }
+    DescribeChange(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input);
+    }
+    ListChanges(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
+    }
+    ListProblemTop(input) {
+        return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input);
+    }
+    DescribeProblemGrading(input) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input);
     }
     CreateSolution(input) {
         return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);

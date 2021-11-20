@@ -4,26 +4,23 @@
 
 export type Participant = {
   id?: string;
-  userId?: string;
   contestId?: string;
-  username?: string;
-  score?: number;
-  penalty?: number;
-  breakdown?: Participant_Score[];
+  memberId?: string;
+  name?: string;
   status?: string;
   startedAt?: string;
   startedIn?: number;
+  endAt?: string;
+  endIn?: number;
   completeAt?: string;
   completeIn?: number;
+  bonusTime?: number;
   passcode?: string;
+  submits?: Participant_Submit[];
 }
 
-export type Participant_Score = {
+export type Participant_Submit = {
   problemId?: string;
-  score?: number;
-  penalty?: number;
-  solved?: boolean;
-  percentage?: number;
-  submits?: number;
+  counter?: number;
 }
 
