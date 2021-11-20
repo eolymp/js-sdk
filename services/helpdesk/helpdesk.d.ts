@@ -60,13 +60,14 @@ export declare type DescribePathOutput = {
 };
 export declare type ListPathsInput = {
     preferredLocales?: string[];
-    searchQuery?: string;
     offset?: number;
     size?: number;
     filters?: ListPathsInput_Filter;
 };
 export declare type ListPathsInput_Filter = {
+    query?: string;
     path?: ExpressionString[];
+    label?: ExpressionEnum[];
 };
 export declare type ListPathsOutput = {
     total?: number;
