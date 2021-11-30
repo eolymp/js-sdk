@@ -61,8 +61,8 @@ class Client {
             return Promise.resolve(response.json());
         });
     }
-    graphql(query, variables) {
-        return this.do("POST", "/graphql", JSON.stringify({ query, variables }));
+    graphql(query, variables, opts) {
+        return this.do("POST", "/graphql", JSON.stringify({ query, variables }), opts === null || opts === void 0 ? void 0 : opts.headers);
     }
     call(method, input, opts) {
         return this.do("POST", "/" + method, JSON.stringify(input), opts === null || opts === void 0 ? void 0 : opts.headers);

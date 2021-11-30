@@ -87,8 +87,8 @@ export class Client {
         });
     }
 
-    graphql<R>(query: string, variables: Record<string, any>) {
-        return this.do<R>("POST", "/graphql", JSON.stringify({query, variables}));
+    graphql<R>(query: string, variables: Record<string, any>, opts?: Options) {
+        return this.do<R>("POST", "/graphql", JSON.stringify({query, variables}), opts?.headers);
     }
 
     call<R, E>(method: string, input: R, opts?: Options): Promise<E> {
