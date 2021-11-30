@@ -7,47 +7,47 @@ class Community {
     constructor(cli) {
         this.cli = cli;
     }
-    JoinSpace(input) {
-        return this.cli.call("eolymp.community.Community/JoinSpace", input);
+    JoinSpace(input, opts) {
+        return this.cli.call("eolymp.community.Community/JoinSpace", input, opts);
     }
-    LeaveSpace(input) {
-        return this.cli.call("eolymp.community.Community/LeaveSpace", input);
+    LeaveSpace(input, opts) {
+        return this.cli.call("eolymp.community.Community/LeaveSpace", input, opts);
     }
-    RegisterMember(input) {
-        return this.cli.call("eolymp.community.Community/RegisterMember", input);
+    RegisterMember(input, opts) {
+        return this.cli.call("eolymp.community.Community/RegisterMember", input, opts);
     }
-    IntrospectMember(input) {
-        return this.cli.call("eolymp.community.Community/IntrospectMember", input);
+    IntrospectMember(input, opts) {
+        return this.cli.call("eolymp.community.Community/IntrospectMember", input, opts);
     }
-    AddMember(input) {
-        return this.cli.call("eolymp.community.Community/AddMember", input);
+    AddMember(input, opts) {
+        return this.cli.call("eolymp.community.Community/AddMember", input, opts);
     }
-    UpdateMember(input) {
-        return this.cli.call("eolymp.community.Community/UpdateMember", input);
+    UpdateMember(input, opts) {
+        return this.cli.call("eolymp.community.Community/UpdateMember", input, opts);
     }
-    RemoveMember(input) {
-        return this.cli.call("eolymp.community.Community/RemoveMember", input);
+    RemoveMember(input, opts) {
+        return this.cli.call("eolymp.community.Community/RemoveMember", input, opts);
     }
-    DescribeMember(input) {
-        return this.cli.call("eolymp.community.Community/DescribeMember", input);
+    DescribeMember(input, opts) {
+        return this.cli.call("eolymp.community.Community/DescribeMember", input, opts);
     }
-    ListMembers(input) {
-        return this.cli.call("eolymp.community.Community/ListMembers", input);
+    ListMembers(input, opts) {
+        return this.cli.call("eolymp.community.Community/ListMembers", input, opts);
     }
-    AddAttribute(input) {
-        return this.cli.call("eolymp.community.Community/AddAttribute", input);
+    AddAttribute(input, opts) {
+        return this.cli.call("eolymp.community.Community/AddAttribute", input, opts);
     }
-    UpdateAttribute(input) {
-        return this.cli.call("eolymp.community.Community/UpdateAttribute", input);
+    UpdateAttribute(input, opts) {
+        return this.cli.call("eolymp.community.Community/UpdateAttribute", input, opts);
     }
-    RemoveAttribute(input) {
-        return this.cli.call("eolymp.community.Community/RemoveAttribute", input);
+    RemoveAttribute(input, opts) {
+        return this.cli.call("eolymp.community.Community/RemoveAttribute", input, opts);
     }
-    DescribeAttribute(input) {
-        return this.cli.call("eolymp.community.Community/DescribeAttribute", input);
+    DescribeAttribute(input, opts) {
+        return this.cli.call("eolymp.community.Community/DescribeAttribute", input, opts);
     }
-    ListAttributes(input) {
-        return this.cli.call("eolymp.community.Community/ListAttributes", input);
+    ListAttributes(input, opts) {
+        return this.cli.call("eolymp.community.Community/ListAttributes", input, opts);
     }
 }
 exports.Community = Community;

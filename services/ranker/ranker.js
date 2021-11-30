@@ -7,44 +7,44 @@ class Ranker {
     constructor(cli) {
         this.cli = cli;
     }
-    CreateScoreboard(input) {
-        return this.cli.call("eolymp.ranker.Ranker/CreateScoreboard", input);
+    CreateScoreboard(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/CreateScoreboard", input, opts);
     }
-    UpdateScoreboard(input) {
-        return this.cli.call("eolymp.ranker.Ranker/UpdateScoreboard", input);
+    UpdateScoreboard(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/UpdateScoreboard", input, opts);
     }
-    RebuildScoreboard(input) {
-        return this.cli.call("eolymp.ranker.Ranker/RebuildScoreboard", input);
+    RebuildScoreboard(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/RebuildScoreboard", input, opts);
     }
-    DeleteScoreboard(input) {
-        return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input);
+    DeleteScoreboard(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input, opts);
     }
-    DescribeScoreboard(input) {
-        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboard", input);
+    DescribeScoreboard(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboard", input, opts);
     }
-    ListScoreboards(input) {
-        return this.cli.call("eolymp.ranker.Ranker/ListScoreboards", input);
+    ListScoreboards(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/ListScoreboards", input, opts);
     }
-    DescribeScoreboardRow(input) {
-        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardRow", input);
+    DescribeScoreboardRow(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardRow", input, opts);
     }
-    ListScoreboardRows(input) {
-        return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input);
+    ListScoreboardRows(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input, opts);
     }
-    AddScoreboardColumn(input) {
-        return this.cli.call("eolymp.ranker.Ranker/AddScoreboardColumn", input);
+    AddScoreboardColumn(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/AddScoreboardColumn", input, opts);
     }
-    DeleteScoreboardColumn(input) {
-        return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboardColumn", input);
+    DeleteScoreboardColumn(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboardColumn", input, opts);
     }
-    DescribeScoreboardColumn(input) {
-        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardColumn", input);
+    DescribeScoreboardColumn(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardColumn", input, opts);
     }
-    ListScoreboardColumns(input) {
-        return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input);
+    ListScoreboardColumns(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input, opts);
     }
-    ListActivities(input) {
-        return this.cli.call("eolymp.ranker.Ranker/ListActivities", input);
+    ListActivities(input, opts) {
+        return this.cli.call("eolymp.ranker.Ranker/ListActivities", input, opts);
     }
 }
 exports.Ranker = Ranker;

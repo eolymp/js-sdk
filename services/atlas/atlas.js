@@ -7,191 +7,191 @@ class Atlas {
     constructor(cli) {
         this.cli = cli;
     }
-    CreateProblem(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateProblem", input);
+    CreateProblem(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateProblem", input, opts);
     }
-    DeleteProblem(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteProblem", input);
+    DeleteProblem(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteProblem", input, opts);
     }
-    ListProblems(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListProblems", input);
+    ListProblems(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListProblems", input, opts);
     }
-    DescribeProblem(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
+    DescribeProblem(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input, opts);
     }
-    UpdateVisibility(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input);
+    UpdateVisibility(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input, opts);
     }
-    UpdatePrivacy(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input);
+    UpdatePrivacy(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input, opts);
     }
-    ListExamples(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListExamples", input);
+    ListExamples(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListExamples", input, opts);
     }
-    UpdateVerifier(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateVerifier", input);
+    UpdateVerifier(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateVerifier", input, opts);
     }
-    DescribeVerifier(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeVerifier", input);
+    DescribeVerifier(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeVerifier", input, opts);
     }
-    UpdateInteractor(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateInteractor", input);
+    UpdateInteractor(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateInteractor", input, opts);
     }
-    DescribeInteractor(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeInteractor", input);
+    DescribeInteractor(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeInteractor", input, opts);
     }
-    CreateStatement(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateStatement", input);
+    CreateStatement(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateStatement", input, opts);
     }
-    UpdateStatement(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateStatement", input);
+    UpdateStatement(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateStatement", input, opts);
     }
-    DeleteStatement(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteStatement", input);
+    DeleteStatement(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteStatement", input, opts);
     }
-    ListStatements(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListStatements", input);
+    ListStatements(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListStatements", input, opts);
     }
-    DescribeStatement(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeStatement", input);
+    DescribeStatement(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeStatement", input, opts);
     }
-    CreateTestset(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateTestset", input);
+    CreateTestset(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateTestset", input, opts);
     }
-    UpdateTestset(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateTestset", input);
+    UpdateTestset(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateTestset", input, opts);
     }
-    DeleteTestset(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteTestset", input);
+    DeleteTestset(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteTestset", input, opts);
     }
-    ListTestsets(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListTestsets", input);
+    ListTestsets(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListTestsets", input, opts);
     }
-    DescribeTestset(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeTestset", input);
+    DescribeTestset(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeTestset", input, opts);
     }
-    CreateTest(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateTest", input);
+    CreateTest(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateTest", input, opts);
     }
-    UpdateTest(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateTest", input);
+    UpdateTest(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateTest", input, opts);
     }
-    DeleteTest(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteTest", input);
+    DeleteTest(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteTest", input, opts);
     }
-    ListTests(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListTests", input);
+    ListTests(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListTests", input, opts);
     }
-    DescribeTest(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeTest", input);
+    DescribeTest(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeTest", input, opts);
     }
-    GrantPermission(input) {
-        return this.cli.call("eolymp.atlas.Atlas/GrantPermission", input);
+    GrantPermission(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/GrantPermission", input, opts);
     }
-    RevokePermission(input) {
-        return this.cli.call("eolymp.atlas.Atlas/RevokePermission", input);
+    RevokePermission(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/RevokePermission", input, opts);
     }
-    ListPermissions(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListPermissions", input);
+    ListPermissions(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListPermissions", input, opts);
     }
-    CreateCodeTemplate(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateCodeTemplate", input);
+    CreateCodeTemplate(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateCodeTemplate", input, opts);
     }
-    UpdateCodeTemplate(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateCodeTemplate", input);
+    UpdateCodeTemplate(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateCodeTemplate", input, opts);
     }
-    DeleteCodeTemplate(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteCodeTemplate", input);
+    DeleteCodeTemplate(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteCodeTemplate", input, opts);
     }
-    ListCodeTemplates(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListCodeTemplates", input);
+    ListCodeTemplates(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListCodeTemplates", input, opts);
     }
-    DescribeCodeTemplate(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
+    DescribeCodeTemplate(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input, opts);
     }
-    CreateAttachment(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input);
+    CreateAttachment(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input, opts);
     }
-    UpdateAttachment(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input);
+    UpdateAttachment(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input, opts);
     }
-    DeleteAttachment(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input);
+    DeleteAttachment(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input, opts);
     }
-    ListAttachments(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input);
+    ListAttachments(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input, opts);
     }
-    DescribeAttachment(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input);
+    DescribeAttachment(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input, opts);
     }
-    DescribeChange(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input);
+    DescribeChange(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input, opts);
     }
-    ListChanges(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
+    ListChanges(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListChanges", input, opts);
     }
-    ListProblemTop(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input);
+    ListProblemTop(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input, opts);
     }
-    DescribeProblemGrading(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input);
+    DescribeProblemGrading(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input, opts);
     }
-    CreateSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
+    CreateSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input, opts);
     }
-    UpdateSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateSolution", input);
+    UpdateSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateSolution", input, opts);
     }
-    DeleteSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteSolution", input);
+    DeleteSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteSolution", input, opts);
     }
-    ListSolutions(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListSolutions", input);
+    ListSolutions(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListSolutions", input, opts);
     }
-    DescribeSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeSolution", input);
+    DescribeSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeSolution", input, opts);
     }
-    PublishSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/PublishSolution", input);
+    PublishSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/PublishSolution", input, opts);
     }
-    UnpublishSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UnpublishSolution", input);
+    UnpublishSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UnpublishSolution", input, opts);
     }
-    ApproveSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ApproveSolution", input);
+    ApproveSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ApproveSolution", input, opts);
     }
-    RefuseSolution(input) {
-        return this.cli.call("eolymp.atlas.Atlas/RefuseSolution", input);
+    RefuseSolution(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/RefuseSolution", input, opts);
     }
-    CreateCategory(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateCategory", input);
+    CreateCategory(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateCategory", input, opts);
     }
-    UpdateCategory(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UpdateCategory", input);
+    UpdateCategory(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UpdateCategory", input, opts);
     }
-    DeleteCategory(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DeleteCategory", input);
+    DeleteCategory(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DeleteCategory", input, opts);
     }
-    ListCategories(input) {
-        return this.cli.call("eolymp.atlas.Atlas/ListCategories", input);
+    ListCategories(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/ListCategories", input, opts);
     }
-    DescribeCategory(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeCategory", input);
+    DescribeCategory(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeCategory", input, opts);
     }
-    AssignCategory(input) {
-        return this.cli.call("eolymp.atlas.Atlas/AssignCategory", input);
+    AssignCategory(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/AssignCategory", input, opts);
     }
-    UnassignCategory(input) {
-        return this.cli.call("eolymp.atlas.Atlas/UnassignCategory", input);
+    UnassignCategory(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/UnassignCategory", input, opts);
     }
-    CreateSubmission(input) {
-        return this.cli.call("eolymp.atlas.Atlas/CreateSubmission", input);
+    CreateSubmission(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/CreateSubmission", input, opts);
     }
-    DescribeSubmission(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input);
+    DescribeSubmission(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input, opts);
     }
-    DescribeScore(input) {
-        return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input);
+    DescribeScore(input, opts) {
+        return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input, opts);
     }
 }
 exports.Atlas = Atlas;

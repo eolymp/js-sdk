@@ -7,11 +7,11 @@ class Playground {
     constructor(cli) {
         this.cli = cli;
     }
-    CreateRun(input) {
-        return this.cli.call("eolymp.playground.Playground/CreateRun", input);
+    CreateRun(input, opts) {
+        return this.cli.call("eolymp.playground.Playground/CreateRun", input, opts);
     }
-    DescribeRun(input) {
-        return this.cli.call("eolymp.playground.Playground/DescribeRun", input);
+    DescribeRun(input, opts) {
+        return this.cli.call("eolymp.playground.Playground/DescribeRun", input, opts);
     }
 }
 exports.Playground = Playground;

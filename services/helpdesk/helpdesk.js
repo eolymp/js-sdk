@@ -7,29 +7,29 @@ class Helpdesk {
     constructor(cli) {
         this.cli = cli;
     }
-    DescribeDocument(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/DescribeDocument", input);
+    DescribeDocument(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/DescribeDocument", input, opts);
     }
-    ListDocuments(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/ListDocuments", input);
+    ListDocuments(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/ListDocuments", input, opts);
     }
-    CreateDocument(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/CreateDocument", input);
+    CreateDocument(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/CreateDocument", input, opts);
     }
-    UpdateDocument(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/UpdateDocument", input);
+    UpdateDocument(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/UpdateDocument", input, opts);
     }
-    DeleteDocument(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/DeleteDocument", input);
+    DeleteDocument(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/DeleteDocument", input, opts);
     }
-    DescribePath(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/DescribePath", input);
+    DescribePath(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/DescribePath", input, opts);
     }
-    ListPaths(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/ListPaths", input);
+    ListPaths(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/ListPaths", input, opts);
     }
-    ListParents(input) {
-        return this.cli.call("eolymp.helpdesk.Helpdesk/ListParents", input);
+    ListParents(input, opts) {
+        return this.cli.call("eolymp.helpdesk.Helpdesk/ListParents", input, opts);
     }
 }
 exports.Helpdesk = Helpdesk;

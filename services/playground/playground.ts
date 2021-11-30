@@ -4,7 +4,7 @@
 import { Run } from "./run"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Playground {
@@ -14,12 +14,12 @@ export class Playground {
     this.cli = cli;
   }
 
-  CreateRun(input: CreateRunInput): Promise<CreateRunOutput> {
-    return this.cli.call("eolymp.playground.Playground/CreateRun", input);
+  CreateRun<O>(input: CreateRunInput, opts: O): Promise<CreateRunOutput> {
+    return this.cli.call("eolymp.playground.Playground/CreateRun", input, opts);
   }
 
-  DescribeRun(input: DescribeRunInput): Promise<DescribeRunOutput> {
-    return this.cli.call("eolymp.playground.Playground/DescribeRun", input);
+  DescribeRun<O>(input: DescribeRunInput, opts: O): Promise<DescribeRunOutput> {
+    return this.cli.call("eolymp.playground.Playground/DescribeRun", input, opts);
   }
 }
 

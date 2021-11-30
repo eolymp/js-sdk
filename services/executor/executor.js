@@ -7,20 +7,20 @@ class Executor {
     constructor(cli) {
         this.cli = cli;
     }
-    DescribeLanguage(input) {
-        return this.cli.call("eolymp.executor.Executor/DescribeLanguage", input);
+    DescribeLanguage(input, opts) {
+        return this.cli.call("eolymp.executor.Executor/DescribeLanguage", input, opts);
     }
-    ListLanguages(input) {
-        return this.cli.call("eolymp.executor.Executor/ListLanguages", input);
+    ListLanguages(input, opts) {
+        return this.cli.call("eolymp.executor.Executor/ListLanguages", input, opts);
     }
-    DescribeRuntime(input) {
-        return this.cli.call("eolymp.executor.Executor/DescribeRuntime", input);
+    DescribeRuntime(input, opts) {
+        return this.cli.call("eolymp.executor.Executor/DescribeRuntime", input, opts);
     }
-    ListRuntime(input) {
-        return this.cli.call("eolymp.executor.Executor/ListRuntime", input);
+    ListRuntime(input, opts) {
+        return this.cli.call("eolymp.executor.Executor/ListRuntime", input, opts);
     }
-    DescribeCodeTemplate(input) {
-        return this.cli.call("eolymp.executor.Executor/DescribeCodeTemplate", input);
+    DescribeCodeTemplate(input, opts) {
+        return this.cli.call("eolymp.executor.Executor/DescribeCodeTemplate", input, opts);
     }
 }
 exports.Executor = Executor;

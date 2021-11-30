@@ -2,22 +2,22 @@ import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "
 import { Permission } from "./permission";
 import { Space } from "./space";
 interface Client {
-    call<R, E>(method: string, args: R): Promise<E>;
+    call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 export declare class Universe {
     private readonly cli;
     constructor(cli: Client);
-    CreateSpace(input: CreateSpaceInput): Promise<CreateSpaceOutput>;
-    UpdateSpace(input: UpdateSpaceInput): Promise<UpdateSpaceOutput>;
-    DeleteSpace(input: DeleteSpaceInput): Promise<DeleteSpaceOutput>;
-    LookupSpace(input: LookupSpaceInput): Promise<LookupSpaceOutput>;
-    DescribeSpace(input: DescribeSpaceInput): Promise<DescribeSpaceOutput>;
-    ListSpaces(input: ListSpacesInput): Promise<ListSpacesOutput>;
-    GrantPermission(input: GrantPermissionInput): Promise<GrantPermissionOutput>;
-    RevokePermission(input: RevokePermissionInput): Promise<RevokePermissionOutput>;
-    DescribePermission(input: DescribePermissionInput): Promise<DescribePermissionOutput>;
-    IntrospectPermission(input: IntrospectPermissionInput): Promise<IntrospectPermissionOutput>;
-    ListPermissions(input: ListPermissionsInput): Promise<ListPermissionsOutput>;
+    CreateSpace<O>(input: CreateSpaceInput, opts: O): Promise<CreateSpaceOutput>;
+    UpdateSpace<O>(input: UpdateSpaceInput, opts: O): Promise<UpdateSpaceOutput>;
+    DeleteSpace<O>(input: DeleteSpaceInput, opts: O): Promise<DeleteSpaceOutput>;
+    LookupSpace<O>(input: LookupSpaceInput, opts: O): Promise<LookupSpaceOutput>;
+    DescribeSpace<O>(input: DescribeSpaceInput, opts: O): Promise<DescribeSpaceOutput>;
+    ListSpaces<O>(input: ListSpacesInput, opts: O): Promise<ListSpacesOutput>;
+    GrantPermission<O>(input: GrantPermissionInput, opts: O): Promise<GrantPermissionOutput>;
+    RevokePermission<O>(input: RevokePermissionInput, opts: O): Promise<RevokePermissionOutput>;
+    DescribePermission<O>(input: DescribePermissionInput, opts: O): Promise<DescribePermissionOutput>;
+    IntrospectPermission<O>(input: IntrospectPermissionInput, opts: O): Promise<IntrospectPermissionOutput>;
+    ListPermissions<O>(input: ListPermissionsInput, opts: O): Promise<ListPermissionsOutput>;
 }
 export declare type CreateSpaceInput = {
     space?: Space;

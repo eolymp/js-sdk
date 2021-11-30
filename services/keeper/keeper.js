@@ -7,14 +7,14 @@ class Keeper {
     constructor(cli) {
         this.cli = cli;
     }
-    CreateObject(input) {
-        return this.cli.call("eolymp.keeper.Keeper/CreateObject", input);
+    CreateObject(input, opts) {
+        return this.cli.call("eolymp.keeper.Keeper/CreateObject", input, opts);
     }
-    DescribeObject(input) {
-        return this.cli.call("eolymp.keeper.Keeper/DescribeObject", input);
+    DescribeObject(input, opts) {
+        return this.cli.call("eolymp.keeper.Keeper/DescribeObject", input, opts);
     }
-    DownloadObject(input) {
-        return this.cli.call("eolymp.keeper.Keeper/DownloadObject", input);
+    DownloadObject(input, opts) {
+        return this.cli.call("eolymp.keeper.Keeper/DownloadObject", input, opts);
     }
 }
 exports.Keeper = Keeper;

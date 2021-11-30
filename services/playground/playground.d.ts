@@ -1,12 +1,12 @@
 import { Run } from "./run";
 interface Client {
-    call<R, E>(method: string, args: R): Promise<E>;
+    call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 export declare class Playground {
     private readonly cli;
     constructor(cli: Client);
-    CreateRun(input: CreateRunInput): Promise<CreateRunOutput>;
-    DescribeRun(input: DescribeRunInput): Promise<DescribeRunOutput>;
+    CreateRun<O>(input: CreateRunInput, opts: O): Promise<CreateRunOutput>;
+    DescribeRun<O>(input: DescribeRunInput, opts: O): Promise<DescribeRunOutput>;
 }
 export declare type CreateRunInput = {
     lang?: string;

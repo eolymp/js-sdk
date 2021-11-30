@@ -2,24 +2,24 @@ import { ExpressionID } from "../wellknown/expression";
 import { Activity } from "./activity";
 import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard";
 interface Client {
-    call<R, E>(method: string, args: R): Promise<E>;
+    call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 export declare class Ranker {
     private readonly cli;
     constructor(cli: Client);
-    CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput>;
-    UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput>;
-    RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput>;
-    DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput>;
-    DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput>;
-    ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput>;
-    DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput>;
-    ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput>;
-    AddScoreboardColumn(input: AddScoreboardColumnInput): Promise<AddScoreboardColumnOutput>;
-    DeleteScoreboardColumn(input: DeleteScoreboardColumnInput): Promise<DeleteScoreboardColumnOutput>;
-    DescribeScoreboardColumn(input: DescribeScoreboardColumnInput): Promise<DescribeScoreboardColumnOutput>;
-    ListScoreboardColumns(input: ListScoreboardColumnsInput): Promise<ListScoreboardColumnsOutput>;
-    ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput>;
+    CreateScoreboard<O>(input: CreateScoreboardInput, opts: O): Promise<CreateScoreboardOutput>;
+    UpdateScoreboard<O>(input: UpdateScoreboardInput, opts: O): Promise<UpdateScoreboardOutput>;
+    RebuildScoreboard<O>(input: RebuildScoreboardInput, opts: O): Promise<RebuildScoreboardOutput>;
+    DeleteScoreboard<O>(input: DeleteScoreboardInput, opts: O): Promise<DeleteScoreboardOutput>;
+    DescribeScoreboard<O>(input: DescribeScoreboardInput, opts: O): Promise<DescribeScoreboardOutput>;
+    ListScoreboards<O>(input: ListScoreboardsInput, opts: O): Promise<ListScoreboardsOutput>;
+    DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts: O): Promise<DescribeScoreboardRowOutput>;
+    ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts: O): Promise<ListScoreboardRowsOutput>;
+    AddScoreboardColumn<O>(input: AddScoreboardColumnInput, opts: O): Promise<AddScoreboardColumnOutput>;
+    DeleteScoreboardColumn<O>(input: DeleteScoreboardColumnInput, opts: O): Promise<DeleteScoreboardColumnOutput>;
+    DescribeScoreboardColumn<O>(input: DescribeScoreboardColumnInput, opts: O): Promise<DescribeScoreboardColumnOutput>;
+    ListScoreboardColumns<O>(input: ListScoreboardColumnsInput, opts: O): Promise<ListScoreboardColumnsOutput>;
+    ListActivities<O>(input: ListActivitiesInput, opts: O): Promise<ListActivitiesOutput>;
 }
 export declare type CreateScoreboardInput = {
     scoreboard?: Scoreboard;

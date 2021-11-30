@@ -6,7 +6,7 @@ import { Activity } from "./activity"
 import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Ranker {
@@ -16,56 +16,56 @@ export class Ranker {
     this.cli = cli;
   }
 
-  CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/CreateScoreboard", input);
+  CreateScoreboard<O>(input: CreateScoreboardInput, opts: O): Promise<CreateScoreboardOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/CreateScoreboard", input, opts);
   }
 
-  UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/UpdateScoreboard", input);
+  UpdateScoreboard<O>(input: UpdateScoreboardInput, opts: O): Promise<UpdateScoreboardOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/UpdateScoreboard", input, opts);
   }
 
-  RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/RebuildScoreboard", input);
+  RebuildScoreboard<O>(input: RebuildScoreboardInput, opts: O): Promise<RebuildScoreboardOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/RebuildScoreboard", input, opts);
   }
 
-  DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input);
+  DeleteScoreboard<O>(input: DeleteScoreboardInput, opts: O): Promise<DeleteScoreboardOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input, opts);
   }
 
-  DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboard", input);
+  DescribeScoreboard<O>(input: DescribeScoreboardInput, opts: O): Promise<DescribeScoreboardOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboard", input, opts);
   }
 
-  ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListScoreboards", input);
+  ListScoreboards<O>(input: ListScoreboardsInput, opts: O): Promise<ListScoreboardsOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/ListScoreboards", input, opts);
   }
 
-  DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardRow", input);
+  DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts: O): Promise<DescribeScoreboardRowOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardRow", input, opts);
   }
 
-  ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input);
+  ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts: O): Promise<ListScoreboardRowsOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input, opts);
   }
 
-  AddScoreboardColumn(input: AddScoreboardColumnInput): Promise<AddScoreboardColumnOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/AddScoreboardColumn", input);
+  AddScoreboardColumn<O>(input: AddScoreboardColumnInput, opts: O): Promise<AddScoreboardColumnOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/AddScoreboardColumn", input, opts);
   }
 
-  DeleteScoreboardColumn(input: DeleteScoreboardColumnInput): Promise<DeleteScoreboardColumnOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboardColumn", input);
+  DeleteScoreboardColumn<O>(input: DeleteScoreboardColumnInput, opts: O): Promise<DeleteScoreboardColumnOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboardColumn", input, opts);
   }
 
-  DescribeScoreboardColumn(input: DescribeScoreboardColumnInput): Promise<DescribeScoreboardColumnOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardColumn", input);
+  DescribeScoreboardColumn<O>(input: DescribeScoreboardColumnInput, opts: O): Promise<DescribeScoreboardColumnOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardColumn", input, opts);
   }
 
-  ListScoreboardColumns(input: ListScoreboardColumnsInput): Promise<ListScoreboardColumnsOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input);
+  ListScoreboardColumns<O>(input: ListScoreboardColumnsInput, opts: O): Promise<ListScoreboardColumnsOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input, opts);
   }
 
-  ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListActivities", input);
+  ListActivities<O>(input: ListActivitiesInput, opts: O): Promise<ListActivitiesOutput> {
+    return this.cli.call("eolymp.ranker.Ranker/ListActivities", input, opts);
   }
 }
 

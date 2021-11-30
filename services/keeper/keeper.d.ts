@@ -1,12 +1,12 @@
 interface Client {
-    call<R, E>(method: string, args: R): Promise<E>;
+    call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 export declare class Keeper {
     private readonly cli;
     constructor(cli: Client);
-    CreateObject(input: CreateObjectInput): Promise<CreateObjectOutput>;
-    DescribeObject(input: DescribeObjectInput): Promise<DescribeObjectOutput>;
-    DownloadObject(input: DownloadObjectInput): Promise<DownloadObjectOutput>;
+    CreateObject<O>(input: CreateObjectInput, opts: O): Promise<CreateObjectOutput>;
+    DescribeObject<O>(input: DescribeObjectInput, opts: O): Promise<DescribeObjectOutput>;
+    DownloadObject<O>(input: DownloadObjectInput, opts: O): Promise<DownloadObjectOutput>;
 }
 export declare type CreateObjectInput = {
     data?: string;

@@ -5,7 +5,7 @@ import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/exp
 import { Document } from "./document"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Helpdesk {
@@ -15,36 +15,36 @@ export class Helpdesk {
     this.cli = cli;
   }
 
-  DescribeDocument(input: DescribeDocumentInput): Promise<DescribeDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/DescribeDocument", input);
+  DescribeDocument<O>(input: DescribeDocumentInput, opts: O): Promise<DescribeDocumentOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/DescribeDocument", input, opts);
   }
 
-  ListDocuments(input: ListDocumentsInput): Promise<ListDocumentsOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/ListDocuments", input);
+  ListDocuments<O>(input: ListDocumentsInput, opts: O): Promise<ListDocumentsOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/ListDocuments", input, opts);
   }
 
-  CreateDocument(input: CreateDocumentInput): Promise<CreateDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/CreateDocument", input);
+  CreateDocument<O>(input: CreateDocumentInput, opts: O): Promise<CreateDocumentOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/CreateDocument", input, opts);
   }
 
-  UpdateDocument(input: UpdateDocumentInput): Promise<UpdateDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/UpdateDocument", input);
+  UpdateDocument<O>(input: UpdateDocumentInput, opts: O): Promise<UpdateDocumentOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/UpdateDocument", input, opts);
   }
 
-  DeleteDocument(input: DeleteDocumentInput): Promise<DeleteDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/DeleteDocument", input);
+  DeleteDocument<O>(input: DeleteDocumentInput, opts: O): Promise<DeleteDocumentOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/DeleteDocument", input, opts);
   }
 
-  DescribePath(input: DescribePathInput): Promise<DescribePathOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/DescribePath", input);
+  DescribePath<O>(input: DescribePathInput, opts: O): Promise<DescribePathOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/DescribePath", input, opts);
   }
 
-  ListPaths(input: ListPathsInput): Promise<ListPathsOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/ListPaths", input);
+  ListPaths<O>(input: ListPathsInput, opts: O): Promise<ListPathsOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/ListPaths", input, opts);
   }
 
-  ListParents(input: ListParentsInput): Promise<ListParentsOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/ListParents", input);
+  ListParents<O>(input: ListParentsInput, opts: O): Promise<ListParentsOutput> {
+    return this.cli.call("eolymp.helpdesk.Helpdesk/ListParents", input, opts);
   }
 }
 

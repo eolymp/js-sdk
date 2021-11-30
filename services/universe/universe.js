@@ -7,38 +7,38 @@ class Universe {
     constructor(cli) {
         this.cli = cli;
     }
-    CreateSpace(input) {
-        return this.cli.call("eolymp.universe.Universe/CreateSpace", input);
+    CreateSpace(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/CreateSpace", input, opts);
     }
-    UpdateSpace(input) {
-        return this.cli.call("eolymp.universe.Universe/UpdateSpace", input);
+    UpdateSpace(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/UpdateSpace", input, opts);
     }
-    DeleteSpace(input) {
-        return this.cli.call("eolymp.universe.Universe/DeleteSpace", input);
+    DeleteSpace(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/DeleteSpace", input, opts);
     }
-    LookupSpace(input) {
-        return this.cli.call("eolymp.universe.Universe/LookupSpace", input);
+    LookupSpace(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/LookupSpace", input, opts);
     }
-    DescribeSpace(input) {
-        return this.cli.call("eolymp.universe.Universe/DescribeSpace", input);
+    DescribeSpace(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/DescribeSpace", input, opts);
     }
-    ListSpaces(input) {
-        return this.cli.call("eolymp.universe.Universe/ListSpaces", input);
+    ListSpaces(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/ListSpaces", input, opts);
     }
-    GrantPermission(input) {
-        return this.cli.call("eolymp.universe.Universe/GrantPermission", input);
+    GrantPermission(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/GrantPermission", input, opts);
     }
-    RevokePermission(input) {
-        return this.cli.call("eolymp.universe.Universe/RevokePermission", input);
+    RevokePermission(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/RevokePermission", input, opts);
     }
-    DescribePermission(input) {
-        return this.cli.call("eolymp.universe.Universe/DescribePermission", input);
+    DescribePermission(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/DescribePermission", input, opts);
     }
-    IntrospectPermission(input) {
-        return this.cli.call("eolymp.universe.Universe/IntrospectPermission", input);
+    IntrospectPermission(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/IntrospectPermission", input, opts);
     }
-    ListPermissions(input) {
-        return this.cli.call("eolymp.universe.Universe/ListPermissions", input);
+    ListPermissions(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/ListPermissions", input, opts);
     }
 }
 exports.Universe = Universe;

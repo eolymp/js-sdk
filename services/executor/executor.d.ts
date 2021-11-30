@@ -3,16 +3,16 @@ import { Language } from "./language";
 import { Runtime } from "./runtime";
 import { Task } from "./task";
 interface Client {
-    call<R, E>(method: string, args: R): Promise<E>;
+    call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 export declare class Executor {
     private readonly cli;
     constructor(cli: Client);
-    DescribeLanguage(input: DescribeLanguageInput): Promise<DescribeLanguageOutput>;
-    ListLanguages(input: ListLanguagesInput): Promise<ListLanguagesOutput>;
-    DescribeRuntime(input: DescribeRuntimeInput): Promise<DescribeRuntimeOutput>;
-    ListRuntime(input: ListRuntimeInput): Promise<ListRuntimeOutput>;
-    DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput>;
+    DescribeLanguage<O>(input: DescribeLanguageInput, opts: O): Promise<DescribeLanguageOutput>;
+    ListLanguages<O>(input: ListLanguagesInput, opts: O): Promise<ListLanguagesOutput>;
+    DescribeRuntime<O>(input: DescribeRuntimeInput, opts: O): Promise<DescribeRuntimeOutput>;
+    ListRuntime<O>(input: ListRuntimeInput, opts: O): Promise<ListRuntimeOutput>;
+    DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts: O): Promise<DescribeCodeTemplateOutput>;
 }
 export declare type CreateTaskInput = {
     task?: Task;

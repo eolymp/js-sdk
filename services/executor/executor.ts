@@ -7,7 +7,7 @@ import { Runtime } from "./runtime"
 import { Task } from "./task"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Executor {
@@ -17,24 +17,24 @@ export class Executor {
     this.cli = cli;
   }
 
-  DescribeLanguage(input: DescribeLanguageInput): Promise<DescribeLanguageOutput> {
-    return this.cli.call("eolymp.executor.Executor/DescribeLanguage", input);
+  DescribeLanguage<O>(input: DescribeLanguageInput, opts: O): Promise<DescribeLanguageOutput> {
+    return this.cli.call("eolymp.executor.Executor/DescribeLanguage", input, opts);
   }
 
-  ListLanguages(input: ListLanguagesInput): Promise<ListLanguagesOutput> {
-    return this.cli.call("eolymp.executor.Executor/ListLanguages", input);
+  ListLanguages<O>(input: ListLanguagesInput, opts: O): Promise<ListLanguagesOutput> {
+    return this.cli.call("eolymp.executor.Executor/ListLanguages", input, opts);
   }
 
-  DescribeRuntime(input: DescribeRuntimeInput): Promise<DescribeRuntimeOutput> {
-    return this.cli.call("eolymp.executor.Executor/DescribeRuntime", input);
+  DescribeRuntime<O>(input: DescribeRuntimeInput, opts: O): Promise<DescribeRuntimeOutput> {
+    return this.cli.call("eolymp.executor.Executor/DescribeRuntime", input, opts);
   }
 
-  ListRuntime(input: ListRuntimeInput): Promise<ListRuntimeOutput> {
-    return this.cli.call("eolymp.executor.Executor/ListRuntime", input);
+  ListRuntime<O>(input: ListRuntimeInput, opts: O): Promise<ListRuntimeOutput> {
+    return this.cli.call("eolymp.executor.Executor/ListRuntime", input, opts);
   }
 
-  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.executor.Executor/DescribeCodeTemplate", input);
+  DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts: O): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.executor.Executor/DescribeCodeTemplate", input, opts);
   }
 }
 

@@ -7,5 +7,5 @@ export declare class Client {
     constructor(url: string, opts?: Options);
     do<T>(method: string, path: string, body: string, headers?: Record<string, string>): Promise<T>;
     graphql<R>(query: string, variables: Record<string, any>): Promise<R>;
-    call<R, E>(method: string, input: R): Promise<E>;
+    call<R, E>(method: string, input: R, opts?: Options): Promise<E>;
 }

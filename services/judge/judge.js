@@ -7,239 +7,239 @@ class Judge {
     constructor(cli) {
         this.cli = cli;
     }
-    CreateContest(input) {
-        return this.cli.call("eolymp.judge.Judge/CreateContest", input);
+    CreateContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/CreateContest", input, opts);
     }
-    DeleteContest(input) {
-        return this.cli.call("eolymp.judge.Judge/DeleteContest", input);
+    DeleteContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DeleteContest", input, opts);
     }
-    UpdateContest(input) {
-        return this.cli.call("eolymp.judge.Judge/UpdateContest", input);
+    UpdateContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/UpdateContest", input, opts);
     }
-    LookupContest(input) {
-        return this.cli.call("eolymp.judge.Judge/LookupContest", input);
+    LookupContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/LookupContest", input, opts);
     }
-    DescribeContest(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeContest", input);
+    DescribeContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeContest", input, opts);
     }
-    ListContests(input) {
-        return this.cli.call("eolymp.judge.Judge/ListContests", input);
+    ListContests(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListContests", input, opts);
     }
-    OpenContest(input) {
-        return this.cli.call("eolymp.judge.Judge/OpenContest", input);
+    OpenContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/OpenContest", input, opts);
     }
-    CloseContest(input) {
-        return this.cli.call("eolymp.judge.Judge/CloseContest", input);
+    CloseContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/CloseContest", input, opts);
     }
-    ConfigureRegistrationForm(input) {
-        return this.cli.call("eolymp.judge.Judge/ConfigureRegistrationForm", input);
+    ConfigureRegistrationForm(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ConfigureRegistrationForm", input, opts);
     }
-    DescribeRegistrationForm(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeRegistrationForm", input);
+    DescribeRegistrationForm(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeRegistrationForm", input, opts);
     }
-    ConfigureRuntime(input) {
-        return this.cli.call("eolymp.judge.Judge/ConfigureRuntime", input);
+    ConfigureRuntime(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ConfigureRuntime", input, opts);
     }
-    DescribeRuntime(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input);
+    DescribeRuntime(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input, opts);
     }
-    ConfigureAppearance(input) {
-        return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input);
+    ConfigureAppearance(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input, opts);
     }
-    DescribeAppearance(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input);
+    DescribeAppearance(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input, opts);
     }
-    SubmitRegistration(input) {
-        return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input);
+    SubmitRegistration(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input, opts);
     }
-    DescribeRegistration(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeRegistration", input);
+    DescribeRegistration(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeRegistration", input, opts);
     }
-    ImportProblem(input) {
-        return this.cli.call("eolymp.judge.Judge/ImportProblem", input);
+    ImportProblem(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ImportProblem", input, opts);
     }
-    SyncProblem(input) {
-        return this.cli.call("eolymp.judge.Judge/SyncProblem", input);
+    SyncProblem(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/SyncProblem", input, opts);
     }
-    UpdateProblem(input) {
-        return this.cli.call("eolymp.judge.Judge/UpdateProblem", input);
+    UpdateProblem(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/UpdateProblem", input, opts);
     }
-    ListProblems(input) {
-        return this.cli.call("eolymp.judge.Judge/ListProblems", input);
+    ListProblems(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListProblems", input, opts);
     }
-    DescribeProblem(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeProblem", input);
+    DescribeProblem(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeProblem", input, opts);
     }
-    DescribeCodeTemplate(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
+    DescribeCodeTemplate(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input, opts);
     }
-    ListStatements(input) {
-        return this.cli.call("eolymp.judge.Judge/ListStatements", input);
+    ListStatements(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListStatements", input, opts);
     }
-    ListAttachments(input) {
-        return this.cli.call("eolymp.judge.Judge/ListAttachments", input);
+    ListAttachments(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListAttachments", input, opts);
     }
-    ListExamples(input) {
-        return this.cli.call("eolymp.judge.Judge/ListExamples", input);
+    ListExamples(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListExamples", input, opts);
     }
-    DeleteProblem(input) {
-        return this.cli.call("eolymp.judge.Judge/DeleteProblem", input);
+    DeleteProblem(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DeleteProblem", input, opts);
     }
-    RetestProblem(input) {
-        return this.cli.call("eolymp.judge.Judge/RetestProblem", input);
+    RetestProblem(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/RetestProblem", input, opts);
     }
-    AddParticipant(input) {
-        return this.cli.call("eolymp.judge.Judge/AddParticipant", input);
+    AddParticipant(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/AddParticipant", input, opts);
     }
-    EnableParticipant(input) {
-        return this.cli.call("eolymp.judge.Judge/EnableParticipant", input);
+    EnableParticipant(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/EnableParticipant", input, opts);
     }
-    DisableParticipant(input) {
-        return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
+    DisableParticipant(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DisableParticipant", input, opts);
     }
-    UpdateParticipant(input) {
-        return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input);
+    UpdateParticipant(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input, opts);
     }
-    RemoveParticipant(input) {
-        return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input);
+    RemoveParticipant(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input, opts);
     }
-    ListParticipants(input) {
-        return this.cli.call("eolymp.judge.Judge/ListParticipants", input);
+    ListParticipants(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListParticipants", input, opts);
     }
-    DescribeParticipant(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeParticipant", input);
+    DescribeParticipant(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeParticipant", input, opts);
     }
-    IntrospectParticipant(input) {
-        return this.cli.call("eolymp.judge.Judge/IntrospectParticipant", input);
+    IntrospectParticipant(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/IntrospectParticipant", input, opts);
     }
-    JoinContest(input) {
-        return this.cli.call("eolymp.judge.Judge/JoinContest", input);
+    JoinContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/JoinContest", input, opts);
     }
-    StartContest(input) {
-        return this.cli.call("eolymp.judge.Judge/StartContest", input);
+    StartContest(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/StartContest", input, opts);
     }
-    VerifyPasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
+    VerifyPasscode(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input, opts);
     }
-    EnterPasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
+    EnterPasscode(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/EnterPasscode", input, opts);
     }
-    ResetPasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
+    ResetPasscode(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ResetPasscode", input, opts);
     }
-    RemovePasscode(input) {
-        return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
+    RemovePasscode(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/RemovePasscode", input, opts);
     }
-    CreateSubmission(input) {
-        return this.cli.call("eolymp.judge.Judge/CreateSubmission", input);
+    CreateSubmission(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/CreateSubmission", input, opts);
     }
-    ListSubmissions(input) {
-        return this.cli.call("eolymp.judge.Judge/ListSubmissions", input);
+    ListSubmissions(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListSubmissions", input, opts);
     }
-    DescribeSubmission(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeSubmission", input);
+    DescribeSubmission(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeSubmission", input, opts);
     }
-    RetestSubmission(input) {
-        return this.cli.call("eolymp.judge.Judge/RetestSubmission", input);
+    RetestSubmission(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/RetestSubmission", input, opts);
     }
-    CreateTicket(input) {
-        return this.cli.call("eolymp.judge.Judge/CreateTicket", input);
+    CreateTicket(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/CreateTicket", input, opts);
     }
-    CloseTicket(input) {
-        return this.cli.call("eolymp.judge.Judge/CloseTicket", input);
+    CloseTicket(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/CloseTicket", input, opts);
     }
-    OpenTicket(input) {
-        return this.cli.call("eolymp.judge.Judge/OpenTicket", input);
+    OpenTicket(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/OpenTicket", input, opts);
     }
-    ReadTicket(input) {
-        return this.cli.call("eolymp.judge.Judge/ReadTicket", input);
+    ReadTicket(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ReadTicket", input, opts);
     }
-    DeleteTicket(input) {
-        return this.cli.call("eolymp.judge.Judge/DeleteTicket", input);
+    DeleteTicket(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DeleteTicket", input, opts);
     }
-    DescribeTicket(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeTicket", input);
+    DescribeTicket(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeTicket", input, opts);
     }
-    ListTickets(input) {
-        return this.cli.call("eolymp.judge.Judge/ListTickets", input);
+    ListTickets(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListTickets", input, opts);
     }
-    ReplyTicket(input) {
-        return this.cli.call("eolymp.judge.Judge/ReplyTicket", input);
+    ReplyTicket(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ReplyTicket", input, opts);
     }
-    ListReplies(input) {
-        return this.cli.call("eolymp.judge.Judge/ListReplies", input);
+    ListReplies(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListReplies", input, opts);
     }
-    DeleteReply(input) {
-        return this.cli.call("eolymp.judge.Judge/DeleteReply", input);
+    DeleteReply(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DeleteReply", input, opts);
     }
-    UpdateReply(input) {
-        return this.cli.call("eolymp.judge.Judge/UpdateReply", input);
+    UpdateReply(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/UpdateReply", input, opts);
     }
-    CreateAnnouncement(input) {
-        return this.cli.call("eolymp.judge.Judge/CreateAnnouncement", input);
+    CreateAnnouncement(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/CreateAnnouncement", input, opts);
     }
-    UpdateAnnouncement(input) {
-        return this.cli.call("eolymp.judge.Judge/UpdateAnnouncement", input);
+    UpdateAnnouncement(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/UpdateAnnouncement", input, opts);
     }
-    DeleteAnnouncement(input) {
-        return this.cli.call("eolymp.judge.Judge/DeleteAnnouncement", input);
+    DeleteAnnouncement(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DeleteAnnouncement", input, opts);
     }
-    ReadAnnouncement(input) {
-        return this.cli.call("eolymp.judge.Judge/ReadAnnouncement", input);
+    ReadAnnouncement(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ReadAnnouncement", input, opts);
     }
-    DescribeAnnouncement(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeAnnouncement", input);
+    DescribeAnnouncement(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeAnnouncement", input, opts);
     }
-    DescribeAnnouncementStatus(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeAnnouncementStatus", input);
+    DescribeAnnouncementStatus(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeAnnouncementStatus", input, opts);
     }
-    ListAnnouncements(input) {
-        return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
+    ListAnnouncements(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input, opts);
     }
-    CreateScoreboard(input) {
-        return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input);
+    CreateScoreboard(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input, opts);
     }
-    UpdateScoreboard(input) {
-        return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input);
+    UpdateScoreboard(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input, opts);
     }
-    RebuildScoreboard(input) {
-        return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input);
+    RebuildScoreboard(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input, opts);
     }
-    DeleteScoreboard(input) {
-        return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input);
+    DeleteScoreboard(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input, opts);
     }
-    DescribeScoreboard(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input);
+    DescribeScoreboard(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input, opts);
     }
-    DescribeDefaultScoreboard(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input);
+    DescribeDefaultScoreboard(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input, opts);
     }
-    ListScoreboards(input) {
-        return this.cli.call("eolymp.judge.Judge/ListScoreboards", input);
+    ListScoreboards(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListScoreboards", input, opts);
     }
-    DescribeScoreboardHeader(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input);
+    DescribeScoreboardHeader(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input, opts);
     }
-    DescribeScoreboardFooter(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input);
+    DescribeScoreboardFooter(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input, opts);
     }
-    DescribeScoreboardRow(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input);
+    DescribeScoreboardRow(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input, opts);
     }
-    DescribeDefaultScoreboardRow(input) {
-        return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input);
+    DescribeDefaultScoreboardRow(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input, opts);
     }
-    ListScoreboardRows(input) {
-        return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input);
+    ListScoreboardRows(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input, opts);
     }
-    ListDefaultScoreboardRows(input) {
-        return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input);
+    ListDefaultScoreboardRows(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input, opts);
     }
-    ListEntitlements(input) {
-        return this.cli.call("eolymp.judge.Judge/ListEntitlements", input);
+    ListEntitlements(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListEntitlements", input, opts);
     }
-    ListActivities(input) {
-        return this.cli.call("eolymp.judge.Judge/ListActivities", input);
+    ListActivities(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListActivities", input, opts);
     }
 }
 exports.Judge = Judge;

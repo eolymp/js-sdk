@@ -7,59 +7,59 @@ class Cognito {
     constructor(cli) {
         this.cli = cli;
     }
-    CreateToken(input) {
-        return this.cli.call("eolymp.cognito.Cognito/CreateToken", input);
+    CreateToken(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/CreateToken", input, opts);
     }
-    IntrospectToken(input) {
-        return this.cli.call("eolymp.cognito.Cognito/IntrospectToken", input);
+    IntrospectToken(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/IntrospectToken", input, opts);
     }
-    CreateAuthorization(input) {
-        return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input);
+    CreateAuthorization(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input, opts);
     }
-    RevokeToken(input) {
-        return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input);
+    RevokeToken(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input, opts);
     }
-    Signout(input) {
-        return this.cli.call("eolymp.cognito.Cognito/Signout", input);
+    Signout(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/Signout", input, opts);
     }
-    CreateUser(input) {
-        return this.cli.call("eolymp.cognito.Cognito/CreateUser", input);
+    CreateUser(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/CreateUser", input, opts);
     }
-    VerifyEmail(input) {
-        return this.cli.call("eolymp.cognito.Cognito/VerifyEmail", input);
+    VerifyEmail(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/VerifyEmail", input, opts);
     }
-    UpdateEmail(input) {
-        return this.cli.call("eolymp.cognito.Cognito/UpdateEmail", input);
+    UpdateEmail(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/UpdateEmail", input, opts);
     }
-    StartRecovery(input) {
-        return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input);
+    StartRecovery(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input, opts);
     }
-    CompleteRecovery(input) {
-        return this.cli.call("eolymp.cognito.Cognito/CompleteRecovery", input);
+    CompleteRecovery(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/CompleteRecovery", input, opts);
     }
-    IntrospectUser(input) {
-        return this.cli.call("eolymp.cognito.Cognito/IntrospectUser", input);
+    IntrospectUser(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/IntrospectUser", input, opts);
     }
-    DescribeUser(input) {
-        return this.cli.call("eolymp.cognito.Cognito/DescribeUser", input);
+    DescribeUser(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/DescribeUser", input, opts);
     }
-    ListUsers(input) {
-        return this.cli.call("eolymp.cognito.Cognito/ListUsers", input);
+    ListUsers(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/ListUsers", input, opts);
     }
-    IntrospectQuota(input) {
-        return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input);
+    IntrospectQuota(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input, opts);
     }
-    IntrospectRoles(input) {
-        return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input);
+    IntrospectRoles(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input, opts);
     }
-    ListRoles(input) {
-        return this.cli.call("eolymp.cognito.Cognito/ListRoles", input);
+    ListRoles(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/ListRoles", input, opts);
     }
-    UpdateRoles(input) {
-        return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input);
+    UpdateRoles(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input, opts);
     }
-    ListEntitlements(input) {
-        return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input);
+    ListEntitlements(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input, opts);
     }
 }
 exports.Cognito = Cognito;

@@ -6,7 +6,7 @@ import { Permission } from "./permission"
 import { Space } from "./space"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Universe {
@@ -16,48 +16,48 @@ export class Universe {
     this.cli = cli;
   }
 
-  CreateSpace(input: CreateSpaceInput): Promise<CreateSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/CreateSpace", input);
+  CreateSpace<O>(input: CreateSpaceInput, opts: O): Promise<CreateSpaceOutput> {
+    return this.cli.call("eolymp.universe.Universe/CreateSpace", input, opts);
   }
 
-  UpdateSpace(input: UpdateSpaceInput): Promise<UpdateSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/UpdateSpace", input);
+  UpdateSpace<O>(input: UpdateSpaceInput, opts: O): Promise<UpdateSpaceOutput> {
+    return this.cli.call("eolymp.universe.Universe/UpdateSpace", input, opts);
   }
 
-  DeleteSpace(input: DeleteSpaceInput): Promise<DeleteSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/DeleteSpace", input);
+  DeleteSpace<O>(input: DeleteSpaceInput, opts: O): Promise<DeleteSpaceOutput> {
+    return this.cli.call("eolymp.universe.Universe/DeleteSpace", input, opts);
   }
 
-  LookupSpace(input: LookupSpaceInput): Promise<LookupSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/LookupSpace", input);
+  LookupSpace<O>(input: LookupSpaceInput, opts: O): Promise<LookupSpaceOutput> {
+    return this.cli.call("eolymp.universe.Universe/LookupSpace", input, opts);
   }
 
-  DescribeSpace(input: DescribeSpaceInput): Promise<DescribeSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/DescribeSpace", input);
+  DescribeSpace<O>(input: DescribeSpaceInput, opts: O): Promise<DescribeSpaceOutput> {
+    return this.cli.call("eolymp.universe.Universe/DescribeSpace", input, opts);
   }
 
-  ListSpaces(input: ListSpacesInput): Promise<ListSpacesOutput> {
-    return this.cli.call("eolymp.universe.Universe/ListSpaces", input);
+  ListSpaces<O>(input: ListSpacesInput, opts: O): Promise<ListSpacesOutput> {
+    return this.cli.call("eolymp.universe.Universe/ListSpaces", input, opts);
   }
 
-  GrantPermission(input: GrantPermissionInput): Promise<GrantPermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/GrantPermission", input);
+  GrantPermission<O>(input: GrantPermissionInput, opts: O): Promise<GrantPermissionOutput> {
+    return this.cli.call("eolymp.universe.Universe/GrantPermission", input, opts);
   }
 
-  RevokePermission(input: RevokePermissionInput): Promise<RevokePermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/RevokePermission", input);
+  RevokePermission<O>(input: RevokePermissionInput, opts: O): Promise<RevokePermissionOutput> {
+    return this.cli.call("eolymp.universe.Universe/RevokePermission", input, opts);
   }
 
-  DescribePermission(input: DescribePermissionInput): Promise<DescribePermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/DescribePermission", input);
+  DescribePermission<O>(input: DescribePermissionInput, opts: O): Promise<DescribePermissionOutput> {
+    return this.cli.call("eolymp.universe.Universe/DescribePermission", input, opts);
   }
 
-  IntrospectPermission(input: IntrospectPermissionInput): Promise<IntrospectPermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/IntrospectPermission", input);
+  IntrospectPermission<O>(input: IntrospectPermissionInput, opts: O): Promise<IntrospectPermissionOutput> {
+    return this.cli.call("eolymp.universe.Universe/IntrospectPermission", input, opts);
   }
 
-  ListPermissions(input: ListPermissionsInput): Promise<ListPermissionsOutput> {
-    return this.cli.call("eolymp.universe.Universe/ListPermissions", input);
+  ListPermissions<O>(input: ListPermissionsInput, opts: O): Promise<ListPermissionsOutput> {
+    return this.cli.call("eolymp.universe.Universe/ListPermissions", input, opts);
   }
 }
 

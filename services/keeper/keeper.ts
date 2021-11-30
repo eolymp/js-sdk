@@ -3,7 +3,7 @@
 
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Keeper {
@@ -13,16 +13,16 @@ export class Keeper {
     this.cli = cli;
   }
 
-  CreateObject(input: CreateObjectInput): Promise<CreateObjectOutput> {
-    return this.cli.call("eolymp.keeper.Keeper/CreateObject", input);
+  CreateObject<O>(input: CreateObjectInput, opts: O): Promise<CreateObjectOutput> {
+    return this.cli.call("eolymp.keeper.Keeper/CreateObject", input, opts);
   }
 
-  DescribeObject(input: DescribeObjectInput): Promise<DescribeObjectOutput> {
-    return this.cli.call("eolymp.keeper.Keeper/DescribeObject", input);
+  DescribeObject<O>(input: DescribeObjectInput, opts: O): Promise<DescribeObjectOutput> {
+    return this.cli.call("eolymp.keeper.Keeper/DescribeObject", input, opts);
   }
 
-  DownloadObject(input: DownloadObjectInput): Promise<DownloadObjectOutput> {
-    return this.cli.call("eolymp.keeper.Keeper/DownloadObject", input);
+  DownloadObject<O>(input: DownloadObjectInput, opts: O): Promise<DownloadObjectOutput> {
+    return this.cli.call("eolymp.keeper.Keeper/DownloadObject", input, opts);
   }
 }
 

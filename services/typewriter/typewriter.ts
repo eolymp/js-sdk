@@ -3,7 +3,7 @@
 
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Typewriter {
@@ -13,8 +13,8 @@ export class Typewriter {
     this.cli = cli;
   }
 
-  UploadAsset(input: UploadAssetInput): Promise<UploadAssetOutput> {
-    return this.cli.call("eolymp.typewriter.Typewriter/UploadAsset", input);
+  UploadAsset<O>(input: UploadAssetInput, opts: O): Promise<UploadAssetOutput> {
+    return this.cli.call("eolymp.typewriter.Typewriter/UploadAsset", input, opts);
   }
 }
 

@@ -18,7 +18,7 @@ import { Test } from "./test"
 import { Testset } from "./testset"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Atlas {
@@ -28,252 +28,252 @@ export class Atlas {
     this.cli = cli;
   }
 
-  CreateProblem(input: CreateProblemInput): Promise<CreateProblemOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateProblem", input);
+  CreateProblem<O>(input: CreateProblemInput, opts: O): Promise<CreateProblemOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateProblem", input, opts);
   }
 
-  DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteProblem", input);
+  DeleteProblem<O>(input: DeleteProblemInput, opts: O): Promise<DeleteProblemOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteProblem", input, opts);
   }
 
-  ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListProblems", input);
+  ListProblems<O>(input: ListProblemsInput, opts: O): Promise<ListProblemsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListProblems", input, opts);
   }
 
-  DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input);
+  DescribeProblem<O>(input: DescribeProblemInput, opts: O): Promise<DescribeProblemOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input, opts);
   }
 
-  UpdateVisibility(input: UpdateVisibilityInput): Promise<UpdateVisibilityOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input);
+  UpdateVisibility<O>(input: UpdateVisibilityInput, opts: O): Promise<UpdateVisibilityOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input, opts);
   }
 
-  UpdatePrivacy(input: UpdatePrivacyInput): Promise<UpdatePrivacyOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input);
+  UpdatePrivacy<O>(input: UpdatePrivacyInput, opts: O): Promise<UpdatePrivacyOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input, opts);
   }
 
-  ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListExamples", input);
+  ListExamples<O>(input: ListExamplesInput, opts: O): Promise<ListExamplesOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListExamples", input, opts);
   }
 
-  UpdateVerifier(input: UpdateVerifierInput): Promise<UpdateVerifierOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateVerifier", input);
+  UpdateVerifier<O>(input: UpdateVerifierInput, opts: O): Promise<UpdateVerifierOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateVerifier", input, opts);
   }
 
-  DescribeVerifier(input: DescribeVerifierInput): Promise<DescribeVerifierOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeVerifier", input);
+  DescribeVerifier<O>(input: DescribeVerifierInput, opts: O): Promise<DescribeVerifierOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeVerifier", input, opts);
   }
 
-  UpdateInteractor(input: UpdateInteractorInput): Promise<UpdateInteractorOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateInteractor", input);
+  UpdateInteractor<O>(input: UpdateInteractorInput, opts: O): Promise<UpdateInteractorOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateInteractor", input, opts);
   }
 
-  DescribeInteractor(input: DescribeInteractorInput): Promise<DescribeInteractorOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeInteractor", input);
+  DescribeInteractor<O>(input: DescribeInteractorInput, opts: O): Promise<DescribeInteractorOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeInteractor", input, opts);
   }
 
-  CreateStatement(input: CreateStatementInput): Promise<CreateStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateStatement", input);
+  CreateStatement<O>(input: CreateStatementInput, opts: O): Promise<CreateStatementOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateStatement", input, opts);
   }
 
-  UpdateStatement(input: UpdateStatementInput): Promise<UpdateStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateStatement", input);
+  UpdateStatement<O>(input: UpdateStatementInput, opts: O): Promise<UpdateStatementOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateStatement", input, opts);
   }
 
-  DeleteStatement(input: DeleteStatementInput): Promise<DeleteStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteStatement", input);
+  DeleteStatement<O>(input: DeleteStatementInput, opts: O): Promise<DeleteStatementOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteStatement", input, opts);
   }
 
-  ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListStatements", input);
+  ListStatements<O>(input: ListStatementsInput, opts: O): Promise<ListStatementsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListStatements", input, opts);
   }
 
-  DescribeStatement(input: DescribeStatementInput): Promise<DescribeStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeStatement", input);
+  DescribeStatement<O>(input: DescribeStatementInput, opts: O): Promise<DescribeStatementOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeStatement", input, opts);
   }
 
-  CreateTestset(input: CreateTestsetInput): Promise<CreateTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateTestset", input);
+  CreateTestset<O>(input: CreateTestsetInput, opts: O): Promise<CreateTestsetOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateTestset", input, opts);
   }
 
-  UpdateTestset(input: UpdateTestsetInput): Promise<UpdateTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateTestset", input);
+  UpdateTestset<O>(input: UpdateTestsetInput, opts: O): Promise<UpdateTestsetOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateTestset", input, opts);
   }
 
-  DeleteTestset(input: DeleteTestsetInput): Promise<DeleteTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteTestset", input);
+  DeleteTestset<O>(input: DeleteTestsetInput, opts: O): Promise<DeleteTestsetOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteTestset", input, opts);
   }
 
-  ListTestsets(input: ListTestsetsInput): Promise<ListTestsetsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListTestsets", input);
+  ListTestsets<O>(input: ListTestsetsInput, opts: O): Promise<ListTestsetsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListTestsets", input, opts);
   }
 
-  DescribeTestset(input: DescribeTestsetInput): Promise<DescribeTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeTestset", input);
+  DescribeTestset<O>(input: DescribeTestsetInput, opts: O): Promise<DescribeTestsetOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeTestset", input, opts);
   }
 
-  CreateTest(input: CreateTestInput): Promise<CreateTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateTest", input);
+  CreateTest<O>(input: CreateTestInput, opts: O): Promise<CreateTestOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateTest", input, opts);
   }
 
-  UpdateTest(input: UpdateTestInput): Promise<UpdateTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateTest", input);
+  UpdateTest<O>(input: UpdateTestInput, opts: O): Promise<UpdateTestOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateTest", input, opts);
   }
 
-  DeleteTest(input: DeleteTestInput): Promise<DeleteTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteTest", input);
+  DeleteTest<O>(input: DeleteTestInput, opts: O): Promise<DeleteTestOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteTest", input, opts);
   }
 
-  ListTests(input: ListTestsInput): Promise<ListTestsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListTests", input);
+  ListTests<O>(input: ListTestsInput, opts: O): Promise<ListTestsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListTests", input, opts);
   }
 
-  DescribeTest(input: DescribeTestInput): Promise<DescribeTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeTest", input);
+  DescribeTest<O>(input: DescribeTestInput, opts: O): Promise<DescribeTestOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeTest", input, opts);
   }
 
-  GrantPermission(input: GrantPermissionInput): Promise<GrantPermissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/GrantPermission", input);
+  GrantPermission<O>(input: GrantPermissionInput, opts: O): Promise<GrantPermissionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/GrantPermission", input, opts);
   }
 
-  RevokePermission(input: RevokePermissionInput): Promise<RevokePermissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/RevokePermission", input);
+  RevokePermission<O>(input: RevokePermissionInput, opts: O): Promise<RevokePermissionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/RevokePermission", input, opts);
   }
 
-  ListPermissions(input: ListPermissionsInput): Promise<ListPermissionsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListPermissions", input);
+  ListPermissions<O>(input: ListPermissionsInput, opts: O): Promise<ListPermissionsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListPermissions", input, opts);
   }
 
-  CreateCodeTemplate(input: CreateCodeTemplateInput): Promise<CreateCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateCodeTemplate", input);
+  CreateCodeTemplate<O>(input: CreateCodeTemplateInput, opts: O): Promise<CreateCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateCodeTemplate", input, opts);
   }
 
-  UpdateCodeTemplate(input: UpdateCodeTemplateInput): Promise<UpdateCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateCodeTemplate", input);
+  UpdateCodeTemplate<O>(input: UpdateCodeTemplateInput, opts: O): Promise<UpdateCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateCodeTemplate", input, opts);
   }
 
-  DeleteCodeTemplate(input: DeleteCodeTemplateInput): Promise<DeleteCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteCodeTemplate", input);
+  DeleteCodeTemplate<O>(input: DeleteCodeTemplateInput, opts: O): Promise<DeleteCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteCodeTemplate", input, opts);
   }
 
-  ListCodeTemplates(input: ListCodeTemplatesInput): Promise<ListCodeTemplatesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListCodeTemplates", input);
+  ListCodeTemplates<O>(input: ListCodeTemplatesInput, opts: O): Promise<ListCodeTemplatesOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListCodeTemplates", input, opts);
   }
 
-  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input);
+  DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts: O): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input, opts);
   }
 
-  CreateAttachment(input: CreateAttachmentInput): Promise<CreateAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input);
+  CreateAttachment<O>(input: CreateAttachmentInput, opts: O): Promise<CreateAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input, opts);
   }
 
-  UpdateAttachment(input: UpdateAttachmentInput): Promise<UpdateAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input);
+  UpdateAttachment<O>(input: UpdateAttachmentInput, opts: O): Promise<UpdateAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input, opts);
   }
 
-  DeleteAttachment(input: DeleteAttachmentInput): Promise<DeleteAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input);
+  DeleteAttachment<O>(input: DeleteAttachmentInput, opts: O): Promise<DeleteAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input, opts);
   }
 
-  ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input);
+  ListAttachments<O>(input: ListAttachmentsInput, opts: O): Promise<ListAttachmentsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input, opts);
   }
 
-  DescribeAttachment(input: DescribeAttachmentInput): Promise<DescribeAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input);
+  DescribeAttachment<O>(input: DescribeAttachmentInput, opts: O): Promise<DescribeAttachmentOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input, opts);
   }
 
-  DescribeChange(input: DescribeChangeInput): Promise<DescribeChangeOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input);
+  DescribeChange<O>(input: DescribeChangeInput, opts: O): Promise<DescribeChangeOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input, opts);
   }
 
-  ListChanges(input: ListChangesInput): Promise<ListChangesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListChanges", input);
+  ListChanges<O>(input: ListChangesInput, opts: O): Promise<ListChangesOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListChanges", input, opts);
   }
 
-  ListProblemTop(input: ListProblemTopInput): Promise<ListProblemTopOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input);
+  ListProblemTop<O>(input: ListProblemTopInput, opts: O): Promise<ListProblemTopOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input, opts);
   }
 
-  DescribeProblemGrading(input: DescribeProblemGradingInput): Promise<DescribeProblemGradingOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input);
+  DescribeProblemGrading<O>(input: DescribeProblemGradingInput, opts: O): Promise<DescribeProblemGradingOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input, opts);
   }
 
-  CreateSolution(input: CreateSolutionInput): Promise<CreateSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input);
+  CreateSolution<O>(input: CreateSolutionInput, opts: O): Promise<CreateSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input, opts);
   }
 
-  UpdateSolution(input: UpdateSolutionInput): Promise<UpdateSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateSolution", input);
+  UpdateSolution<O>(input: UpdateSolutionInput, opts: O): Promise<UpdateSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateSolution", input, opts);
   }
 
-  DeleteSolution(input: DeleteSolutionInput): Promise<DeleteSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteSolution", input);
+  DeleteSolution<O>(input: DeleteSolutionInput, opts: O): Promise<DeleteSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteSolution", input, opts);
   }
 
-  ListSolutions(input: ListSolutionsInput): Promise<ListSolutionsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListSolutions", input);
+  ListSolutions<O>(input: ListSolutionsInput, opts: O): Promise<ListSolutionsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListSolutions", input, opts);
   }
 
-  DescribeSolution(input: DescribeSolutionInput): Promise<DescribeSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeSolution", input);
+  DescribeSolution<O>(input: DescribeSolutionInput, opts: O): Promise<DescribeSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeSolution", input, opts);
   }
 
-  PublishSolution(input: PublishSolutionInput): Promise<PublishSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/PublishSolution", input);
+  PublishSolution<O>(input: PublishSolutionInput, opts: O): Promise<PublishSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/PublishSolution", input, opts);
   }
 
-  UnpublishSolution(input: UnpublishSolutionInput): Promise<UnpublishSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UnpublishSolution", input);
+  UnpublishSolution<O>(input: UnpublishSolutionInput, opts: O): Promise<UnpublishSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UnpublishSolution", input, opts);
   }
 
-  ApproveSolution(input: ApproveSolutionInput): Promise<ApproveSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ApproveSolution", input);
+  ApproveSolution<O>(input: ApproveSolutionInput, opts: O): Promise<ApproveSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ApproveSolution", input, opts);
   }
 
-  RefuseSolution(input: RefuseSolutionInput): Promise<RefuseSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/RefuseSolution", input);
+  RefuseSolution<O>(input: RefuseSolutionInput, opts: O): Promise<RefuseSolutionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/RefuseSolution", input, opts);
   }
 
-  CreateCategory(input: CreateCategoryInput): Promise<CreateCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateCategory", input);
+  CreateCategory<O>(input: CreateCategoryInput, opts: O): Promise<CreateCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateCategory", input, opts);
   }
 
-  UpdateCategory(input: UpdateCategoryInput): Promise<UpdateCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateCategory", input);
+  UpdateCategory<O>(input: UpdateCategoryInput, opts: O): Promise<UpdateCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateCategory", input, opts);
   }
 
-  DeleteCategory(input: DeleteCategoryInput): Promise<DeleteCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteCategory", input);
+  DeleteCategory<O>(input: DeleteCategoryInput, opts: O): Promise<DeleteCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteCategory", input, opts);
   }
 
-  ListCategories(input: ListCategoriesInput): Promise<ListCategoriesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListCategories", input);
+  ListCategories<O>(input: ListCategoriesInput, opts: O): Promise<ListCategoriesOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListCategories", input, opts);
   }
 
-  DescribeCategory(input: DescribeCategoryInput): Promise<DescribeCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeCategory", input);
+  DescribeCategory<O>(input: DescribeCategoryInput, opts: O): Promise<DescribeCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeCategory", input, opts);
   }
 
-  AssignCategory(input: AssignCategoryInput): Promise<AssignCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/AssignCategory", input);
+  AssignCategory<O>(input: AssignCategoryInput, opts: O): Promise<AssignCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/AssignCategory", input, opts);
   }
 
-  UnassignCategory(input: UnassignCategoryInput): Promise<UnassignCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UnassignCategory", input);
+  UnassignCategory<O>(input: UnassignCategoryInput, opts: O): Promise<UnassignCategoryOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UnassignCategory", input, opts);
   }
 
-  CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateSubmission", input);
+  CreateSubmission<O>(input: CreateSubmissionInput, opts: O): Promise<CreateSubmissionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateSubmission", input, opts);
   }
 
-  DescribeSubmission(input: DescribeSubmissionInput): Promise<DescribeSubmissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input);
+  DescribeSubmission<O>(input: DescribeSubmissionInput, opts: O): Promise<DescribeSubmissionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input, opts);
   }
 
-  DescribeScore(input: DescribeScoreInput): Promise<DescribeScoreOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input);
+  DescribeScore<O>(input: DescribeScoreInput, opts: O): Promise<DescribeScoreOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input, opts);
   }
 }
 

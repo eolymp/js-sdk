@@ -6,7 +6,7 @@ import { Quota } from "./quota"
 import { User } from "./user"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Cognito {
@@ -16,76 +16,76 @@ export class Cognito {
     this.cli = cli;
   }
 
-  CreateToken(input: CreateTokenInput): Promise<CreateTokenOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CreateToken", input);
+  CreateToken<O>(input: CreateTokenInput, opts: O): Promise<CreateTokenOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/CreateToken", input, opts);
   }
 
-  IntrospectToken(input: IntrospectTokenInput): Promise<IntrospectTokenOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectToken", input);
+  IntrospectToken<O>(input: IntrospectTokenInput, opts: O): Promise<IntrospectTokenOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/IntrospectToken", input, opts);
   }
 
-  CreateAuthorization(input: CreateAuthorizationInput): Promise<CreateAuthorizationOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input);
+  CreateAuthorization<O>(input: CreateAuthorizationInput, opts: O): Promise<CreateAuthorizationOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input, opts);
   }
 
-  RevokeToken(input: RevokeTokenInput): Promise<RevokeTokenOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input);
+  RevokeToken<O>(input: RevokeTokenInput, opts: O): Promise<RevokeTokenOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input, opts);
   }
 
-  Signout(input: SignoutInput): Promise<SignoutOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/Signout", input);
+  Signout<O>(input: SignoutInput, opts: O): Promise<SignoutOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/Signout", input, opts);
   }
 
-  CreateUser(input: CreateUserInput): Promise<CreateUserOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CreateUser", input);
+  CreateUser<O>(input: CreateUserInput, opts: O): Promise<CreateUserOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/CreateUser", input, opts);
   }
 
-  VerifyEmail(input: VerifyEmailInput): Promise<VerifyEmailOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/VerifyEmail", input);
+  VerifyEmail<O>(input: VerifyEmailInput, opts: O): Promise<VerifyEmailOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/VerifyEmail", input, opts);
   }
 
-  UpdateEmail(input: UpdateEmailInput): Promise<UpdateEmailOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdateEmail", input);
+  UpdateEmail<O>(input: UpdateEmailInput, opts: O): Promise<UpdateEmailOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/UpdateEmail", input, opts);
   }
 
-  StartRecovery(input: StartRecoveryInput): Promise<StartRecoveryOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input);
+  StartRecovery<O>(input: StartRecoveryInput, opts: O): Promise<StartRecoveryOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input, opts);
   }
 
-  CompleteRecovery(input: CompleteRecoverInput): Promise<CompleteRecoverOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CompleteRecovery", input);
+  CompleteRecovery<O>(input: CompleteRecoverInput, opts: O): Promise<CompleteRecoverOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/CompleteRecovery", input, opts);
   }
 
-  IntrospectUser(input: IntrospectUserInput): Promise<IntrospectUserOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectUser", input);
+  IntrospectUser<O>(input: IntrospectUserInput, opts: O): Promise<IntrospectUserOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/IntrospectUser", input, opts);
   }
 
-  DescribeUser(input: DescribeUserInput): Promise<DescribeUserOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/DescribeUser", input);
+  DescribeUser<O>(input: DescribeUserInput, opts: O): Promise<DescribeUserOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/DescribeUser", input, opts);
   }
 
-  ListUsers(input: ListUsersInput): Promise<ListUsersOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListUsers", input);
+  ListUsers<O>(input: ListUsersInput, opts: O): Promise<ListUsersOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/ListUsers", input, opts);
   }
 
-  IntrospectQuota(input: IntrospectQuotaInput): Promise<IntrospectQuotaOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input);
+  IntrospectQuota<O>(input: IntrospectQuotaInput, opts: O): Promise<IntrospectQuotaOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input, opts);
   }
 
-  IntrospectRoles(input: IntrospectRolesInput): Promise<IntrospectRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input);
+  IntrospectRoles<O>(input: IntrospectRolesInput, opts: O): Promise<IntrospectRolesOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input, opts);
   }
 
-  ListRoles(input: ListRolesInput): Promise<ListRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListRoles", input);
+  ListRoles<O>(input: ListRolesInput, opts: O): Promise<ListRolesOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/ListRoles", input, opts);
   }
 
-  UpdateRoles(input: UpdateRolesInput): Promise<UpdateRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input);
+  UpdateRoles<O>(input: UpdateRolesInput, opts: O): Promise<UpdateRolesOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input, opts);
   }
 
-  ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input);
+  ListEntitlements<O>(input: ListEntitlementsInput, opts: O): Promise<ListEntitlementsOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input, opts);
   }
 }
 

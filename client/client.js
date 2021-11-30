@@ -64,8 +64,8 @@ class Client {
     graphql(query, variables) {
         return this.do("POST", "/graphql", JSON.stringify({ query, variables }));
     }
-    call(method, input) {
-        return this.do("POST", "/" + method, JSON.stringify(input));
+    call(method, input, opts) {
+        return this.do("POST", "/" + method, JSON.stringify(input), opts === null || opts === void 0 ? void 0 : opts.headers);
     }
 }
 exports.Client = Client;

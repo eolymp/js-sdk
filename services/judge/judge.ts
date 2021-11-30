@@ -14,7 +14,7 @@ import { Submission } from "./submission"
 import { Ticket } from "./ticket"
 
 interface Client {
-  call<R, E>(method: string, args: R): Promise<E>;
+  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
 
 export class Judge {
@@ -24,316 +24,316 @@ export class Judge {
     this.cli = cli;
   }
 
-  CreateContest(input: CreateContestInput): Promise<CreateContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateContest", input);
+  CreateContest<O>(input: CreateContestInput, opts: O): Promise<CreateContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/CreateContest", input, opts);
   }
 
-  DeleteContest(input: DeleteContestInput): Promise<DeleteContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteContest", input);
+  DeleteContest<O>(input: DeleteContestInput, opts: O): Promise<DeleteContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteContest", input, opts);
   }
 
-  UpdateContest(input: UpdateContestInput): Promise<UpdateContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateContest", input);
+  UpdateContest<O>(input: UpdateContestInput, opts: O): Promise<UpdateContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateContest", input, opts);
   }
 
-  LookupContest(input: LookupContestInput): Promise<LookupContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/LookupContest", input);
+  LookupContest<O>(input: LookupContestInput, opts: O): Promise<LookupContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/LookupContest", input, opts);
   }
 
-  DescribeContest(input: DescribeContestInput): Promise<DescribeContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeContest", input);
+  DescribeContest<O>(input: DescribeContestInput, opts: O): Promise<DescribeContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeContest", input, opts);
   }
 
-  ListContests(input: ListContestsInput): Promise<ListContestsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListContests", input);
+  ListContests<O>(input: ListContestsInput, opts: O): Promise<ListContestsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListContests", input, opts);
   }
 
-  OpenContest(input: OpenContestInput): Promise<OpenContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/OpenContest", input);
+  OpenContest<O>(input: OpenContestInput, opts: O): Promise<OpenContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/OpenContest", input, opts);
   }
 
-  CloseContest(input: CloseContestInput): Promise<CloseContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/CloseContest", input);
+  CloseContest<O>(input: CloseContestInput, opts: O): Promise<CloseContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/CloseContest", input, opts);
   }
 
-  ConfigureRegistrationForm(input: ConfigureRegistrationFormInput): Promise<ConfigureRegistrationFormOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureRegistrationForm", input);
+  ConfigureRegistrationForm<O>(input: ConfigureRegistrationFormInput, opts: O): Promise<ConfigureRegistrationFormOutput> {
+    return this.cli.call("eolymp.judge.Judge/ConfigureRegistrationForm", input, opts);
   }
 
-  DescribeRegistrationForm(input: DescribeRegistrationFormInput): Promise<DescribeRegistrationFormOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeRegistrationForm", input);
+  DescribeRegistrationForm<O>(input: DescribeRegistrationFormInput, opts: O): Promise<DescribeRegistrationFormOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeRegistrationForm", input, opts);
   }
 
-  ConfigureRuntime(input: ConfigureRuntimeInput): Promise<ConfigureRuntimeOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureRuntime", input);
+  ConfigureRuntime<O>(input: ConfigureRuntimeInput, opts: O): Promise<ConfigureRuntimeOutput> {
+    return this.cli.call("eolymp.judge.Judge/ConfigureRuntime", input, opts);
   }
 
-  DescribeRuntime(input: DescribeRuntimeInput): Promise<DescribeRuntimeOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input);
+  DescribeRuntime<O>(input: DescribeRuntimeInput, opts: O): Promise<DescribeRuntimeOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input, opts);
   }
 
-  ConfigureAppearance(input: ConfigureAppearanceInput): Promise<ConfigureAppearanceOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input);
+  ConfigureAppearance<O>(input: ConfigureAppearanceInput, opts: O): Promise<ConfigureAppearanceOutput> {
+    return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input, opts);
   }
 
-  DescribeAppearance(input: DescribeAppearanceInput): Promise<DescribeAppearanceOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input);
+  DescribeAppearance<O>(input: DescribeAppearanceInput, opts: O): Promise<DescribeAppearanceOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input, opts);
   }
 
-  SubmitRegistration(input: SubmitRegistrationInput): Promise<SubmitRegistrationOutput> {
-    return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input);
+  SubmitRegistration<O>(input: SubmitRegistrationInput, opts: O): Promise<SubmitRegistrationOutput> {
+    return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input, opts);
   }
 
-  DescribeRegistration(input: DescribeRegistrationInput): Promise<DescribeRegistrationOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeRegistration", input);
+  DescribeRegistration<O>(input: DescribeRegistrationInput, opts: O): Promise<DescribeRegistrationOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeRegistration", input, opts);
   }
 
-  ImportProblem(input: ImportProblemInput): Promise<ImportProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/ImportProblem", input);
+  ImportProblem<O>(input: ImportProblemInput, opts: O): Promise<ImportProblemOutput> {
+    return this.cli.call("eolymp.judge.Judge/ImportProblem", input, opts);
   }
 
-  SyncProblem(input: SyncProblemInput): Promise<SyncProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/SyncProblem", input);
+  SyncProblem<O>(input: SyncProblemInput, opts: O): Promise<SyncProblemOutput> {
+    return this.cli.call("eolymp.judge.Judge/SyncProblem", input, opts);
   }
 
-  UpdateProblem(input: UpdateProblemInput): Promise<UpdateProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateProblem", input);
+  UpdateProblem<O>(input: UpdateProblemInput, opts: O): Promise<UpdateProblemOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateProblem", input, opts);
   }
 
-  ListProblems(input: ListProblemsInput): Promise<ListProblemsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListProblems", input);
+  ListProblems<O>(input: ListProblemsInput, opts: O): Promise<ListProblemsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListProblems", input, opts);
   }
 
-  DescribeProblem(input: DescribeProblemInput): Promise<DescribeProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeProblem", input);
+  DescribeProblem<O>(input: DescribeProblemInput, opts: O): Promise<DescribeProblemOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeProblem", input, opts);
   }
 
-  DescribeCodeTemplate(input: DescribeCodeTemplateInput): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input);
+  DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts: O): Promise<DescribeCodeTemplateOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input, opts);
   }
 
-  ListStatements(input: ListStatementsInput): Promise<ListStatementsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListStatements", input);
+  ListStatements<O>(input: ListStatementsInput, opts: O): Promise<ListStatementsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListStatements", input, opts);
   }
 
-  ListAttachments(input: ListAttachmentsInput): Promise<ListAttachmentsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListAttachments", input);
+  ListAttachments<O>(input: ListAttachmentsInput, opts: O): Promise<ListAttachmentsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListAttachments", input, opts);
   }
 
-  ListExamples(input: ListExamplesInput): Promise<ListExamplesOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListExamples", input);
+  ListExamples<O>(input: ListExamplesInput, opts: O): Promise<ListExamplesOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListExamples", input, opts);
   }
 
-  DeleteProblem(input: DeleteProblemInput): Promise<DeleteProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteProblem", input);
+  DeleteProblem<O>(input: DeleteProblemInput, opts: O): Promise<DeleteProblemOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteProblem", input, opts);
   }
 
-  RetestProblem(input: RetestProblemInput): Promise<RetestProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/RetestProblem", input);
+  RetestProblem<O>(input: RetestProblemInput, opts: O): Promise<RetestProblemOutput> {
+    return this.cli.call("eolymp.judge.Judge/RetestProblem", input, opts);
   }
 
-  AddParticipant(input: AddParticipantInput): Promise<AddParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/AddParticipant", input);
+  AddParticipant<O>(input: AddParticipantInput, opts: O): Promise<AddParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/AddParticipant", input, opts);
   }
 
-  EnableParticipant(input: EnableParticipantInput): Promise<EnableParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/EnableParticipant", input);
+  EnableParticipant<O>(input: EnableParticipantInput, opts: O): Promise<EnableParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/EnableParticipant", input, opts);
   }
 
-  DisableParticipant(input: DisableParticipantInput): Promise<DisableParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/DisableParticipant", input);
+  DisableParticipant<O>(input: DisableParticipantInput, opts: O): Promise<DisableParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/DisableParticipant", input, opts);
   }
 
-  UpdateParticipant(input: UpdateParticipantInput): Promise<UpdateParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input);
+  UpdateParticipant<O>(input: UpdateParticipantInput, opts: O): Promise<UpdateParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input, opts);
   }
 
-  RemoveParticipant(input: RemoveParticipantInput): Promise<RemoveParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input);
+  RemoveParticipant<O>(input: RemoveParticipantInput, opts: O): Promise<RemoveParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input, opts);
   }
 
-  ListParticipants(input: ListParticipantsInput): Promise<ListParticipantsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListParticipants", input);
+  ListParticipants<O>(input: ListParticipantsInput, opts: O): Promise<ListParticipantsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListParticipants", input, opts);
   }
 
-  DescribeParticipant(input: DescribeParticipantInput): Promise<DescribeParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeParticipant", input);
+  DescribeParticipant<O>(input: DescribeParticipantInput, opts: O): Promise<DescribeParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeParticipant", input, opts);
   }
 
-  IntrospectParticipant(input: IntrospectParticipantInput): Promise<IntrospectParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/IntrospectParticipant", input);
+  IntrospectParticipant<O>(input: IntrospectParticipantInput, opts: O): Promise<IntrospectParticipantOutput> {
+    return this.cli.call("eolymp.judge.Judge/IntrospectParticipant", input, opts);
   }
 
-  JoinContest(input: JoinContestInput): Promise<JoinContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/JoinContest", input);
+  JoinContest<O>(input: JoinContestInput, opts: O): Promise<JoinContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/JoinContest", input, opts);
   }
 
-  StartContest(input: StartContestInput): Promise<StartContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/StartContest", input);
+  StartContest<O>(input: StartContestInput, opts: O): Promise<StartContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/StartContest", input, opts);
   }
 
-  VerifyPasscode(input: VerifyPasscodeInput): Promise<VerifyPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input);
+  VerifyPasscode<O>(input: VerifyPasscodeInput, opts: O): Promise<VerifyPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input, opts);
   }
 
-  EnterPasscode(input: EnterPasscodeInput): Promise<EnterPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input);
+  EnterPasscode<O>(input: EnterPasscodeInput, opts: O): Promise<EnterPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input, opts);
   }
 
-  ResetPasscode(input: ResetPasscodeInput): Promise<ResetPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input);
+  ResetPasscode<O>(input: ResetPasscodeInput, opts: O): Promise<ResetPasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input, opts);
   }
 
-  RemovePasscode(input: RemovePasscodeInput): Promise<RemovePasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input);
+  RemovePasscode<O>(input: RemovePasscodeInput, opts: O): Promise<RemovePasscodeOutput> {
+    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input, opts);
   }
 
-  CreateSubmission(input: CreateSubmissionInput): Promise<CreateSubmissionOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateSubmission", input);
+  CreateSubmission<O>(input: CreateSubmissionInput, opts: O): Promise<CreateSubmissionOutput> {
+    return this.cli.call("eolymp.judge.Judge/CreateSubmission", input, opts);
   }
 
-  ListSubmissions(input: ListSubmissionsInput): Promise<ListSubmissionsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListSubmissions", input);
+  ListSubmissions<O>(input: ListSubmissionsInput, opts: O): Promise<ListSubmissionsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListSubmissions", input, opts);
   }
 
-  DescribeSubmission(input: DescribeSubmissionInput): Promise<DescribeSubmissionOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeSubmission", input);
+  DescribeSubmission<O>(input: DescribeSubmissionInput, opts: O): Promise<DescribeSubmissionOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeSubmission", input, opts);
   }
 
-  RetestSubmission(input: RetestSubmissionInput): Promise<RetestSubmissionOutput> {
-    return this.cli.call("eolymp.judge.Judge/RetestSubmission", input);
+  RetestSubmission<O>(input: RetestSubmissionInput, opts: O): Promise<RetestSubmissionOutput> {
+    return this.cli.call("eolymp.judge.Judge/RetestSubmission", input, opts);
   }
 
-  CreateTicket(input: CreateTicketInput): Promise<CreateTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateTicket", input);
+  CreateTicket<O>(input: CreateTicketInput, opts: O): Promise<CreateTicketOutput> {
+    return this.cli.call("eolymp.judge.Judge/CreateTicket", input, opts);
   }
 
-  CloseTicket(input: CloseTicketInput): Promise<CloseTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/CloseTicket", input);
+  CloseTicket<O>(input: CloseTicketInput, opts: O): Promise<CloseTicketOutput> {
+    return this.cli.call("eolymp.judge.Judge/CloseTicket", input, opts);
   }
 
-  OpenTicket(input: OpenTicketInput): Promise<OpenTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/OpenTicket", input);
+  OpenTicket<O>(input: OpenTicketInput, opts: O): Promise<OpenTicketOutput> {
+    return this.cli.call("eolymp.judge.Judge/OpenTicket", input, opts);
   }
 
-  ReadTicket(input: ReadTicketInput): Promise<ReadTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/ReadTicket", input);
+  ReadTicket<O>(input: ReadTicketInput, opts: O): Promise<ReadTicketOutput> {
+    return this.cli.call("eolymp.judge.Judge/ReadTicket", input, opts);
   }
 
-  DeleteTicket(input: DeleteTicketInput): Promise<DeleteTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteTicket", input);
+  DeleteTicket<O>(input: DeleteTicketInput, opts: O): Promise<DeleteTicketOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteTicket", input, opts);
   }
 
-  DescribeTicket(input: DescribeTicketInput): Promise<DescribeTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeTicket", input);
+  DescribeTicket<O>(input: DescribeTicketInput, opts: O): Promise<DescribeTicketOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeTicket", input, opts);
   }
 
-  ListTickets(input: ListTicketsInput): Promise<ListTicketsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListTickets", input);
+  ListTickets<O>(input: ListTicketsInput, opts: O): Promise<ListTicketsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListTickets", input, opts);
   }
 
-  ReplyTicket(input: ReplyTicketInput): Promise<ReplyTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/ReplyTicket", input);
+  ReplyTicket<O>(input: ReplyTicketInput, opts: O): Promise<ReplyTicketOutput> {
+    return this.cli.call("eolymp.judge.Judge/ReplyTicket", input, opts);
   }
 
-  ListReplies(input: ListRepliesInput): Promise<ListRepliesOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListReplies", input);
+  ListReplies<O>(input: ListRepliesInput, opts: O): Promise<ListRepliesOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListReplies", input, opts);
   }
 
-  DeleteReply(input: DeleteReplyInput): Promise<DeleteReplyOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteReply", input);
+  DeleteReply<O>(input: DeleteReplyInput, opts: O): Promise<DeleteReplyOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteReply", input, opts);
   }
 
-  UpdateReply(input: UpdateReplyInput): Promise<UpdateReplyOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateReply", input);
+  UpdateReply<O>(input: UpdateReplyInput, opts: O): Promise<UpdateReplyOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateReply", input, opts);
   }
 
-  CreateAnnouncement(input: CreateAnnouncementInput): Promise<CreateAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateAnnouncement", input);
+  CreateAnnouncement<O>(input: CreateAnnouncementInput, opts: O): Promise<CreateAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/CreateAnnouncement", input, opts);
   }
 
-  UpdateAnnouncement(input: UpdateAnnouncementInput): Promise<UpdateAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateAnnouncement", input);
+  UpdateAnnouncement<O>(input: UpdateAnnouncementInput, opts: O): Promise<UpdateAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateAnnouncement", input, opts);
   }
 
-  DeleteAnnouncement(input: DeleteAnnouncementInput): Promise<DeleteAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteAnnouncement", input);
+  DeleteAnnouncement<O>(input: DeleteAnnouncementInput, opts: O): Promise<DeleteAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteAnnouncement", input, opts);
   }
 
-  ReadAnnouncement(input: ReadAnnouncementInput): Promise<ReadAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/ReadAnnouncement", input);
+  ReadAnnouncement<O>(input: ReadAnnouncementInput, opts: O): Promise<ReadAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/ReadAnnouncement", input, opts);
   }
 
-  DescribeAnnouncement(input: DescribeAnnouncementInput): Promise<DescribeAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncement", input);
+  DescribeAnnouncement<O>(input: DescribeAnnouncementInput, opts: O): Promise<DescribeAnnouncementOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncement", input, opts);
   }
 
-  DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput): Promise<DescribeAnnouncementStatusOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncementStatus", input);
+  DescribeAnnouncementStatus<O>(input: DescribeAnnouncementStatusInput, opts: O): Promise<DescribeAnnouncementStatusOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncementStatus", input, opts);
   }
 
-  ListAnnouncements(input: ListAnnouncementsInput): Promise<ListAnnouncementsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input);
+  ListAnnouncements<O>(input: ListAnnouncementsInput, opts: O): Promise<ListAnnouncementsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input, opts);
   }
 
-  CreateScoreboard(input: CreateScoreboardInput): Promise<CreateScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input);
+  CreateScoreboard<O>(input: CreateScoreboardInput, opts: O): Promise<CreateScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input, opts);
   }
 
-  UpdateScoreboard(input: UpdateScoreboardInput): Promise<UpdateScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input);
+  UpdateScoreboard<O>(input: UpdateScoreboardInput, opts: O): Promise<UpdateScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input, opts);
   }
 
-  RebuildScoreboard(input: RebuildScoreboardInput): Promise<RebuildScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input);
+  RebuildScoreboard<O>(input: RebuildScoreboardInput, opts: O): Promise<RebuildScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input, opts);
   }
 
-  DeleteScoreboard(input: DeleteScoreboardInput): Promise<DeleteScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input);
+  DeleteScoreboard<O>(input: DeleteScoreboardInput, opts: O): Promise<DeleteScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input, opts);
   }
 
-  DescribeScoreboard(input: DescribeScoreboardInput): Promise<DescribeScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input);
+  DescribeScoreboard<O>(input: DescribeScoreboardInput, opts: O): Promise<DescribeScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input, opts);
   }
 
-  DescribeDefaultScoreboard(input: DescribeDefaultScoreboardInput): Promise<DescribeDefaultScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input);
+  DescribeDefaultScoreboard<O>(input: DescribeDefaultScoreboardInput, opts: O): Promise<DescribeDefaultScoreboardOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input, opts);
   }
 
-  ListScoreboards(input: ListScoreboardsInput): Promise<ListScoreboardsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListScoreboards", input);
+  ListScoreboards<O>(input: ListScoreboardsInput, opts: O): Promise<ListScoreboardsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListScoreboards", input, opts);
   }
 
-  DescribeScoreboardHeader(input: DescribeScoreboardHeaderInput): Promise<DescribeScoreboardHeaderOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input);
+  DescribeScoreboardHeader<O>(input: DescribeScoreboardHeaderInput, opts: O): Promise<DescribeScoreboardHeaderOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input, opts);
   }
 
-  DescribeScoreboardFooter(input: DescribeScoreboardFooterInput): Promise<DescribeScoreboardFooterOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input);
+  DescribeScoreboardFooter<O>(input: DescribeScoreboardFooterInput, opts: O): Promise<DescribeScoreboardFooterOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input, opts);
   }
 
-  DescribeScoreboardRow(input: DescribeScoreboardRowInput): Promise<DescribeScoreboardRowOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input);
+  DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts: O): Promise<DescribeScoreboardRowOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input, opts);
   }
 
-  DescribeDefaultScoreboardRow(input: DescribeDefaultScoreboardRowInput): Promise<DescribeDefaultScoreboardRowOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input);
+  DescribeDefaultScoreboardRow<O>(input: DescribeDefaultScoreboardRowInput, opts: O): Promise<DescribeDefaultScoreboardRowOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input, opts);
   }
 
-  ListScoreboardRows(input: ListScoreboardRowsInput): Promise<ListScoreboardRowsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input);
+  ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts: O): Promise<ListScoreboardRowsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input, opts);
   }
 
-  ListDefaultScoreboardRows(input: ListDefaultScoreboardRowsInput): Promise<ListDefaultScoreboardRowsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input);
+  ListDefaultScoreboardRows<O>(input: ListDefaultScoreboardRowsInput, opts: O): Promise<ListDefaultScoreboardRowsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input, opts);
   }
 
-  ListEntitlements(input: ListEntitlementsInput): Promise<ListEntitlementsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListEntitlements", input);
+  ListEntitlements<O>(input: ListEntitlementsInput, opts: O): Promise<ListEntitlementsOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListEntitlements", input, opts);
   }
 
-  ListActivities(input: ListActivitiesInput): Promise<ListActivitiesOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListActivities", input);
+  ListActivities<O>(input: ListActivitiesInput, opts: O): Promise<ListActivitiesOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListActivities", input, opts);
   }
 }
 

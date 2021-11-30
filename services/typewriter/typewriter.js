@@ -7,8 +7,8 @@ class Typewriter {
     constructor(cli) {
         this.cli = cli;
     }
-    UploadAsset(input) {
-        return this.cli.call("eolymp.typewriter.Typewriter/UploadAsset", input);
+    UploadAsset(input, opts) {
+        return this.cli.call("eolymp.typewriter.Typewriter/UploadAsset", input, opts);
     }
 }
 exports.Typewriter = Typewriter;

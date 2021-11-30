@@ -91,7 +91,7 @@ export class Client {
         return this.do<R>("POST", "/graphql", JSON.stringify({query, variables}));
     }
 
-    call<R, E>(method: string, input: R): Promise<E> {
-        return this.do<E>("POST", "/" + method, JSON.stringify(input))
+    call<R, E>(method: string, input: R, opts?: Options): Promise<E> {
+        return this.do<E>("POST", "/" + method, JSON.stringify(input), opts?.headers)
     }
 }
