@@ -7,24 +7,24 @@ interface Client {
 export declare class Cognito {
     private readonly cli;
     constructor(cli: Client);
-    CreateToken<O>(input: CreateTokenInput, opts: O): Promise<CreateTokenOutput>;
-    IntrospectToken<O>(input: IntrospectTokenInput, opts: O): Promise<IntrospectTokenOutput>;
-    CreateAuthorization<O>(input: CreateAuthorizationInput, opts: O): Promise<CreateAuthorizationOutput>;
-    RevokeToken<O>(input: RevokeTokenInput, opts: O): Promise<RevokeTokenOutput>;
-    Signout<O>(input: SignoutInput, opts: O): Promise<SignoutOutput>;
-    CreateUser<O>(input: CreateUserInput, opts: O): Promise<CreateUserOutput>;
-    VerifyEmail<O>(input: VerifyEmailInput, opts: O): Promise<VerifyEmailOutput>;
-    UpdateEmail<O>(input: UpdateEmailInput, opts: O): Promise<UpdateEmailOutput>;
-    StartRecovery<O>(input: StartRecoveryInput, opts: O): Promise<StartRecoveryOutput>;
-    CompleteRecovery<O>(input: CompleteRecoverInput, opts: O): Promise<CompleteRecoverOutput>;
-    IntrospectUser<O>(input: IntrospectUserInput, opts: O): Promise<IntrospectUserOutput>;
-    DescribeUser<O>(input: DescribeUserInput, opts: O): Promise<DescribeUserOutput>;
-    ListUsers<O>(input: ListUsersInput, opts: O): Promise<ListUsersOutput>;
-    IntrospectQuota<O>(input: IntrospectQuotaInput, opts: O): Promise<IntrospectQuotaOutput>;
-    IntrospectRoles<O>(input: IntrospectRolesInput, opts: O): Promise<IntrospectRolesOutput>;
-    ListRoles<O>(input: ListRolesInput, opts: O): Promise<ListRolesOutput>;
-    UpdateRoles<O>(input: UpdateRolesInput, opts: O): Promise<UpdateRolesOutput>;
-    ListEntitlements<O>(input: ListEntitlementsInput, opts: O): Promise<ListEntitlementsOutput>;
+    CreateToken<O>(input: CreateTokenInput, opts?: O): Promise<CreateTokenOutput>;
+    IntrospectToken<O>(input: IntrospectTokenInput, opts?: O): Promise<IntrospectTokenOutput>;
+    CreateAuthorization<O>(input: CreateAuthorizationInput, opts?: O): Promise<CreateAuthorizationOutput>;
+    RevokeToken<O>(input: RevokeTokenInput, opts?: O): Promise<RevokeTokenOutput>;
+    Signout<O>(input: SignoutInput, opts?: O): Promise<SignoutOutput>;
+    CreateUser<O>(input: CreateUserInput, opts?: O): Promise<CreateUserOutput>;
+    VerifyEmail<O>(input: VerifyEmailInput, opts?: O): Promise<VerifyEmailOutput>;
+    UpdateEmail<O>(input: UpdateEmailInput, opts?: O): Promise<UpdateEmailOutput>;
+    StartRecovery<O>(input: StartRecoveryInput, opts?: O): Promise<StartRecoveryOutput>;
+    CompleteRecovery<O>(input: CompleteRecoverInput, opts?: O): Promise<CompleteRecoverOutput>;
+    IntrospectUser<O>(input: IntrospectUserInput, opts?: O): Promise<IntrospectUserOutput>;
+    DescribeUser<O>(input: DescribeUserInput, opts?: O): Promise<DescribeUserOutput>;
+    ListUsers<O>(input: ListUsersInput, opts?: O): Promise<ListUsersOutput>;
+    IntrospectQuota<O>(input: IntrospectQuotaInput, opts?: O): Promise<IntrospectQuotaOutput>;
+    IntrospectRoles<O>(input: IntrospectRolesInput, opts?: O): Promise<IntrospectRolesOutput>;
+    ListRoles<O>(input: ListRolesInput, opts?: O): Promise<ListRolesOutput>;
+    UpdateRoles<O>(input: UpdateRolesInput, opts?: O): Promise<UpdateRolesOutput>;
+    ListEntitlements<O>(input: ListEntitlementsInput, opts?: O): Promise<ListEntitlementsOutput>;
 }
 export declare type CreateTokenInput = {
     grantType?: string;

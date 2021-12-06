@@ -13,15 +13,15 @@ export class Keeper {
     this.cli = cli;
   }
 
-  CreateObject<O>(input: CreateObjectInput, opts: O): Promise<CreateObjectOutput> {
+  CreateObject<O>(input: CreateObjectInput, opts?: O): Promise<CreateObjectOutput> {
     return this.cli.call("eolymp.keeper.Keeper/CreateObject", input, opts);
   }
 
-  DescribeObject<O>(input: DescribeObjectInput, opts: O): Promise<DescribeObjectOutput> {
+  DescribeObject<O>(input: DescribeObjectInput, opts?: O): Promise<DescribeObjectOutput> {
     return this.cli.call("eolymp.keeper.Keeper/DescribeObject", input, opts);
   }
 
-  DownloadObject<O>(input: DownloadObjectInput, opts: O): Promise<DownloadObjectOutput> {
+  DownloadObject<O>(input: DownloadObjectInput, opts?: O): Promise<DownloadObjectOutput> {
     return this.cli.call("eolymp.keeper.Keeper/DownloadObject", input, opts);
   }
 }

@@ -14,11 +14,11 @@ export class Playground {
     this.cli = cli;
   }
 
-  CreateRun<O>(input: CreateRunInput, opts: O): Promise<CreateRunOutput> {
+  CreateRun<O>(input: CreateRunInput, opts?: O): Promise<CreateRunOutput> {
     return this.cli.call("eolymp.playground.Playground/CreateRun", input, opts);
   }
 
-  DescribeRun<O>(input: DescribeRunInput, opts: O): Promise<DescribeRunOutput> {
+  DescribeRun<O>(input: DescribeRunInput, opts?: O): Promise<DescribeRunOutput> {
     return this.cli.call("eolymp.playground.Playground/DescribeRun", input, opts);
   }
 }

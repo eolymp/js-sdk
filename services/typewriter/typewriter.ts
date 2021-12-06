@@ -13,7 +13,7 @@ export class Typewriter {
     this.cli = cli;
   }
 
-  UploadAsset<O>(input: UploadAssetInput, opts: O): Promise<UploadAssetOutput> {
+  UploadAsset<O>(input: UploadAssetInput, opts?: O): Promise<UploadAssetOutput> {
     return this.cli.call("eolymp.typewriter.Typewriter/UploadAsset", input, opts);
   }
 }

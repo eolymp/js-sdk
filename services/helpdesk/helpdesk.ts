@@ -15,35 +15,35 @@ export class Helpdesk {
     this.cli = cli;
   }
 
-  DescribeDocument<O>(input: DescribeDocumentInput, opts: O): Promise<DescribeDocumentOutput> {
+  DescribeDocument<O>(input: DescribeDocumentInput, opts?: O): Promise<DescribeDocumentOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/DescribeDocument", input, opts);
   }
 
-  ListDocuments<O>(input: ListDocumentsInput, opts: O): Promise<ListDocumentsOutput> {
+  ListDocuments<O>(input: ListDocumentsInput, opts?: O): Promise<ListDocumentsOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/ListDocuments", input, opts);
   }
 
-  CreateDocument<O>(input: CreateDocumentInput, opts: O): Promise<CreateDocumentOutput> {
+  CreateDocument<O>(input: CreateDocumentInput, opts?: O): Promise<CreateDocumentOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/CreateDocument", input, opts);
   }
 
-  UpdateDocument<O>(input: UpdateDocumentInput, opts: O): Promise<UpdateDocumentOutput> {
+  UpdateDocument<O>(input: UpdateDocumentInput, opts?: O): Promise<UpdateDocumentOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/UpdateDocument", input, opts);
   }
 
-  DeleteDocument<O>(input: DeleteDocumentInput, opts: O): Promise<DeleteDocumentOutput> {
+  DeleteDocument<O>(input: DeleteDocumentInput, opts?: O): Promise<DeleteDocumentOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/DeleteDocument", input, opts);
   }
 
-  DescribePath<O>(input: DescribePathInput, opts: O): Promise<DescribePathOutput> {
+  DescribePath<O>(input: DescribePathInput, opts?: O): Promise<DescribePathOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/DescribePath", input, opts);
   }
 
-  ListPaths<O>(input: ListPathsInput, opts: O): Promise<ListPathsOutput> {
+  ListPaths<O>(input: ListPathsInput, opts?: O): Promise<ListPathsOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/ListPaths", input, opts);
   }
 
-  ListParents<O>(input: ListParentsInput, opts: O): Promise<ListParentsOutput> {
+  ListParents<O>(input: ListParentsInput, opts?: O): Promise<ListParentsOutput> {
     return this.cli.call("eolymp.helpdesk.Helpdesk/ListParents", input, opts);
   }
 }

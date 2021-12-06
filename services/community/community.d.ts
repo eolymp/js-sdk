@@ -7,20 +7,20 @@ interface Client {
 export declare class Community {
     private readonly cli;
     constructor(cli: Client);
-    JoinSpace<O>(input: JoinSpaceInput, opts: O): Promise<JoinSpaceOutput>;
-    LeaveSpace<O>(input: LeaveSpaceInput, opts: O): Promise<LeaveSpaceOutput>;
-    RegisterMember<O>(input: RegisterMemberInput, opts: O): Promise<RegisterMemberOutput>;
-    IntrospectMember<O>(input: IntrospectMemberInput, opts: O): Promise<IntrospectMemberOutput>;
-    AddMember<O>(input: AddMemberInput, opts: O): Promise<AddMemberOutput>;
-    UpdateMember<O>(input: UpdateMemberInput, opts: O): Promise<UpdateMemberOutput>;
-    RemoveMember<O>(input: RemoveMemberInput, opts: O): Promise<RemoveMemberOutput>;
-    DescribeMember<O>(input: DescribeMemberInput, opts: O): Promise<DescribeMemberOutput>;
-    ListMembers<O>(input: ListMembersInput, opts: O): Promise<ListMembersOutput>;
-    AddAttribute<O>(input: AddAttributeInput, opts: O): Promise<AddAttributeOutput>;
-    UpdateAttribute<O>(input: UpdateAttributeInput, opts: O): Promise<UpdateAttributeOutput>;
-    RemoveAttribute<O>(input: RemoveAttributeInput, opts: O): Promise<RemoveAttributeOutput>;
-    DescribeAttribute<O>(input: DescribeAttributeInput, opts: O): Promise<DescribeAttributeOutput>;
-    ListAttributes<O>(input: ListAttributesInput, opts: O): Promise<ListAttributesOutput>;
+    JoinSpace<O>(input: JoinSpaceInput, opts?: O): Promise<JoinSpaceOutput>;
+    LeaveSpace<O>(input: LeaveSpaceInput, opts?: O): Promise<LeaveSpaceOutput>;
+    RegisterMember<O>(input: RegisterMemberInput, opts?: O): Promise<RegisterMemberOutput>;
+    IntrospectMember<O>(input: IntrospectMemberInput, opts?: O): Promise<IntrospectMemberOutput>;
+    AddMember<O>(input: AddMemberInput, opts?: O): Promise<AddMemberOutput>;
+    UpdateMember<O>(input: UpdateMemberInput, opts?: O): Promise<UpdateMemberOutput>;
+    RemoveMember<O>(input: RemoveMemberInput, opts?: O): Promise<RemoveMemberOutput>;
+    DescribeMember<O>(input: DescribeMemberInput, opts?: O): Promise<DescribeMemberOutput>;
+    ListMembers<O>(input: ListMembersInput, opts?: O): Promise<ListMembersOutput>;
+    AddAttribute<O>(input: AddAttributeInput, opts?: O): Promise<AddAttributeOutput>;
+    UpdateAttribute<O>(input: UpdateAttributeInput, opts?: O): Promise<UpdateAttributeOutput>;
+    RemoveAttribute<O>(input: RemoveAttributeInput, opts?: O): Promise<RemoveAttributeOutput>;
+    DescribeAttribute<O>(input: DescribeAttributeInput, opts?: O): Promise<DescribeAttributeOutput>;
+    ListAttributes<O>(input: ListAttributesInput, opts?: O): Promise<ListAttributesOutput>;
 }
 export declare type JoinSpaceInput = {
     name?: string;

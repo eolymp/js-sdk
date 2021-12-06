@@ -6,14 +6,14 @@ interface Client {
 export declare class Helpdesk {
     private readonly cli;
     constructor(cli: Client);
-    DescribeDocument<O>(input: DescribeDocumentInput, opts: O): Promise<DescribeDocumentOutput>;
-    ListDocuments<O>(input: ListDocumentsInput, opts: O): Promise<ListDocumentsOutput>;
-    CreateDocument<O>(input: CreateDocumentInput, opts: O): Promise<CreateDocumentOutput>;
-    UpdateDocument<O>(input: UpdateDocumentInput, opts: O): Promise<UpdateDocumentOutput>;
-    DeleteDocument<O>(input: DeleteDocumentInput, opts: O): Promise<DeleteDocumentOutput>;
-    DescribePath<O>(input: DescribePathInput, opts: O): Promise<DescribePathOutput>;
-    ListPaths<O>(input: ListPathsInput, opts: O): Promise<ListPathsOutput>;
-    ListParents<O>(input: ListParentsInput, opts: O): Promise<ListParentsOutput>;
+    DescribeDocument<O>(input: DescribeDocumentInput, opts?: O): Promise<DescribeDocumentOutput>;
+    ListDocuments<O>(input: ListDocumentsInput, opts?: O): Promise<ListDocumentsOutput>;
+    CreateDocument<O>(input: CreateDocumentInput, opts?: O): Promise<CreateDocumentOutput>;
+    UpdateDocument<O>(input: UpdateDocumentInput, opts?: O): Promise<UpdateDocumentOutput>;
+    DeleteDocument<O>(input: DeleteDocumentInput, opts?: O): Promise<DeleteDocumentOutput>;
+    DescribePath<O>(input: DescribePathInput, opts?: O): Promise<DescribePathOutput>;
+    ListPaths<O>(input: ListPathsInput, opts?: O): Promise<ListPathsOutput>;
+    ListParents<O>(input: ListParentsInput, opts?: O): Promise<ListParentsOutput>;
 }
 export declare type DescribeDocumentInput = {
     documentId?: string;

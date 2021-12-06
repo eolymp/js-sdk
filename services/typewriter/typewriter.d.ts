@@ -4,7 +4,7 @@ interface Client {
 export declare class Typewriter {
     private readonly cli;
     constructor(cli: Client);
-    UploadAsset<O>(input: UploadAssetInput, opts: O): Promise<UploadAssetOutput>;
+    UploadAsset<O>(input: UploadAssetInput, opts?: O): Promise<UploadAssetOutput>;
 }
 export declare type UploadAssetInput = {
     filename?: string;

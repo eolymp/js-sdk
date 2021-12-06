@@ -8,11 +8,11 @@ interface Client {
 export declare class Executor {
     private readonly cli;
     constructor(cli: Client);
-    DescribeLanguage<O>(input: DescribeLanguageInput, opts: O): Promise<DescribeLanguageOutput>;
-    ListLanguages<O>(input: ListLanguagesInput, opts: O): Promise<ListLanguagesOutput>;
-    DescribeRuntime<O>(input: DescribeRuntimeInput, opts: O): Promise<DescribeRuntimeOutput>;
-    ListRuntime<O>(input: ListRuntimeInput, opts: O): Promise<ListRuntimeOutput>;
-    DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts: O): Promise<DescribeCodeTemplateOutput>;
+    DescribeLanguage<O>(input: DescribeLanguageInput, opts?: O): Promise<DescribeLanguageOutput>;
+    ListLanguages<O>(input: ListLanguagesInput, opts?: O): Promise<ListLanguagesOutput>;
+    DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput>;
+    ListRuntime<O>(input: ListRuntimeInput, opts?: O): Promise<ListRuntimeOutput>;
+    DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput>;
 }
 export declare type CreateTaskInput = {
     task?: Task;

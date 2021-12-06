@@ -4,9 +4,9 @@ interface Client {
 export declare class Keeper {
     private readonly cli;
     constructor(cli: Client);
-    CreateObject<O>(input: CreateObjectInput, opts: O): Promise<CreateObjectOutput>;
-    DescribeObject<O>(input: DescribeObjectInput, opts: O): Promise<DescribeObjectOutput>;
-    DownloadObject<O>(input: DownloadObjectInput, opts: O): Promise<DownloadObjectOutput>;
+    CreateObject<O>(input: CreateObjectInput, opts?: O): Promise<CreateObjectOutput>;
+    DescribeObject<O>(input: DescribeObjectInput, opts?: O): Promise<DescribeObjectOutput>;
+    DownloadObject<O>(input: DownloadObjectInput, opts?: O): Promise<DownloadObjectOutput>;
 }
 export declare type CreateObjectInput = {
     data?: string;

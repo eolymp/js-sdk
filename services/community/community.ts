@@ -16,59 +16,59 @@ export class Community {
     this.cli = cli;
   }
 
-  JoinSpace<O>(input: JoinSpaceInput, opts: O): Promise<JoinSpaceOutput> {
+  JoinSpace<O>(input: JoinSpaceInput, opts?: O): Promise<JoinSpaceOutput> {
     return this.cli.call("eolymp.community.Community/JoinSpace", input, opts);
   }
 
-  LeaveSpace<O>(input: LeaveSpaceInput, opts: O): Promise<LeaveSpaceOutput> {
+  LeaveSpace<O>(input: LeaveSpaceInput, opts?: O): Promise<LeaveSpaceOutput> {
     return this.cli.call("eolymp.community.Community/LeaveSpace", input, opts);
   }
 
-  RegisterMember<O>(input: RegisterMemberInput, opts: O): Promise<RegisterMemberOutput> {
+  RegisterMember<O>(input: RegisterMemberInput, opts?: O): Promise<RegisterMemberOutput> {
     return this.cli.call("eolymp.community.Community/RegisterMember", input, opts);
   }
 
-  IntrospectMember<O>(input: IntrospectMemberInput, opts: O): Promise<IntrospectMemberOutput> {
+  IntrospectMember<O>(input: IntrospectMemberInput, opts?: O): Promise<IntrospectMemberOutput> {
     return this.cli.call("eolymp.community.Community/IntrospectMember", input, opts);
   }
 
-  AddMember<O>(input: AddMemberInput, opts: O): Promise<AddMemberOutput> {
+  AddMember<O>(input: AddMemberInput, opts?: O): Promise<AddMemberOutput> {
     return this.cli.call("eolymp.community.Community/AddMember", input, opts);
   }
 
-  UpdateMember<O>(input: UpdateMemberInput, opts: O): Promise<UpdateMemberOutput> {
+  UpdateMember<O>(input: UpdateMemberInput, opts?: O): Promise<UpdateMemberOutput> {
     return this.cli.call("eolymp.community.Community/UpdateMember", input, opts);
   }
 
-  RemoveMember<O>(input: RemoveMemberInput, opts: O): Promise<RemoveMemberOutput> {
+  RemoveMember<O>(input: RemoveMemberInput, opts?: O): Promise<RemoveMemberOutput> {
     return this.cli.call("eolymp.community.Community/RemoveMember", input, opts);
   }
 
-  DescribeMember<O>(input: DescribeMemberInput, opts: O): Promise<DescribeMemberOutput> {
+  DescribeMember<O>(input: DescribeMemberInput, opts?: O): Promise<DescribeMemberOutput> {
     return this.cli.call("eolymp.community.Community/DescribeMember", input, opts);
   }
 
-  ListMembers<O>(input: ListMembersInput, opts: O): Promise<ListMembersOutput> {
+  ListMembers<O>(input: ListMembersInput, opts?: O): Promise<ListMembersOutput> {
     return this.cli.call("eolymp.community.Community/ListMembers", input, opts);
   }
 
-  AddAttribute<O>(input: AddAttributeInput, opts: O): Promise<AddAttributeOutput> {
+  AddAttribute<O>(input: AddAttributeInput, opts?: O): Promise<AddAttributeOutput> {
     return this.cli.call("eolymp.community.Community/AddAttribute", input, opts);
   }
 
-  UpdateAttribute<O>(input: UpdateAttributeInput, opts: O): Promise<UpdateAttributeOutput> {
+  UpdateAttribute<O>(input: UpdateAttributeInput, opts?: O): Promise<UpdateAttributeOutput> {
     return this.cli.call("eolymp.community.Community/UpdateAttribute", input, opts);
   }
 
-  RemoveAttribute<O>(input: RemoveAttributeInput, opts: O): Promise<RemoveAttributeOutput> {
+  RemoveAttribute<O>(input: RemoveAttributeInput, opts?: O): Promise<RemoveAttributeOutput> {
     return this.cli.call("eolymp.community.Community/RemoveAttribute", input, opts);
   }
 
-  DescribeAttribute<O>(input: DescribeAttributeInput, opts: O): Promise<DescribeAttributeOutput> {
+  DescribeAttribute<O>(input: DescribeAttributeInput, opts?: O): Promise<DescribeAttributeOutput> {
     return this.cli.call("eolymp.community.Community/DescribeAttribute", input, opts);
   }
 
-  ListAttributes<O>(input: ListAttributesInput, opts: O): Promise<ListAttributesOutput> {
+  ListAttributes<O>(input: ListAttributesInput, opts?: O): Promise<ListAttributesOutput> {
     return this.cli.call("eolymp.community.Community/ListAttributes", input, opts);
   }
 }

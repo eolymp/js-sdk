@@ -17,23 +17,23 @@ export class Executor {
     this.cli = cli;
   }
 
-  DescribeLanguage<O>(input: DescribeLanguageInput, opts: O): Promise<DescribeLanguageOutput> {
+  DescribeLanguage<O>(input: DescribeLanguageInput, opts?: O): Promise<DescribeLanguageOutput> {
     return this.cli.call("eolymp.executor.Executor/DescribeLanguage", input, opts);
   }
 
-  ListLanguages<O>(input: ListLanguagesInput, opts: O): Promise<ListLanguagesOutput> {
+  ListLanguages<O>(input: ListLanguagesInput, opts?: O): Promise<ListLanguagesOutput> {
     return this.cli.call("eolymp.executor.Executor/ListLanguages", input, opts);
   }
 
-  DescribeRuntime<O>(input: DescribeRuntimeInput, opts: O): Promise<DescribeRuntimeOutput> {
+  DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
     return this.cli.call("eolymp.executor.Executor/DescribeRuntime", input, opts);
   }
 
-  ListRuntime<O>(input: ListRuntimeInput, opts: O): Promise<ListRuntimeOutput> {
+  ListRuntime<O>(input: ListRuntimeInput, opts?: O): Promise<ListRuntimeOutput> {
     return this.cli.call("eolymp.executor.Executor/ListRuntime", input, opts);
   }
 
-  DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts: O): Promise<DescribeCodeTemplateOutput> {
+  DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
     return this.cli.call("eolymp.executor.Executor/DescribeCodeTemplate", input, opts);
   }
 }

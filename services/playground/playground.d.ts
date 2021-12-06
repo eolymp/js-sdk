@@ -5,8 +5,8 @@ interface Client {
 export declare class Playground {
     private readonly cli;
     constructor(cli: Client);
-    CreateRun<O>(input: CreateRunInput, opts: O): Promise<CreateRunOutput>;
-    DescribeRun<O>(input: DescribeRunInput, opts: O): Promise<DescribeRunOutput>;
+    CreateRun<O>(input: CreateRunInput, opts?: O): Promise<CreateRunOutput>;
+    DescribeRun<O>(input: DescribeRunInput, opts?: O): Promise<DescribeRunOutput>;
 }
 export declare type CreateRunInput = {
     lang?: string;
