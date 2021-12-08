@@ -37,28 +37,28 @@ export class Client {
             if (response.status === 404) {
                 return response
                   .json()
-                  .then(({ error }) => Promise.reject(new NotFoundError(error)))
+                  .then(({ message }) => Promise.reject(new NotFoundError(message)))
                   .catch(() => Promise.reject(new NotFoundError('not found')));
             }
 
             if (response.status === 401) {
                 return response
                   .json()
-                  .then(({ error }) => Promise.reject(new UnauthorizedError(error)))
+                  .then(({ message }) => Promise.reject(new UnauthorizedError(message)))
                   .catch((e) => Promise.reject(e instanceof UnauthorizedError ? e : new UnauthorizedError('unauthorized')));
             }
 
             if (response.status === 403) {
                 return response
                   .json()
-                  .then(({ error }) => Promise.reject(new ForbiddenError(error)))
+                  .then(({ message }) => Promise.reject(new ForbiddenError(message)))
                   .catch((e) => Promise.reject(e instanceof ForbiddenError ? e : new ForbiddenError('forbidden')));
             }
 
             if (response.status >= 400 && response.status < 500) {
                 return response
                   .json()
-                  .then(({ error, code, status, details }) => Promise.reject(new BadRequestError(error, code, status, details)))
+                  .then(({ message, code, status, details }) => Promise.reject(new BadRequestError(message, code, status, details)))
                   .catch((e) =>
                     Promise.reject(
                       e instanceof BadRequestError
@@ -71,8 +71,8 @@ export class Client {
             if (response.status >= 500) {
                 return response
                   .json()
-                  .then(({ error, code, details }) =>
-                    Promise.reject(new InternalServerError(error, code, response.status, details))
+                  .then(({ message, code, details }) =>
+                    Promise.reject(new InternalServerError(message, code, response.status, details))
                   )
                   .catch((e) =>
                     Promise.reject(
