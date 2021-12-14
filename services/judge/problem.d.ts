@@ -1,3 +1,4 @@
+import { Container } from "../typewriter/block";
 export declare type Problem = {
     id?: string;
     index?: number;
@@ -14,6 +15,7 @@ export declare type Problem_Statement = {
     locale?: string;
     title?: string;
     content?: string;
+    contentRich?: Container;
     format?: string;
     downloadLink?: string;
 };

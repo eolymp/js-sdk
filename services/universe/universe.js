@@ -22,6 +22,9 @@ class Universe {
     DescribeSpace(input, opts) {
         return this.cli.call("eolymp.universe.Universe/DescribeSpace", input, opts);
     }
+    DescribeQuota(input, opts) {
+        return this.cli.call("eolymp.universe.Universe/DescribeQuota", input, opts);
+    }
     ListSpaces(input, opts) {
         return this.cli.call("eolymp.universe.Universe/ListSpaces", input, opts);
     }

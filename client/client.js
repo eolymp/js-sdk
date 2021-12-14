@@ -27,25 +27,25 @@ class Client {
             if (response.status === 404) {
                 return response
                     .json()
-                    .then(({ error }) => Promise.reject(new errors_1.NotFoundError(error)))
+                    .then(({ message }) => Promise.reject(new errors_1.NotFoundError(message)))
                     .catch(() => Promise.reject(new errors_1.NotFoundError('not found')));
             }
             if (response.status === 401) {
                 return response
                     .json()
-                    .then(({ error }) => Promise.reject(new errors_1.UnauthorizedError(error)))
+                    .then(({ message }) => Promise.reject(new errors_1.UnauthorizedError(message)))
                     .catch((e) => Promise.reject(e instanceof errors_1.UnauthorizedError ? e : new errors_1.UnauthorizedError('unauthorized')));
             }
             if (response.status === 403) {
                 return response
                     .json()
-                    .then(({ error }) => Promise.reject(new errors_1.ForbiddenError(error)))
+                    .then(({ message }) => Promise.reject(new errors_1.ForbiddenError(message)))
                     .catch((e) => Promise.reject(e instanceof errors_1.ForbiddenError ? e : new errors_1.ForbiddenError('forbidden')));
             }
             if (response.status >= 400 && response.status < 500) {
                 return response
                     .json()
-                    .then(({ error, code, status, details }) => Promise.reject(new errors_1.BadRequestError(error, code, status, details)))
+                    .then(({ message, code, status, details }) => Promise.reject(new errors_1.BadRequestError(message, code, status, details)))
                     .catch((e) => Promise.reject(e instanceof errors_1.BadRequestError
                     ? e
                     : new errors_1.BadRequestError(`server error (${response.status})`, undefined, response.status)));
@@ -53,7 +53,7 @@ class Client {
             if (response.status >= 500) {
                 return response
                     .json()
-                    .then(({ error, code, details }) => Promise.reject(new errors_1.InternalServerError(error, code, response.status, details)))
+                    .then(({ message, code, details }) => Promise.reject(new errors_1.InternalServerError(message, code, response.status, details)))
                     .catch((e) => Promise.reject(e instanceof errors_1.InternalServerError
                     ? e
                     : new errors_1.InternalServerError(`server error (${response.status})`, undefined, response.status)));

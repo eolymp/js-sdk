@@ -11,7 +11,10 @@ export declare type Block = {
     heading?: Block_Heading;
     list?: Block_List;
     embed?: Block_Embed;
-    comment?: Block_Comment;
+    table?: Block_Table;
+    exampleList?: Block_ExampleList;
+    exampleInline?: Block_ExampleInline;
+    exampleFile?: Block_ExampleFile;
 };
 export declare type Block_Paragraph = {
     children?: Inline[];
@@ -28,7 +31,10 @@ export declare type Block_Layout = {
 };
 export declare type Block_List = {
     style?: string;
-    children?: Container[];
+    children?: Block_List_Item[];
+};
+export declare type Block_List_Item = {
+    children?: Block[];
 };
 export declare type Block_Image = {
     src?: string;
@@ -49,9 +55,6 @@ export declare type Block_Code = {
     lang?: string;
     content?: string;
 };
-export declare type Block_Comment = {
-    content?: string;
-};
 export declare type Block_Embed = {
     path?: string;
     values?: Block_Embed_Value[];
@@ -59,4 +62,23 @@ export declare type Block_Embed = {
 export declare type Block_Embed_Value = {
     name?: string;
     value?: string;
+};
+export declare type Block_Table = {
+    header?: string;
+    children?: Block_Table_Row[];
+};
+export declare type Block_Table_Row = {
+    children?: Block_Table_Cell[];
+};
+export declare type Block_Table_Cell = {
+    children?: Block[];
+};
+export declare type Block_ExampleList = Record<string, unknown>;
+export declare type Block_ExampleInline = {
+    number?: number;
+    input?: string;
+    answer?: string;
+};
+export declare type Block_ExampleFile = {
+    number?: number;
 };

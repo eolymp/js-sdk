@@ -3,7 +3,7 @@
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Permission } from "./permission"
-import { Space } from "./space"
+import { Space, Space_Quota } from "./space"
 
 interface Client {
   call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
@@ -34,6 +34,10 @@ export class Universe {
 
   DescribeSpace<O>(input: DescribeSpaceInput, opts?: O): Promise<DescribeSpaceOutput> {
     return this.cli.call("eolymp.universe.Universe/DescribeSpace", input, opts);
+  }
+
+  DescribeQuota<O>(input: DescribeQuotaInput, opts?: O): Promise<DescribeQuotaOutput> {
+    return this.cli.call("eolymp.universe.Universe/DescribeQuota", input, opts);
   }
 
   ListSpaces<O>(input: ListSpacesInput, opts?: O): Promise<ListSpacesOutput> {
@@ -96,6 +100,14 @@ export type DescribeSpaceInput = {
 
 export type DescribeSpaceOutput = {
   space?: Space;
+}
+
+export type DescribeQuotaInput = {
+  spaceId?: string;
+}
+
+export type DescribeQuotaOutput = {
+  quota?: Space_Quota;
 }
 
 export type ListSpacesInput = {

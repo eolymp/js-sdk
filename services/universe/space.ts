@@ -15,3 +15,15 @@ export type Space = {
   maxTeamSize?: number;
 }
 
+export type Space_Quota = {
+  problemsPerSpace?: number;
+  membersPerSpace?: number;
+  contestsPerSpace?: number;
+  activeContestsPerSpace?: number;
+  scoreboardsPerSpace?: number;
+  permissionsPerSpace?: number;
+  attributesPerSpace?: number;
+  problemsPerContest?: number;
+  participantsPerContest?: number;
+}
+

@@ -16,7 +16,10 @@ export type Block = {
   heading?: Block_Heading;
   list?: Block_List;
   embed?: Block_Embed;
-  comment?: Block_Comment;
+  table?: Block_Table;
+  exampleList?: Block_ExampleList;
+  exampleInline?: Block_ExampleInline;
+  exampleFile?: Block_ExampleFile;
 }
 
 export type Block_Paragraph = {
@@ -36,7 +39,11 @@ export type Block_Layout = {
 
 export type Block_List = {
   style?: string;
-  children?: Container[];
+  children?: Block_List_Item[];
+}
+
+export type Block_List_Item = {
+  children?: Block[];
 }
 
 export type Block_Image = {
@@ -62,10 +69,6 @@ export type Block_Code = {
   content?: string;
 }
 
-export type Block_Comment = {
-  content?: string;
-}
-
 export type Block_Embed = {
   path?: string;
   values?: Block_Embed_Value[];
@@ -74,5 +77,30 @@ export type Block_Embed = {
 export type Block_Embed_Value = {
   name?: string;
   value?: string;
+}
+
+export type Block_Table = {
+  header?: string;
+  children?: Block_Table_Row[];
+}
+
+export type Block_Table_Row = {
+  children?: Block_Table_Cell[];
+}
+
+export type Block_Table_Cell = {
+  children?: Block[];
+}
+
+export type Block_ExampleList = Record<string, unknown>;
+
+export type Block_ExampleInline = {
+  number?: number;
+  input?: string;
+  answer?: string;
+}
+
+export type Block_ExampleFile = {
+  number?: number;
 }
 

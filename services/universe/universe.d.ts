@@ -1,6 +1,6 @@
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression";
 import { Permission } from "./permission";
-import { Space } from "./space";
+import { Space, Space_Quota } from "./space";
 interface Client {
     call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
 }
@@ -12,6 +12,7 @@ export declare class Universe {
     DeleteSpace<O>(input: DeleteSpaceInput, opts?: O): Promise<DeleteSpaceOutput>;
     LookupSpace<O>(input: LookupSpaceInput, opts?: O): Promise<LookupSpaceOutput>;
     DescribeSpace<O>(input: DescribeSpaceInput, opts?: O): Promise<DescribeSpaceOutput>;
+    DescribeQuota<O>(input: DescribeQuotaInput, opts?: O): Promise<DescribeQuotaOutput>;
     ListSpaces<O>(input: ListSpacesInput, opts?: O): Promise<ListSpacesOutput>;
     GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput>;
     RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput>;
@@ -45,6 +46,12 @@ export declare type DescribeSpaceInput = {
 };
 export declare type DescribeSpaceOutput = {
     space?: Space;
+};
+export declare type DescribeQuotaInput = {
+    spaceId?: string;
+};
+export declare type DescribeQuotaOutput = {
+    quota?: Space_Quota;
 };
 export declare type ListSpacesInput = {
     offset?: number;
