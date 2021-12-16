@@ -10,8 +10,6 @@ export declare type Inline_Style = {
     italic?: boolean;
     underline?: boolean;
     strikethrough?: boolean;
-    fixed?: boolean;
-    math?: boolean;
 };
 export declare type Inline_Text = {
     str?: string;

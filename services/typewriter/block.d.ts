@@ -12,9 +12,10 @@ export declare type Block = {
     list?: Block_List;
     embed?: Block_Embed;
     table?: Block_Table;
-    exampleList?: Block_ExampleList;
-    exampleInline?: Block_ExampleInline;
-    exampleFile?: Block_ExampleFile;
+    problemSection?: Block_ProblemSection;
+    exampleList?: Block_ProblemExampleList;
+    exampleInline?: Block_ProblemExampleInline;
+    exampleFile?: Block_ProblemExampleFile;
 };
 export declare type Block_Paragraph = {
     children?: Inline[];
@@ -73,12 +74,16 @@ export declare type Block_Table_Row = {
 export declare type Block_Table_Cell = {
     children?: Block[];
 };
-export declare type Block_ExampleList = Record<string, unknown>;
-export declare type Block_ExampleInline = {
+export declare type Block_ProblemSection = {
+    type?: string;
+    children?: Block[];
+};
+export declare type Block_ProblemExampleList = Record<string, unknown>;
+export declare type Block_ProblemExampleFile = {
+    number?: number;
+};
+export declare type Block_ProblemExampleInline = {
     number?: number;
     input?: string;
     answer?: string;
-};
-export declare type Block_ExampleFile = {
-    number?: number;
 };
