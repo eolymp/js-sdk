@@ -17,10 +17,7 @@ export type Block = {
   list?: Block_List;
   embed?: Block_Embed;
   table?: Block_Table;
-  problemSection?: Block_ProblemSection;
-  exampleList?: Block_ProblemExampleList;
-  exampleInline?: Block_ProblemExampleInline;
-  exampleFile?: Block_ProblemExampleFile;
+  widget?: Block_Widget;
 }
 
 export type Block_Paragraph = {
@@ -93,20 +90,9 @@ export type Block_Table_Cell = {
   children?: Block[];
 }
 
-export type Block_ProblemSection = {
-  type?: string;
+export type Block_Widget = {
+  name?: string;
+  attributes?: Record<string, string>;
   children?: Block[];
-}
-
-export type Block_ProblemExampleList = Record<string, unknown>;
-
-export type Block_ProblemExampleFile = {
-  number?: number;
-}
-
-export type Block_ProblemExampleInline = {
-  number?: number;
-  input?: string;
-  answer?: string;
 }
 
