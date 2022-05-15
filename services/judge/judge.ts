@@ -426,6 +426,7 @@ export type ImportProblemInput = {
   importId?: string;
   index?: number;
   submitLimit?: number;
+  scoreByBestTestset?: boolean;
 }
 
 export type ImportProblemOutput = {
@@ -442,6 +443,7 @@ export type UpdateProblemInput = {
   problemId?: string;
   index?: number;
   submitLimit?: number;
+  scoreByBestTestset?: boolean;
 }
 
 export type UpdateProblemOutput = Record<string, unknown>;

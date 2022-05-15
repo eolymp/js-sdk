@@ -14,6 +14,7 @@ export type Problem = {
   memoryLimit?: number;
   fileSizeLimit?: number;
   submitLimit?: number;
+  scoreByBestTestset?: boolean;
 }
 
 export type Problem_Statement = {

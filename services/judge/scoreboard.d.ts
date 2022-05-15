@@ -28,4 +28,11 @@ export declare type Scoreboard_Score = {
     attempts?: number;
     solvedAt?: string;
     solvedIn?: number;
+    breakdown?: Scoreboard_Testset[];
+};
+export declare type Scoreboard_Testset = {
+    testsetId?: string;
+    index?: number;
+    cost?: number;
+    score?: number;
 };

@@ -162,6 +162,7 @@ export declare type ImportProblemInput = {
     importId?: string;
     index?: number;
     submitLimit?: number;
+    scoreByBestTestset?: boolean;
 };
 export declare type ImportProblemOutput = {
     problemId?: string;
@@ -174,6 +175,7 @@ export declare type UpdateProblemInput = {
     problemId?: string;
     index?: number;
     submitLimit?: number;
+    scoreByBestTestset?: boolean;
 };
 export declare type UpdateProblemOutput = Record<string, unknown>;
 export declare type DeleteProblemInput = {

@@ -4,4 +4,5 @@ export declare type Verifier = {
     source?: string;
     precision?: number;
     caseSensitive?: boolean;
+    orderSensitive?: boolean;
 };

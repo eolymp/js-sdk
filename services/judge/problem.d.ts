@@ -10,6 +10,7 @@ export declare type Problem = {
     memoryLimit?: number;
     fileSizeLimit?: number;
     submitLimit?: number;
+    scoreByBestTestset?: boolean;
 };
 export declare type Problem_Statement = {
     locale?: string;
