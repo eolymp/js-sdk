@@ -4,11 +4,11 @@
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Activity } from "./activity"
 import { Announcement } from "./announcement"
-import { Contest, Contest_Appearance } from "./contest"
-import { Form, Registration } from "./form"
+import { Contest, Contest_Appearance, Contest_Scoring } from "./contest"
 import { Participant } from "./participant"
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Reply } from "./reply"
+import { Score } from "./score"
 import { Scoreboard, Scoreboard_Row } from "./scoreboard"
 import { Submission } from "./submission"
 import { Ticket } from "./ticket"
@@ -56,14 +56,6 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/CloseContest", input, opts);
   }
 
-  ConfigureRegistrationForm<O>(input: ConfigureRegistrationFormInput, opts?: O): Promise<ConfigureRegistrationFormOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureRegistrationForm", input, opts);
-  }
-
-  DescribeRegistrationForm<O>(input: DescribeRegistrationFormInput, opts?: O): Promise<DescribeRegistrationFormOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeRegistrationForm", input, opts);
-  }
-
   ConfigureRuntime<O>(input: ConfigureRuntimeInput, opts?: O): Promise<ConfigureRuntimeOutput> {
     return this.cli.call("eolymp.judge.Judge/ConfigureRuntime", input, opts);
   }
@@ -80,12 +72,12 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input, opts);
   }
 
-  SubmitRegistration<O>(input: SubmitRegistrationInput, opts?: O): Promise<SubmitRegistrationOutput> {
-    return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input, opts);
+  ConfigureScoring<O>(input: ConfigureScoringInput, opts?: O): Promise<ConfigureScoringOutput> {
+    return this.cli.call("eolymp.judge.Judge/ConfigureScoring", input, opts);
   }
 
-  DescribeRegistration<O>(input: DescribeRegistrationInput, opts?: O): Promise<DescribeRegistrationOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeRegistration", input, opts);
+  DescribeScoring<O>(input: DescribeScoringInput, opts?: O): Promise<DescribeScoringOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScoring", input, opts);
   }
 
   ImportProblem<O>(input: ImportProblemInput, opts?: O): Promise<ImportProblemOutput> {
@@ -274,6 +266,18 @@ export class Judge {
 
   ListAnnouncements<O>(input: ListAnnouncementsInput, opts?: O): Promise<ListAnnouncementsOutput> {
     return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input, opts);
+  }
+
+  IntrospectScore<O>(input: IntrospectScoreInput, opts?: O): Promise<IntrospectScoreOutput> {
+    return this.cli.call("eolymp.judge.Judge/IntrospectScore", input, opts);
+  }
+
+  DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
+    return this.cli.call("eolymp.judge.Judge/DescribeScore", input, opts);
+  }
+
+  ListScore<O>(input: ListScoreInput, opts?: O): Promise<ListScoreOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListScore", input, opts);
   }
 
   CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput> {
@@ -761,21 +765,6 @@ export type UpdateReplyInput = {
 
 export type UpdateReplyOutput = Record<string, unknown>;
 
-export type ConfigureRegistrationFormInput = {
-  contestId?: string;
-  form?: Form;
-}
-
-export type ConfigureRegistrationFormOutput = Record<string, unknown>;
-
-export type DescribeRegistrationFormInput = {
-  contestId?: string;
-}
-
-export type DescribeRegistrationFormOutput = {
-  form?: Form;
-}
-
 export type ConfigureRuntimeInput = {
   contestId?: string;
   runtime?: string[];
@@ -791,19 +780,19 @@ export type DescribeRuntimeOutput = {
   runtime?: string[];
 }
 
-export type SubmitRegistrationInput = {
-  participantId?: string;
-  registration?: Registration;
+export type ConfigureScoringInput = {
+  contestId?: string;
+  scoring?: Contest_Scoring;
 }
 
-export type SubmitRegistrationOutput = Record<string, unknown>;
+export type ConfigureScoringOutput = Record<string, unknown>;
 
-export type DescribeRegistrationInput = {
-  participantId?: string;
+export type DescribeScoringInput = {
+  contestId?: string;
 }
 
-export type DescribeRegistrationOutput = {
-  registration?: Registration;
+export type DescribeScoringOutput = {
+  scoring?: Contest_Scoring;
 }
 
 export type CreateAnnouncementInput = {
@@ -974,6 +963,37 @@ export type DescribeScoreboardRowInput = {
 
 export type DescribeScoreboardRowOutput = {
   row?: Scoreboard_Row;
+}
+
+export type IntrospectScoreInput = {
+  contestId?: string;
+}
+
+export type IntrospectScoreOutput = {
+  score?: Score;
+}
+
+export type DescribeScoreInput = {
+  participantId?: string;
+  mode?: string;
+  timeOffset?: number;
+}
+
+export type DescribeScoreOutput = {
+  score?: Score;
+}
+
+export type ListScoreInput = {
+  contestId?: string;
+  mode?: string;
+  timeOffset?: number;
+  offset?: number;
+  size?: number;
+}
+
+export type ListScoreOutput = {
+  total?: number;
+  items?: Score[];
 }
 
 export type DescribeDefaultScoreboardRowInput = {

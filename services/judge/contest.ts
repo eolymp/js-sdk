@@ -26,3 +26,9 @@ export type Contest_Appearance = {
   secondaryColor?: string;
 }
 
+export type Contest_Scoring = {
+  showScoreboard?: boolean;
+  attemptPenalty?: number;
+  freezingTime?: number;
+}
+
