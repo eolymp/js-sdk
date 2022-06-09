@@ -39,8 +39,8 @@ export type Scoreboard_Column = {
   type?: string;
   index?: number;
   visible?: boolean;
-  contestScoreboardId?: string;
-  contestProblemId?: string;
+  judgeContestId?: string;
+  judgeProblemId?: string;
   communityAttributeKey?: string;
   columns?: Scoreboard_Column[];
 }

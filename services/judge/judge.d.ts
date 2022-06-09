@@ -1,11 +1,11 @@
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression";
 import { Activity } from "./activity";
 import { Announcement } from "./announcement";
-import { Contest, Contest_Appearance } from "./contest";
-import { Form, Registration } from "./form";
+import { Contest, Contest_Appearance, Contest_Scoring } from "./contest";
 import { Participant } from "./participant";
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem";
 import { Reply } from "./reply";
+import { Score } from "./score";
 import { Scoreboard, Scoreboard_Row } from "./scoreboard";
 import { Submission } from "./submission";
 import { Ticket } from "./ticket";
@@ -23,14 +23,12 @@ export declare class Judge {
     ListContests<O>(input: ListContestsInput, opts?: O): Promise<ListContestsOutput>;
     OpenContest<O>(input: OpenContestInput, opts?: O): Promise<OpenContestOutput>;
     CloseContest<O>(input: CloseContestInput, opts?: O): Promise<CloseContestOutput>;
-    ConfigureRegistrationForm<O>(input: ConfigureRegistrationFormInput, opts?: O): Promise<ConfigureRegistrationFormOutput>;
-    DescribeRegistrationForm<O>(input: DescribeRegistrationFormInput, opts?: O): Promise<DescribeRegistrationFormOutput>;
     ConfigureRuntime<O>(input: ConfigureRuntimeInput, opts?: O): Promise<ConfigureRuntimeOutput>;
     DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput>;
     ConfigureAppearance<O>(input: ConfigureAppearanceInput, opts?: O): Promise<ConfigureAppearanceOutput>;
     DescribeAppearance<O>(input: DescribeAppearanceInput, opts?: O): Promise<DescribeAppearanceOutput>;
-    SubmitRegistration<O>(input: SubmitRegistrationInput, opts?: O): Promise<SubmitRegistrationOutput>;
-    DescribeRegistration<O>(input: DescribeRegistrationInput, opts?: O): Promise<DescribeRegistrationOutput>;
+    ConfigureScoring<O>(input: ConfigureScoringInput, opts?: O): Promise<ConfigureScoringOutput>;
+    DescribeScoring<O>(input: DescribeScoringInput, opts?: O): Promise<DescribeScoringOutput>;
     ImportProblem<O>(input: ImportProblemInput, opts?: O): Promise<ImportProblemOutput>;
     SyncProblem<O>(input: SyncProblemInput, opts?: O): Promise<SyncProblemOutput>;
     UpdateProblem<O>(input: UpdateProblemInput, opts?: O): Promise<UpdateProblemOutput>;
@@ -78,9 +76,12 @@ export declare class Judge {
     DescribeAnnouncement<O>(input: DescribeAnnouncementInput, opts?: O): Promise<DescribeAnnouncementOutput>;
     DescribeAnnouncementStatus<O>(input: DescribeAnnouncementStatusInput, opts?: O): Promise<DescribeAnnouncementStatusOutput>;
     ListAnnouncements<O>(input: ListAnnouncementsInput, opts?: O): Promise<ListAnnouncementsOutput>;
+    IntrospectScore<O>(input: IntrospectScoreInput, opts?: O): Promise<IntrospectScoreOutput>;
+    DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput>;
+    ListScore<O>(input: ListScoreInput, opts?: O): Promise<ListScoreOutput>;
     CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput>;
     UpdateScoreboard<O>(input: UpdateScoreboardInput, opts?: O): Promise<UpdateScoreboardOutput>;
-    RebuildScoreboard<O>(input: RebuildScoreboardInput, opts?: O): Promise<RebuildScoreboardOutput>;
+    RebuildScore<O>(input: RebuildScoreInput, opts?: O): Promise<RebuildScoreOutput>;
     DeleteScoreboard<O>(input: DeleteScoreboardInput, opts?: O): Promise<DeleteScoreboardOutput>;
     DescribeScoreboard<O>(input: DescribeScoreboardInput, opts?: O): Promise<DescribeScoreboardOutput>;
     DescribeDefaultScoreboard<O>(input: DescribeDefaultScoreboardInput, opts?: O): Promise<DescribeDefaultScoreboardOutput>;
@@ -420,17 +421,6 @@ export declare type UpdateReplyInput = {
     message?: string;
 };
 export declare type UpdateReplyOutput = Record<string, unknown>;
-export declare type ConfigureRegistrationFormInput = {
-    contestId?: string;
-    form?: Form;
-};
-export declare type ConfigureRegistrationFormOutput = Record<string, unknown>;
-export declare type DescribeRegistrationFormInput = {
-    contestId?: string;
-};
-export declare type DescribeRegistrationFormOutput = {
-    form?: Form;
-};
 export declare type ConfigureRuntimeInput = {
     contestId?: string;
     runtime?: string[];
@@ -442,16 +432,16 @@ export declare type DescribeRuntimeInput = {
 export declare type DescribeRuntimeOutput = {
     runtime?: string[];
 };
-export declare type SubmitRegistrationInput = {
-    participantId?: string;
-    registration?: Registration;
+export declare type ConfigureScoringInput = {
+    contestId?: string;
+    scoring?: Contest_Scoring;
 };
-export declare type SubmitRegistrationOutput = Record<string, unknown>;
-export declare type DescribeRegistrationInput = {
-    participantId?: string;
+export declare type ConfigureScoringOutput = Record<string, unknown>;
+export declare type DescribeScoringInput = {
+    contestId?: string;
 };
-export declare type DescribeRegistrationOutput = {
-    registration?: Registration;
+export declare type DescribeScoringOutput = {
+    scoring?: Contest_Scoring;
 };
 export declare type CreateAnnouncementInput = {
     contestId?: string;
@@ -518,10 +508,10 @@ export declare type UpdateScoreboardInput = {
     scoreboard?: Scoreboard;
 };
 export declare type UpdateScoreboardOutput = Record<string, unknown>;
-export declare type RebuildScoreboardInput = {
-    scoreboardId?: string;
+export declare type RebuildScoreInput = {
+    contestId?: string;
 };
-export declare type RebuildScoreboardOutput = {
+export declare type RebuildScoreOutput = {
     activityId?: string;
 };
 export declare type DeleteScoreboardInput = {
@@ -582,6 +572,31 @@ export declare type DescribeScoreboardRowInput = {
 };
 export declare type DescribeScoreboardRowOutput = {
     row?: Scoreboard_Row;
+};
+export declare type IntrospectScoreInput = {
+    contestId?: string;
+};
+export declare type IntrospectScoreOutput = {
+    score?: Score;
+};
+export declare type DescribeScoreInput = {
+    participantId?: string;
+    mode?: string;
+    timeOffset?: number;
+};
+export declare type DescribeScoreOutput = {
+    score?: Score;
+};
+export declare type ListScoreInput = {
+    contestId?: string;
+    mode?: string;
+    timeOffset?: number;
+    offset?: number;
+    size?: number;
+};
+export declare type ListScoreOutput = {
+    total?: number;
+    items?: Score[];
 };
 export declare type DescribeDefaultScoreboardRowInput = {
     contestId?: string;

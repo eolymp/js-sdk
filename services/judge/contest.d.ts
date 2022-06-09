@@ -20,3 +20,8 @@ export declare type Contest_Appearance = {
     primaryColor?: string;
     secondaryColor?: string;
 };
+export declare type Contest_Scoring = {
+    showScoreboard?: boolean;
+    attemptPenalty?: number;
+    freezingTime?: number;
+};

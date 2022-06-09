@@ -31,12 +31,6 @@ class Judge {
     CloseContest(input, opts) {
         return this.cli.call("eolymp.judge.Judge/CloseContest", input, opts);
     }
-    ConfigureRegistrationForm(input, opts) {
-        return this.cli.call("eolymp.judge.Judge/ConfigureRegistrationForm", input, opts);
-    }
-    DescribeRegistrationForm(input, opts) {
-        return this.cli.call("eolymp.judge.Judge/DescribeRegistrationForm", input, opts);
-    }
     ConfigureRuntime(input, opts) {
         return this.cli.call("eolymp.judge.Judge/ConfigureRuntime", input, opts);
     }
@@ -49,11 +43,11 @@ class Judge {
     DescribeAppearance(input, opts) {
         return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input, opts);
     }
-    SubmitRegistration(input, opts) {
-        return this.cli.call("eolymp.judge.Judge/SubmitRegistration", input, opts);
+    ConfigureScoring(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ConfigureScoring", input, opts);
     }
-    DescribeRegistration(input, opts) {
-        return this.cli.call("eolymp.judge.Judge/DescribeRegistration", input, opts);
+    DescribeScoring(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScoring", input, opts);
     }
     ImportProblem(input, opts) {
         return this.cli.call("eolymp.judge.Judge/ImportProblem", input, opts);
@@ -196,14 +190,23 @@ class Judge {
     ListAnnouncements(input, opts) {
         return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input, opts);
     }
+    IntrospectScore(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/IntrospectScore", input, opts);
+    }
+    DescribeScore(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/DescribeScore", input, opts);
+    }
+    ListScore(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListScore", input, opts);
+    }
     CreateScoreboard(input, opts) {
         return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input, opts);
     }
     UpdateScoreboard(input, opts) {
         return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input, opts);
     }
-    RebuildScoreboard(input, opts) {
-        return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input, opts);
+    RebuildScore(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/RebuildScore", input, opts);
     }
     DeleteScoreboard(input, opts) {
         return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input, opts);

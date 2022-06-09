@@ -288,8 +288,8 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input, opts);
   }
 
-  RebuildScoreboard<O>(input: RebuildScoreboardInput, opts?: O): Promise<RebuildScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/RebuildScoreboard", input, opts);
+  RebuildScore<O>(input: RebuildScoreInput, opts?: O): Promise<RebuildScoreOutput> {
+    return this.cli.call("eolymp.judge.Judge/RebuildScore", input, opts);
   }
 
   DeleteScoreboard<O>(input: DeleteScoreboardInput, opts?: O): Promise<DeleteScoreboardOutput> {
@@ -881,11 +881,11 @@ export type UpdateScoreboardInput = {
 
 export type UpdateScoreboardOutput = Record<string, unknown>;
 
-export type RebuildScoreboardInput = {
-  scoreboardId?: string;
+export type RebuildScoreInput = {
+  contestId?: string;
 }
 
-export type RebuildScoreboardOutput = {
+export type RebuildScoreOutput = {
   activityId?: string;
 }
 
