@@ -8,6 +8,7 @@ export type Member = {
   disabled?: boolean;
   registered?: boolean;
   staffed?: boolean;
+  ghost?: boolean;
   status?: string;
   users?: Member_User[];
   values?: Member_Value[];

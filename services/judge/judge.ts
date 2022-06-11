@@ -8,6 +8,7 @@ import { Contest, Contest_Appearance, Contest_Scoring } from "./contest"
 import { Participant } from "./participant"
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Reply } from "./reply"
+import { Result } from "./result"
 import { Score } from "./score"
 import { Scoreboard, Scoreboard_Row } from "./scoreboard"
 import { Submission } from "./submission"
@@ -276,8 +277,12 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/DescribeScore", input, opts);
   }
 
-  ListScore<O>(input: ListScoreInput, opts?: O): Promise<ListScoreOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListScore", input, opts);
+  ImportScore<O>(input: ImportScoreInput, opts?: O): Promise<ImportScoreOutput> {
+    return this.cli.call("eolymp.judge.Judge/ImportScore", input, opts);
+  }
+
+  ListResult<O>(input: ListResultInput, opts?: O): Promise<ListResultOutput> {
+    return this.cli.call("eolymp.judge.Judge/ListResult", input, opts);
   }
 
   CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput> {
@@ -983,7 +988,15 @@ export type DescribeScoreOutput = {
   score?: Score;
 }
 
-export type ListScoreInput = {
+export type ImportScoreInput = {
+  participantId?: string;
+}
+
+export type ImportScoreOutput = {
+  scores?: Score[];
+}
+
+export type ListResultInput = {
   contestId?: string;
   mode?: string;
   timeOffset?: number;
@@ -991,9 +1004,9 @@ export type ListScoreInput = {
   size?: number;
 }
 
-export type ListScoreOutput = {
+export type ListResultOutput = {
   total?: number;
-  items?: Score[];
+  items?: Result[];
 }
 
 export type DescribeDefaultScoreboardRowInput = {

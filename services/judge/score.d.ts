@@ -1,11 +1,7 @@
 export declare type Score = {
-    participantId?: string;
-    contestId?: string;
-    name?: string;
+    offset?: number;
     score?: number;
     penalty?: number;
-    rank?: number;
-    rankLower?: number;
     breakdown?: Score_Problem[];
 };
 export declare type Score_Problem = {

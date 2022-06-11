@@ -5,6 +5,7 @@ import { Contest, Contest_Appearance, Contest_Scoring } from "./contest";
 import { Participant } from "./participant";
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem";
 import { Reply } from "./reply";
+import { Result } from "./result";
 import { Score } from "./score";
 import { Scoreboard, Scoreboard_Row } from "./scoreboard";
 import { Submission } from "./submission";
@@ -78,7 +79,8 @@ export declare class Judge {
     ListAnnouncements<O>(input: ListAnnouncementsInput, opts?: O): Promise<ListAnnouncementsOutput>;
     IntrospectScore<O>(input: IntrospectScoreInput, opts?: O): Promise<IntrospectScoreOutput>;
     DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput>;
-    ListScore<O>(input: ListScoreInput, opts?: O): Promise<ListScoreOutput>;
+    ImportScore<O>(input: ImportScoreInput, opts?: O): Promise<ImportScoreOutput>;
+    ListResult<O>(input: ListResultInput, opts?: O): Promise<ListResultOutput>;
     CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput>;
     UpdateScoreboard<O>(input: UpdateScoreboardInput, opts?: O): Promise<UpdateScoreboardOutput>;
     RebuildScore<O>(input: RebuildScoreInput, opts?: O): Promise<RebuildScoreOutput>;
@@ -587,16 +589,22 @@ export declare type DescribeScoreInput = {
 export declare type DescribeScoreOutput = {
     score?: Score;
 };
-export declare type ListScoreInput = {
+export declare type ImportScoreInput = {
+    participantId?: string;
+};
+export declare type ImportScoreOutput = {
+    scores?: Score[];
+};
+export declare type ListResultInput = {
     contestId?: string;
     mode?: string;
     timeOffset?: number;
     offset?: number;
     size?: number;
 };
-export declare type ListScoreOutput = {
+export declare type ListResultOutput = {
     total?: number;
-    items?: Score[];
+    items?: Result[];
 };
 export declare type DescribeDefaultScoreboardRowInput = {
     contestId?: string;

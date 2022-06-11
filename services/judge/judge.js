@@ -196,8 +196,11 @@ class Judge {
     DescribeScore(input, opts) {
         return this.cli.call("eolymp.judge.Judge/DescribeScore", input, opts);
     }
-    ListScore(input, opts) {
-        return this.cli.call("eolymp.judge.Judge/ListScore", input, opts);
+    ImportScore(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ImportScore", input, opts);
+    }
+    ListResult(input, opts) {
+        return this.cli.call("eolymp.judge.Judge/ListResult", input, opts);
     }
     CreateScoreboard(input, opts) {
         return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input, opts);

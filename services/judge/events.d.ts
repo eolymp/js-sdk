@@ -10,6 +10,8 @@ export declare type RebuildScoreEvent = {
     activityId?: string;
 };
 export declare type ScoreUpdatedEvent = {
+    contestId?: string;
+    participantId?: string;
     score?: Score;
 };
 export declare type TicketCreatedEvent = {

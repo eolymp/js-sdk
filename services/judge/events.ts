@@ -16,6 +16,8 @@ export type RebuildScoreEvent = {
 }
 
 export type ScoreUpdatedEvent = {
+  contestId?: string;
+  participantId?: string;
   score?: Score;
 }
 
