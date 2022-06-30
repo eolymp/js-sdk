@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID, ExpressionString } from "../wellknown/expression"
+import { AccessKey } from "./access_key"
 import { Quota } from "./quota"
 import { User } from "./user"
 
@@ -34,6 +35,18 @@ export class Cognito {
 
   Signout<O>(input: SignoutInput, opts?: O): Promise<SignoutOutput> {
     return this.cli.call("eolymp.cognito.Cognito/Signout", input, opts);
+  }
+
+  CreateAccessKey<O>(input: CreateAccessKeyInput, opts?: O): Promise<CreateAccessKeyOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/CreateAccessKey", input, opts);
+  }
+
+  DeleteAccessKey<O>(input: DeleteAccessKeyInput, opts?: O): Promise<DeleteAccessKeyOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/DeleteAccessKey", input, opts);
+  }
+
+  ListAccessKeys<O>(input: ListAccessKeysInput, opts?: O): Promise<ListAccessKeysOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/ListAccessKeys", input, opts);
   }
 
   CreateUser<O>(input: CreateUserInput, opts?: O): Promise<CreateUserOutput> {
@@ -274,4 +287,31 @@ export type SignoutInput = {
 }
 
 export type SignoutOutput = Record<string, unknown>;
+
+export type CreateAccessKeyInput = {
+  name?: string;
+  scope?: string;
+  expiresIn?: number;
+}
+
+export type CreateAccessKeyOutput = {
+  keyId?: string;
+  secret?: string;
+}
+
+export type DeleteAccessKeyInput = {
+  keyId?: string;
+}
+
+export type DeleteAccessKeyOutput = Record<string, unknown>;
+
+export type ListAccessKeysInput = {
+  offset?: number;
+  size?: number;
+}
+
+export type ListAccessKeysOutput = {
+  total?: number;
+  items?: AccessKey[];
+}
 

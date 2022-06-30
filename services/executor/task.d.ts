@@ -9,6 +9,7 @@ export declare type Task = {
     source?: string;
     useFileIo?: boolean;
     redirectStderrToStdout?: boolean;
+    useWorkspaceArchive?: boolean;
     preconditions?: Task_Precondition[];
     constraints?: Task_Constraint[];
     verifier?: Verifier;

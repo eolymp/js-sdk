@@ -990,11 +990,10 @@ export type DescribeScoreOutput = {
 
 export type ImportScoreInput = {
   participantId?: string;
-}
-
-export type ImportScoreOutput = {
   scores?: Score[];
 }
+
+export type ImportScoreOutput = Record<string, unknown>;
 
 export type ListResultInput = {
   contestId?: string;

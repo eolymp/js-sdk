@@ -10,6 +10,8 @@ export declare type Scoreboard_Row = {
     memberId?: string;
     score?: number;
     penalty?: number;
+    rank?: number;
+    rankLower?: number;
     values?: Scoreboard_Row_Value[];
 };
 export declare type Scoreboard_Row_Value = {

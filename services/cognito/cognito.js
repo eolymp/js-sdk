@@ -22,6 +22,15 @@ class Cognito {
     Signout(input, opts) {
         return this.cli.call("eolymp.cognito.Cognito/Signout", input, opts);
     }
+    CreateAccessKey(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/CreateAccessKey", input, opts);
+    }
+    DeleteAccessKey(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/DeleteAccessKey", input, opts);
+    }
+    ListAccessKeys(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/ListAccessKeys", input, opts);
+    }
     CreateUser(input, opts) {
         return this.cli.call("eolymp.cognito.Cognito/CreateUser", input, opts);
     }

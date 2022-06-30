@@ -1,4 +1,5 @@
 import { ExpressionID, ExpressionString } from "../wellknown/expression";
+import { AccessKey } from "./access_key";
 import { Quota } from "./quota";
 import { User } from "./user";
 interface Client {
@@ -12,6 +13,9 @@ export declare class Cognito {
     CreateAuthorization<O>(input: CreateAuthorizationInput, opts?: O): Promise<CreateAuthorizationOutput>;
     RevokeToken<O>(input: RevokeTokenInput, opts?: O): Promise<RevokeTokenOutput>;
     Signout<O>(input: SignoutInput, opts?: O): Promise<SignoutOutput>;
+    CreateAccessKey<O>(input: CreateAccessKeyInput, opts?: O): Promise<CreateAccessKeyOutput>;
+    DeleteAccessKey<O>(input: DeleteAccessKeyInput, opts?: O): Promise<DeleteAccessKeyOutput>;
+    ListAccessKeys<O>(input: ListAccessKeysInput, opts?: O): Promise<ListAccessKeysOutput>;
     CreateUser<O>(input: CreateUserInput, opts?: O): Promise<CreateUserOutput>;
     VerifyEmail<O>(input: VerifyEmailInput, opts?: O): Promise<VerifyEmailOutput>;
     UpdateEmail<O>(input: UpdateEmailInput, opts?: O): Promise<UpdateEmailOutput>;
@@ -173,4 +177,25 @@ export declare type SignoutInput = {
     everywhere?: boolean;
 };
 export declare type SignoutOutput = Record<string, unknown>;
+export declare type CreateAccessKeyInput = {
+    name?: string;
+    scope?: string;
+    expiresIn?: number;
+};
+export declare type CreateAccessKeyOutput = {
+    keyId?: string;
+    secret?: string;
+};
+export declare type DeleteAccessKeyInput = {
+    keyId?: string;
+};
+export declare type DeleteAccessKeyOutput = Record<string, unknown>;
+export declare type ListAccessKeysInput = {
+    offset?: number;
+    size?: number;
+};
+export declare type ListAccessKeysOutput = {
+    total?: number;
+    items?: AccessKey[];
+};
 export {};

@@ -591,10 +591,9 @@ export declare type DescribeScoreOutput = {
 };
 export declare type ImportScoreInput = {
     participantId?: string;
-};
-export declare type ImportScoreOutput = {
     scores?: Score[];
 };
+export declare type ImportScoreOutput = Record<string, unknown>;
 export declare type ListResultInput = {
     contestId?: string;
     mode?: string;
