@@ -8,10 +8,10 @@ class Geography {
         this.cli = cli;
     }
     DescribeCountry(input, opts) {
-        return this.cli.call("eolymp.wellknown.Geography/DescribeCountry", input, opts);
+        return this.cli.call("eolymp.geography.Geography/DescribeCountry", input, opts);
     }
     ListCountries(input, opts) {
-        return this.cli.call("eolymp.wellknown.Geography/ListCountries", input, opts);
+        return this.cli.call("eolymp.geography.Geography/ListCountries", input, opts);
     }
 }
 exports.Geography = Geography;
