@@ -61,6 +61,10 @@ export class Cognito {
     return this.cli.call("eolymp.cognito.Cognito/UpdateEmail", input, opts);
   }
 
+  UpdateProfile<O>(input: UpdateProfileInput, opts?: O): Promise<UpdateProfileOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/UpdateProfile", input, opts);
+  }
+
   StartRecovery<O>(input: StartRecoveryInput, opts?: O): Promise<StartRecoveryOutput> {
     return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input, opts);
   }
@@ -230,6 +234,21 @@ export type UpdateEmailInput = {
 export type UpdateEmailOutput = {
   emailConfirmationHint?: string;
 }
+
+export type UpdateProfileInput = {
+  patch?: string[];
+  username?: string;
+  email?: string;
+  name?: string;
+  picture?: string;
+  company?: string;
+  occupation?: string;
+  country?: string;
+  city?: string;
+  birthday?: string;
+}
+
+export type UpdateProfileOutput = Record<string, unknown>;
 
 export type StartRecoveryInput = {
   email?: string;

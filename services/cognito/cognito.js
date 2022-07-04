@@ -40,6 +40,9 @@ class Cognito {
     UpdateEmail(input, opts) {
         return this.cli.call("eolymp.cognito.Cognito/UpdateEmail", input, opts);
     }
+    UpdateProfile(input, opts) {
+        return this.cli.call("eolymp.cognito.Cognito/UpdateProfile", input, opts);
+    }
     StartRecovery(input, opts) {
         return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input, opts);
     }

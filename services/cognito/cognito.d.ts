@@ -19,6 +19,7 @@ export declare class Cognito {
     CreateUser<O>(input: CreateUserInput, opts?: O): Promise<CreateUserOutput>;
     VerifyEmail<O>(input: VerifyEmailInput, opts?: O): Promise<VerifyEmailOutput>;
     UpdateEmail<O>(input: UpdateEmailInput, opts?: O): Promise<UpdateEmailOutput>;
+    UpdateProfile<O>(input: UpdateProfileInput, opts?: O): Promise<UpdateProfileOutput>;
     StartRecovery<O>(input: StartRecoveryInput, opts?: O): Promise<StartRecoveryOutput>;
     CompleteRecovery<O>(input: CompleteRecoverInput, opts?: O): Promise<CompleteRecoverOutput>;
     IntrospectUser<O>(input: IntrospectUserInput, opts?: O): Promise<IntrospectUserOutput>;
@@ -136,6 +137,19 @@ export declare type UpdateEmailInput = {
 export declare type UpdateEmailOutput = {
     emailConfirmationHint?: string;
 };
+export declare type UpdateProfileInput = {
+    patch?: string[];
+    username?: string;
+    email?: string;
+    name?: string;
+    picture?: string;
+    company?: string;
+    occupation?: string;
+    country?: string;
+    city?: string;
+    birthday?: string;
+};
+export declare type UpdateProfileOutput = Record<string, unknown>;
 export declare type StartRecoveryInput = {
     email?: string;
     captcha?: string;
