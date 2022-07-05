@@ -260,6 +260,9 @@ export type UpdateProfileOutput = Record<string, unknown>;
 export type UpdatePictureInput = {
   filename?: string;
   data?: string;
+  offsetX?: number;
+  offsetY?: number;
+  size?: number;
 }
 
 export type UpdatePictureOutput = Record<string, unknown>;
