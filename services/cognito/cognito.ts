@@ -65,6 +65,14 @@ export class Cognito {
     return this.cli.call("eolymp.cognito.Cognito/UpdateProfile", input, opts);
   }
 
+  UpdatePicture<O>(input: UpdatePictureInput, opts?: O): Promise<UpdatePictureOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/UpdatePicture", input, opts);
+  }
+
+  UpdatePassword<O>(input: UpdatePasswordInput, opts?: O): Promise<UpdatePasswordOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/UpdatePassword", input, opts);
+  }
+
   StartRecovery<O>(input: StartRecoveryInput, opts?: O): Promise<StartRecoveryOutput> {
     return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input, opts);
   }
@@ -240,7 +248,6 @@ export type UpdateProfileInput = {
   username?: string;
   email?: string;
   name?: string;
-  picture?: string;
   company?: string;
   occupation?: string;
   country?: string;
@@ -249,6 +256,20 @@ export type UpdateProfileInput = {
 }
 
 export type UpdateProfileOutput = Record<string, unknown>;
+
+export type UpdatePictureInput = {
+  filename?: string;
+  data?: string;
+}
+
+export type UpdatePictureOutput = Record<string, unknown>;
+
+export type UpdatePasswordInput = {
+  currentPassword?: string;
+  newPassword?: string;
+}
+
+export type UpdatePasswordOutput = Record<string, unknown>;
 
 export type StartRecoveryInput = {
   email?: string;

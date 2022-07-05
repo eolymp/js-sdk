@@ -20,6 +20,8 @@ export declare class Cognito {
     VerifyEmail<O>(input: VerifyEmailInput, opts?: O): Promise<VerifyEmailOutput>;
     UpdateEmail<O>(input: UpdateEmailInput, opts?: O): Promise<UpdateEmailOutput>;
     UpdateProfile<O>(input: UpdateProfileInput, opts?: O): Promise<UpdateProfileOutput>;
+    UpdatePicture<O>(input: UpdatePictureInput, opts?: O): Promise<UpdatePictureOutput>;
+    UpdatePassword<O>(input: UpdatePasswordInput, opts?: O): Promise<UpdatePasswordOutput>;
     StartRecovery<O>(input: StartRecoveryInput, opts?: O): Promise<StartRecoveryOutput>;
     CompleteRecovery<O>(input: CompleteRecoverInput, opts?: O): Promise<CompleteRecoverOutput>;
     IntrospectUser<O>(input: IntrospectUserInput, opts?: O): Promise<IntrospectUserOutput>;
@@ -142,7 +144,6 @@ export declare type UpdateProfileInput = {
     username?: string;
     email?: string;
     name?: string;
-    picture?: string;
     company?: string;
     occupation?: string;
     country?: string;
@@ -150,6 +151,16 @@ export declare type UpdateProfileInput = {
     birthday?: string;
 };
 export declare type UpdateProfileOutput = Record<string, unknown>;
+export declare type UpdatePictureInput = {
+    filename?: string;
+    data?: string;
+};
+export declare type UpdatePictureOutput = Record<string, unknown>;
+export declare type UpdatePasswordInput = {
+    currentPassword?: string;
+    newPassword?: string;
+};
+export declare type UpdatePasswordOutput = Record<string, unknown>;
 export declare type StartRecoveryInput = {
     email?: string;
     captcha?: string;
