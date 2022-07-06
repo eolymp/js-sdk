@@ -9,6 +9,7 @@ export type CreateTokenInput = {
     code?: string;
     code_verifier?: string;
     scope?: string;
+    refresh_token?: string;
 };
 
 export type CreateTokenOutput = {
