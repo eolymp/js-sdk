@@ -8,6 +8,7 @@ export declare type CreateTokenInput = {
     code?: string;
     code_verifier?: string;
     scope?: string;
+    refresh_token?: string;
 };
 export declare type CreateTokenOutput = {
     access_token: string;

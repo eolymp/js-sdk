@@ -14,6 +14,7 @@ export type CreateTokenInput = {
 
 export type CreateTokenOutput = {
     access_token: string;
+    refresh_token: string;
 };
 
 export type IntrospectTokenInput = {
