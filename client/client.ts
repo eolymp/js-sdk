@@ -32,13 +32,14 @@ export class Client {
   async do<T>(method: string, path: string, body: string, headers: Record<string, string> = {}): Promise<T> {
     const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
 
-    if (!this.token && this.authenticate) {
-      this.token = await this.authenticate()
-    }
 
     const max = Math.max(1, this.retry);
     for (let retry = 0; retry < max; retry++) {
       const last = retry >= max-1
+
+      if (!this.token && this.authenticate) {
+        this.token = await this.authenticate()
+      }
 
       const auth: Record<string, string> = {}
       if (this.token) {
