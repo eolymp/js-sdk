@@ -19,5 +19,7 @@ export type User = {
   birthday?: string;
   registeredOn?: string;
   lastActivity?: string;
+  usernameChangedOn?: string;
+  passwordChangedOn?: string;
 }
 

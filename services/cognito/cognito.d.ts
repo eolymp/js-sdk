@@ -154,6 +154,9 @@ export declare type UpdateProfileOutput = Record<string, unknown>;
 export declare type UpdatePictureInput = {
     filename?: string;
     data?: string;
+    offsetX?: number;
+    offsetY?: number;
+    size?: number;
 };
 export declare type UpdatePictureOutput = Record<string, unknown>;
 export declare type UpdatePasswordInput = {
