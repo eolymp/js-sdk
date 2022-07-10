@@ -29,12 +29,12 @@ class Client {
     do(method, path, body, headers = {}) {
         return __awaiter(this, void 0, void 0, function* () {
             const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
-            if (!this.token && this.authenticate) {
-                this.token = yield this.authenticate();
-            }
             const max = Math.max(1, this.retry);
             for (let retry = 0; retry < max; retry++) {
                 const last = retry >= max - 1;
+                if (!this.token && this.authenticate) {
+                    this.token = yield this.authenticate();
+                }
                 const auth = {};
                 if (this.token) {
                     auth['Authorization'] = `Bearer ${this.token}`;
