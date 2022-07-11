@@ -57,13 +57,13 @@ export type DescribeDocumentOutput = {
 }
 
 export type ListDocumentsInput = {
-  searchQuery?: string;
   offset?: number;
   size?: number;
   filters?: ListDocumentsInput_Filter;
 }
 
 export type ListDocumentsInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   path?: ExpressionString[];
   locale?: ExpressionEnum[];

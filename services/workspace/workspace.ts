@@ -61,9 +61,13 @@ export type DescribeProjectOutput = {
 }
 
 export type ListProjectsInput = {
-  searchQuery?: string;
   offset?: number;
   size?: number;
+  filters?: ListProjectsInput_Filter;
+}
+
+export type ListProjectsInput_Filter = {
+  query?: string;
 }
 
 export type ListProjectsOutput = {

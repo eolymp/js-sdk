@@ -23,9 +23,12 @@ export declare type DescribeProjectOutput = {
     project?: Project;
 };
 export declare type ListProjectsInput = {
-    searchQuery?: string;
     offset?: number;
     size?: number;
+    filters?: ListProjectsInput_Filter;
+};
+export declare type ListProjectsInput_Filter = {
+    query?: string;
 };
 export declare type ListProjectsOutput = {
     total?: number;

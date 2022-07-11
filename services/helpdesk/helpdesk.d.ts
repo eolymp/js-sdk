@@ -22,12 +22,12 @@ export declare type DescribeDocumentOutput = {
     document?: Document;
 };
 export declare type ListDocumentsInput = {
-    searchQuery?: string;
     offset?: number;
     size?: number;
     filters?: ListDocumentsInput_Filter;
 };
 export declare type ListDocumentsInput_Filter = {
+    query?: string;
     id?: ExpressionID[];
     path?: ExpressionString[];
     locale?: ExpressionEnum[];
