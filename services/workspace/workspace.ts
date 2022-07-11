@@ -61,6 +61,7 @@ export type DescribeProjectOutput = {
 }
 
 export type ListProjectsInput = {
+  searchQuery?: string;
   offset?: number;
   size?: number;
 }

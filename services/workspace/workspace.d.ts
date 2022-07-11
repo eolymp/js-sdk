@@ -23,6 +23,7 @@ export declare type DescribeProjectOutput = {
     project?: Project;
 };
 export declare type ListProjectsInput = {
+    searchQuery?: string;
     offset?: number;
     size?: number;
 };
