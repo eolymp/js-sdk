@@ -7,6 +7,7 @@ export type Project = {
   name?: string;
   runtime?: string;
   visibility?: string;
+  authorId?: string;
   atlasProblemId?: string;
   labels?: string[];
 }
