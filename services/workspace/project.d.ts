@@ -4,6 +4,12 @@ export declare type Project = {
     runtime?: string;
     visibility?: string;
     authorId?: string;
-    atlasProblemId?: string;
+    createdOn?: string;
+    updatedOn?: string;
+    target?: Project_Target;
     labels?: string[];
+};
+export declare type Project_Target = {
+    spaceId?: string;
+    problemId?: string;
 };
