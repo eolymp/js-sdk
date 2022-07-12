@@ -4,6 +4,7 @@
 
 export type Attribute = {
   key?: string;
+  uri?: string;
   description?: Attribute_Description[];
   type?: string;
   index?: number;

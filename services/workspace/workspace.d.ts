@@ -39,6 +39,7 @@ export declare type CreateProjectInput = {
 };
 export declare type CreateProjectOutput = {
     projectId?: string;
+    uri?: string;
 };
 export declare type UpdateProjectInput = {
     projectId?: string;

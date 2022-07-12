@@ -79,7 +79,9 @@ export declare type AddAttributeInput = {
     attributeKey?: string;
     attribute?: Attribute;
 };
-export declare type AddAttributeOutput = Record<string, unknown>;
+export declare type AddAttributeOutput = {
+    uri?: string;
+};
 export declare type UpdateAttributeInput = {
     attributeKey?: string;
     attribute?: Attribute;

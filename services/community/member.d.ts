@@ -1,5 +1,6 @@
 export declare type Member = {
     id?: string;
+    uri?: string;
     name?: string;
     disabled?: boolean;
     registered?: boolean;

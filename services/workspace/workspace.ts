@@ -81,6 +81,7 @@ export type CreateProjectInput = {
 
 export type CreateProjectOutput = {
   projectId?: string;
+  uri?: string;
 }
 
 export type UpdateProjectInput = {

@@ -3,6 +3,7 @@
 
 
 export type Project = {
+  uri?: string;
   id?: string;
   name?: string;
   runtime?: string;

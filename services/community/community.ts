@@ -150,7 +150,9 @@ export type AddAttributeInput = {
   attribute?: Attribute;
 }
 
-export type AddAttributeOutput = Record<string, unknown>;
+export type AddAttributeOutput = {
+  uri?: string;
+}
 
 export type UpdateAttributeInput = {
   attributeKey?: string;
