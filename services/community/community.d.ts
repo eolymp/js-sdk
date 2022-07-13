@@ -27,7 +27,7 @@ export declare type JoinSpaceInput = {
     values?: Member_Value[];
 };
 export declare type JoinSpaceOutput = {
-    uri?: string;
+    ern?: string;
     memberId?: string;
 };
 export declare type RegisterMemberInput = {
@@ -40,7 +40,7 @@ export declare type AddMemberInput = {
     member?: Member;
 };
 export declare type AddMemberOutput = {
-    uri?: string;
+    ern?: string;
     memberId?: string;
 };
 export declare type UpdateMemberInput = {
@@ -82,7 +82,7 @@ export declare type AddAttributeInput = {
     attribute?: Attribute;
 };
 export declare type AddAttributeOutput = {
-    uri?: string;
+    ern?: string;
 };
 export declare type UpdateAttributeInput = {
     attributeKey?: string;

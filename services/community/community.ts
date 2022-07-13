@@ -79,7 +79,7 @@ export type JoinSpaceInput = {
 }
 
 export type JoinSpaceOutput = {
-  uri?: string;
+  ern?: string;
   memberId?: string;
 }
 
@@ -98,7 +98,7 @@ export type AddMemberInput = {
 }
 
 export type AddMemberOutput = {
-  uri?: string;
+  ern?: string;
   memberId?: string;
 }
 
@@ -153,7 +153,7 @@ export type AddAttributeInput = {
 }
 
 export type AddAttributeOutput = {
-  uri?: string;
+  ern?: string;
 }
 
 export type UpdateAttributeInput = {

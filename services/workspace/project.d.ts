@@ -1,5 +1,5 @@
 export declare type Project = {
-    uri?: string;
+    ern?: string;
     id?: string;
     name?: string;
     runtime?: string;

@@ -3,7 +3,7 @@
 
 
 export type File = {
-  uri?: string;
+  ern?: string;
   name?: string;
   content?: string;
 }
