@@ -18,6 +18,7 @@ export declare class Workspace {
 }
 export declare type DescribeProjectInput = {
     projectId?: string;
+    projectErn?: string;
 };
 export declare type DescribeProjectOutput = {
     project?: Project;
@@ -39,19 +40,22 @@ export declare type CreateProjectInput = {
 };
 export declare type CreateProjectOutput = {
     projectId?: string;
-    ern?: string;
+    projectErn?: string;
 };
 export declare type UpdateProjectInput = {
     projectId?: string;
+    projectErn?: string;
     project?: Project;
 };
 export declare type UpdateProjectOutput = Record<string, unknown>;
 export declare type DeleteProjectInput = {
     projectId?: string;
+    projectErn?: string;
 };
 export declare type DeleteProjectOutput = Record<string, unknown>;
 export declare type ListFilesInput = {
     projectId?: string;
+    projectErn?: string;
     offset?: number;
     size?: number;
 };
@@ -60,6 +64,7 @@ export declare type ListFilesOutput = {
     items?: File[];
 };
 export declare type DescribeFileInput = {
+    fileErn?: string;
     projectId?: string;
     name?: string;
 };
@@ -68,11 +73,15 @@ export declare type DescribeFileOutput = {
 };
 export declare type UploadFileInput = {
     projectId?: string;
+    projectErn?: string;
     name?: string;
     content?: string;
 };
-export declare type UploadFileOutput = Record<string, unknown>;
+export declare type UploadFileOutput = {
+    fileErn?: string;
+};
 export declare type RemoveFileInput = {
+    fileErn?: string;
     projectId?: string;
     name?: string;
 };

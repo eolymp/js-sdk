@@ -54,6 +54,7 @@ export class Workspace {
 
 export type DescribeProjectInput = {
   projectId?: string;
+  projectErn?: string;
 }
 
 export type DescribeProjectOutput = {
@@ -81,11 +82,12 @@ export type CreateProjectInput = {
 
 export type CreateProjectOutput = {
   projectId?: string;
-  ern?: string;
+  projectErn?: string;
 }
 
 export type UpdateProjectInput = {
   projectId?: string;
+  projectErn?: string;
   project?: Project;
 }
 
@@ -93,12 +95,14 @@ export type UpdateProjectOutput = Record<string, unknown>;
 
 export type DeleteProjectInput = {
   projectId?: string;
+  projectErn?: string;
 }
 
 export type DeleteProjectOutput = Record<string, unknown>;
 
 export type ListFilesInput = {
   projectId?: string;
+  projectErn?: string;
   offset?: number;
   size?: number;
 }
@@ -109,6 +113,7 @@ export type ListFilesOutput = {
 }
 
 export type DescribeFileInput = {
+  fileErn?: string;
   projectId?: string;
   name?: string;
 }
@@ -119,13 +124,17 @@ export type DescribeFileOutput = {
 
 export type UploadFileInput = {
   projectId?: string;
+  projectErn?: string;
   name?: string;
   content?: string;
 }
 
-export type UploadFileOutput = Record<string, unknown>;
+export type UploadFileOutput = {
+  fileErn?: string;
+}
 
 export type RemoveFileInput = {
+  fileErn?: string;
   projectId?: string;
   name?: string;
 }
