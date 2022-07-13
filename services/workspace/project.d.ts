@@ -8,6 +8,7 @@ export declare type Project = {
     createdOn?: string;
     updatedOn?: string;
     target?: Project_Target;
+    targetErn?: string;
     labels?: string[];
 };
 export declare type Project_Target = {

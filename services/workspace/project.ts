@@ -12,6 +12,7 @@ export type Project = {
   createdOn?: string;
   updatedOn?: string;
   target?: Project_Target;
+  targetErn?: string;
   labels?: string[];
 }
 
