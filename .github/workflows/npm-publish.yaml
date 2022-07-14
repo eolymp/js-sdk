@@ -1,0 +1,23 @@
+name: Publish to NPM
+
+on: [ push ]
+
+jobs:
+  publish-npm:
+    if: ${{ startsWith(github.ref, 'refs/tags/') }}
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:3.12
+    steps:
+      - name: Install tools
+        run: |
+          apk -U add git npm
+          npm install typescript yarn -g
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.node_auth_token }}" > $HOME/.npmrc
+
+      - name: Clone
+        uses: actions/checkout@v2
+
+      - name: Publish
+        run: |
+            yarn publish --no-git-tag-version --new-version ${GITHUB_REF#refs/tags/} --non-interactive
