@@ -42,6 +42,7 @@ export type Task_Precondition = {
 
 export type Task_Constraint = {
   selector?: string[];
+  actor?: string;
   wallTimeLimit?: number;
   cpuTimeLimit?: number;
   memoryLimit?: number;
