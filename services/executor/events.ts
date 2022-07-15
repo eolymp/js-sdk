@@ -2,8 +2,13 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Status } from "./status"
+import { StatusV2 } from "./status_v2"
 
 export type StatusUpdatedEvent = {
   status?: Status;
+}
+
+export type StatusV2UpdatedEvent = {
+  status?: StatusV2;
 }
 
