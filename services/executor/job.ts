@@ -87,6 +87,6 @@ export type Job_Step_Execute = {
 }
 
 export type Job_Step_Grouped = {
-  group?: Job_Step_Execute[];
+  processes?: Job_Step_Execute[];
 }
 
