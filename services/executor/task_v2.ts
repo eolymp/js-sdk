@@ -22,6 +22,7 @@ export type TaskV2_Actor = {
   stdin?: string;
   stdout?: string;
   stderr?: string;
+  stdinLast?: boolean;
   mount?: TaskV2_Mount[];
 }
 
