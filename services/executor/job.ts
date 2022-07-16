@@ -49,7 +49,7 @@ export type Job_Step = {
   copy?: Job_Step_Copy;
   execute?: Job_Step_Execute;
   upload?: Job_Step_Upload;
-  grouped?: Job_Step_Grouped;
+  group?: Job_Step_Group;
 }
 
 export type Job_Step_Write = {
@@ -86,7 +86,7 @@ export type Job_Step_Execute = {
   fileSizeLimit?: number;
 }
 
-export type Job_Step_Grouped = {
+export type Job_Step_Group = {
   processes?: Job_Step_Execute[];
 }
 
