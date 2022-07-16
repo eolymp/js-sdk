@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionString } from "../wellknown/expression"
+import { Job } from "./job"
 import { Language } from "./language"
 import { Runtime } from "./runtime"
 import { Task } from "./task"
@@ -40,6 +41,7 @@ export class Executor {
 
 export type CreateTaskInput = {
   task?: Task;
+  job?: Job;
 }
 
 export type CreateTaskOutput = Record<string, unknown>;

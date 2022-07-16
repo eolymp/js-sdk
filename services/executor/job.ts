@@ -3,61 +3,62 @@
 
 import { Task_Precondition } from "./task"
 
-export type TaskV2 = {
+export type Job = {
   reference?: string;
   origin?: string;
   preconditions?: Task_Precondition[];
-  actors?: TaskV2_Actor[];
-  runs?: TaskV2_Run[];
+  actors?: Job_Actor[];
+  runs?: Job_Run[];
 }
 
-export type TaskV2_Actor = {
+export type Job_Actor = {
   name?: string;
   runtime?: string;
   sourceErn?: string;
   initEnv?: Record<string, string>;
-  initFiles?: TaskV2_File[];
+  initFiles?: Job_File[];
   args?: string[];
   env?: Record<string, string>;
   stdin?: string;
   stdout?: string;
   stderr?: string;
   stdinLast?: boolean;
-  mount?: TaskV2_Mount[];
+  mount?: Job_Mount[];
 }
 
-export type TaskV2_Mount = {
+export type Job_Mount = {
   fromActor?: string;
   toPath?: string;
 }
 
-export type TaskV2_File = {
+export type Job_File = {
   path?: string;
   sourceErn?: string;
 }
 
-export type TaskV2_Run = {
+export type Job_Run = {
   reference?: string;
   index?: number;
   labels?: string[];
-  steps?: TaskV2_Step[];
+  steps?: Job_Step[];
 }
 
-export type TaskV2_Step = {
+export type Job_Step = {
   name?: string;
-  write?: TaskV2_WriteOp[];
-  copy?: TaskV2_CopyOp[];
-  execute?: TaskV2_ExecuteOp[];
-  upload?: TaskV2_UploadOp[];
+  write?: Job_Step_Write;
+  copy?: Job_Step_Copy;
+  execute?: Job_Step_Execute;
+  upload?: Job_Step_Upload;
+  grouped?: Job_Step_Grouped;
 }
 
-export type TaskV2_WriteOp = {
+export type Job_Step_Write = {
   sourceErn?: string;
   targetActor?: string;
   targetPath?: string;
 }
 
-export type TaskV2_UploadOp = {
+export type Job_Step_Upload = {
   sourceActor?: string;
   sourcePath?: string;
   targetName?: string;
@@ -66,7 +67,7 @@ export type TaskV2_UploadOp = {
   maxSize?: number;
 }
 
-export type TaskV2_CopyOp = {
+export type Job_Step_Copy = {
   sourceActor?: string;
   sourcePath?: string;
   targetActor?: string;
@@ -74,13 +75,18 @@ export type TaskV2_CopyOp = {
   optionally?: boolean;
 }
 
-export type TaskV2_ExecuteOp = {
+export type Job_Step_Execute = {
   actor?: string;
   args?: string[];
   env?: Record<string, string>;
+  outputFormat?: string;
   wallTimeLimit?: number;
   cpuTimeLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
+}
+
+export type Job_Step_Grouped = {
+  group?: Job_Step_Execute[];
 }
 

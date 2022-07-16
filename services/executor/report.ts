@@ -2,44 +2,40 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type StatusV2 = {
+export type Report = {
   reference?: string;
   origin?: string;
-  type?: string;
-  version?: number;
   agent?: string;
-  actors?: StatusV2_Actor[];
-  runs?: StatusV2_Run[];
+  version?: number;
+  state?: string;
+  actors?: Report_Actor[];
+  runs?: Report_Run[];
   error?: string;
 }
 
-export type StatusV2_Actor = {
+export type Report_Actor = {
   name?: string;
   signature?: string;
   error?: string;
 }
 
-export type StatusV2_Run = {
+export type Report_Run = {
   reference?: string;
-  status?: string;
-  steps?: StatusV2_Step[];
+  state?: string;
+  steps?: Report_Step[];
 }
 
-export type StatusV2_Step = {
+export type Report_Step = {
   name?: string;
-  write?: StatusV2_WriteOp[];
-  copy?: StatusV2_CopyOp[];
-  execute?: StatusV2_ExecuteOp[];
-  upload?: StatusV2_UploadOp[];
+  state?: string;
+  execute?: Report_Step_Execute;
+  upload?: Report_Step_Upload;
 }
 
-export type StatusV2_WriteOp = Record<string, unknown>;
-
-export type StatusV2_CopyOp = Record<string, unknown>;
-
-export type StatusV2_ExecuteOp = {
+export type Report_Step_Execute = {
   actor?: string;
-  status?: string;
+  exit?: string;
+  outputs?: Record<string, string>;
   wallTimeUsage?: number;
   wallTimeLimit?: number;
   cpuTimeUsage?: number;
@@ -50,7 +46,7 @@ export type StatusV2_ExecuteOp = {
   signal?: number;
 }
 
-export type StatusV2_UploadOp = {
+export type Report_Step_Upload = {
   targetName?: string;
   targetErn?: string;
 }
