@@ -17,6 +17,7 @@ export type Report = {
 export type Report_Actor = {
   name?: string;
   signature?: string;
+  errorCode?: string;
   errorMessage?: string;
 }
 

@@ -8,6 +8,7 @@ export type Job = {
   origin?: string;
   preconditions?: Task_Precondition[];
   actors?: Job_Actor[];
+  scenario?: Job_Step[];
   runs?: Job_Run[];
 }
 
