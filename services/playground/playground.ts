@@ -33,8 +33,6 @@ export type CreateRunInput = {
   input?: string;
   inputContent?: string;
   inputObjectId?: string;
-  atlasProblemId?: string;
-  judgeProblemId?: string;
 }
 
 export type CreateRunOutput = {

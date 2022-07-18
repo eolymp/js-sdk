@@ -62,6 +62,8 @@ export type Job_Step_Upload = {
   optionally?: boolean;
   ttl?: number;
   maxSize?: number;
+  maxDataSize?: number;
+  forceUpload?: boolean;
 }
 
 export type Job_Step_Copy = {
