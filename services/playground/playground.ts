@@ -26,6 +26,8 @@ export class Playground {
 export type CreateRunInput = {
   lang?: string;
   source?: string;
+  inputErn?: string;
+  problemErn?: string;
   input?: string;
   inputContent?: string;
   inputObjectId?: string;
