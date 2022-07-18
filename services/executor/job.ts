@@ -24,6 +24,7 @@ export type Job_Actor = {
   stdout?: string;
   stderr?: string;
   stdinLast?: boolean;
+  outputFormat?: string;
   mount?: Job_Mount[];
 }
 
@@ -81,7 +82,6 @@ export type Job_Step_Execute = {
   actor?: string;
   args?: string[];
   env?: Record<string, string>;
-  outputFormat?: string;
   wallTimeLimit?: number;
   cpuTimeLimit?: number;
   memoryLimit?: number;

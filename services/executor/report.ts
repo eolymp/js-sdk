@@ -39,7 +39,7 @@ export type Report_Step = {
 export type Report_Step_Execute = {
   actor?: string;
   exitStatus?: string;
-  outputs?: Record<string, string>;
+  values?: Record<string, string>;
   wallTimeUsage?: number;
   wallTimeLimit?: number;
   cpuTimeUsage?: number;
