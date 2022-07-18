@@ -41,6 +41,8 @@ export type Job_Run = {
 
 export type Job_Step = {
   name?: string;
+  evenOnFailure?: boolean;
+  onlyOnFailure?: boolean;
   write?: Job_Step_Write;
   copy?: Job_Step_Copy;
   execute?: Job_Step_Execute;
