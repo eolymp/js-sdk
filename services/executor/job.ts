@@ -57,6 +57,7 @@ export type Job_Step_Write = {
   sourceErn?: string;
   targetActor?: string;
   targetPath?: string;
+  fixCrlf?: boolean;
 }
 
 export type Job_Step_Upload = {
