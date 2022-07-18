@@ -16,14 +16,8 @@ export type Job_Actor = {
   name?: string;
   runtime?: string;
   sourceErn?: string;
-  initEnv?: Record<string, string>;
-  initFiles?: Job_File[];
-  args?: string[];
   env?: Record<string, string>;
-  stdin?: string;
-  stdout?: string;
-  stderr?: string;
-  stdinLast?: boolean;
+  files?: Job_File[];
   outputFormat?: string;
   mount?: Job_Mount[];
 }
@@ -82,6 +76,10 @@ export type Job_Step_Execute = {
   actor?: string;
   args?: string[];
   env?: Record<string, string>;
+  stdin?: string;
+  stdout?: string;
+  stderr?: string;
+  stdinLast?: boolean;
   wallTimeLimit?: number;
   cpuTimeLimit?: number;
   memoryLimit?: number;
