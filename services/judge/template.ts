@@ -6,11 +6,8 @@ export type Template = {
   id?: string;
   problemId?: string;
   runtime?: string;
-  source?: string;
   sourceErn?: string;
-  header?: string;
   headerErn?: string;
-  footer?: string;
   footerErn?: string;
 }
 

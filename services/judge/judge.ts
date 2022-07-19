@@ -12,6 +12,7 @@ import { Result } from "./result"
 import { Score } from "./score"
 import { Scoreboard, Scoreboard_Row } from "./scoreboard"
 import { Submission } from "./submission"
+import { Template } from "./template"
 import { Ticket } from "./ticket"
 
 interface Client {
@@ -103,6 +104,10 @@ export class Judge {
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
     return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input, opts);
+  }
+
+  LookupCodeTemplate<O>(input: LookupCodeTemplateInput, opts?: O): Promise<LookupCodeTemplateOutput> {
+    return this.cli.call("eolymp.judge.Judge/LookupCodeTemplate", input, opts);
   }
 
   ListStatements<O>(input: ListStatementsInput, opts?: O): Promise<ListStatementsOutput> {
@@ -482,6 +487,7 @@ export type ListProblemsOutput = {
 
 export type DescribeProblemInput = {
   problemId?: string;
+  problemErn?: string;
 }
 
 export type DescribeProblemOutput = {
@@ -864,9 +870,21 @@ export type ListAnnouncementsOutput = {
 export type DescribeCodeTemplateInput = {
   problemId?: string;
   runtimeId?: string;
+  templateErn?: string;
 }
 
 export type DescribeCodeTemplateOutput = {
+  xTemplate?: Template;
+  template?: string;
+}
+
+export type LookupCodeTemplateInput = {
+  problemErn?: string;
+  runtime?: string;
+}
+
+export type LookupCodeTemplateOutput = {
+  xTemplate?: Template;
   template?: string;
 }
 

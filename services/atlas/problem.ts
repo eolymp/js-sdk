@@ -4,6 +4,7 @@
 
 export type Problem = {
   id?: string;
+  ern?: string;
   number?: number;
   visible?: boolean;
   private?: boolean;

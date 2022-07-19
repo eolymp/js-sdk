@@ -5,6 +5,7 @@ import { Container } from "../typewriter/block"
 
 export type Problem = {
   id?: string;
+  ern?: string;
   index?: number;
   score?: number;
   baseId?: string;
