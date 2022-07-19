@@ -16,6 +16,8 @@ export type Job_Actor = {
   name?: string;
   runtime?: string;
   sourceErn?: string;
+  headerErn?: string;
+  footerErn?: string;
   env?: Record<string, string>;
   files?: Job_File[];
   outputFormat?: string;
