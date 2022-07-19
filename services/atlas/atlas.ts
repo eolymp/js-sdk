@@ -530,6 +530,7 @@ export type ListCodeTemplatesOutput = {
 
 export type DescribeCodeTemplateInput = {
   templateId?: string;
+  templateErn?: string;
 }
 
 export type DescribeCodeTemplateOutput = {
