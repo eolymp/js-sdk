@@ -4,6 +4,7 @@
 
 export type Template = {
   id?: string;
+  ern?: string;
   problemId?: string;
   runtime?: string;
   sourceErn?: string;
