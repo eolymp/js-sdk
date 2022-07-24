@@ -29,7 +29,7 @@ export type CreateRunInput = {
   source?: string;
   sourceErn?: string;
   inputErn?: string;
-  templateErn?: string;
+  problemErn?: string;
   input?: string;
   inputContent?: string;
   inputObjectId?: string;

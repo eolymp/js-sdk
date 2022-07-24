@@ -868,14 +868,11 @@ export type ListAnnouncementsOutput = {
 }
 
 export type DescribeCodeTemplateInput = {
-  problemId?: string;
-  runtimeId?: string;
   templateErn?: string;
 }
 
 export type DescribeCodeTemplateOutput = {
-  xTemplate?: Template;
-  template?: string;
+  template?: Template;
 }
 
 export type LookupCodeTemplateInput = {
@@ -884,8 +881,8 @@ export type LookupCodeTemplateInput = {
 }
 
 export type LookupCodeTemplateOutput = {
+  template?: Template;
   xTemplate?: Template;
-  template?: string;
 }
 
 export type CreateScoreboardInput = {
