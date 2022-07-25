@@ -9,5 +9,11 @@ export type Verifier = {
   precision?: number;
   caseSensitive?: boolean;
   orderSensitive?: boolean;
+  files?: Verifier_File[];
+}
+
+export type Verifier_File = {
+  path?: string;
+  sourceErn?: string;
 }
 

@@ -6,5 +6,11 @@ export type Interactor = {
   type?: string;
   lang?: string;
   source?: string;
+  files?: Interactor_File[];
+}
+
+export type Interactor_File = {
+  path?: string;
+  sourceErn?: string;
 }
 
