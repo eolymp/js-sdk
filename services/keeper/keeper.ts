@@ -32,9 +32,8 @@ export type CreateObjectInput = {
 
 export type CreateObjectOutput = {
   key?: string;
-  ern?: string;
-  hash?: string;
-  size?: number;
+  blobErn?: string;
+  blobHash?: string;
 }
 
 export type DescribeObjectInput = {
