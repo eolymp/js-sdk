@@ -19,6 +19,12 @@ export type Task = {
   verifier?: Verifier;
   interactor?: Interactor;
   runs?: Task_Run[];
+  files?: Task_File[];
+}
+
+export type Task_File = {
+  path?: string;
+  sourceErn?: string;
 }
 
 export type Task_Run = {
