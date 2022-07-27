@@ -4,6 +4,7 @@
 
 export type Contest = {
   id?: string;
+  ern?: string;
   name?: string;
   startsAt?: string;
   startsIn?: number;

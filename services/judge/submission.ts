@@ -4,6 +4,7 @@
 
 export type Submission = {
   id?: string;
+  ern?: string;
   contestId?: string;
   problemId?: string;
   participantId?: string;

@@ -4,6 +4,7 @@
 
 export type Ticket = {
   id?: string;
+  ern?: string;
   contestId?: string;
   participantId?: string;
   subject?: string;

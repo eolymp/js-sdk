@@ -4,6 +4,7 @@
 
 export type Participant = {
   id?: string;
+  ern?: string;
   contestId?: string;
   memberId?: string;
   name?: string;
