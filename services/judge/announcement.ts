@@ -4,6 +4,7 @@
 
 export type Announcement = {
   id?: string;
+  ern?: string;
   contestId?: string;
   createdAt?: string;
   subject?: string;

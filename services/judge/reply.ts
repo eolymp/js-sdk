@@ -4,6 +4,7 @@
 
 export type Reply = {
   id?: string;
+  ern?: string;
   ticketId?: string;
   userId?: string;
   message?: string;
