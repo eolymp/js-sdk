@@ -14,6 +14,7 @@ export type Attribute = {
   min?: number;
   max?: number;
   choices?: string[];
+  country?: string;
 }
 
 export type Attribute_Description = {
