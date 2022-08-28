@@ -525,6 +525,7 @@ export type AddParticipantInput = {
   contestId?: string;
   memberId?: string;
   name?: string;
+  outOfCompetition?: boolean;
 }
 
 export type AddParticipantOutput = {
@@ -548,6 +549,7 @@ export type UpdateParticipantInput = {
   patch?: string;
   name?: string;
   bonusTime?: number;
+  outOfCompetition?: boolean;
 }
 
 export type UpdateParticipantOutput = Record<string, unknown>;

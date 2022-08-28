@@ -8,6 +8,7 @@ export type Participant = {
   contestId?: string;
   memberId?: string;
   name?: string;
+  outOfCompetition?: boolean;
   status?: string;
   startedAt?: string;
   startedIn?: number;
