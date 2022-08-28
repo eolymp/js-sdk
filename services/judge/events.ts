@@ -18,6 +18,7 @@ export type RebuildScoreEvent = {
 export type ScoreUpdatedEvent = {
   contestId?: string;
   participantId?: string;
+  outOfCompetition?: boolean;
   score?: Score;
 }
 
