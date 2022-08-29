@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Country } from "./country"
+import { Region } from "./region"
 
 interface Client {
   call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
@@ -21,6 +22,14 @@ export class Geography {
   ListCountries<O>(input: ListCountriesInput, opts?: O): Promise<ListCountriesOutput> {
     return this.cli.call("eolymp.geography.Geography/ListCountries", input, opts);
   }
+
+  DescribeRegion<O>(input: DescribeRegionInput, opts?: O): Promise<DescribeRegionOutput> {
+    return this.cli.call("eolymp.geography.Geography/DescribeRegion", input, opts);
+  }
+
+  ListRegions<O>(input: ListRegionsInput, opts?: O): Promise<ListRegionsOutput> {
+    return this.cli.call("eolymp.geography.Geography/ListRegions", input, opts);
+  }
 }
 
 export type DescribeCountryInput = {
@@ -35,6 +44,23 @@ export type ListCountriesInput = Record<string, unknown>;
 
 export type ListCountriesOutput = {
   items?: Country[];
+  total?: number;
+}
+
+export type DescribeRegionInput = {
+  regionId?: string;
+}
+
+export type DescribeRegionOutput = {
+  region?: Region;
+}
+
+export type ListRegionsInput = {
+  countryId?: string;
+}
+
+export type ListRegionsOutput = {
+  items?: Region[];
   total?: number;
 }
 
