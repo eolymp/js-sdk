@@ -4,7 +4,7 @@
 
 export type Region = {
   id?: string;
-  country?: string;
+  countryId?: string;
   name?: string;
   flag?: string;
 }
