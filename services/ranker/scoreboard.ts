@@ -15,6 +15,8 @@ export type Scoreboard_Row = {
   memberId?: string;
   score?: number;
   penalty?: number;
+  guest?: boolean;
+  outOfCompetition?: boolean;
   rank?: number;
   rankLower?: number;
   values?: Scoreboard_Row_Value[];
