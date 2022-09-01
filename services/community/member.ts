@@ -10,6 +10,7 @@ export type Member = {
   registered?: boolean;
   staffed?: boolean;
   ghost?: boolean;
+  outOfCompetition?: boolean;
   status?: string;
   users?: Member_User[];
   values?: Member_Value[];
