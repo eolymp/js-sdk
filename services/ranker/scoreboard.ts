@@ -15,7 +15,7 @@ export type Scoreboard_Row = {
   memberId?: string;
   score?: number;
   penalty?: number;
-  guest?: boolean;
+  ghost?: boolean;
   outOfCompetition?: boolean;
   rank?: number;
   rankLower?: number;
