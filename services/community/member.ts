@@ -22,6 +22,7 @@ export type Member_User = {
 
 export type Member_Value = {
   attributeKey?: string;
+  attributeType?: string;
   valueString?: string;
   valueNumber?: number;
 }
