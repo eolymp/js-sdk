@@ -117,6 +117,7 @@ export type ListSpacesInput = {
 }
 
 export type ListSpacesInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   key?: ExpressionID[];
   name?: ExpressionString[];
