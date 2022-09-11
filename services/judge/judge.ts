@@ -10,7 +10,6 @@ import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./
 import { Reply } from "./reply"
 import { Result } from "./result"
 import { Score } from "./score"
-import { Scoreboard, Scoreboard_Row } from "./scoreboard"
 import { Submission } from "./submission"
 import { Template } from "./template"
 import { Ticket } from "./ticket"
@@ -290,56 +289,8 @@ export class Judge {
     return this.cli.call("eolymp.judge.Judge/ListResult", input, opts);
   }
 
-  CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateScoreboard", input, opts);
-  }
-
-  UpdateScoreboard<O>(input: UpdateScoreboardInput, opts?: O): Promise<UpdateScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateScoreboard", input, opts);
-  }
-
   RebuildScore<O>(input: RebuildScoreInput, opts?: O): Promise<RebuildScoreOutput> {
     return this.cli.call("eolymp.judge.Judge/RebuildScore", input, opts);
-  }
-
-  DeleteScoreboard<O>(input: DeleteScoreboardInput, opts?: O): Promise<DeleteScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteScoreboard", input, opts);
-  }
-
-  DescribeScoreboard<O>(input: DescribeScoreboardInput, opts?: O): Promise<DescribeScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboard", input, opts);
-  }
-
-  DescribeDefaultScoreboard<O>(input: DescribeDefaultScoreboardInput, opts?: O): Promise<DescribeDefaultScoreboardOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboard", input, opts);
-  }
-
-  ListScoreboards<O>(input: ListScoreboardsInput, opts?: O): Promise<ListScoreboardsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListScoreboards", input, opts);
-  }
-
-  DescribeScoreboardHeader<O>(input: DescribeScoreboardHeaderInput, opts?: O): Promise<DescribeScoreboardHeaderOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardHeader", input, opts);
-  }
-
-  DescribeScoreboardFooter<O>(input: DescribeScoreboardFooterInput, opts?: O): Promise<DescribeScoreboardFooterOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardFooter", input, opts);
-  }
-
-  DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts?: O): Promise<DescribeScoreboardRowOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoreboardRow", input, opts);
-  }
-
-  DescribeDefaultScoreboardRow<O>(input: DescribeDefaultScoreboardRowInput, opts?: O): Promise<DescribeDefaultScoreboardRowOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeDefaultScoreboardRow", input, opts);
-  }
-
-  ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts?: O): Promise<ListScoreboardRowsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListScoreboardRows", input, opts);
-  }
-
-  ListDefaultScoreboardRows<O>(input: ListDefaultScoreboardRowsInput, opts?: O): Promise<ListDefaultScoreboardRowsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListDefaultScoreboardRows", input, opts);
   }
 
   ListEntitlements<O>(input: ListEntitlementsInput, opts?: O): Promise<ListEntitlementsOutput> {
@@ -887,104 +838,12 @@ export type LookupCodeTemplateOutput = {
   xTemplate?: Template;
 }
 
-export type CreateScoreboardInput = {
-  contestId?: string;
-  scoreboard?: Scoreboard;
-}
-
-export type CreateScoreboardOutput = {
-  scoreboardId?: string;
-}
-
-export type UpdateScoreboardInput = {
-  scoreboardId?: string;
-  scoreboard?: Scoreboard;
-}
-
-export type UpdateScoreboardOutput = Record<string, unknown>;
-
 export type RebuildScoreInput = {
   contestId?: string;
 }
 
 export type RebuildScoreOutput = {
   activityId?: string;
-}
-
-export type DeleteScoreboardInput = {
-  scoreboardId?: string;
-}
-
-export type DeleteScoreboardOutput = Record<string, unknown>;
-
-export type DescribeScoreboardInput = {
-  scoreboardId?: string;
-}
-
-export type DescribeScoreboardOutput = {
-  scoreboard?: Scoreboard;
-}
-
-export type DescribeDefaultScoreboardInput = {
-  contestId?: string;
-}
-
-export type DescribeDefaultScoreboardOutput = {
-  scoreboard?: Scoreboard;
-}
-
-export type ListScoreboardsInput = {
-  contestId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListScoreboardsInput_Filter;
-}
-
-export type ListScoreboardsInput_Filter = {
-  id?: ExpressionID[];
-  visible?: ExpressionBool[];
-  default?: ExpressionBool[];
-}
-
-export type ListScoreboardsOutput = {
-  total?: number;
-  items?: Scoreboard[];
-}
-
-export type DescribeScoreboardHeaderInput = {
-  scoreboardId?: string;
-}
-
-export type DescribeScoreboardHeaderOutput = {
-  problems?: DescribeScoreboardHeaderOutput_Problem[];
-}
-
-export type DescribeScoreboardHeaderOutput_Problem = {
-  problemId?: string;
-  shortName?: string;
-}
-
-export type DescribeScoreboardFooterInput = {
-  scoreboardId?: string;
-}
-
-export type DescribeScoreboardFooterOutput = {
-  problems?: DescribeScoreboardFooterOutput_Problem[];
-}
-
-export type DescribeScoreboardFooterOutput_Problem = {
-  problemId?: string;
-  totalAttempts?: number;
-  successAttempts?: number;
-}
-
-export type DescribeScoreboardRowInput = {
-  scoreboardId?: string;
-  participantId?: string;
-}
-
-export type DescribeScoreboardRowOutput = {
-  row?: Scoreboard_Row;
 }
 
 export type IntrospectScoreInput = {
@@ -1023,50 +882,6 @@ export type ListResultInput = {
 export type ListResultOutput = {
   total?: number;
   items?: Result[];
-}
-
-export type DescribeDefaultScoreboardRowInput = {
-  contestId?: string;
-  participantId?: string;
-}
-
-export type DescribeDefaultScoreboardRowOutput = {
-  row?: Scoreboard_Row;
-}
-
-export type ListScoreboardRowsInput = {
-  scoreboardId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListScoreboardRowsInput_Filter;
-}
-
-export type ListScoreboardRowsInput_Filter = {
-  participantId?: ExpressionID[];
-  memberId?: ExpressionID[];
-  name?: ExpressionString[];
-  status?: ExpressionEnum[];
-  score?: ExpressionFloat[];
-  penalty?: ExpressionFloat[];
-  startedAt?: ExpressionTimestamp[];
-  completeAt?: ExpressionTimestamp[];
-}
-
-export type ListScoreboardRowsOutput = {
-  total?: number;
-  items?: Scoreboard_Row[];
-}
-
-export type ListDefaultScoreboardRowsInput = {
-  contestId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListScoreboardRowsInput_Filter;
-}
-
-export type ListDefaultScoreboardRowsOutput = {
-  total?: number;
-  items?: Scoreboard_Row[];
 }
 
 export type ListEntitlementsInput = {
