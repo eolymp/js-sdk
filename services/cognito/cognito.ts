@@ -255,7 +255,9 @@ export type UpdateProfileInput = {
   birthday?: string;
 }
 
-export type UpdateProfileOutput = Record<string, unknown>;
+export type UpdateProfileOutput = {
+  emailConfirmationHint?: string;
+}
 
 export type UpdatePictureInput = {
   filename?: string;
