@@ -112,6 +112,10 @@ export class Cognito {
   ListEntitlements<O>(input: ListEntitlementsInput, opts?: O): Promise<ListEntitlementsOutput> {
     return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input, opts);
   }
+
+  SelfDestruct<O>(input: SelfDestructInput, opts?: O): Promise<SelfDestructOutput> {
+    return this.cli.call("eolymp.cognito.Cognito/SelfDestruct", input, opts);
+  }
 }
 
 export type CreateTokenInput = {
@@ -319,6 +323,12 @@ export type ListEntitlementsInput = Record<string, unknown>;
 
 export type ListEntitlementsOutput = {
   entitlements?: string[];
+}
+
+export type SelfDestructInput = Record<string, unknown>;
+
+export type SelfDestructOutput = {
+  deleteOn?: string;
 }
 
 export type RevokeTokenInput = {
