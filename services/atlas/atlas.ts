@@ -272,6 +272,10 @@ export class Atlas {
     return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input, opts);
   }
 
+  RetestSubmission<O>(input: RetestSubmissionInput, opts?: O): Promise<RetestSubmissionOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/RetestSubmission", input, opts);
+  }
+
   DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
     return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input, opts);
   }
@@ -786,6 +790,13 @@ export type DescribeSubmissionInput = {
 export type DescribeSubmissionOutput = {
   submission?: Submission;
 }
+
+export type RetestSubmissionInput = {
+  submissionId?: string;
+  debug?: boolean;
+}
+
+export type RetestSubmissionOutput = Record<string, unknown>;
 
 export type DescribeScoreInput = {
   problemId?: string;
