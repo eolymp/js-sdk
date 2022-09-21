@@ -31,6 +31,6 @@ export type Contest_Scoring = {
   showScoreboard?: boolean;
   attemptPenalty?: number;
   freezingTime?: number;
-  allowUpsolving?: boolean;
+  upsolving?: boolean;
 }
 
