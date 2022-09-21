@@ -13,6 +13,7 @@ import { Score } from "./score"
 import { Solution } from "./solution"
 import { Statement } from "./statement"
 import { Submission } from "./submission"
+import { Tag } from "./tag"
 import { Template } from "./template"
 import { Test } from "./test"
 import { Testset } from "./testset"
@@ -54,6 +55,14 @@ export class Atlas {
 
   ListExamples<O>(input: ListExamplesInput, opts?: O): Promise<ListExamplesOutput> {
     return this.cli.call("eolymp.atlas.Atlas/ListExamples", input, opts);
+  }
+
+  UpdateClassification<O>(input: UpdateClassificationInput, opts?: O): Promise<UpdateClassificationOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateClassification", input, opts);
+  }
+
+  DescribeClassification<O>(input: DescribeClassificationInput, opts?: O): Promise<DescribeClassificationOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeClassification", input, opts);
   }
 
   UpdateVerifier<O>(input: UpdateVerifierInput, opts?: O): Promise<UpdateVerifierOutput> {
@@ -279,6 +288,26 @@ export class Atlas {
   DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
     return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input, opts);
   }
+
+  CreateTag<O>(input: CreateTagInput, opts?: O): Promise<CreateTagOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/CreateTag", input, opts);
+  }
+
+  UpdateTag<O>(input: UpdateTagInput, opts?: O): Promise<UpdateTagOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateTag", input, opts);
+  }
+
+  DeleteTag<O>(input: DeleteTagInput, opts?: O): Promise<DeleteTagOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DeleteTag", input, opts);
+  }
+
+  ListTags<O>(input: ListTagsInput, opts?: O): Promise<ListTagsOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/ListTags", input, opts);
+  }
+
+  DescribeTag<O>(input: DescribeTagInput, opts?: O): Promise<DescribeTagOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeTag", input, opts);
+  }
 }
 
 export type ListProblemsInput = {
@@ -438,6 +467,21 @@ export type ListExamplesInput = {
 
 export type ListExamplesOutput = {
   examples?: Test[];
+}
+
+export type UpdateClassificationInput = {
+  problemId?: string;
+  tags?: string[];
+}
+
+export type UpdateClassificationOutput = Record<string, unknown>;
+
+export type DescribeClassificationInput = {
+  problemId?: string;
+}
+
+export type DescribeClassificationOutput = {
+  tags?: string[];
 }
 
 export type ListTestsInput = {
@@ -820,4 +864,51 @@ export type UpdatePrivacyInput = {
 }
 
 export type UpdatePrivacyOutput = Record<string, unknown>;
+
+export type CreateTagInput = {
+  tag?: Tag;
+}
+
+export type CreateTagOutput = {
+  tagId?: string;
+}
+
+export type UpdateTagInput = {
+  tagId?: string;
+  tag?: Tag;
+}
+
+export type UpdateTagOutput = Record<string, unknown>;
+
+export type DeleteTagInput = {
+  tagId?: string;
+}
+
+export type DeleteTagOutput = {
+  tagId?: string;
+}
+
+export type ListTagsInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListTagsInput_Filter;
+}
+
+export type ListTagsInput_Filter = {
+  id?: ExpressionID[];
+  name?: ExpressionString[];
+}
+
+export type ListTagsOutput = {
+  total?: number;
+  items?: Tag[];
+}
+
+export type DescribeTagInput = {
+  tagId?: string;
+}
+
+export type DescribeTagOutput = {
+  tag?: Tag;
+}
 
