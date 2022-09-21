@@ -57,12 +57,12 @@ export class Atlas {
     return this.cli.call("eolymp.atlas.Atlas/ListExamples", input, opts);
   }
 
-  UpdateClassification<O>(input: UpdateClassificationInput, opts?: O): Promise<UpdateClassificationOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateClassification", input, opts);
+  UpdateTaxonomy<O>(input: UpdateTaxonomyInput, opts?: O): Promise<UpdateTaxonomyOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/UpdateTaxonomy", input, opts);
   }
 
-  DescribeClassification<O>(input: DescribeClassificationInput, opts?: O): Promise<DescribeClassificationOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeClassification", input, opts);
+  DescribeTaxonomy<O>(input: DescribeTaxonomyInput, opts?: O): Promise<DescribeTaxonomyOutput> {
+    return this.cli.call("eolymp.atlas.Atlas/DescribeTaxonomy", input, opts);
   }
 
   UpdateVerifier<O>(input: UpdateVerifierInput, opts?: O): Promise<UpdateVerifierOutput> {
@@ -469,19 +469,31 @@ export type ListExamplesOutput = {
   examples?: Test[];
 }
 
-export type UpdateClassificationInput = {
+export type UpdateTaxonomyInput = {
   problemId?: string;
   tags?: string[];
+  competition?: string;
+  year?: number;
+  stage?: number;
+  round?: number;
+  country?: string;
+  region?: string;
 }
 
-export type UpdateClassificationOutput = Record<string, unknown>;
+export type UpdateTaxonomyOutput = Record<string, unknown>;
 
-export type DescribeClassificationInput = {
+export type DescribeTaxonomyInput = {
   problemId?: string;
 }
 
-export type DescribeClassificationOutput = {
+export type DescribeTaxonomyOutput = {
   tags?: string[];
+  competition?: string;
+  year?: number;
+  stage?: number;
+  round?: number;
+  country?: string;
+  region?: string;
 }
 
 export type ListTestsInput = {
