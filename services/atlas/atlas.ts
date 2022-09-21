@@ -476,8 +476,10 @@ export type UpdateTaxonomyInput = {
   year?: number;
   stage?: number;
   round?: number;
+  number?: number;
   country?: string;
   region?: string;
+  difficulty?: number;
 }
 
 export type UpdateTaxonomyOutput = Record<string, unknown>;
@@ -492,8 +494,10 @@ export type DescribeTaxonomyOutput = {
   year?: number;
   stage?: number;
   round?: number;
+  number?: number;
   country?: string;
   region?: string;
+  difficulty?: number;
 }
 
 export type ListTestsInput = {
