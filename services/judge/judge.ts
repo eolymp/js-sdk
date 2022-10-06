@@ -399,12 +399,14 @@ export type ImportProblemOutput = {
 }
 
 export type SyncProblemInput = {
+  contestId?: string;
   problemId?: string;
 }
 
 export type SyncProblemOutput = Record<string, unknown>;
 
 export type UpdateProblemInput = {
+  contestId?: string;
   problemId?: string;
   index?: number;
   submitLimit?: number;
@@ -414,12 +416,14 @@ export type UpdateProblemInput = {
 export type UpdateProblemOutput = Record<string, unknown>;
 
 export type DeleteProblemInput = {
+  contestId?: string;
   problemId?: string;
 }
 
 export type DeleteProblemOutput = Record<string, unknown>;
 
 export type RetestProblemInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -437,6 +441,7 @@ export type ListProblemsOutput = {
 }
 
 export type DescribeProblemInput = {
+  contestId?: string;
   problemId?: string;
   problemErn?: string;
 }
@@ -446,6 +451,7 @@ export type DescribeProblemOutput = {
 }
 
 export type ListStatementsInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -455,6 +461,7 @@ export type ListStatementsOutput = {
 }
 
 export type ListAttachmentsInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -464,6 +471,7 @@ export type ListAttachmentsOutput = {
 }
 
 export type ListExamplesInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -484,18 +492,21 @@ export type AddParticipantOutput = {
 }
 
 export type EnableParticipantInput = {
+  contestId?: string;
   participantId?: string;
 }
 
 export type EnableParticipantOutput = Record<string, unknown>;
 
 export type DisableParticipantInput = {
+  contestId?: string;
   participantId?: string;
 }
 
 export type DisableParticipantOutput = Record<string, unknown>;
 
 export type UpdateParticipantInput = {
+  contestId?: string;
   participantId?: string;
   patch?: string;
   name?: string;
@@ -506,6 +517,7 @@ export type UpdateParticipantInput = {
 export type UpdateParticipantOutput = Record<string, unknown>;
 
 export type RemoveParticipantInput = {
+  contestId?: string;
   participantId?: string;
 }
 
@@ -528,6 +540,7 @@ export type EnterPasscodeInput = {
 export type EnterPasscodeOutput = Record<string, unknown>;
 
 export type ResetPasscodeInput = {
+  contestId?: string;
   participantId?: string;
 }
 
@@ -536,6 +549,7 @@ export type ResetPasscodeOutput = {
 }
 
 export type RemovePasscodeInput = {
+  contestId?: string;
   participantId?: string;
 }
 
@@ -575,6 +589,7 @@ export type IntrospectParticipantOutput = {
 }
 
 export type DescribeParticipantInput = {
+  contestId?: string;
   participantId?: string;
 }
 
@@ -583,6 +598,7 @@ export type DescribeParticipantOutput = {
 }
 
 export type CreateSubmissionInput = {
+  contestId?: string;
   problemId?: string;
   lang?: string;
   source?: string;
@@ -617,6 +633,7 @@ export type ListSubmissionsOutput = {
 }
 
 export type DescribeSubmissionInput = {
+  contestId?: string;
   submissionId?: string;
 }
 
@@ -625,6 +642,7 @@ export type DescribeSubmissionOutput = {
 }
 
 export type RetestSubmissionInput = {
+  contestId?: string;
   submissionId?: string;
 }
 
@@ -641,30 +659,35 @@ export type CreateTicketOutput = {
 }
 
 export type CloseTicketInput = {
+  contestId?: string;
   ticketId?: string;
 }
 
 export type CloseTicketOutput = Record<string, unknown>;
 
 export type OpenTicketInput = {
+  contestId?: string;
   ticketId?: string;
 }
 
 export type OpenTicketOutput = Record<string, unknown>;
 
 export type ReadTicketInput = {
+  contestId?: string;
   ticketId?: string;
 }
 
 export type ReadTicketOutput = Record<string, unknown>;
 
 export type DeleteTicketInput = {
+  contestId?: string;
   ticketId?: string;
 }
 
 export type DeleteTicketOutput = Record<string, unknown>;
 
 export type DescribeTicketInput = {
+  contestId?: string;
   ticketId?: string;
 }
 
@@ -717,12 +740,14 @@ export type ListRepliesOutput = {
 }
 
 export type DeleteReplyInput = {
+  ticketId?: string;
   replyId?: string;
 }
 
 export type DeleteReplyOutput = Record<string, unknown>;
 
 export type UpdateReplyInput = {
+  ticketId?: string;
   replyId?: string;
   message?: string;
 }
@@ -821,6 +846,9 @@ export type ListAnnouncementsOutput = {
 }
 
 export type DescribeCodeTemplateInput = {
+  contestId?: string;
+  problemId?: string;
+  templateId?: string;
   templateErn?: string;
 }
 
@@ -829,13 +857,14 @@ export type DescribeCodeTemplateOutput = {
 }
 
 export type LookupCodeTemplateInput = {
+  contestId?: string;
+  problemId?: string;
   problemErn?: string;
   runtime?: string;
 }
 
 export type LookupCodeTemplateOutput = {
   template?: Template;
-  xTemplate?: Template;
 }
 
 export type RebuildScoreInput = {
@@ -855,6 +884,7 @@ export type IntrospectScoreOutput = {
 }
 
 export type DescribeScoreInput = {
+  contestId?: string;
   participantId?: string;
   mode?: string;
   timeOffset?: number;
@@ -865,6 +895,7 @@ export type DescribeScoreOutput = {
 }
 
 export type ImportScoreInput = {
+  contestId?: string;
   participantId?: string;
   scores?: Score[];
 }
