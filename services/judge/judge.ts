@@ -25,6 +25,10 @@ export class Judge {
     this.cli = cli;
   }
 
+  LookupContest<O>(input: LookupContestInput, opts?: O): Promise<LookupContestOutput> {
+    return this.cli.call("eolymp.judge.Judge/LookupContest", input, opts);
+  }
+
   CreateContest<O>(input: CreateContestInput, opts?: O): Promise<CreateContestOutput> {
     return this.cli.call("eolymp.judge.Judge/CreateContest", input, opts);
   }
@@ -35,10 +39,6 @@ export class Judge {
 
   UpdateContest<O>(input: UpdateContestInput, opts?: O): Promise<UpdateContestOutput> {
     return this.cli.call("eolymp.judge.Judge/UpdateContest", input, opts);
-  }
-
-  LookupContest<O>(input: LookupContestInput, opts?: O): Promise<LookupContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/LookupContest", input, opts);
   }
 
   DescribeContest<O>(input: DescribeContestInput, opts?: O): Promise<DescribeContestOutput> {
