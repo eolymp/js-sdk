@@ -4,22 +4,31 @@
 import { Run } from "./run"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Playground {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   CreateRun<O>(input: CreateRunInput, opts?: O): Promise<CreateRunOutput> {
-    return this.cli.call("eolymp.playground.Playground/CreateRun", input, opts);
+    const path = "/playground/runs";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeRun<O>(input: DescribeRunInput, opts?: O): Promise<DescribeRunOutput> {
-    return this.cli.call("eolymp.playground.Playground/DescribeRun", input, opts);
+    const path = "/playground/runs/"+encodeURIComponent(input.runId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.runId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 

@@ -6,66 +6,130 @@ import { Activity } from "./activity"
 import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Ranker {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/CreateScoreboard", input, opts);
+    const path = "/scoreboards";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateScoreboard<O>(input: UpdateScoreboardInput, opts?: O): Promise<UpdateScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/UpdateScoreboard", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   RebuildScoreboard<O>(input: RebuildScoreboardInput, opts?: O): Promise<RebuildScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/RebuildScoreboard", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/rebuild";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteScoreboard<O>(input: DeleteScoreboardInput, opts?: O): Promise<DeleteScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboard", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribeScoreboard<O>(input: DescribeScoreboardInput, opts?: O): Promise<DescribeScoreboardOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboard", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListScoreboards<O>(input: ListScoreboardsInput, opts?: O): Promise<ListScoreboardsOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListScoreboards", input, opts);
+    const path = "/scoreboards";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts?: O): Promise<DescribeScoreboardRowOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardRow", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/rows/"+encodeURIComponent(input.memberId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+    delete(input.memberId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts?: O): Promise<ListScoreboardRowsOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListScoreboardRows", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/rows";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   AddScoreboardColumn<O>(input: AddScoreboardColumnInput, opts?: O): Promise<AddScoreboardColumnOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/AddScoreboardColumn", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteScoreboardColumn<O>(input: DeleteScoreboardColumnInput, opts?: O): Promise<DeleteScoreboardColumnOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DeleteScoreboardColumn", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns/"+encodeURIComponent(input.columnId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+    delete(input.columnId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribeScoreboardColumn<O>(input: DescribeScoreboardColumnInput, opts?: O): Promise<DescribeScoreboardColumnOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/DescribeScoreboardColumn", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns/"+encodeURIComponent(input.columnId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+    delete(input.columnId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListScoreboardColumns<O>(input: ListScoreboardColumnsInput, opts?: O): Promise<ListScoreboardColumnsOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListScoreboardColumns", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
-    return this.cli.call("eolymp.ranker.Ranker/ListActivities", input, opts);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/activities";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 
@@ -157,12 +221,14 @@ export type AddScoreboardColumnOutput = {
 }
 
 export type DeleteScoreboardColumnInput = {
+  scoreboardId?: string;
   columnId?: string;
 }
 
 export type DeleteScoreboardColumnOutput = Record<string, unknown>;
 
 export type DescribeScoreboardColumnInput = {
+  scoreboardId?: string;
   columnId?: string;
 }
 

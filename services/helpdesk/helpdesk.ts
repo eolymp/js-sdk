@@ -5,46 +5,79 @@ import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/exp
 import { Document } from "./document"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Helpdesk {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   DescribeDocument<O>(input: DescribeDocumentInput, opts?: O): Promise<DescribeDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/DescribeDocument", input, opts);
+    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.documentId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListDocuments<O>(input: ListDocumentsInput, opts?: O): Promise<ListDocumentsOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/ListDocuments", input, opts);
+    const path = "/helpdesk/documents";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateDocument<O>(input: CreateDocumentInput, opts?: O): Promise<CreateDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/CreateDocument", input, opts);
+    const path = "/helpdesk/documents";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateDocument<O>(input: UpdateDocumentInput, opts?: O): Promise<UpdateDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/UpdateDocument", input, opts);
+    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.documentId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DeleteDocument<O>(input: DeleteDocumentInput, opts?: O): Promise<DeleteDocumentOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/DeleteDocument", input, opts);
+    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.documentId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribePath<O>(input: DescribePathInput, opts?: O): Promise<DescribePathOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/DescribePath", input, opts);
+    const path = "/helpdesk/paths/"+encodeURIComponent(input.path);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.path);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListPaths<O>(input: ListPathsInput, opts?: O): Promise<ListPathsOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/ListPaths", input, opts);
+    const path = "/helpdesk/paths";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListParents<O>(input: ListParentsInput, opts?: O): Promise<ListParentsOutput> {
-    return this.cli.call("eolymp.helpdesk.Helpdesk/ListParents", input, opts);
+    const path = "/helpdesk/paths/"+encodeURIComponent(input.path)+"/parents";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.path);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 

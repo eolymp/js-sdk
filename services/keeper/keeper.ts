@@ -3,26 +3,40 @@
 
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Keeper {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   CreateObject<O>(input: CreateObjectInput, opts?: O): Promise<CreateObjectOutput> {
-    return this.cli.call("eolymp.keeper.Keeper/CreateObject", input, opts);
+    const path = "/objects";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeObject<O>(input: DescribeObjectInput, opts?: O): Promise<DescribeObjectOutput> {
-    return this.cli.call("eolymp.keeper.Keeper/DescribeObject", input, opts);
+    const path = "/objects/"+encodeURIComponent(input.key);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.key);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DownloadObject<O>(input: DownloadObjectInput, opts?: O): Promise<DownloadObjectOutput> {
-    return this.cli.call("eolymp.keeper.Keeper/DownloadObject", input, opts);
+    const path = "/objects/"+encodeURIComponent(input.key)+"/data";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.key);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 

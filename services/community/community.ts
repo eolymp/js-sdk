@@ -6,70 +6,118 @@ import { Attribute } from "./attribute"
 import { Member, Member_Value } from "./member"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Community {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   JoinSpace<O>(input: JoinSpaceInput, opts?: O): Promise<JoinSpaceOutput> {
-    return this.cli.call("eolymp.community.Community/JoinSpace", input, opts);
+    const path = "/members/_self";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   LeaveSpace<O>(input: LeaveSpaceInput, opts?: O): Promise<LeaveSpaceOutput> {
-    return this.cli.call("eolymp.community.Community/LeaveSpace", input, opts);
+    const path = "/members/_self";
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   RegisterMember<O>(input: RegisterMemberInput, opts?: O): Promise<RegisterMemberOutput> {
-    return this.cli.call("eolymp.community.Community/RegisterMember", input, opts);
+    const path = "/members/_self/attributes";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   IntrospectMember<O>(input: IntrospectMemberInput, opts?: O): Promise<IntrospectMemberOutput> {
-    return this.cli.call("eolymp.community.Community/IntrospectMember", input, opts);
+    const path = "/members/_self";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   AddMember<O>(input: AddMemberInput, opts?: O): Promise<AddMemberOutput> {
-    return this.cli.call("eolymp.community.Community/AddMember", input, opts);
+    const path = "/members";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateMember<O>(input: UpdateMemberInput, opts?: O): Promise<UpdateMemberOutput> {
-    return this.cli.call("eolymp.community.Community/UpdateMember", input, opts);
+    const path = "/members/"+encodeURIComponent(input.memberId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   RemoveMember<O>(input: RemoveMemberInput, opts?: O): Promise<RemoveMemberOutput> {
-    return this.cli.call("eolymp.community.Community/RemoveMember", input, opts);
+    const path = "/members/"+encodeURIComponent(input.memberId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribeMember<O>(input: DescribeMemberInput, opts?: O): Promise<DescribeMemberOutput> {
-    return this.cli.call("eolymp.community.Community/DescribeMember", input, opts);
+    const path = "/members/"+encodeURIComponent(input.memberId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListMembers<O>(input: ListMembersInput, opts?: O): Promise<ListMembersOutput> {
-    return this.cli.call("eolymp.community.Community/ListMembers", input, opts);
+    const path = "/members";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   AddAttribute<O>(input: AddAttributeInput, opts?: O): Promise<AddAttributeOutput> {
-    return this.cli.call("eolymp.community.Community/AddAttribute", input, opts);
+    const path = "/attributes";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateAttribute<O>(input: UpdateAttributeInput, opts?: O): Promise<UpdateAttributeOutput> {
-    return this.cli.call("eolymp.community.Community/UpdateAttribute", input, opts);
+    const path = "/attributes/"+encodeURIComponent(input.attributeKey);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.attributeKey);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   RemoveAttribute<O>(input: RemoveAttributeInput, opts?: O): Promise<RemoveAttributeOutput> {
-    return this.cli.call("eolymp.community.Community/RemoveAttribute", input, opts);
+    const path = "/attributes/"+encodeURIComponent(input.attributeKey);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.attributeKey);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribeAttribute<O>(input: DescribeAttributeInput, opts?: O): Promise<DescribeAttributeOutput> {
-    return this.cli.call("eolymp.community.Community/DescribeAttribute", input, opts);
+    const path = "/attributes/"+encodeURIComponent(input.attributeKey);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.attributeKey);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListAttributes<O>(input: ListAttributesInput, opts?: O): Promise<ListAttributesOutput> {
-    return this.cli.call("eolymp.community.Community/ListAttributes", input, opts);
+    const path = "/attributes";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 }
 

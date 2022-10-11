@@ -6,62 +6,121 @@ import { Permission } from "./permission"
 import { Space, Space_Quota } from "./space"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Universe {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   LookupSpace<O>(input: LookupSpaceInput, opts?: O): Promise<LookupSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/LookupSpace", input, opts);
+    const path = "/spaces/__lookup/"+encodeURIComponent(input.key);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.key);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateSpace<O>(input: CreateSpaceInput, opts?: O): Promise<CreateSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/CreateSpace", input, opts);
+    const path = "/spaces";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateSpace<O>(input: UpdateSpaceInput, opts?: O): Promise<UpdateSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/UpdateSpace", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DeleteSpace<O>(input: DeleteSpaceInput, opts?: O): Promise<DeleteSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/DeleteSpace", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribeSpace<O>(input: DescribeSpaceInput, opts?: O): Promise<DescribeSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/DescribeSpace", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeQuota<O>(input: DescribeQuotaInput, opts?: O): Promise<DescribeQuotaOutput> {
-    return this.cli.call("eolymp.universe.Universe/DescribeQuota", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/quota";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListSpaces<O>(input: ListSpacesInput, opts?: O): Promise<ListSpacesOutput> {
-    return this.cli.call("eolymp.universe.Universe/ListSpaces", input, opts);
+    const path = "/spaces";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/GrantPermission", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions/"+encodeURIComponent(input.userId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+    delete(input.userId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/RevokePermission", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions/"+encodeURIComponent(input.userId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+    delete(input.userId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribePermission<O>(input: DescribePermissionInput, opts?: O): Promise<DescribePermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/DescribePermission", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions/"+encodeURIComponent(input.userId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+    delete(input.userId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   IntrospectPermission<O>(input: IntrospectPermissionInput, opts?: O): Promise<IntrospectPermissionOutput> {
-    return this.cli.call("eolymp.universe.Universe/IntrospectPermission", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/introspect-permission";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListPermissions<O>(input: ListPermissionsInput, opts?: O): Promise<ListPermissionsOutput> {
-    return this.cli.call("eolymp.universe.Universe/ListPermissions", input, opts);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 

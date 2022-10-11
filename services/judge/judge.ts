@@ -15,290 +15,652 @@ import { Template } from "./template"
 import { Ticket } from "./ticket"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Judge {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   LookupContest<O>(input: LookupContestInput, opts?: O): Promise<LookupContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/LookupContest", input, opts);
+    const path = "/contests/__lookup";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateContest<O>(input: CreateContestInput, opts?: O): Promise<CreateContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateContest", input, opts);
+    const path = "/contests";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteContest<O>(input: DeleteContestInput, opts?: O): Promise<DeleteContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteContest", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   UpdateContest<O>(input: UpdateContestInput, opts?: O): Promise<UpdateContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateContest", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DescribeContest<O>(input: DescribeContestInput, opts?: O): Promise<DescribeContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeContest", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListContests<O>(input: ListContestsInput, opts?: O): Promise<ListContestsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListContests", input, opts);
+    const path = "/contests";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   OpenContest<O>(input: OpenContestInput, opts?: O): Promise<OpenContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/OpenContest", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/open";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   CloseContest<O>(input: CloseContestInput, opts?: O): Promise<CloseContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/CloseContest", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/close";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ConfigureRuntime<O>(input: ConfigureRuntimeInput, opts?: O): Promise<ConfigureRuntimeOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureRuntime", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/runtime";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeRuntime", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/runtime";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ConfigureAppearance<O>(input: ConfigureAppearanceInput, opts?: O): Promise<ConfigureAppearanceOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureAppearance", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/appearance";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeAppearance<O>(input: DescribeAppearanceInput, opts?: O): Promise<DescribeAppearanceOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeAppearance", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/appearance";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ConfigureScoring<O>(input: ConfigureScoringInput, opts?: O): Promise<ConfigureScoringOutput> {
-    return this.cli.call("eolymp.judge.Judge/ConfigureScoring", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/scoring";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeScoring<O>(input: DescribeScoringInput, opts?: O): Promise<DescribeScoringOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScoring", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/scoring";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ImportProblem<O>(input: ImportProblemInput, opts?: O): Promise<ImportProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/ImportProblem", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   SyncProblem<O>(input: SyncProblemInput, opts?: O): Promise<SyncProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/SyncProblem", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/sync";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateProblem<O>(input: UpdateProblemInput, opts?: O): Promise<UpdateProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateProblem", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ListProblems<O>(input: ListProblemsInput, opts?: O): Promise<ListProblemsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListProblems", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeProblem<O>(input: DescribeProblemInput, opts?: O): Promise<DescribeProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeProblem", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeCodeTemplate", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+    delete(input.templateId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   LookupCodeTemplate<O>(input: LookupCodeTemplateInput, opts?: O): Promise<LookupCodeTemplateOutput> {
-    return this.cli.call("eolymp.judge.Judge/LookupCodeTemplate", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/lookup-template";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListStatements<O>(input: ListStatementsInput, opts?: O): Promise<ListStatementsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListStatements", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/statements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListAttachments<O>(input: ListAttachmentsInput, opts?: O): Promise<ListAttachmentsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListAttachments", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/attachments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListExamples<O>(input: ListExamplesInput, opts?: O): Promise<ListExamplesOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListExamples", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/examples";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DeleteProblem<O>(input: DeleteProblemInput, opts?: O): Promise<DeleteProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteProblem", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   RetestProblem<O>(input: RetestProblemInput, opts?: O): Promise<RetestProblemOutput> {
-    return this.cli.call("eolymp.judge.Judge/RetestProblem", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/retest";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   AddParticipant<O>(input: AddParticipantInput, opts?: O): Promise<AddParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/AddParticipant", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   EnableParticipant<O>(input: EnableParticipantInput, opts?: O): Promise<EnableParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/EnableParticipant", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/enable";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DisableParticipant<O>(input: DisableParticipantInput, opts?: O): Promise<DisableParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/DisableParticipant", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/disable";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateParticipant<O>(input: UpdateParticipantInput, opts?: O): Promise<UpdateParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateParticipant", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   RemoveParticipant<O>(input: RemoveParticipantInput, opts?: O): Promise<RemoveParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/RemoveParticipant", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListParticipants<O>(input: ListParticipantsInput, opts?: O): Promise<ListParticipantsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListParticipants", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeParticipant<O>(input: DescribeParticipantInput, opts?: O): Promise<DescribeParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeParticipant", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   IntrospectParticipant<O>(input: IntrospectParticipantInput, opts?: O): Promise<IntrospectParticipantOutput> {
-    return this.cli.call("eolymp.judge.Judge/IntrospectParticipant", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/introspect";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   JoinContest<O>(input: JoinContestInput, opts?: O): Promise<JoinContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/JoinContest", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/join";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   StartContest<O>(input: StartContestInput, opts?: O): Promise<StartContestOutput> {
-    return this.cli.call("eolymp.judge.Judge/StartContest", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/start";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   VerifyPasscode<O>(input: VerifyPasscodeInput, opts?: O): Promise<VerifyPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/VerifyPasscode", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/verify-passcode";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   EnterPasscode<O>(input: EnterPasscodeInput, opts?: O): Promise<EnterPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/EnterPasscode", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/enter-passcode";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ResetPasscode<O>(input: ResetPasscodeInput, opts?: O): Promise<ResetPasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/ResetPasscode", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/passcode";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   RemovePasscode<O>(input: RemovePasscodeInput, opts?: O): Promise<RemovePasscodeOutput> {
-    return this.cli.call("eolymp.judge.Judge/RemovePasscode", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/passcode";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   CreateSubmission<O>(input: CreateSubmissionInput, opts?: O): Promise<CreateSubmissionOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateSubmission", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ListSubmissions<O>(input: ListSubmissionsInput, opts?: O): Promise<ListSubmissionsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListSubmissions", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeSubmission<O>(input: DescribeSubmissionInput, opts?: O): Promise<DescribeSubmissionOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeSubmission", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/submissions/"+encodeURIComponent(input.submissionId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.submissionId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   RetestSubmission<O>(input: RetestSubmissionInput, opts?: O): Promise<RetestSubmissionOutput> {
-    return this.cli.call("eolymp.judge.Judge/RetestSubmission", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/submissions/"+encodeURIComponent(input.submissionId)+"/retest";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.submissionId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateTicket<O>(input: CreateTicketInput, opts?: O): Promise<CreateTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateTicket", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/tickets";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   CloseTicket<O>(input: CloseTicketInput, opts?: O): Promise<CloseTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/CloseTicket", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/close";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   OpenTicket<O>(input: OpenTicketInput, opts?: O): Promise<OpenTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/OpenTicket", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/open";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ReadTicket<O>(input: ReadTicketInput, opts?: O): Promise<ReadTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/ReadTicket", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/read";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteTicket<O>(input: DeleteTicketInput, opts?: O): Promise<DeleteTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteTicket", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   DescribeTicket<O>(input: DescribeTicketInput, opts?: O): Promise<DescribeTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeTicket", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListTickets<O>(input: ListTicketsInput, opts?: O): Promise<ListTicketsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListTickets", input, opts);
+    const path = "/tickets";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ReplyTicket<O>(input: ReplyTicketInput, opts?: O): Promise<ReplyTicketOutput> {
-    return this.cli.call("eolymp.judge.Judge/ReplyTicket", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ListReplies<O>(input: ListRepliesInput, opts?: O): Promise<ListRepliesOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListReplies", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DeleteReply<O>(input: DeleteReplyInput, opts?: O): Promise<DeleteReplyOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteReply", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies/"+encodeURIComponent(input.replyId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+    delete(input.replyId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   UpdateReply<O>(input: UpdateReplyInput, opts?: O): Promise<UpdateReplyOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateReply", input, opts);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies/"+encodeURIComponent(input.replyId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+    delete(input.replyId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   CreateAnnouncement<O>(input: CreateAnnouncementInput, opts?: O): Promise<CreateAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/CreateAnnouncement", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateAnnouncement<O>(input: UpdateAnnouncementInput, opts?: O): Promise<UpdateAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/UpdateAnnouncement", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.announcementId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteAnnouncement<O>(input: DeleteAnnouncementInput, opts?: O): Promise<DeleteAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/DeleteAnnouncement", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.announcementId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ReadAnnouncement<O>(input: ReadAnnouncementInput, opts?: O): Promise<ReadAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/ReadAnnouncement", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId)+"/read";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.announcementId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeAnnouncement<O>(input: DescribeAnnouncementInput, opts?: O): Promise<DescribeAnnouncementOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncement", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.announcementId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeAnnouncementStatus<O>(input: DescribeAnnouncementStatusInput, opts?: O): Promise<DescribeAnnouncementStatusOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeAnnouncementStatus", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId)+"/status";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.announcementId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListAnnouncements<O>(input: ListAnnouncementsInput, opts?: O): Promise<ListAnnouncementsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListAnnouncements", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   IntrospectScore<O>(input: IntrospectScoreInput, opts?: O): Promise<IntrospectScoreOutput> {
-    return this.cli.call("eolymp.judge.Judge/IntrospectScore", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/introspect/score";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
-    return this.cli.call("eolymp.judge.Judge/DescribeScore", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/score";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ImportScore<O>(input: ImportScoreInput, opts?: O): Promise<ImportScoreOutput> {
-    return this.cli.call("eolymp.judge.Judge/ImportScore", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/scores";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ListResult<O>(input: ListResultInput, opts?: O): Promise<ListResultOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListResult", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/results";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   RebuildScore<O>(input: RebuildScoreInput, opts?: O): Promise<RebuildScoreOutput> {
-    return this.cli.call("eolymp.judge.Judge/RebuildScore", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/rebuild";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ListEntitlements<O>(input: ListEntitlementsInput, opts?: O): Promise<ListEntitlementsOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListEntitlements", input, opts);
+    const path = "/__judge/entitlements";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
-    return this.cli.call("eolymp.judge.Judge/ListActivities", input, opts);
+    const path = "/contests/"+encodeURIComponent(input.contestId)+"/activities";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 

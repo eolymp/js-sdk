@@ -7,114 +7,154 @@ import { Quota } from "./quota"
 import { User } from "./user"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Cognito {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
-  }
-
-  CreateToken<O>(input: CreateTokenInput, opts?: O): Promise<CreateTokenOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CreateToken", input, opts);
-  }
-
-  IntrospectToken<O>(input: IntrospectTokenInput, opts?: O): Promise<IntrospectTokenOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectToken", input, opts);
-  }
-
-  CreateAuthorization<O>(input: CreateAuthorizationInput, opts?: O): Promise<CreateAuthorizationOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CreateAuthorization", input, opts);
-  }
-
-  RevokeToken<O>(input: RevokeTokenInput, opts?: O): Promise<RevokeTokenOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/RevokeToken", input, opts);
-  }
-
-  Signout<O>(input: SignoutInput, opts?: O): Promise<SignoutOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/Signout", input, opts);
+    this.url = url;
   }
 
   CreateAccessKey<O>(input: CreateAccessKeyInput, opts?: O): Promise<CreateAccessKeyOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CreateAccessKey", input, opts);
+    const path = "/access-keys";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteAccessKey<O>(input: DeleteAccessKeyInput, opts?: O): Promise<DeleteAccessKeyOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/DeleteAccessKey", input, opts);
+    const path = "/access-keys/"+encodeURIComponent(input.keyId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.keyId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListAccessKeys<O>(input: ListAccessKeysInput, opts?: O): Promise<ListAccessKeysOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListAccessKeys", input, opts);
+    const path = "/access-keys";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateUser<O>(input: CreateUserInput, opts?: O): Promise<CreateUserOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CreateUser", input, opts);
+    const path = "/users";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   VerifyEmail<O>(input: VerifyEmailInput, opts?: O): Promise<VerifyEmailOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/VerifyEmail", input, opts);
+    const path = "/users/"+encodeURIComponent(input.userId)+"/verify";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateEmail<O>(input: UpdateEmailInput, opts?: O): Promise<UpdateEmailOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdateEmail", input, opts);
+    const path = "/self/email";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateProfile<O>(input: UpdateProfileInput, opts?: O): Promise<UpdateProfileOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdateProfile", input, opts);
+    const path = "/self";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdatePicture<O>(input: UpdatePictureInput, opts?: O): Promise<UpdatePictureOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdatePicture", input, opts);
+    const path = "/self/picture";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdatePassword<O>(input: UpdatePasswordInput, opts?: O): Promise<UpdatePasswordOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdatePassword", input, opts);
+    const path = "/self/password";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   StartRecovery<O>(input: StartRecoveryInput, opts?: O): Promise<StartRecoveryOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/StartRecovery", input, opts);
+    const path = "/self/recovery";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   CompleteRecovery<O>(input: CompleteRecoverInput, opts?: O): Promise<CompleteRecoverOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/CompleteRecovery", input, opts);
+    const path = "/users/"+encodeURIComponent(input.userId)+"/recover";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   IntrospectUser<O>(input: IntrospectUserInput, opts?: O): Promise<IntrospectUserOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectUser", input, opts);
+    const path = "/self";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeUser<O>(input: DescribeUserInput, opts?: O): Promise<DescribeUserOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/DescribeUser", input, opts);
+    const path = "/users/"+encodeURIComponent(input.userId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListUsers<O>(input: ListUsersInput, opts?: O): Promise<ListUsersOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListUsers", input, opts);
+    const path = "/users";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   IntrospectQuota<O>(input: IntrospectQuotaInput, opts?: O): Promise<IntrospectQuotaOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectQuota", input, opts);
+    const path = "/self/quota";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   IntrospectRoles<O>(input: IntrospectRolesInput, opts?: O): Promise<IntrospectRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/IntrospectRoles", input, opts);
+    const path = "/self/roles";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListRoles<O>(input: ListRolesInput, opts?: O): Promise<ListRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListRoles", input, opts);
+    const path = "/users/"+encodeURIComponent(input.userId)+"/roles";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   UpdateRoles<O>(input: UpdateRolesInput, opts?: O): Promise<UpdateRolesOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/UpdateRoles", input, opts);
+    const path = "/users/"+encodeURIComponent(input.userId)+"/roles";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   ListEntitlements<O>(input: ListEntitlementsInput, opts?: O): Promise<ListEntitlementsOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/ListEntitlements", input, opts);
+    const path = "/__cognito/entitlements";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   SelfDestruct<O>(input: SelfDestructInput, opts?: O): Promise<SelfDestructOutput> {
-    return this.cli.call("eolymp.cognito.Cognito/SelfDestruct", input, opts);
+    const path = "/self";
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 }
 

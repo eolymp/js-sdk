@@ -18,266 +18,605 @@ import { Test } from "./test"
 import { Testset } from "./testset"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Atlas {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   CreateProblem<O>(input: CreateProblemInput, opts?: O): Promise<CreateProblemOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateProblem", input, opts);
+    const path = "/problems";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteProblem<O>(input: DeleteProblemInput, opts?: O): Promise<DeleteProblemOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteProblem", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListProblems<O>(input: ListProblemsInput, opts?: O): Promise<ListProblemsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListProblems", input, opts);
+    const path = "/problems";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeProblem<O>(input: DescribeProblemInput, opts?: O): Promise<DescribeProblemOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeProblem", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   UpdateVisibility<O>(input: UpdateVisibilityInput, opts?: O): Promise<UpdateVisibilityOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateVisibility", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/visibility";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdatePrivacy<O>(input: UpdatePrivacyInput, opts?: O): Promise<UpdatePrivacyOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdatePrivacy", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/privacy";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ListExamples<O>(input: ListExamplesInput, opts?: O): Promise<ListExamplesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListExamples", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/examples";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   UpdateVerifier<O>(input: UpdateVerifierInput, opts?: O): Promise<UpdateVerifierOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateVerifier", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/verifier";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DescribeVerifier<O>(input: DescribeVerifierInput, opts?: O): Promise<DescribeVerifierOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeVerifier", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/verifier";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   UpdateInteractor<O>(input: UpdateInteractorInput, opts?: O): Promise<UpdateInteractorOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateInteractor", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/interactor";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DescribeInteractor<O>(input: DescribeInteractorInput, opts?: O): Promise<DescribeInteractorOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeInteractor", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/interactor";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateStatement<O>(input: CreateStatementInput, opts?: O): Promise<CreateStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateStatement", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   UpdateStatement<O>(input: UpdateStatementInput, opts?: O): Promise<UpdateStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateStatement", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements/"+encodeURIComponent(input.statementId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.statementId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DeleteStatement<O>(input: DeleteStatementInput, opts?: O): Promise<DeleteStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteStatement", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements/"+encodeURIComponent(input.statementId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.statementId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListStatements<O>(input: ListStatementsInput, opts?: O): Promise<ListStatementsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListStatements", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeStatement<O>(input: DescribeStatementInput, opts?: O): Promise<DescribeStatementOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeStatement", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements/"+encodeURIComponent(input.statementId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.statementId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateTestset<O>(input: CreateTestsetInput, opts?: O): Promise<CreateTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateTestset", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateTestset<O>(input: UpdateTestsetInput, opts?: O): Promise<UpdateTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateTestset", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DeleteTestset<O>(input: DeleteTestsetInput, opts?: O): Promise<DeleteTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteTestset", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListTestsets<O>(input: ListTestsetsInput, opts?: O): Promise<ListTestsetsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListTestsets", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeTestset<O>(input: DescribeTestsetInput, opts?: O): Promise<DescribeTestsetOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeTestset", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateTest<O>(input: CreateTestInput, opts?: O): Promise<CreateTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateTest", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateTest<O>(input: UpdateTestInput, opts?: O): Promise<UpdateTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateTest", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests/"+encodeURIComponent(input.testId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+    delete(input.testId);
+
+    return this.cli.call("PUT", this.url + path, input, opts);
   }
 
   DeleteTest<O>(input: DeleteTestInput, opts?: O): Promise<DeleteTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteTest", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests/"+encodeURIComponent(input.testId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+    delete(input.testId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListTests<O>(input: ListTestsInput, opts?: O): Promise<ListTestsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListTests", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeTest<O>(input: DescribeTestInput, opts?: O): Promise<DescribeTestOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeTest", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests/"+encodeURIComponent(input.testId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.testsetId);
+    delete(input.testId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/GrantPermission", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/permissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/RevokePermission", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/permissions/"+encodeURIComponent(input.userId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.userId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListPermissions<O>(input: ListPermissionsInput, opts?: O): Promise<ListPermissionsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListPermissions", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/permissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateCodeTemplate<O>(input: CreateCodeTemplateInput, opts?: O): Promise<CreateCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateCodeTemplate", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateCodeTemplate<O>(input: UpdateCodeTemplateInput, opts?: O): Promise<UpdateCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateCodeTemplate", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.templateId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteCodeTemplate<O>(input: DeleteCodeTemplateInput, opts?: O): Promise<DeleteCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteCodeTemplate", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.templateId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListCodeTemplates<O>(input: ListCodeTemplatesInput, opts?: O): Promise<ListCodeTemplatesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListCodeTemplates", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeCodeTemplate", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.templateId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateAttachment<O>(input: CreateAttachmentInput, opts?: O): Promise<CreateAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateAttachment", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateAttachment<O>(input: UpdateAttachmentInput, opts?: O): Promise<UpdateAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateAttachment", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments/"+encodeURIComponent(input.attachmentId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.attachmentId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteAttachment<O>(input: DeleteAttachmentInput, opts?: O): Promise<DeleteAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteAttachment", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments/"+encodeURIComponent(input.attachmentId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.attachmentId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListAttachments<O>(input: ListAttachmentsInput, opts?: O): Promise<ListAttachmentsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListAttachments", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeAttachment<O>(input: DescribeAttachmentInput, opts?: O): Promise<DescribeAttachmentOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeAttachment", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments/"+encodeURIComponent(input.attachmentId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.attachmentId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeChange<O>(input: DescribeChangeInput, opts?: O): Promise<DescribeChangeOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeChange", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/changes/"+encodeURIComponent(input.changeId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.changeId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListChanges<O>(input: ListChangesInput, opts?: O): Promise<ListChangesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListChanges", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/changes";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListProblemTop<O>(input: ListProblemTopInput, opts?: O): Promise<ListProblemTopOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListProblemTop", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/top";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeProblemGrading<O>(input: DescribeProblemGradingInput, opts?: O): Promise<DescribeProblemGradingOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeProblemGrading", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/grading";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   CreateSolution<O>(input: CreateSolutionInput, opts?: O): Promise<CreateSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateSolution<O>(input: UpdateSolutionInput, opts?: O): Promise<UpdateSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.solutionId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteSolution<O>(input: DeleteSolutionInput, opts?: O): Promise<DeleteSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.solutionId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListSolutions<O>(input: ListSolutionsInput, opts?: O): Promise<ListSolutionsOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListSolutions", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeSolution<O>(input: DescribeSolutionInput, opts?: O): Promise<DescribeSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.solutionId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   PublishSolution<O>(input: PublishSolutionInput, opts?: O): Promise<PublishSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/PublishSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/publish";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.solutionId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UnpublishSolution<O>(input: UnpublishSolutionInput, opts?: O): Promise<UnpublishSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UnpublishSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/unpublish";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.solutionId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   ApproveSolution<O>(input: ApproveSolutionInput, opts?: O): Promise<ApproveSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ApproveSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/approve";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.solutionId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   RefuseSolution<O>(input: RefuseSolutionInput, opts?: O): Promise<RefuseSolutionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/RefuseSolution", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/refuse";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.solutionId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   CreateCategory<O>(input: CreateCategoryInput, opts?: O): Promise<CreateCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateCategory", input, opts);
+    const path = "/categories";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UpdateCategory<O>(input: UpdateCategoryInput, opts?: O): Promise<UpdateCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UpdateCategory", input, opts);
+    const path = "/categories/"+encodeURIComponent(input.categoryId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.categoryId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DeleteCategory<O>(input: DeleteCategoryInput, opts?: O): Promise<DeleteCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DeleteCategory", input, opts);
+    const path = "/categories/"+encodeURIComponent(input.categoryId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.categoryId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   ListCategories<O>(input: ListCategoriesInput, opts?: O): Promise<ListCategoriesOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/ListCategories", input, opts);
+    const path = "/categories";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeCategory<O>(input: DescribeCategoryInput, opts?: O): Promise<DescribeCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeCategory", input, opts);
+    const path = "/categories/"+encodeURIComponent(input.categoryId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.categoryId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   AssignCategory<O>(input: AssignCategoryInput, opts?: O): Promise<AssignCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/AssignCategory", input, opts);
+    const path = "/categories/"+encodeURIComponent(input.categoryId)+"/problems/"+encodeURIComponent(input.problemId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.categoryId);
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   UnassignCategory<O>(input: UnassignCategoryInput, opts?: O): Promise<UnassignCategoryOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/UnassignCategory", input, opts);
+    const path = "/categories/"+encodeURIComponent(input.categoryId)+"/problems/"+encodeURIComponent(input.problemId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.categoryId);
+    delete(input.problemId);
+
+    return this.cli.call("DELETE", this.url + path, input, opts);
   }
 
   CreateSubmission<O>(input: CreateSubmissionInput, opts?: O): Promise<CreateSubmissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/CreateSubmission", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeSubmission<O>(input: DescribeSubmissionInput, opts?: O): Promise<DescribeSubmissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeSubmission", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/submissions/"+encodeURIComponent(input.submissionId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.submissionId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   RetestSubmission<O>(input: RetestSubmissionInput, opts?: O): Promise<RetestSubmissionOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/RetestSubmission", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/submissions/"+encodeURIComponent(input.submissionId)+"/retest";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.submissionId);
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 
   DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
-    return this.cli.call("eolymp.atlas.Atlas/DescribeScore", input, opts);
+    const path = "/problems/"+encodeURIComponent(input.problemId)+"/scores/"+encodeURIComponent(input.userId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.userId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 

@@ -5,30 +5,49 @@ import { Country } from "./country"
 import { Region } from "./region"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Geography {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   DescribeCountry<O>(input: DescribeCountryInput, opts?: O): Promise<DescribeCountryOutput> {
-    return this.cli.call("eolymp.geography.Geography/DescribeCountry", input, opts);
+    const path = "/geography/countries/"+encodeURIComponent(input.countryId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.countryId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListCountries<O>(input: ListCountriesInput, opts?: O): Promise<ListCountriesOutput> {
-    return this.cli.call("eolymp.geography.Geography/ListCountries", input, opts);
+    const path = "/geography/countries";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeRegion<O>(input: DescribeRegionInput, opts?: O): Promise<DescribeRegionOutput> {
-    return this.cli.call("eolymp.geography.Geography/DescribeRegion", input, opts);
+    const path = "/geography/regions/"+encodeURIComponent(input.regionId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.regionId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListRegions<O>(input: ListRegionsInput, opts?: O): Promise<ListRegionsOutput> {
-    return this.cli.call("eolymp.geography.Geography/ListRegions", input, opts);
+    const path = "/geography/countries/"+encodeURIComponent(input.countryId)+"/regions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.countryId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 

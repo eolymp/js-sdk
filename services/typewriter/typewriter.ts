@@ -3,18 +3,22 @@
 
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Typewriter {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   UploadAsset<O>(input: UploadAssetInput, opts?: O): Promise<UploadAssetOutput> {
-    return this.cli.call("eolymp.typewriter.Typewriter/UploadAsset", input, opts);
+    const path = "/assets";
+
+    return this.cli.call("POST", this.url + path, input, opts);
   }
 }
 

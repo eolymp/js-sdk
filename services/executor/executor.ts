@@ -8,34 +8,55 @@ import { Runtime } from "./runtime"
 import { Task } from "./task"
 
 interface Client {
-  call<R, E, O>(method: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
 }
 
 export class Executor {
   private readonly cli: Client;
+  private readonly url: string;
 
-  constructor(cli: Client) {
+  constructor(url: string, cli: Client) {
     this.cli = cli;
+    this.url = url;
   }
 
   DescribeLanguage<O>(input: DescribeLanguageInput, opts?: O): Promise<DescribeLanguageOutput> {
-    return this.cli.call("eolymp.executor.Executor/DescribeLanguage", input, opts);
+    const path = "/languages/"+encodeURIComponent(input.languageId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.languageId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListLanguages<O>(input: ListLanguagesInput, opts?: O): Promise<ListLanguagesOutput> {
-    return this.cli.call("eolymp.executor.Executor/ListLanguages", input, opts);
+    const path = "/languages";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
-    return this.cli.call("eolymp.executor.Executor/DescribeRuntime", input, opts);
+    const path = "/runtime/"+encodeURIComponent(input.runtimeId);
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.runtimeId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   ListRuntime<O>(input: ListRuntimeInput, opts?: O): Promise<ListRuntimeOutput> {
-    return this.cli.call("eolymp.executor.Executor/ListRuntime", input, opts);
+    const path = "/runtime";
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
-    return this.cli.call("eolymp.executor.Executor/DescribeCodeTemplate", input, opts);
+    const path = "/runtime/"+encodeURIComponent(input.runtimeId)+"/template";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.runtimeId);
+
+    return this.cli.call("GET", this.url + path, input, opts);
   }
 }
 
