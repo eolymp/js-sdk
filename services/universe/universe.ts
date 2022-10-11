@@ -16,6 +16,10 @@ export class Universe {
     this.cli = cli;
   }
 
+  LookupSpace<O>(input: LookupSpaceInput, opts?: O): Promise<LookupSpaceOutput> {
+    return this.cli.call("eolymp.universe.Universe/LookupSpace", input, opts);
+  }
+
   CreateSpace<O>(input: CreateSpaceInput, opts?: O): Promise<CreateSpaceOutput> {
     return this.cli.call("eolymp.universe.Universe/CreateSpace", input, opts);
   }
@@ -26,10 +30,6 @@ export class Universe {
 
   DeleteSpace<O>(input: DeleteSpaceInput, opts?: O): Promise<DeleteSpaceOutput> {
     return this.cli.call("eolymp.universe.Universe/DeleteSpace", input, opts);
-  }
-
-  LookupSpace<O>(input: LookupSpaceInput, opts?: O): Promise<LookupSpaceOutput> {
-    return this.cli.call("eolymp.universe.Universe/LookupSpace", input, opts);
   }
 
   DescribeSpace<O>(input: DescribeSpaceInput, opts?: O): Promise<DescribeSpaceOutput> {
