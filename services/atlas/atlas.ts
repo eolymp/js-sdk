@@ -334,6 +334,7 @@ export type ListStatementsOutput = {
 }
 
 export type DescribeStatementInput = {
+  problemId?: string;
   statementId?: string;
 }
 
@@ -347,10 +348,11 @@ export type CreateStatementInput = {
 }
 
 export type CreateStatementOutput = {
-  id?: string;
+  statementId?: string;
 }
 
 export type UpdateStatementInput = {
+  problemId?: string;
   statementId?: string;
   statement?: Statement;
 }
@@ -358,6 +360,7 @@ export type UpdateStatementInput = {
 export type UpdateStatementOutput = Record<string, unknown>;
 
 export type DeleteStatementInput = {
+  problemId?: string;
   statementId?: string;
 }
 
@@ -403,6 +406,7 @@ export type ListTestsetsOutput = {
 }
 
 export type DescribeTestsetInput = {
+  problemId?: string;
   testsetId?: string;
 }
 
@@ -420,6 +424,7 @@ export type CreateTestsetOutput = {
 }
 
 export type UpdateTestsetInput = {
+  problemId?: string;
   testsetId?: string;
   testset?: Testset;
 }
@@ -427,6 +432,7 @@ export type UpdateTestsetInput = {
 export type UpdateTestsetOutput = Record<string, unknown>;
 
 export type DeleteTestsetInput = {
+  problemId?: string;
   testsetId?: string;
 }
 
@@ -441,6 +447,7 @@ export type ListExamplesOutput = {
 }
 
 export type ListTestsInput = {
+  problemId?: string;
   testsetId?: string;
 }
 
@@ -450,6 +457,8 @@ export type ListTestsOutput = {
 }
 
 export type DescribeTestInput = {
+  problemId?: string;
+  testsetId?: string;
   testId?: string;
 }
 
@@ -458,15 +467,18 @@ export type DescribeTestOutput = {
 }
 
 export type CreateTestInput = {
+  problemId?: string;
   testsetId?: string;
   test?: Test;
 }
 
 export type CreateTestOutput = {
-  id?: string;
+  testId?: string;
 }
 
 export type UpdateTestInput = {
+  problemId?: string;
+  testsetId?: string;
   testId?: string;
   test?: Test;
 }
@@ -474,6 +486,8 @@ export type UpdateTestInput = {
 export type UpdateTestOutput = Record<string, unknown>;
 
 export type DeleteTestInput = {
+  problemId?: string;
+  testsetId?: string;
   testId?: string;
 }
 
@@ -511,6 +525,7 @@ export type CreateCodeTemplateOutput = {
 }
 
 export type UpdateCodeTemplateInput = {
+  problemId?: string;
   templateId?: string;
   template?: Template;
 }
@@ -518,6 +533,7 @@ export type UpdateCodeTemplateInput = {
 export type UpdateCodeTemplateOutput = Record<string, unknown>;
 
 export type DeleteCodeTemplateInput = {
+  problemId?: string;
   templateId?: string;
 }
 
@@ -533,6 +549,7 @@ export type ListCodeTemplatesOutput = {
 }
 
 export type DescribeCodeTemplateInput = {
+  problemId?: string;
   templateId?: string;
   templateErn?: string;
 }
@@ -551,6 +568,7 @@ export type CreateAttachmentOutput = {
 }
 
 export type UpdateAttachmentInput = {
+  problemId?: string;
   attachmentId?: string;
   attachment?: Attachment;
 }
@@ -558,6 +576,7 @@ export type UpdateAttachmentInput = {
 export type UpdateAttachmentOutput = Record<string, unknown>;
 
 export type DeleteAttachmentInput = {
+  problemId?: string;
   attachmentId?: string;
 }
 
@@ -581,6 +600,7 @@ export type ListAttachmentsOutput = {
 }
 
 export type DescribeAttachmentInput = {
+  problemId?: string;
   attachmentId?: string;
 }
 
@@ -589,6 +609,7 @@ export type DescribeAttachmentOutput = {
 }
 
 export type DescribeChangeInput = {
+  problemId?: string;
   changeId?: string;
 }
 
@@ -647,6 +668,7 @@ export type CreateSolutionOutput = {
 }
 
 export type UpdateSolutionInput = {
+  problemId?: string;
   solutionId?: string;
   solution?: Solution;
 }
@@ -654,12 +676,14 @@ export type UpdateSolutionInput = {
 export type UpdateSolutionOutput = Record<string, unknown>;
 
 export type DeleteSolutionInput = {
+  problemId?: string;
   solutionId?: string;
 }
 
 export type DeleteSolutionOutput = Record<string, unknown>;
 
 export type ListSolutionsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
   filters?: ListSolutionsInput_Filter;
@@ -680,6 +704,7 @@ export type ListSolutionsOutput = {
 }
 
 export type DescribeSolutionInput = {
+  problemId?: string;
   solutionId?: string;
 }
 
@@ -688,24 +713,28 @@ export type DescribeSolutionOutput = {
 }
 
 export type PublishSolutionInput = {
+  problemId?: string;
   solutionId?: string;
 }
 
 export type PublishSolutionOutput = Record<string, unknown>;
 
 export type UnpublishSolutionInput = {
+  problemId?: string;
   solutionId?: string;
 }
 
 export type UnpublishSolutionOutput = Record<string, unknown>;
 
 export type ApproveSolutionInput = {
+  problemId?: string;
   solutionId?: string;
 }
 
 export type ApproveSolutionOutput = Record<string, unknown>;
 
 export type RefuseSolutionInput = {
+  problemId?: string;
   solutionId?: string;
   comment?: string;
 }
@@ -785,6 +814,7 @@ export type CreateSubmissionOutput = {
 }
 
 export type DescribeSubmissionInput = {
+  problemId?: string;
   submissionId?: string;
 }
 
@@ -793,6 +823,7 @@ export type DescribeSubmissionOutput = {
 }
 
 export type RetestSubmissionInput = {
+  problemId?: string;
   submissionId?: string;
   debug?: boolean;
 }
