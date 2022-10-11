@@ -5,6 +5,7 @@
 export type Space = {
   id?: string;
   key?: string;
+  url?: string;
   name?: string;
   image?: string;
   type?: string;
