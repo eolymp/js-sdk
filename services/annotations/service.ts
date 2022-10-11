@@ -5,6 +5,5 @@
 export type Service = {
   space?: boolean;
   internal?: boolean;
-  prefix?: string;
 }
 
