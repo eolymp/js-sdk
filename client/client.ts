@@ -29,10 +29,7 @@ export class Client {
     this.authenticate = opts.authenticate || undefined;
   }
 
-  async do<T>(method: string, path: string, body: string, headers: Record<string, string> = {}): Promise<T> {
-    const url = this.url + (path.startsWith('/') ? path.substr(1) : path);
-
-
+  async do<T>(method: string, url: string, body: string, headers: Record<string, string> = {}): Promise<T> {
     const max = Math.max(1, this.retry);
     for (let retry = 0; retry < max; retry++) {
       const last = retry >= max-1
@@ -112,11 +109,11 @@ export class Client {
   }
 
   graphql<R>(query: string, variables: Record<string, any>, opts?: Options) {
-    return this.do<R>("POST", "/graphql", JSON.stringify({query, variables}), opts?.headers);
+    return this.do<R>("POST", this.url + "/graphql", JSON.stringify({query, variables}), opts?.headers);
   }
 
-  call<R, E>(method: string, input: R, opts?: Options): Promise<E> {
-    return this.do<E>("POST", "/" + method, JSON.stringify(input), opts?.headers)
+  call<R, E>(method: string, url: string, input: R, opts?: Options): Promise<E> {
+    return this.do<E>(method, url, JSON.stringify(input), opts?.headers)
   }
 
   private static async getResponseErrorData(response: Response, message: string): Promise<Record<string, any>> {
