@@ -10,7 +10,7 @@ export class Typewriter {
   private readonly cli: Client;
   private readonly url: string;
 
-  constructor(url: string, cli: Client) {
+  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
   }
