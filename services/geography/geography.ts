@@ -18,7 +18,7 @@ export class Geography {
   }
 
   DescribeCountry<O>(input: DescribeCountryInput, opts?: O): Promise<DescribeCountryOutput> {
-    const path = "/geography/countries/"+encodeURIComponent(input.countryId);
+    const path = "/geography/countries/"+encodeURIComponent(input.countryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.countryId);
@@ -33,7 +33,7 @@ export class Geography {
   }
 
   DescribeRegion<O>(input: DescribeRegionInput, opts?: O): Promise<DescribeRegionOutput> {
-    const path = "/geography/regions/"+encodeURIComponent(input.regionId);
+    const path = "/geography/regions/"+encodeURIComponent(input.regionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.regionId);
@@ -42,7 +42,7 @@ export class Geography {
   }
 
   ListRegions<O>(input: ListRegionsInput, opts?: O): Promise<ListRegionsOutput> {
-    const path = "/geography/countries/"+encodeURIComponent(input.countryId)+"/regions";
+    const path = "/geography/countries/"+encodeURIComponent(input.countryId||'')+"/regions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.countryId);

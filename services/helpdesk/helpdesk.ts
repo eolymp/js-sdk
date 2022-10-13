@@ -18,7 +18,7 @@ export class Helpdesk {
   }
 
   DescribeDocument<O>(input: DescribeDocumentInput, opts?: O): Promise<DescribeDocumentOutput> {
-    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId);
+    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.documentId);
@@ -39,7 +39,7 @@ export class Helpdesk {
   }
 
   UpdateDocument<O>(input: UpdateDocumentInput, opts?: O): Promise<UpdateDocumentOutput> {
-    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId);
+    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.documentId);
@@ -48,7 +48,7 @@ export class Helpdesk {
   }
 
   DeleteDocument<O>(input: DeleteDocumentInput, opts?: O): Promise<DeleteDocumentOutput> {
-    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId);
+    const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.documentId);
@@ -57,7 +57,7 @@ export class Helpdesk {
   }
 
   DescribePath<O>(input: DescribePathInput, opts?: O): Promise<DescribePathOutput> {
-    const path = "/helpdesk/paths/"+encodeURIComponent(input.path);
+    const path = "/helpdesk/paths/"+encodeURIComponent(input.path||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.path);
@@ -72,7 +72,7 @@ export class Helpdesk {
   }
 
   ListParents<O>(input: ListParentsInput, opts?: O): Promise<ListParentsOutput> {
-    const path = "/helpdesk/paths/"+encodeURIComponent(input.path)+"/parents";
+    const path = "/helpdesk/paths/"+encodeURIComponent(input.path||'')+"/parents";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.path);

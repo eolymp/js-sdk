@@ -25,7 +25,7 @@ export class Ranker {
   }
 
   UpdateScoreboard<O>(input: UpdateScoreboardInput, opts?: O): Promise<UpdateScoreboardOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -34,7 +34,7 @@ export class Ranker {
   }
 
   RebuildScoreboard<O>(input: RebuildScoreboardInput, opts?: O): Promise<RebuildScoreboardOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/rebuild";
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/rebuild";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -43,7 +43,7 @@ export class Ranker {
   }
 
   DeleteScoreboard<O>(input: DeleteScoreboardInput, opts?: O): Promise<DeleteScoreboardOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -52,7 +52,7 @@ export class Ranker {
   }
 
   DescribeScoreboard<O>(input: DescribeScoreboardInput, opts?: O): Promise<DescribeScoreboardOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -67,7 +67,7 @@ export class Ranker {
   }
 
   DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts?: O): Promise<DescribeScoreboardRowOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/rows/"+encodeURIComponent(input.memberId);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/rows/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -77,7 +77,7 @@ export class Ranker {
   }
 
   ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts?: O): Promise<ListScoreboardRowsOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/rows";
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/rows";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -86,7 +86,7 @@ export class Ranker {
   }
 
   AddScoreboardColumn<O>(input: AddScoreboardColumnInput, opts?: O): Promise<AddScoreboardColumnOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns";
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -95,7 +95,7 @@ export class Ranker {
   }
 
   DeleteScoreboardColumn<O>(input: DeleteScoreboardColumnInput, opts?: O): Promise<DeleteScoreboardColumnOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns/"+encodeURIComponent(input.columnId);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns/"+encodeURIComponent(input.columnId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -105,7 +105,7 @@ export class Ranker {
   }
 
   DescribeScoreboardColumn<O>(input: DescribeScoreboardColumnInput, opts?: O): Promise<DescribeScoreboardColumnOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns/"+encodeURIComponent(input.columnId);
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns/"+encodeURIComponent(input.columnId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -115,7 +115,7 @@ export class Ranker {
   }
 
   ListScoreboardColumns<O>(input: ListScoreboardColumnsInput, opts?: O): Promise<ListScoreboardColumnsOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/columns";
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -124,7 +124,7 @@ export class Ranker {
   }
 
   ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
-    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId)+"/activities";
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/activities";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);

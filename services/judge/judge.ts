@@ -40,7 +40,7 @@ export class Judge {
   }
 
   DeleteContest<O>(input: DeleteContestInput, opts?: O): Promise<DeleteContestOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -49,7 +49,7 @@ export class Judge {
   }
 
   UpdateContest<O>(input: UpdateContestInput, opts?: O): Promise<UpdateContestOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -58,7 +58,7 @@ export class Judge {
   }
 
   DescribeContest<O>(input: DescribeContestInput, opts?: O): Promise<DescribeContestOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -73,7 +73,7 @@ export class Judge {
   }
 
   OpenContest<O>(input: OpenContestInput, opts?: O): Promise<OpenContestOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/open";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/open";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -82,7 +82,7 @@ export class Judge {
   }
 
   CloseContest<O>(input: CloseContestInput, opts?: O): Promise<CloseContestOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/close";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/close";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -91,7 +91,7 @@ export class Judge {
   }
 
   ConfigureRuntime<O>(input: ConfigureRuntimeInput, opts?: O): Promise<ConfigureRuntimeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/runtime";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/runtime";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -100,7 +100,7 @@ export class Judge {
   }
 
   DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/runtime";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/runtime";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -109,7 +109,7 @@ export class Judge {
   }
 
   ConfigureAppearance<O>(input: ConfigureAppearanceInput, opts?: O): Promise<ConfigureAppearanceOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/appearance";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/appearance";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -118,7 +118,7 @@ export class Judge {
   }
 
   DescribeAppearance<O>(input: DescribeAppearanceInput, opts?: O): Promise<DescribeAppearanceOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/appearance";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/appearance";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -127,7 +127,7 @@ export class Judge {
   }
 
   ConfigureScoring<O>(input: ConfigureScoringInput, opts?: O): Promise<ConfigureScoringOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/scoring";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoring";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -136,7 +136,7 @@ export class Judge {
   }
 
   DescribeScoring<O>(input: DescribeScoringInput, opts?: O): Promise<DescribeScoringOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/scoring";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoring";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -145,7 +145,7 @@ export class Judge {
   }
 
   ImportProblem<O>(input: ImportProblemInput, opts?: O): Promise<ImportProblemOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -154,7 +154,7 @@ export class Judge {
   }
 
   SyncProblem<O>(input: SyncProblemInput, opts?: O): Promise<SyncProblemOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/sync";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/sync";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -164,7 +164,7 @@ export class Judge {
   }
 
   UpdateProblem<O>(input: UpdateProblemInput, opts?: O): Promise<UpdateProblemOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -174,7 +174,7 @@ export class Judge {
   }
 
   ListProblems<O>(input: ListProblemsInput, opts?: O): Promise<ListProblemsOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -183,7 +183,7 @@ export class Judge {
   }
 
   DescribeProblem<O>(input: DescribeProblemInput, opts?: O): Promise<DescribeProblemOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -193,7 +193,7 @@ export class Judge {
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -204,7 +204,7 @@ export class Judge {
   }
 
   LookupCodeTemplate<O>(input: LookupCodeTemplateInput, opts?: O): Promise<LookupCodeTemplateOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/lookup-template";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/lookup-template";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -214,7 +214,7 @@ export class Judge {
   }
 
   ListStatements<O>(input: ListStatementsInput, opts?: O): Promise<ListStatementsOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/statements";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -224,7 +224,7 @@ export class Judge {
   }
 
   ListAttachments<O>(input: ListAttachmentsInput, opts?: O): Promise<ListAttachmentsOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/attachments";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -234,7 +234,7 @@ export class Judge {
   }
 
   ListExamples<O>(input: ListExamplesInput, opts?: O): Promise<ListExamplesOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/examples";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -244,7 +244,7 @@ export class Judge {
   }
 
   DeleteProblem<O>(input: DeleteProblemInput, opts?: O): Promise<DeleteProblemOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -254,7 +254,7 @@ export class Judge {
   }
 
   RetestProblem<O>(input: RetestProblemInput, opts?: O): Promise<RetestProblemOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/retest";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -264,7 +264,7 @@ export class Judge {
   }
 
   AddParticipant<O>(input: AddParticipantInput, opts?: O): Promise<AddParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -273,7 +273,7 @@ export class Judge {
   }
 
   EnableParticipant<O>(input: EnableParticipantInput, opts?: O): Promise<EnableParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/enable";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/enable";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -283,7 +283,7 @@ export class Judge {
   }
 
   DisableParticipant<O>(input: DisableParticipantInput, opts?: O): Promise<DisableParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/disable";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/disable";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -293,7 +293,7 @@ export class Judge {
   }
 
   UpdateParticipant<O>(input: UpdateParticipantInput, opts?: O): Promise<UpdateParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -303,7 +303,7 @@ export class Judge {
   }
 
   RemoveParticipant<O>(input: RemoveParticipantInput, opts?: O): Promise<RemoveParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -313,7 +313,7 @@ export class Judge {
   }
 
   ListParticipants<O>(input: ListParticipantsInput, opts?: O): Promise<ListParticipantsOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -322,7 +322,7 @@ export class Judge {
   }
 
   DescribeParticipant<O>(input: DescribeParticipantInput, opts?: O): Promise<DescribeParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -332,7 +332,7 @@ export class Judge {
   }
 
   IntrospectParticipant<O>(input: IntrospectParticipantInput, opts?: O): Promise<IntrospectParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/introspect";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -341,7 +341,7 @@ export class Judge {
   }
 
   JoinContest<O>(input: JoinContestInput, opts?: O): Promise<JoinContestOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/join";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/join";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -350,7 +350,7 @@ export class Judge {
   }
 
   StartContest<O>(input: StartContestInput, opts?: O): Promise<StartContestOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/start";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/start";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -359,7 +359,7 @@ export class Judge {
   }
 
   VerifyPasscode<O>(input: VerifyPasscodeInput, opts?: O): Promise<VerifyPasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/verify-passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/verify-passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -368,7 +368,7 @@ export class Judge {
   }
 
   EnterPasscode<O>(input: EnterPasscodeInput, opts?: O): Promise<EnterPasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/enter-passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/enter-passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -377,7 +377,7 @@ export class Judge {
   }
 
   ResetPasscode<O>(input: ResetPasscodeInput, opts?: O): Promise<ResetPasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -387,7 +387,7 @@ export class Judge {
   }
 
   RemovePasscode<O>(input: RemovePasscodeInput, opts?: O): Promise<RemovePasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -397,7 +397,7 @@ export class Judge {
   }
 
   CreateSubmission<O>(input: CreateSubmissionInput, opts?: O): Promise<CreateSubmissionOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/problems/"+encodeURIComponent(input.problemId)+"/submissions";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/submissions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -407,7 +407,7 @@ export class Judge {
   }
 
   ListSubmissions<O>(input: ListSubmissionsInput, opts?: O): Promise<ListSubmissionsOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/submissions";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -416,7 +416,7 @@ export class Judge {
   }
 
   DescribeSubmission<O>(input: DescribeSubmissionInput, opts?: O): Promise<DescribeSubmissionOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/submissions/"+encodeURIComponent(input.submissionId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -426,7 +426,7 @@ export class Judge {
   }
 
   RetestSubmission<O>(input: RetestSubmissionInput, opts?: O): Promise<RetestSubmissionOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/submissions/"+encodeURIComponent(input.submissionId)+"/retest";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -436,7 +436,7 @@ export class Judge {
   }
 
   CreateTicket<O>(input: CreateTicketInput, opts?: O): Promise<CreateTicketOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/tickets";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/tickets";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -445,7 +445,7 @@ export class Judge {
   }
 
   CloseTicket<O>(input: CloseTicketInput, opts?: O): Promise<CloseTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/close";
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/close";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -454,7 +454,7 @@ export class Judge {
   }
 
   OpenTicket<O>(input: OpenTicketInput, opts?: O): Promise<OpenTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/open";
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/open";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -463,7 +463,7 @@ export class Judge {
   }
 
   ReadTicket<O>(input: ReadTicketInput, opts?: O): Promise<ReadTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/read";
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/read";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -472,7 +472,7 @@ export class Judge {
   }
 
   DeleteTicket<O>(input: DeleteTicketInput, opts?: O): Promise<DeleteTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -481,7 +481,7 @@ export class Judge {
   }
 
   DescribeTicket<O>(input: DescribeTicketInput, opts?: O): Promise<DescribeTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -496,7 +496,7 @@ export class Judge {
   }
 
   ReplyTicket<O>(input: ReplyTicketInput, opts?: O): Promise<ReplyTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies";
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -505,7 +505,7 @@ export class Judge {
   }
 
   ListReplies<O>(input: ListRepliesInput, opts?: O): Promise<ListRepliesOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies";
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -514,7 +514,7 @@ export class Judge {
   }
 
   DeleteReply<O>(input: DeleteReplyInput, opts?: O): Promise<DeleteReplyOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies/"+encodeURIComponent(input.replyId);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies/"+encodeURIComponent(input.replyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -524,7 +524,7 @@ export class Judge {
   }
 
   UpdateReply<O>(input: UpdateReplyInput, opts?: O): Promise<UpdateReplyOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId)+"/replies/"+encodeURIComponent(input.replyId);
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies/"+encodeURIComponent(input.replyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -534,7 +534,7 @@ export class Judge {
   }
 
   CreateAnnouncement<O>(input: CreateAnnouncementInput, opts?: O): Promise<CreateAnnouncementOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -543,7 +543,7 @@ export class Judge {
   }
 
   UpdateAnnouncement<O>(input: UpdateAnnouncementInput, opts?: O): Promise<UpdateAnnouncementOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -553,7 +553,7 @@ export class Judge {
   }
 
   DeleteAnnouncement<O>(input: DeleteAnnouncementInput, opts?: O): Promise<DeleteAnnouncementOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -563,7 +563,7 @@ export class Judge {
   }
 
   ReadAnnouncement<O>(input: ReadAnnouncementInput, opts?: O): Promise<ReadAnnouncementOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId)+"/read";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'')+"/read";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -573,7 +573,7 @@ export class Judge {
   }
 
   DescribeAnnouncement<O>(input: DescribeAnnouncementInput, opts?: O): Promise<DescribeAnnouncementOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId);
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -583,7 +583,7 @@ export class Judge {
   }
 
   DescribeAnnouncementStatus<O>(input: DescribeAnnouncementStatusInput, opts?: O): Promise<DescribeAnnouncementStatusOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements/"+encodeURIComponent(input.announcementId)+"/status";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'')+"/status";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -593,7 +593,7 @@ export class Judge {
   }
 
   ListAnnouncements<O>(input: ListAnnouncementsInput, opts?: O): Promise<ListAnnouncementsOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/announcements";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -602,7 +602,7 @@ export class Judge {
   }
 
   IntrospectScore<O>(input: IntrospectScoreInput, opts?: O): Promise<IntrospectScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/introspect/score";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect/score";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -611,7 +611,7 @@ export class Judge {
   }
 
   DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/score";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/score";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -621,7 +621,7 @@ export class Judge {
   }
 
   ImportScore<O>(input: ImportScoreInput, opts?: O): Promise<ImportScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/participants/"+encodeURIComponent(input.participantId)+"/scores";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -631,7 +631,7 @@ export class Judge {
   }
 
   ListResult<O>(input: ListResultInput, opts?: O): Promise<ListResultOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/results";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/results";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -640,7 +640,7 @@ export class Judge {
   }
 
   RebuildScore<O>(input: RebuildScoreInput, opts?: O): Promise<RebuildScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/rebuild";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/rebuild";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -655,7 +655,7 @@ export class Judge {
   }
 
   ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId)+"/activities";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/activities";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);

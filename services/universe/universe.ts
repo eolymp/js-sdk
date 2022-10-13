@@ -19,7 +19,7 @@ export class Universe {
   }
 
   LookupSpace<O>(input: LookupSpaceInput, opts?: O): Promise<LookupSpaceOutput> {
-    const path = "/spaces/__lookup/"+encodeURIComponent(input.key);
+    const path = "/spaces/__lookup/"+encodeURIComponent(input.key||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.key);
@@ -34,7 +34,7 @@ export class Universe {
   }
 
   UpdateSpace<O>(input: UpdateSpaceInput, opts?: O): Promise<UpdateSpaceOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -43,7 +43,7 @@ export class Universe {
   }
 
   DeleteSpace<O>(input: DeleteSpaceInput, opts?: O): Promise<DeleteSpaceOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -52,7 +52,7 @@ export class Universe {
   }
 
   DescribeSpace<O>(input: DescribeSpaceInput, opts?: O): Promise<DescribeSpaceOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -61,7 +61,7 @@ export class Universe {
   }
 
   DescribeQuota<O>(input: DescribeQuotaInput, opts?: O): Promise<DescribeQuotaOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/quota";
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/quota";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -76,7 +76,7 @@ export class Universe {
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions/"+encodeURIComponent(input.userId);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -86,7 +86,7 @@ export class Universe {
   }
 
   RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions/"+encodeURIComponent(input.userId);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -96,7 +96,7 @@ export class Universe {
   }
 
   DescribePermission<O>(input: DescribePermissionInput, opts?: O): Promise<DescribePermissionOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions/"+encodeURIComponent(input.userId);
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -106,7 +106,7 @@ export class Universe {
   }
 
   IntrospectPermission<O>(input: IntrospectPermissionInput, opts?: O): Promise<IntrospectPermissionOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/introspect-permission";
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/introspect-permission";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -115,7 +115,7 @@ export class Universe {
   }
 
   ListPermissions<O>(input: ListPermissionsInput, opts?: O): Promise<ListPermissionsOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId)+"/permissions";
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);

@@ -23,7 +23,7 @@ export class Playground {
   }
 
   DescribeRun<O>(input: DescribeRunInput, opts?: O): Promise<DescribeRunOutput> {
-    const path = "/playground/runs/"+encodeURIComponent(input.runId);
+    const path = "/playground/runs/"+encodeURIComponent(input.runId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runId);

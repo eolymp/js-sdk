@@ -22,7 +22,7 @@ export class Keeper {
   }
 
   DescribeObject<O>(input: DescribeObjectInput, opts?: O): Promise<DescribeObjectOutput> {
-    const path = "/objects/"+encodeURIComponent(input.key);
+    const path = "/objects/"+encodeURIComponent(input.key||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.key);
@@ -31,7 +31,7 @@ export class Keeper {
   }
 
   DownloadObject<O>(input: DownloadObjectInput, opts?: O): Promise<DownloadObjectOutput> {
-    const path = "/objects/"+encodeURIComponent(input.key)+"/data";
+    const path = "/objects/"+encodeURIComponent(input.key||'')+"/data";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.key);

@@ -49,7 +49,7 @@ export class Community {
   }
 
   UpdateMember<O>(input: UpdateMemberInput, opts?: O): Promise<UpdateMemberOutput> {
-    const path = "/members/"+encodeURIComponent(input.memberId);
+    const path = "/members/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
@@ -58,7 +58,7 @@ export class Community {
   }
 
   RemoveMember<O>(input: RemoveMemberInput, opts?: O): Promise<RemoveMemberOutput> {
-    const path = "/members/"+encodeURIComponent(input.memberId);
+    const path = "/members/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
@@ -67,7 +67,7 @@ export class Community {
   }
 
   DescribeMember<O>(input: DescribeMemberInput, opts?: O): Promise<DescribeMemberOutput> {
-    const path = "/members/"+encodeURIComponent(input.memberId);
+    const path = "/members/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
@@ -88,7 +88,7 @@ export class Community {
   }
 
   UpdateAttribute<O>(input: UpdateAttributeInput, opts?: O): Promise<UpdateAttributeOutput> {
-    const path = "/attributes/"+encodeURIComponent(input.attributeKey);
+    const path = "/attributes/"+encodeURIComponent(input.attributeKey||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.attributeKey);
@@ -97,7 +97,7 @@ export class Community {
   }
 
   RemoveAttribute<O>(input: RemoveAttributeInput, opts?: O): Promise<RemoveAttributeOutput> {
-    const path = "/attributes/"+encodeURIComponent(input.attributeKey);
+    const path = "/attributes/"+encodeURIComponent(input.attributeKey||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.attributeKey);
@@ -106,7 +106,7 @@ export class Community {
   }
 
   DescribeAttribute<O>(input: DescribeAttributeInput, opts?: O): Promise<DescribeAttributeOutput> {
-    const path = "/attributes/"+encodeURIComponent(input.attributeKey);
+    const path = "/attributes/"+encodeURIComponent(input.attributeKey||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.attributeKey);

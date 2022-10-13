@@ -21,7 +21,7 @@ export class Executor {
   }
 
   DescribeLanguage<O>(input: DescribeLanguageInput, opts?: O): Promise<DescribeLanguageOutput> {
-    const path = "/languages/"+encodeURIComponent(input.languageId);
+    const path = "/languages/"+encodeURIComponent(input.languageId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.languageId);
@@ -36,7 +36,7 @@ export class Executor {
   }
 
   DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
-    const path = "/runtime/"+encodeURIComponent(input.runtimeId);
+    const path = "/runtime/"+encodeURIComponent(input.runtimeId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runtimeId);
@@ -51,7 +51,7 @@ export class Executor {
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
-    const path = "/runtime/"+encodeURIComponent(input.runtimeId)+"/template";
+    const path = "/runtime/"+encodeURIComponent(input.runtimeId||'')+"/template";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runtimeId);

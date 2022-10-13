@@ -18,7 +18,7 @@ export class Workspace {
   }
 
   DescribeProject<O>(input: DescribeProjectInput, opts?: O): Promise<DescribeProjectOutput> {
-    const path = "/workspace/projects/"+encodeURIComponent(input.projectId);
+    const path = "/workspace/projects/"+encodeURIComponent(input.projectId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
@@ -39,7 +39,7 @@ export class Workspace {
   }
 
   UpdateProject<O>(input: UpdateProjectInput, opts?: O): Promise<UpdateProjectOutput> {
-    const path = "/workspace/projects/"+encodeURIComponent(input.projectId);
+    const path = "/workspace/projects/"+encodeURIComponent(input.projectId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
@@ -48,7 +48,7 @@ export class Workspace {
   }
 
   DeleteProject<O>(input: DeleteProjectInput, opts?: O): Promise<DeleteProjectOutput> {
-    const path = "/workspace/projects/"+encodeURIComponent(input.projectId);
+    const path = "/workspace/projects/"+encodeURIComponent(input.projectId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
@@ -57,7 +57,7 @@ export class Workspace {
   }
 
   ListFiles<O>(input: ListFilesInput, opts?: O): Promise<ListFilesOutput> {
-    const path = "/workspace/projects/"+encodeURIComponent(input.projectId)+"/files";
+    const path = "/workspace/projects/"+encodeURIComponent(input.projectId||'')+"/files";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
@@ -66,7 +66,7 @@ export class Workspace {
   }
 
   DescribeFile<O>(input: DescribeFileInput, opts?: O): Promise<DescribeFileOutput> {
-    const path = "/workspace/projects/"+encodeURIComponent(input.projectId)+"/files/"+encodeURIComponent(input.name);
+    const path = "/workspace/projects/"+encodeURIComponent(input.projectId||'')+"/files/"+encodeURIComponent(input.name||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
@@ -76,7 +76,7 @@ export class Workspace {
   }
 
   UploadFile<O>(input: UploadFileInput, opts?: O): Promise<UploadFileOutput> {
-    const path = "/workspace/projects/"+encodeURIComponent(input.projectId)+"/files";
+    const path = "/workspace/projects/"+encodeURIComponent(input.projectId||'')+"/files";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
@@ -85,7 +85,7 @@ export class Workspace {
   }
 
   RemoveFile<O>(input: RemoveFileInput, opts?: O): Promise<RemoveFileOutput> {
-    const path = "/workspace/projects/"+encodeURIComponent(input.projectId)+"/files/"+encodeURIComponent(input.name);
+    const path = "/workspace/projects/"+encodeURIComponent(input.projectId||'')+"/files/"+encodeURIComponent(input.name||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);

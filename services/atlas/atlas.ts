@@ -37,7 +37,7 @@ export class Atlas {
   }
 
   DeleteProblem<O>(input: DeleteProblemInput, opts?: O): Promise<DeleteProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -52,7 +52,7 @@ export class Atlas {
   }
 
   DescribeProblem<O>(input: DescribeProblemInput, opts?: O): Promise<DescribeProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -61,7 +61,7 @@ export class Atlas {
   }
 
   UpdateVisibility<O>(input: UpdateVisibilityInput, opts?: O): Promise<UpdateVisibilityOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/visibility";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/visibility";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -70,7 +70,7 @@ export class Atlas {
   }
 
   UpdatePrivacy<O>(input: UpdatePrivacyInput, opts?: O): Promise<UpdatePrivacyOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/privacy";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/privacy";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -79,7 +79,7 @@ export class Atlas {
   }
 
   ListExamples<O>(input: ListExamplesInput, opts?: O): Promise<ListExamplesOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/examples";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -88,7 +88,7 @@ export class Atlas {
   }
 
   UpdateVerifier<O>(input: UpdateVerifierInput, opts?: O): Promise<UpdateVerifierOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/verifier";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/verifier";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -97,7 +97,7 @@ export class Atlas {
   }
 
   DescribeVerifier<O>(input: DescribeVerifierInput, opts?: O): Promise<DescribeVerifierOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/verifier";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/verifier";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -106,7 +106,7 @@ export class Atlas {
   }
 
   UpdateInteractor<O>(input: UpdateInteractorInput, opts?: O): Promise<UpdateInteractorOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/interactor";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/interactor";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -115,7 +115,7 @@ export class Atlas {
   }
 
   DescribeInteractor<O>(input: DescribeInteractorInput, opts?: O): Promise<DescribeInteractorOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/interactor";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/interactor";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -124,7 +124,7 @@ export class Atlas {
   }
 
   CreateStatement<O>(input: CreateStatementInput, opts?: O): Promise<CreateStatementOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -133,7 +133,7 @@ export class Atlas {
   }
 
   UpdateStatement<O>(input: UpdateStatementInput, opts?: O): Promise<UpdateStatementOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements/"+encodeURIComponent(input.statementId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -143,7 +143,7 @@ export class Atlas {
   }
 
   DeleteStatement<O>(input: DeleteStatementInput, opts?: O): Promise<DeleteStatementOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements/"+encodeURIComponent(input.statementId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -153,7 +153,7 @@ export class Atlas {
   }
 
   ListStatements<O>(input: ListStatementsInput, opts?: O): Promise<ListStatementsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -162,7 +162,7 @@ export class Atlas {
   }
 
   DescribeStatement<O>(input: DescribeStatementInput, opts?: O): Promise<DescribeStatementOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/statements/"+encodeURIComponent(input.statementId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -172,7 +172,7 @@ export class Atlas {
   }
 
   CreateTestset<O>(input: CreateTestsetInput, opts?: O): Promise<CreateTestsetOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -181,7 +181,7 @@ export class Atlas {
   }
 
   UpdateTestset<O>(input: UpdateTestsetInput, opts?: O): Promise<UpdateTestsetOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -191,7 +191,7 @@ export class Atlas {
   }
 
   DeleteTestset<O>(input: DeleteTestsetInput, opts?: O): Promise<DeleteTestsetOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -201,7 +201,7 @@ export class Atlas {
   }
 
   ListTestsets<O>(input: ListTestsetsInput, opts?: O): Promise<ListTestsetsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -210,7 +210,7 @@ export class Atlas {
   }
 
   DescribeTestset<O>(input: DescribeTestsetInput, opts?: O): Promise<DescribeTestsetOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -220,7 +220,7 @@ export class Atlas {
   }
 
   CreateTest<O>(input: CreateTestInput, opts?: O): Promise<CreateTestOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -230,7 +230,7 @@ export class Atlas {
   }
 
   UpdateTest<O>(input: UpdateTestInput, opts?: O): Promise<UpdateTestOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests/"+encodeURIComponent(input.testId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests/"+encodeURIComponent(input.testId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -241,7 +241,7 @@ export class Atlas {
   }
 
   DeleteTest<O>(input: DeleteTestInput, opts?: O): Promise<DeleteTestOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests/"+encodeURIComponent(input.testId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests/"+encodeURIComponent(input.testId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -252,7 +252,7 @@ export class Atlas {
   }
 
   ListTests<O>(input: ListTestsInput, opts?: O): Promise<ListTestsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -262,7 +262,7 @@ export class Atlas {
   }
 
   DescribeTest<O>(input: DescribeTestInput, opts?: O): Promise<DescribeTestOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/testsets/"+encodeURIComponent(input.testsetId)+"/tests/"+encodeURIComponent(input.testId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests/"+encodeURIComponent(input.testId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -273,7 +273,7 @@ export class Atlas {
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/permissions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/permissions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -282,7 +282,7 @@ export class Atlas {
   }
 
   RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/permissions/"+encodeURIComponent(input.userId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/permissions/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -292,7 +292,7 @@ export class Atlas {
   }
 
   ListPermissions<O>(input: ListPermissionsInput, opts?: O): Promise<ListPermissionsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/permissions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/permissions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -301,7 +301,7 @@ export class Atlas {
   }
 
   CreateCodeTemplate<O>(input: CreateCodeTemplateInput, opts?: O): Promise<CreateCodeTemplateOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -310,7 +310,7 @@ export class Atlas {
   }
 
   UpdateCodeTemplate<O>(input: UpdateCodeTemplateInput, opts?: O): Promise<UpdateCodeTemplateOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -320,7 +320,7 @@ export class Atlas {
   }
 
   DeleteCodeTemplate<O>(input: DeleteCodeTemplateInput, opts?: O): Promise<DeleteCodeTemplateOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -330,7 +330,7 @@ export class Atlas {
   }
 
   ListCodeTemplates<O>(input: ListCodeTemplatesInput, opts?: O): Promise<ListCodeTemplatesOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -339,7 +339,7 @@ export class Atlas {
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/templates/"+encodeURIComponent(input.templateId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -349,7 +349,7 @@ export class Atlas {
   }
 
   CreateAttachment<O>(input: CreateAttachmentInput, opts?: O): Promise<CreateAttachmentOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -358,7 +358,7 @@ export class Atlas {
   }
 
   UpdateAttachment<O>(input: UpdateAttachmentInput, opts?: O): Promise<UpdateAttachmentOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments/"+encodeURIComponent(input.attachmentId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments/"+encodeURIComponent(input.attachmentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -368,7 +368,7 @@ export class Atlas {
   }
 
   DeleteAttachment<O>(input: DeleteAttachmentInput, opts?: O): Promise<DeleteAttachmentOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments/"+encodeURIComponent(input.attachmentId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments/"+encodeURIComponent(input.attachmentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -378,7 +378,7 @@ export class Atlas {
   }
 
   ListAttachments<O>(input: ListAttachmentsInput, opts?: O): Promise<ListAttachmentsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -387,7 +387,7 @@ export class Atlas {
   }
 
   DescribeAttachment<O>(input: DescribeAttachmentInput, opts?: O): Promise<DescribeAttachmentOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/attachments/"+encodeURIComponent(input.attachmentId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments/"+encodeURIComponent(input.attachmentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -397,7 +397,7 @@ export class Atlas {
   }
 
   DescribeChange<O>(input: DescribeChangeInput, opts?: O): Promise<DescribeChangeOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/changes/"+encodeURIComponent(input.changeId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/changes/"+encodeURIComponent(input.changeId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -407,7 +407,7 @@ export class Atlas {
   }
 
   ListChanges<O>(input: ListChangesInput, opts?: O): Promise<ListChangesOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/changes";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/changes";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -416,7 +416,7 @@ export class Atlas {
   }
 
   ListProblemTop<O>(input: ListProblemTopInput, opts?: O): Promise<ListProblemTopOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/top";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/top";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -425,7 +425,7 @@ export class Atlas {
   }
 
   DescribeProblemGrading<O>(input: DescribeProblemGradingInput, opts?: O): Promise<DescribeProblemGradingOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/grading";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/grading";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -434,7 +434,7 @@ export class Atlas {
   }
 
   CreateSolution<O>(input: CreateSolutionInput, opts?: O): Promise<CreateSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -443,7 +443,7 @@ export class Atlas {
   }
 
   UpdateSolution<O>(input: UpdateSolutionInput, opts?: O): Promise<UpdateSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -453,7 +453,7 @@ export class Atlas {
   }
 
   DeleteSolution<O>(input: DeleteSolutionInput, opts?: O): Promise<DeleteSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -463,7 +463,7 @@ export class Atlas {
   }
 
   ListSolutions<O>(input: ListSolutionsInput, opts?: O): Promise<ListSolutionsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -472,7 +472,7 @@ export class Atlas {
   }
 
   DescribeSolution<O>(input: DescribeSolutionInput, opts?: O): Promise<DescribeSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -482,7 +482,7 @@ export class Atlas {
   }
 
   PublishSolution<O>(input: PublishSolutionInput, opts?: O): Promise<PublishSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/publish";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'')+"/publish";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -492,7 +492,7 @@ export class Atlas {
   }
 
   UnpublishSolution<O>(input: UnpublishSolutionInput, opts?: O): Promise<UnpublishSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/unpublish";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'')+"/unpublish";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -502,7 +502,7 @@ export class Atlas {
   }
 
   ApproveSolution<O>(input: ApproveSolutionInput, opts?: O): Promise<ApproveSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/approve";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'')+"/approve";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -512,7 +512,7 @@ export class Atlas {
   }
 
   RefuseSolution<O>(input: RefuseSolutionInput, opts?: O): Promise<RefuseSolutionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/solutions/"+encodeURIComponent(input.solutionId)+"/refuse";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'')+"/refuse";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -528,7 +528,7 @@ export class Atlas {
   }
 
   UpdateCategory<O>(input: UpdateCategoryInput, opts?: O): Promise<UpdateCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId);
+    const path = "/categories/"+encodeURIComponent(input.categoryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
@@ -537,7 +537,7 @@ export class Atlas {
   }
 
   DeleteCategory<O>(input: DeleteCategoryInput, opts?: O): Promise<DeleteCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId);
+    const path = "/categories/"+encodeURIComponent(input.categoryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
@@ -552,7 +552,7 @@ export class Atlas {
   }
 
   DescribeCategory<O>(input: DescribeCategoryInput, opts?: O): Promise<DescribeCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId);
+    const path = "/categories/"+encodeURIComponent(input.categoryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
@@ -561,7 +561,7 @@ export class Atlas {
   }
 
   AssignCategory<O>(input: AssignCategoryInput, opts?: O): Promise<AssignCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId)+"/problems/"+encodeURIComponent(input.problemId);
+    const path = "/categories/"+encodeURIComponent(input.categoryId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
@@ -571,7 +571,7 @@ export class Atlas {
   }
 
   UnassignCategory<O>(input: UnassignCategoryInput, opts?: O): Promise<UnassignCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId)+"/problems/"+encodeURIComponent(input.problemId);
+    const path = "/categories/"+encodeURIComponent(input.categoryId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
@@ -581,7 +581,7 @@ export class Atlas {
   }
 
   CreateSubmission<O>(input: CreateSubmissionInput, opts?: O): Promise<CreateSubmissionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/submissions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/submissions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -590,7 +590,7 @@ export class Atlas {
   }
 
   DescribeSubmission<O>(input: DescribeSubmissionInput, opts?: O): Promise<DescribeSubmissionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/submissions/"+encodeURIComponent(input.submissionId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -600,7 +600,7 @@ export class Atlas {
   }
 
   RetestSubmission<O>(input: RetestSubmissionInput, opts?: O): Promise<RetestSubmissionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/submissions/"+encodeURIComponent(input.submissionId)+"/retest";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -610,7 +610,7 @@ export class Atlas {
   }
 
   DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId)+"/scores/"+encodeURIComponent(input.userId);
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scores/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);

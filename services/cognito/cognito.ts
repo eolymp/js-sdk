@@ -26,7 +26,7 @@ export class Cognito {
   }
 
   DeleteAccessKey<O>(input: DeleteAccessKeyInput, opts?: O): Promise<DeleteAccessKeyOutput> {
-    const path = "/access-keys/"+encodeURIComponent(input.keyId);
+    const path = "/access-keys/"+encodeURIComponent(input.keyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.keyId);
@@ -47,7 +47,7 @@ export class Cognito {
   }
 
   VerifyEmail<O>(input: VerifyEmailInput, opts?: O): Promise<VerifyEmailOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId)+"/verify";
+    const path = "/users/"+encodeURIComponent(input.userId||'')+"/verify";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
@@ -86,7 +86,7 @@ export class Cognito {
   }
 
   CompleteRecovery<O>(input: CompleteRecoverInput, opts?: O): Promise<CompleteRecoverOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId)+"/recover";
+    const path = "/users/"+encodeURIComponent(input.userId||'')+"/recover";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
@@ -101,7 +101,7 @@ export class Cognito {
   }
 
   DescribeUser<O>(input: DescribeUserInput, opts?: O): Promise<DescribeUserOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId);
+    const path = "/users/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
@@ -128,7 +128,7 @@ export class Cognito {
   }
 
   ListRoles<O>(input: ListRolesInput, opts?: O): Promise<ListRolesOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId)+"/roles";
+    const path = "/users/"+encodeURIComponent(input.userId||'')+"/roles";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
@@ -137,7 +137,7 @@ export class Cognito {
   }
 
   UpdateRoles<O>(input: UpdateRolesInput, opts?: O): Promise<UpdateRolesOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId)+"/roles";
+    const path = "/users/"+encodeURIComponent(input.userId||'')+"/roles";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
