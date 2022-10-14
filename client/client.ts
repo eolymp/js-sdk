@@ -113,16 +113,18 @@ export class Client {
   }
 
   call<R, E>(method: string, url: string, input: R, opts?: Options): Promise<E> {
+    const data = JSON.stringify(input);
+
     if (method == "GET") {
       const query = new URLSearchParams();
-      if (Object.keys(input).length > 0) {
-        query.set("q", JSON.stringify(input))
+      if (data != '{}') {
+        query.set("q", data)
       }
 
       return this.do<E>(method, url+(query.has('q') ? `?${query.toString()}` : ''), "", opts?.headers)
     }
 
-    return this.do<E>(method, url, JSON.stringify(input), opts?.headers)
+    return this.do<E>(method, url, data, opts?.headers)
   }
 
   private static async getResponseErrorData(response: Response, message: string): Promise<Record<string, any>> {
