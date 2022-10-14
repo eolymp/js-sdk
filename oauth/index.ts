@@ -46,26 +46,32 @@ export type AuthorizeOutput = {
 
 export class OAuth {
     private readonly client: Client;
+    private readonly tokenUrl?: string;
+    private readonly introspectUrl?: string;
 
-    constructor(client: Client) {
+    constructor(client: Client, tokenUrl?: string, introspectUrl?: string) {
         this.client = client;
+        this.tokenUrl = tokenUrl;
+        this.introspectUrl = introspectUrl;
     }
 
     token(input: CreateTokenInput): Promise<CreateTokenOutput> {
-        return this.client.do('POST', '/oauth/token', new URLSearchParams(input as Record<string, string>).toString(), {
+        if (!this.tokenUrl) {
+            return Promise.reject(new Error('token URL is not configured'));
+        }
+
+        return this.client.do('POST', this.tokenUrl, new URLSearchParams(input as Record<string, string>).toString(), {
             'Content-Type': 'application/x-www-form-urlencoded',
         });
     }
 
     introspect(input: IntrospectTokenInput): Promise<Token> {
-        return this.client.do('POST', '/oauth/introspect', new URLSearchParams(input as Record<string, string>).toString(), {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        });
-    }
+        if (!this.introspectUrl) {
+            return Promise.reject(new Error('token URL is not configured'));
+        }
 
-    authorize(input: AuthorizeInput): Promise<AuthorizeOutput> {
-        return this.client.do('POST', '/oauth/authorize', JSON.stringify(input), {
-            'Content-Type': 'application/json',
+        return this.client.do('POST', this.introspectUrl, new URLSearchParams(input as Record<string, string>).toString(), {
+            'Content-Type': 'application/x-www-form-urlencoded',
         });
     }
 }
