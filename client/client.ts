@@ -29,7 +29,7 @@ export class Client {
     this.authenticate = opts.authenticate || undefined;
   }
 
-  async do<T>(method: string, url: string, body: string, headers: Record<string, string> = {}): Promise<T> {
+  async do<T>(method: string, url: string, body: string|undefined, headers: Record<string, string> = {}): Promise<T> {
     const max = Math.max(1, this.retry);
     for (let retry = 0; retry < max; retry++) {
       const last = retry >= max-1
@@ -113,16 +113,14 @@ export class Client {
   }
 
   call<R, E>(method: string, url: string, input: R, opts?: Options): Promise<E> {
-    if (method == "GET") {
-      const query = new URLSearchParams();
-      if (Object.keys(input).length > 0) {
-        query.set("q", JSON.stringify(input))
-      }
+    const data = JSON.stringify(input);
 
-      return this.do<E>(method, url+(query.has('q') ? `?${query.toString()}` : ''), "", opts?.headers)
+    if (method == "GET") {
+      const query = data != '{}' ? `?q=${encodeURIComponent(data)}` : '';
+      return this.do<E>(method, url+query, undefined, opts?.headers)
     }
 
-    return this.do<E>(method, url, JSON.stringify(input), opts?.headers)
+    return this.do<E>(method, url, data, opts?.headers)
   }
 
   private static async getResponseErrorData(response: Response, message: string): Promise<Record<string, any>> {
