@@ -18,7 +18,7 @@ export class Typewriter {
   UploadAsset<O>(input: UploadAssetInput, opts?: O): Promise<UploadAssetOutput> {
     const path = "/assets";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 

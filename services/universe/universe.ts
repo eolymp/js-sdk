@@ -24,13 +24,13 @@ export class Universe {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.key);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateSpace<O>(input: CreateSpaceInput, opts?: O): Promise<CreateSpaceOutput> {
     const path = "/spaces";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateSpace<O>(input: UpdateSpaceInput, opts?: O): Promise<UpdateSpaceOutput> {
@@ -39,7 +39,7 @@ export class Universe {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteSpace<O>(input: DeleteSpaceInput, opts?: O): Promise<DeleteSpaceOutput> {
@@ -48,7 +48,7 @@ export class Universe {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeSpace<O>(input: DescribeSpaceInput, opts?: O): Promise<DescribeSpaceOutput> {
@@ -57,7 +57,7 @@ export class Universe {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeQuota<O>(input: DescribeQuotaInput, opts?: O): Promise<DescribeQuotaOutput> {
@@ -66,13 +66,13 @@ export class Universe {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListSpaces<O>(input: ListSpacesInput, opts?: O): Promise<ListSpacesOutput> {
     const path = "/spaces";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
@@ -82,7 +82,7 @@ export class Universe {
     delete(input.spaceId);
     delete(input.userId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput> {
@@ -92,7 +92,7 @@ export class Universe {
     delete(input.spaceId);
     delete(input.userId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribePermission<O>(input: DescribePermissionInput, opts?: O): Promise<DescribePermissionOutput> {
@@ -102,7 +102,7 @@ export class Universe {
     delete(input.spaceId);
     delete(input.userId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   IntrospectPermission<O>(input: IntrospectPermissionInput, opts?: O): Promise<IntrospectPermissionOutput> {
@@ -111,7 +111,7 @@ export class Universe {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListPermissions<O>(input: ListPermissionsInput, opts?: O): Promise<ListPermissionsOutput> {
@@ -120,7 +120,7 @@ export class Universe {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 

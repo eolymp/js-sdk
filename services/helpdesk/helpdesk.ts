@@ -23,19 +23,19 @@ export class Helpdesk {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.documentId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListDocuments<O>(input: ListDocumentsInput, opts?: O): Promise<ListDocumentsOutput> {
     const path = "/helpdesk/documents";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateDocument<O>(input: CreateDocumentInput, opts?: O): Promise<CreateDocumentOutput> {
     const path = "/helpdesk/documents";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateDocument<O>(input: UpdateDocumentInput, opts?: O): Promise<UpdateDocumentOutput> {
@@ -44,7 +44,7 @@ export class Helpdesk {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.documentId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteDocument<O>(input: DeleteDocumentInput, opts?: O): Promise<DeleteDocumentOutput> {
@@ -53,7 +53,7 @@ export class Helpdesk {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.documentId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribePath<O>(input: DescribePathInput, opts?: O): Promise<DescribePathOutput> {
@@ -62,13 +62,13 @@ export class Helpdesk {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.path);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListPaths<O>(input: ListPathsInput, opts?: O): Promise<ListPathsOutput> {
     const path = "/helpdesk/paths";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListParents<O>(input: ListParentsInput, opts?: O): Promise<ListParentsOutput> {
@@ -77,7 +77,7 @@ export class Helpdesk {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.path);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 

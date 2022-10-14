@@ -22,7 +22,7 @@ export class Cognito {
   CreateAccessKey<O>(input: CreateAccessKeyInput, opts?: O): Promise<CreateAccessKeyOutput> {
     const path = "/access-keys";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteAccessKey<O>(input: DeleteAccessKeyInput, opts?: O): Promise<DeleteAccessKeyOutput> {
@@ -31,19 +31,19 @@ export class Cognito {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.keyId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListAccessKeys<O>(input: ListAccessKeysInput, opts?: O): Promise<ListAccessKeysOutput> {
     const path = "/access-keys";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateUser<O>(input: CreateUserInput, opts?: O): Promise<CreateUserOutput> {
     const path = "/users";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   VerifyEmail<O>(input: VerifyEmailInput, opts?: O): Promise<VerifyEmailOutput> {
@@ -52,37 +52,37 @@ export class Cognito {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateEmail<O>(input: UpdateEmailInput, opts?: O): Promise<UpdateEmailOutput> {
     const path = "/self/email";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateProfile<O>(input: UpdateProfileInput, opts?: O): Promise<UpdateProfileOutput> {
     const path = "/self";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdatePicture<O>(input: UpdatePictureInput, opts?: O): Promise<UpdatePictureOutput> {
     const path = "/self/picture";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdatePassword<O>(input: UpdatePasswordInput, opts?: O): Promise<UpdatePasswordOutput> {
     const path = "/self/password";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   StartRecovery<O>(input: StartRecoveryInput, opts?: O): Promise<StartRecoveryOutput> {
     const path = "/self/recovery";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   CompleteRecovery<O>(input: CompleteRecoverInput, opts?: O): Promise<CompleteRecoverOutput> {
@@ -91,13 +91,13 @@ export class Cognito {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   IntrospectUser<O>(input: IntrospectUserInput, opts?: O): Promise<IntrospectUserOutput> {
     const path = "/self";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeUser<O>(input: DescribeUserInput, opts?: O): Promise<DescribeUserOutput> {
@@ -106,25 +106,25 @@ export class Cognito {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListUsers<O>(input: ListUsersInput, opts?: O): Promise<ListUsersOutput> {
     const path = "/users";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   IntrospectQuota<O>(input: IntrospectQuotaInput, opts?: O): Promise<IntrospectQuotaOutput> {
     const path = "/self/quota";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   IntrospectRoles<O>(input: IntrospectRolesInput, opts?: O): Promise<IntrospectRolesOutput> {
     const path = "/self/roles";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListRoles<O>(input: ListRolesInput, opts?: O): Promise<ListRolesOutput> {
@@ -133,7 +133,7 @@ export class Cognito {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateRoles<O>(input: UpdateRolesInput, opts?: O): Promise<UpdateRolesOutput> {
@@ -142,19 +142,19 @@ export class Cognito {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.userId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   ListEntitlements<O>(input: ListEntitlementsInput, opts?: O): Promise<ListEntitlementsOutput> {
     const path = "/__cognito/entitlements";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   SelfDestruct<O>(input: SelfDestructInput, opts?: O): Promise<SelfDestructOutput> {
     const path = "/self";
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 }
 

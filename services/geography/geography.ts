@@ -23,13 +23,13 @@ export class Geography {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.countryId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListCountries<O>(input: ListCountriesInput, opts?: O): Promise<ListCountriesOutput> {
     const path = "/geography/countries";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeRegion<O>(input: DescribeRegionInput, opts?: O): Promise<DescribeRegionOutput> {
@@ -38,7 +38,7 @@ export class Geography {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.regionId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListRegions<O>(input: ListRegionsInput, opts?: O): Promise<ListRegionsOutput> {
@@ -47,7 +47,7 @@ export class Geography {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.countryId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
