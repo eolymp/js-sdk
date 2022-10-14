@@ -18,7 +18,7 @@ export class Keeper {
   CreateObject<O>(input: CreateObjectInput, opts?: O): Promise<CreateObjectOutput> {
     const path = "/objects";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeObject<O>(input: DescribeObjectInput, opts?: O): Promise<DescribeObjectOutput> {
@@ -27,7 +27,7 @@ export class Keeper {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.key);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DownloadObject<O>(input: DownloadObjectInput, opts?: O): Promise<DownloadObjectOutput> {
@@ -36,7 +36,7 @@ export class Keeper {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.key);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 

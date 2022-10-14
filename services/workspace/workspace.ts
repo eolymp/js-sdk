@@ -23,19 +23,19 @@ export class Workspace {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListProjects<O>(input: ListProjectsInput, opts?: O): Promise<ListProjectsOutput> {
     const path = "/workspace/projects";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateProject<O>(input: CreateProjectInput, opts?: O): Promise<CreateProjectOutput> {
     const path = "/workspace/projects";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateProject<O>(input: UpdateProjectInput, opts?: O): Promise<UpdateProjectOutput> {
@@ -44,7 +44,7 @@ export class Workspace {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteProject<O>(input: DeleteProjectInput, opts?: O): Promise<DeleteProjectOutput> {
@@ -53,7 +53,7 @@ export class Workspace {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListFiles<O>(input: ListFilesInput, opts?: O): Promise<ListFilesOutput> {
@@ -62,7 +62,7 @@ export class Workspace {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeFile<O>(input: DescribeFileInput, opts?: O): Promise<DescribeFileOutput> {
@@ -72,7 +72,7 @@ export class Workspace {
     delete(input.projectId);
     delete(input.name);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UploadFile<O>(input: UploadFileInput, opts?: O): Promise<UploadFileOutput> {
@@ -81,7 +81,7 @@ export class Workspace {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   RemoveFile<O>(input: RemoveFileInput, opts?: O): Promise<RemoveFileOutput> {
@@ -91,7 +91,7 @@ export class Workspace {
     delete(input.projectId);
     delete(input.name);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 }
 

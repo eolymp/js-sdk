@@ -19,7 +19,7 @@ export class Playground {
   CreateRun<O>(input: CreateRunInput, opts?: O): Promise<CreateRunOutput> {
     const path = "/playground/runs";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeRun<O>(input: DescribeRunInput, opts?: O): Promise<DescribeRunOutput> {
@@ -28,7 +28,7 @@ export class Playground {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 

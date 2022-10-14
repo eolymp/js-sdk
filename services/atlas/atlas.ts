@@ -33,7 +33,7 @@ export class Atlas {
   CreateProblem<O>(input: CreateProblemInput, opts?: O): Promise<CreateProblemOutput> {
     const path = "/problems";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteProblem<O>(input: DeleteProblemInput, opts?: O): Promise<DeleteProblemOutput> {
@@ -42,13 +42,13 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListProblems<O>(input: ListProblemsInput, opts?: O): Promise<ListProblemsOutput> {
     const path = "/problems";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeProblem<O>(input: DescribeProblemInput, opts?: O): Promise<DescribeProblemOutput> {
@@ -57,7 +57,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateVisibility<O>(input: UpdateVisibilityInput, opts?: O): Promise<UpdateVisibilityOutput> {
@@ -66,7 +66,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdatePrivacy<O>(input: UpdatePrivacyInput, opts?: O): Promise<UpdatePrivacyOutput> {
@@ -75,7 +75,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListExamples<O>(input: ListExamplesInput, opts?: O): Promise<ListExamplesOutput> {
@@ -84,7 +84,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateVerifier<O>(input: UpdateVerifierInput, opts?: O): Promise<UpdateVerifierOutput> {
@@ -93,7 +93,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DescribeVerifier<O>(input: DescribeVerifierInput, opts?: O): Promise<DescribeVerifierOutput> {
@@ -102,7 +102,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateInteractor<O>(input: UpdateInteractorInput, opts?: O): Promise<UpdateInteractorOutput> {
@@ -111,7 +111,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DescribeInteractor<O>(input: DescribeInteractorInput, opts?: O): Promise<DescribeInteractorOutput> {
@@ -120,7 +120,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateStatement<O>(input: CreateStatementInput, opts?: O): Promise<CreateStatementOutput> {
@@ -129,7 +129,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UpdateStatement<O>(input: UpdateStatementInput, opts?: O): Promise<UpdateStatementOutput> {
@@ -139,7 +139,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.statementId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteStatement<O>(input: DeleteStatementInput, opts?: O): Promise<DeleteStatementOutput> {
@@ -149,7 +149,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.statementId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListStatements<O>(input: ListStatementsInput, opts?: O): Promise<ListStatementsOutput> {
@@ -158,7 +158,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeStatement<O>(input: DescribeStatementInput, opts?: O): Promise<DescribeStatementOutput> {
@@ -168,7 +168,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.statementId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateTestset<O>(input: CreateTestsetInput, opts?: O): Promise<CreateTestsetOutput> {
@@ -177,7 +177,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateTestset<O>(input: UpdateTestsetInput, opts?: O): Promise<UpdateTestsetOutput> {
@@ -187,7 +187,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.testsetId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteTestset<O>(input: DeleteTestsetInput, opts?: O): Promise<DeleteTestsetOutput> {
@@ -197,7 +197,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.testsetId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListTestsets<O>(input: ListTestsetsInput, opts?: O): Promise<ListTestsetsOutput> {
@@ -206,7 +206,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeTestset<O>(input: DescribeTestsetInput, opts?: O): Promise<DescribeTestsetOutput> {
@@ -216,7 +216,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.testsetId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateTest<O>(input: CreateTestInput, opts?: O): Promise<CreateTestOutput> {
@@ -226,7 +226,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.testsetId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateTest<O>(input: UpdateTestInput, opts?: O): Promise<UpdateTestOutput> {
@@ -237,7 +237,7 @@ export class Atlas {
     delete(input.testsetId);
     delete(input.testId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteTest<O>(input: DeleteTestInput, opts?: O): Promise<DeleteTestOutput> {
@@ -248,7 +248,7 @@ export class Atlas {
     delete(input.testsetId);
     delete(input.testId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListTests<O>(input: ListTestsInput, opts?: O): Promise<ListTestsOutput> {
@@ -258,7 +258,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.testsetId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeTest<O>(input: DescribeTestInput, opts?: O): Promise<DescribeTestOutput> {
@@ -269,7 +269,7 @@ export class Atlas {
     delete(input.testsetId);
     delete(input.testId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
@@ -278,7 +278,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput> {
@@ -288,7 +288,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.userId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListPermissions<O>(input: ListPermissionsInput, opts?: O): Promise<ListPermissionsOutput> {
@@ -297,7 +297,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateCodeTemplate<O>(input: CreateCodeTemplateInput, opts?: O): Promise<CreateCodeTemplateOutput> {
@@ -306,7 +306,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateCodeTemplate<O>(input: UpdateCodeTemplateInput, opts?: O): Promise<UpdateCodeTemplateOutput> {
@@ -316,7 +316,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.templateId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteCodeTemplate<O>(input: DeleteCodeTemplateInput, opts?: O): Promise<DeleteCodeTemplateOutput> {
@@ -326,7 +326,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.templateId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListCodeTemplates<O>(input: ListCodeTemplatesInput, opts?: O): Promise<ListCodeTemplatesOutput> {
@@ -335,7 +335,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
@@ -345,7 +345,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.templateId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateAttachment<O>(input: CreateAttachmentInput, opts?: O): Promise<CreateAttachmentOutput> {
@@ -354,7 +354,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateAttachment<O>(input: UpdateAttachmentInput, opts?: O): Promise<UpdateAttachmentOutput> {
@@ -364,7 +364,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.attachmentId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteAttachment<O>(input: DeleteAttachmentInput, opts?: O): Promise<DeleteAttachmentOutput> {
@@ -374,7 +374,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.attachmentId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListAttachments<O>(input: ListAttachmentsInput, opts?: O): Promise<ListAttachmentsOutput> {
@@ -383,7 +383,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeAttachment<O>(input: DescribeAttachmentInput, opts?: O): Promise<DescribeAttachmentOutput> {
@@ -393,7 +393,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.attachmentId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeChange<O>(input: DescribeChangeInput, opts?: O): Promise<DescribeChangeOutput> {
@@ -403,7 +403,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.changeId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListChanges<O>(input: ListChangesInput, opts?: O): Promise<ListChangesOutput> {
@@ -412,7 +412,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListProblemTop<O>(input: ListProblemTopInput, opts?: O): Promise<ListProblemTopOutput> {
@@ -421,7 +421,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeProblemGrading<O>(input: DescribeProblemGradingInput, opts?: O): Promise<DescribeProblemGradingOutput> {
@@ -430,7 +430,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateSolution<O>(input: CreateSolutionInput, opts?: O): Promise<CreateSolutionOutput> {
@@ -439,7 +439,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateSolution<O>(input: UpdateSolutionInput, opts?: O): Promise<UpdateSolutionOutput> {
@@ -449,7 +449,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.solutionId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteSolution<O>(input: DeleteSolutionInput, opts?: O): Promise<DeleteSolutionOutput> {
@@ -459,7 +459,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.solutionId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListSolutions<O>(input: ListSolutionsInput, opts?: O): Promise<ListSolutionsOutput> {
@@ -468,7 +468,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeSolution<O>(input: DescribeSolutionInput, opts?: O): Promise<DescribeSolutionOutput> {
@@ -478,7 +478,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.solutionId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   PublishSolution<O>(input: PublishSolutionInput, opts?: O): Promise<PublishSolutionOutput> {
@@ -488,7 +488,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.solutionId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UnpublishSolution<O>(input: UnpublishSolutionInput, opts?: O): Promise<UnpublishSolutionOutput> {
@@ -498,7 +498,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.solutionId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ApproveSolution<O>(input: ApproveSolutionInput, opts?: O): Promise<ApproveSolutionOutput> {
@@ -508,7 +508,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.solutionId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   RefuseSolution<O>(input: RefuseSolutionInput, opts?: O): Promise<RefuseSolutionOutput> {
@@ -518,13 +518,13 @@ export class Atlas {
     delete(input.problemId);
     delete(input.solutionId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   CreateCategory<O>(input: CreateCategoryInput, opts?: O): Promise<CreateCategoryOutput> {
     const path = "/categories";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateCategory<O>(input: UpdateCategoryInput, opts?: O): Promise<UpdateCategoryOutput> {
@@ -533,7 +533,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteCategory<O>(input: DeleteCategoryInput, opts?: O): Promise<DeleteCategoryOutput> {
@@ -542,13 +542,13 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListCategories<O>(input: ListCategoriesInput, opts?: O): Promise<ListCategoriesOutput> {
     const path = "/categories";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeCategory<O>(input: DescribeCategoryInput, opts?: O): Promise<DescribeCategoryOutput> {
@@ -557,7 +557,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.categoryId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   AssignCategory<O>(input: AssignCategoryInput, opts?: O): Promise<AssignCategoryOutput> {
@@ -567,7 +567,7 @@ export class Atlas {
     delete(input.categoryId);
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UnassignCategory<O>(input: UnassignCategoryInput, opts?: O): Promise<UnassignCategoryOutput> {
@@ -577,7 +577,7 @@ export class Atlas {
     delete(input.categoryId);
     delete(input.problemId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   CreateSubmission<O>(input: CreateSubmissionInput, opts?: O): Promise<CreateSubmissionOutput> {
@@ -586,7 +586,7 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeSubmission<O>(input: DescribeSubmissionInput, opts?: O): Promise<DescribeSubmissionOutput> {
@@ -596,7 +596,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.submissionId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RetestSubmission<O>(input: RetestSubmissionInput, opts?: O): Promise<RetestSubmissionOutput> {
@@ -606,7 +606,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.submissionId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
@@ -616,7 +616,7 @@ export class Atlas {
     delete(input.problemId);
     delete(input.userId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 

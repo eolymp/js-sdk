@@ -21,7 +21,7 @@ export class Ranker {
   CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput> {
     const path = "/scoreboards";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateScoreboard<O>(input: UpdateScoreboardInput, opts?: O): Promise<UpdateScoreboardOutput> {
@@ -30,7 +30,7 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("PUT", this.url + path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RebuildScoreboard<O>(input: RebuildScoreboardInput, opts?: O): Promise<RebuildScoreboardOutput> {
@@ -39,7 +39,7 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteScoreboard<O>(input: DeleteScoreboardInput, opts?: O): Promise<DeleteScoreboardOutput> {
@@ -48,7 +48,7 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeScoreboard<O>(input: DescribeScoreboardInput, opts?: O): Promise<DescribeScoreboardOutput> {
@@ -57,13 +57,13 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListScoreboards<O>(input: ListScoreboardsInput, opts?: O): Promise<ListScoreboardsOutput> {
     const path = "/scoreboards";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts?: O): Promise<DescribeScoreboardRowOutput> {
@@ -73,7 +73,7 @@ export class Ranker {
     delete(input.scoreboardId);
     delete(input.memberId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts?: O): Promise<ListScoreboardRowsOutput> {
@@ -82,7 +82,7 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   AddScoreboardColumn<O>(input: AddScoreboardColumnInput, opts?: O): Promise<AddScoreboardColumnOutput> {
@@ -91,7 +91,7 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteScoreboardColumn<O>(input: DeleteScoreboardColumnInput, opts?: O): Promise<DeleteScoreboardColumnOutput> {
@@ -101,7 +101,7 @@ export class Ranker {
     delete(input.scoreboardId);
     delete(input.columnId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeScoreboardColumn<O>(input: DescribeScoreboardColumnInput, opts?: O): Promise<DescribeScoreboardColumnOutput> {
@@ -111,7 +111,7 @@ export class Ranker {
     delete(input.scoreboardId);
     delete(input.columnId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListScoreboardColumns<O>(input: ListScoreboardColumnsInput, opts?: O): Promise<ListScoreboardColumnsOutput> {
@@ -120,7 +120,7 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
@@ -129,7 +129,7 @@ export class Ranker {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 

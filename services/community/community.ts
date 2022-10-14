@@ -21,31 +21,31 @@ export class Community {
   JoinSpace<O>(input: JoinSpaceInput, opts?: O): Promise<JoinSpaceOutput> {
     const path = "/members/_self";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   LeaveSpace<O>(input: LeaveSpaceInput, opts?: O): Promise<LeaveSpaceOutput> {
     const path = "/members/_self";
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   RegisterMember<O>(input: RegisterMemberInput, opts?: O): Promise<RegisterMemberOutput> {
     const path = "/members/_self/attributes";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   IntrospectMember<O>(input: IntrospectMemberInput, opts?: O): Promise<IntrospectMemberOutput> {
     const path = "/members/_self";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   AddMember<O>(input: AddMemberInput, opts?: O): Promise<AddMemberOutput> {
     const path = "/members";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateMember<O>(input: UpdateMemberInput, opts?: O): Promise<UpdateMemberOutput> {
@@ -54,7 +54,7 @@ export class Community {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   RemoveMember<O>(input: RemoveMemberInput, opts?: O): Promise<RemoveMemberOutput> {
@@ -63,7 +63,7 @@ export class Community {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeMember<O>(input: DescribeMemberInput, opts?: O): Promise<DescribeMemberOutput> {
@@ -72,19 +72,19 @@ export class Community {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListMembers<O>(input: ListMembersInput, opts?: O): Promise<ListMembersOutput> {
     const path = "/members";
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   AddAttribute<O>(input: AddAttributeInput, opts?: O): Promise<AddAttributeOutput> {
     const path = "/attributes";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateAttribute<O>(input: UpdateAttributeInput, opts?: O): Promise<UpdateAttributeOutput> {
@@ -93,7 +93,7 @@ export class Community {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.attributeKey);
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   RemoveAttribute<O>(input: RemoveAttributeInput, opts?: O): Promise<RemoveAttributeOutput> {
@@ -102,7 +102,7 @@ export class Community {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.attributeKey);
 
-    return this.cli.call("DELETE", this.url + path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeAttribute<O>(input: DescribeAttributeInput, opts?: O): Promise<DescribeAttributeOutput> {
@@ -111,13 +111,13 @@ export class Community {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.attributeKey);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListAttributes<O>(input: ListAttributesInput, opts?: O): Promise<ListAttributesOutput> {
     const path = "/attributes";
 
-    return this.cli.call("POST", this.url + path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 

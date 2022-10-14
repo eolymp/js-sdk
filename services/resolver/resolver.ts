@@ -21,7 +21,7 @@ export class Resolver {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.name);
 
-    return this.cli.call("GET", this.url + path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
