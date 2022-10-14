@@ -113,6 +113,15 @@ export class Client {
   }
 
   call<R, E>(method: string, url: string, input: R, opts?: Options): Promise<E> {
+    if (method == "GET") {
+      const query = new URLSearchParams();
+      if (Object.keys(input).length > 0) {
+        query.set("q", JSON.stringify(input))
+      }
+
+      return this.do<E>(method, url+(query.has('q') ? `?${query.toString()}` : ''), "", opts?.headers)
+    }
+
     return this.do<E>(method, url, JSON.stringify(input), opts?.headers)
   }
 
