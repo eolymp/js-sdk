@@ -15,5 +15,6 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
-  }
+  },
+  "version": "0.7.0-3"
 }
