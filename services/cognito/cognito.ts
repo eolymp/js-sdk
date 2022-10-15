@@ -19,6 +19,12 @@ export class Cognito {
     this.url = url;
   }
 
+  Signout<O>(input: SignoutInput, opts?: O): Promise<SignoutOutput> {
+    const path = "/self/signout";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   CreateAccessKey<O>(input: CreateAccessKeyInput, opts?: O): Promise<CreateAccessKeyOutput> {
     const path = "/access-keys";
 
