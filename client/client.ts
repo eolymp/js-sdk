@@ -10,26 +10,20 @@ export class Options {
 }
 
 export class Client {
-  private readonly url: string;
   private readonly retry: number;
   private readonly headers: Record<string, string>;
   private readonly authenticate?: () => Promise<string>;
 
   private token?: string;
 
-  constructor(url: string, opts: Options = {}) {
-    if (!url.endsWith('/')) {
-      url += '/';
-    }
-
-    this.url = url;
+  constructor(opts: Options = {}) {
     this.retry = opts.retry || 3;
     this.token = opts.token || undefined;
     this.headers = opts.headers || {};
     this.authenticate = opts.authenticate || undefined;
   }
 
-  async do<T>(method: string, url: string, body: string|undefined, headers: Record<string, string> = {}): Promise<T> {
+  async do<T>(url: string, method: string, body: string|undefined, headers: Record<string, string> = {}): Promise<T> {
     const max = Math.max(1, this.retry);
     for (let retry = 0; retry < max; retry++) {
       const last = retry >= max-1
@@ -108,8 +102,8 @@ export class Client {
     return {} as T;
   }
 
-  graphql<R>(query: string, variables: Record<string, any>, opts?: Options) {
-    return this.do<R>("POST", this.url + "/graphql", JSON.stringify({query, variables}), opts?.headers);
+  graphql<R>(url: string, query: string, variables: Record<string, any>, opts?: Options) {
+    return this.do<R>(url, "POST", JSON.stringify({query, variables}), opts?.headers);
   }
 
   call<R, E>(method: string, url: string, input: R, opts?: Options): Promise<E> {
@@ -117,10 +111,10 @@ export class Client {
 
     if (method == "GET") {
       const query = data != '{}' ? `?q=${encodeURIComponent(data)}` : '';
-      return this.do<E>(method, url+query, undefined, opts?.headers)
+      return this.do<E>(url+query, method, undefined, opts?.headers)
     }
 
-    return this.do<E>(method, url, data, opts?.headers)
+    return this.do<E>(url, method, data, opts?.headers)
   }
 
   private static async getResponseErrorData(response: Response, message: string): Promise<Record<string, any>> {
