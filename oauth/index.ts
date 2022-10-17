@@ -60,7 +60,7 @@ export class OAuth {
             return Promise.reject(new Error('token URL is not configured'));
         }
 
-        return this.client.do('POST', this.tokenUrl, new URLSearchParams(input as Record<string, string>).toString(), {
+        return this.client.do(this.tokenUrl, 'POST', new URLSearchParams(input as Record<string, string>).toString(), {
             'Content-Type': 'application/x-www-form-urlencoded',
         });
     }
@@ -70,7 +70,7 @@ export class OAuth {
             return Promise.reject(new Error('token URL is not configured'));
         }
 
-        return this.client.do('POST', this.introspectUrl, new URLSearchParams(input as Record<string, string>).toString(), {
+        return this.client.do(this.introspectUrl, 'POST', new URLSearchParams(input as Record<string, string>).toString(), {
             'Content-Type': 'application/x-www-form-urlencoded',
         });
     }
