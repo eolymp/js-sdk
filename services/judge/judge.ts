@@ -90,6 +90,33 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  SuspendContest<O>(input: SuspendContestInput, opts?: O): Promise<SuspendContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/suspend";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  FreezeContest<O>(input: FreezeContestInput, opts?: O): Promise<FreezeContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/freeze";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ResumeContest<O>(input: ResumeContestInput, opts?: O): Promise<ResumeContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/resume";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   ConfigureRuntime<O>(input: ConfigureRuntimeInput, opts?: O): Promise<ConfigureRuntimeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/runtime";
 
@@ -735,6 +762,24 @@ export type CloseContestInput = {
 }
 
 export type CloseContestOutput = Record<string, unknown>;
+
+export type SuspendContestInput = {
+  contestId?: string;
+}
+
+export type SuspendContestOutput = Record<string, unknown>;
+
+export type FreezeContestInput = {
+  contestId?: string;
+}
+
+export type FreezeContestOutput = Record<string, unknown>;
+
+export type ResumeContestInput = {
+  contestId?: string;
+}
+
+export type ResumeContestOutput = Record<string, unknown>;
 
 export type JoinContestInput = {
   contestId?: string;
