@@ -28,3 +28,10 @@ export type Space_Quota = {
   participantsPerContest?: number;
 }
 
+export type Space_AuthenticationOAuth2 = {
+  authorizeUrl?: string;
+  tokenUrl?: string;
+  introspectUrl?: string;
+  signoutUrl?: string;
+}
+

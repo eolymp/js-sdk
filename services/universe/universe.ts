@@ -3,7 +3,7 @@
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Permission } from "./permission"
-import { Space, Space_Quota } from "./space"
+import { Space, Space_AuthenticationOAuth2, Space_Quota } from "./space"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
@@ -73,6 +73,24 @@ export class Universe {
     const path = "/spaces";
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeAuth<O>(input: DescribeAuthInput, opts?: O): Promise<DescribeAuthOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/auth";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ConfigureAuth<O>(input: ConfigureAuthInput, opts?: O): Promise<ConfigureAuthOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/auth";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
@@ -188,6 +206,21 @@ export type ListSpacesOutput = {
   total?: number;
   items?: Space[];
 }
+
+export type DescribeAuthInput = {
+  spaceId?: string;
+}
+
+export type DescribeAuthOutput = {
+  oauth2?: Space_AuthenticationOAuth2;
+}
+
+export type ConfigureAuthInput = {
+  spaceId?: string;
+  oauth2?: Space_AuthenticationOAuth2;
+}
+
+export type ConfigureAuthOutput = Record<string, unknown>;
 
 export type GrantPermissionInput = {
   spaceId?: string;
