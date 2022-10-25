@@ -117,7 +117,7 @@ export class Community {
   ListAttributes<O>(input: ListAttributesInput, opts?: O): Promise<ListAttributesOutput> {
     const path = "/attributes";
 
-    return this.cli.call("POST", this.url+path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
