@@ -15,7 +15,7 @@ export class OAuth2 {
     this.url = url;
   }
 
-  CreateToken<O>(input: TokenInput, opts?: O): Promise<TokenOutput> {
+  Token<O>(input: TokenInput, opts?: O): Promise<TokenOutput> {
     const path = "/oauth2/token";
 
     return this.cli.call("POST", this.url+path, input, opts);
