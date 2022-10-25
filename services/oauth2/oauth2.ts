@@ -15,14 +15,20 @@ export class OAuth2 {
     this.url = url;
   }
 
-  CreateToken<O>(input: CreateTokenInput, opts?: O): Promise<CreateTokenOutput> {
+  CreateToken<O>(input: TokenInput, opts?: O): Promise<TokenOutput> {
     const path = "/oauth2/token";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  Authorize<O>(input: AuthorizeInput, opts?: O): Promise<AuthorizeOutput> {
+    const path = "/oauth2/authorize";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type CreateTokenInput = {
+export type TokenInput = {
   grantType?: string;
   username?: string;
   password?: string;
@@ -35,12 +41,26 @@ export type CreateTokenInput = {
   redirectUri?: string;
 }
 
-export type CreateTokenOutput = {
+export type TokenOutput = {
   accessToken?: string;
   tokenType?: string;
   expiresIn?: number;
   refreshToken?: string;
   scope?: string;
   idToken?: string;
+}
+
+export type AuthorizeInput = {
+  clientId?: string;
+  codeChallenge?: string;
+  codeChallengeMethod?: string;
+  redirectUri?: string;
+  responseType?: string;
+  scope?: string;
+  state?: string;
+}
+
+export type AuthorizeOutput = {
+  redirectUri?: string;
 }
 
