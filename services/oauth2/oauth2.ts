@@ -26,6 +26,12 @@ export class OAuth2 {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  Callback<O>(input: CallbackInput, opts?: O): Promise<CallbackOutput> {
+    const path = "/oauth2/callback";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type TokenInput = {
@@ -61,6 +67,15 @@ export type AuthorizeInput = {
 }
 
 export type AuthorizeOutput = {
+  redirectUri?: string;
+}
+
+export type CallbackInput = {
+  code?: string;
+  state?: string;
+}
+
+export type CallbackOutput = {
   redirectUri?: string;
 }
 
