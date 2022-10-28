@@ -3,7 +3,7 @@
 
 import { Contest } from "../judge/contest"
 import { Scoreboard } from "../ranker/scoreboard"
-import { Authentication_OAuth2 } from "../universe/auth"
+import { IdentityProvider_OAuth2 } from "../universe/identity"
 import { Space } from "../universe/space"
 
 interface Client {
@@ -54,6 +54,6 @@ export type ResolveNameOutput = {
   space?: Space;
   contest?: Contest;
   scoreboard?: Scoreboard;
-  oauth2?: Authentication_OAuth2;
+  oauth2?: IdentityProvider_OAuth2;
 }
 

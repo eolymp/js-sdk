@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Authentication_OAuth2 } from "./auth"
+import { IdentityProvider_OAuth2 } from "./identity"
 import { Permission } from "./permission"
 import { Space, Space_Quota } from "./space"
 
@@ -213,12 +213,12 @@ export type DescribeAuthInput = {
 }
 
 export type DescribeAuthOutput = {
-  oauth2?: Authentication_OAuth2;
+  oauth2?: IdentityProvider_OAuth2;
 }
 
 export type ConfigureAuthInput = {
   spaceId?: string;
-  oauth2?: Authentication_OAuth2;
+  oauth2?: IdentityProvider_OAuth2;
 }
 
 export type ConfigureAuthOutput = Record<string, unknown>;

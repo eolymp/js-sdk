@@ -2,15 +2,15 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Authentication = Record<string, unknown>;
+export type IdentityProvider = Record<string, unknown>;
 
-export type Authentication_OAuth2 = {
+export type IdentityProvider_OAuth2 = {
   clientId?: string;
   clientSecret?: string;
   scopes?: string;
-  authorizeUrl?: string;
-  tokenUrl?: string;
-  introspectUrl?: string;
-  signoutUrl?: string;
+  authorizeEndpoint?: string;
+  tokenEndpoint?: string;
+  introspectEndpoint?: string;
+  keysEndpoint?: string;
 }
 
