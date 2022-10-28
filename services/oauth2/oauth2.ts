@@ -18,19 +18,19 @@ export class OAuth2 {
   Token<O>(input: TokenInput, opts?: O): Promise<TokenOutput> {
     const path = "/oauth2/token";
 
-    return this.cli.call("POST", this.url+path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   Authorize<O>(input: AuthorizeInput, opts?: O): Promise<AuthorizeOutput> {
     const path = "/oauth2/authorize";
 
-    return this.cli.call("POST", this.url+path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   Callback<O>(input: CallbackInput, opts?: O): Promise<CallbackOutput> {
     const path = "/oauth2/callback";
 
-    return this.cli.call("POST", this.url+path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
