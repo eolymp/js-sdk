@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { IdentityProvider_OAuth2 } from "./identity"
+import { IdentityProvider_OIDC } from "./idp"
 import { Permission } from "./permission"
 import { Space, Space_Quota } from "./space"
 
@@ -76,8 +76,8 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeAuth<O>(input: DescribeAuthInput, opts?: O): Promise<DescribeAuthOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/auth";
+  DescribeIdentityProvider<O>(input: DescribeIdentityProviderInput, opts?: O): Promise<DescribeIdentityProviderOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/idp";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -85,8 +85,8 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ConfigureAuth<O>(input: ConfigureAuthInput, opts?: O): Promise<ConfigureAuthOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/auth";
+  ConfigureIdentityProvider<O>(input: ConfigureIdentityProviderInput, opts?: O): Promise<ConfigureIdentityProviderOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/idp";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -208,20 +208,20 @@ export type ListSpacesOutput = {
   items?: Space[];
 }
 
-export type DescribeAuthInput = {
+export type DescribeIdentityProviderInput = {
   spaceId?: string;
 }
 
-export type DescribeAuthOutput = {
-  oauth2?: IdentityProvider_OAuth2;
+export type DescribeIdentityProviderOutput = {
+  oidc?: IdentityProvider_OIDC;
 }
 
-export type ConfigureAuthInput = {
+export type ConfigureIdentityProviderInput = {
   spaceId?: string;
-  oauth2?: IdentityProvider_OAuth2;
+  oidc?: IdentityProvider_OIDC;
 }
 
-export type ConfigureAuthOutput = Record<string, unknown>;
+export type ConfigureIdentityProviderOutput = Record<string, unknown>;
 
 export type GrantPermissionInput = {
   spaceId?: string;

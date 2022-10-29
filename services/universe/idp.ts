@@ -4,13 +4,11 @@
 
 export type IdentityProvider = Record<string, unknown>;
 
-export type IdentityProvider_OAuth2 = {
+export type IdentityProvider_OIDC = {
   clientId?: string;
   clientSecret?: string;
-  scopes?: string;
   authorizeEndpoint?: string;
   tokenEndpoint?: string;
-  introspectEndpoint?: string;
   keysEndpoint?: string;
 }
 

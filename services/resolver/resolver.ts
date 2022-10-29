@@ -3,7 +3,6 @@
 
 import { Contest } from "../judge/contest"
 import { Scoreboard } from "../ranker/scoreboard"
-import { IdentityProvider_OAuth2 } from "../universe/identity"
 import { Space } from "../universe/space"
 
 interface Client {
@@ -29,15 +28,17 @@ export class Resolver {
   }
 }
 
-export type Record = {
-  target?: Record_Target;
+export type Authorization = Record<string, unknown>;
+
+export type Authorization_OAuth2 = {
+  clientId?: string;
+  tokenEndpoint?: string;
+  authorizeEndpoint?: string;
+  signoutEndpoint?: string;
 }
 
-export type Record_OAuth2 = {
-  tokenUrl?: string;
-  authorizeUrl?: string;
-  signoutUrl?: string;
-  introspectUrl?: string;
+export type Record = {
+  target?: Record_Target;
 }
 
 export type Record_Target = {
@@ -54,6 +55,6 @@ export type ResolveNameOutput = {
   space?: Space;
   contest?: Contest;
   scoreboard?: Scoreboard;
-  oauth2?: IdentityProvider_OAuth2;
+  oauth2?: Authorization_OAuth2;
 }
 
