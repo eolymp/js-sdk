@@ -32,6 +32,12 @@ export class OAuth2 {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  UserInfo<O>(input: UserInfoInput, opts?: O): Promise<UserInfoOutput> {
+    const path = "/oauth2/userinfo";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type TokenInput = {
@@ -77,5 +83,20 @@ export type CallbackInput = {
 
 export type CallbackOutput = {
   redirectUri?: string;
+}
+
+export type UserInfoInput = Record<string, unknown>;
+
+export type UserInfoOutput = {
+  subject?: string;
+  name?: string;
+  givenName?: string;
+  familyName?: string;
+  middleName?: string;
+  nickname?: string;
+  picture?: string;
+  email?: string;
+  emailVerified?: string;
+  locale?: string;
 }
 
