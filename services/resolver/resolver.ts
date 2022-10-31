@@ -38,7 +38,7 @@ export type Authorization_OAuth2 = {
   signoutEndpoint?: string;
 }
 
-export type Record = {
+export type _Record = {
   target?: Record_Target;
 }
 
