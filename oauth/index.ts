@@ -1,6 +1,6 @@
 import { Client } from '../client';
 
-export type CreateTokenInput = {
+export type TokenInput = {
     grant_type: string;
     username?: string;
     password?: string;
@@ -10,68 +10,60 @@ export type CreateTokenInput = {
     code_verifier?: string;
     scope?: string;
     refresh_token?: string;
-};
-
-export type CreateTokenOutput = {
-    access_token: string;
-    refresh_token: string;
-};
-
-export type IntrospectTokenInput = {
-    token: string;
-};
-
-export type Token = {
-    active: boolean;
-    user_id: string;
-    exp: number;
-    jti: string;
-    scope: string;
-    token_type: string;
-};
-
-export type AuthorizeInput = {
-    response_type?: string;
-    client_id?: string;
     redirect_uri?: string;
-    state?: string;
-    scope?: string;
-    code_challenge?: string;
-    code_challenge_method?: string;
 };
 
-export type AuthorizeOutput = {
-    redirect_uri: string;
+export type TokenOutput = {
+    access_token: string;
+    token_type: string;
+    expires_in?: string;
+    id_token?: string;
+    refresh_token?: string;
+    scope?: string;
 };
+
+export type UserInfoOutput = {
+    sub?: string;
+    name?: string;
+    given_name?: string;
+    family_name?: string;
+    middle_name?: string;
+    nickname?: string;
+    picture?: string;
+    email?: string;
+    email_verified?: boolean;
+    locale?: string;
+}
+
+export type OAuthConfig = {
+    tokenEndpoint?: string
+    userinfoEndpoint?: string
+}
 
 export class OAuth {
     private readonly client: Client;
-    private readonly tokenUrl?: string;
-    private readonly introspectUrl?: string;
+    private readonly config?: OAuthConfig;
 
-    constructor(client: Client, tokenUrl?: string, introspectUrl?: string) {
+    constructor(client: Client, config?: OAuthConfig) {
         this.client = client;
-        this.tokenUrl = tokenUrl;
-        this.introspectUrl = introspectUrl;
+        this.config = config;
     }
 
-    token(input: CreateTokenInput): Promise<CreateTokenOutput> {
-        if (!this.tokenUrl) {
-            return Promise.reject(new Error('token URL is not configured'));
+    token(input: TokenInput): Promise<TokenOutput> {
+        if (!this.config?.tokenEndpoint) {
+            return Promise.reject(new Error('token endpoint is not configured'));
         }
 
-        return this.client.do(this.tokenUrl, 'POST', new URLSearchParams(input as Record<string, string>).toString(), {
+        return this.client.do(this.config?.tokenEndpoint, 'POST', new URLSearchParams(input as Record<string, string>).toString(), {
             'Content-Type': 'application/x-www-form-urlencoded',
         });
     }
 
-    introspect(input: IntrospectTokenInput): Promise<Token> {
-        if (!this.introspectUrl) {
-            return Promise.reject(new Error('token URL is not configured'));
+    userinfo(): Promise<UserInfoOutput> {
+        if (!this.config?.userinfoEndpoint) {
+            return Promise.reject(new Error('userinfo endpoint is not configured'));
         }
 
-        return this.client.do(this.introspectUrl, 'POST', new URLSearchParams(input as Record<string, string>).toString(), {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        });
+        return this.client.do(this.config?.userinfoEndpoint, 'GET', '', {});
     }
 }
