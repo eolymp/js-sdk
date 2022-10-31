@@ -98,5 +98,6 @@ export type UserInfoOutput = {
   email?: string;
   emailVerified?: boolean;
   locale?: string;
+  profile?: string;
 }
 
