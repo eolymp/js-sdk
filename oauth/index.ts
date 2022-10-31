@@ -30,6 +30,7 @@ export type UserInfoOutput = {
     middle_name?: string;
     nickname?: string;
     picture?: string;
+    profile?: string;
     email?: string;
     email_verified?: boolean;
     locale?: string;
