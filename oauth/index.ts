@@ -64,6 +64,6 @@ export class OAuth {
             return Promise.reject(new Error('userinfo endpoint is not configured'));
         }
 
-        return this.client.do(this.config?.userinfoEndpoint, 'GET', '', {});
+        return this.client.do(this.config?.userinfoEndpoint, 'GET', undefined, {});
     }
 }
