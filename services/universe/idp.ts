@@ -10,5 +10,6 @@ export type IdentityProvider_OIDC = {
   authorizeEndpoint?: string;
   tokenEndpoint?: string;
   keysEndpoint?: string;
+  userinfoEndpoint?: string;
 }
 

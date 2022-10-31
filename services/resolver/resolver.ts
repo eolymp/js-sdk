@@ -34,6 +34,7 @@ export type Authorization_OAuth2 = {
   clientId?: string;
   tokenEndpoint?: string;
   authorizeEndpoint?: string;
+  userinfoEndpoint?: string;
   signoutEndpoint?: string;
 }
 
