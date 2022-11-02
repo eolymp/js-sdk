@@ -18,6 +18,18 @@ export type Member = {
 
 export type Member_User = {
   userId?: string;
+  issuer?: string;
+  subject?: string;
+  name?: string;
+  givenName?: string;
+  familyName?: string;
+  middleName?: string;
+  nickname?: string;
+  picture?: string;
+  email?: string;
+  emailVerified?: boolean;
+  profile?: string;
+  locale?: string;
 }
 
 export type Member_Value = {
