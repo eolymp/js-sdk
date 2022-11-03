@@ -38,6 +38,12 @@ export class OAuth2 {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  Revoke<O>(input: RevokeInput, opts?: O): Promise<RevokeOutput> {
+    const path = "/oauth2/revoke";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type TokenInput = {
@@ -88,6 +94,7 @@ export type CallbackOutput = {
 export type UserInfoInput = Record<string, unknown>;
 
 export type UserInfoOutput = {
+  issuer?: string;
   subject?: string;
   name?: string;
   givenName?: string;
@@ -100,4 +107,10 @@ export type UserInfoOutput = {
   locale?: string;
   profile?: string;
 }
+
+export type RevokeInput = {
+  token?: string;
+}
+
+export type RevokeOutput = Record<string, unknown>;
 
