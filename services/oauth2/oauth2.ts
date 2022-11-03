@@ -39,6 +39,12 @@ export class OAuth2 {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  Introspect<O>(input: IntrospectInput, opts?: O): Promise<IntrospectOutput> {
+    const path = "/oauth2/introspect";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   Revoke<O>(input: RevokeInput, opts?: O): Promise<RevokeOutput> {
     const path = "/oauth2/revoke";
 
@@ -106,6 +112,20 @@ export type UserInfoOutput = {
   emailVerified?: boolean;
   locale?: string;
   profile?: string;
+}
+
+export type IntrospectInput = {
+  token?: string;
+}
+
+export type IntrospectOutput = {
+  active?: boolean;
+  token?: string;
+  type?: string;
+  expiresAt?: string;
+  scopes?: string[];
+  userId?: string;
+  username?: string;
 }
 
 export type RevokeInput = {
