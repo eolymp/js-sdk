@@ -7,6 +7,7 @@ export type Ticket = {
   ern?: string;
   contestId?: string;
   participantId?: string;
+  memberId?: string;
   subject?: string;
   message?: string;
   isOpen?: boolean;

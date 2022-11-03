@@ -7,6 +7,7 @@ export type Reply = {
   ern?: string;
   ticketId?: string;
   userId?: string;
+  memberId?: string;
   message?: string;
   createdAt?: string;
 }
