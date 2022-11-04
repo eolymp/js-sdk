@@ -43,6 +43,7 @@ export type Scoreboard_Column = {
   type?: string;
   index?: number;
   visible?: boolean;
+  filterable?: boolean;
   judgeContestId?: string;
   judgeProblemId?: string;
   communityAttributeKey?: string;
