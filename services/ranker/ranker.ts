@@ -202,7 +202,7 @@ export type ListScoreboardRowsInput = {
   filters?: ListScoreboardRowsInput_Filter;
 }
 
-export type ListScoreboardRowsInput_ColumnFilter = {
+export type ListScoreboardRowsInput_ExpressionColumn = {
   key?: string;
   string?: ExpressionString;
   number?: ExpressionInt;
@@ -210,7 +210,7 @@ export type ListScoreboardRowsInput_ColumnFilter = {
 
 export type ListScoreboardRowsInput_Filter = {
   memberId?: ExpressionID[];
-  column?: ListScoreboardRowsInput_ColumnFilter[];
+  column?: ListScoreboardRowsInput_ExpressionColumn[];
 }
 
 export type ListScoreboardRowsOutput = {
