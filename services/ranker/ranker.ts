@@ -94,6 +94,16 @@ export class Ranker {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdateScoreboardColumn<O>(input: UpdateScoreboardColumnInput, opts?: O): Promise<UpdateScoreboardColumnOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns/"+encodeURIComponent(input.columnId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+    delete(input.columnId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   DeleteScoreboardColumn<O>(input: DeleteScoreboardColumnInput, opts?: O): Promise<DeleteScoreboardColumnOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns/"+encodeURIComponent(input.columnId||'');
 
@@ -227,6 +237,14 @@ export type AddScoreboardColumnInput = {
 export type AddScoreboardColumnOutput = {
   columnId?: string;
 }
+
+export type UpdateScoreboardColumnInput = {
+  scoreboardId?: string;
+  columnId?: string;
+  column?: Scoreboard_Column;
+}
+
+export type UpdateScoreboardColumnOutput = Record<string, unknown>;
 
 export type DeleteScoreboardColumnInput = {
   scoreboardId?: string;
