@@ -7,9 +7,11 @@ export type IdentityProvider = Record<string, unknown>;
 export type IdentityProvider_OIDC = {
   clientId?: string;
   clientSecret?: string;
+  issuer?: string;
   authorizeEndpoint?: string;
   tokenEndpoint?: string;
   keysEndpoint?: string;
   userinfoEndpoint?: string;
+  redirectUri?: string;
 }
 

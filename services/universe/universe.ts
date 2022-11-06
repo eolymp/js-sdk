@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { IdentityProvider_OIDC } from "./idp"
 import { Permission } from "./permission"
 import { Space, Space_Quota } from "./space"
 
@@ -74,24 +73,6 @@ export class Universe {
     const path = "/spaces";
 
     return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  DescribeIdentityProvider<O>(input: DescribeIdentityProviderInput, opts?: O): Promise<DescribeIdentityProviderOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/idp";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.spaceId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ConfigureIdentityProvider<O>(input: ConfigureIdentityProviderInput, opts?: O): Promise<ConfigureIdentityProviderOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/idp";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.spaceId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
@@ -207,21 +188,6 @@ export type ListSpacesOutput = {
   total?: number;
   items?: Space[];
 }
-
-export type DescribeIdentityProviderInput = {
-  spaceId?: string;
-}
-
-export type DescribeIdentityProviderOutput = {
-  oidc?: IdentityProvider_OIDC;
-}
-
-export type ConfigureIdentityProviderInput = {
-  spaceId?: string;
-  oidc?: IdentityProvider_OIDC;
-}
-
-export type ConfigureIdentityProviderOutput = Record<string, unknown>;
 
 export type GrantPermissionInput = {
   spaceId?: string;

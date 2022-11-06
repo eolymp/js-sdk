@@ -3,6 +3,7 @@
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Attribute } from "./attribute"
+import { IdentityProvider_OIDC } from "./idp"
 import { Member, Member_Value } from "./member"
 
 interface Client {
@@ -118,6 +119,18 @@ export class Community {
     const path = "/attributes";
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeIdentityProvider<O>(input: DescribeIdentityProviderInput, opts?: O): Promise<DescribeIdentityProviderOutput> {
+    const path = "/idp";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ConfigureIdentityProvider<O>(input: ConfigureIdentityProviderInput, opts?: O): Promise<ConfigureIdentityProviderOutput> {
+    const path = "/idp";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 }
 
@@ -243,4 +256,19 @@ export type ListAttributesOutput = {
   total?: number;
   items?: Attribute[];
 }
+
+export type DescribeIdentityProviderInput = {
+  spaceId?: string;
+}
+
+export type DescribeIdentityProviderOutput = {
+  oidc?: IdentityProvider_OIDC;
+}
+
+export type ConfigureIdentityProviderInput = {
+  spaceId?: string;
+  oidc?: IdentityProvider_OIDC;
+}
+
+export type ConfigureIdentityProviderOutput = Record<string, unknown>;
 
