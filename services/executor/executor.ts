@@ -21,7 +21,7 @@ export class Executor {
   }
 
   DescribeLanguage<O>(input: DescribeLanguageInput, opts?: O): Promise<DescribeLanguageOutput> {
-    const path = "/languages/"+encodeURIComponent(input.languageId||'');
+    const path = "/exec/languages/"+encodeURIComponent(input.languageId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.languageId);
@@ -30,13 +30,13 @@ export class Executor {
   }
 
   ListLanguages<O>(input: ListLanguagesInput, opts?: O): Promise<ListLanguagesOutput> {
-    const path = "/languages";
+    const path = "/exec/languages";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
-    const path = "/runtime/"+encodeURIComponent(input.runtimeId||'');
+    const path = "/exec/runtime/"+encodeURIComponent(input.runtimeId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runtimeId);
@@ -45,13 +45,13 @@ export class Executor {
   }
 
   ListRuntime<O>(input: ListRuntimeInput, opts?: O): Promise<ListRuntimeOutput> {
-    const path = "/runtime";
+    const path = "/exec/runtime";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
-    const path = "/runtime/"+encodeURIComponent(input.runtimeId||'')+"/template";
+    const path = "/exec/runtime/"+encodeURIComponent(input.runtimeId||'')+"/template";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runtimeId);
