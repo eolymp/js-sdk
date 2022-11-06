@@ -257,16 +257,13 @@ export type ListAttributesOutput = {
   items?: Attribute[];
 }
 
-export type DescribeIdentityProviderInput = {
-  spaceId?: string;
-}
+export type DescribeIdentityProviderInput = Record<string, unknown>;
 
 export type DescribeIdentityProviderOutput = {
   oidc?: IdentityProvider_OIDC;
 }
 
 export type ConfigureIdentityProviderInput = {
-  spaceId?: string;
   oidc?: IdentityProvider_OIDC;
 }
 
