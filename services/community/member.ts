@@ -20,15 +20,11 @@ export type Member_User = {
   issuer?: string;
   subject?: string;
   name?: string;
-  givenName?: string;
-  familyName?: string;
-  middleName?: string;
   nickname?: string;
   picture?: string;
   email?: string;
   emailVerified?: boolean;
   profile?: string;
-  locale?: string;
   password?: string;
 }
 
