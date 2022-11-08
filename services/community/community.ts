@@ -260,10 +260,12 @@ export type ListAttributesOutput = {
 export type DescribeIdentityProviderInput = Record<string, unknown>;
 
 export type DescribeIdentityProviderOutput = {
+  local?: boolean;
   oidc?: IdentityProvider_OIDC;
 }
 
 export type ConfigureIdentityProviderInput = {
+  local?: boolean;
   oidc?: IdentityProvider_OIDC;
 }
 

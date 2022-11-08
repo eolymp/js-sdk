@@ -17,7 +17,6 @@ export type Member = {
 }
 
 export type Member_User = {
-  userId?: string;
   issuer?: string;
   subject?: string;
   name?: string;
@@ -30,6 +29,7 @@ export type Member_User = {
   emailVerified?: boolean;
   profile?: string;
   locale?: string;
+  password?: string;
 }
 
 export type Member_Value = {
