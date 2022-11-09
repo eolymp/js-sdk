@@ -4,7 +4,7 @@
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Attribute } from "./attribute"
 import { IdentityProvider_OIDC } from "./idp"
-import { Member, Member_Value } from "./member"
+import { Member, Member_Identity, Member_Value } from "./member"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
@@ -80,6 +80,35 @@ export class Community {
     const path = "/members";
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  AddMemberIdentity<O>(input: AddMemberIdentityInput, opts?: O): Promise<AddMemberIdentityOutput> {
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/identities";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateMemberIdentity<O>(input: UpdateMemberIdentityInput, opts?: O): Promise<UpdateMemberIdentityOutput> {
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/identities/"+encodeURIComponent(input.identityId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+    delete(input.identityId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  RemoveMemberIdentity<O>(input: RemoveMemberIdentityInput, opts?: O): Promise<RemoveMemberIdentityOutput> {
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/identities/"+encodeURIComponent(input.identityId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+    delete(input.identityId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   AddAttribute<O>(input: AddAttributeInput, opts?: O): Promise<AddAttributeOutput> {
@@ -164,6 +193,7 @@ export type AddMemberOutput = {
 }
 
 export type UpdateMemberInput = {
+  patch?: string[];
   memberId?: string;
   member?: Member;
 }
@@ -201,12 +231,39 @@ export type ListMembersInput_Filter = {
   userId?: ExpressionID[];
   disabled?: ExpressionBool[];
   name?: ExpressionString[];
+  identityName?: ExpressionString[];
+  identityNickname?: ExpressionString[];
+  identityEmail?: ExpressionString[];
 }
 
 export type ListMembersOutput = {
   total?: number;
   items?: Member[];
 }
+
+export type AddMemberIdentityInput = {
+  memberId?: string;
+  identity?: Member_Identity;
+}
+
+export type AddMemberIdentityOutput = {
+  identityId?: string;
+}
+
+export type UpdateMemberIdentityInput = {
+  memberId?: string;
+  identityId?: string;
+  identity?: Member_Identity;
+}
+
+export type UpdateMemberIdentityOutput = Record<string, unknown>;
+
+export type RemoveMemberIdentityInput = {
+  memberId?: string;
+  identityId?: string;
+}
+
+export type RemoveMemberIdentityOutput = Record<string, unknown>;
 
 export type AddAttributeInput = {
   attributeKey?: string;

@@ -12,11 +12,12 @@ export type Member = {
   ghost?: boolean;
   outOfCompetition?: boolean;
   status?: string;
-  users?: Member_User[];
+  identities?: Member_Identity[];
   values?: Member_Value[];
 }
 
-export type Member_User = {
+export type Member_Identity = {
+  id?: string;
   issuer?: string;
   subject?: string;
   name?: string;
