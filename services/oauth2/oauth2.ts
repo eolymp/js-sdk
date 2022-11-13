@@ -14,42 +14,6 @@ export class OAuth2 {
     this.cli = cli;
     this.url = url;
   }
-
-  Token<O>(input: TokenInput, opts?: O): Promise<TokenOutput> {
-    const path = "/oauth2/token";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  Authorize<O>(input: AuthorizeInput, opts?: O): Promise<AuthorizeOutput> {
-    const path = "/oauth2/authorize";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  Callback<O>(input: CallbackInput, opts?: O): Promise<CallbackOutput> {
-    const path = "/oauth2/callback";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  UserInfo<O>(input: UserInfoInput, opts?: O): Promise<UserInfoOutput> {
-    const path = "/oauth2/userinfo";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  Introspect<O>(input: IntrospectInput, opts?: O): Promise<IntrospectOutput> {
-    const path = "/oauth2/introspect";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  Revoke<O>(input: RevokeInput, opts?: O): Promise<RevokeOutput> {
-    const path = "/oauth2/revoke";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
 }
 
 export type TokenInput = {
@@ -126,6 +90,21 @@ export type IntrospectOutput = {
   scopes?: string[];
   userId?: string;
   username?: string;
+}
+
+export type AuthCodeInput = {
+  clientId?: string;
+  codeChallenge?: string;
+  codeChallengeMethod?: string;
+  redirectUri?: string;
+  responseType?: string;
+  scope?: string;
+  state?: string;
+}
+
+export type AuthCodeOutput = {
+  authorizationCode?: string;
+  redirectUri?: string;
 }
 
 export type RevokeInput = {
