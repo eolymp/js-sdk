@@ -40,6 +40,15 @@ export class Harmony {
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
+
+  FollowShortcut<O>(input: FollowShortcutInput, opts?: O): Promise<FollowShortcutOutput> {
+    const path = "/harmony/shortcuts/"+encodeURIComponent(input.shortcutId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.shortcutId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ListAgreementsInput = {
@@ -66,4 +75,11 @@ export type SetConsentInput = {
 export type SetConsentOutput = {
   consent?: Consent;
 }
+
+export type FollowShortcutInput = {
+  shortcutId?: string;
+  status?: string;
+}
+
+export type FollowShortcutOutput = Record<string, unknown>;
 
