@@ -4,8 +4,10 @@
 
 export type Consent = {
   id?: string;
+  agreementId?: string;
+  userId?: string;
+  revocable?: boolean;
   status?: string;
   setOn?: string;
-  revocable?: boolean;
 }
 
