@@ -265,6 +265,8 @@ export type CreateUserInput = {
   fullName?: string;
   email?: string;
   password?: string;
+  country?: string;
+  birthday?: string;
   captcha?: string;
   locale?: string;
 }
