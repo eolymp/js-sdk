@@ -9,7 +9,6 @@ export type Scoreboard = {
   frozen?: boolean;
   timelinePosition?: number;
   timelineDuration?: number;
-  timelineSegments?: Scoreboard_TimelineSegment[];
   format?: string;
 }
 
@@ -29,10 +28,10 @@ export type Scoreboard_Row = {
 export type Scoreboard_Row_Value = {
   id?: string;
   columnId?: string;
-  historical?: boolean;
-  latest?: boolean;
-  startOffset?: number;
-  endOffset?: number;
+  timelineSet?: boolean;
+  timelineLatest?: boolean;
+  timelineStartOffset?: number;
+  timelineEndOffset?: number;
   score?: number;
   penalty?: number;
   percentage?: number;
@@ -52,8 +51,7 @@ export type Scoreboard_Column = {
   index?: number;
   visible?: boolean;
   filterable?: boolean;
-  timelineEnabled?: boolean;
-  timelineSegment?: Scoreboard_TimelineSegment;
+  timeline?: Scoreboard_Timeline;
   judgeContestId?: string;
   judgeProblemId?: string;
   communityAttributeKey?: string;
@@ -61,7 +59,7 @@ export type Scoreboard_Column = {
   columns?: Scoreboard_Column[];
 }
 
-export type Scoreboard_TimelineSegment = {
+export type Scoreboard_Timeline = {
   startsAt?: string;
   startOffset?: number;
   endOffset?: number;
