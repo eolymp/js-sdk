@@ -6,6 +6,8 @@ export type Scoreboard = {
   id?: string;
   key?: string;
   name?: string;
+  frozen?: boolean;
+  timeline?: Scoreboard_Timeline[];
   format?: string;
 }
 
@@ -26,6 +28,7 @@ export type Scoreboard_Row_Value = {
   id?: string;
   columnId?: string;
   timelineSet?: boolean;
+  timelineLatest?: boolean;
   timelineOffsetStart?: number;
   timelineOffsetEnd?: number;
   score?: number;
@@ -56,5 +59,11 @@ export type Scoreboard_Column = {
   communityAttributeKey?: string;
   communityAttributeType?: string;
   columns?: Scoreboard_Column[];
+}
+
+export type Scoreboard_Timeline = {
+  startsAt?: string;
+  duration?: number;
+  freezeTime?: number;
 }
 
