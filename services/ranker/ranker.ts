@@ -197,6 +197,8 @@ export type ListScoreboardsOutput = {
 }
 
 export type DescribeScoreboardRowInput = {
+  mode?: string;
+  timelineOffset?: number;
   scoreboardId?: string;
   memberId?: string;
 }
@@ -207,6 +209,8 @@ export type DescribeScoreboardRowOutput = {
 
 export type ListScoreboardRowsInput = {
   scoreboardId?: string;
+  mode?: string;
+  timelineOffset?: number;
   offset?: number;
   size?: number;
   filters?: ListScoreboardRowsInput_Filter;

@@ -25,6 +25,9 @@ export type Scoreboard_Row = {
 export type Scoreboard_Row_Value = {
   id?: string;
   columnId?: string;
+  timelineSet?: boolean;
+  timelineOffsetStart?: number;
+  timelineOffsetEnd?: number;
   score?: number;
   penalty?: number;
   percentage?: number;
@@ -44,6 +47,10 @@ export type Scoreboard_Column = {
   index?: number;
   visible?: boolean;
   filterable?: boolean;
+  timelineEnabled?: boolean;
+  timelineOffset?: number;
+  timelineDuration?: number;
+  timelineFreezeTime?: number;
   judgeContestId?: string;
   judgeProblemId?: string;
   communityAttributeKey?: string;
