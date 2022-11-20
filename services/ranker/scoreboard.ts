@@ -8,6 +8,7 @@ export type Scoreboard = {
   name?: string;
   frozen?: boolean;
   timelinePosition?: number;
+  timelineDuration?: number;
   timelineSegments?: Scoreboard_TimelineSegment[];
   format?: string;
 }
