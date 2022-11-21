@@ -657,6 +657,16 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ExportScore<O>(input: ExportScoreInput, opts?: O): Promise<ExportScoreOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   ListResult<O>(input: ListResultInput, opts?: O): Promise<ListResultOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/results";
 
@@ -1313,6 +1323,15 @@ export type ImportScoreInput = {
 }
 
 export type ImportScoreOutput = Record<string, unknown>;
+
+export type ExportScoreInput = {
+  contestId?: string;
+  participantId?: string;
+}
+
+export type ExportScoreOutput = {
+  scores?: Score[];
+}
 
 export type ListResultInput = {
   contestId?: string;
