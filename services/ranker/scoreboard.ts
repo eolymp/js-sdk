@@ -9,6 +9,8 @@ export type Scoreboard = {
   frozen?: boolean;
   timelinePosition?: number;
   timelineDuration?: number;
+  defaultSortColumn?: string;
+  defaultSortOrder?: string;
   format?: string;
 }
 
@@ -52,8 +54,6 @@ export type Scoreboard_Column = {
   visible?: boolean;
   filterable?: boolean;
   sortable?: boolean;
-  defaultSorting?: boolean;
-  defaultOrder?: string;
   timeline?: Scoreboard_Timeline;
   judgeContestId?: string;
   judgeProblemId?: string;
