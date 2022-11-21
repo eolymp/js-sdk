@@ -51,6 +51,9 @@ export type Scoreboard_Column = {
   index?: number;
   visible?: boolean;
   filterable?: boolean;
+  sortable?: boolean;
+  defaultSorting?: boolean;
+  defaultOrderAsc?: boolean;
   timeline?: Scoreboard_Timeline;
   judgeContestId?: string;
   judgeProblemId?: string;
