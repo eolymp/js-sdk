@@ -214,6 +214,8 @@ export type ListScoreboardRowsInput = {
   offset?: number;
   size?: number;
   filters?: ListScoreboardRowsInput_Filter;
+  sort?: string;
+  order?: string;
 }
 
 export type ListScoreboardRowsInput_ExpressionColumn = {

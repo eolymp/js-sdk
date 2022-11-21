@@ -53,7 +53,7 @@ export type Scoreboard_Column = {
   filterable?: boolean;
   sortable?: boolean;
   defaultSorting?: boolean;
-  defaultOrderAsc?: boolean;
+  defaultOrder?: string;
   timeline?: Scoreboard_Timeline;
   judgeContestId?: string;
   judgeProblemId?: string;
