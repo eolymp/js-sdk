@@ -153,6 +153,7 @@ export type CreateScoreboardOutput = {
 }
 
 export type UpdateScoreboardInput = {
+  patch?: string[];
   scoreboardId?: string;
   scoreboard?: Scoreboard;
 }
@@ -246,6 +247,7 @@ export type AddScoreboardColumnOutput = {
 }
 
 export type UpdateScoreboardColumnInput = {
+  patch?: string[];
   scoreboardId?: string;
   columnId?: string;
   column?: Scoreboard_Column;
