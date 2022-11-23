@@ -12,6 +12,7 @@ export type Scoreboard = {
   defaultSortColumn?: string;
   defaultSortOrder?: string;
   format?: string;
+  columns?: Scoreboard_Column[];
 }
 
 export type Scoreboard_Row = {
