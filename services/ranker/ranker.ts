@@ -145,6 +145,7 @@ export class Ranker {
 
 export type CreateScoreboardInput = {
   scoreboard?: Scoreboard;
+  addDefaultColumns?: boolean;
 }
 
 export type CreateScoreboardOutput = {
@@ -238,6 +239,7 @@ export type ListScoreboardRowsOutput = {
 export type AddScoreboardColumnInput = {
   scoreboardId?: string;
   column?: Scoreboard_Column;
+  autoCorrectColumns?: boolean;
 }
 
 export type AddScoreboardColumnOutput = {
@@ -255,6 +257,7 @@ export type UpdateScoreboardColumnOutput = Record<string, unknown>;
 export type DeleteScoreboardColumnInput = {
   scoreboardId?: string;
   columnId?: string;
+  autoCorrectColumns?: boolean;
 }
 
 export type DeleteScoreboardColumnOutput = Record<string, unknown>;
