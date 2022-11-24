@@ -7,6 +7,7 @@ export type Scoreboard = {
   key?: string;
   name?: string;
   frozen?: boolean;
+  historical?: boolean;
   timelinePosition?: number;
   timelineDuration?: number;
   defaultSortColumn?: string;
