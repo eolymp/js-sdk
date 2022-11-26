@@ -7,6 +7,7 @@ export type Testset = {
   problemId?: string;
   index?: number;
   timeLimit?: number;
+  cpuLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
   dependencies?: number[];

@@ -12,6 +12,7 @@ export type Problem = {
   contestId?: string;
   feedbackPolicy?: string;
   timeLimit?: number;
+  cpuLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
   submitLimit?: number;
