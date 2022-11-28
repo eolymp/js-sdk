@@ -103,7 +103,12 @@ export class Client {
   }
 
   graphql<R>(url: string, query: string, variables: Record<string, any>, opts?: Options) {
-    return this.do<R>(url, "POST", JSON.stringify({query, variables}), opts?.headers);
+    const body = JSON.stringify({
+      query: query.replace(/\s{2,}/g, ' ').trim(),
+      variables,
+    })
+
+    return this.do<R>(url, "POST", body, opts?.headers);
   }
 
   call<R, E>(method: string, url: string, input: R, opts?: Options): Promise<E> {
