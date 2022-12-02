@@ -23,28 +23,28 @@ export class Guardian {
   }
 
   DescribePolicy<O>(input: DescribePolicyInput, opts?: O): Promise<DescribePolicyOutput> {
-    const path = "/policies/"+encodeURIComponent(input.name||'');
+    const path = "/policies/"+encodeURIComponent(input.id||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.name);
+    delete(input.id);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DefinePolicy<O>(input: DefinePolicyInput, opts?: O): Promise<DefinePolicyOutput> {
-    const path = "/policies/"+encodeURIComponent(input.name||'');
+    const path = "/policies/"+encodeURIComponent(input.id||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.name);
+    delete(input.id);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RemovePolicy<O>(input: RemovePolicyInput, opts?: O): Promise<RemovePolicyOutput> {
-    const path = "/policies/"+encodeURIComponent(input.name||'');
+    const path = "/policies/"+encodeURIComponent(input.id||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.name);
+    delete(input.id);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -58,7 +58,7 @@ export type ListPoliciesOutput = {
 }
 
 export type DescribePolicyInput = {
-  name?: string;
+  id?: string;
 }
 
 export type DescribePolicyOutput = {
@@ -66,14 +66,14 @@ export type DescribePolicyOutput = {
 }
 
 export type DefinePolicyInput = {
-  name?: string;
+  id?: string;
   policy?: Policy;
 }
 
 export type DefinePolicyOutput = Record<string, unknown>;
 
 export type RemovePolicyInput = {
-  name?: string;
+  id?: string;
 }
 
 export type RemovePolicyOutput = Record<string, unknown>;
