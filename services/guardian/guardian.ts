@@ -31,7 +31,13 @@ export class Guardian {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DefinePolicy<O>(input: DefinePolicyInput, opts?: O): Promise<DefinePolicyOutput> {
+  CreatePolicy<O>(input: CreatePolicyInput, opts?: O): Promise<CreatePolicyOutput> {
+    const path = "/policies";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdatePolicy<O>(input: UpdatePolicyInput, opts?: O): Promise<UpdatePolicyOutput> {
     const path = "/policies/"+encodeURIComponent(input.id||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -74,12 +80,20 @@ export type DescribePolicyOutput = {
   policy?: Policy;
 }
 
-export type DefinePolicyInput = {
+export type CreatePolicyInput = {
+  policy?: Policy;
+}
+
+export type CreatePolicyOutput = {
+  policyId?: string;
+}
+
+export type UpdatePolicyInput = {
   id?: string;
   policy?: Policy;
 }
 
-export type DefinePolicyOutput = Record<string, unknown>;
+export type UpdatePolicyOutput = Record<string, unknown>;
 
 export type DeletePolicyInput = {
   id?: string;

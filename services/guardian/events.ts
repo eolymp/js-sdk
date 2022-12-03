@@ -3,7 +3,11 @@
 
 import { Policy } from "./policy"
 
-export type PolicyDefinedEvent = {
+export type PolicyCreatedEvent = {
+  policy?: Policy;
+}
+
+export type PolicyUpdatedEvent = {
   policy?: Policy;
 }
 
