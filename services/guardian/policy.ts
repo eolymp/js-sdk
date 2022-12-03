@@ -4,14 +4,14 @@
 
 export type Policy = {
   name?: string;
+  principal?: string;
   statements?: Statement[];
 }
 
 export type Statement = {
   id?: string;
   effect?: string;
-  principal?: string;
   resource?: string;
-  action?: string;
+  actions?: string[];
 }
 

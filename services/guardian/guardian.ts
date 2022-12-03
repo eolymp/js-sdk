@@ -48,6 +48,12 @@ export class Guardian {
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
+
+  Evaluate<O>(input: EvaluateInput, opts?: O): Promise<EvaluateOutput> {
+    const path = "/evaluate";
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
 }
 
 export type ListPoliciesInput = Record<string, unknown>;
@@ -77,4 +83,11 @@ export type RemovePolicyInput = {
 }
 
 export type RemovePolicyOutput = Record<string, unknown>;
+
+export type EvaluateInput = {
+  resource?: string;
+  args?: string[];
+}
+
+export type EvaluateOutput = Record<string, unknown>;
 
