@@ -89,5 +89,7 @@ export type EvaluateInput = {
   args?: string[];
 }
 
-export type EvaluateOutput = Record<string, unknown>;
+export type EvaluateOutput = {
+  actions?: Record<string, string>;
+}
 
