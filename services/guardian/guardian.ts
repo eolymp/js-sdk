@@ -56,7 +56,10 @@ export class Guardian {
   }
 }
 
-export type ListPoliciesInput = Record<string, unknown>;
+export type ListPoliciesInput = {
+  offset?: number;
+  size?: number;
+}
 
 export type ListPoliciesOutput = {
   total?: number;
