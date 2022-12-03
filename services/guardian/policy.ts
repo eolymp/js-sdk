@@ -3,6 +3,7 @@
 
 
 export type Policy = {
+  id?: string;
   name?: string;
   principal?: string;
   statements?: Statement[];
