@@ -3,15 +3,8 @@
 
 import { Policy } from "./policy"
 
-export type PolicyCreatedEvent = {
-  policy?: Policy;
-}
-
-export type PolicyUpdatedEvent = {
-  policy?: Policy;
-}
-
-export type PolicyDeletedEvent = {
-  policy?: Policy;
+export type PolicyChangedEvent = {
+  created?: Policy;
+  deleted?: Policy;
 }
 
