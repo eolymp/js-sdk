@@ -6,6 +6,7 @@ export type Policy = {
   id?: string;
   name?: string;
   principal?: string;
+  scope?: string;
   statements?: Statement[];
 }
 
@@ -14,5 +15,6 @@ export type Statement = {
   effect?: string;
   resource?: string;
   actions?: string[];
+  attributes?: Record<string, string>;
 }
 
