@@ -207,7 +207,7 @@ export type IntrospectTokenOutput = {
   nickname?: string;
   picture?: string;
   email?: string;
-  emailVerified?: string;
+  emailVerified?: boolean;
   locale?: string;
 }
 
