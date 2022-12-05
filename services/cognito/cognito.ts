@@ -198,12 +198,17 @@ export type IntrospectTokenInput = {
 
 export type IntrospectTokenOutput = {
   active?: boolean;
-  token?: string;
-  type?: string;
-  expiresAt?: string;
-  scopes?: string[];
-  userId?: string;
-  username?: string;
+  scope?: string;
+  exp?: string;
+  sub?: string;
+  aud?: string;
+  iss?: string;
+  name?: string;
+  nickname?: string;
+  picture?: string;
+  email?: string;
+  emailVerified?: string;
+  locale?: string;
 }
 
 export type CreateAuthorizationInput = {
