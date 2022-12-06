@@ -84,12 +84,17 @@ export type IntrospectInput = {
 
 export type IntrospectOutput = {
   active?: boolean;
-  token?: string;
-  type?: string;
-  expiresAt?: string;
-  scopes?: string[];
-  userId?: string;
-  username?: string;
+  scope?: string;
+  exp?: string;
+  subject?: string;
+  audience?: string;
+  issuer?: string;
+  name?: string;
+  nickname?: string;
+  picture?: string;
+  email?: string;
+  emailVerified?: boolean;
+  locale?: string;
 }
 
 export type AuthCodeInput = {

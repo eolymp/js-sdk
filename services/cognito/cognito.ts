@@ -200,9 +200,9 @@ export type IntrospectTokenOutput = {
   active?: boolean;
   scope?: string;
   exp?: string;
-  sub?: string;
-  aud?: string;
-  iss?: string;
+  subject?: string;
+  audience?: string;
+  issuer?: string;
   name?: string;
   nickname?: string;
   picture?: string;
