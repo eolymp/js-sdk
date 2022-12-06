@@ -199,7 +199,7 @@ export type IntrospectTokenInput = {
 export type IntrospectTokenOutput = {
   active?: boolean;
   scope?: string;
-  exp?: string;
+  expire?: string;
   subject?: string;
   audience?: string;
   issuer?: string;

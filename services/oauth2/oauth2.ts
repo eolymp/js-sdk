@@ -85,7 +85,7 @@ export type IntrospectInput = {
 export type IntrospectOutput = {
   active?: boolean;
   scope?: string;
-  exp?: string;
+  expire?: string;
   subject?: string;
   audience?: string;
   issuer?: string;
