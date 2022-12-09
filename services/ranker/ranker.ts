@@ -3,7 +3,7 @@
 
 import { ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
 import { Activity } from "./activity"
-import { Scoreboard, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
+import { Scoreboard, Scoreboard_Action, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
@@ -135,6 +135,34 @@ export class Ranker {
 
   ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/activities";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ScheduleAction<O>(input: ScheduleActionInput, opts?: O): Promise<ScheduleActionOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/schedule";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UnscheduleAction<O>(input: UnscheduleActionInput, opts?: O): Promise<UnscheduleActionOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/schedule/"+encodeURIComponent(input.actionId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+    delete(input.actionId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  ListScheduledActions<O>(input: ListScheduledActionsInput, opts?: O): Promise<ListScheduledActionsOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/schedule";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
@@ -293,5 +321,30 @@ export type ListActivitiesInput = {
 export type ListActivitiesOutput = {
   total?: number;
   items?: Activity[];
+}
+
+export type ScheduleActionInput = {
+  scoreboardId?: string;
+  action?: Scoreboard_Action;
+}
+
+export type ScheduleActionOutput = {
+  actionId?: string;
+}
+
+export type UnscheduleActionInput = {
+  scoreboardId?: string;
+  actionId?: string;
+}
+
+export type UnscheduleActionOutput = Record<string, unknown>;
+
+export type ListScheduledActionsInput = {
+  scoreboardId?: string;
+}
+
+export type ListScheduledActionsOutput = {
+  total?: number;
+  items?: Scoreboard_Action[];
 }
 

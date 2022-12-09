@@ -68,3 +68,9 @@ export type Scoreboard_Segment = {
   endOffset?: number;
 }
 
+export type Scoreboard_Action = {
+  id?: string;
+  executeAt?: string;
+  type?: string;
+}
+
