@@ -207,6 +207,8 @@ export type DescribeScoreboardRowInput = {
 
 export type DescribeScoreboardRowOutput = {
   row?: Scoreboard_Row;
+  frozen?: boolean;
+  timelineOffset?: number;
 }
 
 export type ListScoreboardRowsInput = {
@@ -235,6 +237,8 @@ export type ListScoreboardRowsInput_Filter = {
 export type ListScoreboardRowsOutput = {
   total?: number;
   items?: Scoreboard_Row[];
+  frozen?: boolean;
+  timelineOffset?: number;
 }
 
 export type AddScoreboardColumnInput = {

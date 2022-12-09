@@ -58,11 +58,7 @@ export type Scoreboard_Column = {
 }
 
 export type Scoreboard_Timeline = {
-  position?: number;
   duration?: number;
-  frozen?: boolean;
-  freezeIn?: number;
-  unfreezeIn?: number;
   segments?: Scoreboard_Segment[];
 }
 
@@ -70,6 +66,5 @@ export type Scoreboard_Segment = {
   startsAt?: string;
   startOffset?: number;
   endOffset?: number;
-  freezeTime?: number;
 }
 
