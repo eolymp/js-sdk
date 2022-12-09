@@ -3,7 +3,9 @@
 
 
 export type Score = {
-  offset?: number;
+  validAfter?: number;
+  validUntil?: number;
+  timestamp?: string;
   score?: number;
   penalty?: number;
   breakdown?: Score_Problem[];
