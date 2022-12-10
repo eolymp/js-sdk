@@ -32,6 +32,7 @@ export type Contest_Scoring = {
   showScoreboard?: boolean;
   attemptPenalty?: number;
   freezingTime?: number;
+  unfreezeDelay?: number;
   allowUpsolving?: boolean;
 }
 
