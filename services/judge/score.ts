@@ -20,6 +20,7 @@ export type Score_Problem = {
   attempts?: number;
   solvedAt?: string;
   solvedIn?: number;
+  changed?: boolean;
   breakdown?: Score_Testset[];
 }
 
