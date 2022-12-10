@@ -4,7 +4,8 @@
 
 export type Ticket = {
   type?: string;
-  authorId?: string;
+  userId?: string;
+  userEmail?: string;
   metadata?: Record<string, string>;
   status?: string;
   subject?: string;
