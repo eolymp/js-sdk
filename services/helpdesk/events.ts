@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Document } from "./document"
+import { Ticket } from "./ticket"
 
 export type DocumentCreatedEvent = {
   document?: Document;
@@ -13,5 +14,10 @@ export type DocumentUpdatedEvent = {
 
 export type DocumentDeletedEvent = {
   document?: Document;
+}
+
+export type TicketChangedEvent = {
+  before?: Ticket;
+  after?: Ticket;
 }
 

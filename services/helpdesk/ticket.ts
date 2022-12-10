@@ -2,9 +2,12 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type File = {
-  ern?: string;
-  name?: string;
-  content?: string;
+export type Ticket = {
+  type?: string;
+  authorId?: string;
+  metadata?: Record<string, string>;
+  status?: string;
+  subject?: string;
+  message?: string;
 }
 
