@@ -7,7 +7,11 @@ export type Scoreboard = {
   key?: string;
   name?: string;
   historical?: boolean;
-  timeline?: Scoreboard_Timeline;
+  frozen?: boolean;
+  freezeAt?: string;
+  freezeIn?: number;
+  unfreezeAt?: string;
+  unfreezeIn?: number;
   defaultSortColumn?: string;
   defaultSortOrder?: string;
   format?: string;
@@ -29,8 +33,8 @@ export type Scoreboard_Row = {
 export type Scoreboard_Row_Value = {
   id?: string;
   columnId?: string;
-  timelineStartOffset?: number;
-  timelineEndOffset?: number;
+  validAfter?: number;
+  validUntil?: number;
   score?: number;
   penalty?: number;
   percentage?: number;
@@ -55,17 +59,6 @@ export type Scoreboard_Column = {
   judgeProblemId?: string;
   communityAttributeKey?: string;
   communityAttributeType?: string;
-}
-
-export type Scoreboard_Timeline = {
-  duration?: number;
-  segments?: Scoreboard_Segment[];
-}
-
-export type Scoreboard_Segment = {
-  startsAt?: string;
-  startOffset?: number;
-  endOffset?: number;
 }
 
 export type Scoreboard_Action = {

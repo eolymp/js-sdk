@@ -228,7 +228,7 @@ export type ListScoreboardsOutput = {
 
 export type DescribeScoreboardRowInput = {
   mode?: string;
-  timelineOffset?: number;
+  punctualTime?: number;
   scoreboardId?: string;
   memberId?: string;
 }
@@ -236,13 +236,12 @@ export type DescribeScoreboardRowInput = {
 export type DescribeScoreboardRowOutput = {
   row?: Scoreboard_Row;
   frozen?: boolean;
-  timelineOffset?: number;
 }
 
 export type ListScoreboardRowsInput = {
   scoreboardId?: string;
   mode?: string;
-  timelineOffset?: number;
+  punctualTime?: number;
   offset?: number;
   size?: number;
   filters?: ListScoreboardRowsInput_Filter;
@@ -266,7 +265,6 @@ export type ListScoreboardRowsOutput = {
   total?: number;
   items?: Scoreboard_Row[];
   frozen?: boolean;
-  timelineOffset?: number;
 }
 
 export type AddScoreboardColumnInput = {
