@@ -3,11 +3,14 @@
 
 
 export type Ticket = {
+  id?: string;
   type?: string;
   userId?: string;
   userEmail?: string;
   metadata?: Record<string, string>;
   status?: string;
+  createdAt?: string;
+  updatedAt?: string;
   subject?: string;
   message?: string;
 }
