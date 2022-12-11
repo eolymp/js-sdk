@@ -128,6 +128,7 @@ export type ListTicketsInput_Filter = {
   type?: ExpressionEnum[];
   createdAt?: ExpressionTimestamp[];
   updatedAt?: ExpressionTimestamp[];
+  locale?: ExpressionEnum[];
 }
 
 export type ListTicketsOutput = {

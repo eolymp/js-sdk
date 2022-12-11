@@ -9,6 +9,7 @@ export type Ticket = {
   userEmail?: string;
   metadata?: Record<string, string>;
   status?: string;
+  locale?: string;
   createdAt?: string;
   updatedAt?: string;
   subject?: string;
