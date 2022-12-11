@@ -57,25 +57,19 @@ export class Helpdesk {
   }
 
   DescribePath<O>(input: DescribePathInput, opts?: O): Promise<DescribePathOutput> {
-    const path = "/helpdesk/paths/"+encodeURIComponent(input.path||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.path);
+    const path = "/helpdesk/lookup/path";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListPaths<O>(input: ListPathsInput, opts?: O): Promise<ListPathsOutput> {
-    const path = "/helpdesk/paths";
+    const path = "/helpdesk/lookup/paths";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListParents<O>(input: ListParentsInput, opts?: O): Promise<ListParentsOutput> {
-    const path = "/helpdesk/paths/"+encodeURIComponent(input.path||'')+"/parents";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.path);
+    const path = "/helpdesk/lookup/parents";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
