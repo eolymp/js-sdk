@@ -86,6 +86,7 @@ export class Support {
 
 export type CreateTicketInput = {
   ticket?: Ticket;
+  captcha?: string;
 }
 
 export type CreateTicketOutput = {
