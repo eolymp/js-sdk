@@ -69,6 +69,15 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  UpdateQuota(input: UpdateQuotaInput, opts?: any): Promise<UpdateQuotaOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/quota";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   ListSpaces(input: ListSpacesInput, opts?: any): Promise<ListSpacesOutput> {
     const path = "/spaces";
 
@@ -168,6 +177,13 @@ export type DescribeQuotaInput = {
 export type DescribeQuotaOutput = {
   quota?: Space_Quota;
 }
+
+export type UpdateQuotaInput = {
+  spaceId?: string;
+  quota?: Space_Quota;
+}
+
+export type UpdateQuotaOutput = Record<string, unknown>;
 
 export type ListSpacesInput = {
   offset?: number;
