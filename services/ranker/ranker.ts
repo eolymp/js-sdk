@@ -6,7 +6,7 @@ import { Activity } from "./activity"
 import { Scoreboard, Scoreboard_Action, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
 }
 
 export class Ranker {

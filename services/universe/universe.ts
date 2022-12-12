@@ -6,7 +6,7 @@ import { Permission } from "./permission"
 import { Space, Space_Quota } from "./space"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
 }
 
 export class Universe {

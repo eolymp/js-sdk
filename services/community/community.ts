@@ -7,7 +7,7 @@ import { IdentityProvider_OIDC } from "./idp"
 import { Member, Member_Identity, Member_Value } from "./member"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
 }
 
 export class Community {

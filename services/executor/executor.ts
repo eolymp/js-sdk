@@ -8,7 +8,7 @@ import { Runtime } from "./runtime"
 import { Task } from "./task"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
 }
 
 export class Executor {

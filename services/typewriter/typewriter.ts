@@ -3,7 +3,7 @@
 
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
 }
 
 export class Typewriter {
