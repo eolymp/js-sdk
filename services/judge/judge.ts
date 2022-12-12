@@ -15,7 +15,7 @@ import { Template } from "./template"
 import { Ticket } from "./ticket"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Judge {
@@ -27,19 +27,19 @@ export class Judge {
     this.url = url;
   }
 
-  LookupContest<O>(input: LookupContestInput, opts?: O): Promise<LookupContestOutput> {
+  LookupContest(input: LookupContestInput, opts?: any): Promise<LookupContestOutput> {
     const path = "/contests/__lookup";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  CreateContest<O>(input: CreateContestInput, opts?: O): Promise<CreateContestOutput> {
+  CreateContest(input: CreateContestInput, opts?: any): Promise<CreateContestOutput> {
     const path = "/contests";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DeleteContest<O>(input: DeleteContestInput, opts?: O): Promise<DeleteContestOutput> {
+  DeleteContest(input: DeleteContestInput, opts?: any): Promise<DeleteContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -48,7 +48,7 @@ export class Judge {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  UpdateContest<O>(input: UpdateContestInput, opts?: O): Promise<UpdateContestOutput> {
+  UpdateContest(input: UpdateContestInput, opts?: any): Promise<UpdateContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -57,7 +57,7 @@ export class Judge {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DescribeContest<O>(input: DescribeContestInput, opts?: O): Promise<DescribeContestOutput> {
+  DescribeContest(input: DescribeContestInput, opts?: any): Promise<DescribeContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -66,13 +66,13 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListContests<O>(input: ListContestsInput, opts?: O): Promise<ListContestsOutput> {
+  ListContests(input: ListContestsInput, opts?: any): Promise<ListContestsOutput> {
     const path = "/contests";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  OpenContest<O>(input: OpenContestInput, opts?: O): Promise<OpenContestOutput> {
+  OpenContest(input: OpenContestInput, opts?: any): Promise<OpenContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/open";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -81,7 +81,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CloseContest<O>(input: CloseContestInput, opts?: O): Promise<CloseContestOutput> {
+  CloseContest(input: CloseContestInput, opts?: any): Promise<CloseContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/close";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -90,7 +90,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  SuspendContest<O>(input: SuspendContestInput, opts?: O): Promise<SuspendContestOutput> {
+  SuspendContest(input: SuspendContestInput, opts?: any): Promise<SuspendContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/suspend";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -99,7 +99,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  FreezeContest<O>(input: FreezeContestInput, opts?: O): Promise<FreezeContestOutput> {
+  FreezeContest(input: FreezeContestInput, opts?: any): Promise<FreezeContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/freeze";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -108,7 +108,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ResumeContest<O>(input: ResumeContestInput, opts?: O): Promise<ResumeContestOutput> {
+  ResumeContest(input: ResumeContestInput, opts?: any): Promise<ResumeContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/resume";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -117,7 +117,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ConfigureRuntime<O>(input: ConfigureRuntimeInput, opts?: O): Promise<ConfigureRuntimeOutput> {
+  ConfigureRuntime(input: ConfigureRuntimeInput, opts?: any): Promise<ConfigureRuntimeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/runtime";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -126,7 +126,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
+  DescribeRuntime(input: DescribeRuntimeInput, opts?: any): Promise<DescribeRuntimeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/runtime";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -135,7 +135,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ConfigureAppearance<O>(input: ConfigureAppearanceInput, opts?: O): Promise<ConfigureAppearanceOutput> {
+  ConfigureAppearance(input: ConfigureAppearanceInput, opts?: any): Promise<ConfigureAppearanceOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/appearance";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -144,7 +144,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeAppearance<O>(input: DescribeAppearanceInput, opts?: O): Promise<DescribeAppearanceOutput> {
+  DescribeAppearance(input: DescribeAppearanceInput, opts?: any): Promise<DescribeAppearanceOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/appearance";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -153,7 +153,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ConfigureScoring<O>(input: ConfigureScoringInput, opts?: O): Promise<ConfigureScoringOutput> {
+  ConfigureScoring(input: ConfigureScoringInput, opts?: any): Promise<ConfigureScoringOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoring";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -162,7 +162,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeScoring<O>(input: DescribeScoringInput, opts?: O): Promise<DescribeScoringOutput> {
+  DescribeScoring(input: DescribeScoringInput, opts?: any): Promise<DescribeScoringOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoring";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -171,7 +171,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ImportProblem<O>(input: ImportProblemInput, opts?: O): Promise<ImportProblemOutput> {
+  ImportProblem(input: ImportProblemInput, opts?: any): Promise<ImportProblemOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -180,7 +180,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  SyncProblem<O>(input: SyncProblemInput, opts?: O): Promise<SyncProblemOutput> {
+  SyncProblem(input: SyncProblemInput, opts?: any): Promise<SyncProblemOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/sync";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -190,7 +190,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateProblem<O>(input: UpdateProblemInput, opts?: O): Promise<UpdateProblemOutput> {
+  UpdateProblem(input: UpdateProblemInput, opts?: any): Promise<UpdateProblemOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -200,7 +200,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ListProblems<O>(input: ListProblemsInput, opts?: O): Promise<ListProblemsOutput> {
+  ListProblems(input: ListProblemsInput, opts?: any): Promise<ListProblemsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -209,7 +209,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeProblem<O>(input: DescribeProblemInput, opts?: O): Promise<DescribeProblemOutput> {
+  DescribeProblem(input: DescribeProblemInput, opts?: any): Promise<DescribeProblemOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -219,7 +219,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput, opts?: any): Promise<DescribeCodeTemplateOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -230,7 +230,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  LookupCodeTemplate<O>(input: LookupCodeTemplateInput, opts?: O): Promise<LookupCodeTemplateOutput> {
+  LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/lookup-template";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -240,7 +240,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListStatements<O>(input: ListStatementsInput, opts?: O): Promise<ListStatementsOutput> {
+  ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -250,7 +250,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListAttachments<O>(input: ListAttachmentsInput, opts?: O): Promise<ListAttachmentsOutput> {
+  ListAttachments(input: ListAttachmentsInput, opts?: any): Promise<ListAttachmentsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -260,7 +260,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListExamples<O>(input: ListExamplesInput, opts?: O): Promise<ListExamplesOutput> {
+  ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -270,7 +270,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DeleteProblem<O>(input: DeleteProblemInput, opts?: O): Promise<DeleteProblemOutput> {
+  DeleteProblem(input: DeleteProblemInput, opts?: any): Promise<DeleteProblemOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -280,7 +280,7 @@ export class Judge {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  RetestProblem<O>(input: RetestProblemInput, opts?: O): Promise<RetestProblemOutput> {
+  RetestProblem(input: RetestProblemInput, opts?: any): Promise<RetestProblemOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -290,7 +290,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  AddParticipant<O>(input: AddParticipantInput, opts?: O): Promise<AddParticipantOutput> {
+  AddParticipant(input: AddParticipantInput, opts?: any): Promise<AddParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -299,7 +299,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  EnableParticipant<O>(input: EnableParticipantInput, opts?: O): Promise<EnableParticipantOutput> {
+  EnableParticipant(input: EnableParticipantInput, opts?: any): Promise<EnableParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/enable";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -309,7 +309,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DisableParticipant<O>(input: DisableParticipantInput, opts?: O): Promise<DisableParticipantOutput> {
+  DisableParticipant(input: DisableParticipantInput, opts?: any): Promise<DisableParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/disable";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -319,7 +319,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateParticipant<O>(input: UpdateParticipantInput, opts?: O): Promise<UpdateParticipantOutput> {
+  UpdateParticipant(input: UpdateParticipantInput, opts?: any): Promise<UpdateParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -329,7 +329,7 @@ export class Judge {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  RemoveParticipant<O>(input: RemoveParticipantInput, opts?: O): Promise<RemoveParticipantOutput> {
+  RemoveParticipant(input: RemoveParticipantInput, opts?: any): Promise<RemoveParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -339,7 +339,7 @@ export class Judge {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  ListParticipants<O>(input: ListParticipantsInput, opts?: O): Promise<ListParticipantsOutput> {
+  ListParticipants(input: ListParticipantsInput, opts?: any): Promise<ListParticipantsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -348,7 +348,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeParticipant<O>(input: DescribeParticipantInput, opts?: O): Promise<DescribeParticipantOutput> {
+  DescribeParticipant(input: DescribeParticipantInput, opts?: any): Promise<DescribeParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -358,7 +358,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  IntrospectParticipant<O>(input: IntrospectParticipantInput, opts?: O): Promise<IntrospectParticipantOutput> {
+  IntrospectParticipant(input: IntrospectParticipantInput, opts?: any): Promise<IntrospectParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -367,7 +367,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  JoinContest<O>(input: JoinContestInput, opts?: O): Promise<JoinContestOutput> {
+  JoinContest(input: JoinContestInput, opts?: any): Promise<JoinContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/join";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -376,7 +376,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  StartContest<O>(input: StartContestInput, opts?: O): Promise<StartContestOutput> {
+  StartContest(input: StartContestInput, opts?: any): Promise<StartContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/start";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -385,7 +385,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  VerifyPasscode<O>(input: VerifyPasscodeInput, opts?: O): Promise<VerifyPasscodeOutput> {
+  VerifyPasscode(input: VerifyPasscodeInput, opts?: any): Promise<VerifyPasscodeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/verify-passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -394,7 +394,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  EnterPasscode<O>(input: EnterPasscodeInput, opts?: O): Promise<EnterPasscodeOutput> {
+  EnterPasscode(input: EnterPasscodeInput, opts?: any): Promise<EnterPasscodeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/enter-passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -403,7 +403,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ResetPasscode<O>(input: ResetPasscodeInput, opts?: O): Promise<ResetPasscodeOutput> {
+  ResetPasscode(input: ResetPasscodeInput, opts?: any): Promise<ResetPasscodeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -413,7 +413,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  RemovePasscode<O>(input: RemovePasscodeInput, opts?: O): Promise<RemovePasscodeOutput> {
+  RemovePasscode(input: RemovePasscodeInput, opts?: any): Promise<RemovePasscodeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -423,7 +423,7 @@ export class Judge {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  CreateSubmission<O>(input: CreateSubmissionInput, opts?: O): Promise<CreateSubmissionOutput> {
+  CreateSubmission(input: CreateSubmissionInput, opts?: any): Promise<CreateSubmissionOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/submissions";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -433,7 +433,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ListSubmissions<O>(input: ListSubmissionsInput, opts?: O): Promise<ListSubmissionsOutput> {
+  ListSubmissions(input: ListSubmissionsInput, opts?: any): Promise<ListSubmissionsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -442,7 +442,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeSubmission<O>(input: DescribeSubmissionInput, opts?: O): Promise<DescribeSubmissionOutput> {
+  DescribeSubmission(input: DescribeSubmissionInput, opts?: any): Promise<DescribeSubmissionOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -452,7 +452,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  RetestSubmission<O>(input: RetestSubmissionInput, opts?: O): Promise<RetestSubmissionOutput> {
+  RetestSubmission(input: RetestSubmissionInput, opts?: any): Promise<RetestSubmissionOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -462,7 +462,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  CreateTicket<O>(input: CreateTicketInput, opts?: O): Promise<CreateTicketOutput> {
+  CreateTicket(input: CreateTicketInput, opts?: any): Promise<CreateTicketOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/tickets";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -471,7 +471,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CloseTicket<O>(input: CloseTicketInput, opts?: O): Promise<CloseTicketOutput> {
+  CloseTicket(input: CloseTicketInput, opts?: any): Promise<CloseTicketOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/close";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -480,7 +480,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  OpenTicket<O>(input: OpenTicketInput, opts?: O): Promise<OpenTicketOutput> {
+  OpenTicket(input: OpenTicketInput, opts?: any): Promise<OpenTicketOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/open";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -489,7 +489,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ReadTicket<O>(input: ReadTicketInput, opts?: O): Promise<ReadTicketOutput> {
+  ReadTicket(input: ReadTicketInput, opts?: any): Promise<ReadTicketOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/read";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -498,7 +498,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DeleteTicket<O>(input: DeleteTicketInput, opts?: O): Promise<DeleteTicketOutput> {
+  DeleteTicket(input: DeleteTicketInput, opts?: any): Promise<DeleteTicketOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -507,7 +507,7 @@ export class Judge {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeTicket<O>(input: DescribeTicketInput, opts?: O): Promise<DescribeTicketOutput> {
+  DescribeTicket(input: DescribeTicketInput, opts?: any): Promise<DescribeTicketOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -516,13 +516,13 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListTickets<O>(input: ListTicketsInput, opts?: O): Promise<ListTicketsOutput> {
+  ListTickets(input: ListTicketsInput, opts?: any): Promise<ListTicketsOutput> {
     const path = "/tickets";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ReplyTicket<O>(input: ReplyTicketInput, opts?: O): Promise<ReplyTicketOutput> {
+  ReplyTicket(input: ReplyTicketInput, opts?: any): Promise<ReplyTicketOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -531,7 +531,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ListReplies<O>(input: ListRepliesInput, opts?: O): Promise<ListRepliesOutput> {
+  ListReplies(input: ListRepliesInput, opts?: any): Promise<ListRepliesOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -540,7 +540,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DeleteReply<O>(input: DeleteReplyInput, opts?: O): Promise<DeleteReplyOutput> {
+  DeleteReply(input: DeleteReplyInput, opts?: any): Promise<DeleteReplyOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies/"+encodeURIComponent(input.replyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -550,7 +550,7 @@ export class Judge {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  UpdateReply<O>(input: UpdateReplyInput, opts?: O): Promise<UpdateReplyOutput> {
+  UpdateReply(input: UpdateReplyInput, opts?: any): Promise<UpdateReplyOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies/"+encodeURIComponent(input.replyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -560,7 +560,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CreateAnnouncement<O>(input: CreateAnnouncementInput, opts?: O): Promise<CreateAnnouncementOutput> {
+  CreateAnnouncement(input: CreateAnnouncementInput, opts?: any): Promise<CreateAnnouncementOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -569,7 +569,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateAnnouncement<O>(input: UpdateAnnouncementInput, opts?: O): Promise<UpdateAnnouncementOutput> {
+  UpdateAnnouncement(input: UpdateAnnouncementInput, opts?: any): Promise<UpdateAnnouncementOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -579,7 +579,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DeleteAnnouncement<O>(input: DeleteAnnouncementInput, opts?: O): Promise<DeleteAnnouncementOutput> {
+  DeleteAnnouncement(input: DeleteAnnouncementInput, opts?: any): Promise<DeleteAnnouncementOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -589,7 +589,7 @@ export class Judge {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  ReadAnnouncement<O>(input: ReadAnnouncementInput, opts?: O): Promise<ReadAnnouncementOutput> {
+  ReadAnnouncement(input: ReadAnnouncementInput, opts?: any): Promise<ReadAnnouncementOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'')+"/read";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -599,7 +599,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeAnnouncement<O>(input: DescribeAnnouncementInput, opts?: O): Promise<DescribeAnnouncementOutput> {
+  DescribeAnnouncement(input: DescribeAnnouncementInput, opts?: any): Promise<DescribeAnnouncementOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -609,7 +609,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeAnnouncementStatus<O>(input: DescribeAnnouncementStatusInput, opts?: O): Promise<DescribeAnnouncementStatusOutput> {
+  DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput, opts?: any): Promise<DescribeAnnouncementStatusOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'')+"/status";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -619,7 +619,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListAnnouncements<O>(input: ListAnnouncementsInput, opts?: O): Promise<ListAnnouncementsOutput> {
+  ListAnnouncements(input: ListAnnouncementsInput, opts?: any): Promise<ListAnnouncementsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -628,7 +628,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  IntrospectScore<O>(input: IntrospectScoreInput, opts?: O): Promise<IntrospectScoreOutput> {
+  IntrospectScore(input: IntrospectScoreInput, opts?: any): Promise<IntrospectScoreOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect/score";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -637,7 +637,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeScore<O>(input: DescribeScoreInput, opts?: O): Promise<DescribeScoreOutput> {
+  DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/score";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -647,7 +647,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ImportScore<O>(input: ImportScoreInput, opts?: O): Promise<ImportScoreOutput> {
+  ImportScore(input: ImportScoreInput, opts?: any): Promise<ImportScoreOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -657,7 +657,7 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ExportScore<O>(input: ExportScoreInput, opts?: O): Promise<ExportScoreOutput> {
+  ExportScore(input: ExportScoreInput, opts?: any): Promise<ExportScoreOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -667,7 +667,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListResult<O>(input: ListResultInput, opts?: O): Promise<ListResultOutput> {
+  ListResult(input: ListResultInput, opts?: any): Promise<ListResultOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/results";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -676,7 +676,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  RebuildScore<O>(input: RebuildScoreInput, opts?: O): Promise<RebuildScoreOutput> {
+  RebuildScore(input: RebuildScoreInput, opts?: any): Promise<RebuildScoreOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/rebuild";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -685,13 +685,13 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ListEntitlements<O>(input: ListEntitlementsInput, opts?: O): Promise<ListEntitlementsOutput> {
+  ListEntitlements(input: ListEntitlementsInput, opts?: any): Promise<ListEntitlementsOutput> {
     const path = "/__judge/entitlements";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
+  ListActivities(input: ListActivitiesInput, opts?: any): Promise<ListActivitiesOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/activities";
 
     // Cleanup URL parameters to avoid any ambiguity

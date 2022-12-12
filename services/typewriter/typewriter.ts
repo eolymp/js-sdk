@@ -3,7 +3,7 @@
 
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Typewriter {
@@ -15,7 +15,7 @@ export class Typewriter {
     this.url = url;
   }
 
-  UploadAsset<O>(input: UploadAssetInput, opts?: O): Promise<UploadAssetOutput> {
+  UploadAsset(input: UploadAssetInput, opts?: any): Promise<UploadAssetOutput> {
     const path = "/assets";
 
     return this.cli.call("POST", this.url+path, input, opts);

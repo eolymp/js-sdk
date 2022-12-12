@@ -5,7 +5,7 @@ import { Country } from "./country"
 import { Region } from "./region"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Geography {
@@ -17,7 +17,7 @@ export class Geography {
     this.url = url;
   }
 
-  DescribeCountry<O>(input: DescribeCountryInput, opts?: O): Promise<DescribeCountryOutput> {
+  DescribeCountry(input: DescribeCountryInput, opts?: any): Promise<DescribeCountryOutput> {
     const path = "/geography/countries/"+encodeURIComponent(input.countryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -26,13 +26,13 @@ export class Geography {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListCountries<O>(input: ListCountriesInput, opts?: O): Promise<ListCountriesOutput> {
+  ListCountries(input: ListCountriesInput, opts?: any): Promise<ListCountriesOutput> {
     const path = "/geography/countries";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeRegion<O>(input: DescribeRegionInput, opts?: O): Promise<DescribeRegionOutput> {
+  DescribeRegion(input: DescribeRegionInput, opts?: any): Promise<DescribeRegionOutput> {
     const path = "/geography/regions/"+encodeURIComponent(input.regionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -41,7 +41,7 @@ export class Geography {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListRegions<O>(input: ListRegionsInput, opts?: O): Promise<ListRegionsOutput> {
+  ListRegions(input: ListRegionsInput, opts?: any): Promise<ListRegionsOutput> {
     const path = "/geography/countries/"+encodeURIComponent(input.countryId||'')+"/regions";
 
     // Cleanup URL parameters to avoid any ambiguity

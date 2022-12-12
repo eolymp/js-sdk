@@ -3,7 +3,7 @@
 
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Keeper {
@@ -15,13 +15,13 @@ export class Keeper {
     this.url = url;
   }
 
-  CreateObject<O>(input: CreateObjectInput, opts?: O): Promise<CreateObjectOutput> {
+  CreateObject(input: CreateObjectInput, opts?: any): Promise<CreateObjectOutput> {
     const path = "/objects";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeObject<O>(input: DescribeObjectInput, opts?: O): Promise<DescribeObjectOutput> {
+  DescribeObject(input: DescribeObjectInput, opts?: any): Promise<DescribeObjectOutput> {
     const path = "/objects/"+encodeURIComponent(input.key||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -30,7 +30,7 @@ export class Keeper {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DownloadObject<O>(input: DownloadObjectInput, opts?: O): Promise<DownloadObjectOutput> {
+  DownloadObject(input: DownloadObjectInput, opts?: any): Promise<DownloadObjectOutput> {
     const path = "/objects/"+encodeURIComponent(input.key||'')+"/data";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -39,13 +39,13 @@ export class Keeper {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  StartMultipartUpload<O>(input: StartMultipartUploadInput, opts?: O): Promise<StartMultipartUploadOutput> {
+  StartMultipartUpload(input: StartMultipartUploadInput, opts?: any): Promise<StartMultipartUploadOutput> {
     const path = "/uploads";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UploadPart<O>(input: UploadPartInput, opts?: O): Promise<UploadPartOutput> {
+  UploadPart(input: UploadPartInput, opts?: any): Promise<UploadPartOutput> {
     const path = "/objects/"+encodeURIComponent(input.objectId||'')+"/parts";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -54,7 +54,7 @@ export class Keeper {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CompleteMultipartUpload<O>(input: CompleteMultipartUploadInput, opts?: O): Promise<CompleteMultipartUploadOutput> {
+  CompleteMultipartUpload(input: CompleteMultipartUploadInput, opts?: any): Promise<CompleteMultipartUploadOutput> {
     const path = "/objects/"+encodeURIComponent(input.objectId||'')+"/complete";
 
     // Cleanup URL parameters to avoid any ambiguity

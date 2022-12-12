@@ -6,7 +6,7 @@ import { Permission } from "./permission"
 import { Space, Space_Quota } from "./space"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Universe {
@@ -18,7 +18,7 @@ export class Universe {
     this.url = url;
   }
 
-  LookupSpace<O>(input: LookupSpaceInput, opts?: O): Promise<LookupSpaceOutput> {
+  LookupSpace(input: LookupSpaceInput, opts?: any): Promise<LookupSpaceOutput> {
     const path = "/spaces/__lookup/"+encodeURIComponent(input.key||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -27,13 +27,13 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  CreateSpace<O>(input: CreateSpaceInput, opts?: O): Promise<CreateSpaceOutput> {
+  CreateSpace(input: CreateSpaceInput, opts?: any): Promise<CreateSpaceOutput> {
     const path = "/spaces";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateSpace<O>(input: UpdateSpaceInput, opts?: O): Promise<UpdateSpaceOutput> {
+  UpdateSpace(input: UpdateSpaceInput, opts?: any): Promise<UpdateSpaceOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -42,7 +42,7 @@ export class Universe {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DeleteSpace<O>(input: DeleteSpaceInput, opts?: O): Promise<DeleteSpaceOutput> {
+  DeleteSpace(input: DeleteSpaceInput, opts?: any): Promise<DeleteSpaceOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -51,7 +51,7 @@ export class Universe {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeSpace<O>(input: DescribeSpaceInput, opts?: O): Promise<DescribeSpaceOutput> {
+  DescribeSpace(input: DescribeSpaceInput, opts?: any): Promise<DescribeSpaceOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -60,7 +60,7 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeQuota<O>(input: DescribeQuotaInput, opts?: O): Promise<DescribeQuotaOutput> {
+  DescribeQuota(input: DescribeQuotaInput, opts?: any): Promise<DescribeQuotaOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/quota";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -69,13 +69,13 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListSpaces<O>(input: ListSpacesInput, opts?: O): Promise<ListSpacesOutput> {
+  ListSpaces(input: ListSpacesInput, opts?: any): Promise<ListSpacesOutput> {
     const path = "/spaces";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  GrantPermission<O>(input: GrantPermissionInput, opts?: O): Promise<GrantPermissionOutput> {
+  GrantPermission(input: GrantPermissionInput, opts?: any): Promise<GrantPermissionOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -85,7 +85,7 @@ export class Universe {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  RevokePermission<O>(input: RevokePermissionInput, opts?: O): Promise<RevokePermissionOutput> {
+  RevokePermission(input: RevokePermissionInput, opts?: any): Promise<RevokePermissionOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -95,7 +95,7 @@ export class Universe {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribePermission<O>(input: DescribePermissionInput, opts?: O): Promise<DescribePermissionOutput> {
+  DescribePermission(input: DescribePermissionInput, opts?: any): Promise<DescribePermissionOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -105,7 +105,7 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  IntrospectPermission<O>(input: IntrospectPermissionInput, opts?: O): Promise<IntrospectPermissionOutput> {
+  IntrospectPermission(input: IntrospectPermissionInput, opts?: any): Promise<IntrospectPermissionOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/introspect-permission";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -114,7 +114,7 @@ export class Universe {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListPermissions<O>(input: ListPermissionsInput, opts?: O): Promise<ListPermissionsOutput> {
+  ListPermissions(input: ListPermissionsInput, opts?: any): Promise<ListPermissionsOutput> {
     const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/permissions";
 
     // Cleanup URL parameters to avoid any ambiguity

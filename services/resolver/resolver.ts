@@ -6,7 +6,7 @@ import { Scoreboard } from "../ranker/scoreboard"
 import { Space } from "../universe/space"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Resolver {
@@ -18,7 +18,7 @@ export class Resolver {
     this.url = url;
   }
 
-  ResolveName<O>(input: ResolveNameInput, opts?: O): Promise<ResolveNameOutput> {
+  ResolveName(input: ResolveNameInput, opts?: any): Promise<ResolveNameOutput> {
     const path = "/names/"+encodeURIComponent(input.name||'');
 
     // Cleanup URL parameters to avoid any ambiguity

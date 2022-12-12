@@ -4,7 +4,7 @@
 import { Run } from "./run"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Playground {
@@ -16,13 +16,13 @@ export class Playground {
     this.url = url;
   }
 
-  CreateRun<O>(input: CreateRunInput, opts?: O): Promise<CreateRunOutput> {
+  CreateRun(input: CreateRunInput, opts?: any): Promise<CreateRunOutput> {
     const path = "/playground/runs";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeRun<O>(input: DescribeRunInput, opts?: O): Promise<DescribeRunOutput> {
+  DescribeRun(input: DescribeRunInput, opts?: any): Promise<DescribeRunOutput> {
     const path = "/playground/runs/"+encodeURIComponent(input.runId||'');
 
     // Cleanup URL parameters to avoid any ambiguity

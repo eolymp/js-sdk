@@ -8,7 +8,7 @@ import { Runtime } from "./runtime"
 import { Task } from "./task"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Executor {
@@ -20,7 +20,7 @@ export class Executor {
     this.url = url;
   }
 
-  DescribeLanguage<O>(input: DescribeLanguageInput, opts?: O): Promise<DescribeLanguageOutput> {
+  DescribeLanguage(input: DescribeLanguageInput, opts?: any): Promise<DescribeLanguageOutput> {
     const path = "/exec/languages/"+encodeURIComponent(input.languageId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -29,13 +29,13 @@ export class Executor {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListLanguages<O>(input: ListLanguagesInput, opts?: O): Promise<ListLanguagesOutput> {
+  ListLanguages(input: ListLanguagesInput, opts?: any): Promise<ListLanguagesOutput> {
     const path = "/exec/languages";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeRuntime<O>(input: DescribeRuntimeInput, opts?: O): Promise<DescribeRuntimeOutput> {
+  DescribeRuntime(input: DescribeRuntimeInput, opts?: any): Promise<DescribeRuntimeOutput> {
     const path = "/exec/runtime/"+encodeURIComponent(input.runtimeId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -44,13 +44,13 @@ export class Executor {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListRuntime<O>(input: ListRuntimeInput, opts?: O): Promise<ListRuntimeOutput> {
+  ListRuntime(input: ListRuntimeInput, opts?: any): Promise<ListRuntimeOutput> {
     const path = "/exec/runtime";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeCodeTemplate<O>(input: DescribeCodeTemplateInput, opts?: O): Promise<DescribeCodeTemplateOutput> {
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput, opts?: any): Promise<DescribeCodeTemplateOutput> {
     const path = "/exec/runtime/"+encodeURIComponent(input.runtimeId||'')+"/template";
 
     // Cleanup URL parameters to avoid any ambiguity

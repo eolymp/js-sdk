@@ -5,7 +5,7 @@ import { Agreement } from "./agreement"
 import { Consent } from "./consent"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Harmony {
@@ -17,13 +17,13 @@ export class Harmony {
     this.url = url;
   }
 
-  ListAgreements<O>(input: ListAgreementsInput, opts?: O): Promise<ListAgreementsOutput> {
+  ListAgreements(input: ListAgreementsInput, opts?: any): Promise<ListAgreementsOutput> {
     const path = "/harmony/agreements";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  GetConsent<O>(input: GetConsentInput, opts?: O): Promise<GetConsentOutput> {
+  GetConsent(input: GetConsentInput, opts?: any): Promise<GetConsentOutput> {
     const path = "/harmony/agreements/"+encodeURIComponent(input.agreementId||'')+"/consent";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -32,7 +32,7 @@ export class Harmony {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  SetConsent<O>(input: SetConsentInput, opts?: O): Promise<SetConsentOutput> {
+  SetConsent(input: SetConsentInput, opts?: any): Promise<SetConsentOutput> {
     const path = "/harmony/agreements/"+encodeURIComponent(input.agreementId||'')+"/consent";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -41,7 +41,7 @@ export class Harmony {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  FollowShortcut<O>(input: FollowShortcutInput, opts?: O): Promise<FollowShortcutOutput> {
+  FollowShortcut(input: FollowShortcutInput, opts?: any): Promise<FollowShortcutOutput> {
     const path = "/harmony/shortcuts/"+encodeURIComponent(input.shortcutId||'');
 
     // Cleanup URL parameters to avoid any ambiguity

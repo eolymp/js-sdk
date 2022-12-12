@@ -7,7 +7,7 @@ import { IdentityProvider_OIDC } from "./idp"
 import { Member, Member_Identity, Member_Value } from "./member"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Community {
@@ -19,37 +19,37 @@ export class Community {
     this.url = url;
   }
 
-  JoinSpace<O>(input: JoinSpaceInput, opts?: O): Promise<JoinSpaceOutput> {
+  JoinSpace(input: JoinSpaceInput, opts?: any): Promise<JoinSpaceOutput> {
     const path = "/members/_self";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  LeaveSpace<O>(input: LeaveSpaceInput, opts?: O): Promise<LeaveSpaceOutput> {
+  LeaveSpace(input: LeaveSpaceInput, opts?: any): Promise<LeaveSpaceOutput> {
     const path = "/members/_self";
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  RegisterMember<O>(input: RegisterMemberInput, opts?: O): Promise<RegisterMemberOutput> {
+  RegisterMember(input: RegisterMemberInput, opts?: any): Promise<RegisterMemberOutput> {
     const path = "/members/_self/attributes";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  IntrospectMember<O>(input: IntrospectMemberInput, opts?: O): Promise<IntrospectMemberOutput> {
+  IntrospectMember(input: IntrospectMemberInput, opts?: any): Promise<IntrospectMemberOutput> {
     const path = "/members/_self";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  AddMember<O>(input: AddMemberInput, opts?: O): Promise<AddMemberOutput> {
+  AddMember(input: AddMemberInput, opts?: any): Promise<AddMemberOutput> {
     const path = "/members";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateMember<O>(input: UpdateMemberInput, opts?: O): Promise<UpdateMemberOutput> {
+  UpdateMember(input: UpdateMemberInput, opts?: any): Promise<UpdateMemberOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -58,7 +58,7 @@ export class Community {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  RemoveMember<O>(input: RemoveMemberInput, opts?: O): Promise<RemoveMemberOutput> {
+  RemoveMember(input: RemoveMemberInput, opts?: any): Promise<RemoveMemberOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -67,7 +67,7 @@ export class Community {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeMember<O>(input: DescribeMemberInput, opts?: O): Promise<DescribeMemberOutput> {
+  DescribeMember(input: DescribeMemberInput, opts?: any): Promise<DescribeMemberOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -76,13 +76,13 @@ export class Community {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListMembers<O>(input: ListMembersInput, opts?: O): Promise<ListMembersOutput> {
+  ListMembers(input: ListMembersInput, opts?: any): Promise<ListMembersOutput> {
     const path = "/members";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  AddMemberIdentity<O>(input: AddMemberIdentityInput, opts?: O): Promise<AddMemberIdentityOutput> {
+  AddMemberIdentity(input: AddMemberIdentityInput, opts?: any): Promise<AddMemberIdentityOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'')+"/identities";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -91,7 +91,7 @@ export class Community {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateMemberIdentity<O>(input: UpdateMemberIdentityInput, opts?: O): Promise<UpdateMemberIdentityOutput> {
+  UpdateMemberIdentity(input: UpdateMemberIdentityInput, opts?: any): Promise<UpdateMemberIdentityOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'')+"/identities/"+encodeURIComponent(input.identityId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -101,7 +101,7 @@ export class Community {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  RemoveMemberIdentity<O>(input: RemoveMemberIdentityInput, opts?: O): Promise<RemoveMemberIdentityOutput> {
+  RemoveMemberIdentity(input: RemoveMemberIdentityInput, opts?: any): Promise<RemoveMemberIdentityOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'')+"/identities/"+encodeURIComponent(input.identityId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -111,13 +111,13 @@ export class Community {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  AddAttribute<O>(input: AddAttributeInput, opts?: O): Promise<AddAttributeOutput> {
+  AddAttribute(input: AddAttributeInput, opts?: any): Promise<AddAttributeOutput> {
     const path = "/attributes";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateAttribute<O>(input: UpdateAttributeInput, opts?: O): Promise<UpdateAttributeOutput> {
+  UpdateAttribute(input: UpdateAttributeInput, opts?: any): Promise<UpdateAttributeOutput> {
     const path = "/attributes/"+encodeURIComponent(input.attributeKey||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -126,7 +126,7 @@ export class Community {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  RemoveAttribute<O>(input: RemoveAttributeInput, opts?: O): Promise<RemoveAttributeOutput> {
+  RemoveAttribute(input: RemoveAttributeInput, opts?: any): Promise<RemoveAttributeOutput> {
     const path = "/attributes/"+encodeURIComponent(input.attributeKey||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -135,7 +135,7 @@ export class Community {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeAttribute<O>(input: DescribeAttributeInput, opts?: O): Promise<DescribeAttributeOutput> {
+  DescribeAttribute(input: DescribeAttributeInput, opts?: any): Promise<DescribeAttributeOutput> {
     const path = "/attributes/"+encodeURIComponent(input.attributeKey||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -144,19 +144,19 @@ export class Community {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListAttributes<O>(input: ListAttributesInput, opts?: O): Promise<ListAttributesOutput> {
+  ListAttributes(input: ListAttributesInput, opts?: any): Promise<ListAttributesOutput> {
     const path = "/attributes";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeIdentityProvider<O>(input: DescribeIdentityProviderInput, opts?: O): Promise<DescribeIdentityProviderOutput> {
+  DescribeIdentityProvider(input: DescribeIdentityProviderInput, opts?: any): Promise<DescribeIdentityProviderOutput> {
     const path = "/idp";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ConfigureIdentityProvider<O>(input: ConfigureIdentityProviderInput, opts?: O): Promise<ConfigureIdentityProviderOutput> {
+  ConfigureIdentityProvider(input: ConfigureIdentityProviderInput, opts?: any): Promise<ConfigureIdentityProviderOutput> {
     const path = "/idp";
 
     return this.cli.call("PUT", this.url+path, input, opts);

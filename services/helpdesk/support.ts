@@ -5,7 +5,7 @@ import { ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/
 import { Ticket } from "./ticket"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Support {
@@ -17,13 +17,13 @@ export class Support {
     this.url = url;
   }
 
-  CreateTicket<O>(input: CreateTicketInput, opts?: O): Promise<CreateTicketOutput> {
+  CreateTicket(input: CreateTicketInput, opts?: any): Promise<CreateTicketOutput> {
     const path = "/helpdesk/tickets";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateTicket<O>(input: UpdateTicketInput, opts?: O): Promise<UpdateTicketOutput> {
+  UpdateTicket(input: UpdateTicketInput, opts?: any): Promise<UpdateTicketOutput> {
     const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -32,7 +32,7 @@ export class Support {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DeleteTicket<O>(input: DeleteTicketInput, opts?: O): Promise<DeleteTicketOutput> {
+  DeleteTicket(input: DeleteTicketInput, opts?: any): Promise<DeleteTicketOutput> {
     const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -41,7 +41,7 @@ export class Support {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeTicket<O>(input: DescribeTicketInput, opts?: O): Promise<DescribeTicketOutput> {
+  DescribeTicket(input: DescribeTicketInput, opts?: any): Promise<DescribeTicketOutput> {
     const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -50,13 +50,13 @@ export class Support {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListTickets<O>(input: ListTicketsInput, opts?: O): Promise<ListTicketsOutput> {
+  ListTickets(input: ListTicketsInput, opts?: any): Promise<ListTicketsOutput> {
     const path = "/helpdesk/tickets";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ApproveTicket<O>(input: ApproveTicketInput, opts?: O): Promise<ApproveTicketOutput> {
+  ApproveTicket(input: ApproveTicketInput, opts?: any): Promise<ApproveTicketOutput> {
     const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/approve";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -65,7 +65,7 @@ export class Support {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  RejectTicket<O>(input: RejectTicketInput, opts?: O): Promise<RejectTicketOutput> {
+  RejectTicket(input: RejectTicketInput, opts?: any): Promise<RejectTicketOutput> {
     const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/reject";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -74,7 +74,7 @@ export class Support {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CloseTicket<O>(input: CloseTicketInput, opts?: O): Promise<CloseTicketOutput> {
+  CloseTicket(input: CloseTicketInput, opts?: any): Promise<CloseTicketOutput> {
     const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/close";
 
     // Cleanup URL parameters to avoid any ambiguity

@@ -6,7 +6,7 @@ import { Activity } from "./activity"
 import { Scoreboard, Scoreboard_Action, Scoreboard_Column, Scoreboard_Row } from "./scoreboard"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Ranker {
@@ -18,13 +18,13 @@ export class Ranker {
     this.url = url;
   }
 
-  CreateScoreboard<O>(input: CreateScoreboardInput, opts?: O): Promise<CreateScoreboardOutput> {
+  CreateScoreboard(input: CreateScoreboardInput, opts?: any): Promise<CreateScoreboardOutput> {
     const path = "/scoreboards";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateScoreboard<O>(input: UpdateScoreboardInput, opts?: O): Promise<UpdateScoreboardOutput> {
+  UpdateScoreboard(input: UpdateScoreboardInput, opts?: any): Promise<UpdateScoreboardOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -33,7 +33,7 @@ export class Ranker {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  RebuildScoreboard<O>(input: RebuildScoreboardInput, opts?: O): Promise<RebuildScoreboardOutput> {
+  RebuildScoreboard(input: RebuildScoreboardInput, opts?: any): Promise<RebuildScoreboardOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/rebuild";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -42,7 +42,7 @@ export class Ranker {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DeleteScoreboard<O>(input: DeleteScoreboardInput, opts?: O): Promise<DeleteScoreboardOutput> {
+  DeleteScoreboard(input: DeleteScoreboardInput, opts?: any): Promise<DeleteScoreboardOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -51,7 +51,7 @@ export class Ranker {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeScoreboard<O>(input: DescribeScoreboardInput, opts?: O): Promise<DescribeScoreboardOutput> {
+  DescribeScoreboard(input: DescribeScoreboardInput, opts?: any): Promise<DescribeScoreboardOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -60,13 +60,13 @@ export class Ranker {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListScoreboards<O>(input: ListScoreboardsInput, opts?: O): Promise<ListScoreboardsOutput> {
+  ListScoreboards(input: ListScoreboardsInput, opts?: any): Promise<ListScoreboardsOutput> {
     const path = "/scoreboards";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeScoreboardRow<O>(input: DescribeScoreboardRowInput, opts?: O): Promise<DescribeScoreboardRowOutput> {
+  DescribeScoreboardRow(input: DescribeScoreboardRowInput, opts?: any): Promise<DescribeScoreboardRowOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/rows/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -76,7 +76,7 @@ export class Ranker {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListScoreboardRows<O>(input: ListScoreboardRowsInput, opts?: O): Promise<ListScoreboardRowsOutput> {
+  ListScoreboardRows(input: ListScoreboardRowsInput, opts?: any): Promise<ListScoreboardRowsOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/rows";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -85,7 +85,7 @@ export class Ranker {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  AddScoreboardColumn<O>(input: AddScoreboardColumnInput, opts?: O): Promise<AddScoreboardColumnOutput> {
+  AddScoreboardColumn(input: AddScoreboardColumnInput, opts?: any): Promise<AddScoreboardColumnOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -94,7 +94,7 @@ export class Ranker {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateScoreboardColumn<O>(input: UpdateScoreboardColumnInput, opts?: O): Promise<UpdateScoreboardColumnOutput> {
+  UpdateScoreboardColumn(input: UpdateScoreboardColumnInput, opts?: any): Promise<UpdateScoreboardColumnOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns/"+encodeURIComponent(input.columnId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -104,7 +104,7 @@ export class Ranker {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DeleteScoreboardColumn<O>(input: DeleteScoreboardColumnInput, opts?: O): Promise<DeleteScoreboardColumnOutput> {
+  DeleteScoreboardColumn(input: DeleteScoreboardColumnInput, opts?: any): Promise<DeleteScoreboardColumnOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns/"+encodeURIComponent(input.columnId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -114,7 +114,7 @@ export class Ranker {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeScoreboardColumn<O>(input: DescribeScoreboardColumnInput, opts?: O): Promise<DescribeScoreboardColumnOutput> {
+  DescribeScoreboardColumn(input: DescribeScoreboardColumnInput, opts?: any): Promise<DescribeScoreboardColumnOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns/"+encodeURIComponent(input.columnId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -124,7 +124,7 @@ export class Ranker {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListScoreboardColumns<O>(input: ListScoreboardColumnsInput, opts?: O): Promise<ListScoreboardColumnsOutput> {
+  ListScoreboardColumns(input: ListScoreboardColumnsInput, opts?: any): Promise<ListScoreboardColumnsOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/columns";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -133,7 +133,7 @@ export class Ranker {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListActivities<O>(input: ListActivitiesInput, opts?: O): Promise<ListActivitiesOutput> {
+  ListActivities(input: ListActivitiesInput, opts?: any): Promise<ListActivitiesOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/activities";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -142,7 +142,7 @@ export class Ranker {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ScheduleAction<O>(input: ScheduleActionInput, opts?: O): Promise<ScheduleActionOutput> {
+  ScheduleAction(input: ScheduleActionInput, opts?: any): Promise<ScheduleActionOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/schedule";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -151,7 +151,7 @@ export class Ranker {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UnscheduleAction<O>(input: UnscheduleActionInput, opts?: O): Promise<UnscheduleActionOutput> {
+  UnscheduleAction(input: UnscheduleActionInput, opts?: any): Promise<UnscheduleActionOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/schedule/"+encodeURIComponent(input.actionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -161,7 +161,7 @@ export class Ranker {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  ListScheduledActions<O>(input: ListScheduledActionsInput, opts?: O): Promise<ListScheduledActionsOutput> {
+  ListScheduledActions(input: ListScheduledActionsInput, opts?: any): Promise<ListScheduledActionsOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/schedule";
 
     // Cleanup URL parameters to avoid any ambiguity

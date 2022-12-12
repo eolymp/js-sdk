@@ -5,7 +5,7 @@ import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/exp
 import { Document } from "./document"
 
 interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: O): Promise<E>;
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Helpdesk {
@@ -17,7 +17,7 @@ export class Helpdesk {
     this.url = url;
   }
 
-  DescribeDocument<O>(input: DescribeDocumentInput, opts?: O): Promise<DescribeDocumentOutput> {
+  DescribeDocument(input: DescribeDocumentInput, opts?: any): Promise<DescribeDocumentOutput> {
     const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -26,19 +26,19 @@ export class Helpdesk {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListDocuments<O>(input: ListDocumentsInput, opts?: O): Promise<ListDocumentsOutput> {
+  ListDocuments(input: ListDocumentsInput, opts?: any): Promise<ListDocumentsOutput> {
     const path = "/helpdesk/documents";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  CreateDocument<O>(input: CreateDocumentInput, opts?: O): Promise<CreateDocumentOutput> {
+  CreateDocument(input: CreateDocumentInput, opts?: any): Promise<CreateDocumentOutput> {
     const path = "/helpdesk/documents";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateDocument<O>(input: UpdateDocumentInput, opts?: O): Promise<UpdateDocumentOutput> {
+  UpdateDocument(input: UpdateDocumentInput, opts?: any): Promise<UpdateDocumentOutput> {
     const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -47,7 +47,7 @@ export class Helpdesk {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DeleteDocument<O>(input: DeleteDocumentInput, opts?: O): Promise<DeleteDocumentOutput> {
+  DeleteDocument(input: DeleteDocumentInput, opts?: any): Promise<DeleteDocumentOutput> {
     const path = "/helpdesk/documents/"+encodeURIComponent(input.documentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -56,19 +56,19 @@ export class Helpdesk {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribePath<O>(input: DescribePathInput, opts?: O): Promise<DescribePathOutput> {
+  DescribePath(input: DescribePathInput, opts?: any): Promise<DescribePathOutput> {
     const path = "/helpdesk/lookup/path";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListPaths<O>(input: ListPathsInput, opts?: O): Promise<ListPathsOutput> {
+  ListPaths(input: ListPathsInput, opts?: any): Promise<ListPathsOutput> {
     const path = "/helpdesk/lookup/paths";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListParents<O>(input: ListParentsInput, opts?: O): Promise<ListParentsOutput> {
+  ListParents(input: ListParentsInput, opts?: any): Promise<ListParentsOutput> {
     const path = "/helpdesk/lookup/parents";
 
     return this.cli.call("GET", this.url+path, input, opts);
