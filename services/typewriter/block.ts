@@ -31,6 +31,7 @@ export type Block_Layout = {
   justifyItems?: string;
   justifyContent?: string;
   gap?: number;
+  width?: number;
   padding?: number[];
   children?: Container[];
 }
@@ -47,7 +48,7 @@ export type Block_List_Item = {
 export type Block_Image = {
   src?: string;
   alt?: string;
-  title?: string;
+  caption?: string;
   width?: number;
   height?: number;
   zoomable?: boolean;
@@ -79,7 +80,15 @@ export type Block_Embed_Value = {
 
 export type Block_Table = {
   header?: string;
+  border?: boolean;
+  columns?: Block_Table_Column[];
   children?: Block_Table_Row[];
+}
+
+export type Block_Table_Column = {
+  hAlign?: string;
+  vAlign?: string;
+  width?: number;
 }
 
 export type Block_Table_Row = {
