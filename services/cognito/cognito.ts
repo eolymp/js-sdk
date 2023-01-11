@@ -92,7 +92,7 @@ export class Cognito {
   }
 
   ResendEmailVerification(input: ResendEmailVerificationInput, opts?: any): Promise<ResendEmailVerificationOutput> {
-    const path = "/self/password";
+    const path = "/self/email/resend-verification";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
