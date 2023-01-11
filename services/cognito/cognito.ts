@@ -91,6 +91,12 @@ export class Cognito {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ResendEmailVerification(input: ResendEmailVerificationInput, opts?: any): Promise<ResendEmailVerificationOutput> {
+    const path = "/self/password";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   StartRecovery(input: StartRecoveryInput, opts?: any): Promise<StartRecoveryOutput> {
     const path = "/self/recovery";
 
@@ -338,6 +344,12 @@ export type UpdatePasswordInput = {
 }
 
 export type UpdatePasswordOutput = Record<string, unknown>;
+
+export type ResendEmailVerificationInput = Record<string, unknown>;
+
+export type ResendEmailVerificationOutput = {
+  emailConfirmationHint?: string;
+}
 
 export type StartRecoveryInput = {
   email?: string;
