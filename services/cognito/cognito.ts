@@ -322,6 +322,7 @@ export type UpdateProfileInput = {
   country?: string;
   city?: string;
   birthday?: string;
+  locale?: string;
 }
 
 export type UpdateProfileOutput = {
