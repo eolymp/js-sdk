@@ -61,6 +61,12 @@ export class Cognito {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ResendEmailVerification(input: ResendEmailVerificationInput, opts?: any): Promise<ResendEmailVerificationOutput> {
+    const path = "/self/email/resend-verification";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   UpdateEmail(input: UpdateEmailInput, opts?: any): Promise<UpdateEmailOutput> {
     const path = "/self/email";
 
@@ -81,27 +87,6 @@ export class Cognito {
 
   UpdatePassword(input: UpdatePasswordInput, opts?: any): Promise<UpdatePasswordOutput> {
     const path = "/self/password";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  ResendEmailVerification(input: ResendEmailVerificationInput, opts?: any): Promise<ResendEmailVerificationOutput> {
-    const path = "/self/email/resend-verification";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  StartRecovery(input: StartRecoveryInput, opts?: any): Promise<StartRecoveryOutput> {
-    const path = "/self/recovery";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  CompleteRecovery(input: CompleteRecoverInput, opts?: any): Promise<CompleteRecoverOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId||'')+"/recover";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.userId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -155,6 +140,21 @@ export class Cognito {
     delete(input.userId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  StartRecovery(input: StartRecoveryInput, opts?: any): Promise<StartRecoveryOutput> {
+    const path = "/self/recovery";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  CompleteRecovery(input: CompleteRecoverInput, opts?: any): Promise<CompleteRecoverOutput> {
+    const path = "/users/"+encodeURIComponent(input.userId||'')+"/recover";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListEntitlements(input: ListEntitlementsInput, opts?: any): Promise<ListEntitlementsOutput> {
@@ -403,12 +403,12 @@ export type RevokeTokenInput = {
 
 export type RevokeTokenOutput = Record<string, unknown>;
 
-export type SinginInput = {
+export type SigninInput = {
   username?: string;
   password?: string;
 }
 
-export type SinginOutput = {
+export type SigninOutput = {
   user?: User;
 }
 
