@@ -19,12 +19,6 @@ export class Cognito {
     this.url = url;
   }
 
-  CreateAuthorization(input: CreateAuthorizationInput, opts?: any): Promise<CreateAuthorizationOutput> {
-    const path = "/self/authorize";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   Signout(input: SignoutInput, opts?: any): Promise<SignoutOutput> {
     const path = "/self/signout";
 
@@ -408,6 +402,15 @@ export type RevokeTokenInput = {
 }
 
 export type RevokeTokenOutput = Record<string, unknown>;
+
+export type SinginInput = {
+  username?: string;
+  password?: string;
+}
+
+export type SinginOutput = {
+  user?: User;
+}
 
 export type SignoutInput = {
   everywhere?: boolean;
