@@ -40,6 +40,7 @@ export type Scoreboard_Row_Value = {
   percentage?: number;
   attempts?: number;
   solvedIn?: number;
+  upsolve?: boolean;
   valueString?: string;
   valueNumber?: number;
 }

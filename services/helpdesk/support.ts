@@ -2,7 +2,8 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
-import { Ticket } from "./ticket"
+import { AutoReply } from "./auto_reply"
+import { Ticket, Ticket_Comment } from "./ticket"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -82,6 +83,93 @@ export class Support {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  AddComment(input: AddCommentInput, opts?: any): Promise<AddCommentOutput> {
+    const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/comments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateComment(input: UpdateCommentInput, opts?: any): Promise<UpdateCommentOutput> {
+    const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/comments/"+encodeURIComponent(input.commentId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+    delete(input.commentId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteComment(input: DeleteCommentInput, opts?: any): Promise<DeleteCommentOutput> {
+    const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/comments/"+encodeURIComponent(input.commentId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+    delete(input.commentId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  ListComments(input: ListCommentsInput, opts?: any): Promise<ListCommentsOutput> {
+    const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/comments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeComment(input: DescribeCommentInput, opts?: any): Promise<DescribeCommentOutput> {
+    const path = "/helpdesk/tickets/"+encodeURIComponent(input.ticketId||'')+"/comments/"+encodeURIComponent(input.commentId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+    delete(input.commentId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  CreateAutoReply(input: CreateAutoReplyInput, opts?: any): Promise<CreateAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateAutoReply(input: UpdateAutoReplyInput, opts?: any): Promise<UpdateAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies/"+encodeURIComponent(input.replyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.replyId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteAutoReply(input: DeleteAutoReplyInput, opts?: any): Promise<DeleteAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies/"+encodeURIComponent(input.replyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.replyId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  ListAutoReplies(input: ListAutoRepliesInput, opts?: any): Promise<ListAutoRepliesOutput> {
+    const path = "/helpdesk/autoreplies";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeAutoReply(input: DescribeAutoReplyInput, opts?: any): Promise<DescribeAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies/"+encodeURIComponent(input.replyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.replyId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateTicketInput = {
@@ -157,4 +245,94 @@ export type CloseTicketInput = {
 }
 
 export type CloseTicketOutput = Record<string, unknown>;
+
+export type AddCommentInput = {
+  ticketId?: string;
+  comment?: Ticket_Comment;
+}
+
+export type AddCommentOutput = {
+  commentId?: string;
+}
+
+export type UpdateCommentInput = {
+  ticketId?: string;
+  commentId?: string;
+  comment?: Ticket_Comment;
+}
+
+export type UpdateCommentOutput = Record<string, unknown>;
+
+export type DeleteCommentInput = {
+  ticketId?: string;
+  commentId?: string;
+}
+
+export type DeleteCommentOutput = Record<string, unknown>;
+
+export type ListCommentsInput = {
+  ticketId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListCommentsOutput = {
+  total?: number;
+  items?: Ticket_Comment[];
+}
+
+export type DescribeCommentInput = {
+  ticketId?: string;
+  commentId?: string;
+}
+
+export type DescribeCommentOutput = {
+  comment?: Ticket_Comment;
+}
+
+export type CreateAutoReplyInput = {
+  reply?: AutoReply;
+}
+
+export type CreateAutoReplyOutput = {
+  replyId?: string;
+}
+
+export type UpdateAutoReplyInput = {
+  replyId?: string;
+  reply?: AutoReply;
+}
+
+export type UpdateAutoReplyOutput = Record<string, unknown>;
+
+export type DeleteAutoReplyInput = {
+  replyId?: string;
+}
+
+export type DeleteAutoReplyOutput = Record<string, unknown>;
+
+export type ListAutoRepliesInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListAutoRepliesInput_Filter;
+}
+
+export type ListAutoRepliesInput_Filter = {
+  query?: string;
+  id?: ExpressionID[];
+  locale?: ExpressionEnum[];
+}
+
+export type ListAutoRepliesOutput = {
+  total?: number;
+  items?: AutoReply[];
+}
+
+export type DescribeAutoReplyInput = {
+  replyId?: string;
+}
+
+export type DescribeAutoReplyOutput = {
+  reply?: AutoReply;
+}
 

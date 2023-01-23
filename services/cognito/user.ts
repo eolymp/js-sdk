@@ -21,5 +21,6 @@ export type User = {
   lastActivity?: string;
   usernameChangedOn?: string;
   passwordChangedOn?: string;
+  locale?: string;
 }
 

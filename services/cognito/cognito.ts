@@ -19,12 +19,6 @@ export class Cognito {
     this.url = url;
   }
 
-  CreateAuthorization(input: CreateAuthorizationInput, opts?: any): Promise<CreateAuthorizationOutput> {
-    const path = "/self/authorize";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   Signout(input: SignoutInput, opts?: any): Promise<SignoutOutput> {
     const path = "/self/signout";
 
@@ -67,6 +61,12 @@ export class Cognito {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ResendEmailVerification(input: ResendEmailVerificationInput, opts?: any): Promise<ResendEmailVerificationOutput> {
+    const path = "/self/email/resend-verification";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   UpdateEmail(input: UpdateEmailInput, opts?: any): Promise<UpdateEmailOutput> {
     const path = "/self/email";
 
@@ -87,21 +87,6 @@ export class Cognito {
 
   UpdatePassword(input: UpdatePasswordInput, opts?: any): Promise<UpdatePasswordOutput> {
     const path = "/self/password";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  StartRecovery(input: StartRecoveryInput, opts?: any): Promise<StartRecoveryOutput> {
-    const path = "/self/recovery";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  CompleteRecovery(input: CompleteRecoverInput, opts?: any): Promise<CompleteRecoverOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId||'')+"/recover";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.userId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -155,6 +140,21 @@ export class Cognito {
     delete(input.userId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  StartRecovery(input: StartRecoveryInput, opts?: any): Promise<StartRecoveryOutput> {
+    const path = "/self/recovery";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  CompleteRecovery(input: CompleteRecoverInput, opts?: any): Promise<CompleteRecoverOutput> {
+    const path = "/users/"+encodeURIComponent(input.userId||'')+"/recover";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListEntitlements(input: ListEntitlementsInput, opts?: any): Promise<ListEntitlementsOutput> {
@@ -316,6 +316,7 @@ export type UpdateProfileInput = {
   country?: string;
   city?: string;
   birthday?: string;
+  locale?: string;
 }
 
 export type UpdateProfileOutput = {
@@ -338,6 +339,12 @@ export type UpdatePasswordInput = {
 }
 
 export type UpdatePasswordOutput = Record<string, unknown>;
+
+export type ResendEmailVerificationInput = Record<string, unknown>;
+
+export type ResendEmailVerificationOutput = {
+  emailConfirmationHint?: string;
+}
 
 export type StartRecoveryInput = {
   email?: string;
@@ -395,6 +402,15 @@ export type RevokeTokenInput = {
 }
 
 export type RevokeTokenOutput = Record<string, unknown>;
+
+export type SigninInput = {
+  username?: string;
+  password?: string;
+}
+
+export type SigninOutput = {
+  user?: User;
+}
 
 export type SignoutInput = {
   everywhere?: boolean;

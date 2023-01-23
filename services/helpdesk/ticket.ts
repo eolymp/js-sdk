@@ -16,3 +16,13 @@ export type Ticket = {
   message?: string;
 }
 
+export type Ticket_Comment = {
+  id?: string;
+  userId?: string;
+  userEmail?: string;
+  metadata?: Record<string, string>;
+  createdAt?: string;
+  updatedAt?: string;
+  message?: string;
+}
+
