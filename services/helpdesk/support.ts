@@ -156,7 +156,7 @@ export class Support {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  ListAutoReplys(input: ListAutoRepliesInput, opts?: any): Promise<ListAutoRepliesOutput> {
+  ListAutoReplies(input: ListAutoRepliesInput, opts?: any): Promise<ListAutoRepliesOutput> {
     const path = "/helpdesk/autoreplies";
 
     return this.cli.call("GET", this.url+path, input, opts);
