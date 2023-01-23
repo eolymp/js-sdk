@@ -6,6 +6,7 @@ export class Options {
   retry?: number;
   headers?: Record<string, string>;
   token?: string;
+  request?: RequestInit;
   authenticate?: () => Promise<string>;
 }
 
@@ -23,7 +24,7 @@ export class Client {
     this.authenticate = opts.authenticate || undefined;
   }
 
-  async do<T>(url: string, method: string, body: string|undefined, headers: Record<string, string> = {}): Promise<T> {
+  async send<T>(method: string, url: string, body: string|undefined, opts?: Options): Promise<T> {
     const max = Math.max(1, this.retry);
     for (let retry = 0; retry < max; retry++) {
       const last = retry >= max-1
@@ -38,17 +39,18 @@ export class Client {
       }
 
       const params: RequestInit = {
-        method: method,
         mode: 'cors',
         credentials: 'omit',
+        redirect: 'follow',
+        method: method,
+        body: body,
         headers: {
           'Content-Type': 'application/json',
           ...auth,
           ...this.headers,
-          ...(headers || {}),
+          ...(opts?.headers || {}),
         },
-        redirect: 'follow',
-        body: body,
+        ...opts?.request,
       };
 
       const response = await fetch(url, params);
@@ -102,13 +104,18 @@ export class Client {
     return {} as T;
   }
 
+  // deprecated: use send instead
+  async do<T>(url: string, method: string, body: string|undefined, headers: Record<string, string> = {}): Promise<T> {
+    return this.send(method, url, body, {headers})
+  }
+
   graphql<R>(url: string, query: string, variables: Record<string, any>, opts?: Options) {
     const body = JSON.stringify({
       query: query.replace(/\s{2,}/g, ' ').trim(),
       variables,
     })
 
-    return this.do<R>(url, "POST", body, opts?.headers);
+    return this.send<R>("POST", url, body, opts);
   }
 
   call<R, E>(method: string, url: string, input: R, opts?: Options): Promise<E> {
@@ -116,10 +123,10 @@ export class Client {
 
     if (method == "GET") {
       const query = data != '{}' ? `?q=${encodeURIComponent(data)}` : '';
-      return this.do<E>(url+query, method, undefined, opts?.headers)
+      return this.send<E>(method, url+query, undefined, opts)
     }
 
-    return this.do<E>(url, method, data, opts?.headers)
+    return this.send<E>(method, url, data, opts)
   }
 
   private static async getResponseErrorData(response: Response, message: string): Promise<Record<string, any>> {
