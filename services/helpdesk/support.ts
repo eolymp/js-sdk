@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
+import { AutoReply } from "./auto_reply"
 import { Ticket, Ticket_Comment } from "./ticket"
 
 interface Client {
@@ -130,6 +131,45 @@ export class Support {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  CreateAutoReply(input: CreateAutoReplyInput, opts?: any): Promise<CreateAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateAutoReply(input: UpdateAutoReplyInput, opts?: any): Promise<UpdateAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies/"+encodeURIComponent(input.replyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.replyId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteAutoReply(input: DeleteAutoReplyInput, opts?: any): Promise<DeleteAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies/"+encodeURIComponent(input.replyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.replyId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  ListAutoReplys(input: ListAutoRepliesInput, opts?: any): Promise<ListAutoRepliesOutput> {
+    const path = "/helpdesk/autoreplies";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeAutoReply(input: DescribeAutoReplyInput, opts?: any): Promise<DescribeAutoReplyOutput> {
+    const path = "/helpdesk/autoreplies/"+encodeURIComponent(input.replyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.replyId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateTicketInput = {
@@ -248,5 +288,51 @@ export type DescribeCommentInput = {
 
 export type DescribeCommentOutput = {
   comment?: Ticket_Comment;
+}
+
+export type CreateAutoReplyInput = {
+  reply?: AutoReply;
+}
+
+export type CreateAutoReplyOutput = {
+  replyId?: string;
+}
+
+export type UpdateAutoReplyInput = {
+  replyId?: string;
+  reply?: AutoReply;
+}
+
+export type UpdateAutoReplyOutput = Record<string, unknown>;
+
+export type DeleteAutoReplyInput = {
+  replyId?: string;
+}
+
+export type DeleteAutoReplyOutput = Record<string, unknown>;
+
+export type ListAutoRepliesInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListAutoRepliesInput_Filter;
+}
+
+export type ListAutoRepliesInput_Filter = {
+  query?: string;
+  id?: ExpressionID[];
+  locale?: ExpressionEnum[];
+}
+
+export type ListAutoRepliesOutput = {
+  total?: number;
+  items?: AutoReply[];
+}
+
+export type DescribeAutoReplyInput = {
+  replyId?: string;
+}
+
+export type DescribeAutoReplyOutput = {
+  reply?: AutoReply;
 }
 
