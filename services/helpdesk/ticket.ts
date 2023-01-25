@@ -12,6 +12,7 @@ export type Ticket = {
   locale?: string;
   createdAt?: string;
   updatedAt?: string;
+  secret?: string;
   subject?: string;
   message?: string;
 }
