@@ -22,6 +22,7 @@ export type TicketChangedEvent = {
 }
 
 export type CommentChangedEvent = {
+  ticketId?: string;
   before?: Ticket_Comment;
   after?: Ticket_Comment;
 }
