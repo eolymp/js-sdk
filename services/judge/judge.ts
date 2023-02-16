@@ -413,6 +413,16 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  SetPasscode(input: SetPasscodeInput, opts?: any): Promise<SetPasscodeOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   RemovePasscode(input: RemovePasscodeInput, opts?: any): Promise<RemovePasscodeOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
@@ -964,6 +974,14 @@ export type ResetPasscodeInput = {
 export type ResetPasscodeOutput = {
   passcode?: string;
 }
+
+export type SetPasscodeInput = {
+  contestId?: string;
+  participantId?: string;
+  passcode?: string;
+}
+
+export type SetPasscodeOutput = Record<string, unknown>;
 
 export type RemovePasscodeInput = {
   contestId?: string;
