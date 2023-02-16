@@ -6,7 +6,6 @@ import { Verifier } from "../executor/verifier"
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Attachment } from "./attachment"
 import { Category } from "./category"
-import { Change } from "./change"
 import { Permission } from "./permission"
 import { Problem } from "./problem"
 import { Score } from "./score"
@@ -16,6 +15,7 @@ import { Submission } from "./submission"
 import { Template } from "./template"
 import { Test } from "./test"
 import { Testset } from "./testset"
+import { Version } from "./version"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -396,18 +396,8 @@ export class Atlas {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeChange(input: DescribeChangeInput, opts?: any): Promise<DescribeChangeOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/changes/"+encodeURIComponent(input.changeId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
-    delete(input.changeId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListChanges(input: ListChangesInput, opts?: any): Promise<ListChangesOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/changes";
+  ListVersions(input: ListVersionsInput, opts?: any): Promise<ListVersionsOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/versions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -665,6 +655,7 @@ export type DescribeProblemOutput = {
 
 export type ListStatementsInput = {
   problemId?: string;
+  version?: number;
 }
 
 export type ListStatementsOutput = {
@@ -675,6 +666,7 @@ export type ListStatementsOutput = {
 export type DescribeStatementInput = {
   problemId?: string;
   statementId?: string;
+  version?: number;
 }
 
 export type DescribeStatementOutput = {
@@ -714,6 +706,7 @@ export type UpdateVerifierOutput = Record<string, unknown>;
 
 export type DescribeVerifierInput = {
   problemId?: string;
+  version?: number;
 }
 
 export type DescribeVerifierOutput = {
@@ -729,6 +722,7 @@ export type UpdateInteractorOutput = Record<string, unknown>;
 
 export type DescribeInteractorInput = {
   problemId?: string;
+  version?: number;
 }
 
 export type DescribeInteractorOutput = {
@@ -737,6 +731,7 @@ export type DescribeInteractorOutput = {
 
 export type ListTestsetsInput = {
   problemId?: string;
+  version?: number;
 }
 
 export type ListTestsetsOutput = {
@@ -747,6 +742,7 @@ export type ListTestsetsOutput = {
 export type DescribeTestsetInput = {
   problemId?: string;
   testsetId?: string;
+  version?: number;
 }
 
 export type DescribeTestsetOutput = {
@@ -779,6 +775,7 @@ export type DeleteTestsetOutput = Record<string, unknown>;
 
 export type ListExamplesInput = {
   problemId?: string;
+  version?: number;
 }
 
 export type ListExamplesOutput = {
@@ -788,6 +785,7 @@ export type ListExamplesOutput = {
 export type ListTestsInput = {
   problemId?: string;
   testsetId?: string;
+  version?: number;
 }
 
 export type ListTestsOutput = {
@@ -799,6 +797,7 @@ export type DescribeTestInput = {
   problemId?: string;
   testsetId?: string;
   testId?: string;
+  version?: number;
 }
 
 export type DescribeTestOutput = {
@@ -880,6 +879,7 @@ export type DeleteCodeTemplateOutput = Record<string, unknown>;
 
 export type ListCodeTemplatesInput = {
   problemId?: string;
+  version?: number;
 }
 
 export type ListCodeTemplatesOutput = {
@@ -891,6 +891,7 @@ export type DescribeCodeTemplateInput = {
   problemId?: string;
   templateId?: string;
   templateErn?: string;
+  version?: number;
 }
 
 export type DescribeCodeTemplateOutput = {
@@ -926,6 +927,7 @@ export type ListAttachmentsInput = {
   offset?: number;
   size?: number;
   filters?: ListAttachmentsInput_Filter;
+  version?: number;
 }
 
 export type ListAttachmentsInput_Filter = {
@@ -941,39 +943,31 @@ export type ListAttachmentsOutput = {
 export type DescribeAttachmentInput = {
   problemId?: string;
   attachmentId?: string;
+  version?: number;
 }
 
 export type DescribeAttachmentOutput = {
   attachment?: Attachment;
 }
 
-export type DescribeChangeInput = {
-  problemId?: string;
-  changeId?: string;
-}
-
-export type DescribeChangeOutput = {
-  change?: Change;
-}
-
-export type ListChangesInput = {
+export type ListVersionsInput = {
   problemId?: string;
   offset?: number;
   size?: number;
-  filters?: ListChangesInput_Filter;
+  filters?: ListVersionsInput_Filter;
 }
 
-export type ListChangesInput_Filter = {
-  id?: ExpressionID[];
-  ipAddress?: ExpressionID[];
-  userId?: ExpressionID[];
-  timestamp?: ExpressionTimestamp[];
-  type?: ExpressionEnum[];
+export type ListVersionsInput_Filter = {
+  number?: ExpressionInt[];
+  createdBy?: ExpressionID[];
+  createdAt?: ExpressionTimestamp[];
+  changeOp?: ExpressionEnum[];
+  changePath?: ExpressionString[];
 }
 
-export type ListChangesOutput = {
+export type ListVersionsOutput = {
   total?: number;
-  items?: Change[];
+  items?: Version[];
 }
 
 export type ListProblemTopInput = {
