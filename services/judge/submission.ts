@@ -9,6 +9,7 @@ export type Submission = {
   problemId?: string;
   participantId?: string;
   submittedAt?: string;
+  deleted?: boolean;
   lang?: string;
   source?: string;
   signature?: string;
