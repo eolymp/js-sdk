@@ -469,7 +469,27 @@ export class Judge {
     delete(input.contestId);
     delete(input.submissionId);
 
-    return this.cli.call("GET", this.url+path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DeleteSubmission(input: DeleteSubmissionInput, opts?: any): Promise<DeleteSubmissionOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.submissionId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  RestoreSubmission(input: RestoreSubmissionInput, opts?: any): Promise<RestoreSubmissionOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/restore";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.submissionId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   CreateTicket(input: CreateTicketInput, opts?: any): Promise<CreateTicketOutput> {
@@ -1089,6 +1109,13 @@ export type DeleteSubmissionInput = {
 }
 
 export type DeleteSubmissionOutput = Record<string, unknown>;
+
+export type RestoreSubmissionInput = {
+  contestId?: string;
+  submissionId?: string;
+}
+
+export type RestoreSubmissionOutput = Record<string, unknown>;
 
 export type CreateTicketInput = {
   contestId?: string;
