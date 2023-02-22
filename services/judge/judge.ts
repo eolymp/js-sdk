@@ -1083,6 +1083,13 @@ export type RetestSubmissionInput = {
 
 export type RetestSubmissionOutput = Record<string, unknown>;
 
+export type DeleteSubmissionInput = {
+  contestId?: string;
+  submissionId?: string;
+}
+
+export type DeleteSubmissionOutput = Record<string, unknown>;
+
 export type CreateTicketInput = {
   contestId?: string;
   subject?: string;
