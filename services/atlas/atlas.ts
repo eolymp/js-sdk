@@ -703,6 +703,7 @@ export type RenderStatementOutput = {
 }
 
 export type PreviewStatementInput = {
+  problemId?: string;
   statement?: Statement;
 }
 
