@@ -171,6 +171,25 @@ export class Atlas {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  RenderStatement(input: RenderStatementInput, opts?: any): Promise<RenderStatementOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'')+"/render";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.statementId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  PreviewStatement(input: PreviewStatementInput, opts?: any): Promise<PreviewStatementOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/renders";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   CreateTestset(input: CreateTestsetInput, opts?: any): Promise<CreateTestsetOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets";
 
@@ -670,6 +689,24 @@ export type DescribeStatementInput = {
 }
 
 export type DescribeStatementOutput = {
+  statement?: Statement;
+}
+
+export type RenderStatementInput = {
+  problemId?: string;
+  statementId?: string;
+  version?: number;
+}
+
+export type RenderStatementOutput = {
+  statement?: Statement;
+}
+
+export type PreviewStatementInput = {
+  statement?: Statement;
+}
+
+export type PreviewStatementOutput = {
   statement?: Statement;
 }
 

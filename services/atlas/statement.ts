@@ -8,7 +8,11 @@ export type Statement = {
   problemId?: string;
   locale?: string;
   title?: string;
-  content?: string;
+  contentHtml?: string;
+  contentLatex?: string;
+  contentMarkdown?: string;
+  contentEcm?: Node;
+  contentRaw?: string;
   contentRich?: Node;
   downloadLink?: string;
   format?: string;
