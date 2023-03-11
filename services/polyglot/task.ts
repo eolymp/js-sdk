@@ -6,6 +6,12 @@ export type Task = {
   id?: string;
   type?: string;
   inputs?: Record<string, string>;
+  createdAt?: string;
+  startedAt?: string;
+  progressAt?: string;
+  completeAt?: string;
+  progress?: number;
+  total?: number;
   status?: string;
   outputs?: Record<string, string>;
   logs?: string;
