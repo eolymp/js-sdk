@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Task = {
+export type Job = {
   id?: string;
   type?: string;
   inputs?: Record<string, string>;

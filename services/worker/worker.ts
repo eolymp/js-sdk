@@ -2,13 +2,13 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Task } from "./task"
+import { Job } from "./job"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class Polyglot {
+export class Worker {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -17,59 +17,59 @@ export class Polyglot {
     this.url = url;
   }
 
-  CreateTask(input: CreateTaskInput, opts?: any): Promise<CreateTaskOutput> {
-    const path = "/polyglot/tasks";
+  CreateJob(input: CreateJobInput, opts?: any): Promise<CreateJobOutput> {
+    const path = "/jobs";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeTask(input: DescribeTaskInput, opts?: any): Promise<DescribeTaskOutput> {
-    const path = "/polyglot/tasks/"+encodeURIComponent(input.taskId||'');
+  DescribeJob(input: DescribeJobInput, opts?: any): Promise<DescribeJobOutput> {
+    const path = "/jobs/"+encodeURIComponent(input.jobId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.taskId);
+    delete(input.jobId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListTasks(input: ListTasksInput, opts?: any): Promise<ListTasksOutput> {
-    const path = "/polyglot/tasks";
+  ListJobs(input: ListJobsInput, opts?: any): Promise<ListJobsOutput> {
+    const path = "/jobs";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
-export type CreateTaskInput = {
+export type CreateJobInput = {
   type?: string;
   inputs?: Record<string, string>;
 }
 
-export type CreateTaskOutput = {
-  taskId?: string;
+export type CreateJobOutput = {
+  jobId?: string;
 }
 
-export type DescribeTaskInput = {
-  taskId?: string;
+export type DescribeJobInput = {
+  jobId?: string;
 }
 
-export type DescribeTaskOutput = {
-  task?: Task;
+export type DescribeJobOutput = {
+  job?: Job;
 }
 
-export type ListTasksInput = {
+export type ListJobsInput = {
   offset?: number;
   size?: number;
-  filters?: ListTasksInput_Filter;
+  filters?: ListJobsInput_Filter;
 }
 
-export type ListTasksInput_Filter = {
+export type ListJobsInput_Filter = {
   id?: ExpressionID[];
   type?: ExpressionEnum[];
   status?: ExpressionEnum[];
 }
 
-export type ListTasksOutput = {
+export type ListJobsOutput = {
   total?: number;
-  items?: Task[];
+  items?: Job[];
 }
 
