@@ -319,6 +319,15 @@ export class Atlas {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  IntrospectPermission(input: IntrospectPermissionInput, opts?: any): Promise<IntrospectPermissionOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/introspect-permission";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   CreateCodeTemplate(input: CreateCodeTemplateInput, opts?: any): Promise<CreateCodeTemplateOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates";
 
@@ -890,6 +899,14 @@ export type RevokePermissionInput = {
 }
 
 export type RevokePermissionOutput = Record<string, unknown>;
+
+export type IntrospectPermissionInput = {
+  problemId?: string;
+}
+
+export type IntrospectPermissionOutput = {
+  permission?: Permission;
+}
 
 export type CreateCodeTemplateInput = {
   problemId?: string;
