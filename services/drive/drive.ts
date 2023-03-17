@@ -18,7 +18,7 @@ export class Drive {
   }
 
   DescribeFile(input: DescribeFileInput, opts?: any): Promise<DescribeFileOutput> {
-    const path = "/drive/files/"+encodeURIComponent(input.fileId||'');
+    const path = "/files/"+encodeURIComponent(input.fileId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fileId);
@@ -27,19 +27,19 @@ export class Drive {
   }
 
   ListFiles(input: ListFilesInput, opts?: any): Promise<ListFilesOutput> {
-    const path = "/drive/files";
+    const path = "/files";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateFile(input: CreateFileInput, opts?: any): Promise<CreateFileOutput> {
-    const path = "/drive/files";
+    const path = "/files";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateFile(input: UpdateFileInput, opts?: any): Promise<UpdateFileOutput> {
-    const path = "/drive/files/"+encodeURIComponent(input.fileId||'');
+    const path = "/files/"+encodeURIComponent(input.fileId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fileId);
@@ -48,7 +48,7 @@ export class Drive {
   }
 
   DeleteFile(input: DeleteFileInput, opts?: any): Promise<DeleteFileOutput> {
-    const path = "/drive/files/"+encodeURIComponent(input.fileId||'');
+    const path = "/files/"+encodeURIComponent(input.fileId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fileId);
@@ -57,13 +57,13 @@ export class Drive {
   }
 
   StartMultipartUpload(input: StartMultipartUploadInput, opts?: any): Promise<StartMultipartUploadOutput> {
-    const path = "/drive/uploads";
+    const path = "/uploads";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UploadPart(input: UploadPartInput, opts?: any): Promise<UploadPartOutput> {
-    const path = "/drive/uploads/"+encodeURIComponent(input.uploadId||'')+"/parts";
+    const path = "/uploads/"+encodeURIComponent(input.uploadId||'')+"/parts";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.uploadId);
@@ -72,7 +72,7 @@ export class Drive {
   }
 
   CompleteMultipartUpload(input: CompleteMultipartUploadInput, opts?: any): Promise<CompleteMultipartUploadOutput> {
-    const path = "/drive/uploads/"+encodeURIComponent(input.uploadId||'')+"/complete";
+    const path = "/uploads/"+encodeURIComponent(input.uploadId||'')+"/complete";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.uploadId);
