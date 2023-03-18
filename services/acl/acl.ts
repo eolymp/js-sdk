@@ -82,7 +82,7 @@ export type DescribePermissionInput = {
 }
 
 export type DescribePermissionOutput = {
-  grant?: Permission;
+  permission?: Permission;
 }
 
 export type ListPermissionInput = {
