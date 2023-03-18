@@ -43,7 +43,7 @@ export class Acl {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListPermission(input: ListPermissionInput, opts?: any): Promise<ListPermissionOutput> {
+  ListPermissions(input: ListPermissionsInput, opts?: any): Promise<ListPermissionsOutput> {
     const path = "/acl";
 
     return this.cli.call("GET", this.url+path, input, opts);
@@ -85,19 +85,19 @@ export type DescribePermissionOutput = {
   permission?: Permission;
 }
 
-export type ListPermissionInput = {
+export type ListPermissionsInput = {
   offset?: number;
   size?: number;
-  filters?: ListPermissionInput_Filter;
+  filters?: ListPermissionsInput_Filter;
 }
 
-export type ListPermissionInput_Filter = {
+export type ListPermissionsInput_Filter = {
   id?: ExpressionID[];
   userId?: ExpressionID[];
   role?: ExpressionEnum[];
 }
 
-export type ListPermissionOutput = {
+export type ListPermissionsOutput = {
   total?: number;
   items?: Permission[];
 }
