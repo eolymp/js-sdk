@@ -8,6 +8,8 @@ export type File = {
   hash?: string;
   size?: number;
   type?: string;
+  acl?: string;
+  createdBy?: string;
   createdAt?: string;
   updatedAt?: string;
   attributes?: Record<string, string>;

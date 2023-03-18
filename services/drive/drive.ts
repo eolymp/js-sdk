@@ -17,6 +17,12 @@ export class Drive {
     this.url = url;
   }
 
+  UploadFile(input: UploadFileInput, opts?: any): Promise<UploadFileOutput> {
+    const path = "/files";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeFile(input: DescribeFileInput, opts?: any): Promise<DescribeFileOutput> {
     const path = "/files/"+encodeURIComponent(input.fileId||'');
 
@@ -30,12 +36,6 @@ export class Drive {
     const path = "/files";
 
     return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  CreateFile(input: CreateFileInput, opts?: any): Promise<CreateFileOutput> {
-    const path = "/files";
-
-    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateFile(input: UpdateFileInput, opts?: any): Promise<UpdateFileOutput> {
@@ -63,7 +63,7 @@ export class Drive {
   }
 
   UploadPart(input: UploadPartInput, opts?: any): Promise<UploadPartOutput> {
-    const path = "/uploads/"+encodeURIComponent(input.uploadId||'')+"/parts";
+    const path = "/uploads/"+encodeURIComponent(input.uploadId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.uploadId);
@@ -72,12 +72,12 @@ export class Drive {
   }
 
   CompleteMultipartUpload(input: CompleteMultipartUploadInput, opts?: any): Promise<CompleteMultipartUploadOutput> {
-    const path = "/uploads/"+encodeURIComponent(input.uploadId||'')+"/complete";
+    const path = "/uploads/"+encodeURIComponent(input.uploadId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.uploadId);
 
-    return this.cli.call("POST", this.url+path, input, opts);
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 }
 
@@ -110,15 +110,18 @@ export type ListFilesOutput = {
   items?: File[];
 }
 
-export type CreateFileInput = {
+export type UploadFileInput = {
   path?: string;
   type?: string;
+  acl?: string;
   attributes?: Record<string, string>;
   data?: string;
 }
 
-export type CreateFileOutput = {
+export type UploadFileOutput = {
   fileId?: string;
+  fileUrl?: string;
+  fileHash?: string;
 }
 
 export type UpdateFileInput = {
@@ -137,6 +140,7 @@ export type DeleteFileOutput = Record<string, unknown>;
 export type StartMultipartUploadInput = {
   path?: string;
   type?: string;
+  acl?: string;
   attributes?: Record<string, string>;
 }
 
@@ -165,5 +169,9 @@ export type CompleteMultipartUploadInput_Part = {
   checksumSha1?: string;
 }
 
-export type CompleteMultipartUploadOutput = Record<string, unknown>;
+export type CompleteMultipartUploadOutput = {
+  fileId?: string;
+  fileUrl?: string;
+  fileHash?: string;
+}
 
