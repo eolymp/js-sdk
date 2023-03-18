@@ -105,6 +105,6 @@ export type ListPermissionOutput = {
 export type IntrospectPermissionInput = Record<string, unknown>;
 
 export type IntrospectPermissionOutput = {
-  grant?: Permission;
+  permission?: Permission;
 }
 
