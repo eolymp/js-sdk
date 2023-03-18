@@ -98,7 +98,7 @@ export type ListFilesInput = {
 export type ListFilesInput_Filter = {
   id?: ExpressionID[];
   path?: ExpressionString[];
-  hash?: ExpressionEnum[];
+  etag?: ExpressionEnum[];
   size?: ExpressionInt[];
   type?: ExpressionEnum[];
   createdAt?: ExpressionTimestamp[];
@@ -121,7 +121,7 @@ export type UploadFileInput = {
 export type UploadFileOutput = {
   fileId?: string;
   fileUrl?: string;
-  fileHash?: string;
+  fileEtag?: string;
 }
 
 export type UpdateFileInput = {
@@ -172,6 +172,6 @@ export type CompleteMultipartUploadInput_Part = {
 export type CompleteMultipartUploadOutput = {
   fileId?: string;
   fileUrl?: string;
-  fileHash?: string;
+  fileEtag?: string;
 }
 

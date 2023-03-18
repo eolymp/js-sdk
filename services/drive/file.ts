@@ -5,7 +5,7 @@
 export type File = {
   id?: string;
   path?: string;
-  hash?: string;
+  etag?: string;
   size?: number;
   type?: string;
   acl?: string;
