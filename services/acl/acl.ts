@@ -16,7 +16,7 @@ export class Acl {
     this.url = url;
   }
 
-  Grant(input: GrantInput, opts?: any): Promise<GrantOutput> {
+  GrantPermission(input: GrantPermissionInput, opts?: any): Promise<GrantPermissionOutput> {
     const path = "/acl/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -25,7 +25,7 @@ export class Acl {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  Revoke(input: RevokeInput, opts?: any): Promise<RevokeOutput> {
+  RevokePermission(input: RevokePermissionInput, opts?: any): Promise<RevokePermissionOutput> {
     const path = "/acl/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -34,7 +34,7 @@ export class Acl {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  Describe(input: DescribeInput, opts?: any): Promise<DescribeOutput> {
+  DescribePermission(input: DescribePermissionInput, opts?: any): Promise<DescribePermissionOutput> {
     const path = "/acl/"+encodeURIComponent(input.userId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -43,68 +43,68 @@ export class Acl {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  List(input: ListInput, opts?: any): Promise<ListOutput> {
+  ListPermission(input: ListPermissionInput, opts?: any): Promise<ListPermissionOutput> {
     const path = "/acl";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  Introspect(input: IntrospectInput, opts?: any): Promise<IntrospectOutput> {
+  IntrospectPermission(input: IntrospectPermissionInput, opts?: any): Promise<IntrospectPermissionOutput> {
     const path = "/whoami";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
-export type Grant = {
+export type Permission = {
   id?: string;
   role?: string;
   userId?: string;
   entitlements?: string[];
 }
 
-export type GrantInput = {
+export type GrantPermissionInput = {
   userId?: string;
   role?: string;
   entitlements?: string[];
 }
 
-export type GrantOutput = Record<string, unknown>;
+export type GrantPermissionOutput = Record<string, unknown>;
 
-export type RevokeInput = {
+export type RevokePermissionInput = {
   userId?: string;
 }
 
-export type RevokeOutput = Record<string, unknown>;
+export type RevokePermissionOutput = Record<string, unknown>;
 
-export type DescribeInput = {
+export type DescribePermissionInput = {
   userId?: string;
 }
 
-export type DescribeOutput = {
-  grant?: Grant;
+export type DescribePermissionOutput = {
+  grant?: Permission;
 }
 
-export type ListInput = {
+export type ListPermissionInput = {
   offset?: number;
   size?: number;
-  filters?: ListInput_Filter;
+  filters?: ListPermissionInput_Filter;
 }
 
-export type ListInput_Filter = {
+export type ListPermissionInput_Filter = {
   id?: ExpressionID[];
   userId?: ExpressionID[];
   role?: ExpressionEnum[];
 }
 
-export type ListOutput = {
+export type ListPermissionOutput = {
   total?: number;
-  items?: Grant[];
+  items?: Permission[];
 }
 
-export type IntrospectInput = Record<string, unknown>;
+export type IntrospectPermissionInput = Record<string, unknown>;
 
-export type IntrospectOutput = {
-  grant?: Grant;
+export type IntrospectPermissionOutput = {
+  grant?: Permission;
 }
 
