@@ -115,6 +115,7 @@ export type UploadFileInput = {
   path?: string;
   type?: string;
   acl?: string;
+  checksumSha256?: string;
   attributes?: Record<string, string>;
   data?: string;
 }
