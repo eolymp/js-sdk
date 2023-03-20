@@ -25,6 +25,7 @@ export type Task = {
 export type Task_File = {
   path?: string;
   sourceErn?: string;
+  sourceUrl?: string;
 }
 
 export type Task_Run = {
@@ -35,8 +36,10 @@ export type Task_Run = {
   labels?: string[];
   inputObjectId?: string;
   inputContent?: string;
+  inputUrl?: string;
   answerObjectId?: string;
   answerContent?: string;
+  answerUrl?: string;
 }
 
 export type Task_Precondition = {

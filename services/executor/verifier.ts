@@ -15,5 +15,6 @@ export type Verifier = {
 export type Verifier_File = {
   path?: string;
   sourceErn?: string;
+  sourceUrl?: string;
 }
 

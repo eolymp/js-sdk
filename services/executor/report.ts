@@ -54,6 +54,7 @@ export type Report_Step_Execute = {
 export type Report_Step_Upload = {
   targetName?: string;
   targetErn?: string;
+  targetUrl?: string;
 }
 
 export type Report_Step_Group = {

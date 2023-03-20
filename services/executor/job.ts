@@ -18,6 +18,9 @@ export type Job_Actor = {
   sourceErn?: string;
   headerErn?: string;
   footerErn?: string;
+  sourceUrl?: string;
+  headerUrl?: string;
+  footerUrl?: string;
   env?: Record<string, string>;
   files?: Job_File[];
   outputFormat?: string;
@@ -32,6 +35,7 @@ export type Job_Mount = {
 export type Job_File = {
   path?: string;
   sourceErn?: string;
+  sourceUrl?: string;
 }
 
 export type Job_Run = {
@@ -54,6 +58,7 @@ export type Job_Step = {
 
 export type Job_Step_Write = {
   sourceErn?: string;
+  sourceUrl?: string;
   targetActor?: string;
   targetPath?: string;
   fixCrlf?: boolean;
