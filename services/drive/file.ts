@@ -6,8 +6,10 @@ export type File = {
   id?: string;
   path?: string;
   etag?: string;
+  checksum?: string;
   size?: number;
   type?: string;
+  incomplete?: boolean;
   acl?: string;
   createdBy?: string;
   createdAt?: string;
