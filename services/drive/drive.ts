@@ -99,6 +99,7 @@ export type ListFilesInput_Filter = {
   id?: ExpressionID[];
   path?: ExpressionString[];
   etag?: ExpressionEnum[];
+  checksumSha256?: ExpressionEnum[];
   size?: ExpressionInt[];
   type?: ExpressionEnum[];
   createdAt?: ExpressionTimestamp[];
@@ -121,7 +122,7 @@ export type UploadFileInput = {
 export type UploadFileOutput = {
   fileId?: string;
   fileUrl?: string;
-  fileChecksum?: string;
+  fileChecksumSha256?: string;
 }
 
 export type UpdateFileInput = {
@@ -166,12 +167,12 @@ export type CompleteMultipartUploadInput = {
 export type CompleteMultipartUploadInput_Part = {
   number?: number;
   etag?: string;
-  checksumSha1?: string;
+  checksumSha256?: string;
 }
 
 export type CompleteMultipartUploadOutput = {
   fileId?: string;
   fileUrl?: string;
-  fileChecksum?: string;
+  fileChecksumSha256?: string;
 }
 

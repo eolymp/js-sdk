@@ -6,7 +6,7 @@ export type File = {
   id?: string;
   path?: string;
   etag?: string;
-  checksum?: string;
+  checksumSha256?: string;
   size?: number;
   type?: string;
   incomplete?: boolean;
