@@ -121,7 +121,7 @@ export type UploadFileInput = {
 export type UploadFileOutput = {
   fileId?: string;
   fileUrl?: string;
-  fileEtag?: string;
+  fileChecksum?: string;
 }
 
 export type UpdateFileInput = {
@@ -172,6 +172,6 @@ export type CompleteMultipartUploadInput_Part = {
 export type CompleteMultipartUploadOutput = {
   fileId?: string;
   fileUrl?: string;
-  fileEtag?: string;
+  fileChecksum?: string;
 }
 
