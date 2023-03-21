@@ -33,15 +33,10 @@ export class Playground {
 }
 
 export type CreateRunInput = {
-  lang?: string;
   runtime?: string;
   source?: string;
-  sourceErn?: string;
-  inputErn?: string;
-  problemErn?: string;
-  input?: string;
-  inputContent?: string;
-  inputObjectId?: string;
+  inputUrl?: string;
+  problemUrl?: string;
 }
 
 export type CreateRunOutput = {

@@ -5,12 +5,9 @@ import { ResourceUsage } from "../executor/usage"
 
 export type Run = {
   id?: string;
-  lang?: string;
   runtime?: string;
   source?: string;
-  sourceErn?: string;
-  input?: string;
-  inputErn?: string;
+  inputUrl?: string;
   status?: string;
   error?: string;
   exitCode?: number;
@@ -19,8 +16,6 @@ export type Run = {
   cpuTimeUsage?: number;
   memoryUsage?: number;
   resourceUsage?: ResourceUsage;
-  output?: string;
-  outputErn?: string;
-  problemErn?: string;
+  outputUrl?: string;
 }
 
