@@ -12,5 +12,6 @@ export type Interactor = {
 export type Interactor_File = {
   path?: string;
   sourceErn?: string;
+  sourceUrl?: string;
 }
 
