@@ -6,7 +6,7 @@ import { ResourceUsage } from "../executor/usage"
 export type Run = {
   id?: string;
   runtime?: string;
-  source?: string;
+  sourceUrl?: string;
   inputUrl?: string;
   status?: string;
   error?: string;

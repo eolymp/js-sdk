@@ -34,7 +34,7 @@ export class Playground {
 
 export type CreateRunInput = {
   runtime?: string;
-  source?: string;
+  sourceUrl?: string;
   inputUrl?: string;
   problemUrl?: string;
 }
