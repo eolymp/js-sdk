@@ -17,13 +17,13 @@ export class Playground {
   }
 
   CreateRun(input: CreateRunInput, opts?: any): Promise<CreateRunOutput> {
-    const path = "/playground/runs";
+    const path = "/runs";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeRun(input: DescribeRunInput, opts?: any): Promise<DescribeRunOutput> {
-    const path = "/playground/runs/"+encodeURIComponent(input.runId||'');
+    const path = "/runs/"+encodeURIComponent(input.runId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runId);
@@ -34,9 +34,9 @@ export class Playground {
 
 export type CreateRunInput = {
   runtime?: string;
-  sourceUrl?: string;
-  inputUrl?: string;
-  problemUrl?: string;
+  source?: string;
+  inputData?: string;
+  inputRef?: string;
 }
 
 export type CreateRunOutput = {
