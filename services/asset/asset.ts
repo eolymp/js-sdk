@@ -26,7 +26,8 @@ export type UploadImageInput = {
   name?: string;
   type?: string;
   crop?: UploadImageInput_Crop;
-  sizes?: UploadImageInput_Size[];
+  size?: UploadImageInput_Size;
+  variants?: UploadImageInput_Size[];
   data?: string;
 }
 
@@ -37,9 +38,9 @@ export type UploadImageInput_Size = {
 
 export type UploadImageInput_Crop = {
   top?: number;
+  right?: number;
+  bottom?: number;
   left?: number;
-  width?: number;
-  height?: number;
 }
 
 export type UploadImageOutput = {
