@@ -24,7 +24,7 @@ export class Asset {
 
 export type UploadImageInput = {
   name?: string;
-  mime?: string;
+  type?: string;
   crop?: UploadImageInput_Crop;
   sizes?: UploadImageInput_Size[];
   data?: string;
