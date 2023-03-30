@@ -22,8 +22,8 @@ export type Problem = {
 export type Problem_Statement = {
   locale?: string;
   title?: string;
-  content?: string;
-  contentRich?: Node;
+  contentRaw?: string;
+  content?: Node;
   format?: string;
   downloadLink?: string;
 }
