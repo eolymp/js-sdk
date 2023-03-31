@@ -682,6 +682,7 @@ export type DescribeProblemOutput = {
 
 export type ListStatementsInput = {
   problemId?: string;
+  render?: boolean;
   version?: number;
 }
 
@@ -693,7 +694,7 @@ export type ListStatementsOutput = {
 export type DescribeStatementInput = {
   problemId?: string;
   statementId?: string;
-  rendered?: boolean;
+  render?: boolean;
   version?: number;
 }
 
@@ -704,7 +705,7 @@ export type DescribeStatementOutput = {
 export type LookupStatementInput = {
   problemId?: string;
   preferredLocale?: string[];
-  rendered?: boolean;
+  render?: boolean;
   version?: number;
 }
 
