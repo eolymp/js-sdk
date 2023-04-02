@@ -180,6 +180,16 @@ export class Atlas {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  RenderStatement(input: RenderStatementInput, opts?: any): Promise<RenderStatementOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'')+"/render";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.statementId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   PreviewStatement(input: PreviewStatementInput, opts?: any): Promise<PreviewStatementOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/renders";
 
@@ -682,7 +692,6 @@ export type DescribeProblemOutput = {
 
 export type ListStatementsInput = {
   problemId?: string;
-  render?: boolean;
   version?: number;
 }
 
@@ -694,7 +703,6 @@ export type ListStatementsOutput = {
 export type DescribeStatementInput = {
   problemId?: string;
   statementId?: string;
-  render?: boolean;
   version?: number;
 }
 
@@ -705,11 +713,20 @@ export type DescribeStatementOutput = {
 export type LookupStatementInput = {
   problemId?: string;
   preferredLocale?: string[];
-  render?: boolean;
   version?: number;
 }
 
 export type LookupStatementOutput = {
+  statement?: Statement;
+}
+
+export type RenderStatementInput = {
+  problemId?: string;
+  statementId?: string;
+  version?: number;
+}
+
+export type RenderStatementOutput = {
   statement?: Statement;
 }
 
