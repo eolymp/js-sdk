@@ -24,14 +24,14 @@ export class ScoringService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListProblemTop(input: ListProblemTopInput, opts?: any): Promise<ListProblemTopOutput> {
-    const path = "/top";
+  DescribeProblemGrading(input: DescribeProblemGradingInput, opts?: any): Promise<DescribeProblemGradingOutput> {
+    const path = "/grading";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeProblemGrading(input: DescribeProblemGradingInput, opts?: any): Promise<DescribeProblemGradingOutput> {
-    const path = "/grading";
+  ListProblemTop(input: ListProblemTopInput, opts?: any): Promise<ListProblemTopOutput> {
+    const path = "/top";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

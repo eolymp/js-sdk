@@ -30,12 +30,6 @@ export class ProblemService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  ListProblems(input: ListProblemsInput, opts?: any): Promise<ListProblemsOutput> {
-    const path = "/problems";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   DescribeProblem(input: DescribeProblemInput, opts?: any): Promise<DescribeProblemOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'');
 
@@ -61,6 +55,12 @@ export class ProblemService {
     delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ListProblems(input: ListProblemsInput, opts?: any): Promise<ListProblemsOutput> {
+    const path = "/problems";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListVersions(input: ListVersionsInput, opts?: any): Promise<ListVersionsOutput> {

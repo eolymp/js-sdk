@@ -39,12 +39,6 @@ export class StatementService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
-    const path = "/statements";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   DescribeStatement(input: DescribeStatementInput, opts?: any): Promise<DescribeStatementOutput> {
     const path = "/statements/"+encodeURIComponent(input.statementId||'');
 
@@ -73,6 +67,12 @@ export class StatementService {
     const path = "/renders";
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
+    const path = "/statements";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 

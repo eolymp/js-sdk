@@ -21,15 +21,6 @@ export class SubmissionService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeSubmission(input: DescribeSubmissionInput, opts?: any): Promise<DescribeSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.submissionId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   RetestSubmission(input: RetestSubmissionInput, opts?: any): Promise<RetestSubmissionOutput> {
     const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
 
@@ -37,6 +28,15 @@ export class SubmissionService {
     delete(input.submissionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeSubmission(input: DescribeSubmissionInput, opts?: any): Promise<DescribeSubmissionOutput> {
+    const path = "/submissions/"+encodeURIComponent(input.submissionId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.submissionId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
