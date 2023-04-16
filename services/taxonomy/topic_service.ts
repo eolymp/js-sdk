@@ -110,6 +110,7 @@ export type UpdateTopicOutput = Record<string, unknown>;
 
 export type DescribeTopicInput = {
   topicId?: string;
+  locale?: string;
 }
 
 export type DescribeTopicOutput = {
@@ -120,6 +121,7 @@ export type ListTopicsInput = {
   offset?: number;
   size?: number;
   filters?: ListTopicsInput_Filter;
+  locale?: string;
 }
 
 export type ListTopicsInput_Filter = {
