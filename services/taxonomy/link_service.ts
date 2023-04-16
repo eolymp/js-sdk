@@ -15,28 +15,28 @@ export class LinkService {
     this.url = url;
   }
 
-  SetTopicLinks(input: SetTopicLinksInput, opts?: any): Promise<SetTopicLinksOutput> {
+  SetLinkedTopics(input: SetLinkedTopicsInput, opts?: any): Promise<SetLinkedTopicsOutput> {
     const path = "/topics";
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  GetTopicLinks(input: GetTopicLinksInput, opts?: any): Promise<GetTopicLinksOutput> {
+  GetLinkedTopics(input: GetLinkedTopicsInput, opts?: any): Promise<GetLinkedTopicsOutput> {
     const path = "/topics";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
-export type SetTopicLinksInput = {
+export type SetLinkedTopicsInput = {
   topics?: string[];
 }
 
-export type SetTopicLinksOutput = Record<string, unknown>;
+export type SetLinkedTopicsOutput = Record<string, unknown>;
 
-export type GetTopicLinksInput = Record<string, unknown>;
+export type GetLinkedTopicsInput = Record<string, unknown>;
 
-export type GetTopicLinksOutput = {
+export type GetLinkedTopicsOutput = {
   topics?: string[];
 }
 
