@@ -4,10 +4,12 @@
 
 export type Topic = {
   id?: string;
-  descriptors?: Topic_Descriptor[];
+  name?: string;
+  summary?: string;
+  keywords?: string[];
 }
 
-export type Topic_Descriptor = {
+export type Topic_Translation = {
   locale?: string;
   name?: string;
   summary?: string;
