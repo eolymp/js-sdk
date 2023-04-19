@@ -5,9 +5,10 @@
 export type Problem = {
   id?: string;
   url?: string;
-  ern?: string;
   number?: number;
   visible?: boolean;
   private?: boolean;
+  topics?: string[];
+  difficulty?: number;
 }
 

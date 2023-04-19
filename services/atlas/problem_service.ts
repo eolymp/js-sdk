@@ -21,6 +21,12 @@ export class ProblemService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  UpdateProblem(input: UpdateProblemInput, opts?: any): Promise<UpdateProblemOutput> {
+    const path = "/";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   DescribeProblem(input: DescribeProblemInput, opts?: any): Promise<DescribeProblemOutput> {
     const path = "/";
 

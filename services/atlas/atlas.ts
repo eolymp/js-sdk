@@ -77,6 +77,15 @@ export class Atlas {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdateProblem(input: UpdateProblemInput, opts?: any): Promise<UpdateProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
 
@@ -1137,4 +1146,12 @@ export type UpdatePrivacyInput = {
 }
 
 export type UpdatePrivacyOutput = Record<string, unknown>;
+
+export type UpdateProblemInput = {
+  patch?: string[];
+  problemId?: string;
+  problem?: Problem;
+}
+
+export type UpdateProblemOutput = Record<string, unknown>;
 
