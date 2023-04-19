@@ -2,8 +2,12 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Service = {
-  space?: boolean;
-  internal?: boolean;
+export type Endpoint = {
+  field?: string;
+  service?: Endpoint_Service[];
+}
+
+export type Endpoint_Service = {
+  name?: string;
 }
 

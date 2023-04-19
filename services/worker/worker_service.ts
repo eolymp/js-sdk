@@ -39,6 +39,41 @@ export class Worker {
   }
 }
 
+interface Client {
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+}
+
+export class WorkerService {
+  private readonly cli: Client;
+  private readonly url: string;
+
+  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+    this.cli = cli;
+    this.url = url;
+  }
+
+  CreateJob(input: CreateJobInput, opts?: any): Promise<CreateJobOutput> {
+    const path = "/jobs";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeJob(input: DescribeJobInput, opts?: any): Promise<DescribeJobOutput> {
+    const path = "/jobs/"+encodeURIComponent(input.jobId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.jobId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListJobs(input: ListJobsInput, opts?: any): Promise<ListJobsOutput> {
+    const path = "/jobs";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+}
+
 export type CreateJobInput = {
   type?: string;
   inputs?: Record<string, string>;

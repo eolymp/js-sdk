@@ -56,6 +56,59 @@ export class Acl {
   }
 }
 
+interface Client {
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+}
+
+export class AclService {
+  private readonly cli: Client;
+  private readonly url: string;
+
+  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+    this.cli = cli;
+    this.url = url;
+  }
+
+  GrantPermission(input: GrantPermissionInput, opts?: any): Promise<GrantPermissionOutput> {
+    const path = "/acl/"+encodeURIComponent(input.userId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  RevokePermission(input: RevokePermissionInput, opts?: any): Promise<RevokePermissionOutput> {
+    const path = "/acl/"+encodeURIComponent(input.userId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  DescribePermission(input: DescribePermissionInput, opts?: any): Promise<DescribePermissionOutput> {
+    const path = "/acl/"+encodeURIComponent(input.userId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.userId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListPermissions(input: ListPermissionsInput, opts?: any): Promise<ListPermissionsOutput> {
+    const path = "/acl";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  IntrospectPermission(input: IntrospectPermissionInput, opts?: any): Promise<IntrospectPermissionOutput> {
+    const path = "/whoami";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+}
+
 export type Permission = {
   id?: string;
   role?: string;

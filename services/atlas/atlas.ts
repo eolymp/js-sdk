@@ -5,7 +5,6 @@ import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Attachment } from "./attachment"
-import { Category } from "./category"
 import { Template } from "./code_template"
 import { Permission } from "./permission"
 import { Problem } from "./problem"
@@ -13,8 +12,8 @@ import { Score } from "./score"
 import { Solution } from "./solution"
 import { Statement } from "./statement"
 import { Submission } from "./submission"
-import { Test } from "./test"
-import { Testset } from "./testset"
+import { Test } from "./testing_test"
+import { Testset } from "./testing_testset"
 import { Version } from "./version"
 
 interface Client {
@@ -548,65 +547,6 @@ export class Atlas {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CreateCategory(input: CreateCategoryInput, opts?: any): Promise<CreateCategoryOutput> {
-    const path = "/categories";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UpdateCategory(input: UpdateCategoryInput, opts?: any): Promise<UpdateCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.categoryId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  DeleteCategory(input: DeleteCategoryInput, opts?: any): Promise<DeleteCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.categoryId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  ListCategories(input: ListCategoriesInput, opts?: any): Promise<ListCategoriesOutput> {
-    const path = "/categories";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  DescribeCategory(input: DescribeCategoryInput, opts?: any): Promise<DescribeCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.categoryId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  AssignCategory(input: AssignCategoryInput, opts?: any): Promise<AssignCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.categoryId);
-    delete(input.problemId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UnassignCategory(input: UnassignCategoryInput, opts?: any): Promise<UnassignCategoryOutput> {
-    const path = "/categories/"+encodeURIComponent(input.categoryId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.categoryId);
-    delete(input.problemId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
   CreateSubmission(input: CreateSubmissionInput, opts?: any): Promise<CreateSubmissionOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/submissions";
 
@@ -655,7 +595,7 @@ export type ListProblemsInput = {
 
 export type ListProblemsInput_Filter = {
   id?: ExpressionID[];
-  categoryId?: ExpressionID[];
+  topicId?: ExpressionID[];
   isVisible?: ExpressionBool[];
   isPrivate?: ExpressionBool[];
   number?: ExpressionInt[];
@@ -1147,68 +1087,6 @@ export type RefuseSolutionInput = {
 }
 
 export type RefuseSolutionOutput = Record<string, unknown>;
-
-export type ListCategoriesInput = {
-  offset?: number;
-  size?: number;
-  filters?: ListCategoriesInput_Filter;
-}
-
-export type ListCategoriesInput_Filter = {
-  id?: ExpressionID[];
-  parentId?: ExpressionID[];
-  problemId?: ExpressionID[];
-  isVisible?: ExpressionBool[];
-}
-
-export type ListCategoriesOutput = {
-  total?: number;
-  items?: Category[];
-}
-
-export type CreateCategoryInput = {
-  category?: Category;
-}
-
-export type CreateCategoryOutput = {
-  categoryId?: string;
-}
-
-export type UpdateCategoryInput = {
-  categoryId?: string;
-  category?: Category;
-}
-
-export type UpdateCategoryOutput = Record<string, unknown>;
-
-export type DeleteCategoryInput = {
-  categoryId?: string;
-}
-
-export type DeleteCategoryOutput = Record<string, unknown>;
-
-export type DescribeCategoryInput = {
-  categoryId?: string;
-}
-
-export type DescribeCategoryOutput = {
-  category?: Category;
-}
-
-export type AssignCategoryInput = {
-  categoryId?: string;
-  problemId?: string;
-  index?: number;
-}
-
-export type AssignCategoryOutput = Record<string, unknown>;
-
-export type UnassignCategoryInput = {
-  categoryId?: string;
-  problemId?: string;
-}
-
-export type UnassignCategoryOutput = Record<string, unknown>;
 
 export type CreateSubmissionInput = {
   problemId?: string;

@@ -15,59 +15,32 @@ export class ProblemService {
     this.url = url;
   }
 
-  CreateProblem(input: CreateProblemInput, opts?: any): Promise<CreateProblemOutput> {
-    const path = "/problems";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   DeleteProblem(input: DeleteProblemInput, opts?: any): Promise<DeleteProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
+    const path = "/";
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeProblem(input: DescribeProblemInput, opts?: any): Promise<DescribeProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
+    const path = "/";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateVisibility(input: UpdateVisibilityInput, opts?: any): Promise<UpdateVisibilityOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/visibility";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
+    const path = "/visibility";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdatePrivacy(input: UpdatePrivacyInput, opts?: any): Promise<UpdatePrivacyOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/privacy";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
+    const path = "/privacy";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ListProblems(input: ListProblemsInput, opts?: any): Promise<ListProblemsOutput> {
-    const path = "/problems";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   ListVersions(input: ListVersionsInput, opts?: any): Promise<ListVersionsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/versions";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
+    const path = "/versions";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

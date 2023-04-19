@@ -2,18 +2,17 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Category = {
+export type Topic = {
   id?: string;
-  visible?: boolean;
-  index?: number;
-  parentId?: string;
-  image?: string;
-  descriptions?: Category_Description[];
+  name?: string;
+  summary?: string;
+  keywords?: string[];
 }
 
-export type Category_Description = {
+export type Topic_Translation = {
   locale?: string;
-  title?: string;
+  name?: string;
   summary?: string;
+  keywords?: string[];
 }
 
