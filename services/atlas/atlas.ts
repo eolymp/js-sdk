@@ -608,6 +608,7 @@ export type ListProblemsInput_Filter = {
   isVisible?: ExpressionBool[];
   isPrivate?: ExpressionBool[];
   number?: ExpressionInt[];
+  difficulty?: ExpressionInt[];
 }
 
 export type ListProblemsOutput = {
