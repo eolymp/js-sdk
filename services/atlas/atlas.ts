@@ -603,12 +603,15 @@ export type ListProblemsInput = {
 }
 
 export type ListProblemsInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   topicId?: ExpressionID[];
   isVisible?: ExpressionBool[];
   isPrivate?: ExpressionBool[];
   number?: ExpressionInt[];
   difficulty?: ExpressionInt[];
+  status?: ExpressionEnum[];
+  isFavorite?: ExpressionBool[];
 }
 
 export type ListProblemsOutput = {
