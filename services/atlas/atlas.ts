@@ -3,7 +3,7 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
-import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
+import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Attachment } from "./attachment"
 import { Template } from "./code_template"
 import { Permission } from "./permission"
@@ -611,7 +611,8 @@ export type ListProblemsInput_Filter = {
   number?: ExpressionInt[];
   difficulty?: ExpressionInt[];
   status?: ExpressionEnum[];
-  isFavorite?: ExpressionBool[];
+  score?: ExpressionFloat[];
+  isBookmarked?: ExpressionBool[];
 }
 
 export type ListProblemsOutput = {
