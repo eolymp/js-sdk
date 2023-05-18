@@ -8,7 +8,7 @@ import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProb
 import { ListVersionsInput, ListVersionsOutput } from "./problem_service"
 import { DescribeProblemGradingInput, DescribeProblemGradingOutput, DescribeScoreInput, DescribeScoreOutput, ListProblemTopInput, ListProblemTopOutput } from "./scoring_service"
 import { CreateStatementInput, CreateStatementOutput, DeleteStatementInput, DeleteStatementOutput, DescribeStatementInput, DescribeStatementOutput, ListStatementsInput, ListStatementsOutput, LookupStatementInput, LookupStatementOutput, PreviewStatementInput, PreviewStatementOutput, RenderStatementInput, RenderStatementOutput, UpdateStatementInput, UpdateStatementOutput } from "./statement_service"
-import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, RetestSubmissionInput, RetestSubmissionOutput } from "./submission_service"
+import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, RetestSubmissionInput, RetestSubmissionOutput } from "./submission_service"
 import { CreateTestInput, CreateTestOutput, CreateTestsetInput, CreateTestsetOutput, DeleteTestInput, DeleteTestOutput, DeleteTestsetInput, DeleteTestsetOutput, DescribeInteractorInput, DescribeInteractorOutput, DescribeTestInput, DescribeTestOutput, DescribeTestsetInput, DescribeTestsetOutput, DescribeVerifierInput, DescribeVerifierOutput, ListExamplesInput, ListExamplesOutput, ListTestsInput, ListTestsOutput, ListTestsetsInput, ListTestsetsOutput, UpdateInteractorInput, UpdateInteractorOutput, UpdateTestInput, UpdateTestOutput, UpdateTestsetInput, UpdateTestsetOutput, UpdateVerifierInput, UpdateVerifierOutput } from "./testing_service"
 
 interface Client {
@@ -444,6 +444,12 @@ export class Atlas {
     delete(input.submissionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ListSubmissions(input: ListSubmissionsInput, opts?: any): Promise<ListSubmissionsOutput> {
+    const path = "/submissions";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
