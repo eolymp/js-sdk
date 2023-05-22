@@ -77,6 +77,8 @@ export type ListProblemsInput = {
   offset?: number;
   size?: number;
   filters?: ListProblemsInput_Filter;
+  sort?: string;
+  order?: string;
 }
 
 export type ListProblemsInput_Filter = {

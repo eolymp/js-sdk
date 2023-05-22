@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { CreateAttachmentInput, CreateAttachmentOutput, DeleteAttachmentInput, DeleteAttachmentOutput, DescribeAttachmentInput, DescribeAttachmentOutput, ListAttachmentsInput, ListAttachmentsOutput, UpdateAttachmentInput, UpdateAttachmentOutput } from "./attachment_service"
-import { SetBookmarkInput, SetBookmarkOutput } from "./bookmark_service"
+import { GetBookmarkInput, GetBookmarkOutput, SetBookmarkInput, SetBookmarkOutput } from "./bookmark_service"
 import { CreateCodeTemplateInput, CreateCodeTemplateOutput, DeleteCodeTemplateInput, DeleteCodeTemplateOutput, DescribeCodeTemplateInput, DescribeCodeTemplateOutput, ListCodeTemplatesInput, ListCodeTemplatesOutput, UpdateCodeTemplateInput, UpdateCodeTemplateOutput } from "./code_template_service"
 import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, ListProblemsInput, ListProblemsOutput, UpdateProblemInput, UpdateProblemOutput } from "./library_service"
 import { ListVersionsInput, ListVersionsOutput } from "./problem_service"
@@ -70,6 +70,15 @@ export class Atlas {
     delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  GetBookmark(input: GetBookmarkInput, opts?: any): Promise<GetBookmarkOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/bookmark";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {

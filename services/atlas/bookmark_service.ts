@@ -15,6 +15,12 @@ export class BookmarkService {
     this.url = url;
   }
 
+  GetBookmark(input: GetBookmarkInput, opts?: any): Promise<GetBookmarkOutput> {
+    const path = "/bookmark";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   SetBookmark(input: SetBookmarkInput, opts?: any): Promise<SetBookmarkOutput> {
     const path = "/bookmark";
 
@@ -28,4 +34,12 @@ export type SetBookmarkInput = {
 }
 
 export type SetBookmarkOutput = Record<string, unknown>;
+
+export type GetBookmarkInput = {
+  problemId?: string;
+}
+
+export type GetBookmarkOutput = {
+  bookmark?: boolean;
+}
 
