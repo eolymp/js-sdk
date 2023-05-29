@@ -3,7 +3,7 @@
 
 import { CreateAttachmentInput, CreateAttachmentOutput, DeleteAttachmentInput, DeleteAttachmentOutput, DescribeAttachmentInput, DescribeAttachmentOutput, ListAttachmentsInput, ListAttachmentsOutput, UpdateAttachmentInput, UpdateAttachmentOutput } from "./attachment_service"
 import { GetBookmarkInput, GetBookmarkOutput, SetBookmarkInput, SetBookmarkOutput } from "./bookmark_service"
-import { CreateCodeTemplateInput, CreateCodeTemplateOutput, DeleteCodeTemplateInput, DeleteCodeTemplateOutput, DescribeCodeTemplateInput, DescribeCodeTemplateOutput, ListCodeTemplatesInput, ListCodeTemplatesOutput, UpdateCodeTemplateInput, UpdateCodeTemplateOutput } from "./code_template_service"
+import { CreateCodeTemplateInput, CreateCodeTemplateOutput, DeleteCodeTemplateInput, DeleteCodeTemplateOutput, DescribeCodeTemplateInput, DescribeCodeTemplateOutput, ListCodeTemplatesInput, ListCodeTemplatesOutput, LookupCodeTemplateInput, LookupCodeTemplateOutput, UpdateCodeTemplateInput, UpdateCodeTemplateOutput } from "./code_template_service"
 import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, ListProblemsInput, ListProblemsOutput, UpdateProblemInput, UpdateProblemOutput } from "./library_service"
 import { ListVersionsInput, ListVersionsOutput } from "./problem_service"
 import { DescribeProblemGradingInput, DescribeProblemGradingOutput, DescribeScoreInput, DescribeScoreOutput, ListProblemTopInput, ListProblemTopOutput } from "./scoring_service"
@@ -347,6 +347,15 @@ export class Atlas {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
     delete(input.templateId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/template";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

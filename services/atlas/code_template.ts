@@ -5,7 +5,6 @@ import { File } from "./code_template_file"
 
 export type Template = {
   id?: string;
-  ern?: string;
   problemId?: string;
   runtime?: string;
   source?: string;

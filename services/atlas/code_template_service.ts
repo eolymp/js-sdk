@@ -54,6 +54,12 @@ export class CodeTemplateService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
+    const path = "/template";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateCodeTemplateInput = {
@@ -98,6 +104,15 @@ export type DescribeCodeTemplateInput = {
 }
 
 export type DescribeCodeTemplateOutput = {
+  template?: Template;
+}
+
+export type LookupCodeTemplateInput = {
+  problemId?: string;
+  runtime?: string;
+}
+
+export type LookupCodeTemplateOutput = {
   template?: Template;
 }
 
