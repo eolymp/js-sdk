@@ -287,6 +287,7 @@ export type ListCommentsOutput = {
 export type DescribeCommentInput = {
   ticketId?: string;
   commentId?: string;
+  render?: boolean;
 }
 
 export type DescribeCommentOutput = {
