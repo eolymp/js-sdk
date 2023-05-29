@@ -55,15 +55,6 @@ export class EditorialService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  RenderEditorial(input: RenderEditorialInput, opts?: any): Promise<RenderEditorialOutput> {
-    const path = "/editorials/"+encodeURIComponent(input.editorialId||'')+"/render";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.editorialId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   PreviewEditorial(input: PreviewEditorialInput, opts?: any): Promise<PreviewEditorialOutput> {
     const path = "/editorial/preview";
 
@@ -78,6 +69,7 @@ export class EditorialService {
 }
 
 export type ListEditorialsInput = {
+  render?: boolean;
   version?: number;
 }
 
@@ -88,6 +80,7 @@ export type ListEditorialsOutput = {
 
 export type DescribeEditorialInput = {
   editorialId?: string;
+  render?: boolean;
   version?: number;
 }
 
@@ -97,19 +90,11 @@ export type DescribeEditorialOutput = {
 
 export type LookupEditorialInput = {
   locale?: string;
+  render?: boolean;
   version?: number;
 }
 
 export type LookupEditorialOutput = {
-  editorial?: Editorial;
-}
-
-export type RenderEditorialInput = {
-  editorialId?: string;
-  version?: number;
-}
-
-export type RenderEditorialOutput = {
   editorial?: Editorial;
 }
 

@@ -196,6 +196,7 @@ export type DeleteTicketOutput = Record<string, unknown>;
 
 export type DescribeTicketInput = {
   ticketId?: string;
+  render?: boolean;
 }
 
 export type DescribeTicketOutput = {
@@ -203,6 +204,7 @@ export type DescribeTicketOutput = {
 }
 
 export type ListTicketsInput = {
+  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListTicketsInput_Filter;
@@ -272,6 +274,7 @@ export type DeleteCommentOutput = Record<string, unknown>;
 
 export type ListCommentsInput = {
   ticketId?: string;
+  render?: boolean;
   offset?: number;
   size?: number;
 }

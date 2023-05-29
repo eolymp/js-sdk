@@ -55,15 +55,6 @@ export class StatementService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  RenderStatement(input: RenderStatementInput, opts?: any): Promise<RenderStatementOutput> {
-    const path = "/statements/"+encodeURIComponent(input.statementId||'')+"/render";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.statementId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   PreviewStatement(input: PreviewStatementInput, opts?: any): Promise<PreviewStatementOutput> {
     const path = "/renders";
 
@@ -79,6 +70,7 @@ export class StatementService {
 
 export type ListStatementsInput = {
   problemId?: string;
+  render?: boolean;
   version?: number;
 }
 
@@ -90,6 +82,7 @@ export type ListStatementsOutput = {
 export type DescribeStatementInput = {
   problemId?: string;
   statementId?: string;
+  render?: boolean;
   version?: number;
 }
 
@@ -99,21 +92,12 @@ export type DescribeStatementOutput = {
 
 export type LookupStatementInput = {
   problemId?: string;
-  preferredLocale?: string[];
+  locale?: string;
+  render?: boolean;
   version?: number;
 }
 
 export type LookupStatementOutput = {
-  statement?: Statement;
-}
-
-export type RenderStatementInput = {
-  problemId?: string;
-  statementId?: string;
-  version?: number;
-}
-
-export type RenderStatementOutput = {
   statement?: Statement;
 }
 

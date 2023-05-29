@@ -7,7 +7,7 @@ import { CreateCodeTemplateInput, CreateCodeTemplateOutput, DeleteCodeTemplateIn
 import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, ListProblemsInput, ListProblemsOutput, UpdateProblemInput, UpdateProblemOutput } from "./library_service"
 import { ListVersionsInput, ListVersionsOutput } from "./problem_service"
 import { DescribeProblemGradingInput, DescribeProblemGradingOutput, DescribeScoreInput, DescribeScoreOutput, ListProblemTopInput, ListProblemTopOutput } from "./scoring_service"
-import { CreateStatementInput, CreateStatementOutput, DeleteStatementInput, DeleteStatementOutput, DescribeStatementInput, DescribeStatementOutput, ListStatementsInput, ListStatementsOutput, LookupStatementInput, LookupStatementOutput, PreviewStatementInput, PreviewStatementOutput, RenderStatementInput, RenderStatementOutput, UpdateStatementInput, UpdateStatementOutput } from "./statement_service"
+import { CreateStatementInput, CreateStatementOutput, DeleteStatementInput, DeleteStatementOutput, DescribeStatementInput, DescribeStatementOutput, ListStatementsInput, ListStatementsOutput, LookupStatementInput, LookupStatementOutput, PreviewStatementInput, PreviewStatementOutput, UpdateStatementInput, UpdateStatementOutput } from "./statement_service"
 import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, RetestSubmissionInput, RetestSubmissionOutput } from "./submission_service"
 import { CreateTestInput, CreateTestOutput, CreateTestsetInput, CreateTestsetOutput, DeleteTestInput, DeleteTestOutput, DeleteTestsetInput, DeleteTestsetOutput, DescribeInteractorInput, DescribeInteractorOutput, DescribeTestInput, DescribeTestOutput, DescribeTestsetInput, DescribeTestsetOutput, DescribeVerifierInput, DescribeVerifierOutput, ListExamplesInput, ListExamplesOutput, ListTestsInput, ListTestsOutput, ListTestsetsInput, ListTestsetsOutput, UpdateInteractorInput, UpdateInteractorOutput, UpdateTestInput, UpdateTestOutput, UpdateTestsetInput, UpdateTestsetOutput, UpdateVerifierInput, UpdateVerifierOutput } from "./testing_service"
 
@@ -179,16 +179,6 @@ export class Atlas {
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  RenderStatement(input: RenderStatementInput, opts?: any): Promise<RenderStatementOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'')+"/render";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
-    delete(input.statementId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
