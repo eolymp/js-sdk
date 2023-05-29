@@ -15,7 +15,10 @@ export type Ticket = {
   updatedAt?: string;
   secret?: string;
   subject?: string;
-  message?: Node;
+  messageHtml?: string;
+  messageLatex?: string;
+  messageMarkdown?: string;
+  messageEcm?: Node;
 }
 
 export type Ticket_Comment = {
@@ -25,6 +28,9 @@ export type Ticket_Comment = {
   metadata?: Record<string, string>;
   createdAt?: string;
   updatedAt?: string;
-  message?: Node;
+  messageHtml?: string;
+  messageLatex?: string;
+  messageMarkdown?: string;
+  messageEcm?: Node;
 }
 
