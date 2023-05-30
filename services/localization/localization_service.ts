@@ -242,6 +242,7 @@ export type ListTranslationsInput_Filter = {
   id?: ExpressionID[];
   message?: ExpressionString[];
   status?: ExpressionEnum[];
+  locale?: ExpressionEnum[];
 }
 
 export type ListTranslationsOutput = {
