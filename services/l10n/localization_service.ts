@@ -145,7 +145,7 @@ export class LocalizationService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  ExportTranslations(input: ExportTranslationsInput, opts?: any): Promise<ImportTranslationsOutput> {
+  ExportTranslations(input: ExportTranslationsInput, opts?: any): Promise<ExportTranslationsOutput> {
     const path = "/translations";
 
     return this.cli.call("GET", this.url+path, input, opts);
