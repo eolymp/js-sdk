@@ -180,7 +180,7 @@ export type ListTermsInput_Filter = {
   id?: ExpressionID[];
   message?: ExpressionString[];
   status?: ExpressionEnum[];
-  hasSuggestions?: ExpressionBool[];
+  requiresReview?: ExpressionBool[];
 }
 
 export type ListTermsOutput = {
@@ -287,18 +287,15 @@ export type DescribeTranslationOutput = {
 }
 
 export type ImportTranslationsInput = {
-  termId?: string;
   locale?: string;
   translations?: Record<string, string>;
 }
 
 export type ImportTranslationsOutput = {
   createdCount?: number;
-  updatedCount?: number;
 }
 
 export type ExportTranslationsInput = {
-  termId?: string;
   locale?: string;
 }
 
