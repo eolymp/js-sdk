@@ -330,7 +330,7 @@ export type SuggestTranslationInput = {
 }
 
 export type SuggestTranslationOutput = {
-  message?: string;
+  messages?: string[];
 }
 
 export type UpdateTranslationInput = {
