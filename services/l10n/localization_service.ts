@@ -106,7 +106,7 @@ export class LocalizationService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  TranslateTerm(input: TranslateTermInput, opts?: any): Promise<TranslateTermOutput> {
+  AddTranslation(input: AddTranslationInput, opts?: any): Promise<AddTranslationOutput> {
     const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -296,12 +296,12 @@ export type ListLocalesOutput = {
   items?: Locale[];
 }
 
-export type TranslateTermInput = {
+export type AddTranslationInput = {
   termId?: string;
   translation?: Translation;
 }
 
-export type TranslateTermOutput = {
+export type AddTranslationOutput = {
   translationId?: string;
 }
 
