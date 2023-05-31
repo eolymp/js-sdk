@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Locale } from "./locale"
 import { Term } from "./term"
 import { Translation } from "./translation"
 
@@ -293,7 +292,13 @@ export type ListLocalesInput_Filter = {
 
 export type ListLocalesOutput = {
   total?: number;
-  items?: Locale[];
+  items?: ListLocalesOutput_Locale[];
+}
+
+export type ListLocalesOutput_Locale = {
+  code?: string;
+  translatedTerms?: number;
+  missingTerms?: number;
 }
 
 export type AddTranslationInput = {
