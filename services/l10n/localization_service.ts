@@ -162,12 +162,11 @@ export type CreateTermOutput = {
 
 export type ImportTermsInput = {
   terms?: Term[];
-  setDeprecation?: boolean;
-  setOutdated?: boolean;
 }
 
 export type ImportTermsOutput = {
-  importedCount?: number;
+  createdCount?: number;
+  updatedCount?: number;
   deprecatedCount?: number;
 }
 
@@ -288,16 +287,18 @@ export type DescribeTranslationOutput = {
 }
 
 export type ImportTranslationsInput = {
+  termId?: string;
   locale?: string;
   translations?: Record<string, string>;
 }
 
 export type ImportTranslationsOutput = {
-  importedCount?: number;
-  deprecatedCount?: number;
+  createdCount?: number;
+  updatedCount?: number;
 }
 
 export type ExportTranslationsInput = {
+  termId?: string;
   locale?: string;
 }
 
