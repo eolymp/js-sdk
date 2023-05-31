@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
+import { Locale } from "./locale"
 import { Term } from "./term"
 import { Translation } from "./translation"
 
@@ -81,6 +82,30 @@ export class LocalizationService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
+  AddLocale(input: AddLocaleInput, opts?: any): Promise<AddLocaleOutput> {
+    const path = "/locales/"+encodeURIComponent(input.localeCode||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.localeCode);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  RemoveLocale(input: RemoveLocaleInput, opts?: any): Promise<RemoveLocaleOutput> {
+    const path = "/locales/"+encodeURIComponent(input.localeCode||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.localeCode);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  ListLocales(input: ListLocalesInput, opts?: any): Promise<ListLocalesOutput> {
+    const path = "/locales";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   TranslateTerm(input: TranslateTermInput, opts?: any): Promise<TranslateTermOutput> {
     const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations";
 
@@ -107,6 +132,16 @@ export class LocalizationService {
     delete(input.translationId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  SuggestTranslation(input: SuggestTranslationInput, opts?: any): Promise<SuggestTranslationOutput> {
+    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/suggestions/"+encodeURIComponent(input.locale||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.termId);
+    delete(input.locale);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UpdateTranslation(input: UpdateTranslationInput, opts?: any): Promise<UpdateTranslationOutput> {
@@ -234,6 +269,33 @@ export type DescribeTermOutput = {
   term?: Term;
 }
 
+export type AddLocaleInput = {
+  localeCode?: string;
+}
+
+export type AddLocaleOutput = Record<string, unknown>;
+
+export type RemoveLocaleInput = {
+  localeCode?: string;
+}
+
+export type RemoveLocaleOutput = Record<string, unknown>;
+
+export type ListLocalesInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListLocalesInput_Filter;
+}
+
+export type ListLocalesInput_Filter = {
+  code?: ExpressionID[];
+}
+
+export type ListLocalesOutput = {
+  total?: number;
+  items?: Locale[];
+}
+
 export type TranslateTermInput = {
   termId?: string;
   translation?: Translation;
@@ -260,6 +322,15 @@ export type ListTranslationsInput_Filter = {
 export type ListTranslationsOutput = {
   total?: number;
   items?: Translation[];
+}
+
+export type SuggestTranslationInput = {
+  termId?: string;
+  locale?: string;
+}
+
+export type SuggestTranslationOutput = {
+  message?: string;
 }
 
 export type UpdateTranslationInput = {
