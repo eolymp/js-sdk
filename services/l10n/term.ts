@@ -4,6 +4,7 @@
 
 export type Term = {
   id?: string;
+  key?: string;
   message?: string;
   description?: string;
   status?: string;
