@@ -188,7 +188,9 @@ export type ListTermsInput_ExpressionTranslation = {
 }
 
 export type ListTermsInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
+  key?: ExpressionString[];
   message?: ExpressionString[];
   status?: ExpressionEnum[];
   translation?: ListTermsInput_ExpressionTranslation[];
