@@ -140,7 +140,7 @@ export class LocalizationService {
     delete(input.termId);
     delete(input.locale);
 
-    return this.cli.call("PUT", this.url+path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateTranslation(input: UpdateTranslationInput, opts?: any): Promise<UpdateTranslationOutput> {
