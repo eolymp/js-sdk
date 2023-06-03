@@ -72,6 +72,7 @@ export type CreateObjectOutput = {
   key?: string;
   blobErn?: string;
   blobHash?: string;
+  url?: string;
 }
 
 export type DescribeObjectInput = {

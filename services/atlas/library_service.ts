@@ -66,7 +66,6 @@ export type DeleteProblemOutput = Record<string, unknown>;
 
 export type DescribeProblemInput = {
   problemId?: string;
-  problemErn?: string;
 }
 
 export type DescribeProblemOutput = {
