@@ -5,5 +5,6 @@
 export type Project = {
   id?: string;
   name?: string;
+  logoUrl?: string;
 }
 

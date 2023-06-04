@@ -39,8 +39,8 @@ export class LocalizationService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  ApproveTerm(input: ApproveTermInput, opts?: any): Promise<ApproveTermOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/approve";
+  RestoreTerm(input: RestoreTermInput, opts?: any): Promise<RestoreTermOutput> {
+    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/restore";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.termId);
@@ -105,7 +105,7 @@ export class LocalizationService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  AddTranslation(input: AddTranslationInput, opts?: any): Promise<AddTranslationOutput> {
+  TranslateTerm(input: TranslateTermInput, opts?: any): Promise<TranslateTermOutput> {
     const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -242,11 +242,11 @@ export type UpdateTermInput = {
 
 export type UpdateTermOutput = Record<string, unknown>;
 
-export type ApproveTermInput = {
+export type RestoreTermInput = {
   termId?: string;
 }
 
-export type ApproveTermOutput = Record<string, unknown>;
+export type RestoreTermOutput = Record<string, unknown>;
 
 export type DeprecateTermInput = {
   termId?: string;
@@ -301,12 +301,12 @@ export type ListLocalesOutput_Locale = {
   missingTerms?: number;
 }
 
-export type AddTranslationInput = {
+export type TranslateTermInput = {
   termId?: string;
   translation?: Translation;
 }
 
-export type AddTranslationOutput = {
+export type TranslateTermOutput = {
   translationId?: string;
 }
 
