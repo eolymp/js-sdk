@@ -155,7 +155,8 @@ export type ListPathsOutput = {
 
 export type ListParentsInput = {
   path?: string;
-  locale?: string[];
+  locale?: string;
+  render?: boolean;
 }
 
 export type ListParentsOutput = {
