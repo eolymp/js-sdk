@@ -316,6 +316,7 @@ export type DeleteAutoReplyInput = {
 export type DeleteAutoReplyOutput = Record<string, unknown>;
 
 export type ListAutoRepliesInput = {
+  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListAutoRepliesInput_Filter;
@@ -334,6 +335,7 @@ export type ListAutoRepliesOutput = {
 
 export type DescribeAutoReplyInput = {
   replyId?: string;
+  render?: boolean;
 }
 
 export type DescribeAutoReplyOutput = {

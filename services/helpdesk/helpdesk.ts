@@ -77,6 +77,7 @@ export class Helpdesk {
 
 export type DescribeDocumentInput = {
   documentId?: string;
+  render?: boolean;
 }
 
 export type DescribeDocumentOutput = {
@@ -84,6 +85,7 @@ export type DescribeDocumentOutput = {
 }
 
 export type ListDocumentsInput = {
+  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListDocumentsInput_Filter;
@@ -124,7 +126,8 @@ export type DeleteDocumentOutput = Record<string, unknown>;
 
 export type DescribePathInput = {
   path?: string;
-  preferredLocales?: string[];
+  render?: boolean;
+  locale?: string;
 }
 
 export type DescribePathOutput = {
@@ -132,7 +135,8 @@ export type DescribePathOutput = {
 }
 
 export type ListPathsInput = {
-  preferredLocales?: string[];
+  locale?: string;
+  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListPathsInput_Filter;
@@ -151,7 +155,7 @@ export type ListPathsOutput = {
 
 export type ListParentsInput = {
   path?: string;
-  preferredLocales?: string[];
+  locale?: string[];
 }
 
 export type ListParentsOutput = {
