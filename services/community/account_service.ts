@@ -70,14 +70,12 @@ export type CreateAccountInput = {
   email?: string;
   password?: string;
   locale?: string;
-  values?: Member_Value[];
+  attributes?: Member_Value[];
   captcha?: string;
 }
 
 export type CreateAccountOutput = {
   memberId?: string;
-  identityIssuer?: string;
-  identitySubject?: string;
   hint?: string;
 }
 
@@ -90,7 +88,6 @@ export type DescribeAccountOutput = {
   emailVerified?: boolean;
   passwordAge?: number;
   locale?: string;
-  values?: Member_Value[];
 }
 
 export type UpdateAccountInput = {
@@ -100,7 +97,7 @@ export type UpdateAccountInput = {
   email?: string;
   password?: string;
   locale?: string;
-  values?: Member_Value[];
+  attributes?: Member_Value[];
 }
 
 export type UpdateAccountOutput = {
