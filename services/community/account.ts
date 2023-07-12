@@ -12,7 +12,7 @@ export type Account = {
   passwordAge?: number;
   name?: string;
   nickname?: string;
-  nicknameChangeTimeout?: boolean;
+  nicknameChangeTimeout?: number;
   picture?: string;
   locale?: string;
   birthday?: string;
