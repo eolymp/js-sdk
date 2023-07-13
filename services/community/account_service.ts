@@ -100,6 +100,7 @@ export type ResendVerificationOutput = Record<string, unknown>;
 
 export type CompleteVerificationInput = {
   code?: string;
+  subject?: string;
 }
 
 export type CompleteVerificationOutput = Record<string, unknown>;
@@ -117,6 +118,7 @@ export type StartRecoveryOutput = {
 export type CompleteRecoverInput = {
   code?: string;
   password?: string;
+  subject?: string;
 }
 
 export type CompleteRecoverOutput = Record<string, unknown>;
