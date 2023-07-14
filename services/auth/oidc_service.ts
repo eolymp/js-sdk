@@ -6,7 +6,7 @@ interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class ExternalService {
+export class OIDCService {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -15,39 +15,39 @@ export class ExternalService {
     this.url = url;
   }
 
-  AuthorizeRequest(input: AuthorizeRequestInput, opts?: any): Promise<AuthorizeRequestOutput> {
-    const path = "/authorize";
+  InitiateLogin(input: InitiateLoginInput, opts?: any): Promise<InitiateLoginOutput> {
+    const path = "/oidc/initiate";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  AuthorizeCallback(input: AuthorizeCallbackInput, opts?: any): Promise<AuthorizeCallbackOutput> {
-    const path = "/callback";
+  CompleteLogin(input: CompleteLoginInput, opts?: any): Promise<CompleteLoginOutput> {
+    const path = "/oidc/callback";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type AuthorizeRequestInput = {
-  clientId?: string;
-  codeChallenge?: string;
-  codeChallengeMethod?: string;
-  redirectUri?: string;
-  responseType?: string;
+export type InitiateLoginInput = {
   scope?: string;
   state?: string;
 }
 
-export type AuthorizeRequestOutput = {
+export type InitiateLoginOutput = {
   loginUrl?: string;
 }
 
-export type AuthorizeCallbackInput = {
+export type CompleteLoginInput = {
   code?: string;
   state?: string;
 }
 
-export type AuthorizeCallbackOutput = {
-  redirectUri?: string;
+export type CompleteLoginOutput = {
+  accessToken?: string;
+  tokenType?: string;
+  expiresIn?: number;
+  refreshToken?: string;
+  scope?: string;
+  idToken?: string;
 }
 
