@@ -24,7 +24,7 @@ export class ExternalService {
   AuthorizeCallback(input: AuthorizeCallbackInput, opts?: any): Promise<AuthorizeCallbackOutput> {
     const path = "/callback";
 
-    return this.cli.call("GET", this.url+path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
