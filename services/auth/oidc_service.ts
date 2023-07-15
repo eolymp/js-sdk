@@ -14,40 +14,28 @@ export class OIDCService {
     this.cli = cli;
     this.url = url;
   }
-
-  InitiateLogin(input: InitiateLoginInput, opts?: any): Promise<InitiateLoginOutput> {
-    const path = "/oidc/initiate";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  CompleteLogin(input: CompleteLoginInput, opts?: any): Promise<CompleteLoginOutput> {
-    const path = "/oidc/callback";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
 }
 
-export type InitiateLoginInput = {
+export type AuthorizeRequestInput = {
+  clientId?: string;
+  codeChallenge?: string;
+  codeChallengeMethod?: string;
+  redirectUri?: string;
+  responseType?: string;
   scope?: string;
   state?: string;
 }
 
-export type InitiateLoginOutput = {
-  loginUrl?: string;
+export type AuthorizeRequestOutput = {
+  redirectUri?: string;
 }
 
-export type CompleteLoginInput = {
+export type AuthorizeCallbackInput = {
   code?: string;
   state?: string;
 }
 
-export type CompleteLoginOutput = {
-  accessToken?: string;
-  tokenType?: string;
-  expiresIn?: number;
-  refreshToken?: string;
-  scope?: string;
-  idToken?: string;
+export type AuthorizeCallbackOutput = {
+  redirectUri?: string;
 }
 
