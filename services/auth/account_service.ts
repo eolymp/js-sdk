@@ -34,6 +34,12 @@ export class AccountService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
+  UploadPicture(input: UploadPictureInput, opts?: any): Promise<UploadPictureOutput> {
+    const path = "/account/picture";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DeleteAccount(input: DeleteAccountInput, opts?: any): Promise<DeleteAccountOutput> {
     const path = "/account";
 
@@ -89,6 +95,16 @@ export type UpdateAccountInput = {
 export type UpdateAccountOutput = {
   hint?: string;
 }
+
+export type UploadPictureInput = {
+  filename?: string;
+  data?: string;
+  offsetX?: number;
+  offsetY?: number;
+  size?: number;
+}
+
+export type UploadPictureOutput = Record<string, unknown>;
 
 export type DeleteAccountInput = Record<string, unknown>;
 

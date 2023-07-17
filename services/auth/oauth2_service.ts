@@ -71,3 +71,9 @@ export type RequestAuthOutput = {
   redirectUri?: string;
 }
 
+export type UserInfoInput = Record<string, unknown>;
+
+export type UserInfoOutput = {
+  claims?: Claims;
+}
+

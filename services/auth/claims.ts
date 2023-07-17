@@ -13,5 +13,8 @@ export type Claims = {
   locale?: string;
   minor?: boolean;
   country?: string;
+  city?: string;
+  company?: string;
+  businessTitle?: string;
 }
 

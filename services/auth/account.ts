@@ -4,7 +4,7 @@
 
 export type Account = {
   id?: string;
-  createdOn?: string;
+  createdAt?: string;
   active?: boolean;
   email?: string;
   emailVerified?: boolean;
@@ -17,5 +17,8 @@ export type Account = {
   locale?: string;
   birthday?: string;
   country?: string;
+  city?: string;
+  company?: string;
+  businessTitle?: string;
 }
 
