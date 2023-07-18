@@ -6,7 +6,7 @@ interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class OIDCService {
+export class SSOService {
   private readonly cli: Client;
   private readonly url: string;
 
