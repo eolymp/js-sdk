@@ -81,6 +81,7 @@ export type Job_Step_Copy = {
   targetActor?: string;
   targetPath?: string;
   optionally?: boolean;
+  removeSource?: boolean;
 }
 
 export type Job_Step_Execute = {

@@ -14,6 +14,7 @@ export type Task = {
   useFileIo?: boolean;
   redirectStderrToStdout?: boolean;
   useWorkspaceArchive?: boolean;
+  runCount?: number;
   preconditions?: Task_Precondition[];
   constraints?: Task_Constraint[];
   verifier?: Verifier;
