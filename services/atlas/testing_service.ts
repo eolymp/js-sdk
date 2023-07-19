@@ -3,6 +3,7 @@
 
 import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
+import { TestingConfig } from "./testing_config"
 import { Test } from "./testing_test"
 import { Testset } from "./testing_testset"
 
@@ -17,6 +18,18 @@ export class TestingService {
   constructor(cli: Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
+  }
+
+  UpdateTestingConfig(input: UpdateTestingConfigInput, opts?: any): Promise<UpdateTestingConfigOutput> {
+    const path = "/testing";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DescribeTestingConfig(input: DescribeTestingConfigInput, opts?: any): Promise<DescribeTestingConfigOutput> {
+    const path = "/testing";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateChecker(input: UpdateVerifierInput, opts?: any): Promise<UpdateVerifierOutput> {
@@ -135,6 +148,22 @@ export class TestingService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+}
+
+export type UpdateTestingConfigInput = {
+  problemId?: string;
+  config?: TestingConfig;
+}
+
+export type UpdateTestingConfigOutput = Record<string, unknown>;
+
+export type DescribeTestingConfigInput = {
+  problemId?: string;
+  version?: number;
+}
+
+export type DescribeTestingConfigOutput = {
+  config?: TestingConfig;
 }
 
 export type UpdateVerifierInput = {
