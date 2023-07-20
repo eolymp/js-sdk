@@ -11,10 +11,12 @@ export type Claims = {
   nickname?: string;
   picture?: string;
   locale?: string;
+  timezone?: string;
   minor?: boolean;
   country?: string;
   city?: string;
   company?: string;
   businessTitle?: string;
+  preferredRuntime?: string;
 }
 

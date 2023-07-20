@@ -15,10 +15,12 @@ export type Account = {
   nicknameChangeTimeout?: number;
   picture?: string;
   locale?: string;
+  timezone?: string;
   birthday?: string;
   country?: string;
   city?: string;
   company?: string;
   businessTitle?: string;
+  preferredRuntime?: string;
 }
 
