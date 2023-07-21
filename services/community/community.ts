@@ -3,8 +3,9 @@
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Attribute } from "./attribute"
+import { Identity } from "./identity"
 import { IdentityProvider_OIDC } from "./idp"
-import { Member, Member_Identity, Member_Value } from "./member"
+import { Member, Member_Value } from "./member"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -243,7 +244,7 @@ export type ListMembersOutput = {
 
 export type AddMemberIdentityInput = {
   memberId?: string;
-  identity?: Member_Identity;
+  identity?: Identity;
 }
 
 export type AddMemberIdentityOutput = {
@@ -253,7 +254,7 @@ export type AddMemberIdentityOutput = {
 export type UpdateMemberIdentityInput = {
   memberId?: string;
   identityId?: string;
-  identity?: Member_Identity;
+  identity?: Identity;
 }
 
 export type UpdateMemberIdentityOutput = Record<string, unknown>;

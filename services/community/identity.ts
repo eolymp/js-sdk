@@ -2,10 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Account = {
+export type Identity = {
   id?: string;
+  issuer?: string;
+  subject?: string;
   createdAt?: string;
-  active?: boolean;
   email?: string;
   emailVerified?: boolean;
   password?: string;
