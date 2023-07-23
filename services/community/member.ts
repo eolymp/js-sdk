@@ -5,8 +5,8 @@ import { Identity } from "./identity"
 
 export type Member = {
   id?: string;
-  ern?: string;
   name?: string;
+  picture?: string;
   disabled?: boolean;
   registered?: boolean;
   staffed?: boolean;
