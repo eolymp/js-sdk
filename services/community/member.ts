@@ -5,16 +5,19 @@ import { Identity } from "./identity"
 
 export type Member = {
   id?: string;
-  name?: string;
-  picture?: string;
   disabled?: boolean;
   registered?: boolean;
   staffed?: boolean;
   ghost?: boolean;
   outOfCompetition?: boolean;
   status?: string;
-  identities?: Identity[];
+  name?: string;
+  picture?: string;
+  email?: string;
+  emailVerified?: boolean;
+  locale?: string;
   values?: Member_Value[];
+  identities?: Identity[];
 }
 
 export type Member_Value = {
