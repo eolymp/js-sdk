@@ -8,6 +8,7 @@ export type Message = {
   threadId?: string;
   memberId?: string;
   replyTo?: string;
+  vote?: number;
   voteCount?: number;
   replyCount?: number;
   postedAt?: string;
