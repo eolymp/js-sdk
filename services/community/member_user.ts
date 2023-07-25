@@ -5,8 +5,6 @@
 export type User = {
   issuer?: string;
   subject?: string;
-  createdAt?: string;
-  deletedAt?: string;
   email?: string;
   emailVerified?: boolean;
   password?: string;
@@ -16,6 +14,7 @@ export type User = {
   birthday?: string;
   country?: string;
   city?: string;
+  preferences?: User_Preferences;
 }
 
 export type User_Preferences = {

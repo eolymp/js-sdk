@@ -32,7 +32,7 @@ export class MemberService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  RemoveMember(input: RemoveMemberInput, opts?: any): Promise<RemoveMemberOutput> {
+  DeleteMember(input: DeleteMemberInput, opts?: any): Promise<DeleteMemberOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -96,20 +96,18 @@ export type CreateMemberOutput = {
 
 export type UpdateMemberInput = {
   patch?: string[];
-  patchAccountProps?: string[];
-  patchAttributeKeys?: string[];
   memberId?: string;
   member?: Member;
 }
 
 export type UpdateMemberOutput = Record<string, unknown>;
 
-export type RemoveMemberInput = {
+export type DeleteMemberInput = {
   memberId?: string;
   forceDelete?: boolean;
 }
 
-export type RemoveMemberOutput = Record<string, unknown>;
+export type DeleteMemberOutput = Record<string, unknown>;
 
 export type RestoreMemberInput = {
   memberId?: string;
