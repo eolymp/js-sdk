@@ -17,12 +17,6 @@ export class MembershipService {
     this.url = url;
   }
 
-  JoinSpace(input: JoinSpaceInput, opts?: any): Promise<JoinSpaceOutput> {
-    const path = "/members/_self";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   DescribeMembership(input: DescribeMembershipInput, opts?: any): Promise<DescribeMembershipOutput> {
     const path = "/members/_self";
 
@@ -35,13 +29,6 @@ export class MembershipService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
-
-export type JoinSpaceInput = {
-  nickname?: string;
-  attributes?: Attribute_Value[];
-}
-
-export type JoinSpaceOutput = Record<string, unknown>;
 
 export type DescribeMembershipInput = Record<string, unknown>;
 
