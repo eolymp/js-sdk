@@ -2,26 +2,25 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Identity = {
-  id?: string;
+export type User = {
   issuer?: string;
   subject?: string;
   createdAt?: string;
+  deletedAt?: string;
   email?: string;
   emailVerified?: boolean;
   password?: string;
   passwordAge?: number;
   name?: string;
-  nickname?: string;
-  nicknameChangeTimeout?: number;
   picture?: string;
-  locale?: string;
-  timezone?: string;
   birthday?: string;
   country?: string;
   city?: string;
-  company?: string;
-  businessTitle?: string;
-  preferredRuntime?: string;
+}
+
+export type User_Preferences = {
+  locale?: string;
+  timezone?: string;
+  runtime?: string;
 }
 

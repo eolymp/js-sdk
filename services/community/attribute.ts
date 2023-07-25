@@ -4,7 +4,6 @@
 
 export type Attribute = {
   key?: string;
-  ern?: string;
   description?: Attribute_Description[];
   type?: string;
   index?: number;
@@ -23,5 +22,12 @@ export type Attribute_Description = {
   label?: string;
   help?: string;
   choices?: string[];
+}
+
+export type Attribute_Value = {
+  attributeKey?: string;
+  attributeType?: string;
+  string?: string;
+  number?: number;
 }
 
