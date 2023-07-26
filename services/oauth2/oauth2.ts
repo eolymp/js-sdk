@@ -36,6 +36,13 @@ export type TokenOutput = {
   refreshToken?: string;
   scope?: string;
   idToken?: string;
+  subject?: string;
+  issuer?: string;
+  name?: string;
+  nickname?: string;
+  picture?: string;
+  email?: string;
+  emailVerified?: boolean;
 }
 
 export type AuthorizeInput = {
