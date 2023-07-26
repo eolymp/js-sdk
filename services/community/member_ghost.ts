@@ -2,5 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Ghost = Record<string, unknown>;
+export type Ghost = {
+  name?: string;
+}
 

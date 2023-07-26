@@ -5,6 +5,8 @@
 export type User = {
   issuer?: string;
   subject?: string;
+  nickname?: string;
+  nicknameChangeTimeout?: number;
   email?: string;
   emailVerified?: boolean;
   password?: string;

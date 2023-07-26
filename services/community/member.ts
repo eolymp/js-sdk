@@ -8,8 +8,7 @@ import { User } from "./member_user"
 
 export type Member = {
   id?: string;
-  nickname?: string;
-  nicknameChangeTimeout?: number;
+  name?: string;
   active?: boolean;
   incomplete?: boolean;
   unofficial?: boolean;

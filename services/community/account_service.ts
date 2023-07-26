@@ -73,8 +73,7 @@ export class AccountService {
 }
 
 export type CreateAccountInput = {
-  nickname?: string;
-  user?: User;
+  account?: User;
   attributes?: Attribute_Value[];
   captcha?: string;
 }
@@ -86,16 +85,14 @@ export type CreateAccountOutput = {
 export type DescribeAccountInput = Record<string, unknown>;
 
 export type DescribeAccountOutput = {
-  nickname?: string;
-  user?: User;
+  account?: User;
   attributes?: Attribute_Value[];
 }
 
 export type UpdateAccountInput = {
   patch?: string[];
   currentPassword?: string;
-  nickname?: string;
-  user?: User;
+  account?: User;
   attributes?: Attribute_Value[];
 }
 
