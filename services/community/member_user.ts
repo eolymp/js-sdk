@@ -16,6 +16,7 @@ export type User = {
   birthday?: string;
   country?: string;
   city?: string;
+  teamId?: string;
   preferences?: User_Preferences;
 }
 
