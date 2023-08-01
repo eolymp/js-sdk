@@ -14,6 +14,7 @@ export type Space = {
   membership?: string;
   minTeamSize?: number;
   maxTeamSize?: number;
+  permissions?: string[];
 }
 
 export type Space_Quota = {
