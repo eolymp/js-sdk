@@ -157,12 +157,6 @@ export class Cognito {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ListEntitlements(input: ListEntitlementsInput, opts?: any): Promise<ListEntitlementsOutput> {
-    const path = "/__cognito/entitlements";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   SelfDestruct(input: SelfDestructInput, opts?: any): Promise<SelfDestructOutput> {
     const path = "/self";
 
@@ -384,12 +378,6 @@ export type UpdateRolesInput = {
 }
 
 export type UpdateRolesOutput = Record<string, unknown>;
-
-export type ListEntitlementsInput = Record<string, unknown>;
-
-export type ListEntitlementsOutput = {
-  entitlements?: string[];
-}
 
 export type SelfDestructInput = Record<string, unknown>;
 

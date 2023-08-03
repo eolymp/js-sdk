@@ -715,12 +715,6 @@ export class Judge {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ListEntitlements(input: ListEntitlementsInput, opts?: any): Promise<ListEntitlementsOutput> {
-    const path = "/__judge/entitlements";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   ListActivities(input: ListActivitiesInput, opts?: any): Promise<ListActivitiesOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/activities";
 
@@ -1396,17 +1390,6 @@ export type ListResultInput = {
 export type ListResultOutput = {
   total?: number;
   items?: Result[];
-}
-
-export type ListEntitlementsInput = {
-  contestId?: string;
-  submissionId?: string;
-  ticketId?: string;
-  participantId?: string;
-}
-
-export type ListEntitlementsOutput = {
-  entitlements?: string[];
 }
 
 export type ListActivitiesInput = {
