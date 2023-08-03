@@ -136,7 +136,7 @@ export type ListMembersInput_Filter = {
   type?: ExpressionEnum[];
   name?: ExpressionString[];
   active?: ExpressionBool[];
-  registered?: ExpressionBool[];
+  incomplete?: ExpressionBool[];
   unofficial?: ExpressionBool[];
   teamId?: ExpressionID[];
   userIssuer?: ExpressionString[];
