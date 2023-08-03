@@ -134,7 +134,7 @@ export type ListMembersInput = {
 export type ListMembersInput_Filter = {
   id?: ExpressionID[];
   type?: ExpressionEnum[];
-  nickname?: ExpressionString[];
+  name?: ExpressionString[];
   active?: ExpressionBool[];
   registered?: ExpressionBool[];
   unofficial?: ExpressionBool[];
