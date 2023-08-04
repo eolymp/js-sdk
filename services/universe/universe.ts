@@ -198,6 +198,7 @@ export type ListSpacesInput_Filter = {
   name?: ExpressionString[];
   own?: ExpressionBool[];
   member?: ExpressionBool[];
+  system?: ExpressionBool[];
 }
 
 export type ListSpacesOutput = {
