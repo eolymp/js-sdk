@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, UpdatePrivacyInput, UpdatePrivacyOutput, UpdateProblemInput, UpdateProblemOutput, UpdateVisibilityInput, UpdateVisibilityOutput } from "./library_service"
+import { DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, SyncProblemInput, SyncProblemOutput, UpdatePrivacyInput, UpdatePrivacyOutput, UpdateProblemInput, UpdateProblemOutput, UpdateVisibilityInput, UpdateVisibilityOutput } from "./library_service"
 import { Version } from "./version"
 
 interface Client {
@@ -28,6 +28,12 @@ export class ProblemService {
     const path = "/";
 
     return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  SyncProblem(input: SyncProblemInput, opts?: any): Promise<SyncProblemOutput> {
+    const path = "/sync";
+
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeProblem(input: DescribeProblemInput, opts?: any): Promise<DescribeProblemOutput> {

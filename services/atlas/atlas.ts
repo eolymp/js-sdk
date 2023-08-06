@@ -4,7 +4,7 @@
 import { CreateAttachmentInput, CreateAttachmentOutput, DeleteAttachmentInput, DeleteAttachmentOutput, DescribeAttachmentInput, DescribeAttachmentOutput, ListAttachmentsInput, ListAttachmentsOutput, UpdateAttachmentInput, UpdateAttachmentOutput } from "./attachment_service"
 import { GetBookmarkInput, GetBookmarkOutput, SetBookmarkInput, SetBookmarkOutput } from "./bookmark_service"
 import { CreateCodeTemplateInput, CreateCodeTemplateOutput, DeleteCodeTemplateInput, DeleteCodeTemplateOutput, DescribeCodeTemplateInput, DescribeCodeTemplateOutput, ListCodeTemplatesInput, ListCodeTemplatesOutput, LookupCodeTemplateInput, LookupCodeTemplateOutput, UpdateCodeTemplateInput, UpdateCodeTemplateOutput } from "./code_template_service"
-import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, ListProblemsInput, ListProblemsOutput, UpdateProblemInput, UpdateProblemOutput } from "./library_service"
+import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, ListProblemsInput, ListProblemsOutput, SyncProblemInput, SyncProblemOutput, UpdateProblemInput, UpdateProblemOutput } from "./library_service"
 import { ListVersionsInput, ListVersionsOutput } from "./problem_service"
 import { DescribeProblemGradingInput, DescribeProblemGradingOutput, DescribeScoreInput, DescribeScoreOutput, ListProblemTopInput, ListProblemTopOutput } from "./scoring_service"
 import { CreateStatementInput, CreateStatementOutput, DeleteStatementInput, DeleteStatementOutput, DescribeStatementInput, DescribeStatementOutput, ListStatementsInput, ListStatementsOutput, LookupStatementInput, LookupStatementOutput, PreviewStatementInput, PreviewStatementOutput, UpdateStatementInput, UpdateStatementOutput } from "./statement_service"
@@ -61,6 +61,15 @@ export class Atlas {
     delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  SyncProblem(input: SyncProblemInput, opts?: any): Promise<SyncProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/sync";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   SetBookmark(input: SetBookmarkInput, opts?: any): Promise<SetBookmarkOutput> {

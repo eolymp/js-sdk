@@ -120,3 +120,9 @@ export type UpdateProblemInput = {
 
 export type UpdateProblemOutput = Record<string, unknown>;
 
+export type SyncProblemInput = {
+  problemId?: string;
+}
+
+export type SyncProblemOutput = Record<string, unknown>;
+

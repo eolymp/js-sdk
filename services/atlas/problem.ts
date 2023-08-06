@@ -9,6 +9,7 @@ export type Problem = {
   number?: number;
   visible?: boolean;
   private?: boolean;
+  origin?: string;
   topics?: string[];
   difficulty?: number;
 }
