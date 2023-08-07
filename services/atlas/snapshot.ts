@@ -11,7 +11,7 @@ import { Test } from "./testing_test"
 import { Testset } from "./testing_testset"
 
 export type Snapshot = {
-  problem?: Problem[];
+  problem?: Problem;
   checker?: Verifier;
   interactor?: Interactor;
   statements?: Statement[];
