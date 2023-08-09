@@ -5,13 +5,17 @@ import { Interactor } from "../executor/interactor"
 import { Verifier } from "../executor/verifier"
 import { Attachment } from "./attachment"
 import { Template } from "./code_template"
+import { Editorial } from "./editorial"
 import { Problem } from "./problem"
+import { Solution } from "./solution"
 import { Statement } from "./statement"
+import { TestingConfig } from "./testing_config"
 import { Test } from "./testing_test"
 import { Testset } from "./testing_testset"
 
 export type Snapshot = {
   problem?: Problem;
+  testing?: TestingConfig;
   checker?: Verifier;
   interactor?: Interactor;
   statements?: Statement[];
@@ -19,5 +23,7 @@ export type Snapshot = {
   attachments?: Attachment[];
   testsets?: Testset[];
   tests?: Test[];
+  editorials?: Editorial[];
+  solutions?: Solution[];
 }
 

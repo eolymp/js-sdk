@@ -4,13 +4,9 @@
 
 export type Solution = {
   id?: string;
-  problemId?: string;
-  authorId?: string;
-  published?: boolean;
-  moderationStatus?: string;
-  moderationComment?: string;
-  locale?: string;
-  format?: string;
-  content?: string;
+  name?: string;
+  runtime?: string;
+  source?: string;
+  type?: string;
 }
 
