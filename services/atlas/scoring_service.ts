@@ -18,10 +18,10 @@ export class ScoringService {
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/scores/"+encodeURIComponent(input.userId||'');
+    const path = "/scores/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.userId);
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -41,7 +41,7 @@ export class ScoringService {
 
 export type DescribeScoreInput = {
   problemId?: string;
-  userId?: string;
+  memberId?: string;
 }
 
 export type DescribeScoreOutput = {

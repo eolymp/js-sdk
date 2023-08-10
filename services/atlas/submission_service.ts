@@ -86,6 +86,7 @@ export type ListSubmissionsInput_Filter = {
   id?: ExpressionID[];
   problemId?: ExpressionID[];
   userId?: ExpressionID[];
+  memberId?: ExpressionID[];
   submittedAt?: ExpressionTimestamp[];
   runtime?: ExpressionEnum[];
   status?: ExpressionEnum[];

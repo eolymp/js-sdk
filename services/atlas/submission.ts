@@ -6,6 +6,7 @@ export type Submission = {
   id?: string;
   problemId?: string;
   userId?: string;
+  memberId?: string;
   submittedAt?: string;
   lang?: string;
   source?: string;
