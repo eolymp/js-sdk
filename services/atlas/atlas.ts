@@ -488,11 +488,11 @@ export class Atlas {
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scores/"+encodeURIComponent(input.userId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scores/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
-    delete(input.userId);
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
