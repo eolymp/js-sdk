@@ -25,6 +25,7 @@ export type Space_Quota = {
   scoreboardsPerSpace?: number;
   permissionsPerSpace?: number;
   attributesPerSpace?: number;
+  coursesPerSpace?: number;
   problemsPerContest?: number;
   participantsPerContest?: number;
 }
