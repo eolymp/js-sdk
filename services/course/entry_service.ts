@@ -93,7 +93,9 @@ export class EntryService {
 
 export type CreateSectionInput = {
   parentId?: string;
+  index?: number;
   title?: string;
+  image?: string;
   description?: Content;
 }
 
@@ -103,8 +105,8 @@ export type CreateSectionOutput = {
 
 export type UpdateSectionInput = {
   entryId?: string;
-  parentId?: string;
   title?: string;
+  image?: string;
   description?: Content;
 }
 
@@ -112,6 +114,7 @@ export type UpdateSectionOutput = Record<string, unknown>;
 
 export type CreateDocumentInput = {
   parentId?: string;
+  index?: number;
   title?: string;
   document?: Content;
 }
@@ -122,7 +125,6 @@ export type CreateDocumentOutput = {
 
 export type UpdateDocumentInput = {
   entryId?: string;
-  parentId?: string;
   title?: string;
   document?: Content;
 }
