@@ -57,6 +57,15 @@ export class EntryService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
+  MoveEntry(input: MoveEntryInput, opts?: any): Promise<MoveEntryOutput> {
+    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/position";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.entryId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   DeleteEntry(input: DeleteEntryInput, opts?: any): Promise<DeleteEntryOutput> {
     const path = "/entries/"+encodeURIComponent(input.entryId||'');
 
@@ -126,6 +135,14 @@ export type RenameEntryInput = {
 }
 
 export type RenameEntryOutput = Record<string, unknown>;
+
+export type MoveEntryInput = {
+  entryId?: string;
+  parentId?: string;
+  index?: number;
+}
+
+export type MoveEntryOutput = Record<string, unknown>;
 
 export type DeleteEntryInput = {
   entryId?: string;

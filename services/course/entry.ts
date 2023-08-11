@@ -9,6 +9,7 @@ export type Entry = {
   id?: string;
   title?: string;
   parentId?: string;
+  index?: number;
   depth?: number;
   durationEstimate?: number;
   section?: Section;
