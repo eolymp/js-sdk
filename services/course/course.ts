@@ -8,7 +8,8 @@ export type Course = {
   locale?: string;
   name?: string;
   description?: Content;
-  picture?: string;
+  image?: string;
+  visibility?: string;
   durationEstimate?: number;
 }
 

@@ -3,7 +3,7 @@
 
 
 export type Video = {
-  previewUrl?: string;
+  imageUrl?: string;
   videoUrl?: string;
   duration?: number;
 }
