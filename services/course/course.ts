@@ -10,6 +10,7 @@ export type Course = {
   description?: Content;
   image?: string;
   visibility?: string;
-  durationEstimate?: number;
+  duration?: number;
+  estimate?: number;
 }
 

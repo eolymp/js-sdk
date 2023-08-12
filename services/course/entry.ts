@@ -10,8 +10,7 @@ export type Entry = {
   title?: string;
   parentId?: string;
   index?: number;
-  depth?: number;
-  durationEstimate?: number;
+  estimate?: number;
   section?: Section;
   document?: Content;
   video?: Video;

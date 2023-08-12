@@ -61,6 +61,12 @@ export class StudentService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
+    const path = "/viewer";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateStudentInput = {
@@ -117,4 +123,10 @@ export type ListStudentsOutput = {
 export type StartCourseInput = Record<string, unknown>;
 
 export type StartCourseOutput = Record<string, unknown>;
+
+export type DescribeViewerInput = Record<string, unknown>;
+
+export type DescribeViewerOutput = {
+  student?: Student;
+}
 
