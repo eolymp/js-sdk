@@ -154,6 +154,7 @@ export type DeleteEntryOutput = Record<string, unknown>;
 
 export type DescribeEntryInput = {
   entryId?: string;
+  render?: boolean;
 }
 
 export type DescribeEntryOutput = {
@@ -161,6 +162,7 @@ export type DescribeEntryOutput = {
 }
 
 export type ListEntriesInput = {
+  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListEntriesInput_Filter;

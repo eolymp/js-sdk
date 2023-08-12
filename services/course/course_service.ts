@@ -58,6 +58,7 @@ export class CourseService {
 }
 
 export type ListCoursesInput = {
+  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListCoursesInput_Filter;
@@ -77,6 +78,7 @@ export type ListCoursesOutput = {
 
 export type DescribeCourseInput = {
   courseId?: string;
+  render?: boolean;
 }
 
 export type DescribeCourseOutput = {
