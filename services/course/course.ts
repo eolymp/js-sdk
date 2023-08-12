@@ -5,6 +5,7 @@ import { Content } from "../ecm/content"
 
 export type Course = {
   id?: string;
+  url?: string;
   locale?: string;
   name?: string;
   description?: Content;
