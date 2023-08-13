@@ -79,6 +79,15 @@ export class EntryService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ListParents(input: ListParentsInput, opts?: any): Promise<ListParentsOutput> {
+    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/parents";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.entryId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateEntryInput = {
@@ -156,6 +165,14 @@ export type DescribeTOCInput = {
 }
 
 export type DescribeTOCOutput = {
+  items?: Entry[];
+}
+
+export type ListParentsInput = {
+  entryId?: string;
+}
+
+export type ListParentsOutput = {
   items?: Entry[];
 }
 
