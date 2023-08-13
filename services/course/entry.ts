@@ -8,11 +8,13 @@ import { Video } from "./entry_video"
 export type Entry = {
   id?: string;
   title?: string;
+  draft?: boolean;
   parentId?: string;
   index?: number;
   estimate?: number;
   section?: Section;
   document?: Content;
   video?: Video;
+  items?: Entry[];
 }
 
