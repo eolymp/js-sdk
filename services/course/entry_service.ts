@@ -152,6 +152,7 @@ export type ListEntriesOutput = {
 export type DescribeTOCInput = {
   rootId?: string;
   depth?: number;
+  draft?: boolean;
 }
 
 export type DescribeTOCOutput = {
