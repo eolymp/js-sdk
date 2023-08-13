@@ -149,7 +149,10 @@ export type ListEntriesOutput = {
   items?: Entry[];
 }
 
-export type DescribeTOCInput = Record<string, unknown>;
+export type DescribeTOCInput = {
+  rootId?: string;
+  depth?: number;
+}
 
 export type DescribeTOCOutput = {
   items?: Entry[];
