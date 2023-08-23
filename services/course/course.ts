@@ -12,6 +12,7 @@ export type Course = {
   image?: string;
   visibility?: string;
   duration?: number;
+  topics?: string[];
   estimate?: number;
 }
 
