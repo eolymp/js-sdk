@@ -24,6 +24,83 @@ export class Client {
     this.authenticate = opts.authenticate || undefined;
   }
 
+  // fetch compatible function which mixes in auth header, error handling and retry logic.
+  async fetch(req: RequestInfo|URL, options?: RequestInit): Promise<Response> {
+    const max = Math.max(1, this.retry);
+
+    for (let retry = 0; retry < max; retry++) {
+      const last = retry >= max - 1
+
+      if (!this.token && this.authenticate) {
+        this.token = await this.authenticate()
+      }
+
+      const init: RequestInit = {
+        mode: 'cors',
+        credentials: 'omit',
+        redirect: 'follow',
+        headers: {
+          ...this.headers,
+          ...options?.headers,
+          ...(this.token ? {Authorization: `Bearer ${this.token}`} : {}),
+        },
+        ...options,
+      };
+
+      const response = await fetch(req, init);
+      if (response.status === 404) {
+        const {message} = await Client.getResponseErrorData(response, 'not found')
+        throw new NotFoundError(message);
+      }
+
+      if (response.status === 401) {
+        if (retry === 0 && this.authenticate) { // if we got 401 on first attempt, reset token and retry
+          this.token = undefined;
+          continue;
+        }
+
+        const {message} = await Client.getResponseErrorData(response, 'unauthorized')
+        throw new UnauthorizedError(message)
+      }
+
+      if (response.status === 403) {
+        const {message} = await Client.getResponseErrorData(response, 'forbidden')
+        throw new ForbiddenError(message)
+      }
+
+      if (response.status === 429 && !last) {
+        await sleep((retry + 1) * 1000)
+        continue
+      }
+
+      if (response.status >= 400 && response.status < 500) {
+        const {
+          message,
+          code,
+          status,
+          details
+        } = await Client.getResponseErrorData(response, `bad request (${response.status})`)
+        throw new BadRequestError(message, code, status, details);
+      }
+
+      if (response.status >= 500) {
+        const {
+          message,
+          code,
+          details
+        } = await Client.getResponseErrorData(response, `server error (${response.status})`)
+        throw new InternalServerError(message, code, response.status, details);
+      }
+
+      if (last) {
+        return response;
+      }
+    }
+
+    return fetch(req, options)
+  }
+
+  // todo: make send use Client.fetch internally
   async send<T>(method: string, url: string, body: string|undefined, opts?: Options): Promise<T> {
     const max = Math.max(1, this.retry);
     for (let retry = 0; retry < max; retry++) {
