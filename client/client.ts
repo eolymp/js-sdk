@@ -39,12 +39,12 @@ export class Client {
         mode: 'cors',
         credentials: 'omit',
         redirect: 'follow',
+        ...options,
         headers: {
           ...this.headers,
           ...options?.headers,
           ...(this.token ? {Authorization: `Bearer ${this.token}`} : {}),
         },
-        ...options,
       };
 
       const response = await fetch(req, init);
