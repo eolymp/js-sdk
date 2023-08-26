@@ -92,9 +92,7 @@ export class Client {
         throw new InternalServerError(message, code, response.status, details);
       }
 
-      if (last) {
-        return response;
-      }
+      return response;
     }
 
     return fetch(req, options)
