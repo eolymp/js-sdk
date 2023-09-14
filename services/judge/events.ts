@@ -44,3 +44,9 @@ export type ParticipantDeletedEvent = {
   participant?: Participant;
 }
 
+export type RetestProblemEvent = {
+  contestId?: string;
+  problemId?: string;
+  activityId?: string;
+}
+
