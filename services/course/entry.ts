@@ -2,11 +2,13 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
+import { Problem } from "./entry_problem"
 import { Section } from "./entry_section"
 import { Video } from "./entry_video"
 
 export type Entry = {
   id?: string;
+  url?: string;
   title?: string;
   draft?: boolean;
   parentId?: string;
@@ -15,6 +17,7 @@ export type Entry = {
   section?: Section;
   document?: Content;
   video?: Video;
+  problem?: Problem;
   items?: Entry[];
 }
 
