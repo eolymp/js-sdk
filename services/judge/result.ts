@@ -5,6 +5,7 @@ import { Score } from "./score"
 
 export type Result = {
   participantId?: string;
+  memberId?: string;
   contestId?: string;
   name?: string;
   outOfCompetition?: boolean;
