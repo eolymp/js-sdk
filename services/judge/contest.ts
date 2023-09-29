@@ -5,7 +5,6 @@
 export type Contest = {
   id?: string;
   url?: string;
-  ern?: string;
   name?: string;
   startsAt?: string;
   startsIn?: number;
@@ -34,5 +33,6 @@ export type Contest_Scoring = {
   freezingTime?: number;
   unfreezeDelay?: number;
   allowUpsolving?: boolean;
+  useNameInScoreboard?: boolean;
 }
 
