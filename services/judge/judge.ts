@@ -1170,6 +1170,7 @@ export type ListTicketsInput_Filter = {
   id?: ExpressionID[];
   contestId?: ExpressionID[];
   participantId?: ExpressionID[];
+  memberId?: ExpressionID[];
   isReadByParticipant?: ExpressionBool[];
   isReadByOwner?: ExpressionBool[];
   isOpen?: ExpressionBool[];
