@@ -1090,6 +1090,15 @@ export type DescribeSubmissionOutput = {
   submission?: Submission;
 }
 
+export type WatchSubmissionInput = {
+  contestId?: string;
+  submissionId?: string;
+}
+
+export type WatchSubmissionOutput = {
+  submission?: Submission;
+}
+
 export type RetestSubmissionInput = {
   contestId?: string;
   submissionId?: string;
