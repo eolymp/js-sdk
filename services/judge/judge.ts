@@ -770,6 +770,7 @@ export type ListContestsInput = {
 }
 
 export type ListContestsInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   own?: ExpressionBool[];
   name?: ExpressionString[];
