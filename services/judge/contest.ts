@@ -13,8 +13,9 @@ export type Contest = {
   duration?: number;
   status?: string;
   visibility?: string;
+  joinUnofficially?: boolean;
   participationMode?: string;
-  endless?: boolean;
+  upsolveMode?: string;
   format?: string;
   domain?: string;
   spaceId?: string;
