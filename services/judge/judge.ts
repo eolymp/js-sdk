@@ -740,6 +740,7 @@ export type DeleteContestInput = {
 export type DeleteContestOutput = Record<string, unknown>;
 
 export type UpdateContestInput = {
+  patch?: string[];
   contestId?: string;
   contest?: Contest;
 }
@@ -948,9 +949,10 @@ export type DisableParticipantInput = {
 export type DisableParticipantOutput = Record<string, unknown>;
 
 export type UpdateParticipantInput = {
+  patch?: string;
   contestId?: string;
   participantId?: string;
-  patch?: string;
+  participant?: Participant;
   name?: string;
   bonusTime?: number;
   outOfCompetition?: boolean;
