@@ -4,7 +4,7 @@
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Activity } from "./activity"
 import { Announcement } from "./announcement"
-import { Contest, Contest_Appearance, Contest_Scoring } from "./contest"
+import { Contest, Contest_Appearance } from "./contest"
 import { Participant } from "./participant"
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Reply } from "./reply"
@@ -115,60 +115,6 @@ export class Judge {
     delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  ConfigureRuntime(input: ConfigureRuntimeInput, opts?: any): Promise<ConfigureRuntimeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/runtime";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.contestId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  DescribeRuntime(input: DescribeRuntimeInput, opts?: any): Promise<DescribeRuntimeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/runtime";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.contestId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ConfigureAppearance(input: ConfigureAppearanceInput, opts?: any): Promise<ConfigureAppearanceOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/appearance";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.contestId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  DescribeAppearance(input: DescribeAppearanceInput, opts?: any): Promise<DescribeAppearanceOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/appearance";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.contestId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ConfigureScoring(input: ConfigureScoringInput, opts?: any): Promise<ConfigureScoringOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoring";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.contestId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  DescribeScoring(input: DescribeScoringInput, opts?: any): Promise<DescribeScoringOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoring";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.contestId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ImportProblem(input: ImportProblemInput, opts?: any): Promise<ImportProblemOutput> {
@@ -1243,21 +1189,6 @@ export type DescribeRuntimeInput = {
 
 export type DescribeRuntimeOutput = {
   runtime?: string[];
-}
-
-export type ConfigureScoringInput = {
-  contestId?: string;
-  scoring?: Contest_Scoring;
-}
-
-export type ConfigureScoringOutput = Record<string, unknown>;
-
-export type DescribeScoringInput = {
-  contestId?: string;
-}
-
-export type DescribeScoringOutput = {
-  scoring?: Contest_Scoring;
 }
 
 export type CreateAnnouncementInput = {

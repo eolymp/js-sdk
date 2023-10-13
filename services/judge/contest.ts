@@ -18,10 +18,10 @@ export type Contest = {
   format?: string;
   domain?: string;
   spaceId?: string;
-  appearance?: Contest_Appearance;
-  upsolve?: Contest_Upsolve;
-  scoring?: Contest_Scoring;
   taxonomy?: Contest_Taxonomy;
+  appearance?: Contest_Appearance;
+  environment?: Contest_Environment;
+  upsolve?: Contest_Upsolve;
   scoreboard?: Contest_Scoreboard;
 }
 
@@ -44,13 +44,8 @@ export type Contest_Taxonomy = {
   city?: string;
 }
 
-export type Contest_Scoring = {
-  showScoreboard?: boolean;
-  attemptPenalty?: number;
-  freezingTime?: number;
-  unfreezeDelay?: number;
-  allowUpsolving?: boolean;
-  useNameInScoreboard?: boolean;
+export type Contest_Environment = {
+  allowedRuntimes?: string[];
 }
 
 export type Contest_Upsolve = {
@@ -60,5 +55,9 @@ export type Contest_Upsolve = {
 
 export type Contest_Scoreboard = {
   visibility?: string;
+  freezingTime?: number;
+  unfreezeDelay?: number;
+  attemptPenalty?: number;
+  useNameInScoreboard?: boolean;
 }
 
