@@ -13,20 +13,34 @@ export type Contest = {
   duration?: number;
   status?: string;
   visibility?: string;
-  joinUnofficially?: boolean;
   participationMode?: string;
-  upsolveMode?: string;
   format?: string;
   domain?: string;
   spaceId?: string;
+  appearance?: Contest_Appearance;
+  participation?: Contest_Participation;
+  scoring?: Contest_Scoring;
+  taxonomy?: Contest_Taxonomy;
+  scoreboard?: Contest_Scoreboard;
 }
 
 export type Contest_Appearance = {
   title?: string;
   tagline?: string;
+  description?: string;
   logoImage?: string;
   primaryColor?: string;
   secondaryColor?: string;
+}
+
+export type Contest_Taxonomy = {
+  year?: number;
+  series?: string;
+  scale?: string;
+  difficulty?: number;
+  country?: string;
+  region?: string;
+  city?: string;
 }
 
 export type Contest_Scoring = {
@@ -36,5 +50,15 @@ export type Contest_Scoring = {
   unfreezeDelay?: number;
   allowUpsolving?: boolean;
   useNameInScoreboard?: boolean;
+}
+
+export type Contest_Participation = {
+  joinUnofficially?: boolean;
+  freeUpsolve?: boolean;
+  virtualUpsolve?: boolean;
+}
+
+export type Contest_Scoreboard = {
+  visibility?: string;
 }
 
