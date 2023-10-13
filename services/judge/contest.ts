@@ -13,12 +13,13 @@ export type Contest = {
   duration?: number;
   status?: string;
   visibility?: string;
+  joinUnofficially?: boolean;
   participationMode?: string;
   format?: string;
   domain?: string;
   spaceId?: string;
   appearance?: Contest_Appearance;
-  participation?: Contest_Participation;
+  upsolve?: Contest_Upsolve;
   scoring?: Contest_Scoring;
   taxonomy?: Contest_Taxonomy;
   scoreboard?: Contest_Scoreboard;
@@ -52,8 +53,7 @@ export type Contest_Scoring = {
   useNameInScoreboard?: boolean;
 }
 
-export type Contest_Participation = {
-  joinUnofficially?: boolean;
+export type Contest_Upsolve = {
   freeUpsolve?: boolean;
   virtualUpsolve?: boolean;
 }
