@@ -8,13 +8,13 @@ export type Participant = {
   memberId?: string;
   name?: string;
   unofficial?: boolean;
+  inactive?: boolean;
+  ghost?: boolean;
   status?: string;
   startedAt?: string;
   startedIn?: number;
   endAt?: string;
   endIn?: number;
-  completeAt?: string;
-  completeIn?: number;
   bonusTime?: number;
   passcode?: string;
   submits?: Participant_Submit[];
