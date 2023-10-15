@@ -873,7 +873,7 @@ export type AddParticipantInput = {
   contestId?: string;
   memberId?: string;
   name?: string;
-  outOfCompetition?: boolean;
+  unofficial?: boolean;
 }
 
 export type AddParticipantOutput = {

@@ -8,7 +8,7 @@ export type Result = {
   memberId?: string;
   contestId?: string;
   name?: string;
-  outOfCompetition?: boolean;
+  unofficial?: boolean;
   rank?: number;
   rankLower?: number;
   score?: Score;

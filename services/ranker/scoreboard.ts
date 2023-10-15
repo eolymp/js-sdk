@@ -24,7 +24,7 @@ export type Scoreboard_Row = {
   score?: number;
   penalty?: number;
   ghost?: boolean;
-  outOfCompetition?: boolean;
+  unofficial?: boolean;
   rank?: number;
   rankLower?: number;
   values?: Scoreboard_Row_Value[];
