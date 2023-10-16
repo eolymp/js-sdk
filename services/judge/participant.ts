@@ -8,7 +8,7 @@ export type Participant = {
   memberId?: string;
   name?: string;
   unofficial?: boolean;
-  inactive?: boolean;
+  active?: boolean;
   ghost?: boolean;
   status?: string;
   startedAt?: string;
