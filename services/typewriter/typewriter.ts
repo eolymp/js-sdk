@@ -83,6 +83,7 @@ export class Typewriter {
 
 export type DescribeFragmentInput = {
   fragmentId?: string;
+  render?: boolean;
 }
 
 export type DescribeFragmentOutput = {
@@ -90,6 +91,7 @@ export type DescribeFragmentOutput = {
 }
 
 export type ListFragmentsInput = {
+  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListFragmentsInput_Filter;
@@ -130,7 +132,8 @@ export type DeleteFragmentOutput = Record<string, unknown>;
 
 export type DescribePathInput = {
   path?: string;
-  preferredLocales?: string[];
+  locale?: string;
+  render?: boolean;
 }
 
 export type DescribePathOutput = {
@@ -138,7 +141,8 @@ export type DescribePathOutput = {
 }
 
 export type ListPathsInput = {
-  preferredLocales?: string[];
+  render?: boolean;
+  locale?: string;
   offset?: number;
   size?: number;
   filters?: ListPathsInput_Filter;
@@ -157,7 +161,8 @@ export type ListPathsOutput = {
 
 export type ListParentsInput = {
   path?: string;
-  preferredLocales?: string[];
+  render?: boolean;
+  locale?: string;
 }
 
 export type ListParentsOutput = {
