@@ -895,13 +895,10 @@ export type DisableParticipantInput = {
 export type DisableParticipantOutput = Record<string, unknown>;
 
 export type UpdateParticipantInput = {
-  patch?: string;
+  patch?: string[];
   contestId?: string;
   participantId?: string;
   participant?: Participant;
-  name?: string;
-  bonusTime?: number;
-  outOfCompetition?: boolean;
 }
 
 export type UpdateParticipantOutput = Record<string, unknown>;

@@ -9,6 +9,7 @@ export type Result = {
   contestId?: string;
   name?: string;
   unofficial?: boolean;
+  medal?: string;
   rank?: number;
   rankLower?: number;
   score?: Score;

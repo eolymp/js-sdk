@@ -10,6 +10,7 @@ export type Participant = {
   unofficial?: boolean;
   active?: boolean;
   ghost?: boolean;
+  medal?: string;
   status?: string;
   startedAt?: string;
   startedIn?: number;
