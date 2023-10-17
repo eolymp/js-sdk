@@ -871,9 +871,7 @@ export type ListExamplesOutput = {
 
 export type AddParticipantInput = {
   contestId?: string;
-  memberId?: string;
-  name?: string;
-  unofficial?: boolean;
+  participant?: Participant;
 }
 
 export type AddParticipantOutput = {
