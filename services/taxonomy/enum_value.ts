@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Entry = {
+export type Value = {
   id?: string;
   name?: string;
   summary?: string;
@@ -11,7 +11,7 @@ export type Entry = {
   keywords?: string[];
 }
 
-export type Entry_Translation = {
+export type Value_Translation = {
   locale?: string;
   name?: string;
   abbr?: string;

@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Dataset = {
+export type Enum = {
   id?: string;
   name?: string;
 }
