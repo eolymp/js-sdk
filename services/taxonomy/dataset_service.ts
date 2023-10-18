@@ -240,6 +240,7 @@ export type ListEntriesOutput = {
 }
 
 export type TranslateEntryInput = {
+  datasetId?: string;
   entryId?: string;
   locale?: string;
   translation?: Entry_Translation;
