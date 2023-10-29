@@ -30,6 +30,14 @@ export type Status_Run = {
   output?: string;
   stderr?: string;
   verifierLog?: string;
+  verifierLogUrl?: string;
+  verifierWallTimeUsage?: number;
+  verifierMemoryUsage?: number;
+  verifierExitCode?: number;
   interactorLog?: string;
+  interactorLogUrl?: string;
+  interactorWallTimeUsage?: number;
+  interactorMemoryUsage?: number;
+  interactorExitCode?: number;
 }
 
