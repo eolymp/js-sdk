@@ -28,7 +28,9 @@ export type Status_Run = {
   exitCode?: number;
   signal?: number;
   output?: string;
+  outputUrl?: string;
   stderr?: string;
+  stderrUrl?: string;
   verifierLog?: string;
   verifierLogUrl?: string;
   verifierWallTimeUsage?: number;

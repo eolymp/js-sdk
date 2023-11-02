@@ -23,33 +23,35 @@ export type Submission = {
   groups?: Submission_Group[];
 }
 
+export type Submission_VerifierExecutionData = {
+  logUrl?: string;
+  wallTimeUsage?: number;
+  memoryUsage?: number;
+  exitCode?: number;
+}
+
+export type Submission_InteractorExecutionData = {
+  logUrl?: string;
+  wallTimeUsage?: number;
+  memoryUsage?: number;
+  exitCode?: number;
+}
+
 export type Submission_Run = {
   id?: string;
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
+  outputUrl?: string;
+  stderrUrl?: string;
   index?: number;
   testId?: string;
   cost?: number;
   score?: number;
   status?: string;
-  verifierExecutionData?: Submission_Run_VerifierExecutionData;
-  interactorExecutionData?: Submission_Run_InteractorExecutionData;
-}
-
-export type Submission_Run_VerifierExecutionData = {
-  logUrl?: string;
-  wallTimeUsage?: number;
-  memoryUsage?: number;
-  exitCode?: number;
-}
-
-export type Submission_Run_InteractorExecutionData = {
-  logUrl?: string;
-  wallTimeUsage?: number;
-  memoryUsage?: number;
-  exitCode?: number;
+  verifierExecutionData?: Submission_VerifierExecutionData;
+  interactorExecutionData?: Submission_InteractorExecutionData;
 }
 
 export type Submission_Group = {
