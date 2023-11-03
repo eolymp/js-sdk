@@ -726,6 +726,8 @@ export type ListContestsInput_Filter = {
   public?: ExpressionBool[];
   visibility?: ExpressionEnum[];
   format?: ExpressionEnum[];
+  status?: ExpressionEnum[];
+  featured?: ExpressionBool[];
   year?: ExpressionInt[];
   scale?: ExpressionEnum[];
   series?: ExpressionEnum[];

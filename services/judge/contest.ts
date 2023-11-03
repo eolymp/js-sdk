@@ -10,6 +10,7 @@ export type Contest = {
   startsIn?: number;
   endsAt?: string;
   endsIn?: number;
+  featuredUntil?: string;
   duration?: number;
   status?: string;
   visibility?: string;
