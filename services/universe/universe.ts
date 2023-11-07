@@ -142,6 +142,7 @@ export type CreateSpaceOutput = {
 }
 
 export type UpdateSpaceInput = {
+  patch?: string[];
   spaceId?: string;
   space?: Space;
 }
