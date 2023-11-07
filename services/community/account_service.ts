@@ -108,7 +108,9 @@ export type UploadPictureInput = {
   size?: number;
 }
 
-export type UploadPictureOutput = Record<string, unknown>;
+export type UploadPictureOutput = {
+  pictureUrl?: string;
+}
 
 export type DeleteAccountInput = Record<string, unknown>;
 
