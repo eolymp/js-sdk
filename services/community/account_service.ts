@@ -77,6 +77,7 @@ export type CreateAccountInput = {
 }
 
 export type CreateAccountOutput = {
+  memberId?: string;
   hint?: string;
 }
 
@@ -119,7 +120,7 @@ export type ResendVerificationOutput = Record<string, unknown>;
 
 export type CompleteVerificationInput = {
   code?: string;
-  subject?: string;
+  memberId?: string;
 }
 
 export type CompleteVerificationOutput = Record<string, unknown>;
