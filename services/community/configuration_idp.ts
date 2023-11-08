@@ -4,6 +4,15 @@
 
 export type IdentityProvider = Record<string, unknown>;
 
+export type IdentityProvider_Basecamp = Record<string, unknown>;
+
+export type IdentityProvider_Local = {
+  allowModifyNickname?: boolean;
+  allowModifyBasics?: boolean;
+  allowModifyEmail?: boolean;
+  allowModifyPassword?: boolean;
+}
+
 export type IdentityProvider_OIDC = {
   clientId?: string;
   clientSecret?: string;
