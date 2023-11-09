@@ -133,12 +133,13 @@ export type StartRecoveryInput = {
 
 export type StartRecoveryOutput = {
   hint?: string;
+  memberId?: string;
 }
 
 export type CompleteRecoverInput = {
   code?: string;
   password?: string;
-  subject?: string;
+  memberId?: string;
 }
 
 export type CompleteRecoverOutput = Record<string, unknown>;
