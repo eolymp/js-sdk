@@ -19,7 +19,7 @@ export class SuggestionService {
   }
 
   CreateSuggestion(input: CreateSuggestionInput, opts?: any): Promise<CreateSuggestionOutput> {
-    const path = "/suggestions/";
+    const path = "/suggestions";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
