@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
-import { ExpressionID, ExpressionString } from "../wellknown/expression"
+import { ExpressionEnum, ExpressionID } from "../wellknown/expression"
 import { Suggestion } from "./suggestion"
 
 interface Client {
@@ -121,12 +121,12 @@ export type ListSuggestionsInput = {
   offset?: number;
   size?: number;
   filters?: ListSuggestionsInput_Filter;
-  version?: number;
 }
 
 export type ListSuggestionsInput_Filter = {
   id?: ExpressionID[];
-  name?: ExpressionString[];
+  memberId?: ExpressionID[];
+  status?: ExpressionEnum[];
 }
 
 export type ListSuggestionsOutput = {
@@ -137,7 +137,6 @@ export type ListSuggestionsOutput = {
 export type DescribeSuggestionInput = {
   problemId?: string;
   suggestionId?: string;
-  version?: number;
 }
 
 export type DescribeSuggestionOutput = {
