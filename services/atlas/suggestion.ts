@@ -6,9 +6,10 @@ import { Content } from "../ecm/content"
 export type Suggestion = {
   id?: string;
   status?: string;
-  problemId?: string;
   locale?: string;
   memberId?: string;
+  createdAt?: string;
+  updatedAt?: string;
   topics?: string[];
   difficulty?: number;
   statement?: Content;
