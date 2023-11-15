@@ -7,6 +7,7 @@ export type Suggestion = {
   id?: string;
   status?: string;
   locale?: string;
+  title?: string;
   memberId?: string;
   createdAt?: string;
   updatedAt?: string;
