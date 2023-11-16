@@ -139,6 +139,7 @@ export type ListMembersInput_Filter = {
   incomplete?: ExpressionBool[];
   unofficial?: ExpressionBool[];
   teamId?: ExpressionID[];
+  groupId?: ExpressionID[];
   userIssuer?: ExpressionString[];
   userSubject?: ExpressionString[];
   userEmail?: ExpressionString[];

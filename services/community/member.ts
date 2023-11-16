@@ -16,6 +16,13 @@ export type Member = {
   user?: User;
   team?: Team;
   ghost?: Ghost;
+  groups?: string[];
+  subscription?: Member_Subscription;
   attributes?: Attribute_Value[];
+}
+
+export type Member_Subscription = {
+  tierId?: string;
+  orderId?: string;
 }
 

@@ -69,6 +69,26 @@ export class AccountService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  UpgradeSubscription(input: UpgradeSubscriptionInput, opts?: any): Promise<UpgradeSubscriptionOutput> {
+    const path = "/account/subscription";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+}
+
+interface Client {
+  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+}
+
+export class SubscriptionService {
+  private readonly cli: Client;
+  private readonly url: string;
+
+  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+    this.cli = cli;
+    this.url = url;
+  }
 }
 
 export type CreateAccountInput = {
@@ -143,4 +163,12 @@ export type CompleteRecoverInput = {
 }
 
 export type CompleteRecoverOutput = Record<string, unknown>;
+
+export type UpgradeSubscriptionInput = {
+  tierId?: string;
+}
+
+export type UpgradeSubscriptionOutput = {
+  orderId?: string;
+}
 
