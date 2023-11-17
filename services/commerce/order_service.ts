@@ -16,6 +16,12 @@ export class OrderService {
     this.url = url;
   }
 
+  CreateOrder(input: CreateOrderInput, opts?: any): Promise<CreateOrderOutput> {
+    const path = "/orders";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeOrder(input: DescribeOrderInput, opts?: any): Promise<DescribeOrderOutput> {
     const path = "/orders/"+encodeURIComponent(input.orderId||'');
 
@@ -51,6 +57,14 @@ export class OrderService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+}
+
+export type CreateOrderInput = {
+  order?: Order;
+}
+
+export type CreateOrderOutput = {
+  orderId?: string;
 }
 
 export type DescribeOrderInput = {
