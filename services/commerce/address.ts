@@ -5,6 +5,7 @@
 export type Address = {
   firstName?: string;
   lastName?: string;
+  companyName?: string;
   email?: string;
   phone?: string;
   country?: string;
@@ -12,5 +13,6 @@ export type Address = {
   city?: string;
   postcode?: string;
   streetName?: string;
+  taxNumber?: string;
 }
 

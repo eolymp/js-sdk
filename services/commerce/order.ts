@@ -31,10 +31,10 @@ export type Order_Item = {
   description?: string;
   quantity?: number;
   itemPrice?: number;
+  taxPercentage?: number;
+  discountPercentage?: number;
   totalTaxAmount?: number;
-  totalTaxPercentage?: number;
   totalDiscountAmount?: number;
-  totalDiscountPercentage?: number;
   totalPrice?: number;
 }
 
