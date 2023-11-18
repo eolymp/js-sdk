@@ -15,12 +15,6 @@ export class CheckoutService {
     this.cli = cli;
     this.url = url;
   }
-
-  CreateCheckout(input: CreateCheckoutInput, opts?: any): Promise<CreateCheckoutOutput> {
-    const path = "/checkout";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
 }
 
 export type CreateCheckoutInput = {
