@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Member } from "./member"
+import { Subscription } from "./subscription"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -70,24 +71,16 @@ export class AccountService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpgradeSubscription(input: UpgradeSubscriptionInput, opts?: any): Promise<UpgradeSubscriptionOutput> {
+  ConfigureActiveSubscription(input: ConfigureActiveSubscriptionInput, opts?: any): Promise<ConfigureActiveSubscriptionOutput> {
     const path = "/account/subscription";
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
-}
 
-interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
-}
+  DescribeActiveSubscription(input: DescribeActiveSubscriptionInput, opts?: any): Promise<DescribeActiveSubscriptionOutput> {
+    const path = "/account/subscription";
 
-export class SubscriptionService {
-  private readonly cli: Client;
-  private readonly url: string;
-
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
-    this.cli = cli;
-    this.url = url;
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
@@ -164,11 +157,19 @@ export type CompleteRecoverInput = {
 
 export type CompleteRecoverOutput = Record<string, unknown>;
 
-export type UpgradeSubscriptionInput = {
+export type ConfigureActiveSubscriptionInput = {
   tierId?: string;
+  currency?: string;
+  paymentOption?: string;
 }
 
-export type UpgradeSubscriptionOutput = {
-  orderId?: string;
+export type ConfigureActiveSubscriptionOutput = {
+  checkoutUrl?: string;
+}
+
+export type DescribeActiveSubscriptionInput = Record<string, unknown>;
+
+export type DescribeActiveSubscriptionOutput = {
+  subscription?: Subscription;
 }
 

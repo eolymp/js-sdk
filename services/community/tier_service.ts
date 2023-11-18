@@ -16,12 +16,6 @@ export class TierService {
     this.url = url;
   }
 
-  ListTiers(input: ListTiersInput, opts?: any): Promise<ListTiersOutput> {
-    const path = "/tiers";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   DescribeTier(input: DescribeTierInput, opts?: any): Promise<DescribeTierOutput> {
     const path = "/tiers/"+encodeURIComponent(input.tierId||'');
 
@@ -30,12 +24,26 @@ export class TierService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ListTiers(input: ListTiersInput, opts?: any): Promise<ListTiersOutput> {
+    const path = "/tiers";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListCurrencies(input: ListCurrenciesInput, opts?: any): Promise<ListCurrenciesOutput> {
+    const path = "/tier-currencies";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type ListTiersInput = {
   offset?: number;
   size?: number;
-  pricingCountry?: string;
+  render?: boolean;
+  locale?: string;
+  currency?: string;
 }
 
 export type ListTiersOutput = {
@@ -45,10 +53,18 @@ export type ListTiersOutput = {
 
 export type DescribeTierInput = {
   tierId?: string;
-  pricingCountry?: string;
+  render?: boolean;
+  locale?: string;
+  currency?: string;
 }
 
 export type DescribeTierOutput = {
   tier?: Tier;
+}
+
+export type ListCurrenciesInput = Record<string, unknown>;
+
+export type ListCurrenciesOutput = {
+  items?: string[];
 }
 
