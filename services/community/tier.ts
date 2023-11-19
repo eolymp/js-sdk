@@ -8,6 +8,10 @@ export type Tier = {
   name?: string;
   description?: Content;
   image?: string;
+  price?: Tier_Price;
+}
+
+export type Tier_Price = {
   currency?: string;
   onetimePrice?: number;
   monthlyPrice?: number;
