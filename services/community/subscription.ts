@@ -16,7 +16,7 @@ export type Subscription = {
   recurrence?: string;
   currency?: string;
   amount?: number;
-  taxName?: number;
+  taxName?: string;
   taxAmount?: number;
   taxPercentage?: number;
 }
