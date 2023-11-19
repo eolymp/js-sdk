@@ -8,6 +8,7 @@ export type Subscription = {
   spaceId?: string;
   userId?: string;
   memberId?: string;
+  payerEmail?: string;
   createdAt?: string;
   startedAt?: string;
   cancelledAt?: string;
