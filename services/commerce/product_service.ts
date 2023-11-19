@@ -47,7 +47,7 @@ export type DeleteProductInput = {
 export type DeleteProductOutput = Record<string, unknown>;
 
 export type ListProductPricesInput = {
-  currency?: string;
+  productId?: string;
 }
 
 export type ListProductPricesOutput = {
