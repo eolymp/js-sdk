@@ -54,13 +54,14 @@ export type ListProductPricesOutput = {
   items?: Product_Price[];
 }
 
-export type AddProductPriceInput = {
+export type CreateProductPriceInput = {
   productId?: string;
   price?: Product_Price;
-  setDefault?: boolean;
 }
 
-export type AddProductPriceOutput = Record<string, unknown>;
+export type CreateProductPriceOutput = {
+  priceId?: string;
+}
 
 export type RemoveProductPriceInput = {
   productId?: string;
