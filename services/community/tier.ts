@@ -6,6 +6,7 @@ import { Content } from "../ecm/content"
 export type Tier = {
   id?: string;
   name?: string;
+  summary?: string;
   description?: Content;
   image?: string;
   price?: Tier_Price;
