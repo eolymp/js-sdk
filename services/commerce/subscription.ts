@@ -5,6 +5,9 @@
 export type Subscription = {
   id?: string;
   status?: string;
+  spaceId?: string;
+  userId?: string;
+  memberId?: string;
   createdAt?: string;
   startedAt?: string;
   cancelledAt?: string;
