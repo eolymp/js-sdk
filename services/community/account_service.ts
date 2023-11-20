@@ -159,8 +159,7 @@ export type CompleteRecoverOutput = Record<string, unknown>;
 
 export type ConfigureActiveSubscriptionInput = {
   tierId?: string;
-  currency?: string;
-  paymentOption?: string;
+  priceId?: string;
 }
 
 export type ConfigureActiveSubscriptionOutput = {

@@ -56,6 +56,15 @@ export type ListProductPricesOutput = {
   items?: Price[];
 }
 
+export type DescribeProductPriceInput = {
+  productId?: string;
+  priceId?: string;
+}
+
+export type DescribeProductPriceOutput = {
+  price?: Price;
+}
+
 export type CreateProductPriceInput = {
   productId?: string;
   price?: Price;
