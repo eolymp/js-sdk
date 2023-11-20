@@ -30,11 +30,6 @@ export type Subscription_Item = {
   id?: string;
   active?: boolean;
   productId?: string;
-  productName?: string;
-  productImage?: string;
-  productDescription?: string;
-  recurrence?: string;
-  unitAmount?: number;
-  quantity?: number;
+  priceId?: string;
 }
 
