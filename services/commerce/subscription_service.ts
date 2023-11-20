@@ -31,7 +31,9 @@ export type UpdateSubscriptionInput = {
   subscription?: Subscription;
 }
 
-export type UpdateSubscriptionOutput = Record<string, unknown>;
+export type UpdateSubscriptionOutput = {
+  checkoutUrl?: string;
+}
 
 export type CancelSubscriptionInput = {
   subscriptionId?: string;
