@@ -14,6 +14,7 @@ export type Member = {
   unofficial?: boolean;
   secret?: boolean;
   tierId?: string;
+  fallbackTierId?: string;
   user?: User;
   team?: Team;
   ghost?: Ghost;
