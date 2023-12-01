@@ -15,3 +15,8 @@ export type MemberDeletedEvent = {
   member?: Member;
 }
 
+export type MemberChangeRecord = {
+  op?: string;
+  member?: Member;
+}
+
