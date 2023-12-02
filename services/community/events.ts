@@ -16,6 +16,7 @@ export type MemberDeletedEvent = {
 }
 
 export type MemberChangeRecord = {
+  spaceId?: string;
   op?: string;
   member?: Member;
 }
