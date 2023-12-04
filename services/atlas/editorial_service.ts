@@ -115,6 +115,7 @@ export type CreateEditorialOutput = {
 }
 
 export type UpdateEditorialInput = {
+  patch?: string[];
   editorialId?: string;
   editorial?: Editorial;
 }

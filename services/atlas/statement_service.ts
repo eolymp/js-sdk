@@ -120,6 +120,7 @@ export type CreateStatementOutput = {
 }
 
 export type UpdateStatementInput = {
+  patch?: string[];
   problemId?: string;
   statementId?: string;
   statement?: Statement;
