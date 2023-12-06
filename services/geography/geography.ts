@@ -69,6 +69,7 @@ export type DescribeCountryOutput = {
 export type ListCountriesInput = {
   offset?: number;
   size?: number;
+  filters?: ListCountriesInput_Filter;
 }
 
 export type ListCountriesInput_Filter = {
@@ -93,6 +94,7 @@ export type DescribeRegionOutput = {
 export type ListRegionsInput = {
   offset?: number;
   size?: number;
+  filters?: ListRegionsInput_Filter;
   countryId?: string;
 }
 
