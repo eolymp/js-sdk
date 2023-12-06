@@ -47,6 +47,15 @@ export class Geography {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DeprecatedListRegions(input: ListRegionsInput, opts?: any): Promise<ListRegionsOutput> {
+    const path = "/geography/countries/"+encodeURIComponent(input.countryId||'')+"/regions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.countryId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type DescribeCountryInput = {
