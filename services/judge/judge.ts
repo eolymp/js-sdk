@@ -1184,7 +1184,9 @@ export type UpdateReplyInput = {
 
 export type UpdateReplyOutput = Record<string, unknown>;
 
-export type WatchTicketsInput = Record<string, unknown>;
+export type WatchTicketsInput = {
+  extra?: string[];
+}
 
 export type WatchTicketsOutput = {
   event?: string;
@@ -1195,6 +1197,7 @@ export type WatchTicketsOutput = {
 export type WatchRepliesInput = {
   ticketId?: string;
   cursor?: string;
+  extra?: string[];
 }
 
 export type WatchRepliesOutput = {
