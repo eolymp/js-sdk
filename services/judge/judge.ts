@@ -1161,6 +1161,7 @@ export type ListRepliesInput = {
   ticketId?: string;
   offset?: number;
   size?: number;
+  extra?: string[];
 }
 
 export type ListRepliesOutput = {
@@ -1189,6 +1190,16 @@ export type WatchTicketsOutput = {
   event?: string;
   ticket?: Ticket;
   unreadCount?: number;
+}
+
+export type WatchRepliesInput = {
+  ticketId?: string;
+  cursor?: string;
+}
+
+export type WatchRepliesOutput = {
+  event?: string;
+  reply?: Reply;
 }
 
 export type ConfigureRuntimeInput = {
@@ -1240,6 +1251,7 @@ export type ReadAnnouncementOutput = Record<string, unknown>;
 export type DescribeAnnouncementInput = {
   contestId?: string;
   announcementId?: string;
+  extra?: string[];
 }
 
 export type DescribeAnnouncementOutput = {
@@ -1260,6 +1272,7 @@ export type ListAnnouncementsInput = {
   offset?: number;
   size?: number;
   filters?: ListAnnouncementsInput_Filter;
+  extra?: string[];
 }
 
 export type ListAnnouncementsInput_Filter = {
