@@ -1149,7 +1149,7 @@ export type ListTicketsOutput = {
 
 export type ReplyTicketInput = {
   ticketId?: string;
-  message?: string;
+  message?: Content;
   close?: boolean;
 }
 
@@ -1179,7 +1179,7 @@ export type DeleteReplyOutput = Record<string, unknown>;
 export type UpdateReplyInput = {
   ticketId?: string;
   replyId?: string;
-  message?: string;
+  message?: Content;
 }
 
 export type UpdateReplyOutput = Record<string, unknown>;
