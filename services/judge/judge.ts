@@ -1179,6 +1179,14 @@ export type UpdateReplyInput = {
 
 export type UpdateReplyOutput = Record<string, unknown>;
 
+export type WatchTicketsInput = Record<string, unknown>;
+
+export type WatchTicketsOutput = {
+  event?: string;
+  ticket?: Ticket;
+  unreadCount?: number;
+}
+
 export type ConfigureRuntimeInput = {
   contestId?: string;
   runtime?: string[];

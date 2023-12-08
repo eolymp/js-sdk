@@ -8,5 +8,6 @@ export type Content = {
   latex?: string;
   markdown?: string;
   ecm?: Node;
+  render?: Node;
 }
 

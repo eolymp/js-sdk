@@ -50,3 +50,8 @@ export type RetestProblemEvent = {
   activityId?: string;
 }
 
+export type TicketChangeRecord = {
+  op?: string;
+  ticket?: Ticket;
+}
+
