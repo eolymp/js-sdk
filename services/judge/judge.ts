@@ -1115,6 +1115,7 @@ export type DeleteTicketOutput = Record<string, unknown>;
 export type DescribeTicketInput = {
   contestId?: string;
   ticketId?: string;
+  extra?: string[];
 }
 
 export type DescribeTicketOutput = {
@@ -1127,6 +1128,7 @@ export type ListTicketsInput = {
   filters?: ListTicketsInput_Filter;
   sort?: string;
   order?: string;
+  extra?: string[];
 }
 
 export type ListTicketsInput_Filter = {
