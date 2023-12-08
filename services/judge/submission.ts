@@ -14,6 +14,7 @@ export type Submission = {
   source?: string;
   signature?: string;
   status?: string;
+  verdict?: string;
   error?: string;
   cost?: number;
   score?: number;
@@ -47,6 +48,7 @@ export type Submission_Run = {
   cost?: number;
   score?: number;
   status?: string;
+  verdict?: string;
   verifierExecutionData?: Submission_VerifierExecutionData;
   interactorExecutionData?: Submission_InteractorExecutionData;
 }
@@ -55,6 +57,7 @@ export type Submission_Group = {
   index?: number;
   testsetId?: string;
   status?: string;
+  verdict?: string;
   dependencies?: number[];
   cost?: number;
   score?: number;
