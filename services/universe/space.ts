@@ -13,6 +13,7 @@ export type Space = {
   visibility?: string;
   homeUrl?: string;
   issuerUrl?: string;
+  graphqlUrl?: string;
 }
 
 export type Space_Quota = {
