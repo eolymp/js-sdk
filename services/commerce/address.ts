@@ -7,6 +7,7 @@ export type Address = {
   postCode?: string;
   region?: string;
   city?: string;
-  lines?: string[];
+  line1?: string;
+  line2?: string;
 }
 
