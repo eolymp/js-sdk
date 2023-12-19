@@ -33,6 +33,15 @@ export type UpdateProductInput = {
 
 export type UpdateProductOutput = Record<string, unknown>;
 
+export type ListProductsInput = {
+  filters?: Record<string, string>;
+}
+
+export type ListProductsOutput = {
+  total?: number;
+  items?: Product[];
+}
+
 export type DescribeProductInput = {
   productId?: string;
 }
