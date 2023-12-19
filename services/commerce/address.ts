@@ -4,8 +4,8 @@
 
 export type Address = {
   country?: string;
-  postCode?: string;
-  region?: string;
+  state?: string;
+  postalCode?: string;
   city?: string;
   line1?: string;
   line2?: string;
