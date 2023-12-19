@@ -7,9 +7,10 @@ export type Customer = {
   id?: string;
   name?: string;
   description?: string;
-  taxId?: string;
   email?: string;
   phone?: string;
+  taxIdType?: string;
+  taxIdValue?: string;
   address?: Address;
   currency?: string;
   language?: string;
