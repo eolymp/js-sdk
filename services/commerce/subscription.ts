@@ -21,10 +21,6 @@ export type Subscription = {
   cancellationFeedback?: string;
   cancellationReason?: string;
   currency?: string;
-  totalAmount?: number;
-  successUrl?: string;
-  cancelUrl?: string;
-  checkoutUrl?: string;
   items?: Subscription_Item[];
 }
 
