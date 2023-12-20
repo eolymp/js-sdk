@@ -41,3 +41,25 @@ export type CancelSubscriptionInput = {
 
 export type CancelSubscriptionOutput = Record<string, unknown>;
 
+export type DescribeSubscriptionInput = {
+  subscriptionId?: string;
+}
+
+export type DescribeSubscriptionOutput = {
+  subscription?: Subscription;
+}
+
+export type ListSubscriptionsInput = {
+  customerId?: string;
+  priceId?: string;
+  status?: string;
+  size?: number;
+  after?: number;
+  before?: number;
+}
+
+export type ListSubscriptionsOutput = {
+  hasMore?: boolean;
+  items?: Subscription[];
+}
+
