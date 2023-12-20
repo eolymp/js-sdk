@@ -54,8 +54,8 @@ export type ListSubscriptionsInput = {
   priceId?: string;
   status?: string;
   size?: number;
-  after?: number;
-  before?: number;
+  after?: string;
+  before?: string;
 }
 
 export type ListSubscriptionsOutput = {
