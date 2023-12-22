@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Address } from "../commerce/address"
+import { Plan, Plan_Variant } from "./plan"
 
 export type Billing = Record<string, unknown>;
 
@@ -14,5 +15,23 @@ export type Billing_Information = {
   address?: Address;
   currency?: string;
   language?: string;
+}
+
+export type Billing_Subscription = {
+  id?: string;
+  status?: string;
+  irregular?: boolean;
+  plan?: Plan;
+  variant?: Plan_Variant;
+  seats?: number;
+  createdAt?: string;
+  startedAt?: string;
+  cancelAt?: string;
+  cancelledAt?: string;
+  endedAt?: string;
+  periodStart?: string;
+  periodEnd?: string;
+  trialStart?: string;
+  trialEnd?: string;
 }
 
