@@ -47,6 +47,12 @@ export class BillingService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  SimulateSubscription(input: SimulateSubscriptionInput, opts?: any): Promise<SimulateSubscriptionOutput> {
+    const path = "/billing/subscription/simulate";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   UpcomingInvoice(input: UpcomingInvoiceInput, opts?: any): Promise<UpcomingInvoiceOutput> {
     const path = "/billing/upcoming";
 
@@ -111,12 +117,19 @@ export type CancelSubscriptionInput = Record<string, unknown>;
 
 export type CancelSubscriptionOutput = Record<string, unknown>;
 
-export type UpcomingInvoiceInput = {
+export type SimulateSubscriptionInput = {
   planId?: string;
   variantId?: string;
   seats?: number;
   coupon?: string;
 }
+
+export type SimulateSubscriptionOutput = {
+  due?: Invoice;
+  invoice?: Invoice;
+}
+
+export type UpcomingInvoiceInput = Record<string, unknown>;
 
 export type UpcomingInvoiceOutput = {
   invoice?: Invoice;
