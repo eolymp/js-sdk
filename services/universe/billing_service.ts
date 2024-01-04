@@ -35,6 +35,12 @@ export class BillingService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  CreateSubscription(input: CreateSubscriptionInput, opts?: any): Promise<CreateSubscriptionOutput> {
+    const path = "/billing/subscription";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   UpdateSubscription(input: UpdateSubscriptionInput, opts?: any): Promise<UpdateSubscriptionOutput> {
     const path = "/billing/subscription";
 
@@ -49,6 +55,12 @@ export class BillingService {
 
   SimulateSubscription(input: SimulateSubscriptionInput, opts?: any): Promise<SimulateSubscriptionOutput> {
     const path = "/billing/subscription/simulate";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  CreatePortalLink(input: CreatePortalLinkInput, opts?: any): Promise<CreatePortalLinkOutput> {
+    const path = "/billing/portal-link";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -103,15 +115,23 @@ export type DescribeSubscriptionOutput = {
   upcoming?: Billing_Subscription;
 }
 
+export type CreateSubscriptionInput = {
+  planId?: string;
+  variantId?: string;
+  seats?: number;
+}
+
+export type CreateSubscriptionOutput = {
+  checkoutUrl?: string;
+}
+
 export type UpdateSubscriptionInput = {
   planId?: string;
   variantId?: string;
   seats?: number;
 }
 
-export type UpdateSubscriptionOutput = {
-  checkoutUrl?: string;
-}
+export type UpdateSubscriptionOutput = Record<string, unknown>;
 
 export type CancelSubscriptionInput = Record<string, unknown>;
 
@@ -127,6 +147,17 @@ export type SimulateSubscriptionInput = {
 export type SimulateSubscriptionOutput = {
   due?: Invoice;
   invoice?: Invoice;
+}
+
+export type CreatePortalLinkInput = {
+  flow?: string;
+  backUrl?: string;
+  returnUrl?: string;
+  completeUrl?: string;
+}
+
+export type CreatePortalLinkOutput = {
+  portalLink?: string;
 }
 
 export type UpcomingInvoiceInput = Record<string, unknown>;
