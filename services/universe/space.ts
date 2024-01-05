@@ -10,9 +10,10 @@ export type Space = {
   name?: string;
   image?: string;
   type?: string;
-  plan?: string;
   visibility?: string;
   quota?: Quota;
+  plan?: string;
+  seats?: number;
   homeUrl?: string;
   issuerUrl?: string;
   graphqlUrl?: string;

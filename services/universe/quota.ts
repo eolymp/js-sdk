@@ -3,15 +3,33 @@
 
 
 export type Quota = {
-  problemsPerSpace?: number;
+  permissionsPerSpace?: number;
+  singleSingOn?: boolean;
+  dedicatedUserDatabase?: boolean;
+  attributesPerSpace?: number;
+  customerSupportReplyTime?: number;
+  monthlyEvaluationsBySeat?: number;
+  priorityTestingQueue?: boolean;
+  plagiarismAnalysis?: boolean;
   membersPerSpace?: number;
+  scoreboardsPerSpace?: number;
+  coursesPerSpace?: number;
+  problemsPerSpace?: number;
+  testsPerProblem?: number;
+  testsetPerProblem?: number;
+  statementPerProblem?: number;
+  editorialPerProblem?: number;
+  solutionsPerProblem?: number;
+  codeTemplatesPerProblem?: number;
   contestsPerSpace?: number;
   activeContestsPerSpace?: number;
-  scoreboardsPerSpace?: number;
-  permissionsPerSpace?: number;
-  attributesPerSpace?: number;
-  coursesPerSpace?: number;
+  monthlyContestsPerSpace?: number;
   problemsPerContest?: number;
   participantsPerContest?: number;
+  contestUpsolve?: boolean;
+  contestDuration?: number;
+  teamContests?: boolean;
+  ghostParticipants?: boolean;
+  unofficialParticipants?: boolean;
 }
 
