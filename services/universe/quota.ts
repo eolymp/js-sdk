@@ -9,7 +9,7 @@ export type Quota = {
   attributesPerSpace?: number;
   customerSupportReplyTime?: number;
   monthlyEvaluationsBySeat?: number;
-  priorityTestingQueue?: boolean;
+  priorityEvaluationQueue?: boolean;
   plagiarismAnalysis?: boolean;
   membersPerSpace?: number;
   scoreboardsPerSpace?: number;
@@ -26,8 +26,8 @@ export type Quota = {
   monthlyContestsPerSpace?: number;
   problemsPerContest?: number;
   participantsPerContest?: number;
-  contestUpsolve?: boolean;
-  contestDuration?: number;
+  contestUpsolveMode?: boolean;
+  maxContestDuration?: number;
   teamContests?: boolean;
   ghostParticipants?: boolean;
   unofficialParticipants?: boolean;
