@@ -3,7 +3,8 @@
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Permission } from "./permission"
-import { Space, Space_Quota } from "./space"
+import { Quota } from "./quota"
+import { Space } from "./space"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -176,12 +177,12 @@ export type DescribeQuotaInput = {
 }
 
 export type DescribeQuotaOutput = {
-  quota?: Space_Quota;
+  quota?: Quota;
 }
 
 export type UpdateQuotaInput = {
   spaceId?: string;
-  quota?: Space_Quota;
+  quota?: Quota;
 }
 
 export type UpdateQuotaOutput = Record<string, unknown>;

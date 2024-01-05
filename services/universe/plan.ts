@@ -2,11 +2,13 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
+import { Quota } from "./quota"
 
 export type Plan = {
   id?: string;
   name?: string;
   description?: Content;
+  quota?: Quota;
   variants?: Plan_Variant[];
 }
 
