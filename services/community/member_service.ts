@@ -85,7 +85,7 @@ export class MemberService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeUsage(input: DescribeUsageInput, opts?: any): Promise<DescribeUsageOutput> {
+  DescribeMemberUsage(input: DescribeMemberUsageInput, opts?: any): Promise<DescribeMemberUsageOutput> {
     const path = "/usage/members";
 
     return this.cli.call("GET", this.url+path, input, opts);
@@ -171,12 +171,14 @@ export type UnassignMemberInput = {
 
 export type UnassignMemberOutput = Record<string, unknown>;
 
-export type DescribeUsageInput = {
+export type DescribeMemberUsageInput = {
   periodStart?: string;
   periodEnd?: string;
 }
 
-export type DescribeUsageOutput = {
+export type DescribeMemberUsageOutput = {
+  totalMembers?: number;
   activeMembers?: number;
+  newMembers?: number;
 }
 
