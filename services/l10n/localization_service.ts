@@ -414,7 +414,7 @@ export type ListTranslationPairsInput = {
 
 export type ListTranslationPairsInput_Filter = {
   query?: string;
-  termKey?: ExpressionID[];
+  termKey?: ExpressionString[];
   termStatus?: ExpressionEnum[];
   sourceMessage?: ExpressionString[];
   translationStatus?: ExpressionEnum[];
