@@ -4,6 +4,7 @@
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Term } from "./term"
 import { Translation } from "./translation"
+import { TranslationPair } from "./translation_pair"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -424,6 +425,6 @@ export type ListTranslationPairsInput_Filter = {
 export type ListTranslationPairsOutput = {
   total?: number;
   hasMore?: boolean;
-  items?: Term[];
+  items?: TranslationPair[];
 }
 
