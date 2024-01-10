@@ -8,5 +8,6 @@ export type Project = {
   url?: string;
   logoUrl?: string;
   homeUrl?: string;
+  description?: string;
 }
 
