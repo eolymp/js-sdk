@@ -193,7 +193,7 @@ export class LocalizationService {
   }
 
   ListTranslationPairs(input: ListTranslationPairsInput, opts?: any): Promise<ListTranslationPairsOutput> {
-    const path = "/translations/"+encodeURIComponent(input.locale||'');
+    const path = "/translate/"+encodeURIComponent(input.locale||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.locale);
