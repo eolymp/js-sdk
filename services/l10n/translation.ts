@@ -8,6 +8,7 @@ export type Translation = {
   message?: string;
   status?: string;
   outdated?: boolean;
+  needsImprovement?: boolean;
   createdBy?: string;
   createdAt?: string;
   approvedAt?: string;

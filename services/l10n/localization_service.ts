@@ -190,6 +190,15 @@ export class LocalizationService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ListTranslationPairs(input: ListTranslationPairsInput, opts?: any): Promise<ListTranslationPairsOutput> {
+    const path = "/translations/"+encodeURIComponent(input.locale||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.locale);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateTermInput = {
@@ -299,6 +308,7 @@ export type ListLocalesOutput_Locale = {
   code?: string;
   translatedTerms?: number;
   missingTerms?: number;
+  totalTerms?: number;
 }
 
 export type TranslateTermInput = {
@@ -390,5 +400,30 @@ export type ExportTranslationsInput = {
 
 export type ExportTranslationsOutput = {
   translations?: Record<string, string>;
+}
+
+export type ListTranslationPairsInput = {
+  locale?: string;
+  source?: string;
+  size?: number;
+  offset?: number;
+  after?: string;
+  before?: string;
+  filters?: ListTranslationPairsInput_Filter;
+}
+
+export type ListTranslationPairsInput_Filter = {
+  query?: string;
+  termKey?: ExpressionID[];
+  termStatus?: ExpressionEnum[];
+  sourceMessage?: ExpressionString[];
+  translationStatus?: ExpressionEnum[];
+  translationMessage?: ExpressionString[];
+}
+
+export type ListTranslationPairsOutput = {
+  total?: number;
+  hasMore?: boolean;
+  items?: Term[];
 }
 
