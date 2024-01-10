@@ -8,5 +8,6 @@ export type TranslationPair = {
   term?: Term;
   source?: Translation;
   translation?: Translation;
+  hasSuggestions?: boolean;
 }
 
