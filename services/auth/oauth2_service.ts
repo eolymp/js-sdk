@@ -36,6 +36,7 @@ export type IssueTokenOutput = {
   expiresIn?: number;
   refreshToken?: string;
   scope?: string;
+  claims?: Claims;
   idToken?: string;
 }
 
