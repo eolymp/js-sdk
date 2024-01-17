@@ -36,6 +36,7 @@ export type DescribePlanInput = {
   planId?: string;
   locale?: string;
   currency?: string;
+  spaceId?: string;
   extra?: string[];
 }
 
@@ -48,6 +49,7 @@ export type ListPlansInput = {
   size?: number;
   locale?: string;
   currency?: string;
+  spaceId?: string;
   extra?: string[];
 }
 
