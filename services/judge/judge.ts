@@ -670,6 +670,12 @@ export class Judge {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DescribeContestUsage(input: DescribeContestUsageInput, opts?: any): Promise<DescribeContestUsageOutput> {
+    const path = "/usage/contests";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateContestInput = {
@@ -1391,5 +1397,16 @@ export type DescribeAppearanceInput = {
 
 export type DescribeAppearanceOutput = {
   appearance?: Contest_Appearance;
+}
+
+export type DescribeContestUsageInput = {
+  periodStart?: string;
+  periodEnd?: string;
+}
+
+export type DescribeContestUsageOutput = {
+  totalContests?: number;
+  activeContests?: number;
+  monthlyContests?: number;
 }
 
