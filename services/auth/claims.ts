@@ -3,6 +3,7 @@
 
 
 export type Claims = {
+  id?: string;
   issuer?: string;
   subject?: string;
   email?: string;
