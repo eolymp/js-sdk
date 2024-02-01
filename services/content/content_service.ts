@@ -3,6 +3,7 @@
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Fragment } from "./fragment"
+import { Variant } from "./variant"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -56,6 +57,54 @@ export class ContentService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  DescribeVariant(input: DescribeVariantInput, opts?: any): Promise<DescribeVariantOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.fragmentId);
+    delete(input.variantId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListVariants(input: ListVariantsInput, opts?: any): Promise<ListVariantsOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.fragmentId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  CreateVariant(input: CreateVariantInput, opts?: any): Promise<CreateVariantOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.fragmentId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateVariant(input: UpdateVariantInput, opts?: any): Promise<UpdateVariantOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.fragmentId);
+    delete(input.variantId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteVariant(input: DeleteVariantInput, opts?: any): Promise<DeleteVariantOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.fragmentId);
+    delete(input.variantId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
   DescribePath(input: DescribePathInput, opts?: any): Promise<DescribePathOutput> {
     const path = "/content/path";
 
@@ -78,6 +127,7 @@ export class ContentService {
 export type DescribeFragmentInput = {
   fragmentId?: string;
   render?: boolean;
+  extra?: string[];
 }
 
 export type DescribeFragmentOutput = {
@@ -89,6 +139,7 @@ export type ListFragmentsInput = {
   offset?: number;
   size?: number;
   filters?: ListFragmentsInput_Filter;
+  extra?: string[];
 }
 
 export type ListFragmentsInput_Filter = {
@@ -125,10 +176,65 @@ export type DeleteFragmentInput = {
 
 export type DeleteFragmentOutput = Record<string, unknown>;
 
+export type DescribeVariantInput = {
+  fragmentId?: string;
+  variantId?: string;
+  render?: boolean;
+  extra?: string[];
+}
+
+export type DescribeVariantOutput = {
+  variant?: Variant;
+}
+
+export type ListVariantsInput = {
+  render?: boolean;
+  fragmentId?: string;
+  offset?: number;
+  size?: number;
+  filters?: ListVariantsInput_Filter;
+  extra?: string[];
+}
+
+export type ListVariantsInput_Filter = {
+  query?: string;
+  id?: ExpressionID[];
+  locale?: ExpressionEnum[];
+}
+
+export type ListVariantsOutput = {
+  total?: number;
+  items?: Variant[];
+}
+
+export type CreateVariantInput = {
+  variant?: Variant;
+}
+
+export type CreateVariantOutput = {
+  variantId?: string;
+}
+
+export type UpdateVariantInput = {
+  fragmentId?: string;
+  variantId?: string;
+  variant?: Variant;
+}
+
+export type UpdateVariantOutput = Record<string, unknown>;
+
+export type DeleteVariantInput = {
+  fragmentId?: string;
+  variantId?: string;
+}
+
+export type DeleteVariantOutput = Record<string, unknown>;
+
 export type DescribePathInput = {
   path?: string;
   locale?: string;
   render?: boolean;
+  extra?: string[];
 }
 
 export type DescribePathOutput = {
@@ -141,6 +247,7 @@ export type ListPathsInput = {
   offset?: number;
   size?: number;
   filters?: ListPathsInput_Filter;
+  extra?: string[];
 }
 
 export type ListPathsInput_Filter = {
@@ -158,6 +265,7 @@ export type ListParentsInput = {
   path?: string;
   locale?: string;
   render?: boolean;
+  extra?: string[];
 }
 
 export type ListParentsOutput = {
