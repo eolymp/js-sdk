@@ -208,6 +208,7 @@ export type ListVariantsOutput = {
 }
 
 export type CreateVariantInput = {
+  fragmentId?: string;
   variant?: Variant;
 }
 
