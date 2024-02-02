@@ -6,6 +6,7 @@ export type Score = {
   id?: string;
   problemId?: string;
   userId?: string;
+  memberId?: string;
   acceptedAt?: string;
   score?: number;
 }
