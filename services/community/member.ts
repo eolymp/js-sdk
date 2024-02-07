@@ -15,10 +15,20 @@ export type Member = {
   secret?: boolean;
   tierId?: string;
   fallbackTierId?: string;
+  createdAt?: string;
   user?: User;
   team?: Team;
   ghost?: Ghost;
+  stats?: Member_Stats;
   groups?: string[];
   attributes?: Attribute_Value[];
+}
+
+export type Member_Stats = {
+  rank?: number;
+  streak?: number;
+  problemsSolved?: number;
+  submissionsAccepted?: number;
+  submissionsTotal?: number;
 }
 

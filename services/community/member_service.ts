@@ -123,6 +123,7 @@ export type RestoreMemberOutput = Record<string, unknown>;
 
 export type DescribeMemberInput = {
   memberId?: string;
+  extra?: string[];
 }
 
 export type DescribeMemberOutput = {
@@ -135,6 +136,7 @@ export type ListMembersInput = {
   filters?: ListMembersInput_Filter;
   sort?: string;
   order?: string;
+  extra?: string[];
 }
 
 export type ListMembersInput_Filter = {

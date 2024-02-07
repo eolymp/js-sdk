@@ -99,6 +99,7 @@ export type DescribeAccountInput = Record<string, unknown>;
 export type DescribeAccountOutput = {
   member?: Member;
   team?: Member;
+  extra?: string[];
 }
 
 export type UpdateAccountInput = {
