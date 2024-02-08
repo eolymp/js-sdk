@@ -6,7 +6,7 @@ interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class SubmissionGraphService {
+export class ActivityGraphService {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -15,19 +15,19 @@ export class SubmissionGraphService {
     this.url = url;
   }
 
-  ListSubmissionValues(input: ListSubmissionValuesInput, opts?: any): Promise<ListSubmissionValuesOutput> {
-    const path = "/submissions-graph";
+  DescribeActivityGraph(input: DescribeActivityGraphInput, opts?: any): Promise<DescribeActivityGraphOutput> {
+    const path = "/activity-graph";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
-export type ListSubmissionValuesInput = {
+export type DescribeActivityGraphInput = {
   after?: string;
   before?: string;
 }
 
-export type ListSubmissionValuesOutput = {
+export type DescribeActivityGraphOutput = {
   values?: number[];
   maxValue?: number;
 }
