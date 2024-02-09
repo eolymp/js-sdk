@@ -25,6 +25,7 @@ export class ActivityGraphService {
 export type DescribeActivityGraphInput = {
   after?: string;
   before?: string;
+  metric?: string;
 }
 
 export type DescribeActivityGraphOutput = {
