@@ -7,15 +7,27 @@ export type Space = {
   id?: string;
   key?: string;
   url?: string;
+  homeUrl?: string;
+  issuerUrl?: string;
+  graphqlUrl?: string;
   name?: string;
   image?: string;
   type?: string;
   visibility?: string;
+  status?: string;
+  subscription?: Space_Subscription;
   quota?: Quota;
   plan?: string;
   seats?: number;
-  homeUrl?: string;
-  issuerUrl?: string;
-  graphqlUrl?: string;
+}
+
+export type Space_Subscription = {
+  plan?: string;
+  seats?: number;
+  quota?: Quota;
+  billingPeriodStart?: string;
+  billingPeriodEnd?: string;
+  quotaPeriodStart?: string;
+  quotaPeriodEnd?: string;
 }
 
