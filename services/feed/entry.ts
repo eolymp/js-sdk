@@ -5,7 +5,7 @@
 export type Entry = {
   id?: string;
   type?: string;
+  timestamp?: string;
   attributes?: Record<string, string>;
-  createdAt?: string;
 }
 
