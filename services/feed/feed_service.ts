@@ -7,7 +7,7 @@ interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class EntryService {
+export class FeedService {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -21,15 +21,6 @@ export class EntryService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  DescribeEntry(input: DescribeEntryInput, opts?: any): Promise<DescribeEntryOutput> {
-    const path = "/feed/"+encodeURIComponent(input.entryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.entryId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
 }
 
 export type ListEntriesInput = {
@@ -40,13 +31,5 @@ export type ListEntriesInput = {
 export type ListEntriesOutput = {
   total?: number;
   items?: Entry[];
-}
-
-export type DescribeEntryInput = {
-  entryId?: string;
-}
-
-export type DescribeEntryOutput = {
-  entry?: Entry;
 }
 
