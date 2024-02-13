@@ -7,9 +7,8 @@ export type Score = {
   problemId?: string;
   userId?: string;
   memberId?: string;
-  acceptedAt?: string;
+  solvedAt?: string;
   score?: number;
   attempts?: number;
-  grade?: number;
 }
 
