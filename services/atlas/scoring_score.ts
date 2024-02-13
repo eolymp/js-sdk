@@ -9,5 +9,6 @@ export type Score = {
   memberId?: string;
   acceptedAt?: string;
   score?: number;
+  attempts?: number;
 }
 
