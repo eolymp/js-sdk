@@ -152,6 +152,7 @@ export type ListMembersInput_Filter = {
   userSubject?: ExpressionString[];
   userEmail?: ExpressionString[];
   userName?: ExpressionString[];
+  userNickname?: ExpressionString[];
 }
 
 export type ListMembersOutput = {
