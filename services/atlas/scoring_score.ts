@@ -10,5 +10,6 @@ export type Score = {
   acceptedAt?: string;
   score?: number;
   attempts?: number;
+  grade?: number;
 }
 
