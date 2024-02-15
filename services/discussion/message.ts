@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
+import { Link } from "../wellknown/link"
 
 export type Message = {
   id?: string;
@@ -15,5 +16,6 @@ export type Message = {
   postedAt?: string;
   editedAt?: string;
   message?: Content;
+  links?: Link[];
 }
 
