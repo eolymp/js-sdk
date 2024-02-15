@@ -174,6 +174,7 @@ export class Ranker {
 export type CreateScoreboardInput = {
   scoreboard?: Scoreboard;
   addDefaultColumns?: boolean;
+  duplicateScoreboardId?: string;
 }
 
 export type CreateScoreboardOutput = {
