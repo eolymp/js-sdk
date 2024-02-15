@@ -1021,6 +1021,7 @@ export type ListSubmissionsInput = {
   offset?: number;
   size?: number;
   filters?: ListSubmissionsInput_Filter;
+  extra?: string[];
 }
 
 export type ListSubmissionsInput_Filter = {
@@ -1043,6 +1044,7 @@ export type ListSubmissionsOutput = {
 export type DescribeSubmissionInput = {
   contestId?: string;
   submissionId?: string;
+  extra?: string[];
 }
 
 export type DescribeSubmissionOutput = {
@@ -1052,6 +1054,7 @@ export type DescribeSubmissionOutput = {
 export type WatchSubmissionInput = {
   contestId?: string;
   submissionId?: string;
+  extra?: string[];
 }
 
 export type WatchSubmissionOutput = {
