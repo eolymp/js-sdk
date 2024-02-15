@@ -5,7 +5,7 @@ import { Content } from "../ecm/content"
 
 export type Message = {
   id?: string;
-  threadId?: string;
+  threadUrl?: string;
   memberId?: string;
   replyTo?: string;
   vote?: number;
