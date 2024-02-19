@@ -9,6 +9,7 @@ export type Plan = {
   name?: string;
   description?: Content;
   quota?: Quota;
+  labels?: string[];
   variants?: Plan_Variant[];
 }
 
