@@ -19,6 +19,7 @@ export type Space = {
   quota?: Quota;
   plan?: string;
   seats?: number;
+  affiliation?: string;
 }
 
 export type Space_Subscription = {
