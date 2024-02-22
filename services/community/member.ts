@@ -28,7 +28,6 @@ export type Member = {
 }
 
 export type Member_Stats = {
-  rank?: number;
   streak?: number;
   problemsSolved?: number;
   submissionsAccepted?: number;
