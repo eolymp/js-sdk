@@ -10,6 +10,8 @@ export type Member = {
   id?: string;
   name?: string;
   url?: string;
+  rank?: number;
+  score?: number;
   active?: boolean;
   incomplete?: boolean;
   unofficial?: boolean;
