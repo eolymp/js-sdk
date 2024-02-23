@@ -7,10 +7,11 @@ import { Link } from "../wellknown/link"
 export type Post = {
   id?: string;
   url?: string;
+  status?: string;
   userId?: string;
   memberId?: string;
   createdAt?: string;
-  postedAt?: string;
+  publishedAt?: string;
   updatedAt?: string;
   title?: string;
   message?: Content;
