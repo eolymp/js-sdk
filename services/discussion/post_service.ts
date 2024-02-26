@@ -57,10 +57,10 @@ export class PostService {
   }
 
   VotePost(input: VotePostInput, opts?: any): Promise<VotePostOutput> {
-    const path = "/messages/"+encodeURIComponent(input.messageId||'')+"/vote";
+    const path = "/posts/"+encodeURIComponent(input.postId||'')+"/vote";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.messageId);
+    delete(input.postId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
