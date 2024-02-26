@@ -55,6 +55,15 @@ export class PostService {
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
+
+  VotePost(input: VotePostInput, opts?: any): Promise<VotePostOutput> {
+    const path = "/messages/"+encodeURIComponent(input.messageId||'')+"/vote";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.messageId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type DescribePostInput = {
@@ -110,4 +119,13 @@ export type DeletePostInput = {
 }
 
 export type DeletePostOutput = Record<string, unknown>;
+
+export type VotePostInput = {
+  postId?: string;
+  vote?: number;
+}
+
+export type VotePostOutput = {
+  voteCount?: number;
+}
 

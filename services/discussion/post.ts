@@ -15,6 +15,9 @@ export type Post = {
   updatedAt?: string;
   title?: string;
   message?: Content;
+  vote?: number;
+  voteCount?: number;
+  replyCount?: number;
   labels?: string[];
   links?: Link[];
 }
