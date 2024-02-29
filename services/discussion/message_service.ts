@@ -69,6 +69,7 @@ export class MessageService {
 export type DescribeMessageInput = {
   messageId?: string;
   render?: boolean;
+  extra?: string[];
 }
 
 export type DescribeMessageOutput = {
@@ -77,11 +78,12 @@ export type DescribeMessageOutput = {
 
 export type ListMessagesInput = {
   render?: boolean;
-  offset?: number;
+  after?: string;
   size?: number;
   sort?: string;
   order?: string;
   filters?: ListMessagesInput_Filter;
+  extra?: string[];
 }
 
 export type ListMessagesInput_Filter = {
