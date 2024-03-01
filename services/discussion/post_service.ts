@@ -89,6 +89,7 @@ export type ListPostsInput_Filter = {
   id?: ExpressionID[];
   userId?: ExpressionID[];
   memberId?: ExpressionID[];
+  typeId?: ExpressionID[];
   createdAt?: ExpressionTimestamp[];
   publishedAt?: ExpressionTimestamp[];
   status?: ExpressionEnum[];
@@ -108,6 +109,7 @@ export type CreatePostOutput = {
 }
 
 export type UpdatePostInput = {
+  patch?: string[];
   postId?: string;
   post?: Post;
 }
