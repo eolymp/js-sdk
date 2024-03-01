@@ -7,10 +7,10 @@ export type PostType = {
   name?: string;
   hidden?: boolean;
   order?: number;
+  variants?: PostType_Variant[];
 }
 
 export type PostType_Variant = {
-  id?: string;
   locale?: string;
   name?: string;
 }
