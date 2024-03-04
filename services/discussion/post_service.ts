@@ -93,6 +93,7 @@ export type ListPostsInput_Filter = {
   createdAt?: ExpressionTimestamp[];
   publishedAt?: ExpressionTimestamp[];
   status?: ExpressionEnum[];
+  locale?: ExpressionEnum[];
 }
 
 export type ListPostsOutput = {
