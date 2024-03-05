@@ -78,6 +78,7 @@ export type DescribePostOutput = {
 export type ListPostsInput = {
   after?: string;
   size?: number;
+  offset?: number;
   sort?: string;
   order?: string;
   filters?: ListPostsInput_Filter;
