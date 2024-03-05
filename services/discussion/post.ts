@@ -17,7 +17,7 @@ export type Post = {
   updatedAt?: string;
   locale?: string;
   title?: string;
-  image?: string;
+  image?: Post_Image;
   preview?: Node;
   message?: Content;
   vote?: number;
@@ -25,5 +25,12 @@ export type Post = {
   replyCount?: number;
   labels?: string[];
   links?: Link[];
+}
+
+export type Post_Image = {
+  src?: string;
+  width?: number;
+  height?: number;
+  class?: string[];
 }
 
