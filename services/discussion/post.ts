@@ -16,6 +16,7 @@ export type Post = {
   updatedAt?: string;
   locale?: string;
   title?: string;
+  image?: string;
   message?: Content;
   vote?: number;
   voteCount?: number;
