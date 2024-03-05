@@ -94,6 +94,7 @@ export type ListPostsInput_Filter = {
   publishedAt?: ExpressionTimestamp[];
   status?: ExpressionEnum[];
   locale?: ExpressionEnum[];
+  label?: ExpressionEnum[];
 }
 
 export type ListPostsOutput = {
