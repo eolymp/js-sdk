@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
+import { Node } from "../ecm/node"
 import { Link } from "../wellknown/link"
 
 export type Post = {
@@ -17,6 +18,7 @@ export type Post = {
   locale?: string;
   title?: string;
   image?: string;
+  preview?: Node;
   message?: Content;
   vote?: number;
   voteCount?: number;
