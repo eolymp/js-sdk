@@ -97,8 +97,9 @@ export type ListPostsInput_Filter = {
 }
 
 export type ListPostsOutput = {
+  total?: number;
   items?: Post[];
-  hasMore?: boolean;
+  nextPageCursor?: string;
 }
 
 export type CreatePostInput = {
