@@ -15,6 +15,8 @@ export type Message = {
   replyCount?: number;
   postedAt?: string;
   editedAt?: string;
+  deletedAt?: string;
+  revision?: number;
   message?: Content;
   links?: Link[];
 }

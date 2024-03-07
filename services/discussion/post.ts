@@ -9,6 +9,7 @@ export type Post = {
   id?: string;
   url?: string;
   status?: string;
+  moderation?: string;
   typeId?: string;
   userId?: string;
   memberId?: string;

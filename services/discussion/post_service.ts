@@ -94,6 +94,7 @@ export type ListPostsInput_Filter = {
   createdAt?: ExpressionTimestamp[];
   publishedAt?: ExpressionTimestamp[];
   status?: ExpressionEnum[];
+  moderation?: ExpressionEnum[];
   locale?: ExpressionEnum[];
   label?: ExpressionEnum[];
 }
