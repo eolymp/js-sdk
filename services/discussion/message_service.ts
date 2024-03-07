@@ -154,6 +154,6 @@ export type ListMessageChangesOutput = {
 export type ListMessageChangesOutput_Record = {
   revision?: number;
   timestamp?: string;
-  message?: Content[];
+  message?: Content;
 }
 
