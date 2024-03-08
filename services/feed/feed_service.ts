@@ -31,5 +31,6 @@ export type ListEntriesInput = {
 export type ListEntriesOutput = {
   total?: number;
   items?: Entry[];
+  nextPageCursor?: string;
 }
 
