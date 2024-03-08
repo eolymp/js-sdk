@@ -3,8 +3,6 @@
 
 
 export type Quota = {
-  periodStart?: string;
-  periodEnd?: string;
   permissionsPerSpace?: number;
   singleSingOn?: boolean;
   dedicatedUserDatabase?: boolean;

@@ -12,13 +12,10 @@ export type Space = {
   graphqlUrl?: string;
   name?: string;
   image?: string;
-  type?: string;
   visibility?: string;
   status?: string;
+  features?: string[];
   subscription?: Space_Subscription;
-  quota?: Quota;
-  plan?: string;
-  seats?: number;
   affiliation?: string;
 }
 
