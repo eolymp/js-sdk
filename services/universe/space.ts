@@ -14,7 +14,6 @@ export type Space = {
   image?: string;
   visibility?: string;
   status?: string;
-  features?: string[];
   subscription?: Space_Subscription;
   affiliation?: string;
 }

@@ -9,5 +9,6 @@ export type IdentityConfig = {
   oidc?: IdentityProvider_OIDC;
   displayNameType?: string;
   displayNameAttribute?: string;
+  allowSignUp?: boolean;
 }
 
