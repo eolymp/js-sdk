@@ -82,22 +82,24 @@ export type ListPostsInput = {
   sort?: string;
   order?: string;
   filters?: ListPostsInput_Filter;
+  displayLocale?: string;
   extra?: string[];
 }
 
 export type ListPostsInput_Filter = {
   query?: string;
   id?: ExpressionID[];
+  sourceId?: ExpressionID[];
   userId?: ExpressionID[];
   memberId?: ExpressionID[];
   typeId?: ExpressionID[];
   createdAt?: ExpressionTimestamp[];
   publishedAt?: ExpressionTimestamp[];
-  status?: ExpressionEnum[];
+  draft?: ExpressionBool[];
+  public?: ExpressionBool[];
   moderation?: ExpressionEnum[];
   locale?: ExpressionEnum[];
   label?: ExpressionEnum[];
-  public?: ExpressionBool[];
 }
 
 export type ListPostsOutput = {
