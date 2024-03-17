@@ -8,19 +8,19 @@ import { Link } from "../wellknown/link"
 export type Post = {
   id?: string;
   url?: string;
-  status?: string;
+  sourceId?: string;
+  draft?: boolean;
+  public?: boolean;
   moderation?: string;
-  typeId?: string;
   userId?: string;
   memberId?: string;
   createdAt?: string;
   publishedAt?: string;
   updatedAt?: string;
+  typeId?: string;
   locale?: string;
-  title?: string;
-  image?: Post_Image;
-  preview?: Node;
-  message?: Content;
+  content?: Content;
+  preview?: Post_Preview;
   vote?: number;
   voteCount?: number;
   replyCount?: number;
@@ -33,5 +33,11 @@ export type Post_Image = {
   width?: number;
   height?: number;
   class?: string[];
+}
+
+export type Post_Preview = {
+  title?: string;
+  image?: Post_Image;
+  content?: Node;
 }
 
