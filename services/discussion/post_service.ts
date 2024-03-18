@@ -116,6 +116,7 @@ export class PostService {
 
 export type DescribePostInput = {
   postId?: string;
+  locale?: string;
   extra?: string[];
 }
 
@@ -130,7 +131,7 @@ export type ListPostsInput = {
   sort?: string;
   order?: string;
   filters?: ListPostsInput_Filter;
-  displayLocale?: string;
+  locale?: string;
   extra?: string[];
 }
 
