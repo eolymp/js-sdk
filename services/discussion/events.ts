@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Message } from "./message"
-import { Post } from "./post"
+import { Post, Post_Translation } from "./post"
 
 export type MessageChangedEvent = {
   before?: Message;
@@ -12,5 +12,10 @@ export type MessageChangedEvent = {
 export type PostChangedEvent = {
   before?: Post;
   after?: Post;
+}
+
+export type PostTranslationChangedEvent = {
+  before?: Post_Translation;
+  after?: Post_Translation;
 }
 
