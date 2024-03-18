@@ -29,6 +29,13 @@ export type Post = {
   links?: Link[];
 }
 
+export type Post_Translation = {
+  id?: string;
+  locale?: string;
+  content?: Content;
+  labels?: string[];
+}
+
 export type Post_Image = {
   src?: string;
   width?: number;
