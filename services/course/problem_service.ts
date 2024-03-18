@@ -6,6 +6,7 @@ import { Score } from "../atlas/scoring_score"
 import { Statement } from "../atlas/statement"
 import { Submission } from "../atlas/submission"
 import { Test } from "../atlas/testing_test"
+import { Run } from "../playground/run"
 import { ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 
 interface Client {
@@ -65,6 +66,30 @@ export class ProblemService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  CreateRun(input: CreateRunInput, opts?: any): Promise<CreateRunOutput> {
+    const path = "/runs";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeRun(input: DescribeRunInput, opts?: any): Promise<DescribeRunOutput> {
+    const path = "/runs/"+encodeURIComponent(input.runId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.runId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  WatchRun(input: WatchRunInput, opts?: any): Promise<WatchRunOutput> {
+    const path = "/runs/"+encodeURIComponent(input.runId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.runId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type ListStatementsInput = Record<string, unknown>;
@@ -82,7 +107,7 @@ export type ListExamplesOutput = {
 
 export type CreateSubmissionInput = {
   problemId?: string;
-  lang?: string;
+  runtime?: string;
   source?: string;
 }
 
@@ -144,5 +169,32 @@ export type LookupCodeTemplateInput = {
 
 export type LookupCodeTemplateOutput = {
   template?: Template;
+}
+
+export type CreateRunInput = {
+  runtime?: string;
+  source?: string;
+  inputData?: string;
+  inputRef?: string;
+}
+
+export type CreateRunOutput = {
+  runId?: string;
+}
+
+export type DescribeRunInput = {
+  runId?: string;
+}
+
+export type DescribeRunOutput = {
+  run?: Run;
+}
+
+export type WatchRunInput = {
+  runId?: string;
+}
+
+export type WatchRunOutput = {
+  run?: Run;
 }
 
