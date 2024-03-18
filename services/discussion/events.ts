@@ -15,6 +15,7 @@ export type PostChangedEvent = {
 }
 
 export type PostTranslationChangedEvent = {
+  post?: Post;
   before?: Post_Translation;
   after?: Post_Translation;
 }
