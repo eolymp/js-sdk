@@ -59,6 +59,7 @@ export type Contest_Scoreboard = {
   freezingTime?: number;
   unfreezeDelay?: number;
   attemptPenalty?: number;
+  tieBreaker?: string;
   useNameInScoreboard?: boolean;
 }
 
