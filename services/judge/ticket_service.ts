@@ -194,7 +194,7 @@ export type ListTicketsOutput = {
 export type ReplyTicketInput = {
   ticketId?: string;
   message?: Content;
-  close?: boolean;
+  changeStatusTo?: string;
 }
 
 export type ReplyTicketOutput = {
