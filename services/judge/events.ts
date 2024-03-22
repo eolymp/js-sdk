@@ -3,10 +3,8 @@
 
 import { Contest } from "./contest"
 import { Participant } from "./participant"
-import { Reply } from "./reply"
 import { Score } from "./score"
 import { Submission } from "./submission"
-import { Ticket } from "./ticket"
 
 export type SubmissionCompletedEvent = {
   submission?: Submission;
@@ -24,15 +22,6 @@ export type ScoreUpdatedEvent = {
   score?: Score;
 }
 
-export type TicketCreatedEvent = {
-  ticket?: Ticket;
-}
-
-export type TicketUpdatedEvent = {
-  ticket?: Ticket;
-  reply?: Reply;
-}
-
 export type ParticipantChangedEvent = {
   before?: Participant;
   after?: Participant;
@@ -47,10 +36,5 @@ export type RetestProblemEvent = {
   contestId?: string;
   problemId?: string;
   activityId?: string;
-}
-
-export type TicketChangeRecord = {
-  op?: string;
-  ticket?: Ticket;
 }
 
