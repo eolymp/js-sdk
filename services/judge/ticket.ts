@@ -5,15 +5,16 @@ import { Content } from "../ecm/content"
 
 export type Ticket = {
   id?: string;
-  ern?: string;
   contestId?: string;
   participantId?: string;
   memberId?: string;
+  status?: string;
   subject?: string;
   message?: Content;
   rawMessage?: string;
-  isOpen?: boolean;
   isRead?: boolean;
+  replyCount?: number;
   createdAt?: string;
+  updatedAt?: string;
 }
 
