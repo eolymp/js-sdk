@@ -188,6 +188,7 @@ export type ListTicketsInput_Filter = {
 export type ListTicketsOutput = {
   total?: number;
   items?: Ticket[];
+  nextPageCursor?: string;
 }
 
 export type ReplyTicketInput = {
