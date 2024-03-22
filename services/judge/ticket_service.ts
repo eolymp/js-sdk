@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
-import { ExpressionBool, ExpressionID } from "../wellknown/expression"
+import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
 import { Reply } from "./reply"
 import { Ticket } from "./ticket"
 
@@ -165,6 +165,7 @@ export type DescribeTicketOutput = {
 }
 
 export type ListTicketsInput = {
+  after?: string;
   offset?: number;
   size?: number;
   filters?: ListTicketsInput_Filter;
@@ -181,6 +182,7 @@ export type ListTicketsInput_Filter = {
   isRead?: ExpressionBool[];
   isOpen?: ExpressionBool[];
   own?: ExpressionBool[];
+  status?: ExpressionEnum[];
 }
 
 export type ListTicketsOutput = {
