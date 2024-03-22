@@ -178,8 +178,7 @@ export type ListTicketsInput_Filter = {
   contestId?: ExpressionID[];
   participantId?: ExpressionID[];
   memberId?: ExpressionID[];
-  isReadByParticipant?: ExpressionBool[];
-  isReadByOwner?: ExpressionBool[];
+  isRead?: ExpressionBool[];
   isOpen?: ExpressionBool[];
   own?: ExpressionBool[];
 }
@@ -200,6 +199,7 @@ export type ReplyTicketOutput = {
 }
 
 export type WatchTicketsInput = {
+  contestId?: string;
   extra?: string[];
 }
 
