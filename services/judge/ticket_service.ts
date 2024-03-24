@@ -201,6 +201,15 @@ export type ReplyTicketOutput = {
   replyId?: string;
 }
 
+export type WatchTicketInput = {
+  ticketId?: string;
+  extra?: string[];
+}
+
+export type WatchTicketOutput = {
+  ticket?: Ticket;
+}
+
 export type WatchTicketsInput = {
   contestId?: string;
   extra?: string[];
