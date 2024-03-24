@@ -143,6 +143,7 @@ export type OpenTicketOutput = Record<string, unknown>;
 export type ReadTicketInput = {
   contestId?: string;
   ticketId?: string;
+  timestamp?: string;
 }
 
 export type ReadTicketOutput = Record<string, unknown>;
@@ -212,12 +213,21 @@ export type WatchTicketOutput = {
 
 export type WatchTicketsInput = {
   contestId?: string;
+  memberId?: string;
   extra?: string[];
 }
 
 export type WatchTicketsOutput = {
   event?: string;
   ticket?: Ticket;
+}
+
+export type WatchTicketSummaryInput = {
+  contestId?: string;
+  memberId?: string;
+}
+
+export type WatchTicketSummaryOutput = {
   unreadCount?: number;
   unresolvedCount?: number;
 }
