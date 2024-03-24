@@ -16,5 +16,6 @@ export type Ticket = {
   replyCount?: number;
   createdAt?: string;
   updatedAt?: string;
+  readAt?: string;
 }
 
