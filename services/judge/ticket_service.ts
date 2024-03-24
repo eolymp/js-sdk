@@ -219,6 +219,7 @@ export type WatchTicketsOutput = {
   event?: string;
   ticket?: Ticket;
   unreadCount?: number;
+  unresolvedCount?: number;
 }
 
 export type ListRepliesInput = {
