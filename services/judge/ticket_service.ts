@@ -26,7 +26,7 @@ export class TicketService {
   }
 
   UpdateTicket(input: UpdateTicketInput, opts?: any): Promise<UpdateTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/close";
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -175,6 +175,7 @@ export type ListTicketsOutput = {
   total?: number;
   items?: Ticket[];
   nextPageCursor?: string;
+  prevPageCursor?: string;
 }
 
 export type ReplyTicketInput = {
