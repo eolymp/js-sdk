@@ -25,17 +25,8 @@ export class TicketService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CloseTicket(input: CloseTicketInput, opts?: any): Promise<CloseTicketOutput> {
+  UpdateTicket(input: UpdateTicketInput, opts?: any): Promise<UpdateTicketOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/close";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.ticketId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  OpenTicket(input: OpenTicketInput, opts?: any): Promise<OpenTicketOutput> {
-    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/open";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.ticketId);
@@ -126,12 +117,13 @@ export type CreateTicketOutput = {
   ticketId?: string;
 }
 
-export type CloseTicketInput = {
-  contestId?: string;
+export type UpdateTicketInput = {
+  patch?: string[];
   ticketId?: string;
+  ticket?: Ticket;
 }
 
-export type CloseTicketOutput = Record<string, unknown>;
+export type UpdateTicketOutput = Record<string, unknown>;
 
 export type OpenTicketInput = {
   contestId?: string;
