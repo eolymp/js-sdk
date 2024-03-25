@@ -17,5 +17,6 @@ export type Ticket = {
   createdAt?: string;
   updatedAt?: string;
   readAt?: string;
+  lastReplyAt?: string;
 }
 

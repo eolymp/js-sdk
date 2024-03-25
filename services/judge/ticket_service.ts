@@ -125,13 +125,6 @@ export type UpdateTicketInput = {
 
 export type UpdateTicketOutput = Record<string, unknown>;
 
-export type OpenTicketInput = {
-  contestId?: string;
-  ticketId?: string;
-}
-
-export type OpenTicketOutput = Record<string, unknown>;
-
 export type ReadTicketInput = {
   contestId?: string;
   ticketId?: string;
