@@ -200,6 +200,7 @@ export type WatchTicketOutput = {
 export type WatchTicketsInput = {
   contestId?: string;
   memberId?: string;
+  status?: string;
   extra?: string[];
 }
 
