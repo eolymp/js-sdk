@@ -137,6 +137,7 @@ export type ListFragmentsInput = {
   offset?: number;
   size?: number;
   filters?: ListFragmentsInput_Filter;
+  locale?: string;
   extra?: string[];
 }
 
