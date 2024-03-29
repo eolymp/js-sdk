@@ -126,7 +126,6 @@ export class ContentService {
 
 export type DescribeFragmentInput = {
   fragmentId?: string;
-  render?: boolean;
   extra?: string[];
 }
 
@@ -135,7 +134,6 @@ export type DescribeFragmentOutput = {
 }
 
 export type ListFragmentsInput = {
-  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListFragmentsInput_Filter;
@@ -179,7 +177,6 @@ export type DeleteFragmentOutput = Record<string, unknown>;
 export type DescribeVariantInput = {
   fragmentId?: string;
   variantId?: string;
-  render?: boolean;
   extra?: string[];
 }
 
@@ -188,7 +185,6 @@ export type DescribeVariantOutput = {
 }
 
 export type ListVariantsInput = {
-  render?: boolean;
   fragmentId?: string;
   offset?: number;
   size?: number;
@@ -234,7 +230,6 @@ export type DeleteVariantOutput = Record<string, unknown>;
 export type DescribePathInput = {
   path?: string;
   locale?: string;
-  render?: boolean;
   extra?: string[];
 }
 
@@ -244,7 +239,6 @@ export type DescribePathOutput = {
 
 export type ListPathsInput = {
   locale?: string;
-  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListPathsInput_Filter;
@@ -265,7 +259,6 @@ export type ListPathsOutput = {
 export type ListParentsInput = {
   path?: string;
   locale?: string;
-  render?: boolean;
   extra?: string[];
 }
 
