@@ -10,6 +10,7 @@ export type FragmentChangedEvent = {
 }
 
 export type VariantChangedEvent = {
+  fragment?: Fragment;
   before?: Variant;
   after?: Variant;
 }
