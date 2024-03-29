@@ -111,12 +111,6 @@ export class ContentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListPaths(input: ListPathsInput, opts?: any): Promise<ListPathsOutput> {
-    const path = "/content/paths";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   ListParents(input: ListParentsInput, opts?: any): Promise<ListParentsOutput> {
     const path = "/content/parents";
 
@@ -236,25 +230,6 @@ export type DescribePathInput = {
 
 export type DescribePathOutput = {
   fragment?: Fragment;
-}
-
-export type ListPathsInput = {
-  locale?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListPathsInput_Filter;
-  extra?: string[];
-}
-
-export type ListPathsInput_Filter = {
-  query?: string;
-  path?: ExpressionString[];
-  label?: ExpressionEnum[];
-}
-
-export type ListPathsOutput = {
-  total?: number;
-  items?: Fragment[];
 }
 
 export type ListParentsInput = {
