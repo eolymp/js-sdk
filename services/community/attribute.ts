@@ -9,6 +9,7 @@ export type Attribute = {
   index?: number;
   required?: boolean;
   hidden?: boolean;
+  readonly?: boolean;
   regexp?: string;
   min?: number;
   max?: number;
