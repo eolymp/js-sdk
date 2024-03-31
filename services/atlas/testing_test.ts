@@ -7,8 +7,11 @@ export type Test = {
   testsetId?: string;
   index?: number;
   example?: boolean;
+  secret?: boolean;
   score?: number;
   inputObjectId?: string;
+  inputUrl?: string;
   answerObjectId?: string;
+  answerUrl?: string;
 }
 

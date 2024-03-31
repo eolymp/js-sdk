@@ -4,5 +4,9 @@
 
 export type Problem = {
   problemUrl?: string;
+  problemId?: string;
+  cost?: number;
+  submitLimit?: number;
+  overrideFeedbackPolicy?: string;
 }
 
