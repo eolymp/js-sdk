@@ -86,6 +86,7 @@ export type RetestSubmissionOutput = Record<string, unknown>;
 
 export type ListSubmissionsInput = {
   problemId?: string;
+  after?: string;
   offset?: number;
   size?: number;
   filters?: ListSubmissionsInput_Filter;
@@ -106,5 +107,7 @@ export type ListSubmissionsInput_Filter = {
 export type ListSubmissionsOutput = {
   total?: number;
   items?: Submission[];
+  nextPageCursor?: string;
+  prevPageCursor?: string;
 }
 
