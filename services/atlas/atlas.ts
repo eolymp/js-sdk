@@ -9,7 +9,7 @@ import { ListVersionsInput, ListVersionsOutput } from "./problem_service"
 import { DescribeProblemGradingInput, DescribeProblemGradingOutput, DescribeScoreInput, DescribeScoreOutput, ListProblemTopInput, ListProblemTopOutput } from "./scoring_service"
 import { CreateStatementInput, CreateStatementOutput, DeleteStatementInput, DeleteStatementOutput, DescribeStatementInput, DescribeStatementOutput, ListStatementsInput, ListStatementsOutput, LookupStatementInput, LookupStatementOutput, PreviewStatementInput, PreviewStatementOutput, UpdateStatementInput, UpdateStatementOutput } from "./statement_service"
 import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, RetestSubmissionInput, RetestSubmissionOutput } from "./submission_service"
-import { CreateTestInput, CreateTestOutput, CreateTestsetInput, CreateTestsetOutput, DeleteTestInput, DeleteTestOutput, DeleteTestsetInput, DeleteTestsetOutput, DescribeInteractorInput, DescribeInteractorOutput, DescribeTestInput, DescribeTestOutput, DescribeTestingConfigInput, DescribeTestingConfigOutput, DescribeTestsetInput, DescribeTestsetOutput, DescribeVerifierInput, DescribeVerifierOutput, ListExamplesInput, ListExamplesOutput, ListTestsInput, ListTestsOutput, ListTestsetsInput, ListTestsetsOutput, UpdateInteractorInput, UpdateInteractorOutput, UpdateTestInput, UpdateTestOutput, UpdateTestingConfigInput, UpdateTestingConfigOutput, UpdateTestsetInput, UpdateTestsetOutput, UpdateVerifierInput, UpdateVerifierOutput } from "./testing_service"
+import { CreateTestInput, CreateTestOutput, CreateTestsetInput, CreateTestsetOutput, DeleteTestInput, DeleteTestOutput, DeleteTestsetInput, DeleteTestsetOutput, DescribeCheckerInput, DescribeCheckerOutput, DescribeInteractorInput, DescribeInteractorOutput, DescribeTestInput, DescribeTestOutput, DescribeTestingConfigInput, DescribeTestingConfigOutput, DescribeTestsetInput, DescribeTestsetOutput, ListExamplesInput, ListExamplesOutput, ListTestsInput, ListTestsOutput, ListTestsetsInput, ListTestsetsOutput, UpdateCheckerInput, UpdateCheckerOutput, UpdateInteractorInput, UpdateInteractorOutput, UpdateTestInput, UpdateTestOutput, UpdateTestingConfigInput, UpdateTestingConfigOutput, UpdateTestsetInput, UpdateTestsetOutput } from "./testing_service"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -117,8 +117,8 @@ export class Atlas {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  UpdateVerifier(input: UpdateVerifierInput, opts?: any): Promise<UpdateVerifierOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/verifier";
+  UpdateChecker(input: UpdateCheckerInput, opts?: any): Promise<UpdateCheckerOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/checker";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -126,8 +126,8 @@ export class Atlas {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DescribeVerifier(input: DescribeVerifierInput, opts?: any): Promise<DescribeVerifierOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/verifier";
+  DescribeChecker(input: DescribeCheckerInput, opts?: any): Promise<DescribeCheckerOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/checker";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);

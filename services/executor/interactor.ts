@@ -6,12 +6,13 @@ export type Interactor = {
   type?: string;
   lang?: string;
   source?: string;
+  sourceUrl?: string;
+  secret?: boolean;
   files?: Interactor_File[];
 }
 
 export type Interactor_File = {
   path?: string;
-  sourceErn?: string;
   sourceUrl?: string;
 }
 

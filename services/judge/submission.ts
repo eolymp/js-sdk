@@ -22,7 +22,7 @@ export type Submission = {
   groups?: Submission_Group[];
 }
 
-export type Submission_VerifierExecutionData = {
+export type Submission_CheckerExecutionData = {
   logUrl?: string;
   wallTimeUsage?: number;
   memoryUsage?: number;
@@ -49,7 +49,7 @@ export type Submission_Run = {
   score?: number;
   status?: string;
   verdict?: string;
-  verifierExecutionData?: Submission_VerifierExecutionData;
+  checkerExecutionData?: Submission_CheckerExecutionData;
   interactorExecutionData?: Submission_InteractorExecutionData;
 }
 

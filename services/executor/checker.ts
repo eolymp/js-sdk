@@ -2,19 +2,20 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Verifier = {
+export type Checker = {
   type?: string;
   lang?: string;
   source?: string;
+  sourceUrl?: string;
   precision?: number;
   caseSensitive?: boolean;
   orderSensitive?: boolean;
-  files?: Verifier_File[];
+  secret?: boolean;
+  files?: Checker_File[];
 }
 
-export type Verifier_File = {
+export type Checker_File = {
   path?: string;
-  sourceErn?: string;
   sourceUrl?: string;
 }
 

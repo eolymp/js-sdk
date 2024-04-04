@@ -15,9 +15,6 @@ export type Job = {
 export type Job_Actor = {
   name?: string;
   runtime?: string;
-  sourceErn?: string;
-  headerErn?: string;
-  footerErn?: string;
   sourceUrl?: string;
   headerUrl?: string;
   footerUrl?: string;
@@ -34,7 +31,6 @@ export type Job_Mount = {
 
 export type Job_File = {
   path?: string;
-  sourceErn?: string;
   sourceUrl?: string;
 }
 
@@ -57,7 +53,6 @@ export type Job_Step = {
 }
 
 export type Job_Step_Write = {
-  sourceErn?: string;
   sourceUrl?: string;
   targetActor?: string;
   targetPath?: string;
