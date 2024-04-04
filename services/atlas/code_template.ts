@@ -7,12 +7,10 @@ export type Template = {
   id?: string;
   problemId?: string;
   runtime?: string;
+  secret?: boolean;
   source?: string;
   header?: string;
   footer?: string;
-  sourceErn?: string;
-  headerErn?: string;
-  footerErn?: string;
   files?: File[];
 }
 

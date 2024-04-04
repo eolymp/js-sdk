@@ -5,8 +5,10 @@
 export type Solution = {
   id?: string;
   name?: string;
+  secret?: boolean;
   runtime?: string;
   source?: string;
+  sourceUrl?: string;
   type?: string;
 }
 
