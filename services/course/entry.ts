@@ -14,6 +14,7 @@ export type Entry = {
   parentId?: string;
   index?: number;
   estimate?: number;
+  weight?: number;
   section?: Section;
   document?: Content;
   video?: Video;

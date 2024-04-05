@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Template } from "../atlas/code_template"
-import { Score } from "../atlas/scoring_score"
 import { Statement } from "../atlas/statement"
 import { Submission } from "../atlas/submission"
 import { Test } from "../atlas/testing_test"
@@ -51,12 +50,6 @@ export class ProblemService {
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.submissionId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/score";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -153,14 +146,6 @@ export type WatchSubmissionInput = {
 
 export type WatchSubmissionOutput = {
   submission?: Submission;
-}
-
-export type DescribeScoreInput = {
-  memberId?: string;
-}
-
-export type DescribeScoreOutput = {
-  score?: Score;
 }
 
 export type LookupCodeTemplateInput = {

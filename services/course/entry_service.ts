@@ -200,6 +200,7 @@ export type DescribeProgressInput = {
 
 export type DescribeProgressOutput = {
   progress?: number;
+  grade?: number;
 }
 
 export type ReportProgressInput = {
