@@ -196,6 +196,7 @@ export type ListParentsOutput = {
 
 export type DescribeProgressInput = {
   entryId?: string;
+  studentId?: string;
 }
 
 export type DescribeProgressOutput = {

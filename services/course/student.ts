@@ -15,5 +15,7 @@ export type Student = {
   endIn?: number;
   completeAt?: string;
   completeIn?: number;
+  grade?: number;
+  breakdown?: Record<string, number>;
 }
 
