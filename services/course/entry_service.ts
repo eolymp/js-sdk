@@ -211,3 +211,14 @@ export type ReportProgressInput = {
 
 export type ReportProgressOutput = Record<string, unknown>;
 
+export type WatchProgressInput = {
+  entryId?: string;
+  studentId?: string;
+}
+
+export type WatchProgressOutput = {
+  entryId?: string;
+  progress?: number;
+  grade?: number;
+}
+
