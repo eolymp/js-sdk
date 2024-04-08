@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
+import { Assignment } from "./assignment"
 import { Student } from "./student"
 
 interface Client {
@@ -56,8 +57,38 @@ export class StudentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  DescribeAssignment(input: DescribeAssignmentInput, opts?: any): Promise<DescribeAssignmentOutput> {
+    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.studentId);
+    delete(input.entryId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateAssignment(input: UpdateAssignmentInput, opts?: any): Promise<UpdateAssignmentOutput> {
+    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.studentId);
+    delete(input.entryId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   StartCourse(input: StartCourseInput, opts?: any): Promise<StartCourseOutput> {
     const path = "/start";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  StartAssignment(input: StartAssignmentInput, opts?: any): Promise<StartAssignmentOutput> {
+    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'')+"/start";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.studentId);
+    delete(input.entryId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -120,9 +151,30 @@ export type ListStudentsOutput = {
   items?: Student[];
 }
 
+export type DescribeAssignmentInput = {
+  entryId?: string;
+}
+
+export type DescribeAssignmentOutput = {
+  assignment?: Assignment;
+}
+
+export type UpdateAssignmentInput = {
+  entryId?: string;
+  assignment?: Assignment;
+}
+
+export type UpdateAssignmentOutput = Record<string, unknown>;
+
 export type StartCourseInput = Record<string, unknown>;
 
 export type StartCourseOutput = Record<string, unknown>;
+
+export type StartAssignmentInput = {
+  entryId?: string;
+}
+
+export type StartAssignmentOutput = Record<string, unknown>;
 
 export type DescribeViewerInput = Record<string, unknown>;
 
