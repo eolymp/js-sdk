@@ -152,6 +152,7 @@ export type ListStudentsOutput = {
 }
 
 export type DescribeAssignmentInput = {
+  studentId?: string;
   entryId?: string;
 }
 
@@ -160,6 +161,7 @@ export type DescribeAssignmentOutput = {
 }
 
 export type UpdateAssignmentInput = {
+  studentId?: string;
   entryId?: string;
   assignment?: Assignment;
 }
