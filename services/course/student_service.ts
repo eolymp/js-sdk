@@ -173,6 +173,7 @@ export type StartCourseInput = Record<string, unknown>;
 export type StartCourseOutput = Record<string, unknown>;
 
 export type StartAssignmentInput = {
+  studentId?: string;
   entryId?: string;
 }
 
