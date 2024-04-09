@@ -163,8 +163,9 @@ export type DescribeAssignmentOutput = {
 export type AssignEntryInput = {
   studentId?: string;
   entryId?: string;
-  startAt?: string;
-  endAt?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
 }
 
 export type AssignEntryOutput = Record<string, unknown>;
