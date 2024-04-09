@@ -4,12 +4,11 @@
 
 export type Assignment = {
   status?: string;
+  explicit?: boolean;
   startAfter?: string;
   completeBefore?: string;
   startedAt?: string;
   completedAt?: string;
   duration?: number;
-  progress?: number;
-  grade?: number;
 }
 
