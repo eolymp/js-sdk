@@ -67,7 +67,7 @@ export class StudentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  UpdateAssignment(input: UpdateAssignmentInput, opts?: any): Promise<UpdateAssignmentOutput> {
+  AssignEntry(input: AssignEntryInput, opts?: any): Promise<AssignEntryOutput> {
     const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -77,18 +77,18 @@ export class StudentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  StartCourse(input: StartCourseInput, opts?: any): Promise<StartCourseOutput> {
-    const path = "/start";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  StartAssignment(input: StartAssignmentInput, opts?: any): Promise<StartAssignmentOutput> {
-    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'')+"/start";
+  UnassignEntry(input: UnassignEntryInput, opts?: any): Promise<UnassignEntryOutput> {
+    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.studentId);
     delete(input.entryId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  StartCourse(input: StartCourseInput, opts?: any): Promise<StartCourseOutput> {
+    const path = "/start";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -160,13 +160,21 @@ export type DescribeAssignmentOutput = {
   assignment?: Assignment;
 }
 
-export type UpdateAssignmentInput = {
+export type AssignEntryInput = {
   studentId?: string;
   entryId?: string;
-  assignment?: Assignment;
+  startAt?: string;
+  endAt?: string;
 }
 
-export type UpdateAssignmentOutput = Record<string, unknown>;
+export type AssignEntryOutput = Record<string, unknown>;
+
+export type UnassignEntryInput = {
+  studentId?: string;
+  entryId?: string;
+}
+
+export type UnassignEntryOutput = Record<string, unknown>;
 
 export type StartCourseInput = Record<string, unknown>;
 
