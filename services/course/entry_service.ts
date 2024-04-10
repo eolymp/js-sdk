@@ -88,6 +88,24 @@ export class EntryService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DescribeProgress(input: DescribeProgressInput, opts?: any): Promise<DescribeProgressOutput> {
+    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/progress";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.entryId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ReportProgress(input: ReportProgressInput, opts?: any): Promise<ReportProgressOutput> {
+    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/progress";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.entryId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
 }
 
 export type CreateEntryInput = {
@@ -174,5 +192,33 @@ export type ListParentsInput = {
 
 export type ListParentsOutput = {
   items?: Entry[];
+}
+
+export type DescribeProgressInput = {
+  entryId?: string;
+  studentId?: string;
+}
+
+export type DescribeProgressOutput = {
+  progress?: number;
+  grade?: number;
+}
+
+export type ReportProgressInput = {
+  entryId?: string;
+  progress?: number;
+}
+
+export type ReportProgressOutput = Record<string, unknown>;
+
+export type WatchProgressInput = {
+  entryId?: string;
+  studentId?: string;
+}
+
+export type WatchProgressOutput = {
+  entryId?: string;
+  progress?: number;
+  grade?: number;
 }
 

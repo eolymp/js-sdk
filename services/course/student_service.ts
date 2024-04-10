@@ -79,26 +79,6 @@ export class StudentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeProgress(input: DescribeProgressInput, opts?: any): Promise<DescribeProgressOutput> {
-    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/progress/"+encodeURIComponent(input.entryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.studentId);
-    delete(input.entryId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ReportProgress(input: ReportProgressInput, opts?: any): Promise<ReportProgressOutput> {
-    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/progress/"+encodeURIComponent(input.entryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.studentId);
-    delete(input.entryId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
   AssignEntry(input: AssignEntryInput, opts?: any): Promise<AssignEntryOutput> {
     const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
 
@@ -196,34 +176,6 @@ export type DescribeViewerInput = Record<string, unknown>;
 
 export type DescribeViewerOutput = {
   student?: Student;
-}
-
-export type DescribeProgressInput = {
-  entryId?: string;
-  studentId?: string;
-}
-
-export type DescribeProgressOutput = {
-  progress?: number;
-  grade?: number;
-}
-
-export type ReportProgressInput = {
-  entryId?: string;
-  progress?: number;
-}
-
-export type ReportProgressOutput = Record<string, unknown>;
-
-export type WatchProgressInput = {
-  entryId?: string;
-  studentId?: string;
-}
-
-export type WatchProgressOutput = {
-  entryId?: string;
-  progress?: number;
-  grade?: number;
 }
 
 export type AssignEntryInput = {
