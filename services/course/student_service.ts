@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Assignment } from "./assignment"
 import { Student } from "./student"
 
 interface Client {
@@ -57,56 +56,10 @@ export class StudentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  StartCourse(input: StartCourseInput, opts?: any): Promise<StartCourseOutput> {
-    const path = "/start";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  StartAssignment(input: StartAssignmentInput, opts?: any): Promise<StartAssignmentOutput> {
-    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'')+"/start";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.studentId);
-    delete(input.entryId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
     const path = "/viewer";
 
     return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  AssignEntry(input: AssignEntryInput, opts?: any): Promise<AssignEntryOutput> {
-    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.studentId);
-    delete(input.entryId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UnassignEntry(input: UnassignEntryInput, opts?: any): Promise<UnassignEntryOutput> {
-    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.studentId);
-    delete(input.entryId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  DescribeAssignment(input: DescribeAssignmentInput, opts?: any): Promise<DescribeAssignmentOutput> {
-    const path = "/students/"+encodeURIComponent(input.studentId||'')+"/assignments/"+encodeURIComponent(input.entryId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.studentId);
-    delete(input.entryId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
@@ -161,46 +114,9 @@ export type ListStudentsOutput = {
   items?: Student[];
 }
 
-export type StartCourseInput = Record<string, unknown>;
-
-export type StartCourseOutput = Record<string, unknown>;
-
-export type StartAssignmentInput = {
-  studentId?: string;
-  entryId?: string;
-}
-
-export type StartAssignmentOutput = Record<string, unknown>;
-
 export type DescribeViewerInput = Record<string, unknown>;
 
 export type DescribeViewerOutput = {
   student?: Student;
-}
-
-export type AssignEntryInput = {
-  studentId?: string;
-  entryId?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-}
-
-export type AssignEntryOutput = Record<string, unknown>;
-
-export type UnassignEntryInput = {
-  studentId?: string;
-  entryId?: string;
-}
-
-export type UnassignEntryOutput = Record<string, unknown>;
-
-export type DescribeAssignmentInput = {
-  studentId?: string;
-  entryId?: string;
-}
-
-export type DescribeAssignmentOutput = {
-  assignment?: Assignment;
 }
 

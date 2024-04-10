@@ -106,6 +106,34 @@ export class EntryService {
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
+
+  AssignEntry(input: AssignEntryInput, opts?: any): Promise<AssignEntryOutput> {
+    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/assignments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.entryId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UnassignEntry(input: UnassignEntryInput, opts?: any): Promise<UnassignEntryOutput> {
+    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/assignments/"+encodeURIComponent(input.studentId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.entryId);
+    delete(input.studentId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  StartEntry(input: StartEntryInput, opts?: any): Promise<StartEntryOutput> {
+    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/start";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.entryId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateEntryInput = {
@@ -147,7 +175,8 @@ export type DeleteEntryOutput = Record<string, unknown>;
 
 export type DescribeEntryInput = {
   entryId?: string;
-  render?: boolean;
+  studentId?: string;
+  extra?: string[];
 }
 
 export type DescribeEntryOutput = {
@@ -161,6 +190,8 @@ export type ListEntriesInput = {
   filters?: ListEntriesInput_Filter;
   sort?: string;
   order?: string;
+  studentId?: string;
+  extra?: string[];
 }
 
 export type ListEntriesInput_Filter = {
@@ -180,6 +211,8 @@ export type DescribeTOCInput = {
   rootId?: string;
   depth?: number;
   draft?: boolean;
+  studentId?: string;
+  extra?: string[];
 }
 
 export type DescribeTOCOutput = {
@@ -188,6 +221,8 @@ export type DescribeTOCOutput = {
 
 export type ListParentsInput = {
   entryId?: string;
+  studentId?: string;
+  extra?: string[];
 }
 
 export type ListParentsOutput = {
@@ -221,4 +256,27 @@ export type WatchProgressOutput = {
   progress?: number;
   grade?: number;
 }
+
+export type AssignEntryInput = {
+  entryId?: string;
+  studentId?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+}
+
+export type AssignEntryOutput = Record<string, unknown>;
+
+export type UnassignEntryInput = {
+  entryId?: string;
+  studentId?: string;
+}
+
+export type UnassignEntryOutput = Record<string, unknown>;
+
+export type StartEntryInput = {
+  entryId?: string;
+}
+
+export type StartEntryOutput = Record<string, unknown>;
 
