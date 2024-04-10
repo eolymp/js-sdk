@@ -6,11 +6,6 @@ export type Student = {
   id?: string;
   courseId?: string;
   memberId?: string;
-  name?: string;
-  status?: string;
-  startAt?: string;
-  endAt?: string;
-  completeAt?: string;
-  duration?: number;
+  displayName?: string;
 }
 

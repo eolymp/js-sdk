@@ -14,5 +14,6 @@ export type Course = {
   duration?: number;
   topics?: string[];
   estimate?: number;
+  participationMode?: string;
 }
 
