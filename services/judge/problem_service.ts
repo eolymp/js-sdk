@@ -172,6 +172,7 @@ export type DescribeCodeTemplateInput = {
   contestId?: string;
   problemId?: string;
   templateId?: string;
+  templateErn?: string;
 }
 
 export type DescribeCodeTemplateOutput = {
