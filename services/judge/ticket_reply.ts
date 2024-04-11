@@ -5,7 +5,6 @@ import { Content } from "../ecm/content"
 
 export type Reply = {
   id?: string;
-  ern?: string;
   ticketId?: string;
   userId?: string;
   memberId?: string;

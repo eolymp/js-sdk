@@ -67,6 +67,15 @@ export class SubmissionService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  RetestProblem(input: RetestProblemInput, opts?: any): Promise<RetestProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/retest";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateSubmissionInput = {
@@ -145,4 +154,11 @@ export type RestoreSubmissionInput = {
 }
 
 export type RestoreSubmissionOutput = Record<string, unknown>;
+
+export type RetestProblemInput = {
+  contestId?: string;
+  problemId?: string;
+}
+
+export type RetestProblemOutput = Record<string, unknown>;
 

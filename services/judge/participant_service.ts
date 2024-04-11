@@ -256,6 +256,15 @@ export type IntrospectParticipantOutput = {
   participant?: Participant;
 }
 
+export type WatchParticipantInput = {
+  contestId?: string;
+  participantId?: string;
+}
+
+export type WatchParticipantOutput = {
+  participant?: Participant;
+}
+
 export type DescribeParticipantInput = {
   contestId?: string;
   participantId?: string;

@@ -4,7 +4,6 @@
 
 export type Activity = {
   id?: string;
-  ern?: string;
   type?: string;
   status?: string;
   contestId?: string;

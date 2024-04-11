@@ -79,6 +79,16 @@ export type IntrospectScoreOutput = {
   score?: Score;
 }
 
+export type WatchScoreInput = {
+  contestId?: string;
+  participantId?: string;
+  mode?: string;
+}
+
+export type WatchScoreOutput = {
+  score?: Score;
+}
+
 export type DescribeScoreInput = {
   contestId?: string;
   participantId?: string;

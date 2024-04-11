@@ -56,14 +56,13 @@ export class ProblemService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeCodeTemplate(input: DescribeCodeTemplateInput, opts?: any): Promise<DescribeCodeTemplateOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
+  DeleteProblem(input: DeleteProblemInput, opts?: any): Promise<DeleteProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
-    delete(input.templateId);
 
-    return this.cli.call("GET", this.url+path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
@@ -71,6 +70,16 @@ export class ProblemService {
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeCodeTemplate(input: DescribeCodeTemplateInput, opts?: any): Promise<DescribeCodeTemplateOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+    delete(input.templateId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -95,24 +104,6 @@ export class ProblemService {
 
   ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  DeleteProblem(input: DeleteProblemInput, opts?: any): Promise<DeleteProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  RetestProblem(input: RetestProblemInput, opts?: any): Promise<RetestProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -157,13 +148,6 @@ export type DeleteProblemInput = {
 
 export type DeleteProblemOutput = Record<string, unknown>;
 
-export type RetestProblemInput = {
-  contestId?: string;
-  problemId?: string;
-}
-
-export type RetestProblemOutput = Record<string, unknown>;
-
 export type ListProblemsInput = {
   contestId?: string;
   offset?: number;
@@ -178,7 +162,6 @@ export type ListProblemsOutput = {
 export type DescribeProblemInput = {
   contestId?: string;
   problemId?: string;
-  problemErn?: string;
 }
 
 export type DescribeProblemOutput = {
@@ -189,7 +172,6 @@ export type DescribeCodeTemplateInput = {
   contestId?: string;
   problemId?: string;
   templateId?: string;
-  templateErn?: string;
 }
 
 export type DescribeCodeTemplateOutput = {

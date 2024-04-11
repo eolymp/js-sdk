@@ -3,8 +3,8 @@
 
 import { Content } from "../ecm/content"
 import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Reply } from "./reply"
 import { Ticket } from "./ticket"
+import { Reply } from "./ticket_reply"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
