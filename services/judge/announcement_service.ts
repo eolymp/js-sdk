@@ -153,7 +153,6 @@ export type WatchAnnouncementOutput = {
 }
 
 export type WatchAnnouncementsInput = {
-  contestId?: string;
   extra?: string[];
 }
 
@@ -162,9 +161,7 @@ export type WatchAnnouncementsOutput = {
   announcement?: Announcement;
 }
 
-export type WatchAnnouncementSummaryInput = {
-  contestId?: string;
-}
+export type WatchAnnouncementSummaryInput = Record<string, unknown>;
 
 export type WatchAnnouncementSummaryOutput = {
   unreadCount?: number;
