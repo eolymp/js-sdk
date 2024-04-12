@@ -145,17 +145,22 @@ export class Client {
     return this.send<E>(method, url, data, opts)
   }
 
-  async reauthenticate() {
+  // force token refresh, a new token is returned or null if token can not be refreshed
+  async refresh(): Promise<string|null> {
     if (!this.authenticate) {
-      return;
+      return null;
     }
 
     this.token = await this.authenticate()
+
+    return this.token;
   }
 
-  setToken(token?: string, authenticate?: () => Promise<string>) {
-    this.token = token
-    this.authenticate = authenticate;
+  // mark token as expired, so client attempts to reauthenticate on the next request,
+  // returns true if token can be refreshed, or false otherwise
+  expire(): boolean {
+    this.token = undefined;
+    return this.authenticate !== undefined;
   }
 
   private static async getResponseErrorData(response: Response, message: string): Promise<Record<string, any>> {
