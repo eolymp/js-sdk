@@ -24,9 +24,9 @@ export class Client {
 
   private readonly retry: number;
   private readonly headers: Record<string, string>;
-  private readonly authenticate?: () => Promise<string>;
 
   private token?: string;
+  private authenticate?: () => Promise<string>;
 
   constructor(opts: ClientOptions = {}) {
     this.retry = opts.retry || 3;
@@ -143,6 +143,19 @@ export class Client {
     }
 
     return this.send<E>(method, url, data, opts)
+  }
+
+  async reauthenticate() {
+    if (!this.authenticate) {
+      return;
+    }
+
+    this.token = await this.authenticate()
+  }
+
+  setToken(token?: string, authenticate?: () => Promise<string>) {
+    this.token = token
+    this.authenticate = authenticate;
   }
 
   private static async getResponseErrorData(response: Response, message: string): Promise<Record<string, any>> {
