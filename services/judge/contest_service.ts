@@ -209,6 +209,14 @@ export type ResumeContestInput = {
 
 export type ResumeContestOutput = Record<string, unknown>;
 
+export type WatchContestInput = {
+  contestId?: string;
+}
+
+export type WatchContestOutput = {
+  contest?: Contest;
+}
+
 export type ListActivitiesInput = {
   contestId?: string;
   offset?: number;
