@@ -143,3 +143,30 @@ export type ListAnnouncementsOutput = {
   items?: Announcement[];
 }
 
+export type WatchAnnouncementInput = {
+  announcementId?: string;
+  extra?: string[];
+}
+
+export type WatchAnnouncementOutput = {
+  announcement?: Announcement;
+}
+
+export type WatchAnnouncementsInput = {
+  contestId?: string;
+  extra?: string[];
+}
+
+export type WatchAnnouncementsOutput = {
+  event?: string;
+  announcement?: Announcement;
+}
+
+export type WatchAnnouncementSummaryInput = {
+  contestId?: string;
+}
+
+export type WatchAnnouncementSummaryOutput = {
+  unreadCount?: number;
+}
+
