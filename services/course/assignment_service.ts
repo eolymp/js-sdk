@@ -50,6 +50,12 @@ export class AssignmentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  IntrospectAssignment(input: IntrospectAssignmentInput, opts?: any): Promise<IntrospectAssignmentOutput> {
+    const path = "/viewer/assignment";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   ListAssignments(input: ListAssignmentsInput, opts?: any): Promise<ListAssignmentsOutput> {
     const path = "/assignments";
 
@@ -72,7 +78,6 @@ export type ListAssignmentsInput = {
   filters?: ListAssignmentsInput_Filter;
   sort?: string;
   order?: string;
-  studentId?: string;
   extra?: string[];
 }
 
@@ -90,11 +95,16 @@ export type ListAssignmentsOutput = {
 
 export type DescribeAssignmentInput = {
   assignmentId?: string;
-  studentId?: string;
   extra?: string[];
 }
 
 export type DescribeAssignmentOutput = {
+  assignment?: Assignment;
+}
+
+export type IntrospectAssignmentInput = Record<string, unknown>;
+
+export type IntrospectAssignmentOutput = {
   assignment?: Assignment;
 }
 
@@ -119,23 +129,6 @@ export type DeleteAssignmentInput = {
 }
 
 export type DeleteAssignmentOutput = Record<string, unknown>;
-
-export type AssignAssignmentInput = {
-  assignmentId?: string;
-  studentId?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-}
-
-export type AssignAssignmentOutput = Record<string, unknown>;
-
-export type UnassignAssignmentInput = {
-  assignmentId?: string;
-  studentId?: string;
-}
-
-export type UnassignAssignmentOutput = Record<string, unknown>;
 
 export type StartAssignmentInput = {
   assignmentId?: string;
