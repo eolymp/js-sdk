@@ -5,6 +5,7 @@
 export type Grade = {
   id?: string;
   memberId?: string;
+  displayName?: string;
   progress?: number;
   grade?: number;
   breakdown?: Grade_Breakdown[];
