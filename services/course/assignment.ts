@@ -3,12 +3,14 @@
 
 
 export type Assignment = {
+  memberId?: string;
+  groupId?: string;
   status?: string;
-  explicit?: boolean;
   startAfter?: string;
   completeBefore?: string;
+  duration?: number;
+  createdAt?: string;
   startedAt?: string;
   completedAt?: string;
-  duration?: number;
 }
 
