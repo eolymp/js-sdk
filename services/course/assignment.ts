@@ -3,6 +3,7 @@
 
 
 export type Assignment = {
+  id?: string;
   memberId?: string;
   groupId?: string;
   status?: string;

@@ -82,7 +82,6 @@ export type ListAssignmentsInput = {
 }
 
 export type ListAssignmentsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   memberId?: ExpressionID[];
   groupId?: ExpressionID[];
