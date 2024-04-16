@@ -55,34 +55,6 @@ export class CourseService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  AssignCourse(input: AssignCourseInput, opts?: any): Promise<AssignCourseOutput> {
-    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/assignments";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.courseId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UnassignCourse(input: UnassignCourseInput, opts?: any): Promise<UnassignCourseOutput> {
-    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/assignments/"+encodeURIComponent(input.studentId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.courseId);
-    delete(input.studentId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  StartCourse(input: StartCourseInput, opts?: any): Promise<StartCourseOutput> {
-    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/start";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.courseId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
 }
 
 export type ListCoursesInput = {
@@ -91,7 +63,6 @@ export type ListCoursesInput = {
   filters?: ListCoursesInput_Filter;
   sort?: string;
   order?: string;
-  studentId?: string;
   extra?: string[];
 }
 
@@ -109,7 +80,6 @@ export type ListCoursesOutput = {
 
 export type DescribeCourseInput = {
   courseId?: string;
-  studentId?: string;
   extra?: string[];
 }
 
@@ -138,23 +108,6 @@ export type DeleteCourseInput = {
 }
 
 export type DeleteCourseOutput = Record<string, unknown>;
-
-export type AssignCourseInput = {
-  courseId?: string;
-  studentId?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-}
-
-export type AssignCourseOutput = Record<string, unknown>;
-
-export type UnassignCourseInput = {
-  courseId?: string;
-  studentId?: string;
-}
-
-export type UnassignCourseOutput = Record<string, unknown>;
 
 export type StartCourseInput = {
   courseId?: string;

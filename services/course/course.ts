@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
-import { Assignment } from "./assignment"
 
 export type Course = {
   id?: string;
@@ -16,6 +15,5 @@ export type Course = {
   topics?: string[];
   estimate?: number;
   participationMode?: string;
-  assignment?: Assignment;
 }
 

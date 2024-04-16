@@ -74,7 +74,7 @@ export class EntryService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeTOC(input: DescribeTOCInput, opts?: any): Promise<DescribeTOCOutput> {
+  DescribeTree(input: DescribeTreeInput, opts?: any): Promise<DescribeTreeOutput> {
     const path = "/toc";
 
     return this.cli.call("GET", this.url+path, input, opts);
@@ -87,52 +87,6 @@ export class EntryService {
     delete(input.entryId);
 
     return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  DescribeProgress(input: DescribeProgressInput, opts?: any): Promise<DescribeProgressOutput> {
-    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/progress";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.entryId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ReportProgress(input: ReportProgressInput, opts?: any): Promise<ReportProgressOutput> {
-    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/progress";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.entryId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
-  AssignEntry(input: AssignEntryInput, opts?: any): Promise<AssignEntryOutput> {
-    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/assignments";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.entryId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UnassignEntry(input: UnassignEntryInput, opts?: any): Promise<UnassignEntryOutput> {
-    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/assignments/"+encodeURIComponent(input.studentId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.entryId);
-    delete(input.studentId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  StartEntry(input: StartEntryInput, opts?: any): Promise<StartEntryOutput> {
-    const path = "/entries/"+encodeURIComponent(input.entryId||'')+"/start";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.entryId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
@@ -175,7 +129,6 @@ export type DeleteEntryOutput = Record<string, unknown>;
 
 export type DescribeEntryInput = {
   entryId?: string;
-  studentId?: string;
   extra?: string[];
 }
 
@@ -184,13 +137,11 @@ export type DescribeEntryOutput = {
 }
 
 export type ListEntriesInput = {
-  render?: boolean;
   offset?: number;
   size?: number;
   filters?: ListEntriesInput_Filter;
   sort?: string;
   order?: string;
-  studentId?: string;
   extra?: string[];
 }
 
@@ -207,76 +158,23 @@ export type ListEntriesOutput = {
   items?: Entry[];
 }
 
-export type DescribeTOCInput = {
+export type DescribeTreeInput = {
   rootId?: string;
   depth?: number;
   draft?: boolean;
-  studentId?: string;
   extra?: string[];
 }
 
-export type DescribeTOCOutput = {
+export type DescribeTreeOutput = {
   items?: Entry[];
 }
 
 export type ListParentsInput = {
   entryId?: string;
-  studentId?: string;
   extra?: string[];
 }
 
 export type ListParentsOutput = {
   items?: Entry[];
 }
-
-export type DescribeProgressInput = {
-  entryId?: string;
-  studentId?: string;
-}
-
-export type DescribeProgressOutput = {
-  progress?: number;
-  grade?: number;
-}
-
-export type ReportProgressInput = {
-  entryId?: string;
-  progress?: number;
-}
-
-export type ReportProgressOutput = Record<string, unknown>;
-
-export type WatchProgressInput = {
-  entryId?: string;
-  studentId?: string;
-}
-
-export type WatchProgressOutput = {
-  entryId?: string;
-  progress?: number;
-  grade?: number;
-}
-
-export type AssignEntryInput = {
-  entryId?: string;
-  studentId?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-}
-
-export type AssignEntryOutput = Record<string, unknown>;
-
-export type UnassignEntryInput = {
-  entryId?: string;
-  studentId?: string;
-}
-
-export type UnassignEntryOutput = Record<string, unknown>;
-
-export type StartEntryInput = {
-  entryId?: string;
-}
-
-export type StartEntryOutput = Record<string, unknown>;
 

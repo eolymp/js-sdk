@@ -4,8 +4,18 @@
 
 export type Student = {
   id?: string;
-  courseId?: string;
   memberId?: string;
   displayName?: string;
+  overallProgress?: number;
+  overallGrade?: number;
+  grades?: Student_Grade[];
+  updatedAt?: string;
+  gradedAt?: string;
+}
+
+export type Student_Grade = {
+  entryId?: string;
+  progress?: number;
+  grade?: number;
 }
 
