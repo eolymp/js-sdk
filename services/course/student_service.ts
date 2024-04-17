@@ -73,3 +73,11 @@ export type ListStudentsOutput = {
   items?: Student[];
 }
 
+export type WatchStudentInput = {
+  studentId?: string;
+}
+
+export type WatchStudentOutput = {
+  student?: Student;
+}
+
