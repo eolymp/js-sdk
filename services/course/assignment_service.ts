@@ -63,10 +63,7 @@ export class AssignmentService {
   }
 
   StartAssignment(input: StartAssignmentInput, opts?: any): Promise<StartAssignmentOutput> {
-    const path = "/assignments/"+encodeURIComponent(input.assignmentId||'')+"/start";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.assignmentId);
+    const path = "/start";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -130,7 +127,7 @@ export type DeleteAssignmentInput = {
 export type DeleteAssignmentOutput = Record<string, unknown>;
 
 export type StartAssignmentInput = {
-  assignmentId?: string;
+  entryId?: string;
 }
 
 export type StartAssignmentOutput = Record<string, unknown>;
