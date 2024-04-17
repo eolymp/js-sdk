@@ -74,7 +74,7 @@ export type ListStudentsOutput = {
 }
 
 export type WatchStudentInput = {
-  studentId?: string;
+  memberId?: string;
 }
 
 export type WatchStudentOutput = {
