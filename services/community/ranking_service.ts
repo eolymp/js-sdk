@@ -173,6 +173,7 @@ export type DescribeRankingPointOutput = {
 }
 
 export type ListRankingPointsInput = {
+  memberId?: string;
   offset?: number;
   size?: number;
   filters?: ListRankingPointsInput_Filter;
