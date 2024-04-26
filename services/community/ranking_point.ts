@@ -7,7 +7,7 @@ export type RankingPoint = {
   memberId?: string;
   eventId?: string;
   rank?: number;
-  rankLength?: number;
+  rankLower?: number;
   score?: number;
 }
 

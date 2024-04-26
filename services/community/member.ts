@@ -11,7 +11,7 @@ export type Member = {
   name?: string;
   url?: string;
   rank?: number;
-  rankLength?: number;
+  rankLower?: number;
   score?: number;
   active?: boolean;
   incomplete?: boolean;
