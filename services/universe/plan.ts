@@ -10,6 +10,8 @@ export type Plan = {
   description?: Content;
   quota?: Quota;
   labels?: string[];
+  minSeats?: number;
+  maxSeats?: number;
   variants?: Plan_Variant[];
 }
 
