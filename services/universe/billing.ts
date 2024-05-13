@@ -21,6 +21,7 @@ export type Billing_Subscription = {
   id?: string;
   status?: string;
   irregular?: boolean;
+  hasPaymentMethod?: boolean;
   plan?: Plan;
   variant?: Plan_Variant;
   seats?: number;
