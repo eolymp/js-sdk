@@ -119,6 +119,7 @@ export type CreateSubscriptionInput = {
   planId?: string;
   variantId?: string;
   seats?: number;
+  trail?: boolean;
 }
 
 export type CreateSubscriptionOutput = {
@@ -129,6 +130,7 @@ export type UpdateSubscriptionInput = {
   planId?: string;
   variantId?: string;
   seats?: number;
+  trail?: boolean;
 }
 
 export type UpdateSubscriptionOutput = Record<string, unknown>;
