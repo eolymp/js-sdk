@@ -133,7 +133,9 @@ export type UpdateSubscriptionInput = {
   trial?: boolean;
 }
 
-export type UpdateSubscriptionOutput = Record<string, unknown>;
+export type UpdateSubscriptionOutput = {
+  checkoutUrl?: string;
+}
 
 export type CancelSubscriptionInput = Record<string, unknown>;
 
