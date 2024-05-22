@@ -8,7 +8,7 @@ export type Fragment = {
   path?: string;
   locale?: string;
   title?: string;
-  public?: string;
+  public?: boolean;
   content?: Content;
   createdAt?: string;
   updatedAt?: string;
