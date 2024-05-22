@@ -26,6 +26,36 @@ export class AssetService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  UploadAsset(input: UploadAssetInput, opts?: any): Promise<UploadAssetOutput> {
+    const path = "/assets";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  StartMultipartUpload(input: StartMultipartUploadInput, opts?: any): Promise<StartMultipartUploadOutput> {
+    const path = "/uploads";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  UploadPart(input: UploadPartInput, opts?: any): Promise<UploadPartOutput> {
+    const path = "/uploads/"+encodeURIComponent(input.uploadId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.uploadId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  CompleteMultipartUpload(input: CompleteMultipartUploadInput, opts?: any): Promise<CompleteMultipartUploadOutput> {
+    const path = "/uploads/"+encodeURIComponent(input.uploadId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.uploadId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
 }
 
 export type UploadImageInput = {
@@ -61,5 +91,51 @@ export type UploadFileInput = {
 
 export type UploadFileOutput = {
   fileUrl?: string;
+}
+
+export type UploadAssetInput = {
+  name?: string;
+  type?: string;
+  data?: string;
+}
+
+export type UploadAssetOutput = {
+  assetUrl?: string;
+}
+
+export type StartMultipartUploadInput = {
+  name?: string;
+  type?: string;
+}
+
+export type StartMultipartUploadOutput = {
+  uploadId?: string;
+}
+
+export type UploadPartInput = {
+  uploadId?: string;
+  partNumber?: number;
+  data?: string;
+}
+
+export type UploadPartOutput = {
+  token?: string;
+}
+
+export type CompleteMultipartUploadInput = {
+  uploadId?: string;
+  parts?: CompleteMultipartUploadInput_Part[];
+}
+
+export type CompleteMultipartUploadInput_Part = {
+  number?: number;
+  token?: string;
+  checksumMd5?: string;
+  checksumSha1?: string;
+  checksumSha256?: string;
+}
+
+export type CompleteMultipartUploadOutput = {
+  assetUrl?: string;
 }
 
