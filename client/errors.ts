@@ -1,37 +1,34 @@
 // UnauthorizedError returned when user didn't provide token or given token has expired
-export class UnauthorizedError implements Error {
-    message: string;
+export class UnauthorizedError extends Error {
     name: string;
 
     constructor(message: string) {
-        this.message = message;
+        super('UnauthorizedError: ' + message);
         this.name = 'UnauthorizedError';
     }
 }
 
 // ForbiddenError
-export class ForbiddenError implements Error {
-    message: string;
+export class ForbiddenError extends Error {
     name: string;
 
     constructor(message: string) {
-        this.message = message;
+        super('ForbiddenError: ' + message);
         this.name = 'ForbiddenError';
     }
 }
 
 // InternalServerError returned when server could not process request due to an internal error
-export class InternalServerError implements Error {
+export class InternalServerError extends Error {
     name: string;
     code: string;
-    message: string;
     status: number;
     details: any[];
 
     constructor(message?: string, code?: string, status?: number, details: any[] = []) {
+        super('InternalServerError: ' + (message ?? 'server error'));
         this.name = 'InternalServerError';
         this.code = code ? code : 'InternalServerError';
-        this.message = message ? message : 'server error';
         this.status = status ? status : 0;
         this.details = details;
     }
@@ -54,17 +51,16 @@ export class InternalServerError implements Error {
 }
 
 // InternalServerError returned when server could not process request due to an internal error
-export class BadRequestError implements Error {
+export class BadRequestError extends Error {
     name: string;
     code: string;
-    message: string;
     status: number;
     details: any[];
 
     constructor(message?: string, code?: string, status?: number, details: any[] = []) {
+        super('BadRequestError: ' + (message ?? 'bad request'));
         this.name = 'BadRequestError';
         this.code = code ? code : 'BadRequest';
-        this.message = message ? message : 'bad request';
         this.status = status ? status : 0;
         this.details = details;
     }
@@ -87,12 +83,11 @@ export class BadRequestError implements Error {
 }
 
 // InternalServerError returned when server could not process request due to an internal error
-export class NotFoundError implements Error {
-    message: string;
+export class NotFoundError extends Error {
     name: string;
 
     constructor(message: string) {
-        this.message = message;
+        super('NotFoundError: ' + message);
         this.name = 'NotFoundError';
     }
 }
