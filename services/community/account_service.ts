@@ -69,18 +69,6 @@ export class AccountService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
-
-  DescribeNotificationPreferences(input: DescribeNotificationPreferencesInput, opts?: any): Promise<DescribeNotificationPreferencesOutput> {
-    const path = "/account/notifications";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  UpdateNotificationPreferences(input: UpdateNotificationPreferencesInput, opts?: any): Promise<UpdateNotificationPreferencesOutput> {
-    const path = "/account/notifications";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
 }
 
 export type CreateAccountInput = {
@@ -156,19 +144,4 @@ export type CompleteRecoverInput = {
 }
 
 export type CompleteRecoverOutput = Record<string, unknown>;
-
-export type DescribeNotificationPreferencesInput = {
-  token?: string;
-}
-
-export type DescribeNotificationPreferencesOutput = {
-  topics?: string[];
-}
-
-export type UpdateNotificationPreferencesInput = {
-  token?: string;
-  topics?: string[];
-}
-
-export type UpdateNotificationPreferencesOutput = Record<string, unknown>;
 

@@ -9,6 +9,7 @@ export type User = {
   nicknameChangeTimeout?: number;
   email?: string;
   emailVerified?: boolean;
+  emailSubscriptions?: string[];
   password?: string;
   passwordAge?: number;
   name?: string;
@@ -24,6 +25,5 @@ export type User_Preferences = {
   locale?: string;
   timezone?: string;
   runtime?: string;
-  notifications?: string[];
 }
 
