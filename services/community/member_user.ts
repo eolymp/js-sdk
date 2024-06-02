@@ -24,5 +24,6 @@ export type User_Preferences = {
   locale?: string;
   timezone?: string;
   runtime?: string;
+  notifications?: string[];
 }
 
