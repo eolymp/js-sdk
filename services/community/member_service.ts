@@ -90,15 +90,6 @@ export class MemberService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  UnsubscribeMember(input: UnsubscribeMemberInput, opts?: any): Promise<UnsubscribeMemberOutput> {
-    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/unsubscribe";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
 }
 
 export type CreateMemberInput = {
@@ -194,12 +185,4 @@ export type DescribeMemberUsageOutput = {
   activeMembers?: number;
   newMembers?: number;
 }
-
-export type UnsubscribeMemberInput = {
-  memberId?: string;
-  secret?: string;
-  topics?: string[];
-}
-
-export type UnsubscribeMemberOutput = Record<string, unknown>;
 

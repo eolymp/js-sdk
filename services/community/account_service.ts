@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Member } from "./member"
-import { Subscription } from "./subscription"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -71,16 +70,10 @@ export class AccountService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ConfigureActiveSubscription(input: ConfigureActiveSubscriptionInput, opts?: any): Promise<ConfigureActiveSubscriptionOutput> {
-    const path = "/account/subscription";
+  UpdateNotificationPreferences(input: UpdateNotificationPreferencesInput, opts?: any): Promise<UpdateNotificationPreferencesOutput> {
+    const path = "/account/notifications";
 
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
-  DescribeActiveSubscription(input: DescribeActiveSubscriptionInput, opts?: any): Promise<DescribeActiveSubscriptionOutput> {
-    const path = "/account/subscription";
-
-    return this.cli.call("GET", this.url+path, input, opts);
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 }
 
@@ -158,18 +151,11 @@ export type CompleteRecoverInput = {
 
 export type CompleteRecoverOutput = Record<string, unknown>;
 
-export type ConfigureActiveSubscriptionInput = {
-  tierId?: string;
-  priceId?: string;
+export type UpdateNotificationPreferencesInput = {
+  token?: string;
+  memberId?: string;
+  topics?: string[];
 }
 
-export type ConfigureActiveSubscriptionOutput = {
-  checkoutUrl?: string;
-}
-
-export type DescribeActiveSubscriptionInput = Record<string, unknown>;
-
-export type DescribeActiveSubscriptionOutput = {
-  subscription?: Subscription;
-}
+export type UpdateNotificationPreferencesOutput = Record<string, unknown>;
 
