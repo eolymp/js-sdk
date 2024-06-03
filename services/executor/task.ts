@@ -8,12 +8,12 @@ export type Task = {
   reference?: string;
   origin?: string;
   priority?: number;
-  lang?: string;
   runtime?: string;
   source?: string;
-  useFileIo?: boolean;
+  sourceUrl?: string;
+  headerUrl?: string;
+  footerUrl?: string;
   redirectStderrToStdout?: boolean;
-  useWorkspaceArchive?: boolean;
   runCount?: number;
   preconditions?: Task_Precondition[];
   constraints?: Task_Constraint[];
