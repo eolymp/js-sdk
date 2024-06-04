@@ -12,6 +12,7 @@ export type Submission = {
   deleted?: boolean;
   lang?: string;
   source?: string;
+  sourceUrl?: string;
   signature?: string;
   status?: string;
   verdict?: string;
