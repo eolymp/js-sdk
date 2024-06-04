@@ -16,6 +16,7 @@ export type Submission = {
   status?: string;
   verdict?: string;
   error?: string;
+  errorUrl?: string;
   cost?: number;
   score?: number;
   percentage?: number;
