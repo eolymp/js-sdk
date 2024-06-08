@@ -54,7 +54,7 @@ export type ListInstitutionsInput_Filter = {
   abbr?: ExpressionString[];
   countryId?: ExpressionID[];
   regionId?: ExpressionID[];
-  class?: ExpressionEnum[];
+  level?: ExpressionEnum[];
   type?: ExpressionEnum[];
   governance?: ExpressionEnum[];
 }
