@@ -5,9 +5,9 @@
 export type Institution = {
   id?: string;
   name?: string;
-  nameLocale?: string;
   abbr?: string;
-  abbrLocal?: string;
+  localName?: string;
+  localAbbr?: string;
   logoUrl?: string;
   governance?: string;
   level?: string;

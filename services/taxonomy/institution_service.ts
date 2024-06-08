@@ -17,17 +17,17 @@ export class InstitutionService {
     this.url = url;
   }
 
+  ListInstitutions(input: ListInstitutionsInput, opts?: any): Promise<ListInstitutionsOutput> {
+    const path = "/institutions";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   DescribeInstitution(input: DescribeInstitutionInput, opts?: any): Promise<DescribeInstitutionOutput> {
     const path = "/institutions/"+encodeURIComponent(input.institutionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.institutionId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListInstitutions(input: ListInstitutionsInput, opts?: any): Promise<ListInstitutionsOutput> {
-    const path = "/institutions";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
