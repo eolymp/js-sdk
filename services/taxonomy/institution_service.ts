@@ -51,7 +51,7 @@ export type ListInstitutionsInput_Filter = {
   query?: string;
   id?: ExpressionID[];
   name?: ExpressionString[];
-  abbr?: ExpressionString[];
+  acronym?: ExpressionString[];
   countryId?: ExpressionID[];
   regionId?: ExpressionID[];
   level?: ExpressionEnum[];
