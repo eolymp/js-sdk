@@ -10,8 +10,9 @@ export type Attribute = {
   type?: string;
   index?: number;
   required?: boolean;
-  hidden?: boolean;
   readonly?: boolean;
+  hidden?: boolean;
+  visibility?: string;
   regexp?: string;
   min?: number;
   max?: number;
