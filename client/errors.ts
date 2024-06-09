@@ -3,7 +3,7 @@ export class UnauthorizedError extends Error {
     name: string;
 
     constructor(message: string) {
-        super('UnauthorizedError: ' + message);
+        super(message);
         this.name = 'UnauthorizedError';
     }
 }
@@ -13,7 +13,7 @@ export class ForbiddenError extends Error {
     name: string;
 
     constructor(message: string) {
-        super('ForbiddenError: ' + message);
+        super(message);
         this.name = 'ForbiddenError';
     }
 }
@@ -26,7 +26,7 @@ export class InternalServerError extends Error {
     details: any[];
 
     constructor(message?: string, code?: string, status?: number, details: any[] = []) {
-        super('InternalServerError: ' + (message ?? 'server error'));
+        super(message ?? 'server error');
         this.name = 'InternalServerError';
         this.code = code ? code : 'InternalServerError';
         this.status = status ? status : 0;
@@ -58,7 +58,7 @@ export class BadRequestError extends Error {
     details: any[];
 
     constructor(message?: string, code?: string, status?: number, details: any[] = []) {
-        super('BadRequestError: ' + (message ?? 'bad request'));
+        super(message ?? 'bad request');
         this.name = 'BadRequestError';
         this.code = code ? code : 'BadRequest';
         this.status = status ? status : 0;
@@ -87,7 +87,7 @@ export class NotFoundError extends Error {
     name: string;
 
     constructor(message: string) {
-        super('NotFoundError: ' + message);
+        super(message);
         this.name = 'NotFoundError';
     }
 }
