@@ -4,6 +4,8 @@
 
 export type Attribute = {
   key?: string;
+  label?: string;
+  help?: string;
   description?: Attribute_Description[];
   type?: string;
   index?: number;
@@ -15,10 +17,10 @@ export type Attribute = {
   max?: number;
   choices?: string[];
   country?: string;
+  constraints?: string[];
 }
 
 export type Attribute_Description = {
-  default?: boolean;
   locale?: string;
   label?: string;
   help?: string;
