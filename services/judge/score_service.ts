@@ -56,6 +56,12 @@ export class ScoreService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  ExportResult(input: ExportResultInput, opts?: any): Promise<ExportResultOutput> {
+    const path = "/results/export";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   RebuildScore(input: RebuildScoreInput, opts?: any): Promise<RebuildScoreOutput> {
     const path = "/rebuild";
 
@@ -128,5 +134,15 @@ export type ListResultInput = {
 export type ListResultOutput = {
   total?: number;
   items?: Result[];
+}
+
+export type ExportResultInput = {
+  contestId?: string;
+  mode?: string;
+  timeOffset?: number;
+}
+
+export type ExportResultOutput = {
+  exportUrl?: string;
 }
 
