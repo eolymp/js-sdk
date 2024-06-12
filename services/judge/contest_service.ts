@@ -42,6 +42,15 @@ export class ContestService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
+  CopyContest(input: CopyContestInput, opts?: any): Promise<CopyContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/copy";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeContest(input: DescribeContestInput, opts?: any): Promise<DescribeContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'');
 
@@ -139,6 +148,17 @@ export type UpdateContestInput = {
 }
 
 export type UpdateContestOutput = Record<string, unknown>;
+
+export type CopyContestInput = {
+  contestId?: string;
+  copyScope?: string[];
+  copyName?: string;
+  copyVisibility?: string;
+}
+
+export type CopyContestOutput = {
+  copyContestId?: string;
+}
 
 export type DescribeContestInput = {
   contestId?: string;

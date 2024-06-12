@@ -57,9 +57,9 @@ export class ScoreService {
   }
 
   ExportResult(input: ExportResultInput, opts?: any): Promise<ExportResultOutput> {
-    const path = "/results/export";
+    const path = "/results-export";
 
-    return this.cli.call("GET", this.url+path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   RebuildScore(input: RebuildScoreInput, opts?: any): Promise<RebuildScoreOutput> {
