@@ -10,7 +10,6 @@ export type Contest = {
   startsIn?: number;
   endsAt?: string;
   endsIn?: number;
-  featuredUntil?: string;
   duration?: number;
   status?: string;
   visibility?: string;
@@ -22,6 +21,7 @@ export type Contest = {
   problemCountHidden?: boolean;
   participantCount?: number;
   participantCountHidden?: boolean;
+  featuredUntil?: string;
   taxonomy?: Contest_Taxonomy;
   appearance?: Contest_Appearance;
   environment?: Contest_Environment;
@@ -31,11 +31,8 @@ export type Contest = {
 
 export type Contest_Appearance = {
   title?: string;
-  tagline?: string;
   description?: string;
-  logoImage?: string;
-  primaryColor?: string;
-  secondaryColor?: string;
+  logoUrl?: string;
 }
 
 export type Contest_Taxonomy = {
