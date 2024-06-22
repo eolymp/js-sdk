@@ -17,8 +17,11 @@ export type Contest = {
   joinUnofficially?: boolean;
   participationMode?: string;
   format?: string;
-  domain?: string;
-  spaceId?: string;
+  key?: string;
+  problemCount?: number;
+  problemCountHidden?: boolean;
+  participantCount?: number;
+  participantCountHidden?: boolean;
   taxonomy?: Contest_Taxonomy;
   appearance?: Contest_Appearance;
   environment?: Contest_Environment;
@@ -61,5 +64,6 @@ export type Contest_Scoreboard = {
   attemptPenalty?: number;
   tieBreaker?: string;
   noSpoilerUi?: boolean;
+  shareKey?: string;
 }
 
