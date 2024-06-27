@@ -5,6 +5,7 @@
 export type Contest = {
   id?: string;
   url?: string;
+  links?: Record<string, string>;
   name?: string;
   logoUrl?: string;
   startsAt?: string;
