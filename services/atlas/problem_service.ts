@@ -89,6 +89,7 @@ export type ListProblemsInput = {
   filters?: ListProblemsInput_Filter;
   sort?: string;
   order?: string;
+  extra?: string[];
 }
 
 export type ListProblemsInput_Filter = {
