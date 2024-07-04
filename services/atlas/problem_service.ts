@@ -76,6 +76,7 @@ export type DeleteProblemOutput = Record<string, unknown>;
 
 export type DescribeProblemInput = {
   problemId?: string;
+  extra?: string[];
 }
 
 export type DescribeProblemOutput = {
