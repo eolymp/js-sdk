@@ -11,6 +11,11 @@ export type Problem = {
   private?: boolean;
   origin?: string;
   topics?: string[];
+  acceptanceRate?: number;
+  submissionsCount?: number;
+  submissionsAccepted?: number;
+  vote?: number;
+  voteCount?: number;
   difficulty?: number;
 }
 
