@@ -4,7 +4,7 @@
 import { CreateAttachmentInput, CreateAttachmentOutput, DeleteAttachmentInput, DeleteAttachmentOutput, DescribeAttachmentInput, DescribeAttachmentOutput, ListAttachmentsInput, ListAttachmentsOutput, UpdateAttachmentInput, UpdateAttachmentOutput } from "./attachment_service"
 import { GetBookmarkInput, GetBookmarkOutput, SetBookmarkInput, SetBookmarkOutput } from "./bookmark_service"
 import { CreateCodeTemplateInput, CreateCodeTemplateOutput, DeleteCodeTemplateInput, DeleteCodeTemplateOutput, DescribeCodeTemplateInput, DescribeCodeTemplateOutput, ListCodeTemplatesInput, ListCodeTemplatesOutput, LookupCodeTemplateInput, LookupCodeTemplateOutput, UpdateCodeTemplateInput, UpdateCodeTemplateOutput } from "./code_template_service"
-import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, ListProblemsInput, ListProblemsOutput, ListVersionsInput, ListVersionsOutput, SyncProblemInput, SyncProblemOutput, UpdateProblemInput, UpdateProblemOutput } from "./problem_service"
+import { CreateProblemInput, CreateProblemOutput, DeleteProblemInput, DeleteProblemOutput, DescribeProblemInput, DescribeProblemOutput, ListProblemsInput, ListProblemsOutput, ListVersionsInput, ListVersionsOutput, SyncProblemInput, SyncProblemOutput, UpdateProblemInput, UpdateProblemOutput, VoteProblemInput, VoteProblemOutput } from "./problem_service"
 import { DescribeProblemGradingInput, DescribeProblemGradingOutput, DescribeScoreInput, DescribeScoreOutput, ListProblemTopInput, ListProblemTopOutput } from "./scoring_service"
 import { CreateStatementInput, CreateStatementOutput, DeleteStatementInput, DeleteStatementOutput, DescribeStatementInput, DescribeStatementOutput, ListStatementsInput, ListStatementsOutput, LookupStatementInput, LookupStatementOutput, PreviewStatementInput, PreviewStatementOutput, UpdateStatementInput, UpdateStatementOutput } from "./statement_service"
 import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, RetestSubmissionInput, RetestSubmissionOutput } from "./submission_service"
@@ -42,6 +42,15 @@ export class Atlas {
     const path = "/problems";
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  VoteProblem(input: VoteProblemInput, opts?: any): Promise<VoteProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/vote";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeProblem(input: DescribeProblemInput, opts?: any): Promise<DescribeProblemOutput> {
