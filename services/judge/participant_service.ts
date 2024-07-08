@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
-import { ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Participant } from "./participant"
 
 interface Client {
@@ -244,10 +244,10 @@ export type ListParticipantsInput_Filter = {
   memberId?: ExpressionID[];
   name?: ExpressionString[];
   status?: ExpressionEnum[];
-  score?: ExpressionFloat[];
-  penalty?: ExpressionFloat[];
   startedAt?: ExpressionTimestamp[];
-  completeAt?: ExpressionTimestamp[];
+  unofficial?: ExpressionBool[];
+  disqualified?: ExpressionBool[];
+  inactive?: ExpressionBool[];
 }
 
 export type ListParticipantsOutput = {
