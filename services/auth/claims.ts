@@ -13,11 +13,9 @@ export type Claims = {
   picture?: string;
   locale?: string;
   timezone?: string;
+  birthday?: string;
   minor?: boolean;
   country?: string;
-  city?: string;
-  company?: string;
-  businessTitle?: string;
   preferredRuntime?: string;
 }
 
