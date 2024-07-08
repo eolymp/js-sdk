@@ -25,6 +25,15 @@ export class ProblemService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdateProblem(input: UpdateProblemInput, opts?: any): Promise<UpdateProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   DeleteProblem(input: DeleteProblemInput, opts?: any): Promise<DeleteProblemOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'');
 
