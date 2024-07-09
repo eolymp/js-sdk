@@ -2,16 +2,14 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Job } from "./job"
 import { Language } from "./language"
 import { Runtime } from "./runtime"
-import { Task } from "./task"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class Executor {
+export class LanguageService {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -59,13 +57,6 @@ export class Executor {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
-
-export type CreateTaskInput = {
-  task?: Task;
-  job?: Job;
-}
-
-export type CreateTaskOutput = Record<string, unknown>;
 
 export type DescribeLanguageInput = {
   languageId?: string;
