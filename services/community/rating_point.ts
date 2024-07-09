@@ -2,12 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type RankingPoint = {
+export type RatingPoint = {
   id?: string;
-  memberId?: string;
-  eventId?: string;
-  rank?: number;
-  rankLower?: number;
-  score?: number;
+  ref?: string;
+  timestamp?: string;
+  value?: number;
+  targetLink?: string;
 }
 
