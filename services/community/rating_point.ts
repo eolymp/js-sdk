@@ -7,6 +7,19 @@ export type RatingPoint = {
   ref?: string;
   timestamp?: string;
   value?: number;
+  source?: RatingPoint_Source;
   targetLink?: string;
+}
+
+export type RatingPoint_Source = {
+  id?: string;
+  url?: string;
+  name?: string;
+  score?: number;
+  penalty?: number;
+  tieBreaker?: number;
+  rank?: number;
+  rankLower?: number;
+  rankTotal?: number;
 }
 
