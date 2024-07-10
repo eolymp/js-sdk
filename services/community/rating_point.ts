@@ -4,22 +4,10 @@
 
 export type RatingPoint = {
   id?: string;
-  ref?: string;
   timestamp?: string;
   value?: number;
-  source?: RatingPoint_Source;
+  contestId?: string;
+  ref?: string;
   targetLink?: string;
-}
-
-export type RatingPoint_Source = {
-  id?: string;
-  url?: string;
-  name?: string;
-  score?: number;
-  penalty?: number;
-  tieBreaker?: number;
-  rank?: number;
-  rankLower?: number;
-  rankTotal?: number;
 }
 

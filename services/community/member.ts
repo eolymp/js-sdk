@@ -12,7 +12,7 @@ export type Member = {
   url?: string;
   rank?: number;
   rankLower?: number;
-  score?: number;
+  rating?: number;
   active?: boolean;
   incomplete?: boolean;
   unofficial?: boolean;
