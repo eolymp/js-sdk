@@ -77,7 +77,7 @@ export type UpdateRatingOutput = Record<string, unknown>;
 
 export type DeleteRatingInput = {
   ratingId?: string;
-  point?: Rating;
+  rating?: Rating;
 }
 
 export type DeleteRatingOutput = Record<string, unknown>;
@@ -87,7 +87,7 @@ export type DescribeRatingInput = {
 }
 
 export type DescribeRatingOutput = {
-  point?: Rating;
+  rating?: Rating;
 }
 
 export type ListRatingInput = {
