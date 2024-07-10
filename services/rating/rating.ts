@@ -2,11 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type RatingPoint = {
+export type Rating = {
   id?: string;
-  ref?: string;
   timestamp?: string;
+  memberId?: string;
+  contestId?: string;
   value?: number;
-  targetLink?: string;
 }
 
