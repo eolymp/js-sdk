@@ -69,6 +69,7 @@ export type SetRatingOutput = {
 }
 
 export type UpdateRatingInput = {
+  ratingId?: string;
   rating?: Rating;
 }
 
