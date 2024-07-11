@@ -58,6 +58,18 @@ export class RatingService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DescribeRatingBoundaries(input: DescribeRatingBoundariesInput, opts?: any): Promise<DescribeRatingBoundariesOutput> {
+    const path = "/rating-boundaries";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeRatingDistribution(input: DescribeRatingDistributionInput, opts?: any): Promise<DescribeRatingDistributionOutput> {
+    const path = "/rating-distribution";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type SetRatingInput = {
@@ -109,5 +121,29 @@ export type ListRatingInput_Filter = {
 export type ListRatingOutput = {
   total?: number;
   items?: Rating[];
+}
+
+export type DescribeRatingBoundariesInput = Record<string, unknown>;
+
+export type DescribeRatingBoundariesOutput = {
+  levels?: DescribeRatingBoundariesOutput_Level[];
+}
+
+export type DescribeRatingBoundariesOutput_Level = {
+  id?: number;
+  rating?: number;
+  count?: number;
+}
+
+export type DescribeRatingDistributionInput = Record<string, unknown>;
+
+export type DescribeRatingDistributionOutput = {
+  buckets?: DescribeRatingDistributionOutput_Bucket[];
+}
+
+export type DescribeRatingDistributionOutput_Bucket = {
+  minRating?: number;
+  maxRating?: number;
+  count?: number;
 }
 

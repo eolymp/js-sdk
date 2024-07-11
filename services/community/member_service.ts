@@ -90,12 +90,6 @@ export class MemberService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  ListLevels(input: ListLevelsInput, opts?: any): Promise<ListLevelsOutput> {
-    const path = "/levels";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
 }
 
 export type CreateMemberInput = {
@@ -190,17 +184,5 @@ export type DescribeMemberUsageOutput = {
   totalMembers?: number;
   activeMembers?: number;
   newMembers?: number;
-}
-
-export type ListLevelsInput = Record<string, unknown>;
-
-export type ListLevelsOutput = {
-  levels?: ListLevelsOutput_Level[];
-}
-
-export type ListLevelsOutput_Level = {
-  id?: number;
-  rating?: number;
-  count?: number;
 }
 
