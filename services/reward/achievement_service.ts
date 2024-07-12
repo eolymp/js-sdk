@@ -58,11 +58,12 @@ export class AchievementService {
 }
 
 export type CreateAchievementInput = {
-  achievementId?: string;
   achievement?: Achievement;
 }
 
-export type CreateAchievementOutput = Record<string, unknown>;
+export type CreateAchievementOutput = {
+  achievementId?: string;
+}
 
 export type UpdateAchievementInput = {
   achievementId?: string;
