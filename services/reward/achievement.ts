@@ -5,7 +5,7 @@ import { Content } from "../ecm/content"
 
 export type Achievement = {
   id?: string;
-  value?: string;
+  value?: number;
   name?: string;
   imageUrl?: string;
   summary?: Content;
