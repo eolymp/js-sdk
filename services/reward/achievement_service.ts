@@ -32,7 +32,7 @@ export class AchievementService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  RemoveAchievement(input: RemoveAchievementInput, opts?: any): Promise<RemoveAchievementOutput> {
+  DeleteAchievement(input: DeleteAchievementInput, opts?: any): Promise<DeleteAchievementOutput> {
     const path = "/achievements/"+encodeURIComponent(input.achievementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -71,11 +71,11 @@ export type UpdateAchievementInput = {
 
 export type UpdateAchievementOutput = Record<string, unknown>;
 
-export type RemoveAchievementInput = {
+export type DeleteAchievementInput = {
   achievementId?: string;
 }
 
-export type RemoveAchievementOutput = Record<string, unknown>;
+export type DeleteAchievementOutput = Record<string, unknown>;
 
 export type DescribeAchievementInput = {
   achievementId?: string;
