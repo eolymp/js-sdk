@@ -80,6 +80,7 @@ export type DeleteAchievementOutput = Record<string, unknown>;
 
 export type DescribeAchievementInput = {
   achievementId?: string;
+  extra?: string[];
 }
 
 export type DescribeAchievementOutput = {
@@ -90,6 +91,7 @@ export type ListAchievementsInput = {
   offset?: number;
   size?: number;
   filters?: ListAchievementsInput_Filter;
+  extra?: string[];
 }
 
 export type ListAchievementsInput_Filter = {
