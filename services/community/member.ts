@@ -8,13 +8,14 @@ import { User } from "./member_user"
 
 export type Member = {
   id?: string;
-  name?: string;
+  displayName?: string;
   url?: string;
   rank?: number;
   rankLower?: number;
   rating?: number;
   level?: number;
   active?: boolean;
+  inactive?: boolean;
   incomplete?: boolean;
   unofficial?: boolean;
   secret?: boolean;
