@@ -59,6 +59,7 @@ export type UnassignAchievementInput = {
 export type UnassignAchievementOutput = Record<string, unknown>;
 
 export type ListAchievementsInput = {
+  locale?: string;
   offset?: number;
   size?: number;
   filters?: ListAchievementsInput_Filter;

@@ -12,3 +12,10 @@ export type Achievement = {
   summary?: Content;
 }
 
+export type Achievement_Translation = {
+  id?: string;
+  locale?: string;
+  name?: string;
+  summary?: Content;
+}
+
