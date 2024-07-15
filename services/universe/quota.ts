@@ -9,6 +9,7 @@ export type Quota = {
   attributesPerSpace?: number;
   customerSupportReplyTime?: number;
   allowDiscussions?: boolean;
+  achievementsPerSpace?: number;
   monthlyEvaluationsBySeat?: number;
   priorityEvaluationQueue?: boolean;
   plagiarismAnalysis?: boolean;
