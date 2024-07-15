@@ -8,7 +8,7 @@ export type Achievement = {
   value?: number;
   rarity?: number;
   quantity?: number;
-  awardedOn?: string;
+  awardedAt?: string;
   name?: string;
   imageUrl?: string;
   summary?: Content;
