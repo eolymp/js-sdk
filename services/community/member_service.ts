@@ -143,7 +143,7 @@ export type ListMembersInput_Filter = {
   id?: ExpressionID[];
   type?: ExpressionEnum[];
   name?: ExpressionString[];
-  active?: ExpressionBool[];
+  inactive?: ExpressionBool[];
   incomplete?: ExpressionBool[];
   unofficial?: ExpressionBool[];
   teamId?: ExpressionID[];
