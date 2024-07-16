@@ -136,8 +136,9 @@ export type DescribeAchievementOutput = {
 }
 
 export type ListAchievementsInput = {
-  offset?: number;
+  after?: string;
   size?: number;
+  offset?: number;
   filters?: ListAchievementsInput_Filter;
   extra?: string[];
 }

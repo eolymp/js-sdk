@@ -12,5 +12,6 @@ export type Achievement = {
   name?: string;
   imageUrl?: string;
   summary?: Content;
+  cursor?: string;
 }
 

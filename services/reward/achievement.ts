@@ -10,6 +10,7 @@ export type Achievement = {
   name?: string;
   imageUrl?: string;
   summary?: Content;
+  cursor?: string;
 }
 
 export type Achievement_Translation = {
