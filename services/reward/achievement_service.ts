@@ -150,6 +150,7 @@ export type ListAchievementsInput_Filter = {
 
 export type ListAchievementsOutput = {
   total?: number;
+  nextPageCursor?: string;
   items?: Achievement[];
 }
 
