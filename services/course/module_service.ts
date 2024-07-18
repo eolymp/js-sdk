@@ -56,33 +56,6 @@ export class ModuleService {
   }
 }
 
-export type ListModulesInput = {
-  offset?: number;
-  size?: number;
-  filters?: ListModulesInput_Filter;
-  sort?: string;
-  order?: string;
-  extra?: string[];
-}
-
-export type ListModulesInput_Filter = {
-  query?: string;
-}
-
-export type ListModulesOutput = {
-  total?: number;
-  items?: Module[];
-}
-
-export type DescribeModuleInput = {
-  moduleId?: string;
-  extra?: string[];
-}
-
-export type DescribeModuleOutput = {
-  module?: Module;
-}
-
 export type CreateModuleInput = {
   module?: Module;
 }
@@ -104,4 +77,31 @@ export type DeleteModuleInput = {
 }
 
 export type DeleteModuleOutput = Record<string, unknown>;
+
+export type DescribeModuleInput = {
+  moduleId?: string;
+  extra?: string[];
+}
+
+export type DescribeModuleOutput = {
+  module?: Module;
+}
+
+export type ListModulesInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListModulesInput_Filter;
+  sort?: string;
+  order?: string;
+  extra?: string[];
+}
+
+export type ListModulesInput_Filter = {
+  query?: string;
+}
+
+export type ListModulesOutput = {
+  total?: number;
+  items?: Module[];
+}
 
