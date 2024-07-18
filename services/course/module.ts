@@ -7,7 +7,7 @@ export type Module = {
   id?: string;
   url?: string;
   draft?: boolean;
-  title?: string;
+  name?: string;
   imageUrl?: string;
   index?: number;
   description?: Content;
