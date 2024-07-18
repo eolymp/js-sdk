@@ -13,6 +13,7 @@ export type Entry = {
   draft?: boolean;
   parentId?: string;
   index?: number;
+  depth?: number;
   estimate?: number;
   weight?: number;
   section?: Section;

@@ -3,16 +3,20 @@
 
 import { Content } from "../ecm/content"
 
-export type Course = {
+export type Module = {
   id?: string;
   url?: string;
-  locale?: string;
-  name?: string;
-  description?: Content;
+  draft?: boolean;
+  title?: string;
   imageUrl?: string;
-  visibility?: string;
-  duration?: number;
-  topics?: string[];
-  estimate?: number;
+  index?: number;
+  description?: Content;
+  status?: string;
+  grade?: number;
+  progress?: number;
+  startsAt?: string;
+  dueAt?: string;
+  endsAt?: string;
+  completedAt?: string;
 }
 
