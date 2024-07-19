@@ -80,6 +80,7 @@ export type DeleteModuleItemOutput = Record<string, unknown>;
 
 export type DescribeModuleItemInput = {
   itemId?: string;
+  extra?: string[];
 }
 
 export type DescribeModuleItemOutput = {
@@ -92,6 +93,7 @@ export type ListModuleItemsInput = {
   filters?: ListModuleItemsInput_Filter;
   sort?: string;
   order?: string;
+  extra?: string[];
 }
 
 export type ListModuleItemsInput_Filter = {
