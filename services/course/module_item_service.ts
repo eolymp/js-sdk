@@ -31,6 +31,15 @@ export class ModuleItemService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
+  MoveModuleItem(input: MoveModuleItemInput, opts?: any): Promise<MoveModuleItemOutput> {
+    const path = "/items/"+encodeURIComponent(input.itemId||'')+"/move";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.itemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DeleteModuleItem(input: DeleteModuleItemInput, opts?: any): Promise<DeleteModuleItemOutput> {
     const path = "/items/"+encodeURIComponent(input.itemId||'');
 
@@ -71,6 +80,15 @@ export type UpdateModuleItemInput = {
 }
 
 export type UpdateModuleItemOutput = Record<string, unknown>;
+
+export type MoveModuleItemInput = {
+  itemId?: string;
+  newModuleId?: string;
+  newIndex?: number;
+  newDepth?: number;
+}
+
+export type MoveModuleItemOutput = Record<string, unknown>;
 
 export type DeleteModuleItemInput = {
   itemId?: string;
