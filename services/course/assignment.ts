@@ -17,7 +17,6 @@ export type Assignment = {
 }
 
 export type Assignment_Item = {
-  wildcard?: boolean;
   moduleId?: string;
   itemId?: string;
 }
