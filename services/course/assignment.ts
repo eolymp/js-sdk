@@ -6,22 +6,19 @@ export type Assignment = {
   id?: string;
   memberId?: string;
   groupId?: string;
-  modules?: Assignment_Module[];
   status?: string;
   startAfter?: string;
   completeBefore?: string;
   duration?: number;
+  items?: Assignment_Item[];
   createdAt?: string;
   startedAt?: string;
   completedAt?: string;
 }
 
-export type Assignment_Module = {
-  moduleId?: string;
-  items?: Assignment_Item[];
-}
-
 export type Assignment_Item = {
+  wildcard?: boolean;
+  moduleId?: string;
   itemId?: string;
 }
 
