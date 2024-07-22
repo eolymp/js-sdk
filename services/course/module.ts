@@ -11,11 +11,15 @@ export type Module = {
   imageUrl?: string;
   index?: number;
   description?: Content;
+  assignment?: Module_Assignment;
+}
+
+export type Module_Assignment = {
   status?: string;
   progress?: number;
   grade?: number;
-  dueAt?: string;
-  startAt?: string;
-  completeAt?: string;
+  dueTime?: string;
+  startTime?: string;
+  endTime?: string;
 }
 
