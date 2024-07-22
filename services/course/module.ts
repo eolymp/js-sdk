@@ -11,15 +11,5 @@ export type Module = {
   imageUrl?: string;
   index?: number;
   description?: Content;
-  assignment?: Module_Assignment;
-}
-
-export type Module_Assignment = {
-  status?: string;
-  progress?: number;
-  grade?: number;
-  dueTime?: string;
-  startTime?: string;
-  endTime?: string;
 }
 
