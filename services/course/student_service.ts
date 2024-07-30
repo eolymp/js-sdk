@@ -26,6 +26,35 @@ export class StudentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  UpdateStudent(input: UpdateStudentInput, opts?: any): Promise<UpdateStudentOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  AssignModule(input: AssignModuleInput, opts?: any): Promise<AssignModuleOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+    delete(input.moduleId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UnassignModule(input: UnassignModuleInput, opts?: any): Promise<UnassignModuleOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+    delete(input.moduleId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
   DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
     const path = "/viewer/student";
 
@@ -47,6 +76,31 @@ export type DescribeStudentInput = {
 export type DescribeStudentOutput = {
   student?: Student;
 }
+
+export type UpdateStudentInput = {
+  patch?: string[];
+  memberId?: string;
+  student?: Student;
+}
+
+export type UpdateStudentOutput = Record<string, unknown>;
+
+export type AssignModuleInput = {
+  memberId?: string;
+  moduleId?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+}
+
+export type AssignModuleOutput = Record<string, unknown>;
+
+export type UnassignModuleInput = {
+  memberId?: string;
+  moduleId?: string;
+}
+
+export type UnassignModuleOutput = Record<string, unknown>;
 
 export type DescribeViewerInput = Record<string, unknown>;
 

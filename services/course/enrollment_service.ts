@@ -20,7 +20,7 @@ export class EnrollmentService {
   CreateEnrollment(input: CreateEnrollmentInput, opts?: any): Promise<CreateEnrollmentOutput> {
     const path = "/enrollments";
 
-    return this.cli.call("PUT", this.url+path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateEnrollment(input: UpdateEnrollmentInput, opts?: any): Promise<UpdateEnrollmentOutput> {
