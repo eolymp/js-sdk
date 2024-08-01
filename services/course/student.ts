@@ -6,6 +6,7 @@ export type Student = {
   id?: string;
   memberId?: string;
   inactive?: boolean;
+  assignAll?: boolean;
   overallProgress?: number;
   overallGrade?: number;
   grades?: Student_Grade[];
