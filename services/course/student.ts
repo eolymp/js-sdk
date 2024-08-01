@@ -5,7 +5,7 @@
 export type Student = {
   id?: string;
   memberId?: string;
-  displayName?: string;
+  inactive?: boolean;
   overallProgress?: number;
   overallGrade?: number;
   grades?: Student_Grade[];
