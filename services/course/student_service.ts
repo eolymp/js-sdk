@@ -17,13 +17,10 @@ export class StudentService {
     this.url = url;
   }
 
-  DescribeStudent(input: DescribeStudentInput, opts?: any): Promise<DescribeStudentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'');
+  CreateStudent(input: CreateStudentInput, opts?: any): Promise<CreateStudentOutput> {
+    const path = "/students";
 
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
+    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateStudent(input: UpdateStudentInput, opts?: any): Promise<UpdateStudentOutput> {
@@ -61,6 +58,15 @@ export class StudentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  DescribeStudent(input: DescribeStudentInput, opts?: any): Promise<DescribeStudentOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   ListStudents(input: ListStudentsInput, opts?: any): Promise<ListStudentsOutput> {
     const path = "/students";
 
@@ -68,13 +74,12 @@ export class StudentService {
   }
 }
 
-export type DescribeStudentInput = {
-  memberId?: string;
-  extra?: string[];
+export type CreateStudentInput = {
+  student?: Student;
 }
 
-export type DescribeStudentOutput = {
-  student?: Student;
+export type CreateStudentOutput = {
+  studentId?: string;
 }
 
 export type UpdateStudentInput = {
@@ -102,9 +107,20 @@ export type UnassignModuleInput = {
 
 export type UnassignModuleOutput = Record<string, unknown>;
 
-export type DescribeViewerInput = Record<string, unknown>;
+export type DescribeViewerInput = {
+  extra?: string[];
+}
 
 export type DescribeViewerOutput = {
+  student?: Student;
+}
+
+export type DescribeStudentInput = {
+  memberId?: string;
+  extra?: string[];
+}
+
+export type DescribeStudentOutput = {
   student?: Student;
 }
 
@@ -129,6 +145,7 @@ export type ListStudentsOutput = {
 
 export type WatchStudentInput = {
   memberId?: string;
+  extra?: string[];
 }
 
 export type WatchStudentOutput = {
