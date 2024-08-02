@@ -32,7 +32,7 @@ export class StudentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DeleteModule(input: DeleteStudentInput, opts?: any): Promise<DeleteStudentOutput> {
+  DeleteStudent(input: DeleteStudentInput, opts?: any): Promise<DeleteStudentOutput> {
     const path = "/students/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
