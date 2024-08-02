@@ -32,6 +32,15 @@ export class StudentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  DeleteModule(input: DeleteStudentInput, opts?: any): Promise<DeleteStudentOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
   AssignModule(input: AssignModuleInput, opts?: any): Promise<AssignModuleOutput> {
     const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'');
 
@@ -89,6 +98,12 @@ export type UpdateStudentInput = {
 }
 
 export type UpdateStudentOutput = Record<string, unknown>;
+
+export type DeleteStudentInput = {
+  memberId?: string;
+}
+
+export type DeleteStudentOutput = Record<string, unknown>;
 
 export type AssignModuleInput = {
   memberId?: string;
