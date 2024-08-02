@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
+import { Module } from "./module"
 import { Student } from "./student"
 
 interface Client {
@@ -41,6 +42,27 @@ export class StudentService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
+    const path = "/viewer/student";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeStudent(input: DescribeStudentInput, opts?: any): Promise<DescribeStudentOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListStudents(input: ListStudentsInput, opts?: any): Promise<ListStudentsOutput> {
+    const path = "/students";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   AssignModule(input: AssignModuleInput, opts?: any): Promise<AssignModuleOutput> {
     const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'');
 
@@ -61,23 +83,11 @@ export class StudentService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
-    const path = "/viewer/student";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  DescribeStudent(input: DescribeStudentInput, opts?: any): Promise<DescribeStudentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'');
+  ListAssignments(input: ListAssignmentsXInput, opts?: any): Promise<ListAssignmentsXOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListStudents(input: ListStudentsInput, opts?: any): Promise<ListStudentsOutput> {
-    const path = "/students";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -104,23 +114,6 @@ export type DeleteStudentInput = {
 }
 
 export type DeleteStudentOutput = Record<string, unknown>;
-
-export type AssignModuleInput = {
-  memberId?: string;
-  moduleId?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-}
-
-export type AssignModuleOutput = Record<string, unknown>;
-
-export type UnassignModuleInput = {
-  memberId?: string;
-  moduleId?: string;
-}
-
-export type UnassignModuleOutput = Record<string, unknown>;
 
 export type DescribeViewerInput = {
   extra?: string[];
@@ -165,5 +158,39 @@ export type WatchStudentInput = {
 
 export type WatchStudentOutput = {
   student?: Student;
+}
+
+export type AssignModuleInput = {
+  memberId?: string;
+  moduleId?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+}
+
+export type AssignModuleOutput = Record<string, unknown>;
+
+export type UnassignModuleInput = {
+  memberId?: string;
+  moduleId?: string;
+}
+
+export type UnassignModuleOutput = Record<string, unknown>;
+
+export type AssignmentX = {
+  module?: Module;
+  status?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+  assignedAt?: string;
+  startedAt?: string;
+  completedAt?: string;
+}
+
+export type ListAssignmentsXInput = Record<string, unknown>;
+
+export type ListAssignmentsXOutput = {
+  items?: AssignmentX[];
 }
 
