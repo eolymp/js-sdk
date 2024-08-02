@@ -188,7 +188,9 @@ export type AssignmentX = {
   completedAt?: string;
 }
 
-export type ListAssignmentsXInput = Record<string, unknown>;
+export type ListAssignmentsXInput = {
+  memberId?: string;
+}
 
 export type ListAssignmentsXOutput = {
   items?: AssignmentX[];
