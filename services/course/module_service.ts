@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Module } from "./module"
-import { ModuleItem } from "./module_item"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -55,54 +54,6 @@ export class ModuleService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  CreateModuleItem(input: CreateModuleItemInput, opts?: any): Promise<CreateModuleItemOutput> {
-    const path = "/items";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UpdateModuleItem(input: UpdateModuleItemInput, opts?: any): Promise<UpdateModuleItemOutput> {
-    const path = "/items/"+encodeURIComponent(input.itemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.itemId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
-  MoveModuleItem(input: MoveModuleItemInput, opts?: any): Promise<MoveModuleItemOutput> {
-    const path = "/items/"+encodeURIComponent(input.itemId||'')+"/move";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.itemId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  DeleteModuleItem(input: DeleteModuleItemInput, opts?: any): Promise<DeleteModuleItemOutput> {
-    const path = "/items/"+encodeURIComponent(input.itemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.itemId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  DescribeModuleItem(input: DescribeModuleItemInput, opts?: any): Promise<DescribeModuleItemOutput> {
-    const path = "/items/"+encodeURIComponent(input.itemId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.itemId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListModuleItems(input: ListModuleItemsInput, opts?: any): Promise<ListModuleItemsOutput> {
-    const path = "/items";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
 }
 
 export type CreateModuleInput = {
@@ -152,63 +103,5 @@ export type ListModulesInput_Filter = {
 export type ListModulesOutput = {
   total?: number;
   items?: Module[];
-}
-
-export type CreateModuleItemInput = {
-  item?: ModuleItem;
-}
-
-export type CreateModuleItemOutput = {
-  itemId?: string;
-}
-
-export type UpdateModuleItemInput = {
-  patch?: string[];
-  itemId?: string;
-  item?: ModuleItem;
-}
-
-export type UpdateModuleItemOutput = Record<string, unknown>;
-
-export type MoveModuleItemInput = {
-  itemId?: string;
-  newModuleId?: string;
-  newIndex?: number;
-  newDepth?: number;
-}
-
-export type MoveModuleItemOutput = Record<string, unknown>;
-
-export type DeleteModuleItemInput = {
-  itemId?: string;
-}
-
-export type DeleteModuleItemOutput = Record<string, unknown>;
-
-export type DescribeModuleItemInput = {
-  itemId?: string;
-  extra?: string[];
-}
-
-export type DescribeModuleItemOutput = {
-  item?: ModuleItem;
-}
-
-export type ListModuleItemsInput = {
-  offset?: number;
-  size?: number;
-  filters?: ListModuleItemsInput_Filter;
-  sort?: string;
-  order?: string;
-  extra?: string[];
-}
-
-export type ListModuleItemsInput_Filter = {
-  query?: string;
-}
-
-export type ListModuleItemsOutput = {
-  total?: number;
-  items?: ModuleItem[];
 }
 
