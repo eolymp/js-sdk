@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
+import { Grade } from "./grade"
 import { Module } from "./module"
 import { Student } from "./student"
 
@@ -88,6 +89,16 @@ export class StudentService {
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.memberId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListGrades(input: ListGradesInput, opts?: any): Promise<ListGradesOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'')+"/grades";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+    delete(input.moduleId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -194,5 +205,14 @@ export type ListAssignmentsXInput = {
 
 export type ListAssignmentsXOutput = {
   items?: AssignmentX[];
+}
+
+export type ListGradesInput = {
+  memberId?: string;
+  moduleId?: string;
+}
+
+export type ListGradesOutput = {
+  items?: Grade[];
 }
 
