@@ -2,8 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
-import { Grade } from "./grade"
-import { Module } from "./module"
 import { Student } from "./student"
 
 interface Client {
@@ -60,45 +58,6 @@ export class StudentService {
 
   ListStudents(input: ListStudentsInput, opts?: any): Promise<ListStudentsOutput> {
     const path = "/students";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  AssignModule(input: AssignModuleInput, opts?: any): Promise<AssignModuleOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
-    delete(input.moduleId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UnassignModule(input: UnassignModuleInput, opts?: any): Promise<UnassignModuleOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
-    delete(input.moduleId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  ListAssignments(input: ListAssignmentsXInput, opts?: any): Promise<ListAssignmentsXOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListGrades(input: ListGradesInput, opts?: any): Promise<ListGradesOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments/"+encodeURIComponent(input.moduleId||'')+"/grades";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
-    delete(input.moduleId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -169,50 +128,5 @@ export type WatchStudentInput = {
 
 export type WatchStudentOutput = {
   student?: Student;
-}
-
-export type AssignModuleInput = {
-  memberId?: string;
-  moduleId?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-}
-
-export type AssignModuleOutput = Record<string, unknown>;
-
-export type UnassignModuleInput = {
-  memberId?: string;
-  moduleId?: string;
-}
-
-export type UnassignModuleOutput = Record<string, unknown>;
-
-export type AssignmentX = {
-  module?: Module;
-  status?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-  assignedAt?: string;
-  startedAt?: string;
-  completedAt?: string;
-}
-
-export type ListAssignmentsXInput = {
-  memberId?: string;
-}
-
-export type ListAssignmentsXOutput = {
-  items?: AssignmentX[];
-}
-
-export type ListGradesInput = {
-  memberId?: string;
-  moduleId?: string;
-}
-
-export type ListGradesOutput = {
-  items?: Grade[];
 }
 
