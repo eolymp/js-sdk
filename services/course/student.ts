@@ -4,6 +4,7 @@
 
 export type Student = {
   id?: string;
+  url?: string;
   memberId?: string;
   inactive?: boolean;
   assignAll?: boolean;
