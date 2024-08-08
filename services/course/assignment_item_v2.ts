@@ -7,6 +7,8 @@ export type AssignmentItemV2 = {
   progress?: number;
   grade?: number;
   excused?: boolean;
+  gradeAutomatic?: number;
+  gradeOverride?: number;
   gradedAt?: string;
 }
 

@@ -13,23 +13,19 @@ export type ModuleItem = {
   depth?: number;
   grading?: ModuleItem_Grading;
   document?: ModuleItem_Document;
-  assignment?: ModuleItem_Assignment;
-  progress?: number;
-  grade?: number;
-  dueAt?: string;
-  startAt?: string;
-  completeAt?: string;
+  task?: ModuleItem_Task;
 }
 
 export type ModuleItem_Document = {
   content?: Content;
 }
 
-export type ModuleItem_Assignment = {
+export type ModuleItem_Task = {
   problemId?: string;
 }
 
 export type ModuleItem_Grading = {
   maxScore?: number;
+  weight?: number;
 }
 

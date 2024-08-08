@@ -65,6 +65,26 @@ export class AssignmentServiceV2 {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  UpdateAssignmentItem(input: UpdateAssignmentItemV2Input, opts?: any): Promise<UpdateAssignmentItemV2Output> {
+    const path = "/assignments/"+encodeURIComponent(input.moduleId||'')+"/items/"+encodeURIComponent(input.itemId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.moduleId);
+    delete(input.itemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ResetAssignmentItem(input: ResetAssignmentItemV2Input, opts?: any): Promise<ResetAssignmentItemV2Output> {
+    const path = "/assignments/"+encodeURIComponent(input.moduleId||'')+"/items/"+encodeURIComponent(input.itemId||'')+"/reset";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.moduleId);
+    delete(input.itemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateAssignmentV2Input = {
@@ -111,4 +131,20 @@ export type DescribeAssignmentItemV2Input = {
 export type DescribeAssignmentItemV2Output = {
   item?: AssignmentItemV2;
 }
+
+export type UpdateAssignmentItemV2Input = {
+  patch?: string[];
+  moduleId?: string;
+  itemId?: string;
+  item?: AssignmentItemV2;
+}
+
+export type UpdateAssignmentItemV2Output = Record<string, unknown>;
+
+export type ResetAssignmentItemV2Input = {
+  moduleId?: string;
+  itemId?: string;
+}
+
+export type ResetAssignmentItemV2Output = Record<string, unknown>;
 
