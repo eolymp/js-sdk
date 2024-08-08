@@ -11,5 +11,7 @@ export type AssignmentV2 = {
   assignedAt?: string;
   startedAt?: string;
   completedAt?: string;
+  grade?: number;
+  progress?: number;
 }
 
