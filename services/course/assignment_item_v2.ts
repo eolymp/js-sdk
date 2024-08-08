@@ -3,7 +3,7 @@
 
 
 export type AssignmentItemV2 = {
-  itemId?: string;
+  moduleItemId?: string;
   progress?: number;
   grade?: number;
   excused?: boolean;
