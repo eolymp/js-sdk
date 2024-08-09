@@ -7,9 +7,23 @@ export type Module = {
   id?: string;
   url?: string;
   draft?: boolean;
+  extra?: boolean;
   name?: string;
   imageUrl?: string;
   index?: number;
   description?: Content;
+  progress?: number;
+  grade?: number;
+  assignment?: Module_Assignment;
+}
+
+export type Module_Assignment = {
+  status?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+  assignedAt?: string;
+  startedAt?: string;
+  completedAt?: string;
 }
 

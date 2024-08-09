@@ -14,6 +14,8 @@ export type ModuleItem = {
   grading?: ModuleItem_Grading;
   document?: ModuleItem_Document;
   task?: ModuleItem_Task;
+  progress?: number;
+  grade?: number;
 }
 
 export type ModuleItem_Document = {

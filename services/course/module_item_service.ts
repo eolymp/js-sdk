@@ -98,6 +98,7 @@ export type DeleteModuleItemOutput = Record<string, unknown>;
 
 export type DescribeModuleItemInput = {
   itemId?: string;
+  studentId?: string;
   extra?: string[];
 }
 
@@ -106,6 +107,7 @@ export type DescribeModuleItemOutput = {
 }
 
 export type ListModuleItemsInput = {
+  studentId?: string;
   offset?: number;
   size?: number;
   filters?: ListModuleItemsInput_Filter;
