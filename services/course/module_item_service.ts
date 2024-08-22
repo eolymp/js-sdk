@@ -67,6 +67,7 @@ export class ModuleItemService {
 
 export type CreateModuleItemInput = {
   item?: ModuleItem;
+  moduleId?: string;
 }
 
 export type CreateModuleItemOutput = {
@@ -107,6 +108,7 @@ export type DescribeModuleItemOutput = {
 }
 
 export type ListModuleItemsInput = {
+  moduleId?: string;
   studentId?: string;
   offset?: number;
   size?: number;
