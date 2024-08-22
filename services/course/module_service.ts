@@ -55,6 +55,35 @@ export class ModuleService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  StartModule(input: StartModuleInput, opts?: any): Promise<StartModuleOutput> {
+    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/start";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.moduleId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  AssignModule(input: AssignModuleInput, opts?: any): Promise<AssignModuleOutput> {
+    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/assignments/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.moduleId);
+    delete(input.memberId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  UnassignModule(input: UnassignModuleInput, opts?: any): Promise<UnassignModuleOutput> {
+    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/assignments/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.moduleId);
+    delete(input.memberId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
 }
 
 export type CreateModuleInput = {
@@ -109,4 +138,27 @@ export type ListModulesOutput = {
   total?: number;
   items?: Module[];
 }
+
+export type StartModuleInput = {
+  moduleId?: string;
+}
+
+export type StartModuleOutput = Record<string, unknown>;
+
+export type AssignModuleInput = {
+  memberId?: string;
+  moduleId?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+}
+
+export type AssignModuleOutput = Record<string, unknown>;
+
+export type UnassignModuleInput = {
+  memberId?: string;
+  moduleId?: string;
+}
+
+export type UnassignModuleOutput = Record<string, unknown>;
 

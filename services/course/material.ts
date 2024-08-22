@@ -3,7 +3,7 @@
 
 import { Content } from "../ecm/content"
 
-export type ModuleItem = {
+export type Material = {
   id?: string;
   url?: string;
   draft?: boolean;
@@ -11,22 +11,22 @@ export type ModuleItem = {
   imageUrl?: string;
   index?: number;
   depth?: number;
-  grading?: ModuleItem_Grading;
-  document?: ModuleItem_Document;
-  task?: ModuleItem_Task;
+  grading?: Material_Grading;
+  document?: Material_Document;
+  task?: Material_Task;
   progress?: number;
   grade?: number;
 }
 
-export type ModuleItem_Document = {
+export type Material_Document = {
   content?: Content;
 }
 
-export type ModuleItem_Task = {
+export type Material_Task = {
   problemId?: string;
 }
 
-export type ModuleItem_Grading = {
+export type Material_Grading = {
   maxScore?: number;
   weight?: number;
 }
