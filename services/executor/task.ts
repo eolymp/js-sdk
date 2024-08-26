@@ -3,6 +3,7 @@
 
 import { Checker } from "./checker"
 import { Interactor } from "./interactor"
+import { Script } from "./script"
 
 export type Task = {
   reference?: string;
@@ -21,11 +22,17 @@ export type Task = {
   interactor?: Interactor;
   runs?: Task_Run[];
   files?: Task_File[];
+  scripts?: Script[];
 }
 
 export type Task_File = {
   path?: string;
   sourceUrl?: string;
+}
+
+export type Task_Generator = {
+  scriptName?: string;
+  arguments?: string[];
 }
 
 export type Task_Run = {
@@ -37,9 +44,11 @@ export type Task_Run = {
   inputObjectId?: string;
   inputContent?: string;
   inputUrl?: string;
+  inputGenerator?: Task_Generator;
   answerObjectId?: string;
   answerContent?: string;
   answerUrl?: string;
+  answerGenerator?: Task_Generator;
 }
 
 export type Task_Precondition = {

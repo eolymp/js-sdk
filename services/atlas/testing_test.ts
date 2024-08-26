@@ -7,11 +7,21 @@ export type Test = {
   testsetId?: string;
   index?: number;
   example?: boolean;
+  inactive?: boolean;
   secret?: boolean;
   score?: number;
+  exampleInputUrl?: string;
+  exampleAnswerUrl?: string;
   inputObjectId?: string;
   inputUrl?: string;
+  inputGenerator?: Test_Generator;
   answerObjectId?: string;
   answerUrl?: string;
+  answerGenerator?: Test_Generator;
+}
+
+export type Test_Generator = {
+  scriptName?: string;
+  arguments?: string[];
 }
 
