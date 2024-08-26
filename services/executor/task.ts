@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Checker } from "./checker"
+import { File } from "./file"
 import { Interactor } from "./interactor"
 import { Script } from "./script"
 
@@ -21,13 +22,8 @@ export type Task = {
   checker?: Checker;
   interactor?: Interactor;
   runs?: Task_Run[];
-  files?: Task_File[];
+  files?: File[];
   scripts?: Script[];
-}
-
-export type Task_File = {
-  path?: string;
-  sourceUrl?: string;
 }
 
 export type Task_Generator = {
