@@ -7,6 +7,7 @@ import { Attachment } from "./attachment"
 import { Template } from "./code_template"
 import { Editorial } from "./editorial"
 import { Problem } from "./problem"
+import { Script } from "./script"
 import { Solution } from "./solution"
 import { Statement } from "./statement"
 import { TestingConfig } from "./testing_config"
@@ -25,5 +26,6 @@ export type Snapshot = {
   tests?: Test[];
   editorials?: Editorial[];
   solutions?: Solution[];
+  scripts?: Script[];
 }
 
