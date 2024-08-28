@@ -7,11 +7,8 @@ export type Stats = {
   stdoutUrl?: string;
   stderrUrl?: string;
   wallTimeDuration?: number;
-  wallTimeLimit?: number;
   cpuTimeDuration?: number;
-  cpuTimeLimit?: number;
   memoryPeak?: number;
-  memoryLimit?: number;
   signal?: number;
   exitCode?: number;
 }
