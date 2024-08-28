@@ -32,7 +32,7 @@ export type Status_Run = {
   outputUrl?: string;
   answerUrl?: string;
   stderrUrl?: string;
-  stats?: Stats;
+  debugStats?: Stats;
   checkerLogUrl?: string;
   checkerWallTimeUsage?: number;
   checkerMemoryUsage?: number;
