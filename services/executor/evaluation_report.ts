@@ -3,19 +3,20 @@
 
 import { Stats } from "./stats"
 
-export type Status = {
+export type EvaluationReport = {
+  taskId?: string;
   reference?: string;
   origin?: string;
+  agent?: string;
+  signature?: string;
+  version?: number;
   type?: string;
   error?: string;
   failure?: string;
-  runs?: Status_Run[];
-  signature?: string;
-  version?: number;
-  agent?: string;
+  runs?: EvaluationReport_Run[];
 }
 
-export type Status_Run = {
+export type EvaluationReport_Run = {
   reference?: string;
   status?: string;
   score?: number;

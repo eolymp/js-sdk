@@ -6,7 +6,8 @@ import { File } from "./file"
 import { Interactor } from "./interactor"
 import { Script } from "./script"
 
-export type Task = {
+export type EvaluationTask = {
+  taskId?: string;
   reference?: string;
   origin?: string;
   priority?: number;
@@ -17,21 +18,21 @@ export type Task = {
   footerUrl?: string;
   redirectStderrToStdout?: boolean;
   runCount?: number;
-  preconditions?: Task_Precondition[];
-  constraints?: Task_Constraint[];
+  preconditions?: EvaluationTask_Precondition[];
+  constraints?: EvaluationTask_Constraint[];
   checker?: Checker;
   interactor?: Interactor;
-  runs?: Task_Run[];
+  runs?: EvaluationTask_Run[];
   files?: File[];
   scripts?: Script[];
 }
 
-export type Task_Generator = {
+export type EvaluationTask_Generator = {
   scriptName?: string;
   arguments?: string[];
 }
 
-export type Task_Run = {
+export type EvaluationTask_Run = {
   reference?: string;
   index?: number;
   debug?: boolean;
@@ -40,21 +41,21 @@ export type Task_Run = {
   inputObjectId?: string;
   inputContent?: string;
   inputUrl?: string;
-  inputGenerator?: Task_Generator;
+  inputGenerator?: EvaluationTask_Generator;
   answerObjectId?: string;
   answerContent?: string;
   answerUrl?: string;
-  answerGenerator?: Task_Generator;
+  answerGenerator?: EvaluationTask_Generator;
 }
 
-export type Task_Precondition = {
+export type EvaluationTask_Precondition = {
   selector?: string[];
   dependsOn?: string[];
   stopOnFailure?: boolean;
   maxExecutionTime?: number;
 }
 
-export type Task_Constraint = {
+export type EvaluationTask_Constraint = {
   selector?: string[];
   actor?: string;
   wallTimeLimit?: number;
