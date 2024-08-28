@@ -48,8 +48,10 @@ export type Submission_Run = {
   cpuTimeUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
+  inputUrl?: string;
   outputUrl?: string;
   stderrUrl?: string;
+  answerUrl?: string;
   index?: number;
   testId?: string;
   cost?: number;
