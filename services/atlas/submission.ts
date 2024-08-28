@@ -53,7 +53,6 @@ export type Submission_Run = {
   inputUrl?: string;
   outputUrl?: string;
   answerUrl?: string;
-  stderrUrl?: string;
   cost?: number;
   score?: number;
   status?: string;
