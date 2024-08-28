@@ -29,7 +29,9 @@ export type Status_Run = {
   memoryLimit?: number;
   exitCode?: number;
   signal?: number;
+  inputUrl?: string;
   outputUrl?: string;
+  answerUrl?: string;
   stderrUrl?: string;
   checkerLogUrl?: string;
   checkerWallTimeUsage?: number;
