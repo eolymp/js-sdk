@@ -18,7 +18,6 @@ export type Status = {
 export type Status_Run = {
   reference?: string;
   status?: string;
-  stats?: Stats;
   score?: number;
   cost?: number;
   wallTimeUsage?: number;
@@ -33,6 +32,7 @@ export type Status_Run = {
   outputUrl?: string;
   answerUrl?: string;
   stderrUrl?: string;
+  stats?: Stats;
   checkerLogUrl?: string;
   checkerWallTimeUsage?: number;
   checkerMemoryUsage?: number;

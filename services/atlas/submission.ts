@@ -50,13 +50,15 @@ export type Submission_Run = {
   cpuTimeUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
+  inputUrl?: string;
   outputUrl?: string;
+  answerUrl?: string;
   stderrUrl?: string;
   cost?: number;
   score?: number;
   status?: string;
   verdict?: string;
-  stats?: Stats;
+  debugStats?: Stats;
   checkerExecutionData?: Submission_CheckerExecutionData;
   checkerStats?: Stats;
   interactorExecutionData?: Submission_InteractorExecutionData;
