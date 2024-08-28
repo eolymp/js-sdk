@@ -26,22 +26,11 @@ export type Status_Run = {
   cpuTimeLimit?: number;
   memoryUsage?: number;
   memoryLimit?: number;
-  exitCode?: number;
-  signal?: number;
   inputUrl?: string;
   outputUrl?: string;
   answerUrl?: string;
-  stderrUrl?: string;
   debugStats?: Stats;
-  checkerLogUrl?: string;
-  checkerWallTimeUsage?: number;
-  checkerMemoryUsage?: number;
-  checkerExitCode?: number;
   checkerStats?: Stats;
-  interactorLogUrl?: string;
-  interactorWallTimeUsage?: number;
-  interactorMemoryUsage?: number;
-  interactorExitCode?: number;
   interactorStats?: Stats;
 }
 
