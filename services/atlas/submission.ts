@@ -44,16 +44,14 @@ export type Submission_InteractorExecutionData = {
 
 export type Submission_Run = {
   id?: string;
+  index?: number;
+  testId?: string;
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
-  inputUrl?: string;
   outputUrl?: string;
   stderrUrl?: string;
-  answerUrl?: string;
-  index?: number;
-  testId?: string;
   cost?: number;
   score?: number;
   status?: string;
