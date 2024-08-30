@@ -12,6 +12,8 @@ export type Test = {
   score?: number;
   exampleInputUrl?: string;
   exampleAnswerUrl?: string;
+  generatedInputUrl?: string;
+  generatedAnswerUrl?: string;
   inputObjectId?: string;
   inputUrl?: string;
   inputGenerator?: Test_Generator;
