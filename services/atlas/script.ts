@@ -8,7 +8,7 @@ export type Script = {
   name?: string;
   secret?: boolean;
   runtime?: string;
-  sourceUrl?: string;
+  source?: string;
   files?: File[];
 }
 

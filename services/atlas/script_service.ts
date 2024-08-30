@@ -82,6 +82,7 @@ export type DeleteScriptOutput = Record<string, unknown>;
 export type DescribeScriptInput = {
   scriptId?: string;
   version?: number;
+  extra?: string[];
 }
 
 export type DescribeScriptOutput = {
@@ -95,6 +96,7 @@ export type ListScriptsInput = {
   filters?: ListScriptsInput_Filter;
   sort?: string;
   order?: string;
+  extra?: string[];
 }
 
 export type ListScriptsInput_Filter = {
