@@ -65,11 +65,13 @@ export type DescribeSubmissionInput = {
 
 export type DescribeSubmissionOutput = {
   submission?: Submission;
+  extra?: string[];
 }
 
 export type WatchSubmissionInput = {
   problemId?: string;
   submissionId?: string;
+  extra?: string[];
 }
 
 export type WatchSubmissionOutput = {
@@ -90,6 +92,7 @@ export type ListSubmissionsInput = {
   offset?: number;
   size?: number;
   filters?: ListSubmissionsInput_Filter;
+  extra?: string[];
 }
 
 export type ListSubmissionsInput_Filter = {
