@@ -33,6 +33,8 @@ export type Problem_Test = {
   example?: boolean;
   inputObjectId?: string;
   answerObjectId?: string;
+  inputUrl?: string;
+  answerUrl?: string;
   score?: number;
 }
 
