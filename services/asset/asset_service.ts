@@ -96,6 +96,7 @@ export type UploadFileOutput = {
 export type UploadAssetInput = {
   name?: string;
   type?: string;
+  ttl?: number;
   data?: string;
 }
 
@@ -106,6 +107,7 @@ export type UploadAssetOutput = {
 export type StartMultipartUploadInput = {
   name?: string;
   type?: string;
+  ttl?: number;
 }
 
 export type StartMultipartUploadOutput = {
