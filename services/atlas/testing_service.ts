@@ -284,6 +284,7 @@ export type CreateTestOutput = {
 }
 
 export type UpdateTestInput = {
+  patch?: string[];
   problemId?: string;
   testsetId?: string;
   testId?: string;
