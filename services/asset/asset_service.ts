@@ -33,6 +33,12 @@ export class AssetService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ResolveAlias(input: ResolveAliasInput, opts?: any): Promise<ResolveAliasOutput> {
+    const path = "/resolve-asset-alias";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   StartMultipartUpload(input: StartMultipartUploadInput, opts?: any): Promise<StartMultipartUploadOutput> {
     const path = "/uploads";
 
@@ -96,6 +102,7 @@ export type UploadFileOutput = {
 export type UploadAssetInput = {
   name?: string;
   type?: string;
+  aliases?: string[];
   ttl?: number;
   data?: string;
 }
@@ -107,6 +114,7 @@ export type UploadAssetOutput = {
 export type StartMultipartUploadInput = {
   name?: string;
   type?: string;
+  aliases?: string[];
   ttl?: number;
 }
 
@@ -138,6 +146,14 @@ export type CompleteMultipartUploadInput_Part = {
 }
 
 export type CompleteMultipartUploadOutput = {
+  assetUrl?: string;
+}
+
+export type ResolveAliasInput = {
+  alias?: string;
+}
+
+export type ResolveAliasOutput = {
   assetUrl?: string;
 }
 
