@@ -11,17 +11,21 @@ export type Problem = {
   private?: boolean;
   origin?: string;
   topics?: string[];
-  minTimeLimit?: number;
-  maxTimeLimit?: number;
-  minCpuLimit?: number;
-  maxCpuLimit?: number;
-  minMemoryLimit?: number;
-  maxMemoryLimit?: number;
+  constraints?: Problem_Constraints;
   acceptanceRate?: number;
   submissionsCount?: number;
   submissionsAccepted?: number;
   vote?: number;
   voteCount?: number;
   difficulty?: number;
+}
+
+export type Problem_Constraints = {
+  timeLimitMin?: number;
+  timeLimitMax?: number;
+  cpuLimitMin?: number;
+  cpuLimitMax?: number;
+  memoryLimitMin?: number;
+  memoryLimitMax?: number;
 }
 
