@@ -11,6 +11,12 @@ export type Problem = {
   private?: boolean;
   origin?: string;
   topics?: string[];
+  minTimeLimit?: number;
+  maxTimeLimit?: number;
+  minCpuLimit?: number;
+  maxCpuLimit?: number;
+  minMemoryLimit?: number;
+  maxMemoryLimit?: number;
   acceptanceRate?: number;
   submissionsCount?: number;
   submissionsAccepted?: number;
