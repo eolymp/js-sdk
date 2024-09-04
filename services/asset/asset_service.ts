@@ -33,8 +33,8 @@ export class AssetService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  ResolveAlias(input: ResolveAliasInput, opts?: any): Promise<ResolveAliasOutput> {
-    const path = "/resolve-asset-alias";
+  LookupAsset(input: LookupAssetInput, opts?: any): Promise<LookupAssetOutput> {
+    const path = "/assets:lookup";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -102,7 +102,7 @@ export type UploadFileOutput = {
 export type UploadAssetInput = {
   name?: string;
   type?: string;
-  aliases?: string[];
+  keys?: string[];
   ttl?: number;
   data?: string;
 }
@@ -114,7 +114,7 @@ export type UploadAssetOutput = {
 export type StartMultipartUploadInput = {
   name?: string;
   type?: string;
-  aliases?: string[];
+  keys?: string[];
   ttl?: number;
 }
 
@@ -149,11 +149,11 @@ export type CompleteMultipartUploadOutput = {
   assetUrl?: string;
 }
 
-export type ResolveAliasInput = {
-  alias?: string;
+export type LookupAssetInput = {
+  key?: string;
 }
 
-export type ResolveAliasOutput = {
+export type LookupAssetOutput = {
   assetUrl?: string;
 }
 
