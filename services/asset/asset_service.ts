@@ -189,6 +189,7 @@ export type StartStreamInput = {
 
 export type StartStreamOutput = {
   streamId?: string;
+  streamUrl?: string;
 }
 
 export type AppendStreamInput = {
@@ -200,18 +201,7 @@ export type AppendStreamOutput = Record<string, unknown>;
 
 export type CloseStreamInput = {
   streamId?: string;
-  parts?: CloseStreamInput_Part[];
 }
 
-export type CloseStreamInput_Part = {
-  number?: number;
-  token?: string;
-  checksumMd5?: string;
-  checksumSha1?: string;
-  checksumSha256?: string;
-}
-
-export type CloseStreamOutput = {
-  assetUrl?: string;
-}
+export type CloseStreamOutput = Record<string, unknown>;
 
