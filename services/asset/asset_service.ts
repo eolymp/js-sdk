@@ -194,6 +194,7 @@ export type StartStreamOutput = {
 
 export type AppendStreamInput = {
   streamId?: string;
+  offset?: number;
   data?: string;
 }
 
