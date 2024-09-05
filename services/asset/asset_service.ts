@@ -62,6 +62,30 @@ export class AssetService {
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
+
+  StartStream(input: StartStreamInput, opts?: any): Promise<StartStreamOutput> {
+    const path = "/streams";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  AppendStream(input: AppendStreamInput, opts?: any): Promise<AppendStreamOutput> {
+    const path = "/streams/"+encodeURIComponent(input.streamId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.streamId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  CloseStream(input: CloseStreamInput, opts?: any): Promise<CloseStreamOutput> {
+    const path = "/streams/"+encodeURIComponent(input.streamId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.streamId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
 }
 
 export type UploadImageInput = {
@@ -111,6 +135,14 @@ export type UploadAssetOutput = {
   assetUrl?: string;
 }
 
+export type LookupAssetInput = {
+  key?: string;
+}
+
+export type LookupAssetOutput = {
+  assetUrl?: string;
+}
+
 export type StartMultipartUploadInput = {
   name?: string;
   type?: string;
@@ -149,11 +181,38 @@ export type CompleteMultipartUploadOutput = {
   assetUrl?: string;
 }
 
-export type LookupAssetInput = {
-  key?: string;
+export type StartStreamInput = {
+  name?: string;
+  type?: string;
+  keys?: string[];
+  ttl?: number;
 }
 
-export type LookupAssetOutput = {
+export type StartStreamOutput = {
+  streamId?: string;
+}
+
+export type AppendStreamInput = {
+  streamId?: string;
+  data?: string;
+}
+
+export type AppendStreamOutput = Record<string, unknown>;
+
+export type CloseStreamInput = {
+  streamId?: string;
+  parts?: CloseStreamInput_Part[];
+}
+
+export type CloseStreamInput_Part = {
+  number?: number;
+  token?: string;
+  checksumMd5?: string;
+  checksumSha1?: string;
+  checksumSha256?: string;
+}
+
+export type CloseStreamOutput = {
   assetUrl?: string;
 }
 
