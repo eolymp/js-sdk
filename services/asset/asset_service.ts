@@ -184,7 +184,6 @@ export type CompleteMultipartUploadOutput = {
 export type StartStreamInput = {
   name?: string;
   type?: string;
-  keys?: string[];
   ttl?: number;
 }
 
