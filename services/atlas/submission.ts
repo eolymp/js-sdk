@@ -20,34 +20,20 @@ export type Submission = {
   cost?: number;
   score?: number;
   percentage?: number;
-  wallTimeUsage?: number;
-  cpuTimeUsage?: number;
+  timeUsage?: number;
+  cpuUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
   groups?: Submission_Group[];
   cursor?: string;
 }
 
-export type Submission_CheckerExecutionData = {
-  logUrl?: string;
-  wallTimeUsage?: number;
-  memoryUsage?: number;
-  exitCode?: number;
-}
-
-export type Submission_InteractorExecutionData = {
-  logUrl?: string;
-  wallTimeUsage?: number;
-  memoryUsage?: number;
-  exitCode?: number;
-}
-
 export type Submission_Run = {
   id?: string;
   index?: number;
   testId?: string;
-  wallTimeUsage?: number;
-  cpuTimeUsage?: number;
+  timeUsage?: number;
+  cpuUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
   inputUrl?: string;
@@ -58,9 +44,7 @@ export type Submission_Run = {
   status?: string;
   verdict?: string;
   debugStats?: Stats;
-  checkerExecutionData?: Submission_CheckerExecutionData;
   checkerStats?: Stats;
-  interactorExecutionData?: Submission_InteractorExecutionData;
   interactorStats?: Stats;
 }
 
@@ -74,8 +58,8 @@ export type Submission_Group = {
   score?: number;
   scoringMode?: string;
   feedbackPolicy?: string;
-  wallTimeUsage?: number;
-  cpuTimeUsage?: number;
+  timeUsage?: number;
+  cpuUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
   runs?: Submission_Run[];
