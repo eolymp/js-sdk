@@ -24,35 +24,17 @@ export type Submission = {
   groups?: Submission_Group[];
 }
 
-export type Submission_CheckerExecutionData = {
-  logUrl?: string;
-  wallTimeUsage?: number;
-  memoryUsage?: number;
-  exitCode?: number;
-}
-
-export type Submission_InteractorExecutionData = {
-  logUrl?: string;
-  wallTimeUsage?: number;
-  memoryUsage?: number;
-  exitCode?: number;
-}
-
 export type Submission_Run = {
   id?: string;
-  wallTimeUsage?: number;
-  cpuTimeUsage?: number;
-  memoryUsage?: number;
-  outputUrl?: string;
-  stderrUrl?: string;
   index?: number;
   testId?: string;
   cost?: number;
   score?: number;
+  wallTimeUsage?: number;
+  cpuTimeUsage?: number;
+  memoryUsage?: number;
   status?: string;
   verdict?: string;
-  checkerExecutionData?: Submission_CheckerExecutionData;
-  interactorExecutionData?: Submission_InteractorExecutionData;
 }
 
 export type Submission_Group = {
