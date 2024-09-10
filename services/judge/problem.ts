@@ -9,10 +9,11 @@ export type Problem = {
   index?: number;
   score?: number;
   baseId?: string;
+  baseNumber?: number;
   baseSpaceId?: string;
-  baseTitle?: string;
-  baseNumber?: string;
-  baseWebUrl?: string;
+  baseSpaceName?: string;
+  baseSpaceKey?: string;
+  baseSpaceHomeUrl?: string;
   contestId?: string;
   feedbackPolicy?: string;
   timeLimit?: number;
