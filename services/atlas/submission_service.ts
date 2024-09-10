@@ -103,6 +103,7 @@ export type ListSubmissionsInput_Filter = {
   submittedAt?: ExpressionTimestamp[];
   runtime?: ExpressionEnum[];
   status?: ExpressionEnum[];
+  verdict?: ExpressionEnum[];
   score?: ExpressionFloat[];
   percentage?: ExpressionFloat[];
 }
