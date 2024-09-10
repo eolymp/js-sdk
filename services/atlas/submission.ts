@@ -8,7 +8,9 @@ export type Submission = {
   problemId?: string;
   userId?: string;
   memberId?: string;
+  version?: number;
   submittedAt?: string;
+  judgedAt?: string;
   lang?: string;
   source?: string;
   sourceUrl?: string;
