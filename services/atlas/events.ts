@@ -12,6 +12,11 @@ export type SubmissionCompleteEvent = {
   update?: boolean;
 }
 
+export type SubmissionChangedEvent = {
+  before?: Submission;
+  after?: Submission;
+}
+
 export type ScoreUpdatedEvent = {
   score?: Score;
 }
