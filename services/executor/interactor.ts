@@ -5,8 +5,7 @@ import { File } from "./file"
 
 export type Interactor = {
   type?: string;
-  lang?: string;
-  source?: string;
+  runtime?: string;
   sourceUrl?: string;
   secret?: boolean;
   files?: File[];
