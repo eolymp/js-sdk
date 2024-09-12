@@ -5,12 +5,11 @@ import { File } from "../executor/file"
 
 export type Template = {
   id?: string;
-  ern?: string;
   problemId?: string;
   runtime?: string;
-  sourceErn?: string;
-  headerErn?: string;
-  footerErn?: string;
+  sourceUrl?: string;
+  headerUrl?: string;
+  footerUrl?: string;
   files?: File[];
 }
 

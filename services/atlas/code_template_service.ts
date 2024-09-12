@@ -99,7 +99,6 @@ export type ListCodeTemplatesOutput = {
 export type DescribeCodeTemplateInput = {
   problemId?: string;
   templateId?: string;
-  templateErn?: string;
   version?: number;
 }
 

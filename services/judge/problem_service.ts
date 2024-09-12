@@ -172,7 +172,6 @@ export type DescribeCodeTemplateInput = {
   contestId?: string;
   problemId?: string;
   templateId?: string;
-  templateErn?: string;
 }
 
 export type DescribeCodeTemplateOutput = {
@@ -182,7 +181,6 @@ export type DescribeCodeTemplateOutput = {
 export type LookupCodeTemplateInput = {
   contestId?: string;
   problemId?: string;
-  problemErn?: string;
   runtime?: string;
 }
 

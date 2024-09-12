@@ -4,7 +4,6 @@
 
 export type File = {
   path?: string;
-  sourceErn?: string;
   sourceUrl?: string;
 }
 

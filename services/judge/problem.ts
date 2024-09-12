@@ -11,9 +11,6 @@ export type Problem = {
   baseId?: string;
   baseNumber?: number;
   baseSpaceId?: string;
-  baseSpaceName?: string;
-  baseSpaceKey?: string;
-  baseSpaceHomeUrl?: string;
   contestId?: string;
   feedbackPolicy?: string;
   timeLimit?: number;
@@ -27,17 +24,13 @@ export type Problem = {
 export type Problem_Statement = {
   locale?: string;
   title?: string;
-  contentRaw?: string;
   content?: Node;
-  format?: string;
   downloadLink?: string;
 }
 
 export type Problem_Test = {
   index?: number;
   example?: boolean;
-  inputObjectId?: string;
-  answerObjectId?: string;
   inputUrl?: string;
   answerUrl?: string;
   score?: number;

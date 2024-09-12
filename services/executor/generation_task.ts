@@ -18,13 +18,11 @@ export type GenerationTask_Generator = {
 
 export type GenerationTask_Run = {
   reference?: string;
-  inputObjectId?: string;
-  inputContent?: string;
   inputUrl?: string;
+  inputContent?: string;
   inputGenerator?: GenerationTask_Generator;
-  answerObjectId?: string;
-  answerContent?: string;
   answerUrl?: string;
+  answerContent?: string;
   answerGenerator?: GenerationTask_Generator;
 }
 

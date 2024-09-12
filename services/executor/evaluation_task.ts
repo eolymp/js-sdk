@@ -38,13 +38,11 @@ export type EvaluationTask_Run = {
   debug?: boolean;
   cost?: number;
   labels?: string[];
-  inputObjectId?: string;
-  inputContent?: string;
   inputUrl?: string;
+  inputContent?: string;
   inputGenerator?: EvaluationTask_Generator;
-  answerObjectId?: string;
-  answerContent?: string;
   answerUrl?: string;
+  answerContent?: string;
   answerGenerator?: EvaluationTask_Generator;
 }
 
