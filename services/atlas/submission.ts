@@ -6,9 +6,9 @@ import { Stats } from "../executor/stats"
 export type Submission = {
   id?: string;
   problemId?: string;
+  version?: number;
   userId?: string;
   memberId?: string;
-  version?: number;
   submittedAt?: string;
   judgedAt?: string;
   lang?: string;
@@ -33,7 +33,6 @@ export type Submission = {
 export type Submission_Run = {
   id?: string;
   index?: number;
-  testId?: string;
   timeUsage?: number;
   cpuUsage?: number;
   memoryUsage?: number;
@@ -52,7 +51,6 @@ export type Submission_Run = {
 
 export type Submission_Group = {
   index?: number;
-  testsetId?: string;
   status?: string;
   verdict?: string;
   dependencies?: number[];

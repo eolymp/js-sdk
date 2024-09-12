@@ -4,7 +4,6 @@
 
 export type Testset = {
   id?: string;
-  problemId?: string;
   index?: number;
   timeLimit?: number;
   cpuLimit?: number;

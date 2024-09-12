@@ -14,10 +14,8 @@ export type Test = {
   exampleAnswerUrl?: string;
   generatedInputUrl?: string;
   generatedAnswerUrl?: string;
-  inputObjectId?: string;
   inputUrl?: string;
   inputGenerator?: Test_Generator;
-  answerObjectId?: string;
   answerUrl?: string;
   answerGenerator?: Test_Generator;
 }
