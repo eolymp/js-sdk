@@ -6,7 +6,7 @@ import { File } from "../executor/file"
 export type Interactor = {
   type?: string;
   runtime?: string;
-  sourceUrl?: string;
+  source?: string;
   secret?: boolean;
   files?: File[];
 }
