@@ -7,6 +7,7 @@ export type Policy = {
   name?: string;
   subject?: string;
   resource?: string;
-  actions?: string[];
+  allowAll?: boolean;
+  allows?: string[];
 }
 

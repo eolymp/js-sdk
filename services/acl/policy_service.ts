@@ -66,6 +66,7 @@ export type CreatePolicyOutput = {
 }
 
 export type UpdatePolicyInput = {
+  patch?: string[];
   policyId?: string;
   policy?: Policy;
 }
