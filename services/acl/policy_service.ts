@@ -93,11 +93,11 @@ export type ListPoliciesInput = {
 }
 
 export type ListPoliciesInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   subject?: ExpressionID[];
   name?: ExpressionString[];
   resource?: ExpressionEnum[];
-  entitlement?: ExpressionEnum[];
 }
 
 export type ListPoliciesOutput = {
