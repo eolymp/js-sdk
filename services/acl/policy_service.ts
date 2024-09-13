@@ -72,11 +72,11 @@ export type UpdatePolicyInput = {
 
 export type UpdatePolicyOutput = Record<string, unknown>;
 
-export type DeletePolicyOutput = {
+export type DeletePolicyInput = {
   policyId?: string;
 }
 
-export type DeletePolicyInput = Record<string, unknown>;
+export type DeletePolicyOutput = Record<string, unknown>;
 
 export type DescribePolicyInput = {
   policyId?: string;
