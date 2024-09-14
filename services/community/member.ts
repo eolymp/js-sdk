@@ -22,6 +22,8 @@ export type Member = {
   tierId?: string;
   fallbackTierId?: string;
   createdAt?: string;
+  seatedAt?: string;
+  activeAt?: string;
   user?: User;
   team?: Team;
   ghost?: Ghost;
