@@ -5,7 +5,7 @@
 export type Policy = {
   id?: string;
   name?: string;
-  subject?: string;
+  principal?: string;
   resource?: string;
   allowAll?: boolean;
   allows?: string[];
