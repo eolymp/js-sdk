@@ -96,7 +96,7 @@ export type ListPoliciesInput = {
 export type ListPoliciesInput_Filter = {
   query?: string;
   id?: ExpressionID[];
-  subject?: ExpressionID[];
+  principal?: ExpressionID[];
   name?: ExpressionString[];
   resource?: ExpressionEnum[];
 }
