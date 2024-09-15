@@ -11,6 +11,7 @@ export type Problem = {
   private?: boolean;
   origin?: string;
   topics?: string[];
+  score?: number;
   constraints?: Problem_Constraints;
   acceptanceRate?: number;
   submissionsCount?: number;
