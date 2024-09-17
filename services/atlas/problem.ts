@@ -19,7 +19,6 @@ export type Problem = {
   vote?: number;
   voteCount?: number;
   difficulty?: number;
-  actions?: string[];
 }
 
 export type Problem_Constraints = {
