@@ -16,6 +16,7 @@ export type Space = {
   status?: string;
   subscription?: Space_Subscription;
   affiliation?: string;
+  actions?: string[];
 }
 
 export type Space_Subscription = {

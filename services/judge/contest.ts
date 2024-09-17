@@ -29,6 +29,7 @@ export type Contest = {
   environment?: Contest_Environment;
   upsolve?: Contest_Upsolve;
   scoreboard?: Contest_Scoreboard;
+  actions?: string[];
 }
 
 export type Contest_Appearance = {
