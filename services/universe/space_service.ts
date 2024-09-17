@@ -91,6 +91,7 @@ export type DeleteSpaceOutput = Record<string, unknown>;
 
 export type LookupSpaceInput = {
   key?: string;
+  extra?: string[];
 }
 
 export type LookupSpaceOutput = {
@@ -99,6 +100,7 @@ export type LookupSpaceOutput = {
 
 export type DescribeSpaceInput = {
   spaceId?: string;
+  extra?: string[];
 }
 
 export type DescribeSpaceOutput = {
@@ -124,6 +126,7 @@ export type ListSpacesInput = {
   offset?: number;
   size?: number;
   filters?: ListSpacesInput_Filter;
+  extra?: string[];
 }
 
 export type ListSpacesInput_Filter = {
