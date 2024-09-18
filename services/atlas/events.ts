@@ -6,6 +6,7 @@ import { Problem } from "./problem"
 import { Score } from "./scoring_score"
 import { Statement } from "./statement"
 import { Submission } from "./submission"
+import { Suggestion } from "./suggestion"
 
 export type SubmissionCompleteEvent = {
   submission?: Submission;
@@ -44,5 +45,11 @@ export type PermissionChangedEvent = {
   userId?: string;
   before?: Permission;
   after?: Permission;
+}
+
+export type SuggestionChangedEvent = {
+  problemId?: string;
+  before?: Suggestion;
+  after?: Suggestion;
 }
 
