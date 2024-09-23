@@ -55,6 +55,15 @@ export class CourseService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  CopyCourse(input: CopyCourseInput, opts?: any): Promise<CopyCourseOutput> {
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/copy";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ListCoursesInput = {
@@ -114,4 +123,14 @@ export type StartCourseInput = {
 }
 
 export type StartCourseOutput = Record<string, unknown>;
+
+export type CopyCourseInput = {
+  courseId?: string;
+  copyScope?: string[];
+  copyName?: string;
+}
+
+export type CopyCourseOutput = {
+  copyCourseId?: string;
+}
 

@@ -55,6 +55,12 @@ export class PolicyService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  CopyPolicies(input: CopyPoliciesInput, opts?: any): Promise<CopyPoliciesOutput> {
+    const path = "/policies:copy";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreatePolicyInput = {
@@ -104,5 +110,16 @@ export type ListPoliciesInput_Filter = {
 export type ListPoliciesOutput = {
   total?: number;
   items?: Policy[];
+}
+
+export type CopyPoliciesInput = {
+  srcPrincipal?: string;
+  dstPrincipal?: string;
+  srcResource?: string;
+  dstResource?: string;
+}
+
+export type CopyPoliciesOutput = {
+  copiesCount?: number;
 }
 
