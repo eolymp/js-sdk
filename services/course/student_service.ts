@@ -61,6 +61,12 @@ export class StudentService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  JoinCourse(input: JoinCourseInput, opts?: any): Promise<JoinCourseOutput> {
+    const path = "/join";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateStudentInput = {
@@ -129,4 +135,8 @@ export type WatchStudentInput = {
 export type WatchStudentOutput = {
   student?: Student;
 }
+
+export type JoinCourseInput = Record<string, unknown>;
+
+export type JoinCourseOutput = Record<string, unknown>;
 

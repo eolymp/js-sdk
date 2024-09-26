@@ -118,12 +118,6 @@ export type DeleteCourseInput = {
 
 export type DeleteCourseOutput = Record<string, unknown>;
 
-export type StartCourseInput = {
-  courseId?: string;
-}
-
-export type StartCourseOutput = Record<string, unknown>;
-
 export type CopyCourseInput = {
   courseId?: string;
   copyScope?: string[];
