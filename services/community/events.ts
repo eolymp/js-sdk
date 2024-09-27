@@ -15,9 +15,8 @@ export type MemberDeletedEvent = {
   member?: Member;
 }
 
-export type MemberChangeRecord = {
-  spaceId?: string;
-  op?: string;
-  member?: Member;
+export type MemberChangedRecord = {
+  before?: Member;
+  after?: Member;
 }
 
