@@ -16,12 +16,12 @@ export type MemberDeletedEvent = {
   member?: Member;
 }
 
-export type MemberChangedRecord = {
+export type MemberChangedEvent = {
   before?: Member;
   after?: Member;
 }
 
-export type GroupChangedRecord = {
+export type GroupChangedEvent = {
   before?: Group;
   after?: Group;
 }
