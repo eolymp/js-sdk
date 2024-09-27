@@ -14,7 +14,6 @@ export type Member = {
   rankLower?: number;
   rating?: number;
   level?: number;
-  active?: boolean;
   inactive?: boolean;
   incomplete?: boolean;
   unofficial?: boolean;

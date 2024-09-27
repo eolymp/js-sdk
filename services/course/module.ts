@@ -12,6 +12,9 @@ export type Module = {
   imageUrl?: string;
   index?: number;
   description?: Content;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
   progress?: number;
   grade?: number;
   assignment?: Module_Assignment;
@@ -22,6 +25,7 @@ export type Module_Assignment = {
   startAfter?: string;
   completeBefore?: string;
   duration?: number;
+  upsolve?: boolean;
   assignedAt?: string;
   startedAt?: string;
   completedAt?: string;

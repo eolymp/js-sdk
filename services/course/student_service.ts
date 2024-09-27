@@ -41,12 +41,6 @@ export class StudentService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
-    const path = "/viewer/student";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   DescribeStudent(input: DescribeStudentInput, opts?: any): Promise<DescribeStudentOutput> {
     const path = "/students/"+encodeURIComponent(input.memberId||'');
 
@@ -66,6 +60,12 @@ export class StudentService {
     const path = "/join";
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
+    const path = "/viewer/student";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
@@ -91,14 +91,6 @@ export type DeleteStudentInput = {
 
 export type DeleteStudentOutput = Record<string, unknown>;
 
-export type DescribeViewerInput = {
-  extra?: string[];
-}
-
-export type DescribeViewerOutput = {
-  student?: Student;
-}
-
 export type DescribeStudentInput = {
   memberId?: string;
   extra?: string[];
@@ -118,6 +110,7 @@ export type ListStudentsInput = {
 }
 
 export type ListStudentsInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   memberId?: ExpressionID[];
 }
@@ -139,4 +132,12 @@ export type WatchStudentOutput = {
 export type JoinCourseInput = Record<string, unknown>;
 
 export type JoinCourseOutput = Record<string, unknown>;
+
+export type DescribeViewerInput = {
+  extra?: string[];
+}
+
+export type DescribeViewerOutput = {
+  student?: Student;
+}
 

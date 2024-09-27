@@ -151,6 +151,7 @@ export type AssignModuleInput = {
   startAfter?: string;
   completeBefore?: string;
   duration?: number;
+  upsolve?: boolean;
 }
 
 export type AssignModuleOutput = Record<string, unknown>;
