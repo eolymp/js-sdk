@@ -2,9 +2,10 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Group = {
+export type Class = {
   id?: string;
   name?: string;
+  groupId?: string;
   inactive?: boolean;
   assignAll?: boolean;
 }

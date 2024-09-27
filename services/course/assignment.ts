@@ -4,6 +4,7 @@
 
 export type Assignment = {
   id?: string;
+  moduleId?: string;
   memberId?: string;
   groupId?: string;
   startAfter?: string;

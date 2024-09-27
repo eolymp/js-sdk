@@ -2,13 +2,13 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
-import { Group } from "./group"
+import { Class } from "./class"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class GroupService {
+export class ClassService {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -17,14 +17,14 @@ export class GroupService {
     this.url = url;
   }
 
-  CreateGroup(input: CreateGroupInput, opts?: any): Promise<CreateGroupOutput> {
-    const path = "/groups";
+  CreateClass(input: CreateClassInput, opts?: any): Promise<CreateClassOutput> {
+    const path = "/classes";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateGroup(input: UpdateGroupInput, opts?: any): Promise<UpdateGroupOutput> {
-    const path = "/groups/"+encodeURIComponent(input.groupId||'');
+  UpdateClass(input: UpdateClassInput, opts?: any): Promise<UpdateClassOutput> {
+    const path = "/classes/"+encodeURIComponent(input.groupId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.groupId);
@@ -32,8 +32,8 @@ export class GroupService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DeleteGroup(input: DeleteGroupInput, opts?: any): Promise<DeleteGroupOutput> {
-    const path = "/groups/"+encodeURIComponent(input.groupId||'');
+  DeleteClass(input: DeleteClassInput, opts?: any): Promise<DeleteClassOutput> {
+    const path = "/classes/"+encodeURIComponent(input.groupId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.groupId);
@@ -41,8 +41,8 @@ export class GroupService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeGroup(input: DescribeGroupInput, opts?: any): Promise<DescribeGroupOutput> {
-    const path = "/groups/"+encodeURIComponent(input.groupId||'');
+  DescribeClass(input: DescribeClassInput, opts?: any): Promise<DescribeClassOutput> {
+    const path = "/classes/"+encodeURIComponent(input.groupId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.groupId);
@@ -50,59 +50,60 @@ export class GroupService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListGroups(input: ListGroupsInput, opts?: any): Promise<ListGroupsOutput> {
-    const path = "/groups";
+  ListClasses(input: ListClassesInput, opts?: any): Promise<ListClassesOutput> {
+    const path = "/classes";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
-export type CreateGroupInput = {
-  group?: Group;
+export type CreateClassInput = {
+  class?: Class;
 }
 
-export type CreateGroupOutput = {
-  groupId?: string;
+export type CreateClassOutput = {
+  classId?: string;
 }
 
-export type UpdateGroupInput = {
+export type UpdateClassInput = {
   patch?: string[];
   groupId?: string;
-  group?: Group;
+  class?: Class;
 }
 
-export type UpdateGroupOutput = Record<string, unknown>;
+export type UpdateClassOutput = Record<string, unknown>;
 
-export type DeleteGroupInput = {
+export type DeleteClassInput = {
   groupId?: string;
 }
 
-export type DeleteGroupOutput = Record<string, unknown>;
+export type DeleteClassOutput = Record<string, unknown>;
 
-export type DescribeGroupInput = {
+export type DescribeClassInput = {
   groupId?: string;
 }
 
-export type DescribeGroupOutput = {
-  group?: Group;
+export type DescribeClassOutput = {
+  class?: Class;
 }
 
-export type ListGroupsInput = {
+export type ListClassesInput = {
   offset?: number;
   size?: number;
-  filters?: ListGroupsInput_Filter;
+  filters?: ListClassesInput_Filter;
   sort?: string;
   order?: string;
 }
 
-export type ListGroupsInput_Filter = {
+export type ListClassesInput_Filter = {
   query?: string;
   id?: ExpressionID[];
+  groupId?: ExpressionID[];
   memberId?: ExpressionID[];
 }
 
-export type ListGroupsOutput = {
+export type ListClassesOutput = {
   total?: number;
-  items?: Group[];
+  items?: Class[];
 }
 
