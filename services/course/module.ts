@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
+import { Assignment } from "./assignment"
 
 export type Module = {
   id?: string;
@@ -16,6 +17,7 @@ export type Module = {
   completeBefore?: string;
   duration?: number;
   progress?: Module_Progress;
+  assignment?: Assignment;
 }
 
 export type Module_Progress = {
