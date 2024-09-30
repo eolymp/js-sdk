@@ -6,8 +6,6 @@ export type Student = {
   id?: string;
   url?: string;
   memberId?: string;
-  displayName?: string;
-  picture?: string;
   inactive?: boolean;
   assignAll?: boolean;
   overallProgress?: number;

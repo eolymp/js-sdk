@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
+import { Assignment } from "./assignment"
 import { Student } from "./student"
 
 interface Client {
@@ -66,6 +67,33 @@ export class StudentService {
     const path = "/viewer/student";
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListStudentAssignments(input: ListStudentAssignmentsInput, opts?: any): Promise<ListStudentAssignmentsOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateStudentAssignment(input: UpdateStudentAssignmentInput, opts?: any): Promise<UpdateStudentAssignmentOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DeleteStudentAssignment(input: DeleteStudentAssignmentInput, opts?: any): Promise<DeleteStudentAssignmentOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 }
 
@@ -140,4 +168,39 @@ export type DescribeViewerInput = {
 export type DescribeViewerOutput = {
   student?: Student;
 }
+
+export type ListStudentAssignmentsInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListStudentAssignmentsInput_Filter;
+}
+
+export type ListStudentAssignmentsInput_Filter = {
+  query?: string;
+  id?: ExpressionID[];
+  moduleId?: ExpressionID[];
+}
+
+export type ListStudentAssignmentsOutput = {
+  total?: number;
+  items?: Assignment[];
+}
+
+export type UpdateStudentAssignmentInput = {
+  memberId?: string;
+  moduleId?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+  upsolve?: boolean;
+}
+
+export type UpdateStudentAssignmentOutput = Record<string, unknown>;
+
+export type DeleteStudentAssignmentInput = {
+  memberId?: string;
+  moduleId?: string;
+}
+
+export type DeleteStudentAssignmentOutput = Record<string, unknown>;
 

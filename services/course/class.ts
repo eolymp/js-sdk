@@ -4,9 +4,7 @@
 
 export type Class = {
   id?: string;
-  name?: string;
   groupId?: string;
-  inactive?: boolean;
-  assignAll?: boolean;
+  moduleCount?: number;
 }
 

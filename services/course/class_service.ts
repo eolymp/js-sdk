@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID } from "../wellknown/expression"
+import { Assignment } from "./assignment"
 import { Class } from "./class"
 
 interface Client {
@@ -55,6 +56,33 @@ export class ClassService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ListClassAssignments(input: ListClassAssignmentsInput, opts?: any): Promise<ListClassAssignmentsOutput> {
+    const path = "/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.groupId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateClassAssignment(input: UpdateClassAssignmentInput, opts?: any): Promise<UpdateClassAssignmentOutput> {
+    const path = "/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.groupId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DeleteClassAssignment(input: DeleteClassAssignmentInput, opts?: any): Promise<DeleteClassAssignmentOutput> {
+    const path = "/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.groupId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
 }
 
 export type CreateClassInput = {
@@ -106,4 +134,39 @@ export type ListClassesOutput = {
   total?: number;
   items?: Class[];
 }
+
+export type ListClassAssignmentsInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListClassAssignmentsInput_Filter;
+}
+
+export type ListClassAssignmentsInput_Filter = {
+  query?: string;
+  id?: ExpressionID[];
+  moduleId?: ExpressionID[];
+}
+
+export type ListClassAssignmentsOutput = {
+  total?: number;
+  items?: Assignment[];
+}
+
+export type UpdateClassAssignmentInput = {
+  groupId?: string;
+  moduleId?: string;
+  startAfter?: string;
+  completeBefore?: string;
+  duration?: number;
+  upsolve?: boolean;
+}
+
+export type UpdateClassAssignmentOutput = Record<string, unknown>;
+
+export type DeleteClassAssignmentInput = {
+  groupId?: string;
+  moduleId?: string;
+}
+
+export type DeleteClassAssignmentOutput = Record<string, unknown>;
 

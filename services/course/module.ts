@@ -18,18 +18,6 @@ export type Module = {
   percentage?: number;
   grade?: number;
   progress?: Module_Progress;
-  assignment?: Module_Assignment;
-}
-
-export type Module_Assignment = {
-  status?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-  upsolve?: boolean;
-  assignedAt?: string;
-  startedAt?: string;
-  completedAt?: string;
 }
 
 export type Module_Progress = {
