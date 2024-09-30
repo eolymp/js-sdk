@@ -63,6 +63,15 @@ export class MaterialService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ReportProgress(input: ReportProgressInput, opts?: any): Promise<ReportProgressOutput> {
+    const path = "/materials/"+encodeURIComponent(input.materialId||'')+"/progress";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.materialId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateMaterialInput = {
@@ -126,4 +135,11 @@ export type ListMaterialsOutput = {
   total?: number;
   items?: Material[];
 }
+
+export type ReportProgressInput = {
+  materialId?: string;
+  progress?: number;
+}
+
+export type ReportProgressOutput = Record<string, unknown>;
 
