@@ -141,6 +141,7 @@ export type ListStudentsInput_Filter = {
   query?: string;
   id?: ExpressionID[];
   memberId?: ExpressionID[];
+  groupId?: ExpressionID[];
 }
 
 export type ListStudentsOutput = {
