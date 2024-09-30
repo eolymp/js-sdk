@@ -170,6 +170,7 @@ export type DescribeViewerOutput = {
 }
 
 export type ListStudentAssignmentsInput = {
+  memberId?: string;
   offset?: number;
   size?: number;
   filters?: ListStudentAssignmentsInput_Filter;

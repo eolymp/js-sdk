@@ -136,6 +136,7 @@ export type ListClassesOutput = {
 }
 
 export type ListClassAssignmentsInput = {
+  groupId?: string;
   offset?: number;
   size?: number;
   filters?: ListClassAssignmentsInput_Filter;
