@@ -17,28 +17,28 @@ export class NotificationService {
   }
 
   DescribeNotification(input: DescribeNotificationInput, opts?: any): Promise<DescribeNotificationOutput> {
-    const path = "/notifications/"+encodeURIComponent(input.notification||'');
+    const path = "/notifications/"+encodeURIComponent(input.notificationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.notification);
+    delete(input.notificationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ReadNotification(input: ReadNotificationInput, opts?: any): Promise<ReadNotificationOutput> {
-    const path = "/notifications/"+encodeURIComponent(input.notification||'')+"/read";
+    const path = "/notifications/"+encodeURIComponent(input.notificationId||'')+"/read";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.notification);
+    delete(input.notificationId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteNotification(input: DeleteNotificationInput, opts?: any): Promise<DeleteNotificationOutput> {
-    const path = "/notifications/"+encodeURIComponent(input.notification||'');
+    const path = "/notifications/"+encodeURIComponent(input.notificationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.notification);
+    delete(input.notificationId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
