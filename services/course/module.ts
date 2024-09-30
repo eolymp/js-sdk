@@ -15,8 +15,6 @@ export type Module = {
   startAfter?: string;
   completeBefore?: string;
   duration?: number;
-  percentage?: number;
-  grade?: number;
   progress?: Module_Progress;
 }
 
