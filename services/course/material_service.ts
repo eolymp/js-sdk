@@ -72,6 +72,15 @@ export class MaterialService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  GradeMaterial(input: GradeMaterialInput, opts?: any): Promise<GradeMaterialOutput> {
+    const path = "/materials/"+encodeURIComponent(input.materialId||'')+"/grade";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.materialId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateMaterialInput = {
@@ -142,4 +151,12 @@ export type ReportProgressInput = {
 }
 
 export type ReportProgressOutput = Record<string, unknown>;
+
+export type GradeMaterialInput = {
+  materialId?: string;
+  memberId?: string;
+  grade?: number;
+}
+
+export type GradeMaterialOutput = Record<string, unknown>;
 

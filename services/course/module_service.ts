@@ -65,22 +65,13 @@ export class ModuleService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  AssignModule(input: AssignModuleInput, opts?: any): Promise<AssignModuleOutput> {
-    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/assignments";
+  GradeModule(input: GradeModuleInput, opts?: any): Promise<GradeModuleOutput> {
+    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/grade";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.moduleId);
 
     return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UnassignModule(input: UnassignModuleInput, opts?: any): Promise<UnassignModuleOutput> {
-    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/assignments";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.moduleId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
   }
 }
 
@@ -145,23 +136,11 @@ export type StartModuleInput = {
 
 export type StartModuleOutput = Record<string, unknown>;
 
-export type AssignModuleInput = {
-  memberId?: string;
-  groupId?: string;
+export type GradeModuleInput = {
   moduleId?: string;
-  startAfter?: string;
-  completeBefore?: string;
-  duration?: number;
-  upsolve?: boolean;
+  memberId?: string;
+  grade?: number;
 }
 
-export type AssignModuleOutput = Record<string, unknown>;
-
-export type UnassignModuleInput = {
-  memberId?: string;
-  groupId?: string;
-  moduleId?: string;
-}
-
-export type UnassignModuleOutput = Record<string, unknown>;
+export type GradeModuleOutput = Record<string, unknown>;
 

@@ -14,8 +14,9 @@ export type Material = {
   grading?: Material_Grading;
   document?: Material_Document;
   task?: Material_Task;
-  progress?: number;
+  percentage?: number;
   grade?: number;
+  progress?: Material_Progress;
 }
 
 export type Material_Document = {
@@ -29,5 +30,12 @@ export type Material_Task = {
 export type Material_Grading = {
   maxScore?: number;
   weight?: number;
+}
+
+export type Material_Progress = {
+  percentage?: number;
+  grade?: number;
+  gradeAutomatic?: number;
+  gradeOverride?: number;
 }
 

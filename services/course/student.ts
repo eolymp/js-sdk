@@ -10,8 +10,17 @@ export type Student = {
   assignAll?: boolean;
   overallProgress?: number;
   overallGrade?: number;
+  grades?: Student_Grade[];
   gradedAt?: string;
   updatedAt?: string;
   createdAt?: string;
+}
+
+export type Student_Grade = {
+  moduleId?: string;
+  materialId?: string;
+  grade?: number;
+  gradeAutomatic?: number;
+  gradeOverride?: number;
 }
 
