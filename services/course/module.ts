@@ -24,6 +24,9 @@ export type Module_Progress = {
   status?: string;
   percentage?: number;
   grade?: number;
+  gradeAutomatic?: number;
+  gradeOverride?: number;
+  excused?: boolean;
   startAfter?: string;
   completeBefore?: string;
   duration?: number;

@@ -37,5 +37,6 @@ export type Material_Progress = {
   grade?: number;
   gradeAutomatic?: number;
   gradeOverride?: number;
+  excused?: boolean;
 }
 

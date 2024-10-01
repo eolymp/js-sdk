@@ -140,6 +140,7 @@ export type GradeModuleInput = {
   moduleId?: string;
   memberId?: string;
   grade?: number;
+  excused?: boolean;
 }
 
 export type GradeModuleOutput = Record<string, unknown>;

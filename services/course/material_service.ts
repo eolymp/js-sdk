@@ -156,6 +156,7 @@ export type GradeMaterialInput = {
   materialId?: string;
   memberId?: string;
   grade?: number;
+  excused?: boolean;
 }
 
 export type GradeMaterialOutput = Record<string, unknown>;
