@@ -14,6 +14,7 @@ export type Student = {
   gradedAt?: string;
   updatedAt?: string;
   createdAt?: string;
+  cursor?: string;
 }
 
 export type Student_Grade = {

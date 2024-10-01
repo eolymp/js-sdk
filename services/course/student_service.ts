@@ -129,6 +129,7 @@ export type DescribeStudentOutput = {
 }
 
 export type ListStudentsInput = {
+  after?: string;
   offset?: number;
   size?: number;
   filters?: ListStudentsInput_Filter;
