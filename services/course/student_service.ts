@@ -148,6 +148,8 @@ export type ListStudentsInput_Filter = {
 export type ListStudentsOutput = {
   total?: number;
   items?: Student[];
+  nextPageCursor?: string;
+  prevPageCursor?: string;
 }
 
 export type WatchStudentInput = {
