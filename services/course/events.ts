@@ -7,21 +7,27 @@ import { Module } from "./module"
 import { Student } from "./student"
 
 export type ModuleChangedEvent = {
+  courseId?: string;
   before?: Module;
   after?: Module;
 }
 
 export type MaterialChangedEvent = {
+  courseId?: string;
+  moduleId?: string;
   before?: Material;
   after?: Material;
 }
 
 export type StudentChangedEvent = {
+  courseId?: string;
   before?: Student;
   after?: Student;
 }
 
 export type AssignmentChangedEvent = {
+  courseId?: string;
+  moduleId?: string;
   before?: Assignment;
   after?: Assignment;
 }
