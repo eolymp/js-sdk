@@ -3,6 +3,8 @@
 
 import { ExpressionID } from "../wellknown/expression"
 import { Assignment } from "./assignment"
+import { Material_Progress } from "./material"
+import { Module_Progress } from "./module"
 import { Student } from "./student"
 
 interface Client {
@@ -94,6 +96,25 @@ export class StudentService {
     delete(input.memberId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  ListStudentGrades(input: ListStudentGradesInput, opts?: any): Promise<ListStudentGradesOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/grades";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListModuleGrades(input: ListModuleGradesInput, opts?: any): Promise<ListModuleGradesOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/grades/"+encodeURIComponent(input.moduleId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+    delete(input.moduleId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
@@ -208,4 +229,21 @@ export type DeleteStudentAssignmentInput = {
 }
 
 export type DeleteStudentAssignmentOutput = Record<string, unknown>;
+
+export type ListStudentGradesInput = {
+  memberId?: string;
+}
+
+export type ListStudentGradesOutput = {
+  items?: Module_Progress[];
+}
+
+export type ListModuleGradesInput = {
+  memberId?: string;
+  moduleId?: string;
+}
+
+export type ListModuleGradesOutput = {
+  items?: Material_Progress[];
+}
 

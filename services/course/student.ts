@@ -19,9 +19,9 @@ export type Student = {
 
 export type Student_Grade = {
   moduleId?: string;
-  materialId?: string;
   grade?: number;
   gradeAutomatic?: number;
   gradeOverride?: number;
+  excused?: boolean;
 }
 
