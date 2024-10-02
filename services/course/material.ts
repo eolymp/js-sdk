@@ -9,6 +9,7 @@ export type Material = {
   draft?: boolean;
   name?: string;
   imageUrl?: string;
+  moduleId?: string;
   index?: number;
   depth?: number;
   grading?: Material_Grading;

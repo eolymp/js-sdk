@@ -14,7 +14,6 @@ export type ModuleChangedEvent = {
 
 export type MaterialChangedEvent = {
   courseId?: string;
-  moduleId?: string;
   before?: Material;
   after?: Material;
 }
