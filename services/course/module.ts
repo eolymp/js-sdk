@@ -9,7 +9,7 @@ export type Module = {
   url?: string;
   draft?: boolean;
   extra?: boolean;
-  weight?: boolean;
+  weight?: number;
   name?: string;
   imageUrl?: string;
   index?: number;
