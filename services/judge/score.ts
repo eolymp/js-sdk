@@ -8,6 +8,7 @@ export type Score = {
   timestamp?: string;
   score?: number;
   penalty?: number;
+  tieBreaker?: number;
   upsolve?: boolean;
   breakdown?: Score_Problem[];
 }
