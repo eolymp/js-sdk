@@ -30,7 +30,9 @@ export class ScoreboardService {
   }
 }
 
-export type DescribeScoreboardInput = Record<string, unknown>;
+export type DescribeScoreboardInput = {
+  roundId?: string;
+}
 
 export type DescribeScoreboardOutput = {
   scoreboard?: Scoreboard;
