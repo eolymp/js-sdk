@@ -17,12 +17,11 @@ export type Scoreboard_Column = {
 
 export type Scoreboard_Value = {
   columnId?: string;
-  totalScore?: Scoreboard_TotalScore;
-  roundScore?: Scoreboard_TotalScore;
+  roundScore?: Scoreboard_RoundScore;
   problemScore?: Scoreboard_ProblemScore;
 }
 
-export type Scoreboard_TotalScore = {
+export type Scoreboard_RoundScore = {
   score?: number;
   penalty?: number;
   tieBreaker?: number;
