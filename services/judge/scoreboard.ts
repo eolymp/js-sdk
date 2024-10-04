@@ -27,7 +27,6 @@ export type Scoreboard_Row = {
   unofficial?: boolean;
   disqualified?: boolean;
   values?: Scoreboard_Row_Value[];
-  cursor?: string;
 }
 
 export type Scoreboard_Row_Value = {

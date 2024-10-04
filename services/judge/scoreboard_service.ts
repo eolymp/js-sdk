@@ -38,11 +38,11 @@ export type DescribeScoreboardOutput = {
 
 export type ListScoreboardRowsInput = {
   mode?: string;
-  size?: number;
-  after?: string;
-  filters?: ListScoreboardRowsInput_Filter;
   roundId?: string;
-  problemId?: string;
+  size?: number;
+  offset?: number;
+  filters?: ListScoreboardRowsInput_Filter;
+  sort?: string;
   order?: string;
 }
 
