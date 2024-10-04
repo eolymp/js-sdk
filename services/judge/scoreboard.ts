@@ -15,28 +15,6 @@ export type Scoreboard_Column = {
   filterable?: boolean;
 }
 
-export type Scoreboard_Value = {
-  columnId?: string;
-  roundScore?: Scoreboard_RoundScore;
-  problemScore?: Scoreboard_ProblemScore;
-}
-
-export type Scoreboard_RoundScore = {
-  score?: number;
-  penalty?: number;
-  tieBreaker?: number;
-  unofficial?: boolean;
-  disqualified?: boolean;
-}
-
-export type Scoreboard_ProblemScore = {
-  score?: number;
-  penalty?: number;
-  attempts?: number;
-  percentage?: number;
-  time?: number;
-}
-
 export type Scoreboard_Row = {
   id?: string;
   memberId?: string;
@@ -48,7 +26,29 @@ export type Scoreboard_Row = {
   tieBreaker?: number;
   unofficial?: boolean;
   disqualified?: boolean;
-  values?: Scoreboard_Value[];
+  values?: Scoreboard_Row_Value[];
   cursor?: string;
+}
+
+export type Scoreboard_Row_Value = {
+  columnId?: string;
+  roundScore?: Scoreboard_Row_RoundScore;
+  problemScore?: Scoreboard_Row_ProblemScore;
+}
+
+export type Scoreboard_Row_RoundScore = {
+  score?: number;
+  penalty?: number;
+  tieBreaker?: number;
+  unofficial?: boolean;
+  disqualified?: boolean;
+}
+
+export type Scoreboard_Row_ProblemScore = {
+  score?: number;
+  penalty?: number;
+  attempts?: number;
+  percentage?: number;
+  time?: number;
 }
 
