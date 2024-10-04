@@ -26,6 +26,8 @@ export type Scoreboard_TotalScore = {
   score?: number;
   penalty?: number;
   tieBreaker?: number;
+  unofficial?: boolean;
+  disqualified?: boolean;
 }
 
 export type Scoreboard_ProblemScore = {
@@ -42,9 +44,11 @@ export type Scoreboard_Row = {
   index?: number;
   rank?: number;
   rankLength?: number;
+  score?: number;
+  penalty?: number;
+  tieBreaker?: number;
   unofficial?: boolean;
   disqualified?: boolean;
-  score?: Scoreboard_TotalScore;
   values?: Scoreboard_Value[];
   cursor?: string;
 }
