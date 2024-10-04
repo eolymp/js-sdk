@@ -17,37 +17,3 @@ export type Result = {
   score?: Score;
 }
 
-export type ResultV2 = {
-  memberId?: string;
-  displayName?: string;
-  picture?: string;
-  country?: string;
-  unofficial?: boolean;
-  disqualified?: boolean;
-  ghost?: boolean;
-  medal?: string;
-  index?: number;
-  rank?: number;
-  rankTo?: number;
-  score?: number;
-  penalty?: number;
-  breakdown?: ResultV2_RoundScore[];
-  cursor?: string;
-}
-
-export type ResultV2_ProblemScore = {
-  problemId?: string;
-  solved?: boolean;
-  score?: number;
-  penalty?: number;
-  attempts?: number;
-  solvedIn?: number;
-}
-
-export type ResultV2_RoundScore = {
-  roundId?: string;
-  score?: number;
-  penalty?: number;
-  breakdown?: ResultV2_ProblemScore[];
-}
-
