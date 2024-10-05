@@ -33,6 +33,7 @@ export type Scoreboard_Row = {
   tieBreaker?: number;
   unofficial?: boolean;
   disqualified?: boolean;
+  medal?: string;
   values?: Scoreboard_Row_Value[];
 }
 
@@ -50,6 +51,7 @@ export type Scoreboard_Row_RoundScore = {
   tieBreaker?: number;
   unofficial?: boolean;
   disqualified?: boolean;
+  medal?: string;
 }
 
 export type Scoreboard_Row_ProblemScore = {
