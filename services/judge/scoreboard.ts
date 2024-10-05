@@ -4,7 +4,13 @@
 
 export type Scoreboard = {
   modes?: string[];
+  rounds?: Scoreboard_Round[];
   columns?: Scoreboard_Column[];
+}
+
+export type Scoreboard_Round = {
+  id?: string;
+  title?: string;
 }
 
 export type Scoreboard_Column = {
