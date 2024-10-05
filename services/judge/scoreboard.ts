@@ -17,6 +17,7 @@ export type Scoreboard_Column = {
   id?: string;
   type?: string;
   title?: string;
+  choices?: string[];
   sortable?: boolean;
   filterable?: boolean;
 }
@@ -39,6 +40,8 @@ export type Scoreboard_Row_Value = {
   columnId?: string;
   roundScore?: Scoreboard_Row_RoundScore;
   problemScore?: Scoreboard_Row_ProblemScore;
+  string?: string;
+  number?: string;
 }
 
 export type Scoreboard_Row_RoundScore = {
