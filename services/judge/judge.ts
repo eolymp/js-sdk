@@ -3,7 +3,8 @@
 
 import { CreateAnnouncementInput, CreateAnnouncementOutput, DeleteAnnouncementInput, DeleteAnnouncementOutput, DescribeAnnouncementInput, DescribeAnnouncementOutput, DescribeAnnouncementStatusInput, DescribeAnnouncementStatusOutput, ListAnnouncementsInput, ListAnnouncementsOutput, ReadAnnouncementInput, ReadAnnouncementOutput, UpdateAnnouncementInput, UpdateAnnouncementOutput } from "./announcement_service"
 import { CloseContestInput, CloseContestOutput, CreateContestInput, CreateContestOutput, DeleteContestInput, DeleteContestOutput, DescribeContestInput, DescribeContestOutput, DescribeContestUsageInput, DescribeContestUsageOutput, FreezeContestInput, FreezeContestOutput, ListActivitiesInput, ListActivitiesOutput, ListContestsInput, ListContestsOutput, OpenContestInput, OpenContestOutput, ResumeContestInput, ResumeContestOutput, SuspendContestInput, SuspendContestOutput, UpdateContestInput, UpdateContestOutput } from "./contest_service"
-import { AddParticipantInput, AddParticipantOutput, DescribeParticipantInput, DescribeParticipantOutput, DisableParticipantInput, DisableParticipantOutput, EnableParticipantInput, EnableParticipantOutput, EnterPasscodeInput, EnterPasscodeOutput, IntrospectParticipantInput, IntrospectParticipantOutput, JoinContestInput, JoinContestOutput, ListParticipantsInput, ListParticipantsOutput, RemoveParticipantInput, RemoveParticipantOutput, RemovePasscodeInput, RemovePasscodeOutput, ResetPasscodeInput, ResetPasscodeOutput, SetPasscodeInput, SetPasscodeOutput, StartContestInput, StartContestOutput, UpdateParticipantInput, UpdateParticipantOutput, VerifyPasscodeInput, VerifyPasscodeOutput } from "./participant_service"
+import { AssignParticipantInput, AssignParticipantOutput, DeleteParticipantInput, DeleteParticipantOutput, DescribeParticipantInput, DescribeParticipantOutput, DescribeViewerInput, DescribeViewerOutput, DisableParticipantInput, DisableParticipantOutput, EnableParticipantInput, EnableParticipantOutput, JoinContestInput, JoinContestOutput, ListParticipantsInput, ListParticipantsOutput, StartContestInput, StartContestOutput, UpdateParticipantInput, UpdateParticipantOutput } from "./participant_service"
+import { EnterPasscodeInput, EnterPasscodeOutput, RemovePasscodeInput, RemovePasscodeOutput, ResetPasscodeInput, ResetPasscodeOutput, SetPasscodeInput, SetPasscodeOutput, VerifyPasscodeInput, VerifyPasscodeOutput } from "./passcode_service"
 import { DeleteProblemInput, DeleteProblemOutput, DescribeCodeTemplateInput, DescribeCodeTemplateOutput, DescribeProblemInput, DescribeProblemOutput, ImportProblemInput, ImportProblemOutput, ListAttachmentsInput, ListAttachmentsOutput, ListExamplesInput, ListExamplesOutput, ListProblemsInput, ListProblemsOutput, ListStatementsInput, ListStatementsOutput, LookupCodeTemplateInput, LookupCodeTemplateOutput, SyncProblemInput, SyncProblemOutput, UpdateProblemInput, UpdateProblemOutput } from "./problem_service"
 import { DescribeScoreInput, DescribeScoreOutput, ExportScoreInput, ExportScoreOutput, ImportScoreInput, ImportScoreOutput, IntrospectScoreInput, IntrospectScoreOutput, ListResultInput, ListResultOutput, RebuildScoreInput, RebuildScoreOutput } from "./score_service"
 import { CreateSubmissionInput, CreateSubmissionOutput, DeleteSubmissionInput, DeleteSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, RestoreSubmissionInput, RestoreSubmissionOutput, RetestProblemInput, RetestProblemOutput, RetestSubmissionInput, RetestSubmissionOutput, WatchSubmissionInput, WatchSubmissionOutput } from "./submission_service"
@@ -224,7 +225,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  AddParticipant(input: AddParticipantInput, opts?: any): Promise<AddParticipantOutput> {
+  AddParticipant(input: AssignParticipantInput, opts?: any): Promise<AssignParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -254,21 +255,21 @@ export class Judge {
   }
 
   UpdateParticipant(input: UpdateParticipantInput, opts?: any): Promise<UpdateParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  RemoveParticipant(input: RemoveParticipantInput, opts?: any): Promise<RemoveParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
+  DeleteParticipant(input: DeleteParticipantInput, opts?: any): Promise<DeleteParticipantOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -283,16 +284,16 @@ export class Judge {
   }
 
   DescribeParticipant(input: DescribeParticipantInput, opts?: any): Promise<DescribeParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  IntrospectParticipant(input: IntrospectParticipantInput, opts?: any): Promise<IntrospectParticipantOutput> {
+  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -338,31 +339,31 @@ export class Judge {
   }
 
   ResetPasscode(input: ResetPasscodeInput, opts?: any): Promise<ResetPasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   SetPasscode(input: SetPasscodeInput, opts?: any): Promise<SetPasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RemovePasscode(input: RemovePasscodeInput, opts?: any): Promise<RemovePasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -504,31 +505,31 @@ export class Judge {
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/score";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/score";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ImportScore(input: ImportScoreInput, opts?: any): Promise<ImportScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ExportScore(input: ExportScoreInput, opts?: any): Promise<ExportScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

@@ -6,7 +6,7 @@ export type Participant = {
   id?: string;
   contestId?: string;
   memberId?: string;
-  name?: string;
+  displayName?: string;
   unofficial?: boolean;
   inactive?: boolean;
   disqualified?: boolean;

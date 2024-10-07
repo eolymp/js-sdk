@@ -18,7 +18,7 @@ export class ParticipantService {
     this.url = url;
   }
 
-  AddParticipant(input: AddParticipantInput, opts?: any): Promise<AddParticipantOutput> {
+  AssignParticipant(input: AssignParticipantInput, opts?: any): Promise<AssignParticipantOutput> {
     const path = "/participants";
 
     return this.cli.call("POST", this.url+path, input, opts);
@@ -42,31 +42,40 @@ export class ParticipantService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DisqualifyParticipant(input: DisqualifyParticipantInput, opts?: any): Promise<DisqualifyParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/disqualify";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.participantId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   UpdateParticipant(input: UpdateParticipantInput, opts?: any): Promise<UpdateParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'');
+    const path = "/participants/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.participantId);
+    delete(input.memberId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  RemoveParticipant(input: RemoveParticipantInput, opts?: any): Promise<RemoveParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'');
+  DisqualifyParticipant(input: DisqualifyParticipantInput, opts?: any): Promise<DisqualifyParticipantOutput> {
+    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/disqualify";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.participantId);
+    delete(input.memberId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DeleteParticipant(input: DeleteParticipantInput, opts?: any): Promise<DeleteParticipantOutput> {
+    const path = "/participants/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  DescribeParticipant(input: DescribeParticipantInput, opts?: any): Promise<DescribeParticipantOutput> {
+    const path = "/participants/"+encodeURIComponent(input.memberId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListParticipants(input: ListParticipantsInput, opts?: any): Promise<ListParticipantsOutput> {
@@ -75,16 +84,7 @@ export class ParticipantService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeParticipant(input: DescribeParticipantInput, opts?: any): Promise<DescribeParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.participantId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  IntrospectParticipant(input: IntrospectParticipantInput, opts?: any): Promise<IntrospectParticipantOutput> {
+  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
     const path = "/introspect";
 
     return this.cli.call("GET", this.url+path, input, opts);
@@ -101,53 +101,18 @@ export class ParticipantService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
-
-  VerifyPasscode(input: VerifyPasscodeInput, opts?: any): Promise<VerifyPasscodeOutput> {
-    const path = "/verify-passcode";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  EnterPasscode(input: EnterPasscodeInput, opts?: any): Promise<EnterPasscodeOutput> {
-    const path = "/enter-passcode";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  ResetPasscode(input: ResetPasscodeInput, opts?: any): Promise<ResetPasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.participantId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  SetPasscode(input: SetPasscodeInput, opts?: any): Promise<SetPasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.participantId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
-  RemovePasscode(input: RemovePasscodeInput, opts?: any): Promise<RemovePasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.participantId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
 }
 
-export type AddParticipantInput = {
+export type AssignParticipantInput = {
   contestId?: string;
   participant?: Participant;
+  memberId?: string;
+  groupId?: string;
+  unofficial?: boolean;
+  inactive?: boolean;
 }
 
-export type AddParticipantOutput = {
+export type AssignParticipantOutput = {
   participantId?: string;
 }
 
@@ -165,70 +130,39 @@ export type DisableParticipantInput = {
 
 export type DisableParticipantOutput = Record<string, unknown>;
 
+export type UpdateParticipantInput = {
+  patch?: string[];
+  contestId?: string;
+  memberId?: string;
+  participant?: Participant;
+}
+
+export type UpdateParticipantOutput = Record<string, unknown>;
+
 export type DisqualifyParticipantInput = {
   contestId?: string;
-  participantId?: string;
+  memberId?: string;
   disqualify?: boolean;
   reason?: Content;
 }
 
 export type DisqualifyParticipantOutput = Record<string, unknown>;
 
-export type UpdateParticipantInput = {
-  patch?: string[];
+export type DeleteParticipantInput = {
   contestId?: string;
-  participantId?: string;
+  memberId?: string;
+}
+
+export type DeleteParticipantOutput = Record<string, unknown>;
+
+export type DescribeParticipantInput = {
+  contestId?: string;
+  memberId?: string;
+}
+
+export type DescribeParticipantOutput = {
   participant?: Participant;
 }
-
-export type UpdateParticipantOutput = Record<string, unknown>;
-
-export type RemoveParticipantInput = {
-  contestId?: string;
-  participantId?: string;
-}
-
-export type RemoveParticipantOutput = Record<string, unknown>;
-
-export type VerifyPasscodeInput = {
-  contestId?: string;
-}
-
-export type VerifyPasscodeOutput = {
-  required?: boolean;
-  valid?: boolean;
-}
-
-export type EnterPasscodeInput = {
-  contestId?: string;
-  passcode?: string;
-}
-
-export type EnterPasscodeOutput = Record<string, unknown>;
-
-export type ResetPasscodeInput = {
-  contestId?: string;
-  participantId?: string;
-}
-
-export type ResetPasscodeOutput = {
-  passcode?: string;
-}
-
-export type SetPasscodeInput = {
-  contestId?: string;
-  participantId?: string;
-  passcode?: string;
-}
-
-export type SetPasscodeOutput = Record<string, unknown>;
-
-export type RemovePasscodeInput = {
-  contestId?: string;
-  participantId?: string;
-}
-
-export type RemovePasscodeOutput = Record<string, unknown>;
 
 export type ListParticipantsInput = {
   contestId?: string;
@@ -243,7 +177,7 @@ export type ListParticipantsInput_Filter = {
   id?: ExpressionID[];
   memberId?: ExpressionID[];
   groupId?: ExpressionID[];
-  name?: ExpressionString[];
+  displayName?: ExpressionString[];
   status?: ExpressionEnum[];
   startedAt?: ExpressionTimestamp[];
   unofficial?: ExpressionBool[];
@@ -254,6 +188,23 @@ export type ListParticipantsInput_Filter = {
 export type ListParticipantsOutput = {
   total?: number;
   items?: Participant[];
+}
+
+export type WatchParticipantInput = {
+  contestId?: string;
+  memberId?: string;
+}
+
+export type WatchParticipantOutput = {
+  participant?: Participant;
+}
+
+export type DescribeViewerInput = {
+  contestId?: string;
+}
+
+export type DescribeViewerOutput = {
+  participant?: Participant;
 }
 
 export type JoinContestInput = {
@@ -267,30 +218,4 @@ export type StartContestInput = {
 }
 
 export type StartContestOutput = Record<string, unknown>;
-
-export type IntrospectParticipantInput = {
-  contestId?: string;
-}
-
-export type IntrospectParticipantOutput = {
-  participant?: Participant;
-}
-
-export type WatchParticipantInput = {
-  contestId?: string;
-  participantId?: string;
-}
-
-export type WatchParticipantOutput = {
-  participant?: Participant;
-}
-
-export type DescribeParticipantInput = {
-  contestId?: string;
-  participantId?: string;
-}
-
-export type DescribeParticipantOutput = {
-  participant?: Participant;
-}
 
