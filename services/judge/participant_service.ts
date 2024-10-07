@@ -174,6 +174,7 @@ export type ListParticipantsInput = {
 }
 
 export type ListParticipantsInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   memberId?: ExpressionID[];
   groupId?: ExpressionID[];
