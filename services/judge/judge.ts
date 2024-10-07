@@ -225,7 +225,7 @@ export class Judge {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  AddParticipant(input: AssignParticipantInput, opts?: any): Promise<AssignParticipantOutput> {
+  AssignParticipant(input: AssignParticipantInput, opts?: any): Promise<AssignParticipantOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
 
     // Cleanup URL parameters to avoid any ambiguity
