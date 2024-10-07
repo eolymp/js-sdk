@@ -140,6 +140,7 @@ export type ListMembersInput = {
 }
 
 export type ListMembersInput_Filter = {
+  query?: string;
   id?: ExpressionID[];
   type?: ExpressionEnum[];
   name?: ExpressionString[];
