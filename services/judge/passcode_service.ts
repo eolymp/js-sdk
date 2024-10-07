@@ -28,28 +28,28 @@ export class PasscodeService {
   }
 
   ResetPasscode(input: ResetPasscodeInput, opts?: any): Promise<ResetPasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   SetPasscode(input: SetPasscodeInput, opts?: any): Promise<SetPasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RemovePasscode(input: RemovePasscodeInput, opts?: any): Promise<RemovePasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -73,7 +73,7 @@ export type EnterPasscodeOutput = Record<string, unknown>;
 
 export type ResetPasscodeInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
 }
 
 export type ResetPasscodeOutput = {
@@ -82,7 +82,7 @@ export type ResetPasscodeOutput = {
 
 export type SetPasscodeInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
   passcode?: string;
 }
 
@@ -90,7 +90,7 @@ export type SetPasscodeOutput = Record<string, unknown>;
 
 export type RemovePasscodeInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
 }
 
 export type RemovePasscodeOutput = Record<string, unknown>;

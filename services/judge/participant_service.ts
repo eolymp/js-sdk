@@ -43,37 +43,37 @@ export class ParticipantService {
   }
 
   UpdateParticipant(input: UpdateParticipantInput, opts?: any): Promise<UpdateParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'');
+    const path = "/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DisqualifyParticipant(input: DisqualifyParticipantInput, opts?: any): Promise<DisqualifyParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/disqualify";
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/disqualify";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteParticipant(input: DeleteParticipantInput, opts?: any): Promise<DeleteParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'');
+    const path = "/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeParticipant(input: DescribeParticipantInput, opts?: any): Promise<DescribeParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'');
+    const path = "/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -133,7 +133,7 @@ export type DisableParticipantOutput = Record<string, unknown>;
 export type UpdateParticipantInput = {
   patch?: string[];
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
   participant?: Participant;
 }
 
@@ -141,7 +141,7 @@ export type UpdateParticipantOutput = Record<string, unknown>;
 
 export type DisqualifyParticipantInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
   disqualify?: boolean;
   reason?: Content;
 }
@@ -150,14 +150,14 @@ export type DisqualifyParticipantOutput = Record<string, unknown>;
 
 export type DeleteParticipantInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
 }
 
 export type DeleteParticipantOutput = Record<string, unknown>;
 
 export type DescribeParticipantInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
 }
 
 export type DescribeParticipantOutput = {
@@ -192,7 +192,7 @@ export type ListParticipantsOutput = {
 
 export type WatchParticipantInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
 }
 
 export type WatchParticipantOutput = {

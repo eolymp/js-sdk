@@ -255,21 +255,21 @@ export class Judge {
   }
 
   UpdateParticipant(input: UpdateParticipantInput, opts?: any): Promise<UpdateParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteParticipant(input: DeleteParticipantInput, opts?: any): Promise<DeleteParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -284,11 +284,11 @@ export class Judge {
   }
 
   DescribeParticipant(input: DescribeParticipantInput, opts?: any): Promise<DescribeParticipantOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -339,31 +339,31 @@ export class Judge {
   }
 
   ResetPasscode(input: ResetPasscodeInput, opts?: any): Promise<ResetPasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   SetPasscode(input: SetPasscodeInput, opts?: any): Promise<SetPasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RemovePasscode(input: RemovePasscodeInput, opts?: any): Promise<RemovePasscodeOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -505,31 +505,31 @@ export class Judge {
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/score";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/score";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ImportScore(input: ImportScoreInput, opts?: any): Promise<ImportScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/scores";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ExportScore(input: ExportScoreInput, opts?: any): Promise<ExportScoreOutput> {
-    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.memberId||'')+"/scores";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

@@ -24,28 +24,28 @@ export class ScoreService {
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/score";
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/score";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ImportScore(input: ImportScoreInput, opts?: any): Promise<ImportScoreOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/scores";
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ExportScore(input: ExportScoreInput, opts?: any): Promise<ExportScoreOutput> {
-    const path = "/participants/"+encodeURIComponent(input.memberId||'')+"/scores";
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
+    delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -87,7 +87,7 @@ export type IntrospectScoreOutput = {
 
 export type WatchScoreInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
   mode?: string;
 }
 
@@ -97,7 +97,7 @@ export type WatchScoreOutput = {
 
 export type DescribeScoreInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
   mode?: string;
   timeOffset?: number;
 }
@@ -108,7 +108,7 @@ export type DescribeScoreOutput = {
 
 export type ImportScoreInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
   scores?: Score[];
 }
 
@@ -116,7 +116,7 @@ export type ImportScoreOutput = Record<string, unknown>;
 
 export type ExportScoreInput = {
   contestId?: string;
-  memberId?: string;
+  participantId?: string;
 }
 
 export type ExportScoreOutput = {
