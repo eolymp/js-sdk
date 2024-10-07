@@ -242,6 +242,7 @@ export type ListParticipantsInput = {
 export type ListParticipantsInput_Filter = {
   id?: ExpressionID[];
   memberId?: ExpressionID[];
+  groupId?: ExpressionID[];
   name?: ExpressionString[];
   status?: ExpressionEnum[];
   startedAt?: ExpressionTimestamp[];
