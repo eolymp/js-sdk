@@ -46,6 +46,12 @@ export class SubmissionService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DescribeSubmissionUsage(input: DescribeSubmissionUsageInput, opts?: any): Promise<DescribeSubmissionUsageOutput> {
+    const path = "/usage/submissions";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type CreateSubmissionInput = {
@@ -113,5 +119,15 @@ export type ListSubmissionsOutput = {
   items?: Submission[];
   nextPageCursor?: string;
   prevPageCursor?: string;
+}
+
+export type DescribeSubmissionUsageInput = {
+  periodStart?: string;
+  periodEnd?: string;
+}
+
+export type DescribeSubmissionUsageOutput = {
+  totalSubmissions?: number;
+  retestedSubmissions?: number;
 }
 
