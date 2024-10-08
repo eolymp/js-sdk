@@ -128,6 +128,8 @@ export type DescribeSubmissionUsageInput = {
 
 export type DescribeSubmissionUsageOutput = {
   totalSubmissions?: number;
-  retestedSubmissions?: number;
+  monthlySubmissions?: number;
+  monthlyEvaluations?: number;
+  availableEvaluations?: number;
 }
 
