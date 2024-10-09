@@ -58,6 +58,15 @@ export class ProblemService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  SyncProblem(input: SyncProblemInput, opts?: any): Promise<SyncProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/sync";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   VoteProblem(input: VoteProblemInput, opts?: any): Promise<VoteProblemOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/vote";
 
