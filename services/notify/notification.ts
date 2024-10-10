@@ -8,6 +8,7 @@ export type Notification = {
   topic?: string;
   parameters?: Record<string, string>;
   createdAt?: string;
+  sentAt?: string;
   readAt?: string;
 }
 
