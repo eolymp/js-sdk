@@ -118,6 +118,7 @@ export type DescribePreferencesOutput = {
 }
 
 export type UpdatePreferencesInput = {
+  patch?: string[];
   spaceId?: string;
   preferences?: Preferences;
 }
