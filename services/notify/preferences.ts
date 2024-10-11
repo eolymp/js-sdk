@@ -3,7 +3,7 @@
 
 
 export type Preferences = {
-  subscription?: Preferences_Subscription[];
+  subscriptions?: Preferences_Subscription[];
 }
 
 export type Preferences_Subscription = {

@@ -51,19 +51,13 @@ export class NotificationService {
   }
 
   DescribePreferences(input: DescribePreferencesInput, opts?: any): Promise<DescribePreferencesOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/preferences";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.spaceId);
+    const path = "/preferences/notifications";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdatePreferences(input: UpdatePreferencesInput, opts?: any): Promise<UpdatePreferencesOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/preferences";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.spaceId);
+    const path = "/preferences/notifications";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
