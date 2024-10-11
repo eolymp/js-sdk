@@ -75,6 +75,15 @@ export class ProblemService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ListVersions(input: ListVersionsInput, opts?: any): Promise<ListVersionsOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/versions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type ProblemChangedEvent = {
