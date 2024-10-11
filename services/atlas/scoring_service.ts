@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Score } from "./scoring_score"
-import { Submission } from "./submission"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -31,12 +30,6 @@ export class ScoringService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  ListProblemTop(input: ListProblemTopInput, opts?: any): Promise<ListProblemTopOutput> {
-    const path = "/top";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
 }
 
 export type ScoreChangedEvent = {
@@ -50,12 +43,6 @@ export type DescribeScoreInput = {
 
 export type DescribeScoreOutput = {
   score?: Score;
-}
-
-export type ListProblemTopInput = Record<string, unknown>;
-
-export type ListProblemTopOutput = {
-  items?: Submission[];
 }
 
 export type DescribeProblemGradingInput = Record<string, unknown>;

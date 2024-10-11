@@ -52,6 +52,15 @@ export class SubmissionService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ListProblemTop(input: ListProblemTopInput, opts?: any): Promise<ListProblemTopOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/top";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type SubmissionChangedEvent = {
@@ -137,5 +146,13 @@ export type DescribeSubmissionUsageOutput = {
   monthlySubmissions?: number;
   monthlyEvaluations?: number;
   availableEvaluations?: number;
+}
+
+export type ListProblemTopInput = {
+  problemId?: string;
+}
+
+export type ListProblemTopOutput = {
+  items?: Submission[];
 }
 
