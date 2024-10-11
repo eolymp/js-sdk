@@ -29,6 +29,7 @@ export class BookmarkService {
 }
 
 export type BookmarkChangedEvent = {
+  problemId?: string;
   memberId?: string;
   before?: boolean;
   after?: boolean;
