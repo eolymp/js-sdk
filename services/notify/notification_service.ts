@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Notification } from "./notification"
-import { Subscription } from "./subscription"
+import { Preferences } from "./preferences"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -50,8 +50,8 @@ export class NotificationService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeSubscriptions(input: DescribeSubscriptionsInput, opts?: any): Promise<DescribeSubscriptionsOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/notifications";
+  DescribePreferences(input: DescribePreferencesInput, opts?: any): Promise<DescribePreferencesOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/preferences";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -59,8 +59,8 @@ export class NotificationService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  UpdateSubscriptions(input: UpdateSubscriptionsInput, opts?: any): Promise<UpdateSubscriptionsOutput> {
-    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/notifications";
+  UpdatePreferences(input: UpdatePreferencesInput, opts?: any): Promise<UpdatePreferencesOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/preferences";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.spaceId);
@@ -109,18 +109,18 @@ export type ListNotificationsOutput = {
   items?: Notification[];
 }
 
-export type DescribeSubscriptionsInput = {
+export type DescribePreferencesInput = {
   spaceId?: string;
 }
 
-export type DescribeSubscriptionsOutput = {
-  subscriptions?: Subscription[];
+export type DescribePreferencesOutput = {
+  preferences?: Preferences;
 }
 
-export type UpdateSubscriptionsInput = {
+export type UpdatePreferencesInput = {
   spaceId?: string;
-  subscriptions?: Subscription[];
+  preferences?: Preferences;
 }
 
-export type UpdateSubscriptionsOutput = Record<string, unknown>;
+export type UpdatePreferencesOutput = Record<string, unknown>;
 

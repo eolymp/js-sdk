@@ -2,7 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Subscription = {
+export type Preferences = {
+  subscription?: Preferences_Subscription[];
+}
+
+export type Preferences_Subscription = {
   topic?: string;
   digest?: string;
 }
