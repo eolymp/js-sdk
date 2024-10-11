@@ -33,6 +33,8 @@ export class ScoringService {
 }
 
 export type ScoreChangedEvent = {
+  problemId?: string;
+  memberId?: string;
   before?: Score;
   after?: Score;
 }
