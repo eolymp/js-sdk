@@ -106,6 +106,17 @@ export class TicketService {
   }
 }
 
+export type TicketChangedEvent = {
+  before?: Ticket;
+  after?: Ticket;
+}
+
+export type ReplyChangedEvent = {
+  ticketId?: string;
+  before?: Reply;
+  after?: Reply;
+}
+
 export type CreateTicketInput = {
   contestId?: string;
   subject?: string;

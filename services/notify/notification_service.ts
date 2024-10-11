@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Notification } from "./notification"
+import { Subscription } from "./subscription"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -49,14 +50,20 @@ export class NotificationService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeNotificationConfig(input: DescribeNotificationConfigInput, opts?: any): Promise<DescribeNotificationConfigOutput> {
-    const path = "/configs/notifications";
+  DescribeSubscriptions(input: DescribeSubscriptionsInput, opts?: any): Promise<DescribeSubscriptionsOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/notifications";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  UpdateNotificationConfig(input: UpdateNotificationConfigInput, opts?: any): Promise<UpdateNotificationConfigOutput> {
-    const path = "/configs/notifications";
+  UpdateSubscriptions(input: UpdateSubscriptionsInput, opts?: any): Promise<UpdateSubscriptionsOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/notifications";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -102,15 +109,18 @@ export type ListNotificationsOutput = {
   items?: Notification[];
 }
 
-export type DescribeNotificationConfigInput = Record<string, unknown>;
-
-export type DescribeNotificationConfigOutput = {
-  emailSubscriptions?: string[];
+export type DescribeSubscriptionsInput = {
+  spaceId?: string;
 }
 
-export type UpdateNotificationConfigInput = {
-  emailSubscriptions?: string[];
+export type DescribeSubscriptionsOutput = {
+  subscriptions?: Subscription[];
 }
 
-export type UpdateNotificationConfigOutput = Record<string, unknown>;
+export type UpdateSubscriptionsInput = {
+  spaceId?: string;
+  subscriptions?: Subscription[];
+}
+
+export type UpdateSubscriptionsOutput = Record<string, unknown>;
 
