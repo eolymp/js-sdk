@@ -62,6 +62,10 @@ export class NotificationService {
   }
 }
 
+export type NotificationEvent = {
+  notification?: Notification;
+}
+
 export type CreateNotificationInput = {
   notification?: Notification;
 }
