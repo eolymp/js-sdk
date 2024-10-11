@@ -77,6 +77,11 @@ export class ProblemService {
   }
 }
 
+export type ProblemChangedEvent = {
+  before?: Problem;
+  after?: Problem;
+}
+
 export type CreateProblemInput = {
   problem?: Problem;
   statement?: Statement;

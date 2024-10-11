@@ -68,8 +68,13 @@ export class StatementService {
   }
 }
 
-export type ListStatementsInput = {
+export type StatementChangedEvent = {
   problemId?: string;
+  before?: Statement;
+  after?: Statement;
+}
+
+export type ListStatementsInput = {
   render?: boolean;
   version?: number;
 }
@@ -80,7 +85,6 @@ export type ListStatementsOutput = {
 }
 
 export type DescribeStatementInput = {
-  problemId?: string;
   statementId?: string;
   render?: boolean;
   version?: number;
@@ -91,7 +95,6 @@ export type DescribeStatementOutput = {
 }
 
 export type LookupStatementInput = {
-  problemId?: string;
   locale?: string;
   render?: boolean;
   version?: number;
@@ -102,7 +105,6 @@ export type LookupStatementOutput = {
 }
 
 export type PreviewStatementInput = {
-  problemId?: string;
   statement?: Statement;
 }
 
@@ -111,7 +113,6 @@ export type PreviewStatementOutput = {
 }
 
 export type CreateStatementInput = {
-  problemId?: string;
   statement?: Statement;
 }
 
@@ -121,7 +122,6 @@ export type CreateStatementOutput = {
 
 export type UpdateStatementInput = {
   patch?: string[];
-  problemId?: string;
   statementId?: string;
   statement?: Statement;
 }
@@ -129,7 +129,6 @@ export type UpdateStatementInput = {
 export type UpdateStatementOutput = Record<string, unknown>;
 
 export type DeleteStatementInput = {
-  problemId?: string;
   statementId?: string;
 }
 

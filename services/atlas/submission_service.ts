@@ -54,6 +54,16 @@ export class SubmissionService {
   }
 }
 
+export type SubmissionChangedEvent = {
+  before?: Submission;
+  after?: Submission;
+}
+
+export type SubmissionCompleteEvent = {
+  submission?: Submission;
+  update?: boolean;
+}
+
 export type CreateSubmissionInput = {
   problemId?: string;
   lang?: string;
@@ -65,7 +75,6 @@ export type CreateSubmissionOutput = {
 }
 
 export type DescribeSubmissionInput = {
-  problemId?: string;
   submissionId?: string;
 }
 
@@ -75,7 +84,6 @@ export type DescribeSubmissionOutput = {
 }
 
 export type WatchSubmissionInput = {
-  problemId?: string;
   submissionId?: string;
   extra?: string[];
 }
@@ -85,7 +93,6 @@ export type WatchSubmissionOutput = {
 }
 
 export type RetestSubmissionInput = {
-  problemId?: string;
   submissionId?: string;
   debug?: boolean;
 }
@@ -93,7 +100,6 @@ export type RetestSubmissionInput = {
 export type RetestSubmissionOutput = Record<string, unknown>;
 
 export type ListSubmissionsInput = {
-  problemId?: string;
   after?: string;
   offset?: number;
   size?: number;

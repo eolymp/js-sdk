@@ -2,15 +2,15 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Attachment } from "./attachment"
-import { Checker } from "./checker"
 import { Template } from "./code_template"
 import { Editorial } from "./editorial"
-import { Interactor } from "./interactor"
 import { Problem } from "./problem"
 import { Script } from "./script"
 import { Solution } from "./solution"
 import { Statement } from "./statement"
+import { Checker } from "./testing_checker"
 import { TestingConfig } from "./testing_config"
+import { Interactor } from "./testing_interactor"
 import { Test } from "./testing_test"
 import { Testset } from "./testing_testset"
 

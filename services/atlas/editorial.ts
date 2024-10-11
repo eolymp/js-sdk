@@ -5,7 +5,6 @@ import { Content } from "../ecm/content"
 
 export type Editorial = {
   id?: string;
-  problemId?: string;
   locale?: string;
   content?: Content;
   downloadLink?: string;

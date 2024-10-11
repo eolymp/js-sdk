@@ -5,7 +5,6 @@ import { Content } from "../ecm/content"
 
 export type Statement = {
   id?: string;
-  problemId?: string;
   locale?: string;
   title?: string;
   content?: Content;

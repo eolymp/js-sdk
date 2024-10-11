@@ -58,7 +58,6 @@ export class SolutionService {
 }
 
 export type ListSolutionsInput = {
-  problemId?: string;
   version?: number;
   offset?: number;
   size?: number;
@@ -81,7 +80,6 @@ export type ListSolutionsOutput = {
 }
 
 export type DescribeSolutionInput = {
-  problemId?: string;
   solutionId?: string;
   version?: number;
 }
@@ -91,7 +89,6 @@ export type DescribeSolutionOutput = {
 }
 
 export type CreateSolutionInput = {
-  problemId?: string;
   solution?: Solution;
 }
 
@@ -101,7 +98,6 @@ export type CreateSolutionOutput = {
 
 export type UpdateSolutionInput = {
   patch?: string[];
-  problemId?: string;
   solutionId?: string;
   solution?: Solution;
 }
@@ -109,7 +105,6 @@ export type UpdateSolutionInput = {
 export type UpdateSolutionOutput = Record<string, unknown>;
 
 export type DeleteSolutionInput = {
-  problemId?: string;
   solutionId?: string;
 }
 

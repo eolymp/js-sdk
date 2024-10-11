@@ -28,16 +28,19 @@ export class BookmarkService {
   }
 }
 
+export type BookmarkChangedEvent = {
+  memberId?: string;
+  before?: boolean;
+  after?: boolean;
+}
+
 export type SetBookmarkInput = {
-  problemId?: string;
   bookmark?: boolean;
 }
 
 export type SetBookmarkOutput = Record<string, unknown>;
 
-export type GetBookmarkInput = {
-  problemId?: string;
-}
+export type GetBookmarkInput = Record<string, unknown>;
 
 export type GetBookmarkOutput = {
   bookmark?: boolean;

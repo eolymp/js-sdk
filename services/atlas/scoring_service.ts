@@ -39,8 +39,12 @@ export class ScoringService {
   }
 }
 
+export type ScoreChangedEvent = {
+  before?: Score;
+  after?: Score;
+}
+
 export type DescribeScoreInput = {
-  problemId?: string;
   memberId?: string;
 }
 
@@ -48,17 +52,13 @@ export type DescribeScoreOutput = {
   score?: Score;
 }
 
-export type ListProblemTopInput = {
-  problemId?: string;
-}
+export type ListProblemTopInput = Record<string, unknown>;
 
 export type ListProblemTopOutput = {
   items?: Submission[];
 }
 
-export type DescribeProblemGradingInput = {
-  problemId?: string;
-}
+export type DescribeProblemGradingInput = Record<string, unknown>;
 
 export type DescribeProblemGradingOutput = {
   ranges?: DescribeProblemGradingOutput_Range[];

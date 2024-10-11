@@ -63,7 +63,6 @@ export class CodeTemplateService {
 }
 
 export type CreateCodeTemplateInput = {
-  problemId?: string;
   template?: Template;
 }
 
@@ -72,7 +71,6 @@ export type CreateCodeTemplateOutput = {
 }
 
 export type UpdateCodeTemplateInput = {
-  problemId?: string;
   templateId?: string;
   template?: Template;
 }
@@ -80,14 +78,12 @@ export type UpdateCodeTemplateInput = {
 export type UpdateCodeTemplateOutput = Record<string, unknown>;
 
 export type DeleteCodeTemplateInput = {
-  problemId?: string;
   templateId?: string;
 }
 
 export type DeleteCodeTemplateOutput = Record<string, unknown>;
 
 export type ListCodeTemplatesInput = {
-  problemId?: string;
   version?: number;
 }
 
@@ -97,7 +93,6 @@ export type ListCodeTemplatesOutput = {
 }
 
 export type DescribeCodeTemplateInput = {
-  problemId?: string;
   templateId?: string;
   version?: number;
 }
@@ -107,7 +102,6 @@ export type DescribeCodeTemplateOutput = {
 }
 
 export type LookupCodeTemplateInput = {
-  problemId?: string;
   runtime?: string;
 }
 

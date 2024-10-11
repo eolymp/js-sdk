@@ -5,7 +5,6 @@ import { File } from "../executor/file"
 
 export type Template = {
   id?: string;
-  problemId?: string;
   runtime?: string;
   secret?: boolean;
   source?: string;
