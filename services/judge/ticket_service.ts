@@ -85,6 +85,16 @@ export class TicketService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  DescribeReply(input: DescribeReplyInput, opts?: any): Promise<DescribeReplyOutput> {
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies/"+encodeURIComponent(input.replyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+    delete(input.replyId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   DeleteReply(input: DeleteReplyInput, opts?: any): Promise<DeleteReplyOutput> {
     const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies/"+encodeURIComponent(input.replyId||'');
 
@@ -241,6 +251,14 @@ export type ListRepliesOutput = {
   total?: number;
   items?: Reply[];
 }
+
+export type DescribeReplyInput = {
+  ticketId?: string;
+  replyId?: string;
+  extra?: string[];
+}
+
+export type DescribeReplyOutput = Record<string, unknown>;
 
 export type DeleteReplyInput = {
   ticketId?: string;
