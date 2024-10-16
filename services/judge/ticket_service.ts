@@ -258,7 +258,9 @@ export type DescribeReplyInput = {
   extra?: string[];
 }
 
-export type DescribeReplyOutput = Record<string, unknown>;
+export type DescribeReplyOutput = {
+  reply?: Reply;
+}
 
 export type DeleteReplyInput = {
   ticketId?: string;
