@@ -8,6 +8,7 @@ export type Claims = {
   subject?: string;
   email?: string;
   emailVerified?: boolean;
+  emailRestricted?: boolean;
   name?: string;
   nickname?: string;
   picture?: string;

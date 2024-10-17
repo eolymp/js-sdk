@@ -9,6 +9,7 @@ export type User = {
   nicknameChangeTimeout?: number;
   email?: string;
   emailVerified?: boolean;
+  emailRestricted?: boolean;
   emailSubscriptions?: string[];
   password?: string;
   passwordAge?: number;
