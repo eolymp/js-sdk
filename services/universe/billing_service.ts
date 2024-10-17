@@ -3,6 +3,7 @@
 
 import { Invoice } from "../commerce/invoice"
 import { Billing_Information, Billing_Subscription } from "./billing"
+import { Plan } from "./plan"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -103,6 +104,12 @@ export class BillingService {
 
   ListInvoices(input: ListInvoicesInput, opts?: any): Promise<ListInvoicesOutput> {
     const path = "/billing/invoices";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ListAvailablePlans(input: ListAvailablePlansInput, opts?: any): Promise<ListAvailablePlansOutput> {
+    const path = "/billing/plans";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -213,5 +220,18 @@ export type ListInvoicesInput = {
 export type ListInvoicesOutput = {
   total?: number;
   items?: Invoice[];
+}
+
+export type ListAvailablePlansInput = {
+  offset?: number;
+  size?: number;
+  locale?: string;
+  currency?: string;
+  extra?: string[];
+}
+
+export type ListAvailablePlansOutput = {
+  total?: number;
+  items?: Plan[];
 }
 

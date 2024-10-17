@@ -10,7 +10,7 @@ export type Plan = {
   description?: Content;
   quota?: Quota;
   labels?: string[];
-  available?: boolean;
+  requiresApproval?: boolean;
   minSeats?: number;
   maxSeats?: number;
   variants?: Plan_Variant[];

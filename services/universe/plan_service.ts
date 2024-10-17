@@ -48,7 +48,6 @@ export type ListPlansInput = {
   size?: number;
   locale?: string;
   currency?: string;
-  showUnavailable?: boolean;
   extra?: string[];
 }
 
