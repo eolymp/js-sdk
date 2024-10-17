@@ -10,5 +10,6 @@ export type IdentityConfig = {
   displayNameType?: string;
   displayNameAttribute?: string;
   allowSignUp?: boolean;
+  requireEmailVerified?: boolean;
 }
 

@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { IdentityConfig } from "./configuration_identity"
-import { IdentityProvider_OIDC } from "./configuration_idp"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -17,18 +16,6 @@ export class ConfigurationService {
     this.url = url;
   }
 
-  DescribeIdentityProvider(input: DescribeIdentityProviderInput, opts?: any): Promise<DescribeIdentityProviderOutput> {
-    const path = "/idp";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ConfigureIdentityProvider(input: ConfigureIdentityProviderInput, opts?: any): Promise<ConfigureIdentityProviderOutput> {
-    const path = "/idp";
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
   DescribeIdentityConfig(input: DescribeIdentityConfigInput, opts?: any): Promise<DescribeIdentityConfigOutput> {
     const path = "/configs/identity";
 
@@ -41,20 +28,6 @@ export class ConfigurationService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 }
-
-export type DescribeIdentityProviderInput = Record<string, unknown>;
-
-export type DescribeIdentityProviderOutput = {
-  local?: boolean;
-  oidc?: IdentityProvider_OIDC;
-}
-
-export type ConfigureIdentityProviderInput = {
-  local?: boolean;
-  oidc?: IdentityProvider_OIDC;
-}
-
-export type ConfigureIdentityProviderOutput = Record<string, unknown>;
 
 export type DescribeIdentityConfigInput = Record<string, unknown>;
 
