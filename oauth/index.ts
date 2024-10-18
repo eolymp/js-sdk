@@ -33,6 +33,7 @@ export type UserInfoOutput = {
   profile?: string;
   email?: string;
   email_verified?: boolean;
+  email_restricted?: boolean;
   locale?: string;
 }
 
