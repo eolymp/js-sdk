@@ -37,6 +37,7 @@ export type EvaluationTask_Run = {
   index?: number;
   debug?: boolean;
   cost?: number;
+  env?: Record<string, string>;
   labels?: string[];
   inputUrl?: string;
   inputContent?: string;
