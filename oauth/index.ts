@@ -22,6 +22,12 @@ export type TokenOutput = {
   scope?: string;
 };
 
+export type RevokeInput = {
+  token: string;
+};
+
+export type RevokeOutput = {[key: string]: string};
+
 export type UserInfoOutput = {
   sub?: string;
   name?: string;
@@ -39,6 +45,7 @@ export type UserInfoOutput = {
 
 export type OAuthConfig = {
   tokenEndpoint?: string
+  revokeEndpoint?: string
   userinfoEndpoint?: string
 }
 
@@ -65,6 +72,22 @@ export class OAuth {
     });
 
     return await resp.json() as TokenOutput;
+  }
+
+  async revoke(input: RevokeInput): Promise<RevokeOutput> {
+    if (!this.config?.revokeEndpoint) {
+      return Promise.reject(new Error('revoke endpoint is not configured'));
+    }
+
+    const resp = await this.client.fetch(this.config?.revokeEndpoint, {
+      method: 'POST',
+      body: new URLSearchParams(input as Record<string, string>).toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+
+    return await resp.json() as RevokeOutput;
   }
 
   async userinfo(): Promise<UserInfoOutput> {
