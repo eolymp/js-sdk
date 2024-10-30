@@ -19,7 +19,7 @@ export class RISCService {
 export type SecurityEvent = {
   iss?: string;
   aud?: string;
-  iat?: string;
+  iat?: number;
   jti?: string;
   events?: SecurityEvent_Event[];
 }
