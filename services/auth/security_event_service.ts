@@ -22,6 +22,7 @@ export type SecurityEvent = {
   aud?: string;
   iat?: number;
   jti?: string;
+  sid?: string;
   events?: SecurityEvent_Event[];
 }
 
