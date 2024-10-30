@@ -16,6 +16,31 @@ export class RISCService {
   }
 }
 
+export type SecurityEvent = {
+  iss?: string;
+  aud?: string;
+  iat?: string;
+  jti?: string;
+  events?: SecurityEvent_Event[];
+}
+
+export type SecurityEvent_Subject = {
+  format?: string;
+  iss?: string;
+  sub?: string;
+  email?: string;
+}
+
+export type SecurityEvent_Event = {
+  type?: string;
+  subject?: SecurityEvent_Subject;
+  reason?: string;
+  state?: string;
+  token?: string;
+  tokenType?: string;
+  tokenIdentifierAlg?: string;
+}
+
 export type HandleSecurityEventInput = {
   securityEvent?: string;
 }
