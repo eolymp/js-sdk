@@ -19,12 +19,6 @@ export class Cognito {
     this.url = url;
   }
 
-  Signout(input: SignoutInput, opts?: any): Promise<SignoutOutput> {
-    const path = "/self/signout";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   CreateAccessKey(input: CreateAccessKeyInput, opts?: any): Promise<CreateAccessKeyOutput> {
     const path = "/access-keys";
 
@@ -118,30 +112,6 @@ export class Cognito {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  IntrospectRoles(input: IntrospectRolesInput, opts?: any): Promise<IntrospectRolesOutput> {
-    const path = "/self/roles";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListRoles(input: ListRolesInput, opts?: any): Promise<ListRolesOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId||'')+"/roles";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.userId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  UpdateRoles(input: UpdateRolesInput, opts?: any): Promise<UpdateRolesOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId||'')+"/roles";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.userId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
   StartRecovery(input: StartRecoveryInput, opts?: any): Promise<StartRecoveryOutput> {
     const path = "/self/recovery";
 
@@ -162,62 +132,6 @@ export class Cognito {
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
-}
-
-export type CreateTokenInput = {
-  grantType?: string;
-  username?: string;
-  password?: string;
-  clientId?: string;
-  clientSecret?: string;
-  code?: string;
-  codeVerifier?: string;
-  scope?: string;
-  refreshToken?: string;
-}
-
-export type CreateTokenOutput = {
-  token?: string;
-  type?: string;
-  expiresAt?: string;
-  scopes?: string[];
-  refreshToken?: string;
-  userId?: string;
-  username?: string;
-}
-
-export type IntrospectTokenInput = {
-  token?: string;
-}
-
-export type IntrospectTokenOutput = {
-  active?: boolean;
-  scope?: string;
-  expire?: string;
-  subject?: string;
-  audience?: string;
-  issuer?: string;
-  name?: string;
-  nickname?: string;
-  picture?: string;
-  email?: string;
-  emailVerified?: boolean;
-  locale?: string;
-}
-
-export type CreateAuthorizationInput = {
-  clientId?: string;
-  codeChallenge?: string;
-  codeChallengeMethod?: string;
-  redirectUri?: string;
-  responseType?: string;
-  scope?: string;
-  state?: string;
-}
-
-export type CreateAuthorizationOutput = {
-  authorizationCode?: string;
-  redirectUri?: string;
 }
 
 export type IntrospectQuotaInput = Record<string, unknown>;
@@ -358,53 +272,11 @@ export type CompleteRecoverInput = {
 
 export type CompleteRecoverOutput = Record<string, unknown>;
 
-export type IntrospectRolesInput = Record<string, unknown>;
-
-export type IntrospectRolesOutput = {
-  roles?: string[];
-}
-
-export type ListRolesInput = {
-  userId?: string;
-}
-
-export type ListRolesOutput = {
-  roles?: string[];
-}
-
-export type UpdateRolesInput = {
-  userId?: string;
-  roles?: string[];
-}
-
-export type UpdateRolesOutput = Record<string, unknown>;
-
 export type SelfDestructInput = Record<string, unknown>;
 
 export type SelfDestructOutput = {
   deleteOn?: string;
 }
-
-export type RevokeTokenInput = {
-  token?: string;
-}
-
-export type RevokeTokenOutput = Record<string, unknown>;
-
-export type SigninInput = {
-  username?: string;
-  password?: string;
-}
-
-export type SigninOutput = {
-  user?: User;
-}
-
-export type SignoutInput = {
-  everywhere?: boolean;
-}
-
-export type SignoutOutput = Record<string, unknown>;
 
 export type CreateAccessKeyInput = {
   name?: string;

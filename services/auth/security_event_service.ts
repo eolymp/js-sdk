@@ -7,7 +7,7 @@ interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class RISCService {
+export class SecurityEventService {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -45,7 +45,7 @@ export type SecurityEvent_Event = {
 }
 
 export type HandleSecurityEventInput = {
-  securityEvent?: string;
+  signedSecurityEvent?: string;
 }
 
 export type HandleSecurityEventOutput = Record<string, unknown>;

@@ -6,6 +6,7 @@ export type Claims = {
   id?: string;
   issuer?: string;
   subject?: string;
+  sessionId?: string;
   email?: string;
   emailVerified?: boolean;
   emailRestricted?: boolean;
