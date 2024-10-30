@@ -35,7 +35,7 @@ export type SecurityEvent_Subject = {
 
 export type SecurityEvent_Event = {
   type?: string;
-  subjects?: SecurityEvent_Subject;
+  subject?: SecurityEvent_Subject;
   claims?: Claims;
   reason?: string;
   state?: string;
