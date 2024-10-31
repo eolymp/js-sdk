@@ -190,9 +190,7 @@ export type WatchRunOutput = {
   run?: Run;
 }
 
-export type ListRuntimesInput = {
-  problemId?: string;
-}
+export type ListRuntimesInput = Record<string, unknown>;
 
 export type ListRuntimesOutput = {
   total?: number;
