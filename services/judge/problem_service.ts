@@ -112,7 +112,7 @@ export class ProblemService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListRuntime(input: ListRuntimeInput, opts?: any): Promise<ListRuntimeOutput> {
+  ListRuntimes(input: ListRuntimesInput, opts?: any): Promise<ListRuntimesOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/runtime";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -228,12 +228,12 @@ export type ListExamplesOutput = {
   items?: Problem_Test[];
 }
 
-export type ListRuntimeInput = {
+export type ListRuntimesInput = {
   contestId?: string;
   problemId?: string;
 }
 
-export type ListRuntimeOutput = {
+export type ListRuntimesOutput = {
   total?: number;
   items?: Runtime[];
 }
