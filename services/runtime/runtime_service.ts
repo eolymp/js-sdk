@@ -49,7 +49,7 @@ export class RuntimeService {
   }
 
   DescribeCodeTemplate(input: DescribeCodeTemplateInput, opts?: any): Promise<DescribeCodeTemplateOutput> {
-    const path = "/exec/runtime/"+encodeURIComponent(input.runtimeId||'')+"/template";
+    const path = "/runtime/"+encodeURIComponent(input.runtimeId||'')+"/template";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runtimeId);
