@@ -6,6 +6,7 @@ import { Statement } from "../atlas/statement"
 import { Submission } from "../atlas/submission"
 import { Test } from "../atlas/testing_test"
 import { Run } from "../playground/run"
+import { Runtime } from "../runtime/runtime"
 import { ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 
 interface Client {
@@ -80,6 +81,12 @@ export class ProblemService {
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListRuntimes(input: ListRuntimesInput, opts?: any): Promise<ListRuntimesOutput> {
+    const path = "/runtime";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -181,5 +188,14 @@ export type WatchRunInput = {
 
 export type WatchRunOutput = {
   run?: Run;
+}
+
+export type ListRuntimesInput = {
+  problemId?: string;
+}
+
+export type ListRuntimesOutput = {
+  total?: number;
+  items?: Runtime[];
 }
 
