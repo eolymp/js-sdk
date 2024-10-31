@@ -19,7 +19,7 @@ export class RuntimeService {
   }
 
   DescribeLanguage(input: DescribeLanguageInput, opts?: any): Promise<DescribeLanguageOutput> {
-    const path = "/exec/languages/"+encodeURIComponent(input.languageId||'');
+    const path = "/languages/"+encodeURIComponent(input.languageId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.languageId);
@@ -28,13 +28,13 @@ export class RuntimeService {
   }
 
   ListLanguages(input: ListLanguagesInput, opts?: any): Promise<ListLanguagesOutput> {
-    const path = "/exec/languages";
+    const path = "/languages";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeRuntime(input: DescribeRuntimeInput, opts?: any): Promise<DescribeRuntimeOutput> {
-    const path = "/exec/runtime/"+encodeURIComponent(input.runtimeId||'');
+    const path = "/runtime/"+encodeURIComponent(input.runtimeId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.runtimeId);
@@ -43,7 +43,7 @@ export class RuntimeService {
   }
 
   ListRuntimes(input: ListRuntimesInput, opts?: any): Promise<ListRuntimesOutput> {
-    const path = "/exec/runtime";
+    const path = "/runtime";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
