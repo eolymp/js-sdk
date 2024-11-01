@@ -8,9 +8,9 @@ export type Problem = {
   links?: Record<string, string>;
   number?: number;
   visible?: boolean;
-  private?: boolean;
   origin?: string;
   topics?: string[];
+  allowedRuntimes?: string[];
   score?: number;
   constraints?: Problem_Constraints;
   acceptanceRate?: number;
