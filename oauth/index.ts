@@ -1,4 +1,4 @@
-import {Client} from '../client';
+import {CallOptions, Client} from '../client';
 
 export type TokenInput = {
   grant_type: string;
@@ -56,7 +56,7 @@ export class OAuth {
     this.config = config;
   }
 
-  async token(input: TokenInput): Promise<TokenOutput> {
+  async token(input: TokenInput, opts?: CallOptions): Promise<TokenOutput> {
     if (!this.config?.tokenEndpoint) {
       return Promise.reject(new Error('token endpoint is not configured'));
     }
@@ -64,15 +64,17 @@ export class OAuth {
     const resp = await this.client.fetch(this.config?.tokenEndpoint, {
       method: 'POST',
       body: new URLSearchParams(input as Record<string, string>).toString(),
+      signal: opts?.signal,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        ...opts?.headers,
       },
     });
 
     return await resp.json() as TokenOutput;
   }
 
-  async revoke(input: RevokeInput): Promise<void> {
+  async revoke(input: RevokeInput, opts?: CallOptions): Promise<void> {
     if (!this.config?.revokeEndpoint) {
       return Promise.reject(new Error('revoke endpoint is not configured'));
     }
@@ -82,6 +84,7 @@ export class OAuth {
       body: new URLSearchParams(input as Record<string, string>).toString(),
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        ...opts?.headers,
       },
     });
   }
