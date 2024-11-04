@@ -5,7 +5,6 @@
 export type Language = {
   id?: string;
   name?: string;
-  type?: string;
   deprecated?: boolean;
 }
 

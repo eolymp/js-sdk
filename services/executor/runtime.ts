@@ -6,7 +6,6 @@ export type Runtime = {
   id?: string;
   lang?: string;
   version?: string;
-  type?: string;
   name?: string;
   deprecated?: boolean;
 }
