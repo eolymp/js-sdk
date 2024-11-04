@@ -5,12 +5,12 @@
 export type Problem = {
   id?: string;
   url?: string;
+  type?: string;
   links?: Record<string, string>;
   number?: number;
   visible?: boolean;
   origin?: string;
   topics?: string[];
-  allowedRuntimes?: string[];
   score?: number;
   constraints?: Problem_Constraints;
   acceptanceRate?: number;
