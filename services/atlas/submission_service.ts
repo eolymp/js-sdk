@@ -133,7 +133,6 @@ export type ListSubmissionsOutput = {
   total?: number;
   items?: Submission[];
   nextPageCursor?: string;
-  prevPageCursor?: string;
 }
 
 export type DescribeSubmissionUsageInput = {

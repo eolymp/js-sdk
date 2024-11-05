@@ -196,7 +196,6 @@ export type ListTicketsOutput = {
   total?: number;
   items?: Ticket[];
   nextPageCursor?: string;
-  prevPageCursor?: string;
 }
 
 export type ReplyTicketInput = {

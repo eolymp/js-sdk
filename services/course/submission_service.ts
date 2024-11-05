@@ -72,6 +72,7 @@ export type ListSubmissionsInput_Filter = {
 export type ListSubmissionsOutput = {
   total?: number;
   items?: Submission[];
+  nextPageCursor?: string;
 }
 
 export type DescribeSubmissionInput = {
