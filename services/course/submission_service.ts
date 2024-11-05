@@ -51,7 +51,6 @@ export type CreateSubmissionOutput = {
 
 export type ListSubmissionsInput = {
   after?: string;
-  offset?: number;
   size?: number;
   filters?: ListSubmissionsInput_Filter;
 }
