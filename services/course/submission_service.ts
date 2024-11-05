@@ -50,6 +50,8 @@ export type CreateSubmissionOutput = {
 }
 
 export type ListSubmissionsInput = {
+  materialId?: string;
+  after?: string;
   offset?: number;
   size?: number;
   filters?: ListSubmissionsInput_Filter;
@@ -59,10 +61,10 @@ export type ListSubmissionsInput_Filter = {
   id?: ExpressionID[];
   userId?: ExpressionID[];
   memberId?: ExpressionID[];
-  materialId?: ExpressionID[];
   submittedAt?: ExpressionTimestamp[];
   runtime?: ExpressionEnum[];
   status?: ExpressionEnum[];
+  verdict?: ExpressionEnum[];
   score?: ExpressionFloat[];
   percentage?: ExpressionFloat[];
 }
