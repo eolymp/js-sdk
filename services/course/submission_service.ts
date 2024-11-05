@@ -57,7 +57,6 @@ export type ListSubmissionsInput = {
 
 export type ListSubmissionsInput_Filter = {
   id?: ExpressionID[];
-  userId?: ExpressionID[];
   memberId?: ExpressionID[];
   materialId?: ExpressionID[];
   submittedAt?: ExpressionTimestamp[];
