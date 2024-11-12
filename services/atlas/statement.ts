@@ -6,6 +6,7 @@ import { Content } from "../ecm/content"
 export type Statement = {
   id?: string;
   locale?: string;
+  automatic?: string;
   title?: string;
   content?: Content;
   downloadLink?: string;

@@ -66,6 +66,12 @@ export class StatementService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  TranslateStatements(input: TranslateStatementsInput, opts?: any): Promise<TranslateStatementsOutput> {
+    const path = "/statements:translate";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type StatementChangedEvent = {
@@ -85,6 +91,13 @@ export type ListStatementsOutput = {
   total?: number;
   items?: Statement[];
 }
+
+export type TranslateStatementsInput = {
+  source?: string;
+  target?: string[];
+}
+
+export type TranslateStatementsOutput = Record<string, unknown>;
 
 export type DescribeStatementInput = {
   statementId?: string;
