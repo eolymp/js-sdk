@@ -22,6 +22,15 @@ export class PenaltyService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdatePenalty(input: UpdatePenaltyInput, opts?: any): Promise<UpdatePenaltyOutput> {
+    const path = "/penalties/"+encodeURIComponent(input.penaltyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.penaltyId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   CancelPenalty(input: CancelPenaltyInput, opts?: any): Promise<CancelPenaltyOutput> {
     const path = "/penalties/"+encodeURIComponent(input.penaltyId||'');
 
@@ -55,6 +64,14 @@ export type CreatePenaltyInput = {
 export type CreatePenaltyOutput = {
   penaltyId?: string;
 }
+
+export type UpdatePenaltyInput = {
+  patch?: string[];
+  penaltyId?: string;
+  penalty?: Penalty;
+}
+
+export type UpdatePenaltyOutput = Record<string, unknown>;
 
 export type CancelPenaltyInput = {
   penaltyId?: string;

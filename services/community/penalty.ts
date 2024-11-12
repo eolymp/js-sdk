@@ -5,8 +5,10 @@
 export type Penalty = {
   id?: string;
   summary?: string;
+  description?: string;
   scope?: string[];
   createdAt?: string;
   expiresAt?: string;
+  cancelledAt?: string;
 }
 
