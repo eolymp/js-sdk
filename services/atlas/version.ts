@@ -3,10 +3,12 @@
 
 
 export type Version = {
+  id?: string;
   number?: number;
   createdAt?: string;
   createdBy?: string;
   changeOp?: string;
   changePath?: string;
+  cursor?: string;
 }
 

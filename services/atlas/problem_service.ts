@@ -184,6 +184,7 @@ export type ListVersionsInput = {
   problemId?: string;
   offset?: number;
   size?: number;
+  after?: string;
   filters?: ListVersionsInput_Filter;
 }
 
@@ -198,6 +199,7 @@ export type ListVersionsInput_Filter = {
 export type ListVersionsOutput = {
   total?: number;
   items?: Version[];
+  nextPageCursor?: string;
 }
 
 export type VoteProblemInput = {
