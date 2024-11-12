@@ -84,7 +84,9 @@ export type DescribePenaltyInput = {
   extra?: string[];
 }
 
-export type DescribePenaltyOutput = Record<string, unknown>;
+export type DescribePenaltyOutput = {
+  penalty?: Penalty;
+}
 
 export type ListPenaltiesInput = {
   offset?: number;
