@@ -99,7 +99,9 @@ export type TranslateStatementsInput = {
   overrideManual?: boolean;
 }
 
-export type TranslateStatementsOutput = Record<string, unknown>;
+export type TranslateStatementsOutput = {
+  jobId?: string;
+}
 
 export type DescribeStatementInput = {
   statementId?: string;
