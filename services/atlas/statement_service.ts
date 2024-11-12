@@ -95,6 +95,8 @@ export type ListStatementsOutput = {
 export type TranslateStatementsInput = {
   source?: string;
   target?: string[];
+  targetAutomatic?: boolean;
+  overrideManual?: boolean;
 }
 
 export type TranslateStatementsOutput = Record<string, unknown>;
