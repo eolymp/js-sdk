@@ -69,6 +69,8 @@ export class EditorialService {
 }
 
 export type ListEditorialsInput = {
+  offset?: number;
+  size?: number;
   render?: boolean;
   version?: number;
 }

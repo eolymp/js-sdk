@@ -61,13 +61,13 @@ export type ListSolutionsInput = {
   version?: number;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListSolutionsInput_Filter;
   sort?: string;
   order?: string;
 }
 
 export type ListSolutionsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   type?: ExpressionEnum[];
   name?: ExpressionString[];

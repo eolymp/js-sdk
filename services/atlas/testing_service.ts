@@ -193,6 +193,8 @@ export type DescribeInteractorOutput = {
 }
 
 export type ListTestsetsInput = {
+  offset?: number;
+  size?: number;
   version?: number;
 }
 

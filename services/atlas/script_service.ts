@@ -93,6 +93,7 @@ export type ListScriptsInput = {
   version?: number;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListScriptsInput_Filter;
   sort?: string;
   order?: string;
@@ -100,7 +101,6 @@ export type ListScriptsInput = {
 }
 
 export type ListScriptsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   name?: ExpressionString[];
   runtime?: ExpressionEnum[];

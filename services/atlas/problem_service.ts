@@ -128,6 +128,7 @@ export type DescribeProblemOutput = {
 export type ListProblemsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListProblemsInput_Filter;
   sort?: string;
   order?: string;
@@ -135,7 +136,6 @@ export type ListProblemsInput = {
 }
 
 export type ListProblemsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   topicId?: ExpressionID[];
   isVisible?: ExpressionBool[];

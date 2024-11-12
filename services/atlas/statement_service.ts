@@ -75,6 +75,8 @@ export type StatementChangedEvent = {
 }
 
 export type ListStatementsInput = {
+  offset?: number;
+  size?: number;
   render?: boolean;
   version?: number;
 }
