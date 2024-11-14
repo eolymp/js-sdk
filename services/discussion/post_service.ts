@@ -133,6 +133,25 @@ export class PostService {
   }
 }
 
+export type PostChangedEvent = {
+  before?: Post;
+  after?: Post;
+  reason?: Content;
+}
+
+export type PostPublishedEvent = {
+  published?: boolean;
+  post?: Post;
+  reason?: Content;
+}
+
+export type PostTranslationChangedEvent = {
+  post?: Post;
+  before?: Post_Translation;
+  after?: Post_Translation;
+  reason?: Content;
+}
+
 export type DescribePostInput = {
   postId?: string;
   locale?: string;

@@ -13,6 +13,7 @@ export type Post = {
   draft?: boolean;
   public?: boolean;
   featured?: boolean;
+  pinned?: boolean;
   moderation?: string;
   userId?: string;
   memberId?: string;
