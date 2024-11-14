@@ -66,6 +66,15 @@ export class PostService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  ModeratePost(input: ModeratePostInput, opts?: any): Promise<ModeratePostOutput> {
+    const path = "/posts/"+encodeURIComponent(input.postId||'')+"/moderate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.postId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DeletePost(input: DeletePostInput, opts?: any): Promise<DeletePostOutput> {
     const path = "/posts/"+encodeURIComponent(input.postId||'');
 
@@ -224,6 +233,14 @@ export type UnpublishPostInput = {
 }
 
 export type UnpublishPostOutput = Record<string, unknown>;
+
+export type ModeratePostInput = {
+  postId?: string;
+  outcome?: string;
+  reason?: Content;
+}
+
+export type ModeratePostOutput = Record<string, unknown>;
 
 export type DeletePostInput = {
   postId?: string;
