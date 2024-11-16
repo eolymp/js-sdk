@@ -171,11 +171,11 @@ export type DescribeContestOutput = {
 export type ListContestsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListContestsInput_Filter;
 }
 
 export type ListContestsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   name?: ExpressionString[];
   startsAt?: ExpressionTimestamp[];
