@@ -38,12 +38,6 @@ export type UserChangedEvent = {
   after?: User;
 }
 
-export type IntrospectUserInput = Record<string, unknown>;
-
-export type IntrospectUserOutput = {
-  user?: User;
-}
-
 export type DescribeUserInput = {
   userId?: string;
 }
