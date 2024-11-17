@@ -69,6 +69,7 @@ export class CourseService {
 export type ListCoursesInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListCoursesInput_Filter;
   sort?: string;
   order?: string;
@@ -76,7 +77,6 @@ export type ListCoursesInput = {
 }
 
 export type ListCoursesInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   topicId?: ExpressionID[];
   locale?: ExpressionEnum[];

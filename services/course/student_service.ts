@@ -150,9 +150,9 @@ export type DescribeStudentOutput = {
 }
 
 export type ListStudentsInput = {
-  after?: string;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListStudentsInput_Filter;
   sort?: string;
   order?: string;
@@ -160,7 +160,6 @@ export type ListStudentsInput = {
 }
 
 export type ListStudentsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   memberId?: ExpressionID[];
   groupId?: ExpressionID[];
@@ -197,11 +196,11 @@ export type ListStudentAssignmentsInput = {
   memberId?: string;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListStudentAssignmentsInput_Filter;
 }
 
 export type ListStudentAssignmentsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   moduleId?: ExpressionID[];
 }

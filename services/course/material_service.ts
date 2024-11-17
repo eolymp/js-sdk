@@ -129,6 +129,7 @@ export type DescribeMaterialOutput = {
 export type ListMaterialsInput = {
   moduleId?: string;
   memberId?: string;
+  search?: string;
   offset?: number;
   size?: number;
   filters?: ListMaterialsInput_Filter;
@@ -138,7 +139,6 @@ export type ListMaterialsInput = {
 }
 
 export type ListMaterialsInput_Filter = {
-  query?: string;
   graded?: ExpressionBool[];
   weight?: ExpressionInt[];
 }

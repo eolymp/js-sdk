@@ -118,13 +118,13 @@ export type DescribeClassOutput = {
 export type ListClassesInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListClassesInput_Filter;
   sort?: string;
   order?: string;
 }
 
 export type ListClassesInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   groupId?: ExpressionID[];
   memberId?: ExpressionID[];
@@ -139,11 +139,11 @@ export type ListClassAssignmentsInput = {
   groupId?: string;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListClassAssignmentsInput_Filter;
 }
 
 export type ListClassAssignmentsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   moduleId?: ExpressionID[];
 }
