@@ -118,6 +118,7 @@ export type DeleteProblemOutput = Record<string, unknown>;
 
 export type DescribeProblemInput = {
   problemId?: string;
+  locale?: string;
   extra?: string[];
 }
 
@@ -132,6 +133,7 @@ export type ListProblemsInput = {
   filters?: ListProblemsInput_Filter;
   sort?: string;
   order?: string;
+  locale?: string;
   extra?: string[];
 }
 
