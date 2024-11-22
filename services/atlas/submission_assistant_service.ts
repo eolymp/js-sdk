@@ -16,13 +16,22 @@ export class SubmissionAssistantService {
     this.url = url;
   }
 
-  DebugSubmission(input: DebugSubmissionInput, opts?: any): Promise<DebugSubmissionOutput> {
+  RequestDebugAssistance(input: RequestDebugAssistanceInput, opts?: any): Promise<RequestDebugAssistanceOutput> {
     const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/assistant:debug";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.submissionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeDebugAssistance(input: DescribeDebugAssistanceInput, opts?: any): Promise<DescribeDebugAssistanceOutput> {
+    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/assistant:debug";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.submissionId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RateDebugAssistance(input: RateDebugAssistanceInput, opts?: any): Promise<RateDebugAssistanceOutput> {
@@ -35,13 +44,28 @@ export class SubmissionAssistantService {
   }
 }
 
-export type DebugSubmissionInput = {
+export type DebugAssistanceMessage = {
+  id?: string;
+  locale?: string;
+  message?: Node;
+  rating?: number;
+}
+
+export type RequestDebugAssistanceInput = {
   submissionId?: string;
   locale?: string;
 }
 
-export type DebugSubmissionOutput = {
-  message?: Node;
+export type RequestDebugAssistanceOutput = {
+  message?: DebugAssistanceMessage;
+}
+
+export type DescribeDebugAssistanceInput = {
+  submissionId?: string;
+}
+
+export type DescribeDebugAssistanceOutput = {
+  message?: DebugAssistanceMessage;
 }
 
 export type RateDebugAssistanceInput = {
