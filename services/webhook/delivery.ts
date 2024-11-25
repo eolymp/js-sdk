@@ -6,7 +6,6 @@ import { Any } from "../../google/protobuf/any"
 export type Delivery = {
   id?: string;
   webhookId?: string;
-  signature?: string;
   timestamp?: string;
   event?: string;
   payload?: Any;
