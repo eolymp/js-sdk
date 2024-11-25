@@ -74,6 +74,7 @@ export type CreateWebhookOutput = {
 }
 
 export type UpdateWebhookInput = {
+  patch?: string[];
   webhookId?: string;
   webhook?: Webhook;
 }

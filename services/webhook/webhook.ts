@@ -4,9 +4,15 @@
 
 export type Webhook = {
   id?: string;
-  inactive?: boolean;
-  link?: string;
+  name?: string;
   secret?: string;
+  endpoint?: string;
+  inactive?: boolean;
   events?: string[];
+  createdAt?: string;
+  lastFailureAt?: string;
+  lastSuccessAt?: string;
+  deliveryCount?: number;
+  failureCount?: number;
 }
 
