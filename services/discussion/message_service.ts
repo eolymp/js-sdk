@@ -77,6 +77,7 @@ export class MessageService {
 }
 
 export type MessageChangedEvent = {
+  scope?: string;
   before?: Message;
   after?: Message;
   reason?: string;

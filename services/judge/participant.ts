@@ -4,7 +4,6 @@
 
 export type Participant = {
   id?: string;
-  contestId?: string;
   memberId?: string;
   displayName?: string;
   unofficial?: boolean;

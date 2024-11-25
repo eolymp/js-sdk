@@ -155,7 +155,7 @@ export type PostPublishedEvent = {
 }
 
 export type PostTranslationChangedEvent = {
-  post?: Post;
+  postId?: string;
   before?: Post_Translation;
   after?: Post_Translation;
   reason?: Content;

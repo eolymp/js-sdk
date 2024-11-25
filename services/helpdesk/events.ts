@@ -4,6 +4,7 @@
 import { Ticket, Ticket_Comment } from "./ticket"
 
 export type TicketChangedEvent = {
+  scope?: string;
   before?: Ticket;
   after?: Ticket;
 }

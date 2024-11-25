@@ -92,6 +92,11 @@ export class MemberService {
   }
 }
 
+export type MemberChangedEvent = {
+  before?: Member;
+  after?: Member;
+}
+
 export type CreateMemberInput = {
   member?: Member;
 }

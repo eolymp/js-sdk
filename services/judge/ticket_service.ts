@@ -117,6 +117,7 @@ export class TicketService {
 }
 
 export type TicketChangedEvent = {
+  scope?: string;
   before?: Ticket;
   after?: Ticket;
 }
