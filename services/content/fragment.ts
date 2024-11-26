@@ -7,7 +7,6 @@ export type Fragment = {
   id?: string;
   path?: string;
   locale?: string;
-  automatic?: boolean;
   draft?: boolean;
   title?: string;
   content?: Content;
