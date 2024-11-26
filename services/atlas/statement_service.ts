@@ -85,6 +85,7 @@ export type ListStatementsInput = {
   size?: number;
   render?: boolean;
   version?: number;
+  extra?: string[];
 }
 
 export type ListStatementsOutput = {
