@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Job } from "./job"
+import { Job } from "./worker_job"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -31,6 +31,10 @@ export class WorkerService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+}
+
+export type JobTriggerEvent = {
+  job?: Job;
 }
 
 export type CreateJobInput = {
