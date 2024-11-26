@@ -8,41 +8,6 @@ interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class Worker {
-  private readonly cli: Client;
-  private readonly url: string;
-
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
-    this.cli = cli;
-    this.url = url;
-  }
-
-  CreateJob(input: CreateJobInput, opts?: any): Promise<CreateJobOutput> {
-    const path = "/jobs";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  DescribeJob(input: DescribeJobInput, opts?: any): Promise<DescribeJobOutput> {
-    const path = "/jobs/"+encodeURIComponent(input.jobId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.jobId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListJobs(input: ListJobsInput, opts?: any): Promise<ListJobsOutput> {
-    const path = "/jobs";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-}
-
-interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
-}
-
 export class WorkerService {
   private readonly cli: Client;
   private readonly url: string;
@@ -50,12 +15,6 @@ export class WorkerService {
   constructor(cli: Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
-  }
-
-  CreateJob(input: CreateJobInput, opts?: any): Promise<CreateJobOutput> {
-    const path = "/jobs";
-
-    return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeJob(input: DescribeJobInput, opts?: any): Promise<DescribeJobOutput> {
@@ -82,6 +41,14 @@ export type CreateJobInput = {
 export type CreateJobOutput = {
   jobId?: string;
 }
+
+export type UpdateJobInput = {
+  patch?: string[];
+  jobId?: string;
+  job?: Job;
+}
+
+export type UpdateJobOutput = Record<string, unknown>;
 
 export type DescribeJobInput = {
   jobId?: string;
