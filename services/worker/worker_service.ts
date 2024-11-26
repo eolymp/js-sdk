@@ -46,14 +46,6 @@ export type CreateJobOutput = {
   jobId?: string;
 }
 
-export type UpdateJobInput = {
-  patch?: string[];
-  jobId?: string;
-  job?: Job;
-}
-
-export type UpdateJobOutput = Record<string, unknown>;
-
 export type DescribeJobInput = {
   jobId?: string;
 }
