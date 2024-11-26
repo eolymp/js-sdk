@@ -109,7 +109,7 @@ export type LookupStatementInput = {
 }
 
 export type LookupStatementOutput = {
-  statement?: Statement[];
+  statement?: Statement;
 }
 
 export type ListExamplesInput = Record<string, unknown>;
