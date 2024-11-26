@@ -27,6 +27,12 @@ export class ProblemService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  LookupStatement(input: LookupStatementInput, opts?: any): Promise<LookupStatementOutput> {
+    const path = "/statements:lookup";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {
     const path = "/examples";
 
@@ -96,6 +102,14 @@ export type ListStatementsInput = Record<string, unknown>;
 export type ListStatementsOutput = {
   total?: number;
   items?: Statement[];
+}
+
+export type LookupStatementInput = {
+  locale?: string;
+}
+
+export type LookupStatementOutput = {
+  statement?: Statement[];
 }
 
 export type ListExamplesInput = Record<string, unknown>;
