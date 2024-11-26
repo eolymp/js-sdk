@@ -7,10 +7,12 @@ export type Statement = {
   id?: string;
   locale?: string;
   automatic?: boolean;
+  draft?: boolean;
   title?: string;
   content?: Content;
   downloadLink?: string;
   author?: string;
   source?: string;
+  authorId?: string;
 }
 

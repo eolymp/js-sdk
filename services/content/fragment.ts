@@ -7,8 +7,9 @@ export type Fragment = {
   id?: string;
   path?: string;
   locale?: string;
+  automatic?: boolean;
+  draft?: boolean;
   title?: string;
-  public?: boolean;
   content?: Content;
   createdAt?: string;
   updatedAt?: string;

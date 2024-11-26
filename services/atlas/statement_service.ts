@@ -107,6 +107,7 @@ export type DescribeStatementInput = {
   statementId?: string;
   render?: boolean;
   version?: number;
+  extra?: string[];
 }
 
 export type DescribeStatementOutput = {
@@ -117,6 +118,7 @@ export type LookupStatementInput = {
   locale?: string;
   render?: boolean;
   version?: number;
+  extra?: string[];
 }
 
 export type LookupStatementOutput = {

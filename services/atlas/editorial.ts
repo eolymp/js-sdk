@@ -6,7 +6,10 @@ import { Content } from "../ecm/content"
 export type Editorial = {
   id?: string;
   locale?: string;
+  automatic?: boolean;
+  draft?: boolean;
   content?: Content;
   downloadLink?: string;
+  authorId?: string;
 }
 
