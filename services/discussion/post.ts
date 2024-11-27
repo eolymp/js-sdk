@@ -38,6 +38,7 @@ export type Post_Translation = {
   locale?: string;
   content?: Content;
   labels?: string[];
+  automatic?: boolean;
 }
 
 export type Post_Image = {

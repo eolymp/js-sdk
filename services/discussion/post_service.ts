@@ -93,6 +93,15 @@ export class PostService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  TranslatePost(input: TranslatePostInput, opts?: any): Promise<TranslatePostOutput> {
+    const path = "/posts/"+encodeURIComponent(input.postId||'')+"/translate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.postId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribePostTranslation(input: DescribePostTranslationInput, opts?: any): Promise<DescribePostTranslationOutput> {
     const path = "/posts/"+encodeURIComponent(input.postId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
@@ -257,6 +266,18 @@ export type VotePostInput = {
 
 export type VotePostOutput = {
   voteCount?: number;
+}
+
+export type TranslatePostInput = {
+  postId?: string;
+  source?: string;
+  target?: string[];
+  targetAutomatic?: boolean;
+  overrideManual?: boolean;
+}
+
+export type TranslatePostOutput = {
+  jobId?: string;
 }
 
 export type DescribePostTranslationInput = {

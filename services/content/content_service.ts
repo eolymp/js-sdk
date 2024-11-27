@@ -57,7 +57,7 @@ export class ContentService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  TranslateFragments(input: TranslateFragmentsInput, opts?: any): Promise<TranslateFragmentsOutput> {
+  TranslateFragment(input: TranslateFragmentInput, opts?: any): Promise<TranslateFragmentOutput> {
     const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translate";
 
     // Cleanup URL parameters to avoid any ambiguity
@@ -181,7 +181,7 @@ export type DeleteFragmentInput = {
 
 export type DeleteFragmentOutput = Record<string, unknown>;
 
-export type TranslateFragmentsInput = {
+export type TranslateFragmentInput = {
   fragmentId?: string;
   source?: string;
   target?: string[];
@@ -189,7 +189,7 @@ export type TranslateFragmentsInput = {
   overrideManual?: boolean;
 }
 
-export type TranslateFragmentsOutput = {
+export type TranslateFragmentOutput = {
   jobId?: string;
 }
 
