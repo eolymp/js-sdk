@@ -23,6 +23,9 @@ export type Quota = {
   editorialPerProblem?: number;
   solutionsPerProblem?: number;
   codeTemplatesPerProblem?: number;
+  debugAssistant?: number;
+  debugHintsDailyPerAdmin?: number;
+  debugHintsDailyPerMember?: number;
   contestsPerSpace?: number;
   activeContestsPerSpace?: number;
   monthlyContestsPerSpace?: number;
