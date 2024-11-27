@@ -23,7 +23,7 @@ export type Quota = {
   editorialPerProblem?: number;
   solutionsPerProblem?: number;
   codeTemplatesPerProblem?: number;
-  debugAssistant?: number;
+  debugAssistant?: boolean;
   debugHintsDailyPerAdmin?: number;
   debugHintsDailyPerMember?: number;
   contestsPerSpace?: number;
