@@ -94,6 +94,15 @@ export class ProblemService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ExportProblem(input: ExportProblemInput, opts?: any): Promise<ExportProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/snapshot";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type ProblemChangedEvent = {
@@ -220,5 +229,14 @@ export type ListRuntimesInput = {
 export type ListRuntimesOutput = {
   total?: number;
   items?: Runtime[];
+}
+
+export type ExportProblemInput = {
+  problemId?: string;
+  version?: number;
+}
+
+export type ExportProblemOutput = {
+  snapshotUrl?: string;
 }
 
