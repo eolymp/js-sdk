@@ -11,8 +11,8 @@ export type EvaluationReport = {
   signature?: string;
   version?: number;
   type?: string;
-  error?: string;
-  failure?: string;
+  status?: string;
+  errorMessage?: string;
   runs?: EvaluationReport_Run[];
 }
 
