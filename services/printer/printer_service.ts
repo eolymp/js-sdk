@@ -57,6 +57,15 @@ export class PrinterService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  CreatePrinterJob(input: CreatePrinterJobInput, opts?: any): Promise<CreatePrinterJobOutput> {
+    const path = "/printers/"+encodeURIComponent(input.printerId||'')+"/jobs";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.printerId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribePrinterJob(input: DescribePrinterJobInput, opts?: any): Promise<DescribePrinterJobOutput> {
     const path = "/printers/"+encodeURIComponent(input.printerId||'')+"/jobs/"+encodeURIComponent(input.jobId||'');
 
@@ -132,6 +141,15 @@ export type ListPrintersInput_Filter = {
 export type ListPrintersOutput = {
   total?: number;
   items?: Printer[];
+}
+
+export type CreatePrinterJobInput = {
+  printerJob?: string;
+  documentUrl?: string;
+}
+
+export type CreatePrinterJobOutput = {
+  jobId?: string;
 }
 
 export type DescribePrinterJobInput = {

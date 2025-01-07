@@ -5,6 +5,8 @@
 export type Job = {
   id?: string;
   status?: string;
+  userId?: string;
+  memberId?: string;
   documentUrl?: string;
 }
 
