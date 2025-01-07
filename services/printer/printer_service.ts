@@ -144,7 +144,7 @@ export type ListPrintersOutput = {
 }
 
 export type CreatePrinterJobInput = {
-  printerJob?: string;
+  printerId?: string;
   documentUrl?: string;
 }
 
