@@ -5,7 +5,6 @@
 export type Contest = {
   id?: string;
   url?: string;
-  links?: Record<string, string>;
   name?: string;
   logoUrl?: string;
   startsAt?: string;
@@ -24,6 +23,7 @@ export type Contest = {
   participantCount?: number;
   participantCountHidden?: boolean;
   featuredUntil?: string;
+  printerId?: string;
   taxonomy?: Contest_Taxonomy;
   appearance?: Contest_Appearance;
   environment?: Contest_Environment;

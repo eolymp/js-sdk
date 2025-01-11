@@ -124,6 +124,13 @@ export type DescribeSubmissionOutput = {
   submission?: Submission;
 }
 
+export type PrintSubmissionInput = {
+  contestId?: string;
+  submissionId?: string;
+}
+
+export type PrintSubmissionOutput = Record<string, unknown>;
+
 export type WatchSubmissionInput = {
   contestId?: string;
   submissionId?: string;
