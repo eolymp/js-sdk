@@ -8,5 +8,7 @@ export type Job = {
   userId?: string;
   memberId?: string;
   documentUrl?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
