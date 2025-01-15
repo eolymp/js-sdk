@@ -15,16 +15,32 @@ export class EditorService {
     this.url = url;
   }
 
-  PrintCode(input: PrintCodeInput, opts?: any): Promise<PrintCodeOutput> {
-    const path = "/editor:print";
+  DescribeState(input: DescribeStateInput, opts?: any): Promise<DescribeStateOutput> {
+    const path = "/editor/state";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateState(input: UpdateStateInput, opts?: any): Promise<UpdateStateOutput> {
+    const path = "/editor/state";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type PrintCodeInput = {
-  source?: string;
+export type DescribeStateInput = Record<string, unknown>;
+
+export type DescribeStateOutput = {
+  runtime?: string;
+  sourceCode?: string;
+  inputData?: string;
 }
 
-export type PrintCodeOutput = Record<string, unknown>;
+export type UpdateStateInput = {
+  runtime?: string;
+  sourceCode?: string;
+  inputData?: string;
+}
+
+export type UpdateStateOutput = Record<string, unknown>;
 
