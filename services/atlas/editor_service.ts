@@ -26,6 +26,12 @@ export class EditorService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  PrintCode(input: PrintCodeInput, opts?: any): Promise<PrintCodeOutput> {
+    const path = "/editor/print";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type DescribeStateInput = Record<string, unknown>;
@@ -43,4 +49,11 @@ export type UpdateStateInput = {
 }
 
 export type UpdateStateOutput = Record<string, unknown>;
+
+export type PrintCodeInput = {
+  runtime?: string;
+  sourceCode?: string;
+}
+
+export type PrintCodeOutput = Record<string, unknown>;
 
