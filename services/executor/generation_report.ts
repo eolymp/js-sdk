@@ -8,8 +8,8 @@ export type GenerationReport = {
   reference?: string;
   origin?: string;
   agent?: string;
-  error?: string;
   runs?: GenerationReport_Run[];
+  errorMessage?: string;
 }
 
 export type GenerationReport_Run = {
@@ -19,5 +19,6 @@ export type GenerationReport_Run = {
   answerUrl?: string;
   inputGeneratorStats?: Stats;
   answerGeneratorStats?: Stats;
+  errorMessage?: string;
 }
 
