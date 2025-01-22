@@ -4,7 +4,6 @@
 import { Checker } from "./checker"
 import { File } from "./file"
 import { Interactor } from "./interactor"
-import { Script } from "./script"
 
 export type EvaluationTask = {
   taskId?: string;
@@ -24,12 +23,6 @@ export type EvaluationTask = {
   interactor?: Interactor;
   runs?: EvaluationTask_Run[];
   files?: File[];
-  scripts?: Script[];
-}
-
-export type EvaluationTask_Generator = {
-  scriptName?: string;
-  arguments?: string[];
 }
 
 export type EvaluationTask_Run = {
@@ -41,10 +34,8 @@ export type EvaluationTask_Run = {
   labels?: string[];
   inputUrl?: string;
   inputContent?: string;
-  inputGenerator?: EvaluationTask_Generator;
   answerUrl?: string;
   answerContent?: string;
-  answerGenerator?: EvaluationTask_Generator;
 }
 
 export type EvaluationTask_Precondition = {

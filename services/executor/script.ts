@@ -7,6 +7,8 @@ export type Script = {
   name?: string;
   runtime?: string;
   sourceUrl?: string;
+  headerUrl?: string;
+  footerUrl?: string;
   files?: File[];
 }
 
