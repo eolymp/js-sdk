@@ -41,9 +41,10 @@ export type EvaluationTask_Run = {
   labels?: string[];
   inputUrl?: string;
   inputContent?: string;
-  inputGenerator?: string;
+  inputGenerator?: EvaluationTask_Generator;
   answerUrl?: string;
   answerContent?: string;
+  answerGenerator?: EvaluationTask_Generator;
 }
 
 export type EvaluationTask_Precondition = {
