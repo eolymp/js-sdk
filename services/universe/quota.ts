@@ -14,6 +14,7 @@ export type Quota = {
   monthlyEvaluationsBySeat?: number;
   priorityEvaluationQueue?: boolean;
   plagiarismAnalysis?: boolean;
+  submissionEvaluationLimit?: number;
   membersPerSpace?: number;
   scoreboardsPerSpace?: number;
   coursesPerSpace?: number;
