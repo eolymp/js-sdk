@@ -50,6 +50,7 @@ export type EvaluationTask_Run = {
 export type EvaluationTask_Precondition = {
   selector?: string[];
   dependsOn?: string[];
+  dependencyMode?: string;
   stopOnFailure?: boolean;
   maxExecutionTime?: number;
 }

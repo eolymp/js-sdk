@@ -10,6 +10,7 @@ export type Testset = {
   memoryLimit?: number;
   fileSizeLimit?: number;
   dependencies?: number[];
+  dependencyMode?: string;
   scoringMode?: string;
   feedbackPolicy?: string;
 }
