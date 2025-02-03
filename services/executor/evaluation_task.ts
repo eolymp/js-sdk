@@ -12,11 +12,11 @@ export type EvaluationTask = {
   origin?: string;
   priority?: number;
   runtime?: string;
-  source?: string;
   sourceUrl?: string;
   headerUrl?: string;
   footerUrl?: string;
   files?: File[];
+  solution?: Script;
   redirectStderrToStdout?: boolean;
   runCount?: number;
   preconditions?: EvaluationTask_Precondition[];
