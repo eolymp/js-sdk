@@ -16,13 +16,14 @@ export type EvaluationTask = {
   headerUrl?: string;
   footerUrl?: string;
   files?: File[];
-  solution?: Script;
   redirectStderrToStdout?: boolean;
   runCount?: number;
   preconditions?: EvaluationTask_Precondition[];
   constraints?: EvaluationTask_Constraint[];
+  submission?: Script;
   checker?: Checker;
-  interactor?: Interactor;
+  interactorDeprecated?: Interactor;
+  interactor?: Script;
   scripts?: Script[];
   runs?: EvaluationTask_Run[];
 }
