@@ -7,6 +7,7 @@ export type EvaluationReport = {
   taskId?: string;
   reference?: string;
   origin?: string;
+  metadata?: Record<string, string>;
   agent?: string;
   signature?: string;
   version?: number;

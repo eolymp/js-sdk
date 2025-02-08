@@ -7,6 +7,7 @@ export type GenerationReport = {
   taskId?: string;
   reference?: string;
   origin?: string;
+  metadata?: Record<string, string>;
   agent?: string;
   runs?: GenerationReport_Run[];
   errorMessage?: string;
