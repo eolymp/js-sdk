@@ -6,6 +6,7 @@ import { TestingConfig } from "./testing_config"
 import { Interactor } from "./testing_interactor"
 import { Test } from "./testing_test"
 import { Testset } from "./testing_testset"
+import { Validator } from "./testing_validator"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -52,6 +53,18 @@ export class TestingService {
 
   DescribeInteractor(input: DescribeInteractorInput, opts?: any): Promise<DescribeInteractorOutput> {
     const path = "/interactor";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateValidator(input: UpdateValidatorInput, opts?: any): Promise<UpdateValidatorOutput> {
+    const path = "/validator";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DescribeValidator(input: DescribeValidatorInput, opts?: any): Promise<DescribeValidatorOutput> {
+    const path = "/validator";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -190,6 +203,20 @@ export type DescribeInteractorInput = {
 
 export type DescribeInteractorOutput = {
   interactor?: Interactor;
+}
+
+export type UpdateValidatorInput = {
+  validator?: Validator;
+}
+
+export type UpdateValidatorOutput = Record<string, unknown>;
+
+export type DescribeValidatorInput = {
+  version?: number;
+}
+
+export type DescribeValidatorOutput = {
+  validator?: Validator;
 }
 
 export type ListTestsetsInput = {
