@@ -85,6 +85,16 @@ export class PrinterService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  UpdatePrinterJob(input: UpdatePrinterJobInput, opts?: any): Promise<UpdatePrinterJobOutput> {
+    const path = "/printers/"+encodeURIComponent(input.printerId||'')+"/jobs/"+encodeURIComponent(input.jobId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.printerId);
+    delete(input.jobId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   DeletePrinterJob(input: DeletePrinterJobInput, opts?: any): Promise<DeletePrinterJobOutput> {
     const path = "/printers/"+encodeURIComponent(input.printerId||'')+"/jobs/"+encodeURIComponent(input.jobId||'');
 
@@ -184,6 +194,14 @@ export type CancelPrinterJobInput = {
 }
 
 export type CancelPrinterJobOutput = Record<string, unknown>;
+
+export type UpdatePrinterJobInput = {
+  printerId?: string;
+  jobId?: string;
+  job?: Job;
+}
+
+export type UpdatePrinterJobOutput = Record<string, unknown>;
 
 export type DeletePrinterJobInput = {
   printerId?: string;
