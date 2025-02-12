@@ -57,6 +57,12 @@ export class ScriptService {
   }
 }
 
+export type ScriptChangedEvent = {
+  problemId?: string;
+  before?: Script;
+  after?: Script;
+}
+
 export type CreateScriptInput = {
   script?: Script;
 }
