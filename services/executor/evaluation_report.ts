@@ -22,12 +22,13 @@ export type EvaluationReport_Run = {
   status?: string;
   score?: number;
   cost?: number;
-  wallTimeUsage?: number;
-  wallTimeLimit?: number;
-  cpuTimeUsage?: number;
-  cpuTimeLimit?: number;
+  timeUsage?: number;
+  timeLimit?: number;
+  cpuUsage?: number;
+  cpuLimit?: number;
   memoryUsage?: number;
   memoryLimit?: number;
+  timeCoefficient?: number;
   inputUrl?: string;
   outputUrl?: string;
   answerUrl?: string;

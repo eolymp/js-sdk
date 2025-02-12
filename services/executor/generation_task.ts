@@ -10,6 +10,7 @@ export type GenerationTask = {
   metadata?: Record<string, string>;
   runCount?: number;
   interactor?: Script;
+  validator?: Script;
   scripts?: Script[];
   runs?: GenerationTask_Run[];
 }

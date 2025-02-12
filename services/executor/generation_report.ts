@@ -16,6 +16,7 @@ export type GenerationReport = {
 export type GenerationReport_Run = {
   reference?: string;
   status?: string;
+  valid?: boolean;
   inputUrl?: string;
   answerUrl?: string;
   inputGeneratorStats?: Stats;
