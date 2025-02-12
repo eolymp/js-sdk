@@ -201,9 +201,8 @@ export type TestChangedEvent = {
 
 export type TestBatchChangedEvent = {
   problemId?: string;
-  created?: Test[];
-  updated?: Test[];
-  deleted?: Test[];
+  before?: Test[];
+  after?: Test[];
 }
 
 export type UpdateTestingConfigInput = {
