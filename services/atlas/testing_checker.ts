@@ -4,13 +4,14 @@
 import { File } from "../executor/file"
 
 export type Checker = {
+  versionId?: string;
+  secret?: boolean;
   type?: string;
   runtime?: string;
   source?: string;
+  files?: File[];
   precision?: number;
   caseSensitive?: boolean;
   orderSensitive?: boolean;
-  secret?: boolean;
-  files?: File[];
 }
 

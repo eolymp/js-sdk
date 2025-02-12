@@ -163,6 +163,42 @@ export class TestingService {
   }
 }
 
+export type TestingConfigChangedEvent = {
+  problemId?: string;
+  before?: TestingConfig;
+  after?: TestingConfig;
+}
+
+export type InteractorChangedEvent = {
+  problemId?: string;
+  before?: Interactor;
+  after?: Interactor;
+}
+
+export type CheckerChangedEvent = {
+  problemId?: string;
+  before?: Checker;
+  after?: Checker;
+}
+
+export type ValidatorChangedEvent = {
+  problemId?: string;
+  before?: Validator;
+  after?: Validator;
+}
+
+export type TestsetChangedEvent = {
+  problemId?: string;
+  before?: Testset;
+  after?: Testset;
+}
+
+export type TestChangedEvent = {
+  problemId?: string;
+  before?: Test;
+  after?: Test;
+}
+
 export type UpdateTestingConfigInput = {
   config?: TestingConfig;
 }

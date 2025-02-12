@@ -4,6 +4,7 @@
 
 export type Test = {
   id?: string;
+  versionId?: string;
   testsetId?: string;
   index?: number;
   status?: string;

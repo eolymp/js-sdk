@@ -4,10 +4,11 @@
 import { File } from "../executor/file"
 
 export type Interactor = {
+  versionId?: string;
+  secret?: boolean;
   type?: string;
   runtime?: string;
   source?: string;
-  secret?: boolean;
   files?: File[];
 }
 

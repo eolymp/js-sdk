@@ -4,9 +4,10 @@
 import { File } from "../executor/file"
 
 export type Validator = {
+  versionId?: string;
+  secret?: boolean;
   runtime?: string;
   source?: string;
-  secret?: boolean;
   files?: File[];
 }
 
