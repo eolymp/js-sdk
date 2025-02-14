@@ -23,6 +23,7 @@ export type GenerationTask_Generator = {
 export type GenerationTask_Run = {
   reference?: string;
   index?: number;
+  group?: number;
   cost?: number;
   env?: Record<string, string>;
   inputUrl?: string;

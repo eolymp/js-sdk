@@ -30,6 +30,7 @@ export type EvaluationTask_Generator = {
 export type EvaluationTask_Run = {
   reference?: string;
   index?: number;
+  group?: number;
   debug?: boolean;
   cost?: number;
   env?: Record<string, string>;
