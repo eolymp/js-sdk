@@ -3,10 +3,10 @@
 
 
 export type Attribute = {
+  id?: string;
   key?: string;
   label?: string;
   help?: string;
-  description?: Attribute_Description[];
   type?: string;
   index?: number;
   required?: boolean;

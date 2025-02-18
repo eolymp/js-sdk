@@ -66,11 +66,20 @@ export class EditorialService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  TranslateEditorials(input: TranslateEditorialsInput, opts?: any): Promise<TranslateEditorialsOutput> {
+    const path = "/editorials:translate";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ListEditorialsInput = {
-  render?: boolean;
+  offset?: number;
+  size?: number;
   version?: number;
+  render?: boolean;
+  extra?: string[];
 }
 
 export type ListEditorialsOutput = {
@@ -80,8 +89,9 @@ export type ListEditorialsOutput = {
 
 export type DescribeEditorialInput = {
   editorialId?: string;
-  render?: boolean;
   version?: number;
+  render?: boolean;
+  extra?: string[];
 }
 
 export type DescribeEditorialOutput = {
@@ -90,8 +100,9 @@ export type DescribeEditorialOutput = {
 
 export type LookupEditorialInput = {
   locale?: string;
-  render?: boolean;
   version?: number;
+  render?: boolean;
+  extra?: string[];
 }
 
 export type LookupEditorialOutput = {
@@ -127,4 +138,15 @@ export type DeleteEditorialInput = {
 }
 
 export type DeleteEditorialOutput = Record<string, unknown>;
+
+export type TranslateEditorialsInput = {
+  source?: string;
+  target?: string[];
+  targetAutomatic?: boolean;
+  overrideManual?: boolean;
+}
+
+export type TranslateEditorialsOutput = {
+  jobId?: string;
+}
 

@@ -12,6 +12,8 @@ export type Post = {
   sourceUrl?: string;
   draft?: boolean;
   public?: boolean;
+  featured?: boolean;
+  pinned?: boolean;
   moderation?: string;
   userId?: string;
   memberId?: string;
@@ -20,6 +22,8 @@ export type Post = {
   updatedAt?: string;
   typeId?: string;
   locale?: string;
+  title?: string;
+  imageUrl?: string;
   content?: Content;
   preview?: Post_Preview;
   vote?: number;
@@ -34,6 +38,7 @@ export type Post_Translation = {
   locale?: string;
   content?: Content;
   labels?: string[];
+  automatic?: boolean;
 }
 
 export type Post_Image = {

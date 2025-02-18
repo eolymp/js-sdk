@@ -5,6 +5,7 @@
 export type SecurityEvent = {
   sessionClosed?: SecurityEvent_SessionClosed;
   tokenRevoked?: SecurityEvent_TokenRevoked;
+  accountPurged?: SecurityEvent_AccountPurged;
 }
 
 export type SecurityEvent_SessionClosed = {
@@ -18,5 +19,10 @@ export type SecurityEvent_TokenRevoked = {
   subject?: string;
   tokenType?: string;
   tokenHashMd5?: string;
+}
+
+export type SecurityEvent_AccountPurged = {
+  issuer?: string;
+  subject?: string;
 }
 

@@ -3,10 +3,9 @@
 
 import { File } from "../executor/file"
 
-export type Interactor = {
+export type Validator = {
   versionId?: string;
   secret?: boolean;
-  type?: string;
   runtime?: string;
   source?: string;
   files?: File[];

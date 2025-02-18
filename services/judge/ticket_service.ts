@@ -117,6 +117,7 @@ export class TicketService {
 }
 
 export type TicketChangedEvent = {
+  scope?: string;
   before?: Ticket;
   after?: Ticket;
 }
@@ -196,7 +197,6 @@ export type ListTicketsOutput = {
   total?: number;
   items?: Ticket[];
   nextPageCursor?: string;
-  prevPageCursor?: string;
 }
 
 export type ReplyTicketInput = {

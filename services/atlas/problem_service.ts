@@ -94,11 +94,21 @@ export class ProblemService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ExportProblem(input: ExportProblemInput, opts?: any): Promise<ExportProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/snapshot";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type ProblemChangedEvent = {
   before?: Problem;
   after?: Problem;
+  version?: Version;
 }
 
 export type CreateProblemInput = {
@@ -118,6 +128,7 @@ export type DeleteProblemOutput = Record<string, unknown>;
 
 export type DescribeProblemInput = {
   problemId?: string;
+  locale?: string;
   extra?: string[];
 }
 
@@ -128,14 +139,15 @@ export type DescribeProblemOutput = {
 export type ListProblemsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListProblemsInput_Filter;
   sort?: string;
   order?: string;
+  locale?: string;
   extra?: string[];
 }
 
 export type ListProblemsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   topicId?: ExpressionID[];
   isVisible?: ExpressionBool[];
@@ -184,6 +196,7 @@ export type ListVersionsInput = {
   problemId?: string;
   offset?: number;
   size?: number;
+  after?: string;
   filters?: ListVersionsInput_Filter;
 }
 
@@ -198,6 +211,7 @@ export type ListVersionsInput_Filter = {
 export type ListVersionsOutput = {
   total?: number;
   items?: Version[];
+  nextPageCursor?: string;
 }
 
 export type VoteProblemInput = {
@@ -216,5 +230,14 @@ export type ListRuntimesInput = {
 export type ListRuntimesOutput = {
   total?: number;
   items?: Runtime[];
+}
+
+export type ExportProblemInput = {
+  problemId?: string;
+  version?: number;
+}
+
+export type ExportProblemOutput = {
+  snapshotUrl?: string;
 }
 

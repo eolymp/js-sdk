@@ -4,12 +4,14 @@
 
 export type Testset = {
   id?: string;
+  versionId?: string;
   index?: number;
   timeLimit?: number;
   cpuLimit?: number;
   memoryLimit?: number;
   fileSizeLimit?: number;
   dependencies?: number[];
+  dependencyMode?: string;
   scoringMode?: string;
   feedbackPolicy?: string;
 }

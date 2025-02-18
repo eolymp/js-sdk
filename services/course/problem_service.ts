@@ -3,11 +3,10 @@
 
 import { Template } from "../atlas/code_template"
 import { Statement } from "../atlas/statement"
-import { Submission } from "../atlas/submission"
 import { Test } from "../atlas/testing_test"
 import { Run } from "../playground/run"
 import { Runtime } from "../runtime/runtime"
-import { ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
+import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, WatchSubmissionInput, WatchSubmissionOutput } from "./submission_service"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -24,6 +23,12 @@ export class ProblemService {
 
   ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
     const path = "/statements";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  LookupStatement(input: LookupStatementInput, opts?: any): Promise<LookupStatementOutput> {
+    const path = "/statements:lookup";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -99,60 +104,18 @@ export type ListStatementsOutput = {
   items?: Statement[];
 }
 
+export type LookupStatementInput = {
+  locale?: string;
+}
+
+export type LookupStatementOutput = {
+  statement?: Statement;
+}
+
 export type ListExamplesInput = Record<string, unknown>;
 
 export type ListExamplesOutput = {
   examples?: Test[];
-}
-
-export type CreateSubmissionInput = {
-  problemId?: string;
-  runtime?: string;
-  source?: string;
-}
-
-export type CreateSubmissionOutput = {
-  submissionId?: string;
-}
-
-export type ListSubmissionsInput = {
-  offset?: number;
-  size?: number;
-  filters?: ListSubmissionsInput_Filter;
-}
-
-export type ListSubmissionsInput_Filter = {
-  id?: ExpressionID[];
-  userId?: ExpressionID[];
-  memberId?: ExpressionID[];
-  submittedAt?: ExpressionTimestamp[];
-  runtime?: ExpressionEnum[];
-  status?: ExpressionEnum[];
-  score?: ExpressionFloat[];
-  percentage?: ExpressionFloat[];
-}
-
-export type ListSubmissionsOutput = {
-  total?: number;
-  items?: Submission[];
-}
-
-export type DescribeSubmissionInput = {
-  problemId?: string;
-  submissionId?: string;
-}
-
-export type DescribeSubmissionOutput = {
-  submission?: Submission;
-}
-
-export type WatchSubmissionInput = {
-  problemId?: string;
-  submissionId?: string;
-}
-
-export type WatchSubmissionOutput = {
-  submission?: Submission;
 }
 
 export type LookupCodeTemplateInput = {

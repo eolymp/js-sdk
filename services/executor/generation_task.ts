@@ -7,8 +7,12 @@ export type GenerationTask = {
   taskId?: string;
   reference?: string;
   origin?: string;
-  runs?: GenerationTask_Run[];
+  metadata?: Record<string, string>;
+  runCount?: number;
+  interactor?: Script;
+  validator?: Script;
   scripts?: Script[];
+  runs?: GenerationTask_Run[];
 }
 
 export type GenerationTask_Generator = {
@@ -18,6 +22,10 @@ export type GenerationTask_Generator = {
 
 export type GenerationTask_Run = {
   reference?: string;
+  index?: number;
+  group?: number;
+  cost?: number;
+  env?: Record<string, string>;
   inputUrl?: string;
   inputContent?: string;
   inputGenerator?: GenerationTask_Generator;

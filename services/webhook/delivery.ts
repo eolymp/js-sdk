@@ -2,11 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Runtime = {
+export type Delivery = {
   id?: string;
-  lang?: string;
-  version?: string;
-  name?: string;
-  deprecated?: boolean;
+  webhookId?: string;
+  timestamp?: string;
+  event?: string;
+  payload?: any;
 }
 

@@ -41,6 +41,15 @@ export class SubmissionService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  PrintSubmission(input: PrintSubmissionInput, opts?: any): Promise<PrintSubmissionOutput> {
+    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/print";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.submissionId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   RetestSubmission(input: RetestSubmissionInput, opts?: any): Promise<RetestSubmissionOutput> {
     const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
 
@@ -123,6 +132,13 @@ export type DescribeSubmissionInput = {
 export type DescribeSubmissionOutput = {
   submission?: Submission;
 }
+
+export type PrintSubmissionInput = {
+  contestId?: string;
+  submissionId?: string;
+}
+
+export type PrintSubmissionOutput = Record<string, unknown>;
 
 export type WatchSubmissionInput = {
   contestId?: string;

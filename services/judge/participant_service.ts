@@ -168,13 +168,13 @@ export type ListParticipantsInput = {
   contestId?: string;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListParticipantsInput_Filter;
   sort?: string;
   order?: string;
 }
 
 export type ListParticipantsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   memberId?: ExpressionID[];
   groupId?: ExpressionID[];

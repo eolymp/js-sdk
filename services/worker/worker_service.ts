@@ -2,42 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Job } from "./job"
-
-interface Client {
-  call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
-}
-
-export class Worker {
-  private readonly cli: Client;
-  private readonly url: string;
-
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
-    this.cli = cli;
-    this.url = url;
-  }
-
-  CreateJob(input: CreateJobInput, opts?: any): Promise<CreateJobOutput> {
-    const path = "/jobs";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  DescribeJob(input: DescribeJobInput, opts?: any): Promise<DescribeJobOutput> {
-    const path = "/jobs/"+encodeURIComponent(input.jobId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.jobId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListJobs(input: ListJobsInput, opts?: any): Promise<ListJobsOutput> {
-    const path = "/jobs";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-}
+import { Job } from "./worker_job"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -52,12 +17,6 @@ export class WorkerService {
     this.url = url;
   }
 
-  CreateJob(input: CreateJobInput, opts?: any): Promise<CreateJobOutput> {
-    const path = "/jobs";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   DescribeJob(input: DescribeJobInput, opts?: any): Promise<DescribeJobOutput> {
     const path = "/jobs/"+encodeURIComponent(input.jobId||'');
 
@@ -72,6 +31,10 @@ export class WorkerService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+}
+
+export type JobTriggerEvent = {
+  job?: Job;
 }
 
 export type CreateJobInput = {

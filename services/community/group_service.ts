@@ -57,6 +57,11 @@ export class GroupService {
   }
 }
 
+export type GroupChangedEvent = {
+  before?: Group;
+  after?: Group;
+}
+
 export type CreateGroupInput = {
   group?: Group;
 }

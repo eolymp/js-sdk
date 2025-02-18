@@ -7,12 +7,13 @@ export type EvaluationReport = {
   taskId?: string;
   reference?: string;
   origin?: string;
+  metadata?: Record<string, string>;
   agent?: string;
   signature?: string;
   version?: number;
   type?: string;
-  error?: string;
-  failure?: string;
+  status?: string;
+  errorMessage?: string;
   runs?: EvaluationReport_Run[];
 }
 
@@ -21,12 +22,13 @@ export type EvaluationReport_Run = {
   status?: string;
   score?: number;
   cost?: number;
-  wallTimeUsage?: number;
-  wallTimeLimit?: number;
-  cpuTimeUsage?: number;
-  cpuTimeLimit?: number;
+  timeUsage?: number;
+  timeLimit?: number;
+  cpuUsage?: number;
+  cpuLimit?: number;
   memoryUsage?: number;
   memoryLimit?: number;
+  timeCoefficient?: number;
   inputUrl?: string;
   outputUrl?: string;
   answerUrl?: string;

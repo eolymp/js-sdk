@@ -32,6 +32,15 @@ export class MemberService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdateMemberPicture(input: UpdateMemberPictureInput, opts?: any): Promise<UpdateMemberPictureOutput> {
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/picture";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DeleteMember(input: DeleteMemberInput, opts?: any): Promise<DeleteMemberOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'');
 
@@ -92,6 +101,11 @@ export class MemberService {
   }
 }
 
+export type MemberChangedEvent = {
+  before?: Member;
+  after?: Member;
+}
+
 export type CreateMemberInput = {
   member?: Member;
 }
@@ -107,6 +121,19 @@ export type UpdateMemberInput = {
 }
 
 export type UpdateMemberOutput = Record<string, unknown>;
+
+export type UpdateMemberPictureInput = {
+  memberId?: string;
+  filename?: string;
+  data?: string;
+  offsetX?: number;
+  offsetY?: number;
+  size?: number;
+}
+
+export type UpdateMemberPictureOutput = {
+  pictureUrl?: string;
+}
 
 export type DeleteMemberInput = {
   memberId?: string;

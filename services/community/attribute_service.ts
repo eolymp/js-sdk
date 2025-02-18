@@ -65,6 +65,7 @@ export type CreateAttributeInput = {
 export type CreateAttributeOutput = Record<string, unknown>;
 
 export type UpdateAttributeInput = {
+  patch?: string[];
   attributeKey?: string;
   attribute?: Attribute;
 }

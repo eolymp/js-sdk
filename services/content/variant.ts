@@ -8,5 +8,6 @@ export type Variant = {
   locale?: string;
   title?: string;
   content?: Content;
+  automatic?: boolean;
 }
 

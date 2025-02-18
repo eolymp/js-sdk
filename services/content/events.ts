@@ -5,12 +5,13 @@ import { Fragment } from "./fragment"
 import { Variant } from "./variant"
 
 export type FragmentChangedEvent = {
+  scope?: string;
   before?: Fragment;
   after?: Fragment;
 }
 
 export type VariantChangedEvent = {
-  fragment?: Fragment;
+  fragmentId?: string;
   before?: Variant;
   after?: Variant;
 }

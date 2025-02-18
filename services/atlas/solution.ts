@@ -9,5 +9,7 @@ export type Solution = {
   runtime?: string;
   source?: string;
   type?: string;
+  status?: string;
+  submissionId?: string;
 }
 

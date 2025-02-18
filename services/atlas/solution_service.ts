@@ -55,19 +55,25 @@ export class SolutionService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  CheckSolutions(input: CheckSolutionsInput, opts?: any): Promise<CheckSolutionsOutput> {
+    const path = "/solutions:check";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ListSolutionsInput = {
   version?: number;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListSolutionsInput_Filter;
   sort?: string;
   order?: string;
 }
 
 export type ListSolutionsInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   type?: ExpressionEnum[];
   name?: ExpressionString[];
@@ -78,6 +84,19 @@ export type ListSolutionsOutput = {
   total?: number;
   items?: Solution[];
 }
+
+export type CheckSolutionsInput = {
+  filters?: CheckSolutionsInput_Filter;
+}
+
+export type CheckSolutionsInput_Filter = {
+  id?: ExpressionID[];
+  type?: ExpressionEnum[];
+  name?: ExpressionString[];
+  runtime?: ExpressionEnum[];
+}
+
+export type CheckSolutionsOutput = Record<string, unknown>;
 
 export type DescribeSolutionInput = {
   solutionId?: string;

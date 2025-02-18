@@ -142,11 +142,10 @@ export type SyncProblemInput = {
 export type SyncProblemOutput = Record<string, unknown>;
 
 export type UpdateProblemInput = {
+  patch?: string[];
   contestId?: string;
   problemId?: string;
-  index?: number;
-  submitLimit?: number;
-  scoreByBestTestset?: boolean;
+  problem?: Problem;
 }
 
 export type UpdateProblemOutput = Record<string, unknown>;

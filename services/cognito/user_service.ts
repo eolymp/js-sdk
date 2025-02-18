@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Quota } from "./quota"
 import { User } from "./user"
 
 interface Client {
@@ -16,51 +15,6 @@ export class UserService {
   constructor(cli: Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
-  }
-
-  CreateUser(input: CreateUserInput, opts?: any): Promise<CreateUserOutput> {
-    const path = "/users";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  VerifyEmail(input: VerifyEmailInput, opts?: any): Promise<VerifyEmailOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId||'')+"/verify";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.userId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  ResendEmailVerification(input: ResendEmailVerificationInput, opts?: any): Promise<ResendEmailVerificationOutput> {
-    const path = "/self/email/resend-verification";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UpdateProfile(input: UpdateProfileInput, opts?: any): Promise<UpdateProfileOutput> {
-    const path = "/self";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UpdatePicture(input: UpdatePictureInput, opts?: any): Promise<UpdatePictureOutput> {
-    const path = "/self/picture";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UpdatePassword(input: UpdatePasswordInput, opts?: any): Promise<UpdatePasswordOutput> {
-    const path = "/self/password";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  IntrospectUser(input: IntrospectUserInput, opts?: any): Promise<IntrospectUserOutput> {
-    const path = "/self";
-
-    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeUser(input: DescribeUserInput, opts?: any): Promise<DescribeUserOutput> {
@@ -77,107 +31,11 @@ export class UserService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  IntrospectQuota(input: IntrospectQuotaInput, opts?: any): Promise<IntrospectQuotaOutput> {
-    const path = "/self/quota";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  StartRecovery(input: StartRecoveryInput, opts?: any): Promise<StartRecoveryOutput> {
-    const path = "/self/recovery";
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  CompleteRecovery(input: CompleteRecoverInput, opts?: any): Promise<CompleteRecoverOutput> {
-    const path = "/users/"+encodeURIComponent(input.userId||'')+"/recover";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.userId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  SelfDestruct(input: SelfDestructInput, opts?: any): Promise<SelfDestructOutput> {
-    const path = "/self";
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
 }
 
 export type UserChangedEvent = {
   before?: User;
   after?: User;
-}
-
-export type CreateUserInput = {
-  username?: string;
-  fullName?: string;
-  email?: string;
-  password?: string;
-  country?: string;
-  birthday?: string;
-  captcha?: string;
-  locale?: string;
-}
-
-export type CreateUserOutput = {
-  userId?: string;
-  emailConfirmationHint?: string;
-}
-
-export type VerifyEmailInput = {
-  userId?: string;
-  secret?: string;
-}
-
-export type VerifyEmailOutput = Record<string, unknown>;
-
-export type ResendEmailVerificationInput = Record<string, unknown>;
-
-export type ResendEmailVerificationOutput = {
-  emailConfirmationHint?: string;
-}
-
-export type UpdateProfileInput = {
-  patch?: string[];
-  username?: string;
-  email?: string;
-  name?: string;
-  company?: string;
-  occupation?: string;
-  country?: string;
-  city?: string;
-  birthday?: string;
-  locale?: string;
-}
-
-export type UpdateProfileOutput = {
-  emailConfirmationHint?: string;
-}
-
-export type UpdatePictureInput = {
-  filename?: string;
-  data?: string;
-  offsetX?: number;
-  offsetY?: number;
-  size?: number;
-}
-
-export type UpdatePictureOutput = Record<string, unknown>;
-
-export type UpdatePasswordInput = {
-  currentPassword?: string;
-  newPassword?: string;
-}
-
-export type UpdatePasswordOutput = Record<string, unknown>;
-
-export type IntrospectUserInput = Record<string, unknown>;
-
-export type IntrospectUserOutput = {
-  user?: User;
 }
 
 export type DescribeUserInput = {
@@ -202,38 +60,5 @@ export type ListUsersInput_Filter = {
 export type ListUsersOutput = {
   total?: number;
   items?: User[];
-}
-
-export type IntrospectQuotaInput = Record<string, unknown>;
-
-export type IntrospectQuotaOutput = {
-  contestsPerUser?: Quota;
-  problemsPerContest?: Quota;
-  participantsPerContest?: Quota;
-  problemsPerUser?: Quota;
-}
-
-export type StartRecoveryInput = {
-  email?: string;
-  captcha?: string;
-  locale?: string;
-}
-
-export type StartRecoveryOutput = {
-  emailRecoveryHint?: string;
-}
-
-export type CompleteRecoverInput = {
-  userId?: string;
-  secret?: string;
-  password?: string;
-}
-
-export type CompleteRecoverOutput = Record<string, unknown>;
-
-export type SelfDestructInput = Record<string, unknown>;
-
-export type SelfDestructOutput = {
-  deleteOn?: string;
 }
 

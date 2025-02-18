@@ -113,6 +113,7 @@ export type ListModulesInput = {
   groupId?: string;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListModulesInput_Filter;
   sort?: string;
   order?: string;
@@ -120,7 +121,6 @@ export type ListModulesInput = {
 }
 
 export type ListModulesInput_Filter = {
-  query?: string;
   draft?: ExpressionBool[];
   extra?: ExpressionBool[];
   graded?: ExpressionBool[];

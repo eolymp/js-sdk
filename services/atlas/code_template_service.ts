@@ -84,6 +84,8 @@ export type DeleteCodeTemplateInput = {
 export type DeleteCodeTemplateOutput = Record<string, unknown>;
 
 export type ListCodeTemplatesInput = {
+  offset?: number;
+  size?: number;
   version?: number;
 }
 

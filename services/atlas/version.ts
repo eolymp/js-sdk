@@ -3,10 +3,17 @@
 
 
 export type Version = {
+  id?: string;
   number?: number;
   createdAt?: string;
   createdBy?: string;
-  changeOp?: string;
-  changePath?: string;
+  summary?: string;
+  changes?: Version_Change[];
+  cursor?: string;
+}
+
+export type Version_Change = {
+  op?: string;
+  path?: string;
 }
 

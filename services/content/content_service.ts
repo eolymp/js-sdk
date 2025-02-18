@@ -57,6 +57,15 @@ export class ContentService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  TranslateFragment(input: TranslateFragmentInput, opts?: any): Promise<TranslateFragmentOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.fragmentId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeVariant(input: DescribeVariantInput, opts?: any): Promise<DescribeVariantOutput> {
     const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
 
@@ -159,6 +168,7 @@ export type CreateFragmentOutput = {
 }
 
 export type UpdateFragmentInput = {
+  patch?: string[];
   fragmentId?: string;
   fragment?: Fragment;
 }
@@ -170,6 +180,18 @@ export type DeleteFragmentInput = {
 }
 
 export type DeleteFragmentOutput = Record<string, unknown>;
+
+export type TranslateFragmentInput = {
+  fragmentId?: string;
+  source?: string;
+  target?: string[];
+  targetAutomatic?: boolean;
+  overrideManual?: boolean;
+}
+
+export type TranslateFragmentOutput = {
+  jobId?: string;
+}
 
 export type DescribeVariantInput = {
   fragmentId?: string;

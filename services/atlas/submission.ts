@@ -27,6 +27,7 @@ export type Submission = {
   memoryUsage?: number;
   resourceUsage?: number;
   groups?: Submission_Group[];
+  assistantAvailable?: boolean;
   cursor?: string;
 }
 

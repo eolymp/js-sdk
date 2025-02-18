@@ -13,12 +13,14 @@ import { TestingConfig } from "./testing_config"
 import { Interactor } from "./testing_interactor"
 import { Test } from "./testing_test"
 import { Testset } from "./testing_testset"
+import { Validator } from "./testing_validator"
 
 export type Snapshot = {
   problem?: Problem;
   testing?: TestingConfig;
   checker?: Checker;
   interactor?: Interactor;
+  validator?: Validator;
   statements?: Statement[];
   templates?: Template[];
   attachments?: Attachment[];

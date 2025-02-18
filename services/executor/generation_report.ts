@@ -7,17 +7,20 @@ export type GenerationReport = {
   taskId?: string;
   reference?: string;
   origin?: string;
+  metadata?: Record<string, string>;
   agent?: string;
-  error?: string;
   runs?: GenerationReport_Run[];
+  errorMessage?: string;
 }
 
 export type GenerationReport_Run = {
   reference?: string;
   status?: string;
+  valid?: boolean;
   inputUrl?: string;
   answerUrl?: string;
   inputGeneratorStats?: Stats;
   answerGeneratorStats?: Stats;
+  errorMessage?: string;
 }
 

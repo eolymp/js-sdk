@@ -2,29 +2,24 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Checker } from "./checker"
-import { File } from "./file"
-import { Interactor } from "./interactor"
 import { Script } from "./script"
 
 export type EvaluationTask = {
   taskId?: string;
   reference?: string;
   origin?: string;
+  metadata?: Record<string, string>;
   priority?: number;
-  runtime?: string;
-  source?: string;
-  sourceUrl?: string;
-  headerUrl?: string;
-  footerUrl?: string;
   redirectStderrToStdout?: boolean;
+  timeCoefficientDeviation?: number;
   runCount?: number;
   preconditions?: EvaluationTask_Precondition[];
   constraints?: EvaluationTask_Constraint[];
+  submission?: Script;
+  interactor?: Script;
   checker?: Checker;
-  interactor?: Interactor;
-  runs?: EvaluationTask_Run[];
-  files?: File[];
   scripts?: Script[];
+  runs?: EvaluationTask_Run[];
 }
 
 export type EvaluationTask_Generator = {
@@ -35,6 +30,7 @@ export type EvaluationTask_Generator = {
 export type EvaluationTask_Run = {
   reference?: string;
   index?: number;
+  group?: number;
   debug?: boolean;
   cost?: number;
   env?: Record<string, string>;
@@ -50,6 +46,7 @@ export type EvaluationTask_Run = {
 export type EvaluationTask_Precondition = {
   selector?: string[];
   dependsOn?: string[];
+  dependencyMode?: string;
   stopOnFailure?: boolean;
   maxExecutionTime?: number;
 }

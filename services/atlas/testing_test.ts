@@ -4,8 +4,11 @@
 
 export type Test = {
   id?: string;
+  versionId?: string;
   testsetId?: string;
   index?: number;
+  status?: string;
+  statusMessage?: string;
   example?: boolean;
   inactive?: boolean;
   secret?: boolean;

@@ -19,5 +19,6 @@ export type Claims = {
   minor?: boolean;
   country?: string;
   preferredRuntime?: string;
+  restrictions?: string;
 }
 

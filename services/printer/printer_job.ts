@@ -2,10 +2,13 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Region = {
+export type Job = {
   id?: string;
-  countryId?: string;
-  name?: string;
-  flag?: string;
+  status?: string;
+  userId?: string;
+  memberId?: string;
+  documentUrl?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 

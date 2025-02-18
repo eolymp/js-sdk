@@ -5,15 +5,16 @@
 export type Job = {
   id?: string;
   type?: string;
+  namespace?: string;
+  status?: string;
+  progress?: number;
+  total?: number;
   inputs?: Record<string, string>;
+  outputs?: Record<string, string>;
   createdAt?: string;
   startedAt?: string;
   progressAt?: string;
   completeAt?: string;
-  progress?: number;
-  total?: number;
-  status?: string;
-  outputs?: Record<string, string>;
-  logs?: string;
+  logsUrl?: string;
 }
 

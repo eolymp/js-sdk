@@ -3,13 +3,13 @@
 
 import { Content } from "../ecm/content"
 
-export type Editorial = {
+export type Penalty = {
   id?: string;
-  locale?: string;
-  automatic?: boolean;
-  draft?: boolean;
-  content?: Content;
-  downloadLink?: string;
-  authorId?: string;
+  summary?: string;
+  description?: Content;
+  scope?: string[];
+  createdAt?: string;
+  expiresAt?: string;
+  cancelledAt?: string;
 }
 

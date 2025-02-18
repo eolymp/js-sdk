@@ -76,6 +76,13 @@ export class MessageService {
   }
 }
 
+export type MessageChangedEvent = {
+  scope?: string;
+  before?: Message;
+  after?: Message;
+  reason?: string;
+}
+
 export type DescribeMessageInput = {
   messageId?: string;
   render?: boolean;
@@ -130,6 +137,7 @@ export type UpdateMessageOutput = Record<string, unknown>;
 
 export type DeleteMessageInput = {
   messageId?: string;
+  reason?: string;
 }
 
 export type DeleteMessageOutput = Record<string, unknown>;
