@@ -9,6 +9,7 @@ export type GenerationTask = {
   origin?: string;
   metadata?: Record<string, string>;
   runCount?: number;
+  interactiveFollowup?: boolean;
   interactor?: Script;
   validator?: Script;
   scripts?: Script[];

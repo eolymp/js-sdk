@@ -13,6 +13,7 @@ export type EvaluationTask = {
   redirectStderrToStdout?: boolean;
   timeCoefficientDeviation?: number;
   runCount?: number;
+  interactiveFollowup?: boolean;
   preconditions?: EvaluationTask_Precondition[];
   constraints?: EvaluationTask_Constraint[];
   submission?: Script;
