@@ -75,6 +75,15 @@ export class CampaignService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  TranslateCampaign(input: TranslateCampaignInput, opts?: any): Promise<TranslateCampaignOutput> {
+    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.campaignId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   CreateTranslation(input: CreateTranslationInput, opts?: any): Promise<CreateTranslationOutput> {
     const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translations";
 
@@ -228,6 +237,18 @@ export type SendCampaignInput = {
 }
 
 export type SendCampaignOutput = Record<string, unknown>;
+
+export type TranslateCampaignInput = {
+  campaignId?: string;
+  source?: string;
+  target?: string[];
+  targetAutomatic?: boolean;
+  overrideManual?: boolean;
+}
+
+export type TranslateCampaignOutput = {
+  jobId?: string;
+}
 
 export type CreateTranslationInput = {
   campaignId?: string;

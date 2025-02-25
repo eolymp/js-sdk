@@ -20,5 +20,6 @@ export type Campaign_Translation = {
   locale?: string;
   subject?: string;
   content?: Content;
+  automatic?: boolean;
 }
 
