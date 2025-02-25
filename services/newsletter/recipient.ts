@@ -10,5 +10,6 @@ export type Recipient = {
   deliveredAt?: string;
   memberId?: string;
   status?: string;
+  statusReason?: string;
 }
 
