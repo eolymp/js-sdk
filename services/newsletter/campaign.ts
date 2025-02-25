@@ -3,14 +3,19 @@
 
 import { Content } from "../ecm/content"
 
-export type Newsletter = {
+export type Campaign = {
   id?: string;
+  type?: string;
   createdAt?: string;
   subject?: string;
   content?: Content;
+  recipientsCount?: number;
+  pendingCount?: number;
+  sentCount?: number;
+  errorCount?: number;
 }
 
-export type Newsletter_Translation = {
+export type Campaign_Translation = {
   id?: string;
   locale?: string;
   subject?: string;
