@@ -315,6 +315,7 @@ export type ListRecipientsOutput = {
 }
 
 export type DescribeRecipientInput = {
+  campaignId?: string;
   recipientId?: string;
 }
 
