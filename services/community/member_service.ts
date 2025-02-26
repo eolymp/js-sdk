@@ -96,10 +96,10 @@ export class MemberService {
   }
 
   NotifyMember(input: NotifyMemberInput, opts?: any): Promise<NotifyMemberOutput> {
-    const path = "/members/"+encodeURIComponent(input.teamId||'')+"/notify";
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/notify";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.teamId);
+    delete(input.memberId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
