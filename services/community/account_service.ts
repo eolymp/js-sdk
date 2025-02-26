@@ -69,6 +69,18 @@ export class AccountService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  DescribeEmailSubscription(input: DescribeEmailSubscriptionInput, opts?: any): Promise<DescribeEmailSubscriptionOutput> {
+    const path = "/account/email-subscription";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateEmailSubscription(input: UpdateEmailSubscriptionInput, opts?: any): Promise<UpdateEmailSubscriptionOutput> {
+    const path = "/account/email-subscription";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateAccountInput = {
@@ -144,4 +156,20 @@ export type CompleteRecoverInput = {
 }
 
 export type CompleteRecoverOutput = Record<string, unknown>;
+
+export type DescribeEmailSubscriptionInput = {
+  token?: string;
+}
+
+export type DescribeEmailSubscriptionOutput = {
+  subscriptions?: string[];
+  email?: string;
+}
+
+export type UpdateEmailSubscriptionInput = {
+  token?: string;
+  subscriptions?: string[];
+}
+
+export type UpdateEmailSubscriptionOutput = Record<string, unknown>;
 

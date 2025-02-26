@@ -215,7 +215,7 @@ export type ListCampaignsInput = {
 
 export type ListCampaignsInput_Filter = {
   id?: ExpressionID[];
-  status?: ExpressionEnum[];
+  type?: ExpressionEnum[];
 }
 
 export type ListCampaignsOutput = {
@@ -328,6 +328,7 @@ export type ListRecipientsInput = {
 export type ListRecipientsInput_Filter = {
   id?: ExpressionID[];
   status?: ExpressionEnum[];
+  memberId?: ExpressionID[];
 }
 
 export type ListRecipientsOutput = {
