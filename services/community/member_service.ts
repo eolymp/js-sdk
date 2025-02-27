@@ -180,7 +180,7 @@ export type ListMembersInput = {
 export type ListMembersInput_ExpressionAttribute = {
   attributeKey?: string;
   number?: ExpressionInt;
-  string?: ExpressionInt;
+  string?: ExpressionString;
 }
 
 export type ListMembersInput_Filter = {
