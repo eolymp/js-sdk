@@ -227,6 +227,7 @@ export type TestCampaignInput = {
   campaignId?: string;
   email?: string;
   locale?: string;
+  memberId?: string;
 }
 
 export type TestCampaignOutput = Record<string, unknown>;

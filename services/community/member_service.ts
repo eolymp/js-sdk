@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
-import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
+import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Member } from "./member"
 
 interface Client {
@@ -171,13 +171,19 @@ export type ListMembersInput = {
   offset?: number;
   size?: number;
   filters?: ListMembersInput_Filter;
+  search?: string;
   sort?: string;
   order?: string;
   extra?: string[];
 }
 
+export type ListMembersInput_ExpressionAttribute = {
+  attributeKey?: string;
+  number?: ExpressionInt;
+  string?: ExpressionInt;
+}
+
 export type ListMembersInput_Filter = {
-  query?: string;
   id?: ExpressionID[];
   type?: ExpressionEnum[];
   name?: ExpressionString[];
@@ -192,7 +198,10 @@ export type ListMembersInput_Filter = {
   userEmail?: ExpressionString[];
   userName?: ExpressionString[];
   userNickname?: ExpressionString[];
+  birthday?: ExpressionTimestamp[];
+  country?: ExpressionID[];
   score?: ExpressionInt[];
+  attribute?: ListMembersInput_ExpressionAttribute[];
 }
 
 export type ListMembersOutput = {
