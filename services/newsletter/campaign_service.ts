@@ -141,6 +141,15 @@ export class CampaignService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ImportRecipient(input: ImportRecipientInput, opts?: any): Promise<ImportRecipientOutput> {
+    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/recipients:import";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.campaignId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DeleteRecipient(input: DeleteRecipientInput, opts?: any): Promise<DeleteRecipientOutput> {
     const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/recipients/"+encodeURIComponent(input.recipientId||'');
 
@@ -305,13 +314,19 @@ export type ListTranslationsOutput = {
 export type CreateRecipientInput = {
   campaignId?: string;
   memberId?: string;
-  groupId?: string;
-  everybody?: boolean;
 }
 
 export type CreateRecipientOutput = {
   recipientId?: string;
 }
+
+export type ImportRecipientInput = {
+  campaignId?: string;
+  allMembers?: boolean;
+  groupId?: string;
+}
+
+export type ImportRecipientOutput = Record<string, unknown>;
 
 export type DeleteRecipientInput = {
   campaignId?: string;
