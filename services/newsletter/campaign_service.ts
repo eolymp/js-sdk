@@ -306,6 +306,7 @@ export type CreateRecipientInput = {
   campaignId?: string;
   memberId?: string;
   groupId?: string;
+  everybody?: boolean;
 }
 
 export type CreateRecipientOutput = {

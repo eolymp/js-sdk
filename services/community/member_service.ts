@@ -236,6 +236,8 @@ export type DescribeMemberUsageOutput = {
 
 export type NotifyMemberInput = {
   memberId?: string;
+  dryRun?: boolean;
+  bccMe?: boolean;
   type?: string;
   locale?: string;
   subject?: string;
