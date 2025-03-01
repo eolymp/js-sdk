@@ -16,6 +16,9 @@ export type Quota = {
   plagiarismAnalysis?: boolean;
   submissionEvaluationLimit?: number;
   membersPerSpace?: number;
+  newslettersPerSpace?: number;
+  emailsPerDay?: number;
+  emailsPerMonth?: number;
   scoreboardsPerSpace?: number;
   coursesPerSpace?: number;
   problemsPerSpace?: number;
