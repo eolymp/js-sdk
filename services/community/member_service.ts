@@ -109,6 +109,12 @@ export class MemberService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DescribeNotificationUsage(input: DescribeNotificationUsageInput, opts?: any): Promise<DescribeNotificationUsageOutput> {
+    const path = "/usage/notifications";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type MemberChangedEvent = {
@@ -247,5 +253,12 @@ export type NotifyMemberInput = {
 
 export type NotifyMemberOutput = {
   messageId?: string;
+}
+
+export type DescribeNotificationUsageInput = Record<string, unknown>;
+
+export type DescribeNotificationUsageOutput = {
+  dailyEmails?: number;
+  monthlyEmails?: number;
 }
 
