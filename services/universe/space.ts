@@ -13,6 +13,7 @@ export type Space = {
   name?: string;
   image?: string;
   visibility?: string;
+  features?: string[];
   status?: string;
   subscription?: Space_Subscription;
   affiliation?: string;

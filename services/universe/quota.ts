@@ -11,7 +11,7 @@ export type Quota = {
   allowDiscussions?: boolean;
   achievementsPerSpace?: number;
   printersPerSpace?: number;
-  evaluationsBySeatMonth?: number;
+  evaluationsBySeatPerMonth?: number;
   priorityEvaluationQueue?: boolean;
   plagiarismAnalysis?: boolean;
   submissionEvaluationLimit?: number;
