@@ -11,12 +11,12 @@ export type Quota = {
   allowDiscussions?: boolean;
   achievementsPerSpace?: number;
   printersPerSpace?: number;
-  monthlyEvaluationsBySeat?: number;
+  evaluationsBySeatMonth?: number;
   priorityEvaluationQueue?: boolean;
   plagiarismAnalysis?: boolean;
   submissionEvaluationLimit?: number;
   membersPerSpace?: number;
-  monthlyCampaignsPerSpace?: number;
+  campaignsPerSpace?: number;
   emailsPerDay?: number;
   emailsPerMonth?: number;
   scoreboardsPerSpace?: number;
@@ -33,7 +33,7 @@ export type Quota = {
   debugHintsDailyPerMember?: number;
   contestsPerSpace?: number;
   activeContestsPerSpace?: number;
-  monthlyContestsPerSpace?: number;
+  contestsPerMonth?: number;
   problemsPerContest?: number;
   participantsPerContest?: number;
   contestUpsolveMode?: boolean;
