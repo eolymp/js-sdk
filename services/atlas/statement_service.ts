@@ -72,6 +72,15 @@ export class StatementService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ExportStatement(input: ExportStatementInput, opts?: any): Promise<ExportStatementOutput> {
+    const path = "/statements/"+encodeURIComponent(input.statementId||'')+"/export";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.statementId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type StatementChangedEvent = {
@@ -155,4 +164,12 @@ export type DeleteStatementInput = {
 }
 
 export type DeleteStatementOutput = Record<string, unknown>;
+
+export type ExportStatementInput = {
+  statementId?: string;
+}
+
+export type ExportStatementOutput = {
+  downloadUrl?: string;
+}
 
