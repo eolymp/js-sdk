@@ -18,7 +18,13 @@ export class RenderService {
   }
 
   RenderContent(input: RenderContentInput, opts?: any): Promise<RenderContentOutput> {
-    const path = "/renderer";
+    const path = "/content:render";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ExportContent(input: ExportContentInput, opts?: any): Promise<ExportContentOutput> {
+    const path = "/content:export";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
@@ -30,5 +36,13 @@ export type RenderContentInput = {
 
 export type RenderContentOutput = {
   render?: Node;
+}
+
+export type ExportContentInput = {
+  content?: Content;
+}
+
+export type ExportContentOutput = {
+  documentUrl?: string;
 }
 
