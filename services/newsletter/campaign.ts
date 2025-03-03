@@ -7,6 +7,7 @@ export type Campaign = {
   id?: string;
   type?: string;
   createdAt?: string;
+  name?: string;
   subject?: string;
   content?: Content;
   recipientsCount?: number;

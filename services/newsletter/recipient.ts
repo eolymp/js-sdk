@@ -11,5 +11,6 @@ export type Recipient = {
   memberId?: string;
   status?: string;
   statusReason?: string;
+  parameters?: Record<string, string>;
 }
 

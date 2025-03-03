@@ -37,6 +37,7 @@ export type SendEmailInput = {
   dryRun?: boolean;
   bccMe?: boolean;
   type?: string;
+  campaign?: string;
   locale?: string;
   subject?: string;
   content?: Content;
