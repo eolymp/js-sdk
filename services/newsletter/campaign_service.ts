@@ -314,6 +314,7 @@ export type ListTranslationsOutput = {
 export type CreateRecipientInput = {
   campaignId?: string;
   memberId?: string;
+  parameters?: Record<string, string>;
 }
 
 export type CreateRecipientOutput = {
@@ -324,6 +325,8 @@ export type ImportRecipientInput = {
   campaignId?: string;
   allMembers?: boolean;
   groupId?: string;
+  contestId?: string;
+  parameters?: Record<string, string>;
 }
 
 export type ImportRecipientOutput = Record<string, unknown>;
