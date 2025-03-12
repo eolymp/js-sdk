@@ -18,6 +18,12 @@ export class LinkedAccountService {
   }
 
   RequestLinkedAccount(input: RequestLinkedAccountInput, opts?: any): Promise<RequestLinkedAccountOutput> {
+    const path = "/linked-accounts:request";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  CreateLinkedAccount(input: CreateLinkedAccountInput, opts?: any): Promise<CreateLinkedAccountOutput> {
     const path = "/linked-accounts";
 
     return this.cli.call("POST", this.url+path, input, opts);
@@ -52,7 +58,18 @@ export type RequestLinkedAccountInput = {
   type?: string;
 }
 
-export type RequestLinkedAccountOutput = Record<string, unknown>;
+export type RequestLinkedAccountOutput = {
+  redirectUri?: string;
+}
+
+export type CreateLinkedAccountInput = {
+  code?: string;
+  state?: string;
+}
+
+export type CreateLinkedAccountOutput = {
+  linkId?: string;
+}
 
 export type DeleteLinkedAccountInput = {
   linkId?: string;
