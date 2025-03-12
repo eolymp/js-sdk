@@ -17,6 +17,21 @@ export class LinkedAccountService {
     this.url = url;
   }
 
+  RequestLinkedAccount(input: RequestLinkedAccountInput, opts?: any): Promise<RequestLinkedAccountOutput> {
+    const path = "/linked-accounts";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DeleteLinkedAccount(input: DeleteLinkedAccountInput, opts?: any): Promise<DeleteLinkedAccountOutput> {
+    const path = "/linked-accounts/"+encodeURIComponent(input.linkId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.linkId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
   DescribeLinkedAccount(input: DescribeLinkedAccountInput, opts?: any): Promise<DescribeLinkedAccountOutput> {
     const path = "/linked-accounts/"+encodeURIComponent(input.linkId||'');
 
@@ -31,16 +46,19 @@ export class LinkedAccountService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  DeleteLinkedAccount(input: DeleteLinkedAccountInput, opts?: any): Promise<DeleteLinkedAccountOutput> {
-    const path = "/linked-accounts/"+encodeURIComponent(input.linkId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.linkId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
 }
+
+export type RequestLinkedAccountInput = {
+  type?: string;
+}
+
+export type RequestLinkedAccountOutput = Record<string, unknown>;
+
+export type DeleteLinkedAccountInput = {
+  linkId?: string;
+}
+
+export type DeleteLinkedAccountOutput = Record<string, unknown>;
 
 export type DescribeLinkedAccountInput = {
   linkId?: string;
@@ -65,10 +83,4 @@ export type ListLinkedAccountsOutput = {
   total?: number;
   items?: LinkedAccount[];
 }
-
-export type DeleteLinkedAccountInput = {
-  linkId?: string;
-}
-
-export type DeleteLinkedAccountOutput = Record<string, unknown>;
 
