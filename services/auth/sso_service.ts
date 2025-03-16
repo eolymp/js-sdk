@@ -14,9 +14,22 @@ export class SSOService {
     this.cli = cli;
     this.url = url;
   }
+
+  AuthorizeRequest(input: AuthorizeRequestInput, opts?: any): Promise<AuthorizeRequestOutput> {
+    const path = "/sso:authorize";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  AuthorizeCallback(input: AuthorizeCallbackInput, opts?: any): Promise<AuthorizeCallbackOutput> {
+    const path = "/sso:exchange";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type AuthorizeRequestInput = {
+  via?: string;
   clientId?: string;
   codeChallenge?: string;
   codeChallengeMethod?: string;
@@ -37,5 +50,6 @@ export type AuthorizeCallbackInput = {
 
 export type AuthorizeCallbackOutput = {
   redirectUri?: string;
+  code?: string;
 }
 
