@@ -56,6 +56,7 @@ export class LinkedAccountService {
 
 export type RequestLinkedAccountInput = {
   type?: string;
+  callbackUri?: string;
 }
 
 export type RequestLinkedAccountOutput = {

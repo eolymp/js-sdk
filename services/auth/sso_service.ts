@@ -15,41 +15,34 @@ export class SSOService {
     this.url = url;
   }
 
-  AuthorizeRequest(input: AuthorizeRequestInput, opts?: any): Promise<AuthorizeRequestOutput> {
-    const path = "/sso:authorize";
+  SignonRequest(input: SignonRequestInput, opts?: any): Promise<SignonRequestOutput> {
+    const path = "/sso:request";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  AuthorizeCallback(input: AuthorizeCallbackInput, opts?: any): Promise<AuthorizeCallbackOutput> {
+  SignonExchange(input: SignonExchangeInput, opts?: any): Promise<SignonExchangeOutput> {
     const path = "/sso:exchange";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type AuthorizeRequestInput = {
-  via?: string;
-  clientId?: string;
-  codeChallenge?: string;
-  codeChallengeMethod?: string;
-  redirectUri?: string;
-  responseType?: string;
-  scope?: string;
-  state?: string;
+export type SignonRequestInput = {
+  type?: string;
+  callbackUri?: string;
 }
 
-export type AuthorizeRequestOutput = {
+export type SignonRequestOutput = {
   redirectUri?: string;
 }
 
-export type AuthorizeCallbackInput = {
+export type SignonExchangeInput = {
   code?: string;
   state?: string;
 }
 
-export type AuthorizeCallbackOutput = {
-  redirectUri?: string;
-  code?: string;
+export type SignonExchangeOutput = {
+  authorizationCode?: string;
 }
 
