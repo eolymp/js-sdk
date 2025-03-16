@@ -7,5 +7,6 @@ export type LinkedAccount = {
   type?: string;
   issuer?: string;
   subject?: string;
+  nickname?: string;
 }
 
