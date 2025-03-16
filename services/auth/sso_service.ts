@@ -43,6 +43,9 @@ export type SignonExchangeInput = {
 }
 
 export type SignonExchangeOutput = {
-  authorizationCode?: string;
+  accessToken?: string;
+  tokenType?: string;
+  expiresIn?: number;
+  refreshToken?: string;
 }
 
