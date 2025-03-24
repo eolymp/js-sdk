@@ -7,8 +7,7 @@ export type User = {
   username?: string;
   email?: string;
   active?: boolean;
-  rank?: number;
-  rankTrend?: string;
+  rating?: number;
   name?: string;
   picture?: string;
   company?: string;
