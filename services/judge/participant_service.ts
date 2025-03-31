@@ -103,6 +103,22 @@ export class ParticipantService {
   }
 }
 
+export type ParticipantChangedEvent = {
+  contestId?: string;
+  before?: Participant;
+  after?: Participant;
+}
+
+export type ParticipantJoinedEvent = {
+  contestId?: string;
+  participant?: Participant;
+}
+
+export type ParticipantFinalizedEvent = {
+  contestId?: string;
+  participant?: Participant;
+}
+
 export type AssignParticipantInput = {
   contestId?: string;
   participant?: Participant;
