@@ -18,6 +18,7 @@ export type Participant = {
   endIn?: number;
   bonusTime?: number;
   passcode?: string;
+  certificateUrl?: string;
   submits?: Participant_Submit[];
 }
 
