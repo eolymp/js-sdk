@@ -15,6 +15,7 @@ export type Contest = {
   status?: string;
   visibility?: string;
   joinUnofficially?: boolean;
+  issueCertificates?: boolean;
   participationMode?: string;
   requireAdmission?: boolean;
   format?: string;

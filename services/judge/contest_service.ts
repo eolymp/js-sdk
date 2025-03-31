@@ -102,6 +102,15 @@ export class ContestService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  FinalizeContest(input: FinalizeContestInput, opts?: any): Promise<FinalizeContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/finalize";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   ResumeContest(input: ResumeContestInput, opts?: any): Promise<ResumeContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/resume";
 
@@ -125,6 +134,11 @@ export class ContestService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+}
+
+export type ContestChangedEvent = {
+  before?: Contest;
+  after?: Contest;
 }
 
 export type CreateContestInput = {
@@ -222,6 +236,12 @@ export type FreezeContestInput = {
 }
 
 export type FreezeContestOutput = Record<string, unknown>;
+
+export type FinalizeContestInput = {
+  contestId?: string;
+}
+
+export type FinalizeContestOutput = Record<string, unknown>;
 
 export type ResumeContestInput = {
   contestId?: string;
