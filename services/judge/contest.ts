@@ -15,7 +15,6 @@ export type Contest = {
   status?: string;
   visibility?: string;
   joinUnofficially?: boolean;
-  issueCertificates?: boolean;
   participationMode?: string;
   requireAdmission?: boolean;
   format?: string;
@@ -31,6 +30,7 @@ export type Contest = {
   environment?: Contest_Environment;
   upsolve?: Contest_Upsolve;
   scoreboard?: Contest_Scoreboard;
+  certification?: Contest_Certification;
 }
 
 export type Contest_Appearance = {
@@ -66,5 +66,16 @@ export type Contest_Scoreboard = {
   tieBreaker?: string;
   noSpoilerUi?: boolean;
   shareKey?: string;
+}
+
+export type Contest_Certification = {
+  enabled?: boolean;
+  affiliation?: string;
+  signers?: Contest_Certification_Signer[];
+}
+
+export type Contest_Certification_Signer = {
+  name?: string;
+  title?: string;
 }
 

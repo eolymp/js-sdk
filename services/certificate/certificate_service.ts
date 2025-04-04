@@ -56,6 +56,7 @@ export type CreateCertificateInput = {
 
 export type CreateCertificateOutput = {
   certificateId?: string;
+  downloadUrl?: string;
 }
 
 export type VoidCertificateInput = {

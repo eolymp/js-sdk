@@ -9,6 +9,7 @@ export type Certificate = {
   verificationUrl?: string;
   downloadUrl?: string;
   htmlUrl?: string;
+  locale?: string;
   type?: string;
   attributes?: Record<string, string>;
   issuedAt?: string;
