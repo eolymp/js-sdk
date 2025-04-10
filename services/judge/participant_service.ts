@@ -84,22 +84,34 @@ export class ParticipantService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
-    const path = "/introspect";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   JoinContest(input: JoinContestInput, opts?: any): Promise<JoinContestOutput> {
     const path = "/join";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
+    const path = "/introspect";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   StartContest(input: StartContestInput, opts?: any): Promise<StartContestOutput> {
     const path = "/start";
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  PauseContest(input: PauseContestInput, opts?: any): Promise<PauseContestOutput> {
+    const path = "/pause";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  FinishContest(input: FinishContestInput, opts?: any): Promise<FinishContestOutput> {
+    const path = "/finish";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
@@ -234,4 +246,16 @@ export type StartContestInput = {
 }
 
 export type StartContestOutput = Record<string, unknown>;
+
+export type PauseContestInput = {
+  contestId?: string;
+}
+
+export type PauseContestOutput = Record<string, unknown>;
+
+export type FinishContestInput = {
+  contestId?: string;
+}
+
+export type FinishContestOutput = Record<string, unknown>;
 
