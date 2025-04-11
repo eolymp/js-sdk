@@ -17,6 +17,8 @@ export type Contest = {
   joinUnofficially?: boolean;
   participationMode?: string;
   requireAdmission?: boolean;
+  allowPause?: boolean;
+  allowFinishEarly?: boolean;
   format?: string;
   key?: string;
   problemCount?: number;
