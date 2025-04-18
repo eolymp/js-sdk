@@ -6,6 +6,7 @@ import { Node } from "../ecm/node"
 export type Problem = {
   id?: string;
   url?: string;
+  type?: string;
   index?: number;
   score?: number;
   baseId?: string;
