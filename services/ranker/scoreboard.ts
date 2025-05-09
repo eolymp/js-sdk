@@ -9,12 +9,11 @@ export type Scoreboard = {
   historical?: boolean;
   frozen?: boolean;
   freezeAt?: string;
-  freezeIn?: number;
   unfreezeAt?: string;
-  unfreezeIn?: number;
   defaultSortColumn?: string;
   defaultSortOrder?: string;
   format?: string;
+  contests?: Scoreboard_Contest[];
 }
 
 export type Scoreboard_Row = {
@@ -66,5 +65,14 @@ export type Scoreboard_Action = {
   id?: string;
   executeAt?: string;
   type?: string;
+}
+
+export type Scoreboard_Contest = {
+  id?: string;
+  name?: string;
+  imageUrl?: string;
+  startAt?: string;
+  endAt?: string;
+  status?: string;
 }
 
