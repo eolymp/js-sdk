@@ -21,6 +21,10 @@ export type Submission = {
   cost?: number;
   score?: number;
   percentage?: number;
+  timeUsage?: number;
+  cpuUsage?: number;
+  memoryUsage?: number;
+  resourceUsage?: number;
   groups?: Submission_Group[];
 }
 
