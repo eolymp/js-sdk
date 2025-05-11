@@ -26,6 +26,7 @@ export type Submission = {
   memoryUsage?: number;
   resourceUsage?: number;
   groups?: Submission_Group[];
+  cursor?: string;
 }
 
 export type Submission_Run = {
