@@ -4,6 +4,9 @@
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Activity } from "./activity"
 import { Contest } from "./contest"
+import { Certification } from "./contest_certification"
+import { Environment } from "./contest_environment"
+import { Taxonomy } from "./contest_taxonomy"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -113,6 +116,60 @@ export class ContestService {
 
   ResumeContest(input: ResumeContestInput, opts?: any): Promise<ResumeContestOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/resume";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeEnvironment(input: DescribeEnvironmentInput, opts?: any): Promise<DescribeEnvironmentOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/environment";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ConfigureEnvironment(input: ConfigureEnvironmentInput, opts?: any): Promise<ConfigureEnvironmentOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/environment";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeCertification(input: DescribeCertificationInput, opts?: any): Promise<DescribeCertificationOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/certification";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ConfigureCertification(input: ConfigureCertificationInput, opts?: any): Promise<ConfigureCertificationOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/certification";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeTaxonomy(input: DescribeTaxonomyInput, opts?: any): Promise<DescribeTaxonomyOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/taxonomy";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ConfigureTaxonomy(input: ConfigureTaxonomyInput, opts?: any): Promise<ConfigureTaxonomyOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/taxonomy";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -248,6 +305,51 @@ export type ResumeContestInput = {
 }
 
 export type ResumeContestOutput = Record<string, unknown>;
+
+export type DescribeEnvironmentInput = {
+  contestId?: string;
+}
+
+export type DescribeEnvironmentOutput = {
+  environment?: Environment;
+}
+
+export type ConfigureEnvironmentInput = {
+  contestId?: string;
+  environment?: Environment;
+}
+
+export type ConfigureEnvironmentOutput = Record<string, unknown>;
+
+export type DescribeCertificationInput = {
+  contestId?: string;
+}
+
+export type DescribeCertificationOutput = {
+  certification?: Certification;
+}
+
+export type ConfigureCertificationInput = {
+  contestId?: string;
+  certification?: Certification;
+}
+
+export type ConfigureCertificationOutput = Record<string, unknown>;
+
+export type DescribeTaxonomyInput = {
+  contestId?: string;
+}
+
+export type DescribeTaxonomyOutput = {
+  taxonomy?: Taxonomy;
+}
+
+export type ConfigureTaxonomyInput = {
+  contestId?: string;
+  taxonomy?: Taxonomy;
+}
+
+export type ConfigureTaxonomyOutput = Record<string, unknown>;
 
 export type WatchContestInput = {
   contestId?: string;
