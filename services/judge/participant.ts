@@ -15,14 +15,14 @@ export type Participant = {
   medal?: string;
   status?: string;
   startedAt?: string;
-  startedIn?: number;
   endAt?: string;
-  endIn?: number;
   bonusTime?: number;
   passcode?: string;
   certificateId?: string;
   submits?: Participant_Submit[];
 }
+
+export type Participant_Patch = Record<string, unknown>;
 
 export type Participant_Submit = {
   problemId?: string;
