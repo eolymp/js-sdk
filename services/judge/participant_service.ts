@@ -211,6 +211,8 @@ export type ListParticipantsInput_Filter = {
   unofficial?: ExpressionBool[];
   disqualified?: ExpressionBool[];
   inactive?: ExpressionBool[];
+  role?: ExpressionEnum[];
+  staff?: ExpressionBool[];
 }
 
 export type ListParticipantsOutput = {
