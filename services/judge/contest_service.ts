@@ -253,6 +253,7 @@ export type ResumeContestOutput = Record<string, unknown>;
 
 export type WatchContestInput = {
   contestId?: string;
+  extra?: string[];
 }
 
 export type WatchContestOutput = {
