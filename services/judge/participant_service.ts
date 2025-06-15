@@ -133,11 +133,11 @@ export type ParticipantFinalizedEvent = {
 
 export type AssignParticipantInput = {
   contestId?: string;
-  participant?: Participant;
   memberId?: string;
   groupId?: string;
   unofficial?: boolean;
   inactive?: boolean;
+  role?: string;
 }
 
 export type AssignParticipantOutput = {

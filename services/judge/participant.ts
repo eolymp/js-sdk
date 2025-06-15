@@ -6,6 +6,7 @@ export type Participant = {
   id?: string;
   memberId?: string;
   displayName?: string;
+  role?: string;
   unofficial?: boolean;
   inactive?: boolean;
   disqualified?: boolean;
