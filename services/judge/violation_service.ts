@@ -99,6 +99,7 @@ export type ListViolationsInput_Filter = {
   cancelled?: ExpressionBool[];
   summary?: ExpressionString[];
   automatic?: ExpressionBool[];
+  participantId?: ExpressionID[];
   givenBy?: ExpressionID[];
 }
 

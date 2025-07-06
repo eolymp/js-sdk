@@ -7,6 +7,7 @@ export type Violation = {
   cancelled?: boolean;
   summary?: string;
   automatic?: boolean;
+  participantId?: string;
   givenBy?: string;
   givenAt?: string;
 }
