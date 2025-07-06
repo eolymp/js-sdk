@@ -215,6 +215,7 @@ export type ListParticipantsInput_Filter = {
   inactive?: ExpressionBool[];
   role?: ExpressionEnum[];
   staff?: ExpressionBool[];
+  hasViolations?: ExpressionBool[];
 }
 
 export type ListParticipantsOutput = {

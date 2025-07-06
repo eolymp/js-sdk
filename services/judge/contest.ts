@@ -32,6 +32,7 @@ export type Contest = {
   scoreboardConfig?: Contest_ScoreboardConfig;
   environmentConfig?: Contest_EnvironmentConfig;
   certificationConfig?: Contest_CertificationConfig;
+  plagiarismConfig?: Contest_PlagiarismConfig;
   staff?: Contest_Staff[];
 }
 
@@ -72,6 +73,10 @@ export type Contest_CertificationConfig_Signer = {
 
 export type Contest_EnvironmentConfig = {
   runtimes?: Runtime[];
+}
+
+export type Contest_PlagiarismConfig = {
+  checkGenaiUse?: boolean;
 }
 
 export type Contest_Staff = {

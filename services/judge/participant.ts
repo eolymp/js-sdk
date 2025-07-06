@@ -17,6 +17,7 @@ export type Participant = {
   startedAt?: string;
   endAt?: string;
   bonusTime?: number;
+  violationCount?: number;
   passcode?: string;
   certificateId?: string;
   submits?: Participant_Submit[];

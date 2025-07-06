@@ -120,6 +120,15 @@ export class ContestService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  AnalyzeContest(input: AnalyzeContestInput, opts?: any): Promise<AnalyzeContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/analyze";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   ListActivities(input: ListActivitiesInput, opts?: any): Promise<ListActivitiesOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/activities";
 
@@ -250,6 +259,12 @@ export type ResumeContestInput = {
 }
 
 export type ResumeContestOutput = Record<string, unknown>;
+
+export type AnalyzeContestInput = {
+  contestId?: string;
+}
+
+export type AnalyzeContestOutput = Record<string, unknown>;
 
 export type WatchContestInput = {
   contestId?: string;

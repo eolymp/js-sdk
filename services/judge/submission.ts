@@ -25,6 +25,7 @@ export type Submission = {
   cpuUsage?: number;
   memoryUsage?: number;
   resourceUsage?: number;
+  genaiUseProbability?: number;
   groups?: Submission_Group[];
   cursor?: string;
 }
