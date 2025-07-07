@@ -4,12 +4,15 @@
 
 export type Violation = {
   id?: string;
-  cancelled?: boolean;
+  status?: string;
+  type?: string;
   summary?: string;
-  automatic?: boolean;
   participantId?: string;
-  givenBy?: string;
-  givenAt?: string;
+  submissionId?: string;
+  createdBy?: string;
+  createdAt?: string;
+  confirmedBy?: string;
+  confirmedAt?: string;
 }
 
 export type Violation_Patch = Record<string, unknown>;
