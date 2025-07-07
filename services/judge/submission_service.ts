@@ -190,8 +190,7 @@ export type RetestProblemInput = {
 export type RetestProblemOutput = Record<string, unknown>;
 
 export type AnalyzeSubmissionInput = {
-  contestId?: string;
-  submission?: Submission;
+  submissionId?: string;
 }
 
 export type AnalyzeSubmissionOutput = Record<string, unknown>;
