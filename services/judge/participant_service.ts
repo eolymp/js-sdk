@@ -137,9 +137,14 @@ export type AssignParticipantInput = {
   contestId?: string;
   memberId?: string;
   groupId?: string;
+  ghost?: AssignParticipantInput_Ghost;
   unofficial?: boolean;
   inactive?: boolean;
   role?: string;
+}
+
+export type AssignParticipantInput_Ghost = {
+  displayName?: string;
 }
 
 export type AssignParticipantOutput = {
