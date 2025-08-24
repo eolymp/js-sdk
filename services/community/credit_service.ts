@@ -23,6 +23,12 @@ export class CreditService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  ListCredits(input: ListCreditsInput, opts?: any): Promise<ListCreditsOutput> {
+    const path = "/credits";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   RecordCredit(input: RecordCreditInput, opts?: any): Promise<RecordCreditOutput> {
     const path = "/credits";
 
@@ -37,12 +43,6 @@ export class CreditService {
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
-
-  ListCredits(input: ListCreditsInput, opts?: any): Promise<ListCreditsOutput> {
-    const path = "/credits";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
 }
 
 export type DescribeBalanceInput = Record<string, unknown>;
@@ -50,20 +50,6 @@ export type DescribeBalanceInput = Record<string, unknown>;
 export type DescribeBalanceOutput = {
   balance?: number;
 }
-
-export type RecordCreditInput = {
-  credit?: Credit;
-}
-
-export type RecordCreditOutput = {
-  creditId?: string;
-}
-
-export type DeleteCreditInput = {
-  creditId?: string;
-}
-
-export type DeleteCreditOutput = Record<string, unknown>;
 
 export type ListCreditsInput = {
   offset?: number;
@@ -83,4 +69,18 @@ export type ListCreditsOutput = {
   total?: number;
   items?: Credit[];
 }
+
+export type RecordCreditInput = {
+  credit?: Credit;
+}
+
+export type RecordCreditOutput = {
+  creditId?: string;
+}
+
+export type DeleteCreditInput = {
+  creditId?: string;
+}
+
+export type DeleteCreditOutput = Record<string, unknown>;
 
