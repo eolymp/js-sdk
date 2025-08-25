@@ -54,7 +54,7 @@ export class ShoppingService {
   }
 
   UpdateBillingAddress(input: UpdateBillingAddressInput, opts?: any): Promise<UpdateBillingAddressOutput> {
-    const path = "/store/cart/shipping-address";
+    const path = "/store/cart/billing-address";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
