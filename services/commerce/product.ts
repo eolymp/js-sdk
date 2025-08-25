@@ -10,8 +10,8 @@ export type Product = {
   images?: string[];
   outOfStock?: boolean;
   currency?: string;
-  unitPrice?: string;
-  creditEquivalence?: string;
+  unitPrice?: number;
+  creditEquivalence?: number;
   attributes?: Product_Attribute[];
   variants?: Product_Variant[];
 }
