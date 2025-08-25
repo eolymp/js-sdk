@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Product, Product_Extra } from "./product"
+import { Product } from "./product"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -51,7 +51,7 @@ export type ListProductsInput = {
   sort?: string;
   order?: string;
   locale?: string;
-  extra?: Product_Extra[];
+  extra?: string[];
 }
 
 export type ListProductsInput_Filter = {
