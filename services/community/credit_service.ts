@@ -17,19 +17,7 @@ export class CreditService {
     this.url = url;
   }
 
-  DescribeBalance(input: DescribeBalanceInput, opts?: any): Promise<DescribeBalanceOutput> {
-    const path = "/balance";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListCredits(input: ListCreditsInput, opts?: any): Promise<ListCreditsOutput> {
-    const path = "/credits";
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  RecordCredit(input: RecordCreditInput, opts?: any): Promise<RecordCreditOutput> {
+  CreateCredit(input: CreateCreditInput, opts?: any): Promise<CreateCreditOutput> {
     const path = "/credits";
 
     return this.cli.call("POST", this.url+path, input, opts);
@@ -43,13 +31,39 @@ export class CreditService {
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
+
+  ListCredits(input: ListCreditsInput, opts?: any): Promise<ListCreditsOutput> {
+    const path = "/credits";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  RedeemCredit(input: RedeemCreditInput, opts?: any): Promise<RedeemCreditOutput> {
+    const path = "/credits:redeem";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  DescribeBalance(input: DescribeCreditBalanceInput, opts?: any): Promise<DescribeCreditBalanceOutput> {
+    const path = "/credits:balance";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
-export type DescribeBalanceInput = Record<string, unknown>;
-
-export type DescribeBalanceOutput = {
-  balance?: number;
+export type CreateCreditInput = {
+  credit?: Credit;
 }
+
+export type CreateCreditOutput = {
+  creditId?: string;
+}
+
+export type DeleteCreditInput = {
+  creditId?: string;
+}
+
+export type DeleteCreditOutput = Record<string, unknown>;
 
 export type ListCreditsInput = {
   offset?: number;
@@ -70,17 +84,17 @@ export type ListCreditsOutput = {
   items?: Credit[];
 }
 
-export type RecordCreditInput = {
-  credit?: Credit;
+export type RedeemCreditInput = {
+  amount?: number;
+  reference?: string;
+  note?: string;
 }
 
-export type RecordCreditOutput = {
-  creditId?: string;
-}
+export type RedeemCreditOutput = Record<string, unknown>;
 
-export type DeleteCreditInput = {
-  creditId?: string;
-}
+export type DescribeCreditBalanceInput = Record<string, unknown>;
 
-export type DeleteCreditOutput = Record<string, unknown>;
+export type DescribeCreditBalanceOutput = {
+  balance?: number;
+}
 

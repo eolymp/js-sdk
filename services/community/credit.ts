@@ -6,7 +6,9 @@ export type Credit = {
   id?: string;
   reference?: string;
   note?: string;
-  amount?: number;
+  active?: boolean;
+  totalAmount?: number;
+  redeemedAmount?: number;
   grantedAt?: string;
   expiresAt?: string;
 }
