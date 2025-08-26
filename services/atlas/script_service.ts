@@ -55,6 +55,12 @@ export class ScriptService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ExecuteStressCheck(input: ExecuteStressCheckInput, opts?: any): Promise<ExecuteStressCheckOutput> {
+    const path = "/scripts:stress-check";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ScriptChangedEvent = {
@@ -116,4 +122,10 @@ export type ListScriptsOutput = {
   total?: number;
   items?: Script[];
 }
+
+export type ExecuteStressCheckInput = {
+  scriptName?: string;
+}
+
+export type ExecuteStressCheckOutput = Record<string, unknown>;
 
