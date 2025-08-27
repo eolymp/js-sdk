@@ -18,13 +18,13 @@ export class ProductService {
   }
 
   CreateProduct(input: CreateProductInput, opts?: any): Promise<CreateProductOutput> {
-    const path = "/products";
+    const path = "/store/products";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateProduct(input: UpdateProductInput, opts?: any): Promise<UpdateProductOutput> {
-    const path = "/products/"+encodeURIComponent(input.productId||'');
+    const path = "/store/products/"+encodeURIComponent(input.productId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.productId);
@@ -33,7 +33,7 @@ export class ProductService {
   }
 
   DeleteProduct(input: DeleteProductInput, opts?: any): Promise<DeleteProductOutput> {
-    const path = "/products/"+encodeURIComponent(input.productId||'');
+    const path = "/store/products/"+encodeURIComponent(input.productId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.productId);
@@ -42,7 +42,7 @@ export class ProductService {
   }
 
   DescribeProduct(input: DescribeProductInput, opts?: any): Promise<DescribeProductOutput> {
-    const path = "/products/"+encodeURIComponent(input.productId||'');
+    const path = "/store/products/"+encodeURIComponent(input.productId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.productId);
@@ -51,7 +51,7 @@ export class ProductService {
   }
 
   ListProducts(input: ListProductsInput, opts?: any): Promise<ListProductsOutput> {
-    const path = "/products";
+    const path = "/store/products";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
