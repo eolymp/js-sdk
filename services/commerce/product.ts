@@ -18,6 +18,8 @@ export type Product = {
 
 export type Product_Extra = Record<string, unknown>;
 
+export type Product_Patch = Record<string, unknown>;
+
 export type Product_Attribute = {
   key?: string;
   label?: string;

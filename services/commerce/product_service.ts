@@ -17,6 +17,30 @@ export class ProductService {
     this.url = url;
   }
 
+  CreateProduct(input: CreateProductInput, opts?: any): Promise<CreateProductOutput> {
+    const path = "/products";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateProduct(input: UpdateProductInput, opts?: any): Promise<UpdateProductOutput> {
+    const path = "/products/"+encodeURIComponent(input.productId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.productId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteProduct(input: DeleteProductInput, opts?: any): Promise<DeleteProductOutput> {
+    const path = "/products/"+encodeURIComponent(input.productId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.productId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
   DescribeProduct(input: DescribeProductInput, opts?: any): Promise<DescribeProductOutput> {
     const path = "/products/"+encodeURIComponent(input.productId||'');
 
@@ -32,6 +56,28 @@ export class ProductService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
+
+export type CreateProductInput = {
+  product?: Product;
+}
+
+export type CreateProductOutput = {
+  productId?: string;
+}
+
+export type UpdateProductInput = {
+  patch?: string[];
+  productId?: string;
+  product?: Product;
+}
+
+export type UpdateProductOutput = Record<string, unknown>;
+
+export type DeleteProductInput = {
+  productId?: string;
+}
+
+export type DeleteProductOutput = Record<string, unknown>;
 
 export type DescribeProductInput = {
   productId?: string;
