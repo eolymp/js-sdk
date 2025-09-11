@@ -6,6 +6,7 @@ import { Address } from "./address"
 export type Order = {
   id?: string;
   reference?: string;
+  status?: string;
   items?: Order_Item[];
   billingAddress?: Address;
   shippingAddress?: Address;
@@ -26,7 +27,10 @@ export type Order_Item = {
   imageUrl?: string;
   productId?: string;
   variantId?: string;
-  quantity?: number;
+  quantityOrdered?: number;
+  quantityCancelled?: number;
+  quantityShipped?: number;
+  quantityReturned?: number;
   unitAmount?: number;
   totalAmount?: number;
   discountAmount?: number;
