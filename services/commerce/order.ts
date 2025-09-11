@@ -3,9 +3,9 @@
 
 import { Address } from "./address"
 
-export type ShoppingCart = {
+export type Order = {
   id?: string;
-  items?: ShoppingCart_Item[];
+  items?: Order_Item[];
   billingAddress?: Address;
   shippingAddress?: Address;
   billingSameAsShipping?: boolean;
@@ -19,8 +19,10 @@ export type ShoppingCart = {
   grandTotal?: number;
 }
 
-export type ShoppingCart_Item = {
+export type Order_Item = {
   id?: string;
+  name?: string;
+  imageUrl?: string;
   productId?: string;
   variantId?: string;
   quantity?: number;
