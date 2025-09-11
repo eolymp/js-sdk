@@ -11,7 +11,6 @@ export type Product = {
   outOfStock?: boolean;
   currency?: string;
   unitPrice?: number;
-  creditEquivalence?: number;
   attributes?: Product_Attribute[];
   variants?: Product_Variant[];
 }
