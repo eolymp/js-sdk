@@ -3,11 +3,16 @@
 
 
 export type Address = {
+  name?: string;
+  phone?: string;
+  email?: string;
   country?: string;
   state?: string;
   postalCode?: string;
   city?: string;
   line1?: string;
+  houseNumber?: string;
   line2?: string;
+  pickupLocation?: string;
 }
 
