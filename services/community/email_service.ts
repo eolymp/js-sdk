@@ -39,8 +39,18 @@ export type SendEmailInput = {
   type?: string;
   campaign?: string;
   locale?: string;
+  message?: SendEmailInput_Message;
+  fragment?: SendEmailInput_Fragment;
+}
+
+export type SendEmailInput_Message = {
   subject?: string;
-  content?: Content;
+  body?: Content;
+  parameters?: Record<string, string>;
+}
+
+export type SendEmailInput_Fragment = {
+  path?: string;
   parameters?: Record<string, string>;
 }
 
