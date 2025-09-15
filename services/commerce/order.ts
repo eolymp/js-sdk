@@ -11,6 +11,7 @@ export type Order = {
   billingAddress?: Address;
   shippingAddress?: Address;
   billingSameAsShipping?: boolean;
+  estimatedShippingDate?: string;
   currency?: string;
   totalAmount?: number;
   shippingAmount?: number;
@@ -19,6 +20,8 @@ export type Order = {
   taxRate?: number;
   taxNote?: string;
   grandTotal?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export type Order_Item = {
