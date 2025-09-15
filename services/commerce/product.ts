@@ -6,9 +6,13 @@ import { Content } from "../ecm/content"
 export type Product = {
   id?: string;
   name?: string;
+  summary?: Content;
   description?: Content;
   images?: string[];
   outOfStock?: boolean;
+  featured?: boolean;
+  inactive?: boolean;
+  backorder?: boolean;
   currency?: string;
   unitPrice?: number;
   attributes?: Product_Attribute[];
@@ -26,8 +30,10 @@ export type Product_Attribute = {
 
 export type Product_Variant = {
   id?: string;
+  name?: string;
   values?: Record<string, string>;
   images?: string[];
   outOfStock?: boolean;
+  availableQty?: boolean;
 }
 
