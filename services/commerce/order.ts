@@ -6,6 +6,7 @@ import { Address } from "./address"
 export type Order = {
   id?: string;
   reference?: string;
+  memberId?: string;
   status?: string;
   items?: Order_Item[];
   billingAddress?: Address;
