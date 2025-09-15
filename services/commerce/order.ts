@@ -34,6 +34,7 @@ export type Order_Item = {
   quantityCancelled?: number;
   quantityShipped?: number;
   quantityReturned?: number;
+  quantityAllocated?: number;
   unitAmount?: number;
   totalAmount?: number;
   discountAmount?: number;
