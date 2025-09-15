@@ -34,6 +34,6 @@ export type Product_Variant = {
   values?: Record<string, string>;
   images?: string[];
   outOfStock?: boolean;
-  availableQty?: boolean;
+  availableQuantity?: number;
 }
 
