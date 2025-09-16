@@ -49,6 +49,15 @@ export class CreditService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  RefundCredit(input: RefundCreditInput, opts?: any): Promise<RefundCreditOutput> {
+    const path = "/credits/"+encodeURIComponent(input.creditId||'')+"/refund";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.creditId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateCreditInput = {
@@ -97,4 +106,11 @@ export type DescribeCreditBalanceInput = Record<string, unknown>;
 export type DescribeCreditBalanceOutput = {
   balance?: number;
 }
+
+export type RefundCreditInput = {
+  creditId?: string;
+  amount?: number;
+}
+
+export type RefundCreditOutput = Record<string, unknown>;
 
