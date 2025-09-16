@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Credit } from "./credit"
+import { Credit_Grant, Credit_Transaction } from "./credit"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -17,70 +17,82 @@ export class CreditService {
     this.url = url;
   }
 
-  CreateCredit(input: CreateCreditInput, opts?: any): Promise<CreateCreditOutput> {
-    const path = "/credits";
+  DescribeBalance(input: DescribeBalanceInput, opts?: any): Promise<DescribeBalanceOutput> {
+    const path = "/credit/balance";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  GrantCredit(input: GrantCreditInput, opts?: any): Promise<GrantCreditOutput> {
+    const path = "/credit/grants";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DeleteCredit(input: DeleteCreditInput, opts?: any): Promise<DeleteCreditOutput> {
-    const path = "/credits/"+encodeURIComponent(input.creditId||'');
+  CancelCredit(input: CancelCreditInput, opts?: any): Promise<CancelCreditOutput> {
+    const path = "/credit/grants/"+encodeURIComponent(input.grantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.creditId);
+    delete(input.grantId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  ListCredits(input: ListCreditsInput, opts?: any): Promise<ListCreditsOutput> {
-    const path = "/credits";
+  ListCreditGrants(input: ListCreditGrantsInput, opts?: any): Promise<ListCreditGrantsOutput> {
+    const path = "/credit/grants";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RedeemCredit(input: RedeemCreditInput, opts?: any): Promise<RedeemCreditOutput> {
-    const path = "/credits:redeem";
+    const path = "/credit/redeem";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeBalance(input: DescribeCreditBalanceInput, opts?: any): Promise<DescribeCreditBalanceOutput> {
-    const path = "/credits:balance";
+  ListCreditTransactions(input: ListCreditTransactionsInput, opts?: any): Promise<ListCreditTransactionsOutput> {
+    const path = "/credit/grants";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RefundCredit(input: RefundCreditInput, opts?: any): Promise<RefundCreditOutput> {
-    const path = "/credits/"+encodeURIComponent(input.creditId||'')+"/refund";
+    const path = "/credit/transactions/"+encodeURIComponent(input.transactionId||'')+"/refund";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.creditId);
+    delete(input.transactionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type CreateCreditInput = {
-  credit?: Credit;
+export type DescribeBalanceInput = Record<string, unknown>;
+
+export type DescribeBalanceOutput = {
+  balance?: number;
 }
 
-export type CreateCreditOutput = {
-  creditId?: string;
+export type GrantCreditInput = {
+  grant?: Credit_Grant;
 }
 
-export type DeleteCreditInput = {
-  creditId?: string;
+export type GrantCreditOutput = {
+  grantId?: string;
 }
 
-export type DeleteCreditOutput = Record<string, unknown>;
+export type CancelCreditInput = {
+  grantId?: string;
+}
 
-export type ListCreditsInput = {
+export type CancelCreditOutput = Record<string, unknown>;
+
+export type ListCreditGrantsInput = {
   offset?: number;
   size?: number;
-  filters?: ListCreditsInput_Filter;
+  filters?: ListCreditGrantsInput_Filter;
 }
 
-export type ListCreditsInput_Filter = {
+export type ListCreditGrantsInput_Filter = {
   id?: ExpressionID[];
   reference?: ExpressionID[];
   note?: ExpressionString[];
@@ -88,9 +100,9 @@ export type ListCreditsInput_Filter = {
   active?: ExpressionBool[];
 }
 
-export type ListCreditsOutput = {
+export type ListCreditGrantsOutput = {
   total?: number;
-  items?: Credit[];
+  items?: Credit_Grant[];
 }
 
 export type RedeemCreditInput = {
@@ -99,16 +111,27 @@ export type RedeemCreditInput = {
   note?: string;
 }
 
-export type RedeemCreditOutput = Record<string, unknown>;
+export type RedeemCreditOutput = {
+  transactionId?: string;
+}
 
-export type DescribeCreditBalanceInput = Record<string, unknown>;
+export type ListCreditTransactionsInput = {
+  offset?: number;
+  size?: number;
+  filters?: ListCreditTransactionsInput_Filter;
+}
 
-export type DescribeCreditBalanceOutput = {
-  balance?: number;
+export type ListCreditTransactionsInput_Filter = {
+  id?: ExpressionID[];
+}
+
+export type ListCreditTransactionsOutput = {
+  total?: number;
+  items?: Credit_Transaction[];
 }
 
 export type RefundCreditInput = {
-  creditId?: string;
+  transactionId?: string;
   amount?: number;
 }
 

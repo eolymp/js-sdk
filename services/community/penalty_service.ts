@@ -58,7 +58,6 @@ export class PenaltyService {
 
 export type CreatePenaltyInput = {
   penalty?: Penalty;
-  dontNotify?: boolean;
 }
 
 export type CreatePenaltyOutput = {

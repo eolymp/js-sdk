@@ -2,14 +2,24 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Credit = {
+export type Credit = Record<string, unknown>;
+
+export type Credit_Grant = {
   id?: string;
   reference?: string;
   note?: string;
   active?: boolean;
+  revoked?: boolean;
   totalAmount?: number;
   redeemedAmount?: number;
   grantedAt?: string;
   expiresAt?: string;
+}
+
+export type Credit_Transaction = {
+  id?: string;
+  timestamp?: string;
+  summary?: string;
+  amount?: number;
 }
 

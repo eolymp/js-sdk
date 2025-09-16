@@ -7,6 +7,7 @@ export type Penalty = {
   id?: string;
   summary?: string;
   description?: Content;
+  silent?: boolean;
   scope?: string[];
   createdAt?: string;
   expiresAt?: string;
