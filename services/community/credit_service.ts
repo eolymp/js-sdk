@@ -78,6 +78,7 @@ export type GrantCreditInput = {
 
 export type GrantCreditOutput = {
   grantId?: string;
+  transactionId?: string;
 }
 
 export type CancelCreditInput = {
