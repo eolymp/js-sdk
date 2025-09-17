@@ -33,6 +33,15 @@ export class FulfillmentService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ShipOrder(input: ShipOrderInput, opts?: any): Promise<ShipOrderOutput> {
+    const path = "/store/orders/"+encodeURIComponent(input.orderId||'')+"/ship";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.orderId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type AllocateStockInput = {
@@ -47,4 +56,10 @@ export type RejectOrderInput = {
 }
 
 export type RejectOrderOutput = Record<string, unknown>;
+
+export type ShipOrderInput = {
+  orderId?: string;
+}
+
+export type ShipOrderOutput = Record<string, unknown>;
 
