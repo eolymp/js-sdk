@@ -34,6 +34,15 @@ export class FulfillmentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ProcessOrder(input: ProcessOrderInput, opts?: any): Promise<ProcessOrderOutput> {
+    const path = "/store/orders/"+encodeURIComponent(input.orderId||'')+"/process";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.orderId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   ShipOrder(input: ShipOrderInput, opts?: any): Promise<ShipOrderOutput> {
     const path = "/store/orders/"+encodeURIComponent(input.orderId||'')+"/ship";
 
@@ -56,6 +65,13 @@ export type RejectOrderInput = {
 }
 
 export type RejectOrderOutput = Record<string, unknown>;
+
+export type ProcessOrderInput = {
+  orderId?: string;
+  estimatedShippingDate?: string;
+}
+
+export type ProcessOrderOutput = Record<string, unknown>;
 
 export type ShipOrderInput = {
   orderId?: string;
