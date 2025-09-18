@@ -51,6 +51,15 @@ export class FulfillmentService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  CompleteOrder(input: CompleteOrderInput, opts?: any): Promise<CompleteOrderOutput> {
+    const path = "/store/orders/"+encodeURIComponent(input.orderId||'')+"/complete";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.orderId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type AllocateStockInput = {
@@ -75,7 +84,14 @@ export type ProcessOrderOutput = Record<string, unknown>;
 
 export type ShipOrderInput = {
   orderId?: string;
+  trackingLink?: string;
 }
 
 export type ShipOrderOutput = Record<string, unknown>;
+
+export type CompleteOrderInput = {
+  orderId?: string;
+}
+
+export type CompleteOrderOutput = Record<string, unknown>;
 
