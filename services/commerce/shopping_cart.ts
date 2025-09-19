@@ -10,6 +10,7 @@ export type ShoppingCart = {
   shippingAddress?: Address;
   billingSameAsShipping?: boolean;
   currency?: string;
+  shippingMethod?: string;
   totalAmount?: number;
   shippingAmount?: number;
   discountAmount?: number;
