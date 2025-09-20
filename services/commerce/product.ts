@@ -38,3 +38,12 @@ export type Product_Variant = {
   availableQuantity?: number;
 }
 
+export type Product_Translation = {
+  id?: string;
+  locale?: string;
+  name?: string;
+  summary?: Content;
+  description?: Content;
+  attributes?: Product_Attribute[];
+}
+
