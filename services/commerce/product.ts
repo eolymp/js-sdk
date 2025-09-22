@@ -14,9 +14,11 @@ export type Product = {
   inactive?: boolean;
   backorder?: boolean;
   currency?: string;
-  unitPrice?: number;
+  price?: number;
+  regularPrice?: number;
   attributes?: Product_Attribute[];
   variants?: Product_Variant[];
+  cursor?: string;
 }
 
 export type Product_Extra = Record<string, unknown>;
