@@ -18,8 +18,6 @@ export type Member = {
   incomplete?: boolean;
   unofficial?: boolean;
   secret?: boolean;
-  tierId?: string;
-  fallbackTierId?: string;
   createdAt?: string;
   seatedAt?: string;
   activeAt?: string;
