@@ -4,8 +4,14 @@
 
 export type Group = {
   id?: string;
+  key?: string;
   name?: string;
   description?: string;
-  tierId?: string;
+  index?: number;
+  icon?: string;
+  badge?: string;
+  color?: string;
 }
+
+export type Group_Patch = Record<string, unknown>;
 
