@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Member, Member_Extra } from "./member"
+import { Member } from "./member"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -150,7 +150,7 @@ export type RestoreMemberOutput = Record<string, unknown>;
 
 export type DescribeMemberInput = {
   memberId?: string;
-  extra?: Member_Extra[];
+  extra?: string[];
 }
 
 export type DescribeMemberOutput = {
@@ -164,7 +164,7 @@ export type ListMembersInput = {
   search?: string;
   sort?: string;
   order?: string;
-  extra?: Member_Extra[];
+  extra?: string[];
 }
 
 export type ListMembersInput_ExpressionAttribute = {
