@@ -2,14 +2,16 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Attribute_Value } from "./attribute"
+import { Group } from "./group"
 import { Ghost } from "./member_ghost"
 import { Team } from "./member_team"
 import { User } from "./member_user"
 
 export type Member = {
   id?: string;
-  displayName?: string;
   url?: string;
+  externalRef?: string;
+  displayName?: string;
   rank?: number;
   rankLower?: number;
   rating?: number;
@@ -25,9 +27,15 @@ export type Member = {
   team?: Team;
   ghost?: Ghost;
   stats?: Member_Stats;
-  groups?: string[];
+  groups?: Group[];
+  groupIds?: string[];
   attributes?: Attribute_Value[];
+  metadata?: Record<string, string>;
 }
+
+export type Member_Extra = Record<string, unknown>;
+
+export type Member_Patch = Record<string, unknown>;
 
 export type Member_Stats = {
   streak?: number;

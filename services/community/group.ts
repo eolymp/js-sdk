@@ -4,13 +4,13 @@
 
 export type Group = {
   id?: string;
-  key?: string;
   name?: string;
   description?: string;
-  index?: number;
+  externalRef?: string;
   icon?: string;
   badge?: string;
   color?: string;
+  metadata?: Record<string, string>;
 }
 
 export type Group_Patch = Record<string, unknown>;
