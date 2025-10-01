@@ -22,6 +22,7 @@ export type User = {
   passwordChangedOn?: string;
   locale?: string;
   aliases?: User_Alias[];
+  discordUserId?: string;
 }
 
 export type User_Alias = {
