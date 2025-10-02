@@ -17,7 +17,6 @@ export type Space = {
   status?: string;
   subscription?: Space_Subscription;
   affiliation?: string;
-  discordGuildId?: string;
 }
 
 export type Space_Subscription = {

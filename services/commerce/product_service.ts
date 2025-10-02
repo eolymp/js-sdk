@@ -92,7 +92,6 @@ export type DescribeProductOutput = {
 export type ListProductsInput = {
   offset?: number;
   size?: number;
-  after?: string;
   search?: string;
   filters?: ListProductsInput_Filter;
   sort?: string;

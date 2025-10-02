@@ -101,7 +101,6 @@ export type ListGroupsInput = {
 export type ListGroupsInput_Filter = {
   query?: string;
   id?: ExpressionID[];
-  externalRef?: ExpressionID[];
   name?: ExpressionString[];
 }
 

@@ -7,7 +7,6 @@ export type User = {
   subject?: string;
   nickname?: string;
   nicknameChangeTimeout?: number;
-  aliases?: User_Alias[];
   email?: string;
   emailVerified?: boolean;
   emailRestricted?: boolean;
@@ -27,10 +26,5 @@ export type User_Preferences = {
   locale?: string;
   timezone?: string;
   runtime?: string;
-}
-
-export type User_Alias = {
-  nickname?: string;
-  changedAt?: string;
 }
 

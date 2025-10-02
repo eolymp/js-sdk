@@ -14,11 +14,9 @@ export type Product = {
   inactive?: boolean;
   backorder?: boolean;
   currency?: string;
-  price?: number;
-  regularPrice?: number;
+  unitPrice?: number;
   attributes?: Product_Attribute[];
   variants?: Product_Variant[];
-  cursor?: string;
 }
 
 export type Product_Extra = Record<string, unknown>;
@@ -38,14 +36,5 @@ export type Product_Variant = {
   outOfStock?: boolean;
   maxQuantity?: number;
   availableQuantity?: number;
-}
-
-export type Product_Translation = {
-  id?: string;
-  locale?: string;
-  name?: string;
-  summary?: Content;
-  description?: Content;
-  attributes?: Product_Attribute[];
 }
 

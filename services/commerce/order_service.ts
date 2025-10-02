@@ -42,11 +42,6 @@ export class OrderService {
   }
 }
 
-export type OrderChangedEvent = {
-  before?: Order;
-  after?: Order;
-}
-
 export type CancelOrderInput = {
   orderId?: string;
 }

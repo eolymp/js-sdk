@@ -6,12 +6,6 @@ export type Group = {
   id?: string;
   name?: string;
   description?: string;
-  externalRef?: string;
-  icon?: string;
-  badge?: string;
-  color?: string;
-  metadata?: Record<string, string>;
+  tierId?: string;
 }
-
-export type Group_Patch = Record<string, unknown>;
 

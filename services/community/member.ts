@@ -8,9 +8,8 @@ import { User } from "./member_user"
 
 export type Member = {
   id?: string;
-  url?: string;
-  externalRef?: string;
   displayName?: string;
+  url?: string;
   rank?: number;
   rankLower?: number;
   rating?: number;
@@ -19,6 +18,8 @@ export type Member = {
   incomplete?: boolean;
   unofficial?: boolean;
   secret?: boolean;
+  tierId?: string;
+  fallbackTierId?: string;
   createdAt?: string;
   seatedAt?: string;
   activeAt?: string;
@@ -28,12 +29,7 @@ export type Member = {
   stats?: Member_Stats;
   groups?: string[];
   attributes?: Attribute_Value[];
-  metadata?: Record<string, string>;
 }
-
-export type Member_Extra = Record<string, unknown>;
-
-export type Member_Patch = Record<string, unknown>;
 
 export type Member_Stats = {
   streak?: number;
