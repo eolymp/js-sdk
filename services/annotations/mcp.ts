@@ -2,12 +2,11 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Endpoint = {
-  field?: string;
-  service?: Endpoint_Service[];
-}
+export type MCP = Record<string, unknown>;
 
-export type Endpoint_Service = {
+export type MCP_Tool = {
   name?: string;
+  description?: string;
+  requireConfirmation?: boolean;
 }
 

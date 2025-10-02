@@ -175,6 +175,7 @@ export type ListMembersInput_ExpressionAttribute = {
 
 export type ListMembersInput_Filter = {
   id?: ExpressionID[];
+  externalRef?: ExpressionID[];
   type?: ExpressionEnum[];
   displayName?: ExpressionString[];
   inactive?: ExpressionBool[];

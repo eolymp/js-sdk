@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Address } from "./address"
+import { ShippingMethod } from "./shipping_method"
 import { ShoppingCart } from "./shopping_cart"
 
 interface Client {
@@ -59,6 +60,18 @@ export class ShoppingService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdateShippingMethod(input: UpdateShippingMethodInput, opts?: any): Promise<UpdateShippingMethodOutput> {
+    const path = "/store/cart/shipping-method";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ListShippingMethods(input: ListShippingMethodsInput, opts?: any): Promise<ListShippingMethodsOutput> {
+    const path = "/store/cart/shipping-methods";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   PlaceOrder(input: PlaceOrderInput, opts?: any): Promise<PlaceOrderOutput> {
     const path = "/store/cart:order";
 
@@ -107,6 +120,18 @@ export type UpdateBillingAddressInput = {
 }
 
 export type UpdateBillingAddressOutput = Record<string, unknown>;
+
+export type UpdateShippingMethodInput = {
+  shippingMethodId?: string;
+}
+
+export type UpdateShippingMethodOutput = Record<string, unknown>;
+
+export type ListShippingMethodsInput = Record<string, unknown>;
+
+export type ListShippingMethodsOutput = {
+  items?: ShippingMethod[];
+}
 
 export type PlaceOrderInput = Record<string, unknown>;
 

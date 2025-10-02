@@ -21,5 +21,12 @@ export type User = {
   usernameChangedOn?: string;
   passwordChangedOn?: string;
   locale?: string;
+  aliases?: User_Alias[];
+  discordUserId?: string;
+}
+
+export type User_Alias = {
+  nickname?: string;
+  changedAt?: string;
 }
 
