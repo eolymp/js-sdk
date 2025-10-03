@@ -22,6 +22,7 @@ export type Order = {
   taxNote?: string;
   grandTotal?: number;
   trackingLink?: string;
+  trackingNumber?: string;
   createdAt?: string;
   updatedAt?: string;
 }

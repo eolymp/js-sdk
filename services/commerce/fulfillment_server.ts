@@ -85,6 +85,7 @@ export type ProcessOrderOutput = Record<string, unknown>;
 export type ShipOrderInput = {
   orderId?: string;
   trackingLink?: string;
+  trackingNumber?: string;
 }
 
 export type ShipOrderOutput = Record<string, unknown>;
