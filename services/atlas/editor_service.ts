@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Runtime } from "../runtime/runtime"
+import { Submission_Value } from "./submission"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -45,12 +46,20 @@ export type Editor = {
   state?: Editor_State;
   features?: string[];
   runtimes?: Runtime[];
+  fields?: Editor_Field[];
 }
 
 export type Editor_State = {
   runtime?: string;
   sourceCode?: string;
   inputData?: string;
+  values?: Submission_Value[];
+}
+
+export type Editor_Field = {
+  name?: string;
+  label?: string;
+  type?: string;
 }
 
 export type DescribeEditorInput = Record<string, unknown>;
@@ -65,6 +74,7 @@ export type DescribeEditorStateOutput = {
   runtime?: string;
   sourceCode?: string;
   inputData?: string;
+  values?: Submission_Value[];
   features?: string[];
 }
 
@@ -72,6 +82,7 @@ export type UpdateEditorStateInput = {
   runtime?: string;
   sourceCode?: string;
   inputData?: string;
+  values?: Submission_Value[];
 }
 
 export type UpdateEditorStateOutput = Record<string, unknown>;

@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
-import { Submission } from "./submission"
+import { Submission, Submission_Value } from "./submission"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -77,6 +77,7 @@ export type CreateSubmissionInput = {
   problemId?: string;
   lang?: string;
   source?: string;
+  values?: Submission_Value[];
 }
 
 export type CreateSubmissionOutput = {
