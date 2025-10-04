@@ -14,7 +14,7 @@ export type Submission = {
   lang?: string;
   source?: string;
   sourceUrl?: string;
-  values?: Submission_Value;
+  values?: Submission_Value[];
   signature?: string;
   status?: string;
   verdict?: string;
