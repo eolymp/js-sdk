@@ -39,6 +39,8 @@ export type EvaluationTask_Run = {
   inputUrl?: string;
   inputContent?: string;
   inputGenerator?: EvaluationTask_Generator;
+  outputUrl?: string;
+  outputContent?: string;
   answerUrl?: string;
   answerContent?: string;
   answerGenerator?: EvaluationTask_Generator;
