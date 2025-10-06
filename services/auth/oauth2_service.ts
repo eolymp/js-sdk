@@ -85,3 +85,28 @@ export type ListCertificatesOutput = {
   items?: Certificate[];
 }
 
+export type RegisterClientInput = {
+  redirectUris?: string[];
+  tokenEndpointAuthMethod?: string;
+  grantTypes?: string[];
+  responseTypes?: string[];
+  clientName?: string;
+  clientUri?: string;
+  logoUri?: string;
+  scope?: string;
+  contacts?: string[];
+  tosUri?: string;
+  policyUri?: string;
+  jwksUri?: string;
+  softwareId?: string;
+  softwareVersion?: string;
+  softwareStatement?: string;
+}
+
+export type RegisterClientOutput = {
+  clientId?: string;
+  clientSecret?: string;
+  clientIdIssuedAt?: string;
+  clientSecretExpiresAt?: string;
+}
+
