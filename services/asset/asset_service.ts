@@ -206,3 +206,10 @@ export type CloseStreamInput = {
 
 export type CloseStreamOutput = Record<string, unknown>;
 
+export type UseAssetInput = {
+  resource?: string;
+  assets?: string[];
+}
+
+export type UseAssetOutput = Record<string, unknown>;
+
