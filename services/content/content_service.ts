@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Fragment } from "./fragment"
+import { Fragment } from "./content_fragment"
 import { Variant } from "./variant"
 
 interface Client {
