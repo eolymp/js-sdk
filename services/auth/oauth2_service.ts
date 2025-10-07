@@ -108,5 +108,19 @@ export type RegisterClientOutput = {
   clientSecret?: string;
   clientIdIssuedAt?: string;
   clientSecretExpiresAt?: string;
+  registrationAccessToken?: string;
+  registrationClientUri?: string;
+  tokenEndpointAuthMethod?: string;
+  applicationType?: string;
+  redirectUris?: string[];
+  clientName?: string;
+  logoUri?: string;
+  subjectType?: string;
+  sectorIdentifierUri?: string;
+  jwksUri?: string;
+  userinfoEncryptedResponseAlg?: string;
+  userinfoEncryptedResponseEnc?: string;
+  contacts?: string[];
+  requestUris?: string[];
 }
 
