@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Stats } from "../executor/stats"
+import { Form_Value } from "./form"
 
 export type Submission = {
   id?: string;
@@ -14,7 +15,7 @@ export type Submission = {
   lang?: string;
   source?: string;
   sourceUrl?: string;
-  values?: Submission_Value[];
+  values?: Form_Value[];
   signature?: string;
   status?: string;
   verdict?: string;
@@ -65,21 +66,5 @@ export type Submission_Group = {
   memoryUsage?: number;
   resourceUsage?: number;
   runs?: Submission_Run[];
-}
-
-export type Submission_Value = {
-  name?: string;
-  code?: Submission_Value_Code;
-  file?: Submission_Value_File;
-}
-
-export type Submission_Value_Code = {
-  runtime?: string;
-  sourceUrl?: string;
-}
-
-export type Submission_Value_File = {
-  filename?: string;
-  dataUrl?: string;
 }
 

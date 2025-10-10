@@ -2,17 +2,21 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
+import { Form } from "./form"
 
 export type Problem = {
   id?: string;
   url?: string;
   type?: string;
-  links?: Record<string, string>;
   number?: number;
   visible?: boolean;
   origin?: string;
+  locale?: string;
   title?: string;
   content?: Content;
+  downloadLink?: string;
+  author?: string;
+  source?: string;
   topics?: string[];
   score?: number;
   constraints?: Problem_Constraints;
@@ -22,7 +26,13 @@ export type Problem = {
   vote?: number;
   voteCount?: number;
   difficulty?: number;
+  submissionForm?: Form;
+  examples?: Problem_Example[];
 }
+
+export type Problem_Extra = Record<string, unknown>;
+
+export type Problem_Patch = Record<string, unknown>;
 
 export type Problem_Constraints = {
   timeLimitMin?: number;
@@ -31,5 +41,11 @@ export type Problem_Constraints = {
   cpuLimitMax?: number;
   memoryLimitMin?: number;
   memoryLimitMax?: number;
+}
+
+export type Problem_Example = {
+  index?: number;
+  inputUrl?: string;
+  answerUrl?: string;
 }
 
