@@ -16,3 +16,7 @@ export type Statement = {
   authorId?: string;
 }
 
+export type Statement_Extra = Record<string, unknown>;
+
+export type Statement_Patch = Record<string, unknown>;
+

@@ -13,3 +13,7 @@ export type Editorial = {
   authorId?: string;
 }
 
+export type Editorial_Extra = Record<string, unknown>;
+
+export type Editorial_Patch = Record<string, unknown>;
+

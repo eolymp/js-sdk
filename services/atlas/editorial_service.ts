@@ -78,7 +78,6 @@ export type ListEditorialsInput = {
   offset?: number;
   size?: number;
   version?: number;
-  render?: boolean;
   extra?: string[];
 }
 
@@ -90,7 +89,6 @@ export type ListEditorialsOutput = {
 export type DescribeEditorialInput = {
   editorialId?: string;
   version?: number;
-  render?: boolean;
   extra?: string[];
 }
 
@@ -101,7 +99,6 @@ export type DescribeEditorialOutput = {
 export type LookupEditorialInput = {
   locale?: string;
   version?: number;
-  render?: boolean;
   extra?: string[];
 }
 

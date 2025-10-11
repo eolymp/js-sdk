@@ -33,6 +33,8 @@ export type Submission = {
   cursor?: string;
 }
 
+export type Submission_Extra = Record<string, unknown>;
+
 export type Submission_Run = {
   id?: string;
   index?: number;

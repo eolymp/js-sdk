@@ -13,3 +13,5 @@ export type Solution = {
   submissionId?: string;
 }
 
+export type Solution_Patch = Record<string, unknown>;
+

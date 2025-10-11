@@ -23,6 +23,8 @@ export type Test = {
   answerGenerator?: Test_Generator;
 }
 
+export type Test_Patch = Record<string, unknown>;
+
 export type Test_Generator = {
   scriptName?: string;
   arguments?: string[];

@@ -12,3 +12,7 @@ export type Script = {
   files?: File[];
 }
 
+export type Script_Extra = Record<string, unknown>;
+
+export type Script_Patch = Record<string, unknown>;
+
