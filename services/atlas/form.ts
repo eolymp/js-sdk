@@ -10,6 +10,22 @@ export type Form_Field = {
   name?: string;
   label?: string;
   type?: string;
+  code?: Form_Field_Code;
+  file?: Form_Field_File;
+}
+
+export type Form_Field_Code = {
+  runtimes?: string[];
+  maxAttachments?: number;
+  maxAttachmentSize?: number;
+  attachmentTypes?: string[];
+  attachmentExtensions?: string[];
+}
+
+export type Form_Field_File = {
+  types?: string[];
+  extensions?: string[];
+  maxSize?: number;
 }
 
 export type Form_Value = {
@@ -21,6 +37,7 @@ export type Form_Value = {
 export type Form_Value_Code = {
   runtime?: string;
   sourceUrl?: string;
+  attachments?: Form_Value_File[];
 }
 
 export type Form_Value_File = {
