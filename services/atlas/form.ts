@@ -17,7 +17,7 @@ export type Form_Field = {
 export type Form_Field_Code = {
   runtimes?: string[];
   maxAttachments?: number;
-  maxAttachmentSize?: number;
+  attachmentMaxSize?: number;
   attachmentTypes?: string[];
   attachmentExtensions?: string[];
 }
