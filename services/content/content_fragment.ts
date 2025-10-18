@@ -15,3 +15,15 @@ export type Fragment = {
   labels?: string[];
 }
 
+export type Fragment_Extra = Record<string, unknown>;
+
+export type Fragment_Patch = Record<string, unknown>;
+
+export type Fragment_Translation = {
+  id?: string;
+  locale?: string;
+  title?: string;
+  content?: Content;
+  automatic?: boolean;
+}
+

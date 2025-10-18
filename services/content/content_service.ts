@@ -2,8 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Fragment } from "./content_fragment"
-import { Variant } from "./variant"
+import { Fragment, Fragment_Translation } from "./content_fragment"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -66,18 +65,18 @@ export class ContentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeVariant(input: DescribeVariantInput, opts?: any): Promise<DescribeVariantOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+  DescribeFragmentTranslation(input: DescribeFragmentTranslationInput, opts?: any): Promise<DescribeFragmentTranslationOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fragmentId);
-    delete(input.variantId);
+    delete(input.translationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListVariants(input: ListVariantsInput, opts?: any): Promise<ListVariantsOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants";
+  ListFragmentTranslations(input: ListFragmentTranslationsInput, opts?: any): Promise<ListFragmentTranslationsOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fragmentId);
@@ -85,8 +84,8 @@ export class ContentService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  CreateVariant(input: CreateVariantInput, opts?: any): Promise<CreateVariantOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants";
+  CreateFragmentTranslation(input: CreateFragmentTranslationInput, opts?: any): Promise<CreateFragmentTranslationOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fragmentId);
@@ -94,22 +93,22 @@ export class ContentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateVariant(input: UpdateVariantInput, opts?: any): Promise<UpdateVariantOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+  UpdateFragmentTranslation(input: UpdateFragmentTranslationInput, opts?: any): Promise<UpdateFragmentTranslationOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fragmentId);
-    delete(input.variantId);
+    delete(input.translationId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DeleteVariant(input: DeleteVariantInput, opts?: any): Promise<DeleteVariantOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+  DeleteFragmentTranslation(input: DeleteFragmentTranslationInput, opts?: any): Promise<DeleteFragmentTranslationOutput> {
+    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.fragmentId);
-    delete(input.variantId);
+    delete(input.translationId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -125,6 +124,18 @@ export class ContentService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+}
+
+export type FragmentChangedEvent = {
+  scope?: string;
+  before?: Fragment;
+  after?: Fragment;
+}
+
+export type FragmentTranslationChangedEvent = {
+  fragmentId?: string;
+  before?: Fragment_Translation;
+  after?: Fragment_Translation;
 }
 
 export type DescribeFragmentInput = {
@@ -193,58 +204,58 @@ export type TranslateFragmentOutput = {
   jobId?: string;
 }
 
-export type DescribeVariantInput = {
+export type DescribeFragmentTranslationInput = {
   fragmentId?: string;
-  variantId?: string;
+  translationId?: string;
   extra?: string[];
 }
 
-export type DescribeVariantOutput = {
-  variant?: Variant;
+export type DescribeFragmentTranslationOutput = {
+  translation?: Fragment_Translation;
 }
 
-export type ListVariantsInput = {
+export type ListFragmentTranslationsInput = {
   fragmentId?: string;
   offset?: number;
   size?: number;
-  filters?: ListVariantsInput_Filter;
+  filters?: ListFragmentTranslationsInput_Filter;
   extra?: string[];
 }
 
-export type ListVariantsInput_Filter = {
+export type ListFragmentTranslationsInput_Filter = {
   query?: string;
   id?: ExpressionID[];
   locale?: ExpressionEnum[];
 }
 
-export type ListVariantsOutput = {
+export type ListFragmentTranslationsOutput = {
   total?: number;
-  items?: Variant[];
+  items?: Fragment_Translation[];
 }
 
-export type CreateVariantInput = {
+export type CreateFragmentTranslationInput = {
   fragmentId?: string;
-  variant?: Variant;
+  translation?: Fragment_Translation;
 }
 
-export type CreateVariantOutput = {
-  variantId?: string;
+export type CreateFragmentTranslationOutput = {
+  translationId?: string;
 }
 
-export type UpdateVariantInput = {
+export type UpdateFragmentTranslationInput = {
   fragmentId?: string;
-  variantId?: string;
-  variant?: Variant;
+  translationId?: string;
+  translation?: Fragment_Translation;
 }
 
-export type UpdateVariantOutput = Record<string, unknown>;
+export type UpdateFragmentTranslationOutput = Record<string, unknown>;
 
-export type DeleteVariantInput = {
+export type DeleteFragmentTranslationInput = {
   fragmentId?: string;
-  variantId?: string;
+  translationId?: string;
 }
 
-export type DeleteVariantOutput = Record<string, unknown>;
+export type DeleteFragmentTranslationOutput = Record<string, unknown>;
 
 export type DescribePathInput = {
   path?: string;
