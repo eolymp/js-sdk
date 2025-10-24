@@ -76,7 +76,6 @@ export class AnnouncementService {
 }
 
 export type CreateAnnouncementInput = {
-  contestId?: string;
   announcement?: Announcement;
 }
 
@@ -85,7 +84,6 @@ export type CreateAnnouncementOutput = {
 }
 
 export type UpdateAnnouncementInput = {
-  contestId?: string;
   announcementId?: string;
   announcement?: Announcement;
 }
@@ -93,21 +91,18 @@ export type UpdateAnnouncementInput = {
 export type UpdateAnnouncementOutput = Record<string, unknown>;
 
 export type DeleteAnnouncementInput = {
-  contestId?: string;
   announcementId?: string;
 }
 
 export type DeleteAnnouncementOutput = Record<string, unknown>;
 
 export type ReadAnnouncementInput = {
-  contestId?: string;
   announcementId?: string;
 }
 
 export type ReadAnnouncementOutput = Record<string, unknown>;
 
 export type DescribeAnnouncementInput = {
-  contestId?: string;
   announcementId?: string;
   extra?: string[];
 }
@@ -117,7 +112,6 @@ export type DescribeAnnouncementOutput = {
 }
 
 export type DescribeAnnouncementStatusInput = {
-  contestId?: string;
   announcementId?: string;
 }
 
@@ -126,7 +120,6 @@ export type DescribeAnnouncementStatusOutput = {
 }
 
 export type ListAnnouncementsInput = {
-  contestId?: string;
   offset?: number;
   size?: number;
   filters?: ListAnnouncementsInput_Filter;
