@@ -161,6 +161,8 @@ export type ListProblemsInput = {
   contestId?: string;
   offset?: number;
   size?: number;
+  locale?: string;
+  extra?: string[];
 }
 
 export type ListProblemsOutput = {
@@ -171,6 +173,8 @@ export type ListProblemsOutput = {
 export type DescribeProblemInput = {
   contestId?: string;
   problemId?: string;
+  locale?: string;
+  extra?: string[];
 }
 
 export type DescribeProblemOutput = {
