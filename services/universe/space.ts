@@ -5,20 +5,25 @@ import { Quota } from "./quota"
 
 export type Space = {
   id?: string;
-  key?: string;
   url?: string;
   homeUrl?: string;
   issuerUrl?: string;
   graphqlUrl?: string;
+  key?: string;
   name?: string;
   image?: string;
   visibility?: string;
-  features?: string[];
   status?: string;
+  features?: string[];
   subscription?: Space_Subscription;
   affiliation?: string;
   discordGuildId?: string;
+  locales?: string[];
 }
+
+export type Space_Extra = Record<string, unknown>;
+
+export type Space_Patch = Record<string, unknown>;
 
 export type Space_Subscription = {
   plan?: string;
