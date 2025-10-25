@@ -114,6 +114,15 @@ export class TicketService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  SuggestReply(input: SuggestReplyInput, opts?: any): Promise<SuggestReplyOutput> {
+    const path = "/tickets/"+encodeURIComponent(input.ticketId||'')+"/replies:suggest";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ticketId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type TicketChangedEvent = {
@@ -276,6 +285,14 @@ export type UpdateReplyInput = {
 }
 
 export type UpdateReplyOutput = Record<string, unknown>;
+
+export type SuggestReplyInput = {
+  ticketId?: string;
+}
+
+export type SuggestReplyOutput = {
+  suggestion?: Content;
+}
 
 export type WatchRepliesInput = {
   ticketId?: string;
