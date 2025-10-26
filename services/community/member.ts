@@ -25,6 +25,7 @@ export type Member = {
   user?: User;
   team?: Team;
   ghost?: Ghost;
+  restrictions?: string[];
   stats?: Member_Stats;
   groups?: string[];
   attributes?: Attribute_Value[];
