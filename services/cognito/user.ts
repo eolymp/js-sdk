@@ -15,6 +15,7 @@ export type User = {
   country?: string;
   city?: string;
   emailStatus?: string;
+  emailVerified?: boolean;
   birthday?: string;
   registeredOn?: string;
   lastActivity?: string;
