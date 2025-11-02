@@ -6,14 +6,29 @@ import { Content } from "../ecm/content"
 export type Suggestion = {
   id?: string;
   status?: string;
-  locale?: string;
-  title?: string;
+  version?: number;
   memberId?: string;
+  contribution?: number;
   createdAt?: string;
   updatedAt?: string;
+  classification?: Suggestion_Classification;
+  statementChange?: Suggestion_StatementChange;
+  editorialChange?: Suggestion_EditorialChange;
+}
+
+export type Suggestion_Classification = {
   topics?: string[];
   difficulty?: number;
+}
+
+export type Suggestion_StatementChange = {
+  locale?: string;
+  title?: string;
   statement?: Content;
+}
+
+export type Suggestion_EditorialChange = {
+  locale?: string;
   editorial?: Content;
 }
 

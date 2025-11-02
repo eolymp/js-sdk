@@ -95,7 +95,6 @@ export type ListAttributesInput = {
 export type ListAttributesInput_Filter = {
   id?: ExpressionID[];
   key?: ExpressionEnum[];
-  hidden?: ExpressionBool[];
   required?: ExpressionBool[];
   type?: ExpressionEnum[];
 }

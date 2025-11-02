@@ -107,6 +107,7 @@ export type ReviewSuggestionInput = {
   suggestionId?: string;
   status?: string;
   comment?: Content;
+  contribution?: number;
 }
 
 export type ReviewSuggestionOutput = Record<string, unknown>;
