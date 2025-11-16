@@ -33,6 +33,7 @@ export type Contest = {
   environmentConfig?: Contest_EnvironmentConfig;
   certificationConfig?: Contest_CertificationConfig;
   plagiarismConfig?: Contest_PlagiarismConfig;
+  ratingConfig?: Contest_RatingConfig;
   staff?: Contest_Staff[];
 }
 
@@ -58,6 +59,11 @@ export type Contest_ScoreboardConfig = {
   tieBreaker?: string;
   noSpoilerUi?: boolean;
   shareKey?: string;
+}
+
+export type Contest_RatingConfig = {
+  rated?: boolean;
+  maxRating?: number;
 }
 
 export type Contest_CertificationConfig = {
