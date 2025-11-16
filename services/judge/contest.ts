@@ -20,6 +20,7 @@ export type Contest = {
   allowFinishEarly?: boolean;
   allowUpsolve?: boolean;
   allowFollowup?: boolean;
+  displayEditorials?: boolean;
   format?: string;
   key?: string;
   problemCount?: number;
