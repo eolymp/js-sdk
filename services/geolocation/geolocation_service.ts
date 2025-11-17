@@ -27,6 +27,7 @@ export class GeolocationService {
 
 export type LookupAddressInput = {
   ipAddress?: string;
+  secret?: string;
 }
 
 export type LookupAddressOutput = {
