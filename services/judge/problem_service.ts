@@ -133,7 +133,6 @@ export class ProblemService {
 }
 
 export type ImportProblemInput = {
-  contestId?: string;
   importId?: string;
   index?: number;
   submitLimit?: number;
@@ -145,7 +144,6 @@ export type ImportProblemOutput = {
 }
 
 export type SyncProblemInput = {
-  contestId?: string;
   problemId?: string;
 }
 
@@ -153,7 +151,6 @@ export type SyncProblemOutput = Record<string, unknown>;
 
 export type UpdateProblemInput = {
   patch?: string[];
-  contestId?: string;
   problemId?: string;
   problem?: Problem;
 }
@@ -161,14 +158,12 @@ export type UpdateProblemInput = {
 export type UpdateProblemOutput = Record<string, unknown>;
 
 export type DeleteProblemInput = {
-  contestId?: string;
   problemId?: string;
 }
 
 export type DeleteProblemOutput = Record<string, unknown>;
 
 export type ListProblemsInput = {
-  contestId?: string;
   offset?: number;
   size?: number;
   locale?: string;
@@ -181,7 +176,6 @@ export type ListProblemsOutput = {
 }
 
 export type DescribeProblemInput = {
-  contestId?: string;
   problemId?: string;
   locale?: string;
   extra?: string[];
@@ -192,7 +186,6 @@ export type DescribeProblemOutput = {
 }
 
 export type DescribeCodeTemplateInput = {
-  contestId?: string;
   problemId?: string;
   templateId?: string;
 }
@@ -202,7 +195,6 @@ export type DescribeCodeTemplateOutput = {
 }
 
 export type LookupCodeTemplateInput = {
-  contestId?: string;
   problemId?: string;
   runtime?: string;
 }
@@ -212,7 +204,6 @@ export type LookupCodeTemplateOutput = {
 }
 
 export type ListStatementsInput = {
-  contestId?: string;
   problemId?: string;
 }
 
@@ -222,9 +213,9 @@ export type ListStatementsOutput = {
 }
 
 export type DescribeEditorialInput = {
-  contestId?: string;
   problemId?: string;
   locale?: string;
+  extra?: string[];
 }
 
 export type DescribeEditorialOutput = {
@@ -232,7 +223,6 @@ export type DescribeEditorialOutput = {
 }
 
 export type ListAttachmentsInput = {
-  contestId?: string;
   problemId?: string;
 }
 
@@ -242,7 +232,6 @@ export type ListAttachmentsOutput = {
 }
 
 export type ListExamplesInput = {
-  contestId?: string;
   problemId?: string;
 }
 
@@ -252,7 +241,6 @@ export type ListExamplesOutput = {
 }
 
 export type ListRuntimesInput = {
-  contestId?: string;
   problemId?: string;
 }
 
