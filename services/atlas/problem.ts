@@ -11,12 +11,13 @@ export type Problem = {
   number?: number;
   visible?: boolean;
   origin?: string;
-  locale?: string;
+  language?: string;
   title?: string;
   content?: Content;
   downloadLink?: string;
   author?: string;
   source?: string;
+  languages?: string[];
   topics?: string[];
   score?: number;
   constraints?: Problem_Constraints;

@@ -22,10 +22,11 @@ export type Problem = {
   submitLimit?: number;
   score?: number;
   constraints?: Problem_Constraints;
-  locale?: string;
+  language?: string;
   title?: string;
   content?: Content;
   downloadLink?: string;
+  languages?: string[];
   submissionForm?: Form;
   examples?: Problem_Example[];
 }
