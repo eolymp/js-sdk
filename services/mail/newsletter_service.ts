@@ -2,14 +2,14 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Campaign, Campaign_Translation } from "./campaign"
-import { Recipient } from "./recipient"
+import { Newsletter, Newsletter_Translation } from "./newsletter"
+import { Recipient } from "./newsletter_recipient"
 
 interface Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
-export class CampaignService {
+export class NewsletterService {
   private readonly cli: Client;
   private readonly url: string;
 
@@ -18,203 +18,203 @@ export class CampaignService {
     this.url = url;
   }
 
-  CreateCampaign(input: CreateCampaignInput, opts?: any): Promise<CreateCampaignOutput> {
-    const path = "/campaigns";
+  CreateNewsletter(input: CreateNewsletterInput, opts?: any): Promise<CreateNewsletterOutput> {
+    const path = "/newsletters";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  UpdateCampaign(input: UpdateCampaignInput, opts?: any): Promise<UpdateCampaignOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'');
+  UpdateNewsletter(input: UpdateNewsletterInput, opts?: any): Promise<UpdateNewsletterOutput> {
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
-  DeleteCampaign(input: DeleteCampaignInput, opts?: any): Promise<DeleteCampaignOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'');
+  DeleteNewsletter(input: DeleteNewsletterInput, opts?: any): Promise<DeleteNewsletterOutput> {
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  DescribeCampaign(input: DescribeCampaignInput, opts?: any): Promise<DescribeCampaignOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'');
+  DescribeNewsletter(input: DescribeNewsletterInput, opts?: any): Promise<DescribeNewsletterOutput> {
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  ListCampaigns(input: ListCampaignsInput, opts?: any): Promise<ListCampaignsOutput> {
-    const path = "/campaigns";
+  ListNewsletters(input: ListNewslettersInput, opts?: any): Promise<ListNewslettersOutput> {
+    const path = "/newsletters";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  TestCampaign(input: TestCampaignInput, opts?: any): Promise<TestCampaignOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/test";
+  TestNewsletter(input: TestNewsletterInput, opts?: any): Promise<TestNewsletterOutput> {
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/test";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  SendCampaign(input: SendCampaignInput, opts?: any): Promise<SendCampaignOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/send";
+  SendNewsletter(input: SendNewsletterInput, opts?: any): Promise<SendNewsletterOutput> {
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/send";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  TranslateCampaign(input: TranslateCampaignInput, opts?: any): Promise<TranslateCampaignOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translate";
+  TranslateNewsletter(input: TranslateNewsletterInput, opts?: any): Promise<TranslateNewsletterOutput> {
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translate";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   CreateTranslation(input: CreateTranslationInput, opts?: any): Promise<CreateTranslationOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translations";
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateTranslation(input: UpdateTranslationInput, opts?: any): Promise<UpdateTranslationOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
     delete(input.translationId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteTranslation(input: DeleteTranslationInput, opts?: any): Promise<DeleteTranslationOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
     delete(input.translationId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeTranslation(input: DescribeTranslationInput, opts?: any): Promise<DescribeTranslationOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
     delete(input.translationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListTranslations(input: ListTranslationsInput, opts?: any): Promise<ListTranslationsOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/translations";
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateRecipient(input: CreateRecipientInput, opts?: any): Promise<CreateRecipientOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/recipients";
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/recipients";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ImportRecipient(input: ImportRecipientInput, opts?: any): Promise<ImportRecipientOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/recipients:import";
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/recipients:import";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteRecipient(input: DeleteRecipientInput, opts?: any): Promise<DeleteRecipientOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/recipients/"+encodeURIComponent(input.recipientId||'');
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/recipients/"+encodeURIComponent(input.recipientId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
     delete(input.recipientId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListRecipients(input: ListRecipientsInput, opts?: any): Promise<ListRecipientsOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/recipients";
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/recipients";
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeRecipient(input: DescribeRecipientInput, opts?: any): Promise<DescribeRecipientOutput> {
-    const path = "/campaigns/"+encodeURIComponent(input.campaignId||'')+"/recipients/"+encodeURIComponent(input.recipientId||'');
+    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/recipients/"+encodeURIComponent(input.recipientId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.campaignId);
+    delete(input.newsletterId);
     delete(input.recipientId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
-export type CreateCampaignInput = {
-  campaign?: Campaign;
+export type CreateNewsletterInput = {
+  newsletter?: Newsletter;
 }
 
-export type CreateCampaignOutput = {
-  campaignId?: string;
+export type CreateNewsletterOutput = {
+  newsletterId?: string;
 }
 
-export type UpdateCampaignInput = {
+export type UpdateNewsletterInput = {
   patch?: string[];
-  campaignId?: string;
-  campaign?: Campaign;
+  newsletterId?: string;
+  newsletter?: Newsletter;
 }
 
-export type UpdateCampaignOutput = Record<string, unknown>;
+export type UpdateNewsletterOutput = Record<string, unknown>;
 
-export type DeleteCampaignInput = {
-  campaignId?: string;
+export type DeleteNewsletterInput = {
+  newsletterId?: string;
 }
 
-export type DeleteCampaignOutput = Record<string, unknown>;
+export type DeleteNewsletterOutput = Record<string, unknown>;
 
-export type DescribeCampaignInput = {
-  campaignId?: string;
+export type DescribeNewsletterInput = {
+  newsletterId?: string;
   extra?: string[];
 }
 
-export type DescribeCampaignOutput = {
-  campaign?: Campaign;
+export type DescribeNewsletterOutput = {
+  newsletter?: Newsletter;
 }
 
-export type ListCampaignsInput = {
+export type ListNewslettersInput = {
   offset?: number;
   size?: number;
-  filters?: ListCampaignsInput_Filter;
+  filters?: ListNewslettersInput_Filter;
   search?: string;
   sort?: string;
   order?: string;
@@ -222,48 +222,48 @@ export type ListCampaignsInput = {
   extra?: string[];
 }
 
-export type ListCampaignsInput_Filter = {
+export type ListNewslettersInput_Filter = {
   id?: ExpressionID[];
   type?: ExpressionEnum[];
 }
 
-export type ListCampaignsOutput = {
+export type ListNewslettersOutput = {
   total?: number;
-  items?: Campaign[];
+  items?: Newsletter[];
 }
 
-export type TestCampaignInput = {
-  campaignId?: string;
+export type TestNewsletterInput = {
+  newsletterId?: string;
   email?: string;
   locale?: string;
   memberId?: string;
   parameters?: Record<string, string>;
 }
 
-export type TestCampaignOutput = Record<string, unknown>;
+export type TestNewsletterOutput = Record<string, unknown>;
 
-export type SendCampaignInput = {
-  campaignId?: string;
+export type SendNewsletterInput = {
+  newsletterId?: string;
   recipientId?: string;
 }
 
-export type SendCampaignOutput = Record<string, unknown>;
+export type SendNewsletterOutput = Record<string, unknown>;
 
-export type TranslateCampaignInput = {
-  campaignId?: string;
+export type TranslateNewsletterInput = {
+  newsletterId?: string;
   source?: string;
   target?: string[];
   targetAutomatic?: boolean;
   overrideManual?: boolean;
 }
 
-export type TranslateCampaignOutput = {
+export type TranslateNewsletterOutput = {
   jobId?: string;
 }
 
 export type CreateTranslationInput = {
-  campaignId?: string;
-  translation?: Campaign_Translation;
+  newsletterId?: string;
+  translation?: Newsletter_Translation;
 }
 
 export type CreateTranslationOutput = {
@@ -272,31 +272,31 @@ export type CreateTranslationOutput = {
 
 export type UpdateTranslationInput = {
   patch?: string[];
-  campaignId?: string;
+  newsletterId?: string;
   translationId?: string;
-  translation?: Campaign_Translation;
+  translation?: Newsletter_Translation;
 }
 
 export type UpdateTranslationOutput = Record<string, unknown>;
 
 export type DeleteTranslationInput = {
-  campaignId?: string;
+  newsletterId?: string;
   translationId?: string;
 }
 
 export type DeleteTranslationOutput = Record<string, unknown>;
 
 export type DescribeTranslationInput = {
-  campaignId?: string;
+  newsletterId?: string;
   translationId?: string;
 }
 
 export type DescribeTranslationOutput = {
-  translation?: Campaign_Translation;
+  translation?: Newsletter_Translation;
 }
 
 export type ListTranslationsInput = {
-  campaignId?: string;
+  newsletterId?: string;
   offset?: number;
   size?: number;
   filters?: ListTranslationsInput_Filter;
@@ -309,11 +309,11 @@ export type ListTranslationsInput_Filter = {
 
 export type ListTranslationsOutput = {
   total?: number;
-  items?: Campaign_Translation[];
+  items?: Newsletter_Translation[];
 }
 
 export type CreateRecipientInput = {
-  campaignId?: string;
+  newsletterId?: string;
   memberId?: string;
   parameters?: Record<string, string>;
 }
@@ -323,7 +323,7 @@ export type CreateRecipientOutput = {
 }
 
 export type ImportRecipientInput = {
-  campaignId?: string;
+  newsletterId?: string;
   allMembers?: boolean;
   groupId?: string;
   contestId?: string;
@@ -333,14 +333,14 @@ export type ImportRecipientInput = {
 export type ImportRecipientOutput = Record<string, unknown>;
 
 export type DeleteRecipientInput = {
-  campaignId?: string;
+  newsletterId?: string;
   recipientId?: string;
 }
 
 export type DeleteRecipientOutput = Record<string, unknown>;
 
 export type ListRecipientsInput = {
-  campaignId?: string;
+  newsletterId?: string;
   offset?: number;
   size?: number;
   filters?: ListRecipientsInput_Filter;
@@ -358,7 +358,7 @@ export type ListRecipientsOutput = {
 }
 
 export type DescribeRecipientInput = {
-  campaignId?: string;
+  newsletterId?: string;
   recipientId?: string;
 }
 

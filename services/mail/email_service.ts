@@ -34,13 +34,14 @@ export class EmailService {
 
 export type SendEmailInput = {
   memberId?: string;
+  deduplicationKey?: string;
   dryRun?: boolean;
   bccMe?: boolean;
   type?: string;
   campaign?: string;
   locale?: string;
   message?: SendEmailInput_Message;
-  fragment?: SendEmailInput_Fragment;
+  template?: SendEmailInput_Template;
 }
 
 export type SendEmailInput_Message = {
@@ -49,7 +50,7 @@ export type SendEmailInput_Message = {
   data?: any;
 }
 
-export type SendEmailInput_Fragment = {
+export type SendEmailInput_Template = {
   path?: string;
   data?: any;
 }

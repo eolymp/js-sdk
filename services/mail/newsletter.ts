@@ -3,7 +3,7 @@
 
 import { Content } from "../ecm/content"
 
-export type Campaign = {
+export type Newsletter = {
   id?: string;
   type?: string;
   createdAt?: string;
@@ -16,7 +16,7 @@ export type Campaign = {
   errorCount?: number;
 }
 
-export type Campaign_Translation = {
+export type Newsletter_Translation = {
   id?: string;
   locale?: string;
   subject?: string;
