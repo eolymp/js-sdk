@@ -46,12 +46,12 @@ export type SendEmailInput = {
 export type SendEmailInput_Message = {
   subject?: string;
   body?: Content;
-  parameters?: any;
+  data?: any;
 }
 
 export type SendEmailInput_Fragment = {
   path?: string;
-  parameters?: any;
+  data?: any;
 }
 
 export type SendEmailOutput = {
