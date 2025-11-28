@@ -34,11 +34,10 @@ export class EmailService {
 
 export type SendEmailInput = {
   memberId?: string;
-  deduplicationKey?: string;
+  emailRef?: string;
   dryRun?: boolean;
   bccMe?: boolean;
   type?: string;
-  campaign?: string;
   locale?: string;
   message?: SendEmailInput_Message;
   template?: SendEmailInput_Template;
