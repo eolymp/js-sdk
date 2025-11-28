@@ -16,6 +16,10 @@ export type Newsletter = {
   errorCount?: number;
 }
 
+export type Newsletter_Patch = Record<string, unknown>;
+
+export type Newsletter_Extra = Record<string, unknown>;
+
 export type Newsletter_Translation = {
   id?: string;
   locale?: string;
