@@ -47,7 +47,7 @@ export class ProductService {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.productId);
 
-    return this.cli.call("POST", this.url+path, input, opts);
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListProducts(input: ListProductsInput, opts?: any): Promise<ListProductsOutput> {
