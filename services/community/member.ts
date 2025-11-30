@@ -19,6 +19,8 @@ export type Member = {
   incomplete?: boolean;
   unofficial?: boolean;
   secret?: boolean;
+  activePeriodStart?: string;
+  activePeriodEnd?: string;
   createdAt?: string;
   seatedAt?: string;
   activeAt?: string;
