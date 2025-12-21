@@ -8,6 +8,5 @@ export type Rating = {
   memberId?: string;
   contestId?: string;
   value?: number;
-  level?: number;
 }
 

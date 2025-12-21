@@ -72,6 +72,10 @@ export class RatingService {
   }
 }
 
+export type RatingChangedEvent = {
+  rating?: Rating;
+}
+
 export type SetRatingInput = {
   rating?: Rating;
 }
