@@ -81,6 +81,15 @@ export class StatementService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ListStatementVersions(input: ListStatementVersionsInput, opts?: any): Promise<ListStatementVersionsOutput> {
+    const path = "/statements/"+encodeURIComponent(input.statementId||'')+"/versions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.statementId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type StatementChangedEvent = {
@@ -171,5 +180,17 @@ export type ExportStatementInput = {
 
 export type ExportStatementOutput = {
   downloadUrl?: string;
+}
+
+export type ListStatementVersionsInput = {
+  statementId?: string;
+  offset?: number;
+  size?: number;
+  extra?: string[];
+}
+
+export type ListStatementVersionsOutput = {
+  total?: number;
+  items?: Statement[];
 }
 
