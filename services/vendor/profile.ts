@@ -8,9 +8,11 @@ export type Profile = {
   statusReason?: string;
   firstName?: string;
   lastName?: string;
+  companyName?: string;
   birthday?: string;
   email?: string;
   phone?: string;
+  taxId?: string;
   country?: string;
   state?: string;
   postalCode?: string;
@@ -20,4 +22,6 @@ export type Profile = {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export type Profile_Patch = Record<string, unknown>;
 

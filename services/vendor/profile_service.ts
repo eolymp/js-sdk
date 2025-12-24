@@ -27,6 +27,12 @@ export class ProfileService {
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
+
+  SubmitProfile(input: SubmitProfileInput, opts?: any): Promise<SubmitProfileOutput> {
+    const path = "/vendor/profiles:submit";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type DescribeProfileInput = Record<string, unknown>;
@@ -36,8 +42,13 @@ export type DescribeProfileOutput = {
 }
 
 export type UpdateProfileInput = {
+  patch?: string[];
   profile?: Profile;
 }
 
 export type UpdateProfileOutput = Record<string, unknown>;
+
+export type SubmitProfileInput = Record<string, unknown>;
+
+export type SubmitProfileOutput = Record<string, unknown>;
 
