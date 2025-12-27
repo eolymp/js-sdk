@@ -7,6 +7,7 @@ export type Newsletter = {
   id?: string;
   type?: string;
   createdAt?: string;
+  scheduledAt?: string;
   name?: string;
   subject?: string;
   content?: Content;
