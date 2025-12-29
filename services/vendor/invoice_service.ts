@@ -65,6 +65,15 @@ export class InvoiceService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  SubmitInvoice(input: SubmitInvoiceInput, opts?: any): Promise<SubmitInvoiceOutput> {
+    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'')+"/submit";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.invoiceId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   ApproveInvoice(input: ApproveInvoiceInput, opts?: any): Promise<ApproveInvoiceOutput> {
     const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'')+"/approve";
 
@@ -149,6 +158,12 @@ export type ApproveInvoiceInput = {
 }
 
 export type ApproveInvoiceOutput = Record<string, unknown>;
+
+export type SubmitInvoiceInput = {
+  invoiceId?: string;
+}
+
+export type SubmitInvoiceOutput = Record<string, unknown>;
 
 export type RejectInvoiceInput = {
   invoiceId?: string;
