@@ -9,6 +9,7 @@ export type Invoice = {
   status?: string;
   statusReason?: string;
   vendorId?: string;
+  paymentMethodId?: string;
   invoiceDate?: string;
   dueDate?: string;
   lines?: Invoice_Line[];
