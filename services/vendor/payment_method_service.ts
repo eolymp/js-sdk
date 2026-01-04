@@ -90,6 +90,7 @@ export type ListPaymentMethodsInput = {
   after?: string;
   size?: number;
   offset?: number;
+  search?: string;
   filters?: ListPaymentMethodsInput_Filter;
 }
 
