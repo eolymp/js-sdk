@@ -29,6 +29,10 @@ export type Contest = {
   participantCountHidden?: boolean;
   featuredUntil?: string;
   printerId?: string;
+  enableReminderNotification?: boolean;
+  reminderNotificationStatus?: string;
+  enableResultNotification?: boolean;
+  resultNotificationStatus?: string;
   classification?: Contest_Classification;
   scoreboardConfig?: Contest_ScoreboardConfig;
   environmentConfig?: Contest_EnvironmentConfig;
