@@ -52,6 +52,15 @@ export class ParticipantService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
+  AnalyzeParticipant(input: AnalyzeParticipantInput, opts?: any): Promise<AnalyzeParticipantOutput> {
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/analyze";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.participantId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DisqualifyParticipant(input: DisqualifyParticipantInput, opts?: any): Promise<DisqualifyParticipantOutput> {
     const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/disqualify";
 
@@ -182,6 +191,12 @@ export type DisqualifyParticipantInput = {
 }
 
 export type DisqualifyParticipantOutput = Record<string, unknown>;
+
+export type AnalyzeParticipantInput = {
+  participantId?: string;
+}
+
+export type AnalyzeParticipantOutput = Record<string, unknown>;
 
 export type DeleteParticipantInput = {
   contestId?: string;
