@@ -14,6 +14,8 @@ export interface CallOptions {
 export interface ClientOptions {
   retry?: number;
   headers?: Record<string, string>;
+  credentials?: RequestCredentials;
+  redirect?: RequestRedirect;
   token?: string;
   middleware?: Middleware[];
   authenticate?: () => Promise<string>;
@@ -27,12 +29,16 @@ export class Client {
 
   private token?: string;
   private authenticate?: () => Promise<string>;
+  private credentials: RequestCredentials = 'omit';
+  private redirect: RequestRedirect = 'follow';
 
   constructor(opts: ClientOptions = {}) {
     this.retry = opts.retry || 3;
     this.token = opts.token || undefined;
     this.headers = opts.headers || {};
     this.authenticate = opts.authenticate || undefined;
+    this.credentials = opts.credentials || 'omit';
+    this.redirect = opts.redirect || 'follow';
 
     // construct fetch with middleware
     this.fetch = this._fetch.bind(this);
@@ -66,8 +72,8 @@ export class Client {
 
       const init: RequestInit = {
         mode: 'cors',
-        credentials: 'omit',
-        redirect: 'follow',
+        credentials: this.credentials,
+        redirect: this.redirect,
         ...opts,
         headers,
       };
