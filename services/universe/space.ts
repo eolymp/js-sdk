@@ -28,6 +28,7 @@ export type Space_Patch = Record<string, unknown>;
 export type Space_Subscription = {
   plan?: string;
   seats?: number;
+  usageBased?: boolean;
   quota?: Quota;
   billingPeriodStart?: string;
   billingPeriodEnd?: string;

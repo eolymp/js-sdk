@@ -106,6 +106,10 @@ export type MemberChangedEvent = {
   after?: Member;
 }
 
+export type MemberUsageEvent = {
+  activeMembers?: number;
+}
+
 export type CreateMemberInput = {
   member?: Member;
 }
