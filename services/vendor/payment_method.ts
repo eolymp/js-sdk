@@ -10,6 +10,7 @@ export type PaymentMethod = {
   sepaTransfer?: PaymentMethod_TransferSEPA;
   swiftTransfer?: PaymentMethod_TransferSWIFT;
   cryptoTransfer?: PaymentMethod_TransferCrypto;
+  neftTransfer?: PaymentMethod_TransferNEFT;
 }
 
 export type PaymentMethod_TransferSEPA = {
@@ -19,6 +20,11 @@ export type PaymentMethod_TransferSEPA = {
 export type PaymentMethod_TransferSWIFT = {
   bicCode?: string;
   accountNumber?: string;
+}
+
+export type PaymentMethod_TransferNEFT = {
+  accountNumber?: string;
+  ifscCode?: string;
 }
 
 export type PaymentMethod_TransferCrypto = {
