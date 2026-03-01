@@ -9,6 +9,7 @@ export type PaymentMethod = {
   country?: string;
   sepaTransfer?: PaymentMethod_TransferSEPA;
   swiftTransfer?: PaymentMethod_TransferSWIFT;
+  cryptoTransfer?: PaymentMethod_TransferCrypto;
 }
 
 export type PaymentMethod_TransferSEPA = {
@@ -18,5 +19,11 @@ export type PaymentMethod_TransferSEPA = {
 export type PaymentMethod_TransferSWIFT = {
   bicCode?: string;
   accountNumber?: string;
+}
+
+export type PaymentMethod_TransferCrypto = {
+  token?: string;
+  network?: string;
+  address?: string;
 }
 
