@@ -6,15 +6,15 @@ import { Runtime } from "../runtime/runtime"
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Template } from "./template"
 
-interface Client {
+interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class ProblemService {
-  private readonly cli: Client;
+  private readonly cli: _Client;
   private readonly url: string;
 
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+  constructor(cli: _Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
   }

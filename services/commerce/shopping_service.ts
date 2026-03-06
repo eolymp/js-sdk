@@ -5,15 +5,15 @@ import { Address } from "./address"
 import { ShippingMethod } from "./shipping_method"
 import { ShoppingCart } from "./shopping_cart"
 
-interface Client {
+interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class ShoppingService {
-  private readonly cli: Client;
+  private readonly cli: _Client;
   private readonly url: string;
 
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+  constructor(cli: _Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
   }

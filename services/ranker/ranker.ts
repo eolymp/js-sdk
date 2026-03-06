@@ -5,15 +5,15 @@ import { Activity } from "./activity"
 import { Scoreboard_Action } from "./scoreboard"
 import { AddScoreboardColumnInput, AddScoreboardColumnOutput, CreateScoreboardInput, CreateScoreboardOutput, DeleteScoreboardColumnInput, DeleteScoreboardColumnOutput, DeleteScoreboardInput, DeleteScoreboardOutput, DescribeScoreboardColumnInput, DescribeScoreboardColumnOutput, DescribeScoreboardInput, DescribeScoreboardOutput, DescribeScoreboardRowInput, DescribeScoreboardRowOutput, ListScoreboardColumnsInput, ListScoreboardColumnsOutput, ListScoreboardRowsInput, ListScoreboardRowsOutput, ListScoreboardsInput, ListScoreboardsOutput, RebuildScoreboardInput, RebuildScoreboardOutput, UpdateScoreboardColumnInput, UpdateScoreboardColumnOutput, UpdateScoreboardInput, UpdateScoreboardOutput } from "./scoreboard_service"
 
-interface Client {
+interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class Ranker {
-  private readonly cli: Client;
+  private readonly cli: _Client;
   private readonly url: string;
 
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+  constructor(cli: _Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
   }

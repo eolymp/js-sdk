@@ -5,15 +5,15 @@ import { Form_Value } from "../atlas/form"
 import { Submission } from "../atlas/submission"
 import { ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 
-interface Client {
+interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class SubmissionService {
-  private readonly cli: Client;
+  private readonly cli: _Client;
   private readonly url: string;
 
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+  constructor(cli: _Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
   }

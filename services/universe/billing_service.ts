@@ -5,15 +5,15 @@ import { Invoice } from "../commerce/invoice"
 import { Billing_Information, Billing_Subscription } from "./billing"
 import { Plan } from "./plan"
 
-interface Client {
+interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class BillingService {
-  private readonly cli: Client;
+  private readonly cli: _Client;
   private readonly url: string;
 
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+  constructor(cli: _Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
   }

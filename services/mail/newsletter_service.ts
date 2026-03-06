@@ -5,15 +5,15 @@ import { ExpressionEnum, ExpressionID } from "../wellknown/expression"
 import { Newsletter, Newsletter_Translation } from "./newsletter"
 import { Recipient } from "./newsletter_recipient"
 
-interface Client {
+interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
 }
 
 export class NewsletterService {
-  private readonly cli: Client;
+  private readonly cli: _Client;
   private readonly url: string;
 
-  constructor(cli: Client, url: string = 'https://api.eolymp.com') {
+  constructor(cli: _Client, url: string = 'https://api.eolymp.com') {
     this.cli = cli;
     this.url = url;
   }
