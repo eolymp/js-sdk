@@ -17,19 +17,19 @@ export class ProfileService {
   }
 
   DescribeProfile(input: DescribeProfileInput, opts?: any): Promise<DescribeProfileOutput> {
-    const path = "/vendor/profiles";
+    const path = "/vendor-profile";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateProfile(input: UpdateProfileInput, opts?: any): Promise<UpdateProfileOutput> {
-    const path = "/vendor/profiles";
+    const path = "/vendor-profile";
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   SubmitProfile(input: SubmitProfileInput, opts?: any): Promise<SubmitProfileOutput> {
-    const path = "/vendor/profiles:submit";
+    const path = "/vendor-profile:submit";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }

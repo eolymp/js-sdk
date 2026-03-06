@@ -18,13 +18,13 @@ export class InvoiceService {
   }
 
   ListInvoices(input: ListInvoicesInput, opts?: any): Promise<ListInvoicesOutput> {
-    const path = "/vendor/invoices";
+    const path = "/vendor-invoices";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeInvoice(input: DescribeInvoiceInput, opts?: any): Promise<DescribeInvoiceOutput> {
-    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'');
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.invoiceId);
@@ -33,13 +33,13 @@ export class InvoiceService {
   }
 
   CreateInvoice(input: CreateInvoiceInput, opts?: any): Promise<CreateInvoiceOutput> {
-    const path = "/vendor/invoices";
+    const path = "/vendor-invoices";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateInvoice(input: UpdateInvoiceInput, opts?: any): Promise<UpdateInvoiceOutput> {
-    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'');
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.invoiceId);
@@ -48,7 +48,7 @@ export class InvoiceService {
   }
 
   DeleteInvoice(input: DeleteInvoiceInput, opts?: any): Promise<DeleteInvoiceOutput> {
-    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'');
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.invoiceId);
@@ -57,7 +57,7 @@ export class InvoiceService {
   }
 
   UploadInvoiceDocument(input: UploadInvoiceDocumentInput, opts?: any): Promise<UploadInvoiceDocumentOutput> {
-    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'')+"/document";
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'')+"/document";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.invoiceId);
@@ -66,7 +66,7 @@ export class InvoiceService {
   }
 
   SubmitInvoice(input: SubmitInvoiceInput, opts?: any): Promise<SubmitInvoiceOutput> {
-    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'')+"/submit";
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'')+"/submit";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.invoiceId);
@@ -75,7 +75,7 @@ export class InvoiceService {
   }
 
   ApproveInvoice(input: ApproveInvoiceInput, opts?: any): Promise<ApproveInvoiceOutput> {
-    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'')+"/approve";
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'')+"/approve";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.invoiceId);
@@ -84,7 +84,7 @@ export class InvoiceService {
   }
 
   RejectInvoice(input: RejectInvoiceInput, opts?: any): Promise<RejectInvoiceOutput> {
-    const path = "/vendor/invoices/"+encodeURIComponent(input.invoiceId||'')+"/reject";
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'')+"/reject";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.invoiceId);

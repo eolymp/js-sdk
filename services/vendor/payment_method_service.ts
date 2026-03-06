@@ -18,40 +18,49 @@ export class PaymentMethodService {
   }
 
   CreatePaymentMethod(input: CreatePaymentMethodInput, opts?: any): Promise<CreatePaymentMethodOutput> {
-    const path = "/vendor/payment-methods";
+    const path = "/vendors/"+encodeURIComponent(input.vendorId||'')+"/payment-methods";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.vendorId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdatePaymentMethod(input: UpdatePaymentMethodInput, opts?: any): Promise<UpdatePaymentMethodOutput> {
-    const path = "/vendor/payment-methods/"+encodeURIComponent(input.methodId||'');
+    const path = "/vendors/"+encodeURIComponent(input.vendorId||'')+"/payment-methods/"+encodeURIComponent(input.methodId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.vendorId);
     delete(input.methodId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeletePaymentMethod(input: DeletePaymentMethodInput, opts?: any): Promise<DeletePaymentMethodOutput> {
-    const path = "/vendor/payment-methods/"+encodeURIComponent(input.methodId||'');
+    const path = "/vendors/"+encodeURIComponent(input.vendorId||'')+"/payment-methods/"+encodeURIComponent(input.methodId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.vendorId);
     delete(input.methodId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribePaymentMethod(input: DescribePaymentMethodInput, opts?: any): Promise<DescribePaymentMethodOutput> {
-    const path = "/vendor/payment-methods/"+encodeURIComponent(input.methodId||'');
+    const path = "/vendors/"+encodeURIComponent(input.vendorId||'')+"/payment-methods/"+encodeURIComponent(input.methodId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.vendorId);
     delete(input.methodId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListPaymentMethods(input: ListPaymentMethodsInput, opts?: any): Promise<ListPaymentMethodsOutput> {
-    const path = "/vendor/payment-methods";
+    const path = "/vendors/"+encodeURIComponent(input.vendorId||'')+"/payment-methods";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.vendorId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
