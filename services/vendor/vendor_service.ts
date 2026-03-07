@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Profile } from "./profile"
+import { Vendor } from "./vendor"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -67,7 +67,7 @@ export type ListVendorsInput_Filter = {
 
 export type ListVendorsOutput = {
   total?: number;
-  items?: Profile[];
+  items?: Vendor[];
 }
 
 export type DescribeVendorInput = {
@@ -75,7 +75,7 @@ export type DescribeVendorInput = {
 }
 
 export type DescribeVendorOutput = {
-  profile?: Profile;
+  vendor?: Vendor;
 }
 
 export type ApproveVendorInput = {

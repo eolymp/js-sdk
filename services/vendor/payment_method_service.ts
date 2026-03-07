@@ -67,6 +67,7 @@ export class PaymentMethodService {
 }
 
 export type CreatePaymentMethodInput = {
+  vendorId?: string;
   method?: PaymentMethod;
 }
 
@@ -75,6 +76,7 @@ export type CreatePaymentMethodOutput = {
 }
 
 export type UpdatePaymentMethodInput = {
+  vendorId?: string;
   methodId?: string;
   method?: PaymentMethod;
 }
@@ -82,12 +84,14 @@ export type UpdatePaymentMethodInput = {
 export type UpdatePaymentMethodOutput = Record<string, unknown>;
 
 export type DeletePaymentMethodInput = {
+  vendorId?: string;
   methodId?: string;
 }
 
 export type DeletePaymentMethodOutput = Record<string, unknown>;
 
 export type DescribePaymentMethodInput = {
+  vendorId?: string;
   methodId?: string;
 }
 
@@ -96,6 +100,7 @@ export type DescribePaymentMethodOutput = {
 }
 
 export type ListPaymentMethodsInput = {
+  vendorId?: string;
   after?: string;
   size?: number;
   offset?: number;

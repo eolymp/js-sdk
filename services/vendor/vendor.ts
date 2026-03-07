@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Profile = {
+export type Vendor = {
   id?: string;
   status?: string;
   statusReason?: string;
@@ -23,5 +23,5 @@ export type Profile = {
   updatedAt?: string;
 }
 
-export type Profile_Patch = Record<string, unknown>;
+export type Vendor_Patch = Record<string, unknown>;
 
