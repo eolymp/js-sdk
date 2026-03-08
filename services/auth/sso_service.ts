@@ -29,10 +29,11 @@ export class SSOService {
 }
 
 export type SignonRequestInput = {
+  providerId?: string;
+  clientId?: string;
+  redirectUri?: string;
   type?: string;
   callbackUri?: string;
-  codeChallenge?: string;
-  codeChallengeMethod?: string;
 }
 
 export type SignonRequestOutput = {
@@ -40,9 +41,10 @@ export type SignonRequestOutput = {
 }
 
 export type SignonExchangeInput = {
-  state?: string;
   code?: string;
-  codeVerifier?: string;
+  state?: string;
+  clientId?: string;
+  clientSecret?: string;
 }
 
 export type SignonExchangeOutput = {
