@@ -31,6 +31,8 @@ export class SSOService {
 export type SignonRequestInput = {
   type?: string;
   callbackUri?: string;
+  codeChallenge?: string;
+  codeChallengeMethod?: string;
 }
 
 export type SignonRequestOutput = {
@@ -38,8 +40,9 @@ export type SignonRequestOutput = {
 }
 
 export type SignonExchangeInput = {
-  code?: string;
   state?: string;
+  code?: string;
+  codeVerifier?: string;
 }
 
 export type SignonExchangeOutput = {
