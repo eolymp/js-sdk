@@ -12,6 +12,7 @@ export type PaymentMethod = {
   cryptoTransfer?: PaymentMethod_TransferCrypto;
   neftTransfer?: PaymentMethod_TransferNEFT;
   achTransfer?: PaymentMethod_TransferACH;
+  paypalTransfer?: PaymentMethod_TransferPayPal;
 }
 
 export type PaymentMethod_TransferSEPA = {
@@ -37,5 +38,9 @@ export type PaymentMethod_TransferCrypto = {
   token?: string;
   network?: string;
   address?: string;
+}
+
+export type PaymentMethod_TransferPayPal = {
+  email?: string;
 }
 
