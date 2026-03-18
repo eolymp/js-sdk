@@ -69,7 +69,7 @@ export type ListIssuesInput = {
 export type ListIssuesInput_Filter = {
   id?: ExpressionID[];
   status?: ExpressionEnum[];
-  memberId?: ExpressionID[];
+  userId?: ExpressionID[];
 }
 
 export type ListIssuesOutput = {

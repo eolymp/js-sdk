@@ -7,7 +7,7 @@ export type Issue = {
   id?: string;
   status?: string;
   description?: Content;
-  memberId?: string;
+  userId?: string;
   createdAt?: string;
   updatedAt?: string;
 }
