@@ -22,6 +22,15 @@ export class AccessKeyService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdateAccessKey(input: UpdateAccessKeyInput, opts?: any): Promise<UpdateAccessKeyOutput> {
+    const path = "/access-keys/"+encodeURIComponent(input.keyId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.keyId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   DeleteAccessKey(input: DeleteAccessKeyInput, opts?: any): Promise<DeleteAccessKeyOutput> {
     const path = "/access-keys/"+encodeURIComponent(input.keyId||'');
 
@@ -48,6 +57,13 @@ export type CreateAccessKeyOutput = {
   keyId?: string;
   secret?: string;
 }
+
+export type UpdateAccessKeyInput = {
+  keyId?: string;
+  key?: AccessKey;
+}
+
+export type UpdateAccessKeyOutput = Record<string, unknown>;
 
 export type DeleteAccessKeyInput = {
   keyId?: string;
