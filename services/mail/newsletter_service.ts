@@ -289,6 +289,7 @@ export type DeleteTranslationOutput = Record<string, unknown>;
 export type DescribeTranslationInput = {
   newsletterId?: string;
   translationId?: string;
+  extra?: string[];
 }
 
 export type DescribeTranslationOutput = {
@@ -300,6 +301,7 @@ export type ListTranslationsInput = {
   offset?: number;
   size?: number;
   filters?: ListTranslationsInput_Filter;
+  extra?: string[];
 }
 
 export type ListTranslationsInput_Filter = {
