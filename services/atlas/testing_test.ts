@@ -13,14 +13,18 @@ export type Test = {
   inactive?: boolean;
   secret?: boolean;
   score?: number;
-  exampleInputUrl?: string;
-  exampleAnswerUrl?: string;
   generatedInputUrl?: string;
   generatedAnswerUrl?: string;
   inputUrl?: string;
+  inputContent?: string;
   inputGenerator?: Test_Generator;
   answerUrl?: string;
+  answerContent?: string;
   answerGenerator?: Test_Generator;
+  exampleInputUrl?: string;
+  exampleInputContent?: string;
+  exampleAnswerUrl?: string;
+  exampleAnswerContent?: string;
 }
 
 export type Test_Patch = Record<string, unknown>;
