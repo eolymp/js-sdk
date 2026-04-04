@@ -51,6 +51,11 @@ export class VendorService {
   }
 }
 
+export type VendorChangedEvent = {
+  before?: Vendor;
+  after?: Vendor;
+}
+
 export type ListVendorsInput = {
   offset?: number;
   size?: number;

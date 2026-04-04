@@ -93,6 +93,11 @@ export class InvoiceService {
   }
 }
 
+export type InvoiceChangedEvent = {
+  before?: Invoice;
+  after?: Invoice;
+}
+
 export type ListInvoicesInput = {
   offset?: number;
   size?: number;
