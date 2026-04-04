@@ -91,6 +91,15 @@ export class InvoiceService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  PayInvoice(input: PayInvoiceInput, opts?: any): Promise<PayInvoiceOutput> {
+    const path = "/vendor-invoices/"+encodeURIComponent(input.invoiceId||'')+"/pay";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.invoiceId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type InvoiceChangedEvent = {
@@ -176,4 +185,11 @@ export type RejectInvoiceInput = {
 }
 
 export type RejectInvoiceOutput = Record<string, unknown>;
+
+export type PayInvoiceInput = {
+  invoiceId?: string;
+  comment?: string;
+}
+
+export type PayInvoiceOutput = Record<string, unknown>;
 
