@@ -24,3 +24,9 @@ export type IdentityProvider_OIDC = {
   redirectUri?: string;
 }
 
+export type IdentityProvider_GoogleWorkspace = {
+  clientId?: string;
+  clientSecret?: string;
+  domain?: string;
+}
+
