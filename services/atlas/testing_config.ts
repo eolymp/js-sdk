@@ -5,5 +5,6 @@
 export type TestingConfig = {
   runCount?: number;
   interactiveFollowup?: boolean;
+  type?: string;
 }
 
