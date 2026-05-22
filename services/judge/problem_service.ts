@@ -130,6 +130,12 @@ export class ProblemService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ExportProblems(input: ExportProblemsInput, opts?: any): Promise<ExportProblemsOutput> {
+    const path = "/problems:export";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ImportProblemInput = {
@@ -247,5 +253,14 @@ export type ListRuntimesInput = {
 export type ListRuntimesOutput = {
   total?: number;
   items?: Runtime[];
+}
+
+export type ExportProblemsInput = {
+  problems?: string[];
+  locale?: string;
+}
+
+export type ExportProblemsOutput = {
+  downloadUrl?: string;
 }
 
