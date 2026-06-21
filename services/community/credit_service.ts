@@ -51,7 +51,7 @@ export class CreditService {
   }
 
   ListCreditTransactions(input: ListCreditTransactionsInput, opts?: any): Promise<ListCreditTransactionsOutput> {
-    const path = "/credit/grants";
+    const path = "/credit/transactions";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
