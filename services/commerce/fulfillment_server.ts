@@ -60,6 +60,15 @@ export class FulfillmentService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  MarkReturnedOrder(input: MarkReturnedOrderInput, opts?: any): Promise<MarkReturnedOrderOutput> {
+    const path = "/store/orders/"+encodeURIComponent(input.orderId||'')+"/return";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.orderId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type AllocateStockInput = {
@@ -95,4 +104,10 @@ export type CompleteOrderInput = {
 }
 
 export type CompleteOrderOutput = Record<string, unknown>;
+
+export type MarkReturnedOrderInput = {
+  orderId?: string;
+}
+
+export type MarkReturnedOrderOutput = Record<string, unknown>;
 
