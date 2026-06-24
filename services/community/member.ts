@@ -34,6 +34,12 @@ export type Member = {
   metadata?: Record<string, string>;
 }
 
+export type Member_Reference = {
+  id?: string;
+  displayName?: string;
+  email?: string;
+}
+
 export type Member_Extra = Record<string, unknown>;
 
 export type Member_Patch = Record<string, unknown>;

@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Member } from "./member"
+import { Member, Member_Reference } from "./member"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -227,5 +227,36 @@ export type DescribeMemberUsageOutput = {
   totalMembers?: number;
   activeMembers?: number;
   newMembers?: number;
+}
+
+export type StreamMemberReferencesInput = {
+  filters?: StreamMemberReferencesInput_Filter;
+}
+
+export type StreamMemberReferencesInput_Filter = {
+  id?: ExpressionID[];
+  externalRef?: ExpressionID[];
+  type?: ExpressionEnum[];
+  inactive?: ExpressionBool[];
+  incomplete?: ExpressionBool[];
+  unofficial?: ExpressionBool[];
+  seated?: ExpressionBool[];
+  teamId?: ExpressionID[];
+  groupId?: ExpressionID[];
+  birthday?: ExpressionTimestamp[];
+  country?: ExpressionID[];
+  score?: ExpressionInt[];
+  createdAt?: ExpressionTimestamp[];
+  attribute?: StreamMemberReferencesInput_Filter_ExpressionAttribute[];
+}
+
+export type StreamMemberReferencesInput_Filter_ExpressionAttribute = {
+  attributeKey?: string;
+  number?: ExpressionInt;
+  string?: ExpressionString;
+}
+
+export type StreamMemberReferencesOutput = {
+  items?: Member_Reference[];
 }
 
