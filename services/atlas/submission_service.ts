@@ -62,6 +62,12 @@ export class SubmissionService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  AggregateSubmissions(input: AggregateSubmissionsInput, opts?: any): Promise<AggregateSubmissionsOutput> {
+    const path = "/submissions:aggregate";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type SubmissionChangedEvent = {
@@ -155,5 +161,32 @@ export type ListProblemTopInput = {
 
 export type ListProblemTopOutput = {
   items?: Submission[];
+}
+
+export type AggregateSubmissionsInput = {
+  metric?: string;
+  filters?: AggregateSubmissionsInput_Filter;
+  groupBy?: string;
+}
+
+export type AggregateSubmissionsInput_Filter = {
+  problemId?: ExpressionID[];
+  memberId?: ExpressionID[];
+  userId?: ExpressionID[];
+  submittedAt?: ExpressionTimestamp[];
+  verdict?: ExpressionEnum[];
+  runtime?: ExpressionEnum[];
+  status?: ExpressionEnum[];
+  score?: ExpressionFloat[];
+  percentage?: ExpressionFloat[];
+}
+
+export type AggregateSubmissionsOutput = {
+  buckets?: AggregateSubmissionsOutput_Bucket[];
+}
+
+export type AggregateSubmissionsOutput_Bucket = {
+  name?: string;
+  count?: number;
 }
 
