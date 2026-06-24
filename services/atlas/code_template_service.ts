@@ -60,6 +60,12 @@ export class CodeTemplateService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  GenerateCodeTemplates(input: GenerateCodeTemplatesInput, opts?: any): Promise<GenerateCodeTemplatesOutput> {
+    const path = "/templates:generate";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateCodeTemplateInput = {
@@ -110,4 +116,10 @@ export type LookupCodeTemplateInput = {
 export type LookupCodeTemplateOutput = {
   template?: Template;
 }
+
+export type GenerateCodeTemplatesInput = {
+  language?: string[];
+}
+
+export type GenerateCodeTemplatesOutput = Record<string, unknown>;
 
