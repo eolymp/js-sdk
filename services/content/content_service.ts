@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Fragment, Fragment_Translation } from "./content_fragment"
+import { Fragment, Fragment_Patch, Fragment_Translation } from "./content_fragment"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -139,6 +139,7 @@ export type FragmentTranslationChangedEvent = {
 }
 
 export type DescribeFragmentInput = {
+  locale?: string;
   fragmentId?: string;
   extra?: string[];
 }
@@ -180,14 +181,17 @@ export type CreateFragmentOutput = {
 
 export type UpdateFragmentInput = {
   patch?: string[];
-  fragmentId?: string;
   fragment?: Fragment;
+  locale?: string;
+  fragmentId?: string;
+  fragmentPatch?: Fragment_Patch;
 }
 
 export type UpdateFragmentOutput = Record<string, unknown>;
 
 export type DeleteFragmentInput = {
   fragmentId?: string;
+  locale?: string;
 }
 
 export type DeleteFragmentOutput = Record<string, unknown>;

@@ -7,7 +7,9 @@ export type Fragment = {
   id?: string;
   path?: string;
   locale?: string;
+  alternativeLocales?: string[];
   draft?: boolean;
+  automatic?: boolean;
   title?: string;
   content?: Content;
   createdAt?: string;
@@ -17,7 +19,16 @@ export type Fragment = {
 
 export type Fragment_Extra = Record<string, unknown>;
 
-export type Fragment_Patch = Record<string, unknown>;
+export type Fragment_Patch = {
+  path?: string;
+  locale?: string;
+  draft?: boolean;
+  automatic?: boolean;
+  title?: string;
+  content?: Content;
+  hasLabels?: boolean;
+  labels?: string[];
+}
 
 export type Fragment_Translation = {
   id?: string;
