@@ -109,6 +109,15 @@ export type WatchSubmissionOutput = {
   submission?: Submission;
 }
 
+export type WatchSubmissionListInput = {
+  extra?: string[];
+}
+
+export type WatchSubmissionListOutput = {
+  event?: string;
+  submission?: Submission;
+}
+
 export type RetestSubmissionInput = {
   submissionId?: string;
   debug?: boolean;
