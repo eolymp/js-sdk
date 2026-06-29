@@ -174,15 +174,16 @@ export type ListProblemTopOutput = {
 
 export type AggregateSubmissionsInput = {
   metric?: string;
+  groupBy?: string[];
+  rangeStart?: string;
+  rangeEnd?: string;
   filters?: AggregateSubmissionsInput_Filter;
-  groupBy?: string;
 }
 
 export type AggregateSubmissionsInput_Filter = {
   problemId?: ExpressionID[];
   memberId?: ExpressionID[];
   userId?: ExpressionID[];
-  submittedAt?: ExpressionTimestamp[];
   verdict?: ExpressionEnum[];
   runtime?: ExpressionEnum[];
   status?: ExpressionEnum[];
@@ -195,7 +196,7 @@ export type AggregateSubmissionsOutput = {
 }
 
 export type AggregateSubmissionsOutput_Bucket = {
-  name?: string;
+  dimensions?: string[];
   count?: number;
 }
 
