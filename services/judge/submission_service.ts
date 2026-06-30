@@ -123,11 +123,12 @@ export type ListSubmissionsInput_Filter = {
   participantId?: ExpressionID[];
   problemId?: ExpressionID[];
   status?: ExpressionEnum[];
-  lang?: ExpressionEnum[];
+  runtime?: ExpressionEnum[];
   score?: ExpressionFloat[];
   percentage?: ExpressionFloat[];
   submittedAt?: ExpressionTimestamp[];
   signature?: ExpressionEnum[];
+  verdict?: ExpressionEnum[];
 }
 
 export type ListSubmissionsOutput = {
@@ -160,6 +161,16 @@ export type WatchSubmissionInput = {
 }
 
 export type WatchSubmissionOutput = {
+  submission?: Submission;
+}
+
+export type WatchSubmissionListInput = {
+  contestId?: string;
+  extra?: string[];
+}
+
+export type WatchSubmissionListOutput = {
+  event?: string;
   submission?: Submission;
 }
 
