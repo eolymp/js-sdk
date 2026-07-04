@@ -70,6 +70,7 @@ export type ListContestSeriesInput = {
   offset?: number;
   size?: number;
   locale?: string;
+  search?: string;
   extra?: string[];
 }
 
