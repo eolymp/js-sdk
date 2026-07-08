@@ -3,6 +3,7 @@
 
 import { Result } from "./result"
 import { Score } from "./score"
+import { ScoreTimelinePoint } from "./score_timeline"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -25,6 +26,15 @@ export class ScoreService {
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
     const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/score";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.participantId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListScoreTimeline(input: ListScoreTimelineInput, opts?: any): Promise<ListScoreTimelineOutput> {
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/score-timeline";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.participantId);
@@ -144,5 +154,15 @@ export type ExportResultInput = {
 
 export type ExportResultOutput = {
   exportUrl?: string;
+}
+
+export type ListScoreTimelineInput = {
+  contestId?: string;
+  participantId?: string;
+  mode?: string;
+}
+
+export type ListScoreTimelineOutput = {
+  items?: ScoreTimelinePoint[];
 }
 
