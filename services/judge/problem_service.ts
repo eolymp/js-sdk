@@ -140,6 +140,7 @@ export class ProblemService {
 
 export type ImportProblemInput = {
   importId?: string;
+  importIds?: string[];
   index?: number;
   submitLimit?: number;
   scoreByBestTestset?: boolean;
@@ -147,6 +148,7 @@ export type ImportProblemInput = {
 
 export type ImportProblemOutput = {
   problemId?: string;
+  problemIds?: string[];
 }
 
 export type SyncProblemInput = {
