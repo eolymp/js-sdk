@@ -65,6 +65,7 @@ export type Contest_ScoreboardConfig = {
   tieBreaker?: string;
   noSpoilerUi?: boolean;
   shareKey?: string;
+  hideDisqualified?: boolean;
 }
 
 export type Contest_RatingConfig = {
