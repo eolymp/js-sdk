@@ -217,6 +217,7 @@ export type ListContestsInput_Filter = {
   country?: ExpressionEnum[];
   region?: ExpressionEnum[];
   city?: ExpressionString[];
+  memberId?: ExpressionID[];
 }
 
 export type ListContestsOutput = {
