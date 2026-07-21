@@ -11,6 +11,7 @@ export type Rule = {
   condition?: Condition;
   inactive?: boolean;
   dryRun?: boolean;
+  debug?: boolean;
   triggerCount?: number;
   actions?: Action[];
   createdAt?: string;
