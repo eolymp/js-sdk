@@ -8,7 +8,7 @@ export type Rule = {
   id?: string;
   name?: string;
   trigger?: string;
-  condition?: Condition;
+  conditions?: Condition[];
   inactive?: boolean;
   dryRun?: boolean;
   debug?: boolean;
