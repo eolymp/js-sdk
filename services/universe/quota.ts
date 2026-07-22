@@ -22,6 +22,7 @@ export type Quota = {
   emailsPerMonth?: number;
   automationRulesPerSpace?: number;
   automationExecutionsPerMonth?: number;
+  aiTokensPerMonth?: number;
   scoreboardsPerSpace?: number;
   coursesPerSpace?: number;
   problemsPerSpace?: number;
