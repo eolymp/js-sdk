@@ -7,6 +7,8 @@ export type Achievement = {
   id?: string;
   value?: number;
   rarity?: number;
+  threshold?: number;
+  multiAward?: boolean;
   name?: string;
   imageUrl?: string;
   summary?: Content;

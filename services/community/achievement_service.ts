@@ -46,10 +46,12 @@ export type AssignAchievementInput = {
   achievementId?: string;
   setTo?: number;
   incBy?: number;
+  reference?: string;
 }
 
 export type AssignAchievementOutput = {
   quantity?: number;
+  score?: number;
 }
 
 export type UnassignAchievementInput = {
