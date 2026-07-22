@@ -22,6 +22,7 @@ export type Contest = {
   allowFollowup?: boolean;
   displayEditorials?: boolean;
   slug?: string;
+  hideJuryIdentity?: boolean;
   format?: string;
   key?: string;
   problemCount?: number;
