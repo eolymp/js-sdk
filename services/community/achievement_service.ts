@@ -42,6 +42,15 @@ export class AchievementService {
   }
 }
 
+export type AchievementAssignedEvent = {
+  spaceId?: string;
+  memberId?: string;
+  achievementId?: string;
+  quantity?: number;
+  previousQuantity?: number;
+  awardedAt?: string;
+}
+
 export type AssignAchievementInput = {
   achievementId?: string;
   setTo?: number;
