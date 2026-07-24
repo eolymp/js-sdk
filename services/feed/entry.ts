@@ -7,6 +7,7 @@ export type Entry = {
   id?: string;
   type?: string;
   timestamp?: string;
+  memberId?: string;
   attributes?: Record<string, string>;
   links?: Link[];
 }
