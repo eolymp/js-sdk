@@ -55,6 +55,15 @@ export class RuleService {
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
+
+  TriggerRule(input: TriggerRuleInput, opts?: any): Promise<TriggerRuleOutput> {
+    const path = "/automation/rules/"+encodeURIComponent(input.ruleId||'')+"/trigger";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.ruleId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ListRulesInput = {
@@ -107,4 +116,14 @@ export type DeleteRuleInput = {
 }
 
 export type DeleteRuleOutput = Record<string, unknown>;
+
+export type TriggerRuleInput = {
+  ruleId?: string;
+  references?: Record<string, string>;
+  dryRun?: boolean;
+}
+
+export type TriggerRuleOutput = {
+  logId?: string;
+}
 
