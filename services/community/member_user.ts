@@ -19,6 +19,7 @@ export type User = {
   birthday?: string;
   country?: string;
   city?: string;
+  pronoun?: string;
   teamId?: string;
   preferences?: User_Preferences;
 }

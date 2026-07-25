@@ -18,6 +18,7 @@ export type Claims = {
   birthday?: string;
   minor?: boolean;
   country?: string;
+  pronoun?: string;
   preferredRuntime?: string;
   restrictions?: string;
 }
