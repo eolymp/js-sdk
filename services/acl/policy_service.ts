@@ -105,6 +105,7 @@ export type ListPoliciesInput_Filter = {
   principal?: ExpressionID[];
   name?: ExpressionString[];
   resource?: ExpressionEnum[];
+  principalId?: ExpressionID[];
 }
 
 export type ListPoliciesOutput = {

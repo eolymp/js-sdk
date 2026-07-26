@@ -2,13 +2,13 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Policy = {
+export type Principal = {
   id?: string;
+  userId?: string;
   name?: string;
-  principal?: string;
-  principalId?: string;
-  resource?: string;
-  allowAll?: boolean;
+  role?: string;
   allows?: string[];
 }
+
+export type Principal_Patch = Record<string, unknown>;
 
