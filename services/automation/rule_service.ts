@@ -133,6 +133,7 @@ export type TriggerRuleOutput = Record<string, unknown>;
 
 export type ListActionsInput = {
   references?: Record<string, string>;
+  trigger?: string;
 }
 
 export type ListActionsOutput = {
