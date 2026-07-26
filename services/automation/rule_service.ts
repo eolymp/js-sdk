@@ -123,7 +123,5 @@ export type TriggerRuleInput = {
   dryRun?: boolean;
 }
 
-export type TriggerRuleOutput = {
-  logId?: string;
-}
+export type TriggerRuleOutput = Record<string, unknown>;
 

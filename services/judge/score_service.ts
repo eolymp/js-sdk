@@ -33,6 +33,15 @@ export class ScoreService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  DescribeResult(input: DescribeResultInput, opts?: any): Promise<DescribeResultOutput> {
+    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/result";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.participantId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   ListScoreTimeline(input: ListScoreTimelineInput, opts?: any): Promise<ListScoreTimelineOutput> {
     const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/score-timeline";
 
@@ -114,6 +123,16 @@ export type DescribeScoreInput = {
 
 export type DescribeScoreOutput = {
   score?: Score;
+}
+
+export type DescribeResultInput = {
+  participantId?: string;
+  mode?: string;
+  timeOffset?: number;
+}
+
+export type DescribeResultOutput = {
+  result?: Result;
 }
 
 export type ImportScoreInput = {
