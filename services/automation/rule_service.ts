@@ -64,6 +64,12 @@ export class RuleService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ListActions(input: ListActionsInput, opts?: any): Promise<ListActionsOutput> {
+    const path = "/automation/actions";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type ListRulesInput = {
@@ -124,4 +130,12 @@ export type TriggerRuleInput = {
 }
 
 export type TriggerRuleOutput = Record<string, unknown>;
+
+export type ListActionsInput = {
+  references?: Record<string, string>;
+}
+
+export type ListActionsOutput = {
+  items?: Rule[];
+}
 
