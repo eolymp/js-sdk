@@ -32,6 +32,7 @@ export type Product_Attribute = {
 
 export type Product_Variant = {
   id?: string;
+  productId?: string;
   name?: string;
   values?: Record<string, string>;
   images?: string[];
@@ -39,6 +40,8 @@ export type Product_Variant = {
   maxQuantity?: number;
   availableQuantity?: number;
 }
+
+export type Product_Variant_Patch = Record<string, unknown>;
 
 export type Product_Translation = {
   id?: string;

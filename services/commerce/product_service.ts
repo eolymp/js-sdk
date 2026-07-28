@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Product } from "./product"
+import { Product, Product_Variant } from "./product"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -52,6 +52,54 @@ export class ProductService {
 
   ListProducts(input: ListProductsInput, opts?: any): Promise<ListProductsOutput> {
     const path = "/store/products";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  CreateProductVariant(input: CreateProductVariantInput, opts?: any): Promise<CreateProductVariantOutput> {
+    const path = "/store/products/"+encodeURIComponent(input.productId||'')+"/variants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.productId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateProductVariant(input: UpdateProductVariantInput, opts?: any): Promise<UpdateProductVariantOutput> {
+    const path = "/store/products/"+encodeURIComponent(input.productId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.productId);
+    delete(input.variantId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteProductVariant(input: DeleteProductVariantInput, opts?: any): Promise<DeleteProductVariantOutput> {
+    const path = "/store/products/"+encodeURIComponent(input.productId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.productId);
+    delete(input.variantId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  DescribeProductVariant(input: DescribeProductVariantInput, opts?: any): Promise<DescribeProductVariantOutput> {
+    const path = "/store/products/"+encodeURIComponent(input.productId||'')+"/variants/"+encodeURIComponent(input.variantId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.productId);
+    delete(input.variantId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListProductVariants(input: ListProductVariantsInput, opts?: any): Promise<ListProductVariantsOutput> {
+    const path = "/store/products/"+encodeURIComponent(input.productId||'')+"/variants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.productId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -111,5 +159,60 @@ export type ListProductsInput_Filter = {
 export type ListProductsOutput = {
   total?: number;
   items?: Product[];
+}
+
+export type CreateProductVariantInput = {
+  productId?: string;
+  variant?: Product_Variant;
+}
+
+export type CreateProductVariantOutput = {
+  variantId?: string;
+}
+
+export type UpdateProductVariantInput = {
+  patch?: string[];
+  productId?: string;
+  variantId?: string;
+  variant?: Product_Variant;
+}
+
+export type UpdateProductVariantOutput = Record<string, unknown>;
+
+export type DeleteProductVariantInput = {
+  productId?: string;
+  variantId?: string;
+}
+
+export type DeleteProductVariantOutput = Record<string, unknown>;
+
+export type DescribeProductVariantInput = {
+  productId?: string;
+  variantId?: string;
+}
+
+export type DescribeProductVariantOutput = {
+  variant?: Product_Variant;
+}
+
+export type ListProductVariantsInput = {
+  productId?: string;
+  offset?: number;
+  size?: number;
+  search?: string;
+  filters?: ListProductVariantsInput_Filter;
+  sort?: string;
+  order?: string;
+}
+
+export type ListProductVariantsInput_Filter = {
+  id?: ExpressionID[];
+  name?: ExpressionString[];
+  outOfStock?: ExpressionBool[];
+}
+
+export type ListProductVariantsOutput = {
+  total?: number;
+  items?: Product_Variant[];
 }
 
