@@ -5,9 +5,15 @@ import { Content } from "../ecm/content"
 
 export type Issue = {
   id?: string;
+  problemId?: string;
+  number?: number;
   status?: string;
+  title?: string;
   description?: Content;
-  userId?: string;
+  assignee?: string;
+  reporterId?: string;
+  testerId?: string;
+  tags?: string[];
   createdAt?: string;
   updatedAt?: string;
 }
