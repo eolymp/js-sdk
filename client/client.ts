@@ -143,7 +143,7 @@ export class Client {
 
   async call<R, E>(method: string, url: string, input: R, opts?: CallOptions): Promise<E> {
     const data = JSON.stringify(input);
-    if (method == "GET") {
+    if (method == "GET" || method == "DELETE") {
       const query = data != '{}' ? `?q=${encodeURIComponent(data)}` : '';
       return this.send<E>(method, url + query, undefined, opts)
     }
