@@ -11,6 +11,7 @@ export type EvaluationTask = {
   metadata?: Record<string, string>;
   priority?: number;
   redirectStderrToStdout?: boolean;
+  trace?: boolean;
   timeCoefficientDeviation?: number;
   runCount?: number;
   interactiveFollowup?: boolean;
