@@ -69,6 +69,12 @@ export class FulfillmentService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ExportOrderLabels(input: ExportOrderLabelsInput, opts?: any): Promise<ExportOrderLabelsOutput> {
+    const path = "/store/orders:export-labels";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type AllocateStockInput = {
@@ -110,4 +116,12 @@ export type MarkReturnedOrderInput = {
 }
 
 export type MarkReturnedOrderOutput = Record<string, unknown>;
+
+export type ExportOrderLabelsInput = {
+  orderId?: string[];
+}
+
+export type ExportOrderLabelsOutput = {
+  downloadUrl?: string;
+}
 
