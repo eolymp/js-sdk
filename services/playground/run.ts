@@ -17,5 +17,6 @@ export type Run = {
   memoryUsage?: number;
   resourceUsage?: ResourceUsage;
   outputUrl?: string;
+  traceUrl?: string;
 }
 

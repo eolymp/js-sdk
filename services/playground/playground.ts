@@ -43,6 +43,7 @@ export class Playground {
 
 export type CreateRunInput = {
   runtime?: string;
+  trace?: boolean;
   source?: string;
   inputData?: string;
   inputRef?: string;
