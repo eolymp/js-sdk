@@ -21,6 +21,7 @@ export type GenerationReport_Run = {
   answerUrl?: string;
   inputGeneratorStats?: Stats;
   answerGeneratorStats?: Stats;
+  validatorStats?: Stats;
   errorMessage?: string;
 }
 
