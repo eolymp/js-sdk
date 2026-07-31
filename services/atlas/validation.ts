@@ -10,10 +10,6 @@ export type Validation = {
   verdict?: string;
   error?: string;
   errorUrl?: string;
-  total?: number;
-  checked?: number;
-  valid?: number;
-  invalid?: number;
   groups?: Validation_Group[];
 }
 
