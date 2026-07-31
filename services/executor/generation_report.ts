@@ -9,6 +9,7 @@ export type GenerationReport = {
   origin?: string;
   metadata?: Record<string, string>;
   agent?: string;
+  status?: string;
   runs?: GenerationReport_Run[];
   errorMessage?: string;
 }
