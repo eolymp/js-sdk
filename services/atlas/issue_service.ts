@@ -57,6 +57,12 @@ export class IssueService {
   }
 }
 
+export type IssueChangedEvent = {
+  problemId?: string;
+  before?: Issue;
+  after?: Issue;
+}
+
 export type ListIssuesInput = {
   offset?: number;
   size?: number;
