@@ -61,6 +61,7 @@ export type IssueChangedEvent = {
   problemId?: string;
   before?: Issue;
   after?: Issue;
+  actorId?: string;
 }
 
 export type ListIssuesInput = {
