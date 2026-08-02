@@ -5,6 +5,7 @@
 export type Config = {
   hourlyIpSubmissionLimit?: number;
   dailyIpSubmissionLimit?: number;
+  tracingEnabled?: boolean;
 }
 
 export type Config_Patch = Record<string, unknown>;
