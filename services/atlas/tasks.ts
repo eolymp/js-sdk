@@ -21,3 +21,12 @@ export type TranslateEditorialsTask = {
   overrideManual?: boolean;
 }
 
+export type GenerateTestsTask = {
+  problemId?: string;
+  testReferences?: string[];
+}
+
+export type GenerateTestsTask_Checkpoint = {
+  pendingTestReferences?: string[];
+}
+
