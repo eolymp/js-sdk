@@ -3,6 +3,7 @@
 
 import { ExpressionEnum, ExpressionID, ExpressionInt } from "../wellknown/expression"
 import { Issue } from "./issue"
+import { IssueActivity, IssueActivity_Comment } from "./issue_activity"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -52,6 +53,44 @@ export class IssueService {
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.issueId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  ListIssueActivities(input: ListIssueActivitiesInput, opts?: any): Promise<ListIssueActivitiesOutput> {
+    const path = "/issues/"+encodeURIComponent(input.issueId||'')+"/activities";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.issueId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  CreateIssueComment(input: CreateIssueCommentInput, opts?: any): Promise<CreateIssueCommentOutput> {
+    const path = "/issues/"+encodeURIComponent(input.issueId||'')+"/comments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.issueId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateIssueComment(input: UpdateIssueCommentInput, opts?: any): Promise<UpdateIssueCommentOutput> {
+    const path = "/issues/"+encodeURIComponent(input.issueId||'')+"/comments/"+encodeURIComponent(input.commentId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.issueId);
+    delete(input.commentId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteIssueComment(input: DeleteIssueCommentInput, opts?: any): Promise<DeleteIssueCommentOutput> {
+    const path = "/issues/"+encodeURIComponent(input.issueId||'')+"/comments/"+encodeURIComponent(input.commentId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.issueId);
+    delete(input.commentId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
@@ -119,4 +158,43 @@ export type DeleteIssueInput = {
 }
 
 export type DeleteIssueOutput = Record<string, unknown>;
+
+export type ListIssueActivitiesInput = {
+  issueId?: string;
+  offset?: number;
+  size?: number;
+  sort?: string;
+  order?: string;
+  extra?: string[];
+}
+
+export type ListIssueActivitiesOutput = {
+  total?: number;
+  items?: IssueActivity[];
+}
+
+export type CreateIssueCommentInput = {
+  issueId?: string;
+  comment?: IssueActivity_Comment;
+}
+
+export type CreateIssueCommentOutput = {
+  commentId?: string;
+}
+
+export type UpdateIssueCommentInput = {
+  patch?: string[];
+  issueId?: string;
+  commentId?: string;
+  comment?: IssueActivity_Comment;
+}
+
+export type UpdateIssueCommentOutput = Record<string, unknown>;
+
+export type DeleteIssueCommentInput = {
+  issueId?: string;
+  commentId?: string;
+}
+
+export type DeleteIssueCommentOutput = Record<string, unknown>;
 
