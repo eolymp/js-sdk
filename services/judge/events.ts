@@ -21,17 +21,17 @@ export type ScoreChangedEvent = {
   score?: Score;
 }
 
+export type RetestProblemEvent = {
+  contestId?: string;
+  problemId?: string;
+  activityId?: string;
+}
+
 export type ScoreboardRowChangedEvent = {
   contestId?: string;
   kind?: string;
   participantId?: string;
   memberId?: string;
   version?: number;
-}
-
-export type RetestProblemEvent = {
-  contestId?: string;
-  problemId?: string;
-  activityId?: string;
 }
 
