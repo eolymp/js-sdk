@@ -21,6 +21,14 @@ export type ScoreChangedEvent = {
   score?: Score;
 }
 
+export type ScoreboardRowChangedEvent = {
+  contestId?: string;
+  kind?: string;
+  participantId?: string;
+  memberId?: string;
+  version?: number;
+}
+
 export type RetestProblemEvent = {
   contestId?: string;
   problemId?: string;
