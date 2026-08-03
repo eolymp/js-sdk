@@ -16,6 +16,7 @@ export type Submission = {
   source?: string;
   sourceUrl?: string;
   values?: Form_Value[];
+  quiz?: Submission_Quiz;
   signature?: string;
   status?: string;
   verdict?: string;
@@ -68,5 +69,21 @@ export type Submission_Group = {
   memoryUsage?: number;
   resourceUsage?: number;
   runs?: Submission_Run[];
+}
+
+export type Submission_Quiz = {
+  answers?: Submission_Quiz_Answer[];
+}
+
+export type Submission_Quiz_Choice = {
+  id?: string;
+  index?: number;
+}
+
+export type Submission_Quiz_Answer = {
+  questionId?: string;
+  questionIndex?: number;
+  choices?: Submission_Quiz_Choice[];
+  text?: string;
 }
 

@@ -3,7 +3,7 @@
 
 import { ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 import { Form_Value } from "./form"
-import { Submission } from "./submission"
+import { Submission, Submission_Quiz } from "./submission"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -85,6 +85,7 @@ export type CreateSubmissionInput = {
   lang?: string;
   source?: string;
   values?: Form_Value[];
+  quiz?: Submission_Quiz;
 }
 
 export type CreateSubmissionOutput = {
