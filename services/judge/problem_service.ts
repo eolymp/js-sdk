@@ -25,15 +25,6 @@ export class ProblemService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  SyncProblem(input: SyncProblemInput, opts?: any): Promise<SyncProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/sync";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   UpdateProblem(input: UpdateProblemInput, opts?: any): Promise<UpdateProblemOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'');
 
@@ -150,12 +141,6 @@ export type ImportProblemOutput = {
   problemId?: string;
   problemIds?: string[];
 }
-
-export type SyncProblemInput = {
-  problemId?: string;
-}
-
-export type SyncProblemOutput = Record<string, unknown>;
 
 export type UpdateProblemInput = {
   patch?: string[];
