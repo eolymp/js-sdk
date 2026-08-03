@@ -50,15 +50,6 @@ export class MemberService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
-  RestoreMember(input: RestoreMemberInput, opts?: any): Promise<RestoreMemberOutput> {
-    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/restore";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.memberId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   DescribeMember(input: DescribeMemberInput, opts?: any): Promise<DescribeMemberOutput> {
     const path = "/members/"+encodeURIComponent(input.memberId||'');
 
@@ -141,16 +132,9 @@ export type UpdateMemberPictureOutput = {
 
 export type DeleteMemberInput = {
   memberId?: string;
-  forceDelete?: boolean;
 }
 
 export type DeleteMemberOutput = Record<string, unknown>;
-
-export type RestoreMemberInput = {
-  memberId?: string;
-}
-
-export type RestoreMemberOutput = Record<string, unknown>;
 
 export type DescribeMemberInput = {
   memberId?: string;
