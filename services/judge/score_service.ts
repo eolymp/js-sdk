@@ -93,7 +93,7 @@ export type RebuildScoreInput = {
 }
 
 export type RebuildScoreOutput = {
-  activityId?: string;
+  taskId?: string;
 }
 
 export type IntrospectScoreInput = {

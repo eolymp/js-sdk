@@ -200,7 +200,9 @@ export type RetestProblemInput = {
   problemId?: string;
 }
 
-export type RetestProblemOutput = Record<string, unknown>;
+export type RetestProblemOutput = {
+  taskId?: string;
+}
 
 export type AnalyzeSubmissionInput = {
   submissionId?: string;
