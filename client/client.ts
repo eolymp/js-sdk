@@ -16,6 +16,7 @@ export interface ClientOptions {
   headers?: Record<string, string>;
   credentials?: RequestCredentials;
   redirect?: RequestRedirect;
+  cache?: RequestCache;
   token?: string;
   middleware?: Middleware[];
   authenticate?: () => Promise<string>;
@@ -31,6 +32,7 @@ export class Client {
   private authenticate?: () => Promise<string>;
   private credentials: RequestCredentials = 'omit';
   private redirect: RequestRedirect = 'follow';
+  private cache: RequestCache = 'no-cache';
 
   constructor(opts: ClientOptions = {}) {
     this.retry = opts.retry || 3;
@@ -39,6 +41,7 @@ export class Client {
     this.authenticate = opts.authenticate || undefined;
     this.credentials = opts.credentials || 'omit';
     this.redirect = opts.redirect || 'follow';
+    this.cache = opts.cache || 'no-cache';
 
     // construct fetch with middleware
     this.fetch = this._fetch.bind(this);
@@ -70,10 +73,13 @@ export class Client {
         headers.append('Authorization', `Bearer ${this.token}`)
       }
 
+      // no-cache by default: API responses may carry max-age for the gateway cache, the browser
+      // should always revalidate instead of serving them stale.
       const init: RequestInit = {
         mode: 'cors',
         credentials: this.credentials,
         redirect: this.redirect,
+        cache: this.cache,
         ...opts,
         headers,
       };
