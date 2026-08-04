@@ -28,6 +28,8 @@ export type Scoreboard_Row = {
   index?: number;
   rank?: number;
   rankLength?: number;
+  rankAll?: number;
+  rankAllLength?: number;
   score?: number;
   penalty?: number;
   tieBreaker?: number;
@@ -60,5 +62,8 @@ export type Scoreboard_Row_ProblemScore = {
   attempts?: number;
   percentage?: number;
   time?: number;
+  pending?: number;
+  changed?: boolean;
+  firstToSolve?: boolean;
 }
 
