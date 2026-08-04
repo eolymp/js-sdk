@@ -35,6 +35,7 @@ export class EmailService {
 export type SendEmailInput = {
   memberId?: string;
   emailRef?: string;
+  attachments?: SendEmailInput_Attachment[];
   dryRun?: boolean;
   bccMe?: boolean;
   type?: string;
@@ -52,6 +53,11 @@ export type SendEmailInput_Message = {
 export type SendEmailInput_Template = {
   path?: string;
   data?: Record<string, any>;
+}
+
+export type SendEmailInput_Attachment = {
+  name?: string;
+  link?: string;
 }
 
 export type SendEmailOutput = {
