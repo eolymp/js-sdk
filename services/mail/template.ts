@@ -11,7 +11,7 @@ export type Template = {
   subject?: string;
   automatic?: boolean;
   locale?: string;
-  alternativeLocales?: string[];
+  locales?: string[];
   content?: string;
 }
 
