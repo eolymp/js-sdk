@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Newsletter, Newsletter_Translation } from "./newsletter"
+import { Newsletter, Newsletter_Patch } from "./newsletter"
 import { Recipient } from "./newsletter_recipient"
 
 interface _Client {
@@ -84,54 +84,6 @@ export class NewsletterService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  CreateTranslation(input: CreateTranslationInput, opts?: any): Promise<CreateTranslationOutput> {
-    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.newsletterId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UpdateTranslation(input: UpdateTranslationInput, opts?: any): Promise<UpdateTranslationOutput> {
-    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.newsletterId);
-    delete(input.translationId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
-  DeleteTranslation(input: DeleteTranslationInput, opts?: any): Promise<DeleteTranslationOutput> {
-    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.newsletterId);
-    delete(input.translationId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
-  DescribeTranslation(input: DescribeTranslationInput, opts?: any): Promise<DescribeTranslationOutput> {
-    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.newsletterId);
-    delete(input.translationId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListTranslations(input: ListTranslationsInput, opts?: any): Promise<ListTranslationsOutput> {
-    const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/translations";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.newsletterId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   CreateRecipient(input: CreateRecipientInput, opts?: any): Promise<CreateRecipientOutput> {
     const path = "/newsletters/"+encodeURIComponent(input.newsletterId||'')+"/recipients";
 
@@ -189,21 +141,23 @@ export type CreateNewsletterOutput = {
 }
 
 export type UpdateNewsletterInput = {
-  patch?: string[];
   newsletterId?: string;
-  newsletter?: Newsletter;
+  newsletter?: Newsletter_Patch;
+  locale?: string;
 }
 
 export type UpdateNewsletterOutput = Record<string, unknown>;
 
 export type DeleteNewsletterInput = {
   newsletterId?: string;
+  locale?: string;
 }
 
 export type DeleteNewsletterOutput = Record<string, unknown>;
 
 export type DescribeNewsletterInput = {
   newsletterId?: string;
+  locale?: string;
   extra?: string[];
 }
 
@@ -259,59 +213,6 @@ export type TranslateNewsletterInput = {
 
 export type TranslateNewsletterOutput = {
   taskId?: string;
-}
-
-export type CreateTranslationInput = {
-  newsletterId?: string;
-  translation?: Newsletter_Translation;
-}
-
-export type CreateTranslationOutput = {
-  translationId?: string;
-}
-
-export type UpdateTranslationInput = {
-  patch?: string[];
-  newsletterId?: string;
-  translationId?: string;
-  translation?: Newsletter_Translation;
-}
-
-export type UpdateTranslationOutput = Record<string, unknown>;
-
-export type DeleteTranslationInput = {
-  newsletterId?: string;
-  translationId?: string;
-}
-
-export type DeleteTranslationOutput = Record<string, unknown>;
-
-export type DescribeTranslationInput = {
-  newsletterId?: string;
-  translationId?: string;
-  extra?: string[];
-}
-
-export type DescribeTranslationOutput = {
-  translation?: Newsletter_Translation;
-}
-
-export type ListTranslationsInput = {
-  newsletterId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListTranslationsInput_Filter;
-  extra?: string[];
-}
-
-export type ListTranslationsInput_Filter = {
-  id?: ExpressionID[];
-  locale?: ExpressionEnum[];
-}
-
-export type ListTranslationsOutput = {
-  total?: number;
-  items?: Newsletter_Translation[];
 }
 
 export type CreateRecipientInput = {

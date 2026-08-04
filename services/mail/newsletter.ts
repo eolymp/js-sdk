@@ -11,21 +11,24 @@ export type Newsletter = {
   name?: string;
   subject?: string;
   content?: Content;
+  automatic?: boolean;
+  locale?: string;
+  locales?: string[];
   recipientsCount?: number;
   pendingCount?: number;
   sentCount?: number;
   errorCount?: number;
 }
 
-export type Newsletter_Patch = Record<string, unknown>;
-
 export type Newsletter_Extra = Record<string, unknown>;
 
-export type Newsletter_Translation = {
-  id?: string;
-  locale?: string;
+export type Newsletter_Patch = {
+  type?: string;
+  name?: string;
   subject?: string;
   content?: Content;
   automatic?: boolean;
+  scheduledAt?: string;
+  unschedule?: boolean;
 }
 
