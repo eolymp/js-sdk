@@ -258,7 +258,7 @@ export type TranslateNewsletterInput = {
 }
 
 export type TranslateNewsletterOutput = {
-  jobId?: string;
+  taskId?: string;
 }
 
 export type CreateTranslationInput = {

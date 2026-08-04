@@ -277,7 +277,7 @@ export type TranslatePostInput = {
 }
 
 export type TranslatePostOutput = {
-  jobId?: string;
+  taskId?: string;
 }
 
 export type DescribePostTranslationInput = {

@@ -205,7 +205,7 @@ export type TranslateFragmentInput = {
 }
 
 export type TranslateFragmentOutput = {
-  jobId?: string;
+  taskId?: string;
 }
 
 export type DescribeFragmentTranslationInput = {
