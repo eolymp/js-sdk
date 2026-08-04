@@ -22,6 +22,8 @@ export type Post = {
   updatedAt?: string;
   typeId?: string;
   locale?: string;
+  locales?: string[];
+  automatic?: boolean;
   title?: string;
   imageUrl?: string;
   content?: Content;
@@ -33,12 +35,14 @@ export type Post = {
   links?: Link[];
 }
 
-export type Post_Translation = {
-  id?: string;
-  locale?: string;
+export type Post_Patch = {
+  typeId?: string;
+  featured?: boolean;
+  pinned?: boolean;
+  automatic?: boolean;
   content?: Content;
   labels?: string[];
-  automatic?: boolean;
+  unlabel?: boolean;
 }
 
 export type Post_Image = {
