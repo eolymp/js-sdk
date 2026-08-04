@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Fragment, Fragment_Patch, Fragment_Translation } from "./content_fragment"
+import { Fragment, Fragment_Patch } from "./content_fragment"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -65,54 +65,6 @@ export class ContentService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  DescribeFragmentTranslation(input: DescribeFragmentTranslationInput, opts?: any): Promise<DescribeFragmentTranslationOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.fragmentId);
-    delete(input.translationId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  ListFragmentTranslations(input: ListFragmentTranslationsInput, opts?: any): Promise<ListFragmentTranslationsOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.fragmentId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
-  CreateFragmentTranslation(input: CreateFragmentTranslationInput, opts?: any): Promise<CreateFragmentTranslationOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.fragmentId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
-  UpdateFragmentTranslation(input: UpdateFragmentTranslationInput, opts?: any): Promise<UpdateFragmentTranslationOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.fragmentId);
-    delete(input.translationId);
-
-    return this.cli.call("PUT", this.url+path, input, opts);
-  }
-
-  DeleteFragmentTranslation(input: DeleteFragmentTranslationInput, opts?: any): Promise<DeleteFragmentTranslationOutput> {
-    const path = "/content/fragments/"+encodeURIComponent(input.fragmentId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.fragmentId);
-    delete(input.translationId);
-
-    return this.cli.call("DELETE", this.url+path, input, opts);
-  }
-
   DescribePath(input: DescribePathInput, opts?: any): Promise<DescribePathOutput> {
     const path = "/content/path";
 
@@ -130,12 +82,6 @@ export type FragmentChangedEvent = {
   scope?: string;
   before?: Fragment;
   after?: Fragment;
-}
-
-export type FragmentTranslationChangedEvent = {
-  fragmentId?: string;
-  before?: Fragment_Translation;
-  after?: Fragment_Translation;
 }
 
 export type DescribeFragmentInput = {
@@ -162,7 +108,6 @@ export type ListFragmentsInput_Filter = {
   query?: string;
   id?: ExpressionID[];
   path?: ExpressionString[];
-  locale?: ExpressionEnum[];
   label?: ExpressionEnum[];
 }
 
@@ -180,11 +125,9 @@ export type CreateFragmentOutput = {
 }
 
 export type UpdateFragmentInput = {
-  patch?: string[];
-  fragment?: Fragment;
-  locale?: string;
   fragmentId?: string;
-  fragmentPatch?: Fragment_Patch;
+  locale?: string;
+  fragment?: Fragment_Patch;
 }
 
 export type UpdateFragmentOutput = Record<string, unknown>;
@@ -207,59 +150,6 @@ export type TranslateFragmentInput = {
 export type TranslateFragmentOutput = {
   taskId?: string;
 }
-
-export type DescribeFragmentTranslationInput = {
-  fragmentId?: string;
-  translationId?: string;
-  extra?: string[];
-}
-
-export type DescribeFragmentTranslationOutput = {
-  translation?: Fragment_Translation;
-}
-
-export type ListFragmentTranslationsInput = {
-  fragmentId?: string;
-  offset?: number;
-  size?: number;
-  filters?: ListFragmentTranslationsInput_Filter;
-  extra?: string[];
-}
-
-export type ListFragmentTranslationsInput_Filter = {
-  query?: string;
-  id?: ExpressionID[];
-  locale?: ExpressionEnum[];
-}
-
-export type ListFragmentTranslationsOutput = {
-  total?: number;
-  items?: Fragment_Translation[];
-}
-
-export type CreateFragmentTranslationInput = {
-  fragmentId?: string;
-  translation?: Fragment_Translation;
-}
-
-export type CreateFragmentTranslationOutput = {
-  translationId?: string;
-}
-
-export type UpdateFragmentTranslationInput = {
-  fragmentId?: string;
-  translationId?: string;
-  translation?: Fragment_Translation;
-}
-
-export type UpdateFragmentTranslationOutput = Record<string, unknown>;
-
-export type DeleteFragmentTranslationInput = {
-  fragmentId?: string;
-  translationId?: string;
-}
-
-export type DeleteFragmentTranslationOutput = Record<string, unknown>;
 
 export type DescribePathInput = {
   path?: string;
