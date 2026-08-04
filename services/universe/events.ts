@@ -3,8 +3,8 @@
 
 import { Space } from "./space"
 
-export type SpaceChangeRecord = {
-  op?: string;
-  space?: Space;
+export type SpaceChangedEvent = {
+  before?: Space;
+  after?: Space;
 }
 
