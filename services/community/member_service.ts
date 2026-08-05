@@ -85,6 +85,15 @@ export class MemberService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  CreateMemberLoginLink(input: CreateMemberLoginLinkInput, opts?: any): Promise<CreateMemberLoginLinkOutput> {
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/login-link";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeMemberUsage(input: DescribeMemberUsageInput, opts?: any): Promise<DescribeMemberUsageOutput> {
     const path = "/usage/members";
 
@@ -201,6 +210,16 @@ export type UnassignMemberInput = {
 }
 
 export type UnassignMemberOutput = Record<string, unknown>;
+
+export type CreateMemberLoginLinkInput = {
+  memberId?: string;
+}
+
+export type CreateMemberLoginLinkOutput = {
+  url?: string;
+  token?: string;
+  expiresAt?: string;
+}
 
 export type DescribeMemberUsageInput = {
   periodStart?: string;
