@@ -32,6 +32,7 @@ export type CompleteInput = {
   container?: CompleteInput_Container;
   betas?: string[];
   reasoning?: CompleteInput_Reasoning;
+  effort?: string;
 }
 
 export type CompleteInput_Tool = {
