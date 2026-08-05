@@ -25,6 +25,7 @@ export type Scoreboard_Column = {
 export type Scoreboard_Row = {
   id?: string;
   memberId?: string;
+  participantId?: string;
   index?: number;
   rank?: number;
   rankLength?: number;
