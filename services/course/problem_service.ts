@@ -131,6 +131,7 @@ export type CreateRunInput = {
   source?: string;
   inputData?: string;
   inputRef?: string;
+  exampleId?: string;
 }
 
 export type CreateRunOutput = {

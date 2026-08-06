@@ -47,6 +47,7 @@ export type Editor = {
   features?: string[];
   runtimes?: Runtime[];
   fields?: Form_Field[];
+  type?: string;
 }
 
 export type Editor_State = {

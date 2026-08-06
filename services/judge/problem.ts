@@ -41,6 +41,7 @@ export type Problem_Statement = {
 export type Problem_Test = {
   index?: number;
   example?: boolean;
+  id?: string;
   inputUrl?: string;
   answerUrl?: string;
   score?: number;
