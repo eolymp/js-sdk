@@ -107,6 +107,7 @@ export type IntrospectScoreOutput = {
 export type WatchScoreInput = {
   contestId?: string;
   participantId?: string;
+  fetchingMode?: string;
   mode?: string;
 }
 
@@ -117,8 +118,9 @@ export type WatchScoreOutput = {
 export type DescribeScoreInput = {
   contestId?: string;
   participantId?: string;
-  mode?: string;
+  fetchingMode?: string;
   timeOffset?: number;
+  mode?: string;
 }
 
 export type DescribeScoreOutput = {
@@ -127,8 +129,9 @@ export type DescribeScoreOutput = {
 
 export type DescribeResultInput = {
   participantId?: string;
-  mode?: string;
+  fetchingMode?: string;
   timeOffset?: number;
+  mode?: string;
 }
 
 export type DescribeResultOutput = {
@@ -154,8 +157,9 @@ export type ExportScoreOutput = {
 
 export type ListResultInput = {
   contestId?: string;
-  mode?: string;
+  fetchingMode?: string;
   timeOffset?: number;
+  mode?: string;
   offset?: number;
   size?: number;
 }
@@ -167,8 +171,9 @@ export type ListResultOutput = {
 
 export type ExportResultInput = {
   contestId?: string;
-  mode?: string;
+  fetchingMode?: string;
   timeOffset?: number;
+  mode?: string;
 }
 
 export type ExportResultOutput = {
@@ -178,6 +183,7 @@ export type ExportResultOutput = {
 export type ListScoreTimelineInput = {
   contestId?: string;
   participantId?: string;
+  fetchingMode?: string;
   mode?: string;
 }
 

@@ -33,6 +33,8 @@ export type CompleteInput = {
   betas?: string[];
   reasoning?: CompleteInput_Reasoning;
   effort?: string;
+  outputSchema?: string;
+  compaction?: CompleteInput_Compaction;
 }
 
 export type CompleteInput_Tool = {
@@ -48,6 +50,11 @@ export type CompleteInput_Reasoning = {
   enabled?: boolean;
   budget?: number;
   effort?: string;
+}
+
+export type CompleteInput_Compaction = {
+  trigger?: number;
+  instructions?: string;
 }
 
 export type CompleteInput_Container = {

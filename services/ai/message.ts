@@ -13,6 +13,12 @@ export type Message_ContentBlock = {
   signature?: string;
   toolCall?: Message_ToolCall;
   toolResult?: Message_ToolResult;
+  image?: Message_Image;
+}
+
+export type Message_Image = {
+  mediaType?: string;
+  data?: string;
 }
 
 export type Message_ToolCall = {
@@ -26,5 +32,6 @@ export type Message_ToolResult = {
   result?: string;
   isError?: boolean;
   error?: string;
+  images?: Message_Image[];
 }
 
