@@ -4,13 +4,7 @@
 
 export type Scoreboard = {
   modes?: string[];
-  rounds?: Scoreboard_Round[];
   columns?: Scoreboard_Column[];
-}
-
-export type Scoreboard_Round = {
-  id?: string;
-  title?: string;
 }
 
 export type Scoreboard_Column = {
@@ -41,19 +35,9 @@ export type Scoreboard_Row = {
 
 export type Scoreboard_Row_Value = {
   columnId?: string;
-  roundScore?: Scoreboard_Row_RoundScore;
   problemScore?: Scoreboard_Row_ProblemScore;
   string?: string;
   number?: string;
-}
-
-export type Scoreboard_Row_RoundScore = {
-  score?: number;
-  penalty?: number;
-  tieBreaker?: number;
-  unofficial?: boolean;
-  disqualified?: boolean;
-  medal?: string;
 }
 
 export type Scoreboard_Row_ProblemScore = {

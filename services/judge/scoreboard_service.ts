@@ -28,11 +28,24 @@ export class ScoreboardService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DescribeScoreboardRow(input: DescribeScoreboardRowInput, opts?: any): Promise<DescribeScoreboardRowOutput> {
+    const path = "/scoreboard/rows/"+encodeURIComponent(input.participantId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.participantId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ExportScoreboard(input: ExportScoreboardInput, opts?: any): Promise<ExportScoreboardOutput> {
+    const path = "/scoreboard/export";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
-export type DescribeScoreboardInput = {
-  roundId?: string;
-}
+export type DescribeScoreboardInput = Record<string, unknown>;
 
 export type DescribeScoreboardOutput = {
   scoreboard?: Scoreboard;
@@ -40,7 +53,6 @@ export type DescribeScoreboardOutput = {
 
 export type ListScoreboardRowsInput = {
   mode?: string;
-  roundId?: string;
   size?: number;
   offset?: number;
   filters?: ListScoreboardRowsInput_Filter;
@@ -56,5 +68,22 @@ export type ListScoreboardRowsInput_Filter = {
 export type ListScoreboardRowsOutput = {
   total?: number;
   items?: Scoreboard_Row[];
+}
+
+export type DescribeScoreboardRowInput = {
+  participantId?: string;
+  mode?: string;
+}
+
+export type DescribeScoreboardRowOutput = {
+  row?: Scoreboard_Row;
+}
+
+export type ExportScoreboardInput = {
+  mode?: string;
+}
+
+export type ExportScoreboardOutput = {
+  exportUrl?: string;
 }
 
