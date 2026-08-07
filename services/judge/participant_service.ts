@@ -4,7 +4,8 @@
 import { Content } from "../ecm/content"
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 import { Participant } from "./participant"
-import { Result } from "./result"
+import { Score } from "./score"
+import { Scoreboard_Row } from "./scoreboard"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -139,7 +140,8 @@ export type ParticipantJoinedEvent = {
 export type ParticipantFinalizedEvent = {
   contestId?: string;
   participant?: Participant;
-  result?: Result;
+  row?: Scoreboard_Row;
+  score?: Score;
 }
 
 export type AssignParticipantInput = {
