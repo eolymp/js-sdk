@@ -6,6 +6,15 @@ import { Task } from "./task"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class TaskService {
@@ -30,6 +39,15 @@ export class TaskService {
     delete(input.taskId);
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  WatchTask(input: WatchTaskInput, opts?: any): _Stream<WatchTaskOutput> {
+    const path = "/tasks/"+encodeURIComponent(input.taskId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.taskId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   CancelTask(input: CancelTaskInput, opts?: any): Promise<CancelTaskOutput> {

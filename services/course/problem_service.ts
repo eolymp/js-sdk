@@ -10,6 +10,15 @@ import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput,
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class ProblemService {
@@ -79,6 +88,15 @@ export class ProblemService {
     delete(input.runId);
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  WatchRun(input: WatchRunInput, opts?: any): _Stream<WatchRunOutput> {
+    const path = "/runs/"+encodeURIComponent(input.runId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.runId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   ListRuntimes(input: ListRuntimesInput, opts?: any): Promise<ListRuntimesOutput> {
