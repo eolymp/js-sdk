@@ -1,4 +1,5 @@
 import {BadRequestError, ForbiddenError, InternalServerError, NotFoundError, UnauthorizedError} from "./errors";
+import {Stream} from "./stream";
 
 const sleep = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
 
@@ -155,6 +156,21 @@ export class Client {
     }
 
     return this.send<E>(method, url, data, opts)
+  }
+
+  // stream opens a server-sent event stream, used by server streaming methods
+  stream<R, E>(method: string, url: string, input: R, opts?: CallOptions): Stream<E> {
+    const data = JSON.stringify(input);
+    const query = (method == "GET" || method == "DELETE") && data != '{}' ? `?q=${encodeURIComponent(data)}` : '';
+    const body = method == "GET" || method == "DELETE" ? undefined : data;
+
+    return new Stream<E>((signal) => this.fetch(url + query, {
+      ...opts?.request,
+      method: method,
+      body: body,
+      signal: signal,
+      headers: {'Content-Type': 'application/json', 'Accept': 'text/event-stream', ...opts?.headers},
+    }), opts?.signal);
   }
 
   // force token refresh, a new token is returned or null if token can not be refreshed
