@@ -30,15 +30,6 @@ export class Playground {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  WatchRun(input: WatchRunInput, opts?: any): Promise<WatchRunOutput> {
-    const path = "/runs/"+encodeURIComponent(input.runId||'')+"/watch";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.runId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
 }
 
 export type CreateRunInput = {

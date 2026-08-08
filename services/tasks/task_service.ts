@@ -32,15 +32,6 @@ export class TaskService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  WatchTask(input: WatchTaskInput, opts?: any): Promise<WatchTaskOutput> {
-    const path = "/tasks/"+encodeURIComponent(input.taskId||'')+"/watch";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.taskId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   CancelTask(input: CancelTaskInput, opts?: any): Promise<CancelTaskOutput> {
     const path = "/tasks/"+encodeURIComponent(input.taskId||'')+"/cancel";
 
