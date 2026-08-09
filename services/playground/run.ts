@@ -18,5 +18,6 @@ export type Run = {
   resourceUsage?: ResourceUsage;
   outputUrl?: string;
   traceUrl?: string;
+  interactionUrl?: string;
 }
 

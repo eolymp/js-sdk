@@ -46,6 +46,7 @@ export type Submission_Run = {
   inputUrl?: string;
   outputUrl?: string;
   answerUrl?: string;
+  interactionUrl?: string;
   cost?: number;
   score?: number;
   status?: string;

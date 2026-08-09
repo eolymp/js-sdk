@@ -33,6 +33,7 @@ export type EvaluationReport_Run = {
   outputUrl?: string;
   answerUrl?: string;
   traceUrl?: string;
+  interactionUrl?: string;
   debugStats?: Stats;
   checkerStats?: Stats;
   interactorStats?: Stats;
