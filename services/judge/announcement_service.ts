@@ -6,6 +6,15 @@ import { Announcement } from "./announcement"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class AnnouncementService {
@@ -72,6 +81,27 @@ export class AnnouncementService {
     const path = "/announcements";
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  WatchAnnouncement(input: WatchAnnouncementInput, opts?: any): _Stream<WatchAnnouncementOutput> {
+    const path = "/announcements/"+encodeURIComponent(input.announcementId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.announcementId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
+  }
+
+  WatchAnnouncements(input: WatchAnnouncementsInput, opts?: any): _Stream<WatchAnnouncementsOutput> {
+    const path = "/announcements:watch";
+
+    return this.cli.stream("GET", this.url+path, input, opts);
+  }
+
+  WatchAnnouncementSummary(input: WatchAnnouncementSummaryInput, opts?: any): _Stream<WatchAnnouncementSummaryOutput> {
+    const path = "/summary/announcements/watch";
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 }
 

@@ -5,6 +5,15 @@ import { Member } from "../community/member"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class AdmissionService {
@@ -20,6 +29,12 @@ export class AdmissionService {
     const path = "/admission:request";
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  WatchAdmission(input: WatchAdmissionInput, opts?: any): _Stream<WatchAdmissionOutput> {
+    const path = "/admission:watch";
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   DescribeAdmission(input: DescribeAdmissionInput, opts?: any): Promise<DescribeAdmissionOutput> {

@@ -69,6 +69,15 @@ export class ProblemService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  WatchSubmission(input: WatchSubmissionInput, opts?: any): _Stream<WatchSubmissionOutput> {
+    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.submissionId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
+  }
+
   LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
     const path = "/template";
 

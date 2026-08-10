@@ -7,6 +7,15 @@ import { Contest } from "./contest"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class ContestService {
@@ -127,6 +136,15 @@ export class ContestService {
     delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  WatchContest(input: WatchContestInput, opts?: any): _Stream<WatchContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   ListActivities(input: ListActivitiesInput, opts?: any): Promise<ListActivitiesOutput> {

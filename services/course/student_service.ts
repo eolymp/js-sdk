@@ -9,6 +9,15 @@ import { Student } from "./student"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class StudentService {
@@ -57,6 +66,15 @@ export class StudentService {
     const path = "/students";
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  WatchStudent(input: WatchStudentInput, opts?: any): _Stream<WatchStudentOutput> {
+    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   JoinCourse(input: JoinCourseInput, opts?: any): Promise<JoinCourseOutput> {

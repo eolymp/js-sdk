@@ -6,6 +6,15 @@ import { Validation } from "./validation"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class ValidationService {
@@ -30,6 +39,15 @@ export class ValidationService {
     delete(input.validationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  WatchValidation(input: WatchValidationInput, opts?: any): _Stream<WatchValidationOutput> {
+    const path = "/validations/"+encodeURIComponent(input.validationId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.validationId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 }
 

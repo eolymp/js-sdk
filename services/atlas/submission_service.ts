@@ -7,6 +7,15 @@ import { Submission, Submission_Quiz } from "./submission"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class SubmissionService {
@@ -40,6 +49,21 @@ export class SubmissionService {
     delete(input.submissionId);
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  WatchSubmission(input: WatchSubmissionInput, opts?: any): _Stream<WatchSubmissionOutput> {
+    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.submissionId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
+  }
+
+  WatchSubmissionList(input: WatchSubmissionListInput, opts?: any): _Stream<WatchSubmissionListOutput> {
+    const path = "/submissions:watch";
+
+    return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   ListSubmissions(input: ListSubmissionsInput, opts?: any): Promise<ListSubmissionsOutput> {
