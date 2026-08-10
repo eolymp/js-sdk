@@ -30,6 +30,7 @@ export type Submission = {
   memoryUsage?: number;
   resourceUsage?: number;
   groups?: Submission_Group[];
+  fingerprint?: Submission_Fingerprint;
   assistantAvailable?: boolean;
   cursor?: string;
 }
@@ -86,5 +87,11 @@ export type Submission_Quiz_Answer = {
   questionIndex?: number;
   choices?: Submission_Quiz_Choice[];
   text?: string;
+}
+
+export type Submission_Fingerprint = {
+  family?: string;
+  tokens?: number;
+  hashes?: number[];
 }
 
