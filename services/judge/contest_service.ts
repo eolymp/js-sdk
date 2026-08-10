@@ -292,6 +292,7 @@ export type WatchContestInput = {
 
 export type WatchContestOutput = {
   contest?: Contest;
+  event?: string;
 }
 
 export type ListActivitiesInput = {

@@ -3,7 +3,7 @@
 
 import { Content } from "../ecm/content"
 import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Ticket } from "./ticket"
+import { Ticket, TicketSummary } from "./ticket"
 import { Reply } from "./ticket_reply"
 
 interface _Client {
@@ -94,10 +94,16 @@ export class TicketService {
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
-  WatchTickets(input: WatchTicketsInput, opts?: any): _Stream<WatchTicketsOutput> {
+  WatchTicketsList(input: WatchTicketsListInput, opts?: any): _Stream<WatchTicketsListOutput> {
     const path = "/tickets:watch";
 
     return this.cli.stream("GET", this.url+path, input, opts);
+  }
+
+  DescribeTicketSummary(input: DescribeTicketSummaryInput, opts?: any): Promise<DescribeTicketSummaryOutput> {
+    const path = "/summary/tickets";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchTicketSummary(input: WatchTicketSummaryInput, opts?: any): _Stream<WatchTicketSummaryOutput> {
@@ -251,22 +257,34 @@ export type ReplyTicketOutput = {
 export type WatchTicketInput = {
   ticketId?: string;
   extra?: string[];
+  replyExtra?: string[];
 }
 
 export type WatchTicketOutput = {
+  event?: string;
   ticket?: Ticket;
+  reply?: Reply;
 }
 
-export type WatchTicketsInput = {
+export type WatchTicketsListInput = {
   contestId?: string;
   memberId?: string;
   status?: string;
   extra?: string[];
 }
 
-export type WatchTicketsOutput = {
+export type WatchTicketsListOutput = {
   event?: string;
   ticket?: Ticket;
+}
+
+export type DescribeTicketSummaryInput = {
+  contestId?: string;
+  memberId?: string;
+}
+
+export type DescribeTicketSummaryOutput = {
+  summary?: TicketSummary;
 }
 
 export type WatchTicketSummaryInput = {
@@ -275,8 +293,8 @@ export type WatchTicketSummaryInput = {
 }
 
 export type WatchTicketSummaryOutput = {
-  unreadCount?: number;
-  unresolvedCount?: number;
+  summary?: TicketSummary;
+  event?: string;
 }
 
 export type ListRepliesInput = {
@@ -322,16 +340,5 @@ export type SuggestReplyInput = {
 
 export type SuggestReplyOutput = {
   suggestion?: Content;
-}
-
-export type WatchRepliesInput = {
-  ticketId?: string;
-  cursor?: string;
-  extra?: string[];
-}
-
-export type WatchRepliesOutput = {
-  event?: string;
-  reply?: Reply;
 }
 

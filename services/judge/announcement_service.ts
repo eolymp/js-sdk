@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID } from "../wellknown/expression"
-import { Announcement } from "./announcement"
+import { Announcement, AnnouncementSummary } from "./announcement"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -92,10 +92,16 @@ export class AnnouncementService {
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
-  WatchAnnouncements(input: WatchAnnouncementsInput, opts?: any): _Stream<WatchAnnouncementsOutput> {
+  WatchAnnouncementsList(input: WatchAnnouncementsListInput, opts?: any): _Stream<WatchAnnouncementsListOutput> {
     const path = "/announcements:watch";
 
     return this.cli.stream("GET", this.url+path, input, opts);
+  }
+
+  DescribeAnnouncementSummary(input: DescribeAnnouncementSummaryInput, opts?: any): Promise<DescribeAnnouncementSummaryOutput> {
+    const path = "/summary/announcements";
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchAnnouncementSummary(input: WatchAnnouncementSummaryInput, opts?: any): _Stream<WatchAnnouncementSummaryOutput> {
@@ -173,20 +179,28 @@ export type WatchAnnouncementInput = {
 
 export type WatchAnnouncementOutput = {
   announcement?: Announcement;
+  event?: string;
 }
 
-export type WatchAnnouncementsInput = {
+export type WatchAnnouncementsListInput = {
   extra?: string[];
 }
 
-export type WatchAnnouncementsOutput = {
+export type WatchAnnouncementsListOutput = {
   event?: string;
   announcement?: Announcement;
+}
+
+export type DescribeAnnouncementSummaryInput = Record<string, unknown>;
+
+export type DescribeAnnouncementSummaryOutput = {
+  summary?: AnnouncementSummary;
 }
 
 export type WatchAnnouncementSummaryInput = Record<string, unknown>;
 
 export type WatchAnnouncementSummaryOutput = {
-  unreadCount?: number;
+  summary?: AnnouncementSummary;
+  event?: string;
 }
 

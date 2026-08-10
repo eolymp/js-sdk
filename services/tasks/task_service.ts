@@ -101,6 +101,7 @@ export type WatchTaskInput = {
 
 export type WatchTaskOutput = {
   task?: Task;
+  event?: string;
 }
 
 export type CancelTaskInput = {

@@ -197,6 +197,7 @@ export type WatchStudentInput = {
 
 export type WatchStudentOutput = {
   student?: Student;
+  event?: string;
 }
 
 export type JoinCourseInput = Record<string, unknown>;

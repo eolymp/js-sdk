@@ -107,5 +107,6 @@ export type WatchSubmissionInput = {
 
 export type WatchSubmissionOutput = {
   submission?: Submission;
+  event?: string;
 }
 

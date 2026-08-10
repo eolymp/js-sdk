@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Member } from "../community/member"
+import { Admission } from "./admission"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -78,6 +79,7 @@ export type WatchAdmissionInput = {
 }
 
 export type WatchAdmissionOutput = {
-  status?: string;
+  admission?: Admission;
+  event?: string;
 }
 

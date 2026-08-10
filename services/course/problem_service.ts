@@ -170,6 +170,7 @@ export type WatchRunInput = {
 
 export type WatchRunOutput = {
   run?: Run;
+  event?: string;
 }
 
 export type ListRuntimesInput = Record<string, unknown>;

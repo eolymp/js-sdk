@@ -21,3 +21,8 @@ export type Ticket = {
   cursor?: string;
 }
 
+export type TicketSummary = {
+  unreadCount?: number;
+  unresolvedCount?: number;
+}
+

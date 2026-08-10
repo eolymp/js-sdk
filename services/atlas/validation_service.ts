@@ -74,5 +74,6 @@ export type WatchValidationInput = {
 
 export type WatchValidationOutput = {
   validation?: Validation;
+  event?: string;
 }
 

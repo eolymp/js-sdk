@@ -77,5 +77,6 @@ export type WatchRunInput = {
 
 export type WatchRunOutput = {
   run?: Run;
+  event?: string;
 }
 

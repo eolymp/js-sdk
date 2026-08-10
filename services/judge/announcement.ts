@@ -11,3 +11,7 @@ export type Announcement = {
   message?: Content;
 }
 
+export type AnnouncementSummary = {
+  unreadCount?: number;
+}
+

@@ -108,6 +108,7 @@ export type WatchScoreInput = {
 
 export type WatchScoreOutput = {
   score?: Score;
+  event?: string;
 }
 
 export type DescribeScoreInput = {

@@ -270,6 +270,7 @@ export type WatchParticipantInput = {
 
 export type WatchParticipantOutput = {
   participant?: Participant;
+  event?: string;
 }
 
 export type DescribeViewerInput = {

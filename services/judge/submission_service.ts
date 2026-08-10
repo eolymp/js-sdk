@@ -69,7 +69,7 @@ export class SubmissionService {
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
-  WatchSubmissionList(input: WatchSubmissionListInput, opts?: any): _Stream<WatchSubmissionListOutput> {
+  WatchSubmissionsList(input: WatchSubmissionsListInput, opts?: any): _Stream<WatchSubmissionsListOutput> {
     const path = "/submissions:watch";
 
     return this.cli.stream("GET", this.url+path, input, opts);
@@ -186,14 +186,15 @@ export type WatchSubmissionInput = {
 
 export type WatchSubmissionOutput = {
   submission?: Submission;
+  event?: string;
 }
 
-export type WatchSubmissionListInput = {
+export type WatchSubmissionsListInput = {
   contestId?: string;
   extra?: string[];
 }
 
-export type WatchSubmissionListOutput = {
+export type WatchSubmissionsListOutput = {
   event?: string;
   submission?: Submission;
 }
