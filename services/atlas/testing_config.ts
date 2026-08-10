@@ -8,6 +8,6 @@ export type TestingConfig = {
   type?: string;
   timeLimit?: number;
   cpuLimit?: number;
-  memoryLimit?: number;
+  memoryLimit?: string;
 }
 

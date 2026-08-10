@@ -14,7 +14,7 @@ export type Run = {
   signal?: number;
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
-  memoryUsage?: number;
+  memoryUsage?: string;
   resourceUsage?: ResourceUsage;
   outputUrl?: string;
   traceUrl?: string;

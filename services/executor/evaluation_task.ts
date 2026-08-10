@@ -60,7 +60,7 @@ export type EvaluationTask_Constraint = {
   actor?: string;
   wallTimeLimit?: number;
   cpuTimeLimit?: number;
-  memoryLimit?: number;
-  fileSizeLimit?: number;
+  memoryLimit?: string;
+  fileSizeLimit?: string;
 }
 

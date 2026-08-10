@@ -17,8 +17,8 @@ export type Problem = {
   scoreByBestTestset?: boolean;
   timeLimit?: number;
   cpuLimit?: number;
-  memoryLimit?: number;
-  fileSizeLimit?: number;
+  memoryLimit?: string;
+  fileSizeLimit?: string;
   submitLimit?: number;
   score?: number;
   constraints?: Problem_Constraints;

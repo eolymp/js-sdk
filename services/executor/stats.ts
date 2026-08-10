@@ -8,7 +8,7 @@ export type Stats = {
   stderrUrl?: string;
   wallTimeDuration?: number;
   cpuTimeDuration?: number;
-  memoryPeak?: number;
+  memoryPeak?: string;
   signal?: number;
   exitCode?: number;
 }

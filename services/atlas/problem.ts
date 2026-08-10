@@ -40,8 +40,8 @@ export type Problem_Constraints = {
   timeLimitMax?: number;
   cpuLimitMin?: number;
   cpuLimitMax?: number;
-  memoryLimitMin?: number;
-  memoryLimitMax?: number;
+  memoryLimitMin?: string;
+  memoryLimitMax?: string;
 }
 
 export type Problem_Example = {

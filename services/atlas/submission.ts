@@ -27,7 +27,7 @@ export type Submission = {
   percentage?: number;
   timeUsage?: number;
   cpuUsage?: number;
-  memoryUsage?: number;
+  memoryUsage?: string;
   resourceUsage?: number;
   groups?: Submission_Group[];
   fingerprint?: Submission_Fingerprint;
@@ -42,7 +42,7 @@ export type Submission_Run = {
   index?: number;
   timeUsage?: number;
   cpuUsage?: number;
-  memoryUsage?: number;
+  memoryUsage?: string;
   resourceUsage?: number;
   inputUrl?: string;
   outputUrl?: string;
@@ -68,7 +68,7 @@ export type Submission_Group = {
   feedbackPolicy?: string;
   timeUsage?: number;
   cpuUsage?: number;
-  memoryUsage?: number;
+  memoryUsage?: string;
   resourceUsage?: number;
   runs?: Submission_Run[];
 }
@@ -92,6 +92,6 @@ export type Submission_Quiz_Answer = {
 export type Submission_Fingerprint = {
   family?: string;
   tokens?: number;
-  hashes?: number[];
+  hashes?: string[];
 }
 

@@ -3,10 +3,10 @@
 
 
 export type Usage = {
-  promptTokens?: number;
-  completionTokens?: number;
-  thinkingTokens?: number;
-  totalTokens?: number;
-  cachedPromptTokens?: number;
+  promptTokens?: string;
+  completionTokens?: string;
+  thinkingTokens?: string;
+  totalTokens?: string;
+  cachedPromptTokens?: string;
 }
 

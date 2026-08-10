@@ -10,7 +10,7 @@ export type StressTask = {
   metadata?: Record<string, string>;
   wallTimeLimit?: number;
   cpuTimeLimit?: number;
-  memoryLimit?: number;
+  memoryLimit?: string;
   iterationCount?: number;
   runCount?: number;
   interactiveFollowup?: boolean;

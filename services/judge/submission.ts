@@ -25,7 +25,7 @@ export type Submission = {
   percentage?: number;
   timeUsage?: number;
   cpuUsage?: number;
-  memoryUsage?: number;
+  memoryUsage?: string;
   resourceUsage?: number;
   genAiUseScore?: number;
   groups?: Submission_Group[];
@@ -40,7 +40,7 @@ export type Submission_Run = {
   score?: number;
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
-  memoryUsage?: number;
+  memoryUsage?: string;
   status?: string;
   verdict?: string;
 }
@@ -57,7 +57,7 @@ export type Submission_Group = {
   feedbackPolicy?: string;
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
-  memoryUsage?: number;
+  memoryUsage?: string;
   runs?: Submission_Run[];
 }
 

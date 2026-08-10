@@ -18,7 +18,7 @@ export type HttpRule = {
   body?: string;
   responseBody?: string;
   additionalBindings?: HttpRule[];
-  maxSize?: number;
+  maxSize?: string;
 }
 
 export type CustomHttpPattern = {

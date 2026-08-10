@@ -6,7 +6,7 @@ import { Content } from "../ecm/content"
 export type Issue = {
   id?: string;
   problemId?: string;
-  number?: number;
+  number?: string;
   status?: string;
   title?: string;
   description?: Content;

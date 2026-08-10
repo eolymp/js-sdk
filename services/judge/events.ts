@@ -32,6 +32,6 @@ export type ScoreboardRowChangedEvent = {
   kind?: string;
   participantId?: string;
   memberId?: string;
-  version?: number;
+  version?: string;
 }
 

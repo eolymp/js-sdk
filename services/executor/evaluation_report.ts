@@ -26,8 +26,8 @@ export type EvaluationReport_Run = {
   timeLimit?: number;
   cpuUsage?: number;
   cpuLimit?: number;
-  memoryUsage?: number;
-  memoryLimit?: number;
+  memoryUsage?: string;
+  memoryLimit?: string;
   timeCoefficient?: number;
   inputUrl?: string;
   outputUrl?: string;

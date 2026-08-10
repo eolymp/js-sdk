@@ -8,8 +8,8 @@ export type Testset = {
   index?: number;
   timeLimit?: number;
   cpuLimit?: number;
-  memoryLimit?: number;
-  fileSizeLimit?: number;
+  memoryLimit?: string;
+  fileSizeLimit?: string;
   dependencies?: number[];
   dependencyMode?: string;
   scoringMode?: string;

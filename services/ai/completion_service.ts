@@ -24,7 +24,7 @@ export type CompleteInput = {
   tools?: CompleteInput_Tool[];
   toolChoice?: string;
   parallelToolCalls?: boolean;
-  maxTokens?: number;
+  maxTokens?: string;
   temperature?: number;
   topP?: number;
   topK?: number;
@@ -53,7 +53,7 @@ export type CompleteInput_Reasoning = {
 }
 
 export type CompleteInput_Compaction = {
-  trigger?: number;
+  trigger?: string;
   instructions?: string;
 }
 
