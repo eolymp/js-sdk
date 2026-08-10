@@ -2,7 +2,8 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Runtime } from "../runtime/runtime"
-import { Form_Field, Form_Value } from "./form"
+import { Submission_Output } from "./submission"
+import { Test } from "./testing_test"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -35,6 +36,12 @@ export class EditorService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ListInputs(input: ListInputsInput, opts?: any): Promise<ListInputsOutput> {
+    const path = "/inputs";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   PrintEditorCode(input: PrintEditorCodeInput, opts?: any): Promise<PrintEditorCodeOutput> {
     const path = "/editor/print";
 
@@ -46,7 +53,6 @@ export type Editor = {
   state?: Editor_State;
   features?: string[];
   runtimes?: Runtime[];
-  fields?: Form_Field[];
   type?: string;
 }
 
@@ -54,7 +60,7 @@ export type Editor_State = {
   runtime?: string;
   sourceCode?: string;
   inputData?: string;
-  values?: Form_Value[];
+  output?: Submission_Output;
 }
 
 export type DescribeEditorInput = Record<string, unknown>;
@@ -69,7 +75,7 @@ export type DescribeEditorStateOutput = {
   runtime?: string;
   sourceCode?: string;
   inputData?: string;
-  values?: Form_Value[];
+  output?: Submission_Output;
   features?: string[];
 }
 
@@ -77,7 +83,16 @@ export type UpdateEditorStateInput = {
   runtime?: string;
   sourceCode?: string;
   inputData?: string;
-  values?: Form_Value[];
+  output?: Submission_Output;
+}
+
+export type ListInputsInput = {
+  version?: number;
+}
+
+export type ListInputsOutput = {
+  total?: number;
+  items?: Test[];
 }
 
 export type UpdateEditorStateOutput = Record<string, unknown>;

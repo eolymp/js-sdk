@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
-import { Form } from "./form"
 
 export type Problem = {
   id?: string;
@@ -27,7 +26,6 @@ export type Problem = {
   vote?: number;
   voteCount?: number;
   difficulty?: number;
-  submissionForm?: Form;
   examples?: Problem_Example[];
 }
 
