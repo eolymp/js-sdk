@@ -283,7 +283,9 @@ export type AnalyzeContestInput = {
   contestId?: string;
 }
 
-export type AnalyzeContestOutput = Record<string, unknown>;
+export type AnalyzeContestOutput = {
+  taskId?: string;
+}
 
 export type WatchContestInput = {
   contestId?: string;

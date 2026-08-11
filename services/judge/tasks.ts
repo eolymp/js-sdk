@@ -16,3 +16,7 @@ export type RebuildScoreTask = {
   contestId?: string;
 }
 
+export type AnalyzeContestTask = {
+  contestId?: string;
+}
+
