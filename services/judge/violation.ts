@@ -7,6 +7,7 @@ export type Violation = {
   id?: string;
   status?: string;
   type?: string;
+  confidence?: string;
   summary?: Content;
   automatic?: boolean;
   participantId?: string;

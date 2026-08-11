@@ -92,6 +92,8 @@ export type ListViolationsInput = {
   offset?: number;
   size?: number;
   filters?: ListViolationsInput_Filter;
+  sort?: string;
+  order?: string;
 }
 
 export type ListViolationsInput_Filter = {
@@ -100,6 +102,7 @@ export type ListViolationsInput_Filter = {
   type?: ExpressionEnum[];
   summary?: ExpressionString[];
   automatic?: ExpressionBool[];
+  confidence?: ExpressionEnum[];
   participantId?: ExpressionID[];
   submissionId?: ExpressionID[];
   createdBy?: ExpressionID[];
