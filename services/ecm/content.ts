@@ -7,6 +7,7 @@ export type Content = {
   html?: string;
   latex?: string;
   markdown?: string;
+  ecm?: Node;
   render?: Node;
 }
 
