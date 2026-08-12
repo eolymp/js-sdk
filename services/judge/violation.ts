@@ -5,15 +5,13 @@ import { Content } from "../ecm/content"
 
 export type Violation = {
   id?: string;
+  participantId?: string;
   status?: string;
   type?: string;
   confidence?: string;
+  problemId?: string;
+  caseRef?: string;
   summary?: Content;
-  automatic?: boolean;
-  participantId?: string;
-  submissionId?: string;
-  submissions?: string[];
-  summaryText?: string;
   createdBy?: string;
   createdAt?: string;
   confirmedBy?: string;

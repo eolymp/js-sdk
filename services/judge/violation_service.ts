@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
+import { Evidence } from "./evidence"
 import { Violation } from "./violation"
 
 interface _Client {
@@ -50,6 +51,15 @@ export class ViolationService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  ListViolationEvidence(input: ListViolationEvidenceInput, opts?: any): Promise<ListViolationEvidenceOutput> {
+    const path = "/violations/"+encodeURIComponent(input.violationId||'')+"/evidence";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.violationId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   ListViolations(input: ListViolationsInput, opts?: any): Promise<ListViolationsOutput> {
     const path = "/violations";
 
@@ -88,6 +98,17 @@ export type DescribeViolationOutput = {
   violation?: Violation;
 }
 
+export type ListViolationEvidenceInput = {
+  violationId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListViolationEvidenceOutput = {
+  total?: number;
+  items?: Evidence[];
+}
+
 export type ListViolationsInput = {
   offset?: number;
   size?: number;
@@ -103,6 +124,8 @@ export type ListViolationsInput_Filter = {
   summary?: ExpressionString[];
   automatic?: ExpressionBool[];
   confidence?: ExpressionEnum[];
+  caseRef?: ExpressionID[];
+  problemId?: ExpressionID[];
   participantId?: ExpressionID[];
   submissionId?: ExpressionID[];
   createdBy?: ExpressionID[];
