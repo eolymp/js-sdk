@@ -110,15 +110,6 @@ export class SubmissionService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
-
-  AnalyzeSubmission(input: AnalyzeSubmissionInput, opts?: any): Promise<AnalyzeSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/analyze";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.submissionId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
 }
 
 export type CreateSubmissionInput = {
@@ -228,10 +219,4 @@ export type RetestProblemInput = {
 export type RetestProblemOutput = {
   taskId?: string;
 }
-
-export type AnalyzeSubmissionInput = {
-  submissionId?: string;
-}
-
-export type AnalyzeSubmissionOutput = Record<string, unknown>;
 
