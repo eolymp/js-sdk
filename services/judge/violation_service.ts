@@ -127,7 +127,6 @@ export type ListViolationsInput_Filter = {
   caseRef?: ExpressionID[];
   problemId?: ExpressionID[];
   participantId?: ExpressionID[];
-  submissionId?: ExpressionID[];
   createdBy?: ExpressionID[];
   confirmedBy?: ExpressionID[];
 }
