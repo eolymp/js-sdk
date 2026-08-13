@@ -8,15 +8,9 @@ export type Evidence = {
   pair?: Evidence_Pair;
 }
 
-export type Evidence_Span = {
-  fromLine?: number;
-  toLine?: number;
-}
-
 export type Evidence_Submission = {
   submissionId?: string;
   submittedAt?: string;
-  spans?: Evidence_Span[];
 }
 
 export type Evidence_Pair = {

@@ -75,6 +75,15 @@ export class SubmissionService {
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
+  CompareSubmissions(input: CompareSubmissionsInput, opts?: any): Promise<CompareSubmissionsOutput> {
+    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/compare";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.submissionId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   RetestSubmission(input: RetestSubmissionInput, opts?: any): Promise<RetestSubmissionOutput> {
     const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
 
@@ -110,6 +119,34 @@ export class SubmissionService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+}
+
+export type CompareSubmissionsInput = {
+  submissionId?: string;
+  otherSubmissionId?: string;
+}
+
+export type CompareSubmissionsOutput = {
+  submission?: CompareSubmissionsOutput_Source;
+  otherSubmission?: CompareSubmissionsOutput_Source;
+  matches?: CompareSubmissionsOutput_Match[];
+}
+
+export type CompareSubmissionsOutput_Source = {
+  submissionId?: string;
+  runtime?: string;
+  source?: string;
+}
+
+export type CompareSubmissionsOutput_Span = {
+  fromLine?: number;
+  toLine?: number;
+}
+
+export type CompareSubmissionsOutput_Match = {
+  submission?: CompareSubmissionsOutput_Span;
+  otherSubmission?: CompareSubmissionsOutput_Span;
+  tokens?: number;
 }
 
 export type CreateSubmissionInput = {
