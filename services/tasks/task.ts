@@ -5,7 +5,7 @@
 export type Task = {
   id?: string;
   type?: string;
-  reference?: string;
+  resource?: string;
   status?: string;
   payload?: Record<string, any>;
   progress?: number;

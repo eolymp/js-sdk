@@ -69,6 +69,18 @@ export class TaskService {
   }
 }
 
+export type CreateTaskInput = {
+  task?: any;
+  resource?: string;
+  reference?: string;
+  maxAttempts?: number;
+  total?: number;
+}
+
+export type CreateTaskOutput = {
+  taskId?: string;
+}
+
 export type ListTasksInput = {
   offset?: number;
   size?: number;
@@ -77,7 +89,7 @@ export type ListTasksInput = {
 
 export type ListTasksInput_Filter = {
   id?: ExpressionID[];
-  reference?: ExpressionString[];
+  resource?: ExpressionString[];
   type?: ExpressionString[];
   status?: ExpressionEnum[];
 }
