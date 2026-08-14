@@ -18,5 +18,6 @@ export type Task = {
   startedAt?: string;
   finishedAt?: string;
   createdBy?: string;
+  resourceLink?: string;
 }
 
