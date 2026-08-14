@@ -39,6 +39,15 @@ export class AssetService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  DeleteAsset(input: DeleteAssetInput, opts?: any): Promise<DeleteAssetOutput> {
+    const path = "/assets/"+encodeURIComponent(input.assetId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.assetId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
   StartMultipartUpload(input: StartMultipartUploadInput, opts?: any): Promise<StartMultipartUploadOutput> {
     const path = "/uploads";
 
@@ -142,6 +151,12 @@ export type LookupAssetInput = {
 export type LookupAssetOutput = {
   assetUrl?: string;
 }
+
+export type DeleteAssetInput = {
+  assetId?: string;
+}
+
+export type DeleteAssetOutput = Record<string, unknown>;
 
 export type StartMultipartUploadInput = {
   name?: string;
