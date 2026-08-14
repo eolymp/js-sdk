@@ -6,6 +6,7 @@ export type Evidence = {
   id?: string;
   submission?: Evidence_Submission;
   pair?: Evidence_Pair;
+  session?: Evidence_Session;
 }
 
 export type Evidence_Submission = {
@@ -17,5 +18,20 @@ export type Evidence_Pair = {
   left?: Evidence_Submission;
   right?: Evidence_Submission;
   score?: number;
+}
+
+export type Evidence_Attempt = {
+  submissionId?: string;
+  problemId?: string;
+  submittedAt?: string;
+  verdict?: string;
+}
+
+export type Evidence_Session = {
+  from?: string;
+  to?: string;
+  value?: number;
+  typical?: number;
+  attempts?: Evidence_Attempt[];
 }
 
