@@ -5,6 +5,7 @@
 export type ImportProblemTask = {
   problemId?: string;
   problemLink?: string;
+  secret?: boolean;
 }
 
 export type TranslateStatementsTask = {
