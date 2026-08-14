@@ -9,6 +9,7 @@ export type Scoreboard = {
   bestOf?: number;
   modes?: string[];
   contests?: Scoreboard_Contest[];
+  attributes?: Scoreboard_Attribute[];
 }
 
 export type Scoreboard_Contest = {
@@ -23,6 +24,13 @@ export type Scoreboard_Problem = {
   problemId?: string;
   index?: number;
   title?: string;
+}
+
+export type Scoreboard_Attribute = {
+  attributeKey?: string;
+  index?: number;
+  label?: string;
+  type?: string;
 }
 
 export type Scoreboard_Patch = {
@@ -44,6 +52,7 @@ export type Row = {
   unofficial?: boolean;
   disqualified?: boolean;
   contests?: Row_ContestScore[];
+  attributes?: Row_AttributeValue[];
 }
 
 export type Row_ProblemScore = {
@@ -65,5 +74,11 @@ export type Row_ContestScore = {
   counted?: boolean;
   frozen?: boolean;
   problems?: Row_ProblemScore[];
+}
+
+export type Row_AttributeValue = {
+  attributeKey?: string;
+  string?: string;
+  number?: number;
 }
 
