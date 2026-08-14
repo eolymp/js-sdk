@@ -207,8 +207,8 @@ export type ListScoreboardRowsInput = {
   offset?: number;
   size?: number;
   filters?: ListScoreboardRowsInput_Filter;
-  sortContestId?: string;
   order?: string;
+  sortContestId?: string;
   sortAttributeKey?: string;
 }
 
