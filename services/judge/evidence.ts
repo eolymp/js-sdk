@@ -28,6 +28,7 @@ export type Evidence_Attempt = {
 }
 
 export type Evidence_Session = {
+  rule?: string;
   from?: string;
   to?: string;
   value?: number;
