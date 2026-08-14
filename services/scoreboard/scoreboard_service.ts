@@ -214,8 +214,8 @@ export type ListScoreboardRowsInput = {
 
 export type ListScoreboardRowsInput_ExpressionAttribute = {
   attributeKey?: string;
-  number?: ExpressionInt;
-  string?: ExpressionString;
+  number?: ExpressionInt[];
+  string?: ExpressionString[];
 }
 
 export type ListScoreboardRowsInput_Filter = {
