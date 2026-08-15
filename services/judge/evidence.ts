@@ -25,6 +25,7 @@ export type Evidence_Attempt = {
   problemId?: string;
   submittedAt?: string;
   verdict?: string;
+  changed?: number;
 }
 
 export type Evidence_Session = {
