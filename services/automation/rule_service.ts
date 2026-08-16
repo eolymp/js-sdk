@@ -127,9 +127,12 @@ export type TriggerRuleInput = {
   ruleId?: string;
   references?: Record<string, string>;
   dryRun?: boolean;
+  logId?: string;
 }
 
-export type TriggerRuleOutput = Record<string, unknown>;
+export type TriggerRuleOutput = {
+  logId?: string;
+}
 
 export type ListActionsInput = {
   references?: Record<string, string>;

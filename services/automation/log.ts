@@ -8,6 +8,7 @@ export type Log = {
   trigger?: string;
   dryRun?: boolean;
   context?: Record<string, string>;
+  status?: string;
   messages?: Log_Message[];
   createdAt?: string;
 }

@@ -2,10 +2,19 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
-import { Log } from "./log"
+import { Log, Log_Message } from "./log"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
+  stream<R, E>(verb: string, url: string, args: R, opts?: any): _Stream<E>;
+}
+
+interface _Stream<T> {
+  on(event: "message", handler: (message: T) => void): this;
+  on(event: "error", handler: (error: Error) => void): this;
+  on(event: "eof", handler: () => void): this;
+  close(): void;
+  readonly closed: boolean;
 }
 
 export class LogService {
@@ -31,6 +40,15 @@ export class LogService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  WatchLog(input: WatchLogInput, opts?: any): _Stream<WatchLogOutput> {
+    const path = "/automation/logs/"+encodeURIComponent(input.logId||'')+"/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.logId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
+  }
 }
 
 export type ListLogsInput = {
@@ -47,6 +65,7 @@ export type ListLogsInput_Filter = {
   trigger?: ExpressionEnum[];
   dryRun?: ExpressionBool[];
   createdAt?: ExpressionTimestamp[];
+  status?: ExpressionEnum[];
 }
 
 export type ListLogsOutput = {
@@ -60,5 +79,15 @@ export type DescribeLogInput = {
 
 export type DescribeLogOutput = {
   log?: Log;
+}
+
+export type WatchLogInput = {
+  logId?: string;
+}
+
+export type WatchLogOutput = {
+  event?: string;
+  log?: Log;
+  message?: Log_Message;
 }
 
