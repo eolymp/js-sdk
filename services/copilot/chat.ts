@@ -34,8 +34,8 @@ export type Message_ToolCall = {
   id?: string;
   name?: string;
   status?: string;
-  arguments?: Record<string, any>;
-  result?: any;
+  arguments?: string;
+  result?: string;
   error?: string;
 }
 
