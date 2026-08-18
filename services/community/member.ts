@@ -9,6 +9,9 @@ import { User } from "./member_user"
 export type Member = {
   id?: string;
   url?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
   externalRef?: string;
   displayName?: string;
   rank?: number;

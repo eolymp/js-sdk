@@ -5,6 +5,9 @@ import { Content } from "../ecm/content"
 
 export type Fragment = {
   id?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
   path?: string;
   locale?: string;
   locales?: string[];

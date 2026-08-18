@@ -8,6 +8,9 @@ import { Link } from "../wellknown/link"
 export type Post = {
   id?: string;
   url?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
   sourceId?: string;
   sourceUrl?: string;
   draft?: boolean;

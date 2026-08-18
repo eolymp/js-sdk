@@ -6,6 +6,9 @@ import { Submission_Output } from "../atlas/submission"
 export type Submission = {
   id?: string;
   url?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
   contestId?: string;
   problemId?: string;
   participantId?: string;

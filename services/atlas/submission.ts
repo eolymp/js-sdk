@@ -5,6 +5,9 @@ import { Stats } from "../executor/stats"
 
 export type Submission = {
   id?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
   problemId?: string;
   version?: number;
   userId?: string;

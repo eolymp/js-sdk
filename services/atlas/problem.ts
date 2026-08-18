@@ -6,6 +6,9 @@ import { Content } from "../ecm/content"
 export type Problem = {
   id?: string;
   url?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
   type?: string;
   number?: number;
   visible?: boolean;

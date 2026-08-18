@@ -6,6 +6,9 @@ import { Runtime } from "../runtime/runtime"
 export type Contest = {
   id?: string;
   url?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
   name?: string;
   imageUrl?: string;
   startsAt?: string;
