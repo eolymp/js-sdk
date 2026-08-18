@@ -9,6 +9,10 @@ export type Space = {
   homeUrl?: string;
   issuerUrl?: string;
   graphqlUrl?: string;
+  resourceLink?: string;
+  spaceLink?: string;
+  consoleLink?: string;
+  graphqlLink?: string;
   key?: string;
   name?: string;
   image?: string;
