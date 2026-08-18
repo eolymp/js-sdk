@@ -14,6 +14,7 @@ export type Message_ContentBlock = {
   toolCall?: Message_ToolCall;
   toolResult?: Message_ToolResult;
   image?: Message_Image;
+  serverToolResult?: Message_ServerToolResult;
 }
 
 export type Message_Image = {
@@ -33,5 +34,11 @@ export type Message_ToolResult = {
   isError?: boolean;
   error?: string;
   images?: Message_Image[];
+}
+
+export type Message_ServerToolResult = {
+  callId?: string;
+  type?: string;
+  content?: string;
 }
 
