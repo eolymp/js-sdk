@@ -9,6 +9,12 @@ export type Chat = {
   archived?: boolean;
 }
 
+export type Context = {
+  url?: string;
+  title?: string;
+  description?: string;
+}
+
 export type Message = {
   id?: string;
   timestamp?: string;
@@ -18,6 +24,7 @@ export type Message = {
 
 export type Message_UserContent = {
   text?: string;
+  context?: Context;
 }
 
 export type Message_AssistantContent = {

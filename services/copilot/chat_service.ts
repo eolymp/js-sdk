@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID } from "../wellknown/expression"
-import { Chat, Message } from "./chat"
+import { Chat, Context, Message } from "./chat"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -145,6 +145,7 @@ export type SendMessageInput = {
 
 export type SendMessageInput_Message = {
   text?: string;
+  context?: Context;
 }
 
 export type SendMessageInput_Approval = {
