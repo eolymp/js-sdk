@@ -13,6 +13,7 @@ export type Fragment = {
   locales?: string[];
   draft?: boolean;
   automatic?: boolean;
+  visibility?: string;
   title?: string;
   content?: Content;
   createdAt?: string;
@@ -27,6 +28,7 @@ export type Fragment_Patch = {
   draft?: boolean;
   automatic?: boolean;
   title?: string;
+  visibility?: string;
   content?: Content;
   labels?: string[];
   unlabel?: boolean;
