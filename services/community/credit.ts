@@ -6,6 +6,7 @@ export type Credit = Record<string, unknown>;
 
 export type Credit_Grant = {
   id?: string;
+  memberId?: string;
   reference?: string;
   note?: string;
   active?: boolean;
@@ -18,6 +19,7 @@ export type Credit_Grant = {
 
 export type Credit_Transaction = {
   id?: string;
+  memberId?: string;
   timestamp?: string;
   summary?: string;
   amount?: number;

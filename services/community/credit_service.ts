@@ -66,7 +66,9 @@ export class CreditService {
   }
 }
 
-export type DescribeBalanceInput = Record<string, unknown>;
+export type DescribeBalanceInput = {
+  memberId?: string;
+}
 
 export type DescribeBalanceOutput = {
   balance?: number;
@@ -74,6 +76,7 @@ export type DescribeBalanceOutput = {
 
 export type GrantCreditInput = {
   grant?: Credit_Grant;
+  memberId?: string;
 }
 
 export type GrantCreditOutput = {
@@ -83,11 +86,13 @@ export type GrantCreditOutput = {
 
 export type CancelCreditInput = {
   grantId?: string;
+  memberId?: string;
 }
 
 export type CancelCreditOutput = Record<string, unknown>;
 
 export type ListCreditGrantsInput = {
+  memberId?: string;
   offset?: number;
   size?: number;
   filters?: ListCreditGrantsInput_Filter;
@@ -110,6 +115,7 @@ export type RedeemCreditInput = {
   amount?: number;
   reference?: string;
   note?: string;
+  memberId?: string;
 }
 
 export type RedeemCreditOutput = {
@@ -117,6 +123,7 @@ export type RedeemCreditOutput = {
 }
 
 export type ListCreditTransactionsInput = {
+  memberId?: string;
   offset?: number;
   size?: number;
   filters?: ListCreditTransactionsInput_Filter;
@@ -134,6 +141,7 @@ export type ListCreditTransactionsOutput = {
 export type RefundCreditInput = {
   transactionId?: string;
   amount?: number;
+  memberId?: string;
 }
 
 export type RefundCreditOutput = Record<string, unknown>;
