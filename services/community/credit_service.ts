@@ -92,7 +92,6 @@ export type CancelCreditInput = {
 export type CancelCreditOutput = Record<string, unknown>;
 
 export type ListCreditGrantsInput = {
-  memberId?: string;
   offset?: number;
   size?: number;
   filters?: ListCreditGrantsInput_Filter;
@@ -104,6 +103,7 @@ export type ListCreditGrantsInput_Filter = {
   note?: ExpressionString[];
   amount?: ExpressionInt[];
   active?: ExpressionBool[];
+  memberId?: ExpressionID[];
 }
 
 export type ListCreditGrantsOutput = {
@@ -123,7 +123,6 @@ export type RedeemCreditOutput = {
 }
 
 export type ListCreditTransactionsInput = {
-  memberId?: string;
   offset?: number;
   size?: number;
   filters?: ListCreditTransactionsInput_Filter;
@@ -131,6 +130,7 @@ export type ListCreditTransactionsInput = {
 
 export type ListCreditTransactionsInput_Filter = {
   id?: ExpressionID[];
+  memberId?: ExpressionID[];
 }
 
 export type ListCreditTransactionsOutput = {
