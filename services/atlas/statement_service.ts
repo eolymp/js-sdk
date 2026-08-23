@@ -99,6 +99,7 @@ export type StatementChangedEvent = {
 }
 
 export type ListStatementsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
   render?: boolean;
@@ -112,6 +113,7 @@ export type ListStatementsOutput = {
 }
 
 export type TranslateStatementsInput = {
+  problemId?: string;
   source?: string;
   target?: string[];
   targetAutomatic?: boolean;
@@ -123,6 +125,7 @@ export type TranslateStatementsOutput = {
 }
 
 export type DescribeStatementInput = {
+  problemId?: string;
   statementId?: string;
   render?: boolean;
   version?: number;
@@ -134,6 +137,7 @@ export type DescribeStatementOutput = {
 }
 
 export type LookupStatementInput = {
+  problemId?: string;
   locale?: string;
   render?: boolean;
   version?: number;
@@ -145,6 +149,7 @@ export type LookupStatementOutput = {
 }
 
 export type PreviewStatementInput = {
+  problemId?: string;
   statement?: Statement;
 }
 
@@ -153,6 +158,7 @@ export type PreviewStatementOutput = {
 }
 
 export type CreateStatementInput = {
+  problemId?: string;
   statement?: Statement;
 }
 
@@ -162,6 +168,7 @@ export type CreateStatementOutput = {
 
 export type UpdateStatementInput = {
   patch?: string[];
+  problemId?: string;
   statementId?: string;
   statement?: Statement;
 }
@@ -169,12 +176,14 @@ export type UpdateStatementInput = {
 export type UpdateStatementOutput = Record<string, unknown>;
 
 export type DeleteStatementInput = {
+  problemId?: string;
   statementId?: string;
 }
 
 export type DeleteStatementOutput = Record<string, unknown>;
 
 export type ExportStatementInput = {
+  problemId?: string;
   statementId?: string;
 }
 
@@ -183,6 +192,7 @@ export type ExportStatementOutput = {
 }
 
 export type ListStatementVersionsInput = {
+  problemId?: string;
   statementId?: string;
   offset?: number;
   size?: number;

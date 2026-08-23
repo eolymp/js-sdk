@@ -58,6 +58,7 @@ export class AttachmentService {
 }
 
 export type CreateAttachmentInput = {
+  problemId?: string;
   attachment?: Attachment;
 }
 
@@ -66,6 +67,7 @@ export type CreateAttachmentOutput = {
 }
 
 export type UpdateAttachmentInput = {
+  problemId?: string;
   attachmentId?: string;
   attachment?: Attachment;
 }
@@ -73,12 +75,14 @@ export type UpdateAttachmentInput = {
 export type UpdateAttachmentOutput = Record<string, unknown>;
 
 export type DeleteAttachmentInput = {
+  problemId?: string;
   attachmentId?: string;
 }
 
 export type DeleteAttachmentOutput = Record<string, unknown>;
 
 export type ListAttachmentsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
   filters?: ListAttachmentsInput_Filter;
@@ -96,6 +100,7 @@ export type ListAttachmentsOutput = {
 }
 
 export type DescribeAttachmentInput = {
+  problemId?: string;
   attachmentId?: string;
   version?: number;
 }

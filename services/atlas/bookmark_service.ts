@@ -36,12 +36,15 @@ export type BookmarkChangedEvent = {
 }
 
 export type SetBookmarkInput = {
+  problemId?: string;
   bookmark?: boolean;
 }
 
 export type SetBookmarkOutput = Record<string, unknown>;
 
-export type GetBookmarkInput = Record<string, unknown>;
+export type GetBookmarkInput = {
+  problemId?: string;
+}
 
 export type GetBookmarkOutput = {
   bookmark?: boolean;

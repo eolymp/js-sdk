@@ -51,6 +51,7 @@ export class GenerationService {
 }
 
 export type DescribeGenerationInput = {
+  problemId?: string;
   generationId?: string;
 }
 
@@ -59,6 +60,7 @@ export type DescribeGenerationOutput = {
 }
 
 export type ListGenerationsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
 }
@@ -69,6 +71,7 @@ export type ListGenerationsOutput = {
 }
 
 export type WatchGenerationInput = {
+  problemId?: string;
   generationId?: string;
 }
 

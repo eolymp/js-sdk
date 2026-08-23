@@ -52,6 +52,7 @@ export class ValidationService {
 }
 
 export type RunValidationInput = {
+  problemId?: string;
   validator?: Validator;
 }
 
@@ -61,6 +62,7 @@ export type RunValidationOutput = {
 }
 
 export type DescribeValidationInput = {
+  problemId?: string;
   validationId?: string;
 }
 
@@ -69,6 +71,7 @@ export type DescribeValidationOutput = {
 }
 
 export type WatchValidationInput = {
+  problemId?: string;
   validationId?: string;
 }
 

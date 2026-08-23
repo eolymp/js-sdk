@@ -70,6 +70,7 @@ export type ScriptChangedEvent = {
 }
 
 export type CreateScriptInput = {
+  problemId?: string;
   script?: Script;
 }
 
@@ -79,6 +80,7 @@ export type CreateScriptOutput = {
 
 export type UpdateScriptInput = {
   patch?: string[];
+  problemId?: string;
   scriptId?: string;
   script?: Script;
 }
@@ -86,12 +88,14 @@ export type UpdateScriptInput = {
 export type UpdateScriptOutput = Record<string, unknown>;
 
 export type DeleteScriptInput = {
+  problemId?: string;
   scriptId?: string;
 }
 
 export type DeleteScriptOutput = Record<string, unknown>;
 
 export type DescribeScriptInput = {
+  problemId?: string;
   scriptId?: string;
   version?: number;
   extra?: string[];
@@ -102,6 +106,7 @@ export type DescribeScriptOutput = {
 }
 
 export type ListScriptsInput = {
+  problemId?: string;
   version?: number;
   offset?: number;
   size?: number;
@@ -124,6 +129,7 @@ export type ListScriptsOutput = {
 }
 
 export type ExecuteStressCheckInput = {
+  problemId?: string;
   scriptName?: string;
 }
 

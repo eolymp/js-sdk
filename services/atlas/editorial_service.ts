@@ -75,6 +75,7 @@ export class EditorialService {
 }
 
 export type ListEditorialsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
   version?: number;
@@ -87,6 +88,7 @@ export type ListEditorialsOutput = {
 }
 
 export type DescribeEditorialInput = {
+  problemId?: string;
   editorialId?: string;
   version?: number;
   extra?: string[];
@@ -97,6 +99,7 @@ export type DescribeEditorialOutput = {
 }
 
 export type LookupEditorialInput = {
+  problemId?: string;
   locale?: string;
   version?: number;
   extra?: string[];
@@ -107,6 +110,7 @@ export type LookupEditorialOutput = {
 }
 
 export type PreviewEditorialInput = {
+  problemId?: string;
   editorial?: Editorial;
 }
 
@@ -115,6 +119,7 @@ export type PreviewEditorialOutput = {
 }
 
 export type CreateEditorialInput = {
+  problemId?: string;
   editorial?: Editorial;
 }
 
@@ -124,6 +129,7 @@ export type CreateEditorialOutput = {
 
 export type UpdateEditorialInput = {
   patch?: string[];
+  problemId?: string;
   editorialId?: string;
   editorial?: Editorial;
 }
@@ -131,12 +137,14 @@ export type UpdateEditorialInput = {
 export type UpdateEditorialOutput = Record<string, unknown>;
 
 export type DeleteEditorialInput = {
+  problemId?: string;
   editorialId?: string;
 }
 
 export type DeleteEditorialOutput = Record<string, unknown>;
 
 export type TranslateEditorialsInput = {
+  problemId?: string;
   source?: string;
   target?: string[];
   targetAutomatic?: boolean;

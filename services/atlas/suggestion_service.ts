@@ -83,6 +83,7 @@ export type SuggestionChangedEvent = {
 }
 
 export type CreateSuggestionInput = {
+  problemId?: string;
   suggestion?: Suggestion;
 }
 
@@ -91,6 +92,7 @@ export type CreateSuggestionOutput = {
 }
 
 export type UpdateSuggestionInput = {
+  problemId?: string;
   suggestionId?: string;
   suggestion?: Suggestion;
 }
@@ -98,12 +100,14 @@ export type UpdateSuggestionInput = {
 export type UpdateSuggestionOutput = Record<string, unknown>;
 
 export type DeleteSuggestionInput = {
+  problemId?: string;
   suggestionId?: string;
 }
 
 export type DeleteSuggestionOutput = Record<string, unknown>;
 
 export type ReviewSuggestionInput = {
+  problemId?: string;
   suggestionId?: string;
   status?: string;
   comment?: Content;
@@ -113,12 +117,14 @@ export type ReviewSuggestionInput = {
 export type ReviewSuggestionOutput = Record<string, unknown>;
 
 export type ResubmitSuggestionInput = {
+  problemId?: string;
   suggestionId?: string;
 }
 
 export type ResubmitSuggestionOutput = Record<string, unknown>;
 
 export type ListSuggestionsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
   filters?: ListSuggestionsInput_Filter;
@@ -136,6 +142,7 @@ export type ListSuggestionsOutput = {
 }
 
 export type DescribeSuggestionInput = {
+  problemId?: string;
   suggestionId?: string;
 }
 

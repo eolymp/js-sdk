@@ -200,12 +200,14 @@ export type TestBatchChangedEvent = {
 }
 
 export type UpdateTestingConfigInput = {
+  problemId?: string;
   config?: TestingConfig;
 }
 
 export type UpdateTestingConfigOutput = Record<string, unknown>;
 
 export type DescribeTestingConfigInput = {
+  problemId?: string;
   version?: number;
 }
 
@@ -214,12 +216,14 @@ export type DescribeTestingConfigOutput = {
 }
 
 export type UpdateCheckerInput = {
+  problemId?: string;
   checker?: Checker;
 }
 
 export type UpdateCheckerOutput = Record<string, unknown>;
 
 export type DescribeCheckerInput = {
+  problemId?: string;
   version?: number;
 }
 
@@ -228,12 +232,14 @@ export type DescribeCheckerOutput = {
 }
 
 export type UpdateInteractorInput = {
+  problemId?: string;
   interactor?: Interactor;
 }
 
 export type UpdateInteractorOutput = Record<string, unknown>;
 
 export type DescribeInteractorInput = {
+  problemId?: string;
   version?: number;
 }
 
@@ -242,12 +248,14 @@ export type DescribeInteractorOutput = {
 }
 
 export type UpdateValidatorInput = {
+  problemId?: string;
   validator?: Validator;
 }
 
 export type UpdateValidatorOutput = Record<string, unknown>;
 
 export type DescribeValidatorInput = {
+  problemId?: string;
   version?: number;
 }
 
@@ -256,6 +264,7 @@ export type DescribeValidatorOutput = {
 }
 
 export type ListTestsetsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
   version?: number;
@@ -267,6 +276,7 @@ export type ListTestsetsOutput = {
 }
 
 export type DescribeTestsetInput = {
+  problemId?: string;
   testsetId?: string;
   version?: number;
 }
@@ -276,6 +286,7 @@ export type DescribeTestsetOutput = {
 }
 
 export type CreateTestsetInput = {
+  problemId?: string;
   testset?: Testset;
 }
 
@@ -284,6 +295,7 @@ export type CreateTestsetOutput = {
 }
 
 export type UpdateTestsetInput = {
+  problemId?: string;
   testsetId?: string;
   testset?: Testset;
 }
@@ -291,12 +303,14 @@ export type UpdateTestsetInput = {
 export type UpdateTestsetOutput = Record<string, unknown>;
 
 export type DeleteTestsetInput = {
+  problemId?: string;
   testsetId?: string;
 }
 
 export type DeleteTestsetOutput = Record<string, unknown>;
 
 export type ListExamplesInput = {
+  problemId?: string;
   version?: number;
 }
 
@@ -305,6 +319,7 @@ export type ListExamplesOutput = {
 }
 
 export type ListTestsInput = {
+  problemId?: string;
   testsetId?: string;
   version?: number;
 }
@@ -315,6 +330,7 @@ export type ListTestsOutput = {
 }
 
 export type DescribeTestInput = {
+  problemId?: string;
   testsetId?: string;
   testId?: string;
   version?: number;
@@ -325,6 +341,7 @@ export type DescribeTestOutput = {
 }
 
 export type CreateTestInput = {
+  problemId?: string;
   testsetId?: string;
   test?: Test;
 }
@@ -335,6 +352,7 @@ export type CreateTestOutput = {
 
 export type UpdateTestInput = {
   patch?: string[];
+  problemId?: string;
   testsetId?: string;
   testId?: string;
   test?: Test;
@@ -343,6 +361,7 @@ export type UpdateTestInput = {
 export type UpdateTestOutput = Record<string, unknown>;
 
 export type DeleteTestInput = {
+  problemId?: string;
   testsetId?: string;
   testId?: string;
 }

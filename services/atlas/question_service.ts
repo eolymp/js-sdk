@@ -63,6 +63,7 @@ export type QuestionChangedEvent = {
 }
 
 export type CreateQuestionInput = {
+  problemId?: string;
   question?: Question;
 }
 
@@ -72,6 +73,7 @@ export type CreateQuestionOutput = {
 
 export type UpdateQuestionInput = {
   patch?: string[];
+  problemId?: string;
   questionId?: string;
   question?: Question;
 }
@@ -79,12 +81,14 @@ export type UpdateQuestionInput = {
 export type UpdateQuestionOutput = Record<string, unknown>;
 
 export type DeleteQuestionInput = {
+  problemId?: string;
   questionId?: string;
 }
 
 export type DeleteQuestionOutput = Record<string, unknown>;
 
 export type DescribeQuestionInput = {
+  problemId?: string;
   questionId?: string;
   version?: number;
   extra?: string[];
@@ -95,6 +99,7 @@ export type DescribeQuestionOutput = {
 }
 
 export type ListQuestionsInput = {
+  problemId?: string;
   offset?: number;
   size?: number;
   version?: number;

@@ -40,6 +40,7 @@ export type ScoreChangedEvent = {
 }
 
 export type DescribeScoreInput = {
+  problemId?: string;
   memberId?: string;
 }
 
@@ -47,7 +48,9 @@ export type DescribeScoreOutput = {
   score?: Score;
 }
 
-export type DescribeProblemGradingInput = Record<string, unknown>;
+export type DescribeProblemGradingInput = {
+  problemId?: string;
+}
 
 export type DescribeProblemGradingOutput = {
   ranges?: DescribeProblemGradingOutput_Range[];
