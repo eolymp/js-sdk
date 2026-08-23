@@ -23,15 +23,6 @@ export class LogService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
-  DescribeLog(input: DescribeLogInput, opts?: any): Promise<DescribeLogOutput> {
-    const path = "/audit/logs/"+encodeURIComponent(input.logId||'');
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.logId);
-
-    return this.cli.call("GET", this.url+path, input, opts);
-  }
-
   ExportLogs(input: ExportLogsInput, opts?: any): Promise<ExportLogsOutput> {
     const path = "/audit/logs:export";
 
@@ -61,15 +52,6 @@ export type ListLogsInput_Filter = {
 export type ListLogsOutput = {
   total?: number;
   items?: Log[];
-}
-
-export type DescribeLogInput = {
-  logId?: string;
-  extra?: string[];
-}
-
-export type DescribeLogOutput = {
-  log?: Log;
 }
 
 export type ExportLogsInput = {

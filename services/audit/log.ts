@@ -3,7 +3,6 @@
 
 
 export type Log = {
-  id?: string;
   timestamp?: string;
   actor?: Log_Actor;
   ipAddress?: string;
