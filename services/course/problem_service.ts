@@ -4,8 +4,8 @@
 import { Template } from "../atlas/code_template"
 import { Statement } from "../atlas/statement"
 import { Test } from "../atlas/testing_test"
-import { Run } from "../playground/run"
 import { Runtime } from "../runtime/runtime"
+import { CreateRunInput, CreateRunOutput, DescribeRunInput, DescribeRunOutput, WatchRunInput, WatchRunOutput } from "./run_service"
 import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, WatchSubmissionInput, WatchSubmissionOutput } from "./submission_service"
 
 interface _Client {
@@ -142,35 +142,6 @@ export type LookupCodeTemplateInput = {
 
 export type LookupCodeTemplateOutput = {
   template?: Template;
-}
-
-export type CreateRunInput = {
-  runtime?: string;
-  source?: string;
-  inputData?: string;
-  inputRef?: string;
-  exampleId?: string;
-}
-
-export type CreateRunOutput = {
-  runId?: string;
-}
-
-export type DescribeRunInput = {
-  runId?: string;
-}
-
-export type DescribeRunOutput = {
-  run?: Run;
-}
-
-export type WatchRunInput = {
-  runId?: string;
-}
-
-export type WatchRunOutput = {
-  run?: Run;
-  event?: string;
 }
 
 export type ListRuntimesInput = Record<string, unknown>;
