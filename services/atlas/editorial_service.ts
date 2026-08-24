@@ -17,58 +17,76 @@ export class EditorialService {
   }
 
   CreateEditorial(input: CreateEditorialInput, opts?: any): Promise<CreateEditorialOutput> {
-    const path = "/editorials";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorials";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UpdateEditorial(input: UpdateEditorialInput, opts?: any): Promise<UpdateEditorialOutput> {
-    const path = "/editorials/"+encodeURIComponent(input.editorialId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorials/"+encodeURIComponent(input.editorialId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.editorialId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteEditorial(input: DeleteEditorialInput, opts?: any): Promise<DeleteEditorialOutput> {
-    const path = "/editorials/"+encodeURIComponent(input.editorialId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorials/"+encodeURIComponent(input.editorialId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.editorialId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeEditorial(input: DescribeEditorialInput, opts?: any): Promise<DescribeEditorialOutput> {
-    const path = "/editorials/"+encodeURIComponent(input.editorialId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorials/"+encodeURIComponent(input.editorialId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.editorialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   LookupEditorial(input: LookupEditorialInput, opts?: any): Promise<LookupEditorialOutput> {
-    const path = "/editorial";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorial";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   PreviewEditorial(input: PreviewEditorialInput, opts?: any): Promise<PreviewEditorialOutput> {
-    const path = "/editorial/preview";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorial/preview";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListEditorials(input: ListEditorialsInput, opts?: any): Promise<ListEditorialsOutput> {
-    const path = "/editorials";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorials";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   TranslateEditorials(input: TranslateEditorialsInput, opts?: any): Promise<TranslateEditorialsOutput> {
-    const path = "/editorials:translate";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorials:translate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }

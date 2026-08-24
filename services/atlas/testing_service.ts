@@ -22,136 +22,179 @@ export class TestingService {
   }
 
   UpdateTestingConfig(input: UpdateTestingConfigInput, opts?: any): Promise<UpdateTestingConfigOutput> {
-    const path = "/testing";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testing";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DescribeTestingConfig(input: DescribeTestingConfigInput, opts?: any): Promise<DescribeTestingConfigOutput> {
-    const path = "/testing";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testing";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateChecker(input: UpdateCheckerInput, opts?: any): Promise<UpdateCheckerOutput> {
-    const path = "/checker";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/checker";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DescribeChecker(input: DescribeCheckerInput, opts?: any): Promise<DescribeCheckerOutput> {
-    const path = "/checker";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/checker";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateInteractor(input: UpdateInteractorInput, opts?: any): Promise<UpdateInteractorOutput> {
-    const path = "/interactor";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/interactor";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DescribeInteractor(input: DescribeInteractorInput, opts?: any): Promise<DescribeInteractorOutput> {
-    const path = "/interactor";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/interactor";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateValidator(input: UpdateValidatorInput, opts?: any): Promise<UpdateValidatorOutput> {
-    const path = "/validator";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/validator";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DescribeValidator(input: DescribeValidatorInput, opts?: any): Promise<DescribeValidatorOutput> {
-    const path = "/validator";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/validator";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateTestset(input: CreateTestsetInput, opts?: any): Promise<CreateTestsetOutput> {
-    const path = "/testsets";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateTestset(input: UpdateTestsetInput, opts?: any): Promise<UpdateTestsetOutput> {
-    const path = "/testsets/"+encodeURIComponent(input.testsetId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.testsetId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteTestset(input: DeleteTestsetInput, opts?: any): Promise<DeleteTestsetOutput> {
-    const path = "/testsets/"+encodeURIComponent(input.testsetId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.testsetId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeTestset(input: DescribeTestsetInput, opts?: any): Promise<DescribeTestsetOutput> {
-    const path = "/testsets/"+encodeURIComponent(input.testsetId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.testsetId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListTestsets(input: ListTestsetsInput, opts?: any): Promise<ListTestsetsOutput> {
-    const path = "/testsets";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateTest(input: CreateTestInput, opts?: any): Promise<CreateTestOutput> {
-    const path = "/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.testsetId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateTest(input: UpdateTestInput, opts?: any): Promise<UpdateTestOutput> {
-    const path = "/tests/"+encodeURIComponent(input.testId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/tests/"+encodeURIComponent(input.testId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.testId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteTest(input: DeleteTestInput, opts?: any): Promise<DeleteTestOutput> {
-    const path = "/tests/"+encodeURIComponent(input.testId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/tests/"+encodeURIComponent(input.testId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.testId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeTest(input: DescribeTestInput, opts?: any): Promise<DescribeTestOutput> {
-    const path = "/tests/"+encodeURIComponent(input.testId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/tests/"+encodeURIComponent(input.testId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.testId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListTests(input: ListTestsInput, opts?: any): Promise<ListTestsOutput> {
-    const path = "/tests";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/tests";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {
-    const path = "/examples";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

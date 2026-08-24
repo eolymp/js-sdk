@@ -26,24 +26,29 @@ export class GenerationService {
   }
 
   DescribeGeneration(input: DescribeGenerationInput, opts?: any): Promise<DescribeGenerationOutput> {
-    const path = "/generations/"+encodeURIComponent(input.generationId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/generations/"+encodeURIComponent(input.generationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.generationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListGenerations(input: ListGenerationsInput, opts?: any): Promise<ListGenerationsOutput> {
-    const path = "/generations";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/generations";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchGeneration(input: WatchGenerationInput, opts?: any): _Stream<WatchGenerationOutput> {
-    const path = "/generations/"+encodeURIComponent(input.generationId||'')+"/watch";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/generations/"+encodeURIComponent(input.generationId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.generationId);
 
     return this.cli.stream("GET", this.url+path, input, opts);

@@ -17,75 +17,95 @@ export class StatementService {
   }
 
   CreateStatement(input: CreateStatementInput, opts?: any): Promise<CreateStatementOutput> {
-    const path = "/statements";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UpdateStatement(input: UpdateStatementInput, opts?: any): Promise<UpdateStatementOutput> {
-    const path = "/statements/"+encodeURIComponent(input.statementId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.statementId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteStatement(input: DeleteStatementInput, opts?: any): Promise<DeleteStatementOutput> {
-    const path = "/statements/"+encodeURIComponent(input.statementId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.statementId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeStatement(input: DescribeStatementInput, opts?: any): Promise<DescribeStatementOutput> {
-    const path = "/statements/"+encodeURIComponent(input.statementId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.statementId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   LookupStatement(input: LookupStatementInput, opts?: any): Promise<LookupStatementOutput> {
-    const path = "/translate";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/translate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   PreviewStatement(input: PreviewStatementInput, opts?: any): Promise<PreviewStatementOutput> {
-    const path = "/renders";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/renders";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
-    const path = "/statements";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   TranslateStatements(input: TranslateStatementsInput, opts?: any): Promise<TranslateStatementsOutput> {
-    const path = "/statements:translate";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements:translate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ExportStatement(input: ExportStatementInput, opts?: any): Promise<ExportStatementOutput> {
-    const path = "/statements/"+encodeURIComponent(input.statementId||'')+"/export";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'')+"/export";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.statementId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListStatementVersions(input: ListStatementVersionsInput, opts?: any): Promise<ListStatementVersionsOutput> {
-    const path = "/statements/"+encodeURIComponent(input.statementId||'')+"/versions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements/"+encodeURIComponent(input.statementId||'')+"/versions";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.statementId);
 
     return this.cli.call("GET", this.url+path, input, opts);

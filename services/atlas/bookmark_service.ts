@@ -16,13 +16,19 @@ export class BookmarkService {
   }
 
   GetBookmark(input: GetBookmarkInput, opts?: any): Promise<GetBookmarkOutput> {
-    const path = "/bookmark";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/bookmark";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   SetBookmark(input: SetBookmarkInput, opts?: any): Promise<SetBookmarkOutput> {
-    const path = "/bookmark";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/bookmark";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }

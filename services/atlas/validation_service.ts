@@ -27,24 +27,29 @@ export class ValidationService {
   }
 
   RunValidation(input: RunValidationInput, opts?: any): Promise<RunValidationOutput> {
-    const path = "/validations";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/validations";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeValidation(input: DescribeValidationInput, opts?: any): Promise<DescribeValidationOutput> {
-    const path = "/validations/"+encodeURIComponent(input.validationId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/validations/"+encodeURIComponent(input.validationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.validationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchValidation(input: WatchValidationInput, opts?: any): _Stream<WatchValidationOutput> {
-    const path = "/validations/"+encodeURIComponent(input.validationId||'')+"/watch";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/validations/"+encodeURIComponent(input.validationId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.validationId);
 
     return this.cli.stream("GET", this.url+path, input, opts);

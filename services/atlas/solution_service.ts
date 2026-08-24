@@ -18,46 +18,58 @@ export class SolutionService {
   }
 
   CreateSolution(input: CreateSolutionInput, opts?: any): Promise<CreateSolutionOutput> {
-    const path = "/solutions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UpdateSolution(input: UpdateSolutionInput, opts?: any): Promise<UpdateSolutionOutput> {
-    const path = "/solutions/"+encodeURIComponent(input.solutionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.solutionId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteSolution(input: DeleteSolutionInput, opts?: any): Promise<DeleteSolutionOutput> {
-    const path = "/solutions/"+encodeURIComponent(input.solutionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.solutionId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeSolution(input: DescribeSolutionInput, opts?: any): Promise<DescribeSolutionOutput> {
-    const path = "/solutions/"+encodeURIComponent(input.solutionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions/"+encodeURIComponent(input.solutionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.solutionId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListSolutions(input: ListSolutionsInput, opts?: any): Promise<ListSolutionsOutput> {
-    const path = "/solutions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CheckSolutions(input: CheckSolutionsInput, opts?: any): Promise<CheckSolutionsOutput> {
-    const path = "/solutions:check";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/solutions:check";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }

@@ -19,57 +19,68 @@ export class SuggestionService {
   }
 
   CreateSuggestion(input: CreateSuggestionInput, opts?: any): Promise<CreateSuggestionOutput> {
-    const path = "/suggestions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/suggestions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateSuggestion(input: UpdateSuggestionInput, opts?: any): Promise<UpdateSuggestionOutput> {
-    const path = "/suggestions/"+encodeURIComponent(input.suggestionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/suggestions/"+encodeURIComponent(input.suggestionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.suggestionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ReviewSuggestion(input: ReviewSuggestionInput, opts?: any): Promise<ReviewSuggestionOutput> {
-    const path = "/suggestions/"+encodeURIComponent(input.suggestionId||'')+"/review";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/suggestions/"+encodeURIComponent(input.suggestionId||'')+"/review";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.suggestionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ResubmitSuggestion(input: ResubmitSuggestionInput, opts?: any): Promise<ResubmitSuggestionOutput> {
-    const path = "/suggestions/"+encodeURIComponent(input.suggestionId||'')+"/resubmit";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/suggestions/"+encodeURIComponent(input.suggestionId||'')+"/resubmit";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.suggestionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteSuggestion(input: DeleteSuggestionInput, opts?: any): Promise<DeleteSuggestionOutput> {
-    const path = "/suggestions/"+encodeURIComponent(input.suggestionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/suggestions/"+encodeURIComponent(input.suggestionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.suggestionId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListSuggestions(input: ListSuggestionsInput, opts?: any): Promise<ListSuggestionsOutput> {
-    const path = "/suggestions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/suggestions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeSuggestion(input: DescribeSuggestionInput, opts?: any): Promise<DescribeSuggestionOutput> {
-    const path = "/suggestions/"+encodeURIComponent(input.suggestionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/suggestions/"+encodeURIComponent(input.suggestionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.suggestionId);
 
     return this.cli.call("GET", this.url+path, input, opts);

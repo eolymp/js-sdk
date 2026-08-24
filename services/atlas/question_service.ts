@@ -17,40 +17,49 @@ export class QuestionService {
   }
 
   CreateQuestion(input: CreateQuestionInput, opts?: any): Promise<CreateQuestionOutput> {
-    const path = "/questions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/questions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateQuestion(input: UpdateQuestionInput, opts?: any): Promise<UpdateQuestionOutput> {
-    const path = "/questions/"+encodeURIComponent(input.questionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/questions/"+encodeURIComponent(input.questionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.questionId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteQuestion(input: DeleteQuestionInput, opts?: any): Promise<DeleteQuestionOutput> {
-    const path = "/questions/"+encodeURIComponent(input.questionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/questions/"+encodeURIComponent(input.questionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.questionId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeQuestion(input: DescribeQuestionInput, opts?: any): Promise<DescribeQuestionOutput> {
-    const path = "/questions/"+encodeURIComponent(input.questionId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/questions/"+encodeURIComponent(input.questionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.questionId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListQuestions(input: ListQuestionsInput, opts?: any): Promise<ListQuestionsOutput> {
-    const path = "/questions";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/questions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

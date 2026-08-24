@@ -17,52 +17,67 @@ export class CodeTemplateService {
   }
 
   CreateCodeTemplate(input: CreateCodeTemplateInput, opts?: any): Promise<CreateCodeTemplateOutput> {
-    const path = "/templates";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateCodeTemplate(input: UpdateCodeTemplateInput, opts?: any): Promise<UpdateCodeTemplateOutput> {
-    const path = "/templates/"+encodeURIComponent(input.templateId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.templateId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteCodeTemplate(input: DeleteCodeTemplateInput, opts?: any): Promise<DeleteCodeTemplateOutput> {
-    const path = "/templates/"+encodeURIComponent(input.templateId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.templateId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListCodeTemplates(input: ListCodeTemplatesInput, opts?: any): Promise<ListCodeTemplatesOutput> {
-    const path = "/templates";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeCodeTemplate(input: DescribeCodeTemplateInput, opts?: any): Promise<DescribeCodeTemplateOutput> {
-    const path = "/templates/"+encodeURIComponent(input.templateId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.templateId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
-    const path = "/template";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/template";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   GenerateCodeTemplates(input: GenerateCodeTemplatesInput, opts?: any): Promise<GenerateCodeTemplatesOutput> {
-    const path = "/templates:generate";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates:generate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }

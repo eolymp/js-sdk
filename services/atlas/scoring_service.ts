@@ -17,16 +17,20 @@ export class ScoringService {
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/scores/"+encodeURIComponent(input.memberId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scores/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeProblemGrading(input: DescribeProblemGradingInput, opts?: any): Promise<DescribeProblemGradingOutput> {
-    const path = "/grading";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/grading";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }

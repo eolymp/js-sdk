@@ -18,46 +18,58 @@ export class ScriptService {
   }
 
   CreateScript(input: CreateScriptInput, opts?: any): Promise<CreateScriptOutput> {
-    const path = "/scripts";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scripts";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UpdateScript(input: UpdateScriptInput, opts?: any): Promise<UpdateScriptOutput> {
-    const path = "/scripts/"+encodeURIComponent(input.scriptId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scripts/"+encodeURIComponent(input.scriptId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.scriptId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteScript(input: DeleteScriptInput, opts?: any): Promise<DeleteScriptOutput> {
-    const path = "/scripts/"+encodeURIComponent(input.scriptId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scripts/"+encodeURIComponent(input.scriptId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.scriptId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeScript(input: DescribeScriptInput, opts?: any): Promise<DescribeScriptOutput> {
-    const path = "/scripts/"+encodeURIComponent(input.scriptId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scripts/"+encodeURIComponent(input.scriptId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.scriptId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListScripts(input: ListScriptsInput, opts?: any): Promise<ListScriptsOutput> {
-    const path = "/scripts";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scripts";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ExecuteStressCheck(input: ExecuteStressCheckInput, opts?: any): Promise<ExecuteStressCheckOutput> {
-    const path = "/scripts:stress-check";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/scripts:stress-check";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }

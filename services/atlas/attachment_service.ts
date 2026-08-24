@@ -18,39 +18,48 @@ export class AttachmentService {
   }
 
   CreateAttachment(input: CreateAttachmentInput, opts?: any): Promise<CreateAttachmentOutput> {
-    const path = "/attachments";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateAttachment(input: UpdateAttachmentInput, opts?: any): Promise<UpdateAttachmentOutput> {
-    const path = "/attachments/"+encodeURIComponent(input.attachmentId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments/"+encodeURIComponent(input.attachmentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.attachmentId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteAttachment(input: DeleteAttachmentInput, opts?: any): Promise<DeleteAttachmentOutput> {
-    const path = "/attachments/"+encodeURIComponent(input.attachmentId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments/"+encodeURIComponent(input.attachmentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.attachmentId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListAttachments(input: ListAttachmentsInput, opts?: any): Promise<ListAttachmentsOutput> {
-    const path = "/attachments";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeAttachment(input: DescribeAttachmentInput, opts?: any): Promise<DescribeAttachmentOutput> {
-    const path = "/attachments/"+encodeURIComponent(input.attachmentId||'');
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments/"+encodeURIComponent(input.attachmentId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
     delete(input.attachmentId);
 
     return this.cli.call("GET", this.url+path, input, opts);
