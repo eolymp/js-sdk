@@ -51,6 +51,7 @@ export class Playground {
 }
 
 export type CreateRunInput = {
+  problemId?: string;
   runtime?: string;
   trace?: boolean;
   source?: string;
@@ -64,6 +65,7 @@ export type CreateRunOutput = {
 }
 
 export type DescribeRunInput = {
+  problemId?: string;
   runId?: string;
 }
 
@@ -72,6 +74,7 @@ export type DescribeRunOutput = {
 }
 
 export type WatchRunInput = {
+  problemId?: string;
   runId?: string;
 }
 

@@ -63,13 +63,17 @@ export type Editor_State = {
   output?: Submission_Output;
 }
 
-export type DescribeEditorInput = Record<string, unknown>;
+export type DescribeEditorInput = {
+  problemId?: string;
+}
 
 export type DescribeEditorOutput = {
   editor?: Editor;
 }
 
-export type DescribeEditorStateInput = Record<string, unknown>;
+export type DescribeEditorStateInput = {
+  problemId?: string;
+}
 
 export type DescribeEditorStateOutput = {
   runtime?: string;
@@ -80,6 +84,7 @@ export type DescribeEditorStateOutput = {
 }
 
 export type UpdateEditorStateInput = {
+  problemId?: string;
   runtime?: string;
   sourceCode?: string;
   inputData?: string;
@@ -87,6 +92,7 @@ export type UpdateEditorStateInput = {
 }
 
 export type ListInputsInput = {
+  problemId?: string;
   version?: number;
 }
 
@@ -98,6 +104,7 @@ export type ListInputsOutput = {
 export type UpdateEditorStateOutput = Record<string, unknown>;
 
 export type PrintEditorCodeInput = {
+  problemId?: string;
   runtime?: string;
   sourceCode?: string;
 }
