@@ -41,7 +41,7 @@ export type ListLogsInput = {
 }
 
 export type ListLogsInput_Filter = {
-  actor?: ExpressionEnum[];
+  subject?: ExpressionEnum[];
   method?: ExpressionString[];
   scope?: ExpressionString[];
   ipAddress?: ExpressionString[];
@@ -63,7 +63,7 @@ export type ExportLogsInput = {
 }
 
 export type ExportLogsInput_Filter = {
-  actor?: ExpressionEnum[];
+  subject?: ExpressionEnum[];
   method?: ExpressionString[];
   scope?: ExpressionString[];
   ipAddress?: ExpressionString[];

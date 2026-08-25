@@ -4,7 +4,7 @@
 
 export type Log = {
   timestamp?: string;
-  actor?: Log_Actor;
+  subject?: string;
   ipAddress?: string;
   userAgent?: string;
   method?: string;
@@ -15,10 +15,4 @@ export type Log = {
 }
 
 export type Log_Extra = Record<string, unknown>;
-
-export type Log_Actor = {
-  type?: string;
-  id?: string;
-  subject?: string;
-}
 
