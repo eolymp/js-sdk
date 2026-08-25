@@ -9,5 +9,6 @@ export type TestingConfig = {
   timeLimit?: number;
   cpuLimit?: number;
   memoryLimit?: string;
+  instanceLimit?: number;
 }
 
