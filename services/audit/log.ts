@@ -10,6 +10,7 @@ export type Log = {
   method?: string;
   scope?: string;
   mutation?: boolean;
+  operation?: string;
   payload?: string;
 }
 
