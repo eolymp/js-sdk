@@ -19,55 +19,66 @@ export class ViolationService {
   }
 
   CreateViolation(input: CreateViolationInput, opts?: any): Promise<CreateViolationOutput> {
-    const path = "/violations";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/violations";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateViolation(input: UpdateViolationInput, opts?: any): Promise<UpdateViolationOutput> {
-    const path = "/violations/"+encodeURIComponent(input.violationId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/violations/"+encodeURIComponent(input.violationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.violationId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteViolation(input: DeleteViolationInput, opts?: any): Promise<DeleteViolationOutput> {
-    const path = "/violations/"+encodeURIComponent(input.violationId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/violations/"+encodeURIComponent(input.violationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.violationId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeViolation(input: DescribeViolationInput, opts?: any): Promise<DescribeViolationOutput> {
-    const path = "/violations/"+encodeURIComponent(input.violationId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/violations/"+encodeURIComponent(input.violationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.violationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListViolationEvidence(input: ListViolationEvidenceInput, opts?: any): Promise<ListViolationEvidenceOutput> {
-    const path = "/violations/"+encodeURIComponent(input.violationId||'')+"/evidence";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/violations/"+encodeURIComponent(input.violationId||'')+"/evidence";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.violationId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListViolations(input: ListViolationsInput, opts?: any): Promise<ListViolationsOutput> {
-    const path = "/violations";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/violations";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
 export type CreateViolationInput = {
+  contestId?: string;
   violation?: Violation;
   dontNotify?: boolean;
 }
@@ -78,6 +89,7 @@ export type CreateViolationOutput = {
 
 export type UpdateViolationInput = {
   patch?: string[];
+  contestId?: string;
   violationId?: string;
   violation?: Violation;
 }
@@ -85,12 +97,14 @@ export type UpdateViolationInput = {
 export type UpdateViolationOutput = Record<string, unknown>;
 
 export type DeleteViolationInput = {
+  contestId?: string;
   violationId?: string;
 }
 
 export type DeleteViolationOutput = Record<string, unknown>;
 
 export type DescribeViolationInput = {
+  contestId?: string;
   violationId?: string;
 }
 
@@ -99,6 +113,7 @@ export type DescribeViolationOutput = {
 }
 
 export type ListViolationEvidenceInput = {
+  contestId?: string;
   violationId?: string;
   offset?: number;
   size?: number;
@@ -110,6 +125,7 @@ export type ListViolationEvidenceOutput = {
 }
 
 export type ListViolationsInput = {
+  contestId?: string;
   offset?: number;
   size?: number;
   filters?: ListViolationsInput_Filter;

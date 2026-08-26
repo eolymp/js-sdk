@@ -27,31 +27,45 @@ export class AdmissionService {
   }
 
   RequestAdmission(input: RequestAdmissionInput, opts?: any): Promise<RequestAdmissionOutput> {
-    const path = "/admission:request";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/admission:request";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   WatchAdmission(input: WatchAdmissionInput, opts?: any): _Stream<WatchAdmissionOutput> {
-    const path = "/admission:watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/admission:watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   DescribeAdmission(input: DescribeAdmissionInput, opts?: any): Promise<DescribeAdmissionOutput> {
-    const path = "/admission:request";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/admission:request";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   AcceptAdmission(input: AcceptAdmissionInput, opts?: any): Promise<AcceptAdmissionOutput> {
-    const path = "/admission:accept";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/admission:accept";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type RequestAdmissionInput = Record<string, unknown>;
+export type RequestAdmissionInput = {
+  contestId?: string;
+}
 
 export type RequestAdmissionOutput = {
   required?: boolean;
@@ -59,12 +73,14 @@ export type RequestAdmissionOutput = {
 }
 
 export type AcceptAdmissionInput = {
+  contestId?: string;
   code?: string;
 }
 
 export type AcceptAdmissionOutput = Record<string, unknown>;
 
 export type DescribeAdmissionInput = {
+  contestId?: string;
   code?: string;
 }
 
@@ -75,6 +91,7 @@ export type DescribeAdmissionOutput = {
 }
 
 export type WatchAdmissionInput = {
+  contestId?: string;
   code?: string;
 }
 

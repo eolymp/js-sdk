@@ -18,40 +18,53 @@ export class ScoreboardService {
   }
 
   DescribeScoreboard(input: DescribeScoreboardInput, opts?: any): Promise<DescribeScoreboardOutput> {
-    const path = "/scoreboard";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListScoreboardRows(input: ListScoreboardRowsInput, opts?: any): Promise<ListScoreboardRowsOutput> {
-    const path = "/scoreboard/rows";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard/rows";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeScoreboardRow(input: DescribeScoreboardRowInput, opts?: any): Promise<DescribeScoreboardRowOutput> {
-    const path = "/scoreboard/rows/"+encodeURIComponent(input.participantId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard/rows/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ExportScoreboard(input: ExportScoreboardInput, opts?: any): Promise<ExportScoreboardOutput> {
-    const path = "/scoreboard/export";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard/export";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type DescribeScoreboardInput = Record<string, unknown>;
+export type DescribeScoreboardInput = {
+  contestId?: string;
+}
 
 export type DescribeScoreboardOutput = {
   scoreboard?: Scoreboard;
 }
 
 export type ListScoreboardRowsInput = {
+  contestId?: string;
   mode?: string;
   size?: number;
   offset?: number;
@@ -71,6 +84,7 @@ export type ListScoreboardRowsOutput = {
 }
 
 export type DescribeScoreboardRowInput = {
+  contestId?: string;
   participantId?: string;
   mode?: string;
 }
@@ -80,6 +94,7 @@ export type DescribeScoreboardRowOutput = {
 }
 
 export type ExportScoreboardInput = {
+  contestId?: string;
   mode?: string;
 }
 

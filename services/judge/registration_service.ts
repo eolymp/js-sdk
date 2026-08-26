@@ -17,13 +17,19 @@ export class RegistrationService {
   }
 
   DescribeRegistration(input: DescribeRegistrationInput, opts?: any): Promise<DescribeRegistrationOutput> {
-    const path = "/registration";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/registration";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   SubmitRegistration(input: SubmitRegistrationInput, opts?: any): Promise<SubmitRegistrationOutput> {
-    const path = "/registration";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/registration";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
