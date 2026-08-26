@@ -19,66 +19,78 @@ export class ClassService {
   }
 
   CreateClass(input: CreateClassInput, opts?: any): Promise<CreateClassOutput> {
-    const path = "/classes";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateClass(input: UpdateClassInput, opts?: any): Promise<UpdateClassOutput> {
-    const path = "/classes/"+encodeURIComponent(input.groupId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes/"+encodeURIComponent(input.groupId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.groupId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteClass(input: DeleteClassInput, opts?: any): Promise<DeleteClassOutput> {
-    const path = "/classes/"+encodeURIComponent(input.groupId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes/"+encodeURIComponent(input.groupId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.groupId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeClass(input: DescribeClassInput, opts?: any): Promise<DescribeClassOutput> {
-    const path = "/classes/"+encodeURIComponent(input.groupId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes/"+encodeURIComponent(input.groupId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.groupId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListClasses(input: ListClassesInput, opts?: any): Promise<ListClassesOutput> {
-    const path = "/classes";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListClassAssignments(input: ListClassAssignmentsInput, opts?: any): Promise<ListClassAssignmentsOutput> {
-    const path = "/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.groupId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateClassAssignment(input: UpdateClassAssignmentInput, opts?: any): Promise<UpdateClassAssignmentOutput> {
-    const path = "/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.groupId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteClassAssignment(input: DeleteClassAssignmentInput, opts?: any): Promise<DeleteClassAssignmentOutput> {
-    const path = "/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/classes/"+encodeURIComponent(input.groupId||'')+"/assignments";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.groupId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
@@ -86,6 +98,7 @@ export class ClassService {
 }
 
 export type CreateClassInput = {
+  courseId?: string;
   class?: Class;
 }
 
@@ -95,6 +108,7 @@ export type CreateClassOutput = {
 
 export type UpdateClassInput = {
   patch?: string[];
+  courseId?: string;
   groupId?: string;
   class?: Class;
 }
@@ -102,12 +116,14 @@ export type UpdateClassInput = {
 export type UpdateClassOutput = Record<string, unknown>;
 
 export type DeleteClassInput = {
+  courseId?: string;
   groupId?: string;
 }
 
 export type DeleteClassOutput = Record<string, unknown>;
 
 export type DescribeClassInput = {
+  courseId?: string;
   groupId?: string;
 }
 
@@ -116,6 +132,7 @@ export type DescribeClassOutput = {
 }
 
 export type ListClassesInput = {
+  courseId?: string;
   offset?: number;
   size?: number;
   search?: string;
@@ -136,6 +153,7 @@ export type ListClassesOutput = {
 }
 
 export type ListClassAssignmentsInput = {
+  courseId?: string;
   groupId?: string;
   offset?: number;
   size?: number;
@@ -154,6 +172,7 @@ export type ListClassAssignmentsOutput = {
 }
 
 export type UpdateClassAssignmentInput = {
+  courseId?: string;
   groupId?: string;
   moduleId?: string;
   startAfter?: string;
@@ -165,6 +184,7 @@ export type UpdateClassAssignmentInput = {
 export type UpdateClassAssignmentOutput = Record<string, unknown>;
 
 export type DeleteClassAssignmentInput = {
+  courseId?: string;
   groupId?: string;
   moduleId?: string;
 }

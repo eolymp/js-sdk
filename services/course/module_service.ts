@@ -18,57 +18,68 @@ export class ModuleService {
   }
 
   CreateModule(input: CreateModuleInput, opts?: any): Promise<CreateModuleOutput> {
-    const path = "/modules";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/modules";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UpdateModule(input: UpdateModuleInput, opts?: any): Promise<UpdateModuleOutput> {
-    const path = "/modules/"+encodeURIComponent(input.moduleId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/modules/"+encodeURIComponent(input.moduleId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.moduleId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteModule(input: DeleteModuleInput, opts?: any): Promise<DeleteModuleOutput> {
-    const path = "/modules/"+encodeURIComponent(input.moduleId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/modules/"+encodeURIComponent(input.moduleId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.moduleId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeModule(input: DescribeModuleInput, opts?: any): Promise<DescribeModuleOutput> {
-    const path = "/modules/"+encodeURIComponent(input.moduleId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/modules/"+encodeURIComponent(input.moduleId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.moduleId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListModules(input: ListModulesInput, opts?: any): Promise<ListModulesOutput> {
-    const path = "/modules";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/modules";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   StartModule(input: StartModuleInput, opts?: any): Promise<StartModuleOutput> {
-    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/start";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/modules/"+encodeURIComponent(input.moduleId||'')+"/start";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.moduleId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   GradeModule(input: GradeModuleInput, opts?: any): Promise<GradeModuleOutput> {
-    const path = "/modules/"+encodeURIComponent(input.moduleId||'')+"/grade";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/modules/"+encodeURIComponent(input.moduleId||'')+"/grade";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.moduleId);
 
     return this.cli.call("POST", this.url+path, input, opts);
@@ -76,6 +87,7 @@ export class ModuleService {
 }
 
 export type CreateModuleInput = {
+  courseId?: string;
   module?: Module;
 }
 
@@ -85,6 +97,7 @@ export type CreateModuleOutput = {
 
 export type UpdateModuleInput = {
   patch?: string[];
+  courseId?: string;
   moduleId?: string;
   module?: Module;
 }
@@ -92,12 +105,14 @@ export type UpdateModuleInput = {
 export type UpdateModuleOutput = Record<string, unknown>;
 
 export type DeleteModuleInput = {
+  courseId?: string;
   moduleId?: string;
 }
 
 export type DeleteModuleOutput = Record<string, unknown>;
 
 export type DescribeModuleInput = {
+  courseId?: string;
   moduleId?: string;
   memberId?: string;
   groupId?: string;
@@ -109,6 +124,7 @@ export type DescribeModuleOutput = {
 }
 
 export type ListModulesInput = {
+  courseId?: string;
   memberId?: string;
   groupId?: string;
   offset?: number;
@@ -133,12 +149,14 @@ export type ListModulesOutput = {
 }
 
 export type StartModuleInput = {
+  courseId?: string;
   moduleId?: string;
 }
 
 export type StartModuleOutput = Record<string, unknown>;
 
 export type GradeModuleInput = {
+  courseId?: string;
   moduleId?: string;
   memberId?: string;
   grade?: number;

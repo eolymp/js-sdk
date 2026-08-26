@@ -18,66 +18,78 @@ export class MaterialService {
   }
 
   CreateMaterial(input: CreateMaterialInput, opts?: any): Promise<CreateMaterialOutput> {
-    const path = "/materials";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateMaterial(input: UpdateMaterialInput, opts?: any): Promise<UpdateMaterialOutput> {
-    const path = "/materials/"+encodeURIComponent(input.materialId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.materialId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   MoveMaterial(input: MoveMaterialInput, opts?: any): Promise<MoveMaterialOutput> {
-    const path = "/materials/"+encodeURIComponent(input.materialId||'')+"/move";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/move";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.materialId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteMaterial(input: DeleteMaterialInput, opts?: any): Promise<DeleteMaterialOutput> {
-    const path = "/materials/"+encodeURIComponent(input.materialId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.materialId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeMaterial(input: DescribeMaterialInput, opts?: any): Promise<DescribeMaterialOutput> {
-    const path = "/materials/"+encodeURIComponent(input.materialId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListMaterials(input: ListMaterialsInput, opts?: any): Promise<ListMaterialsOutput> {
-    const path = "/materials";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ReportProgress(input: ReportProgressInput, opts?: any): Promise<ReportProgressOutput> {
-    const path = "/materials/"+encodeURIComponent(input.materialId||'')+"/progress";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/progress";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.materialId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   GradeMaterial(input: GradeMaterialInput, opts?: any): Promise<GradeMaterialOutput> {
-    const path = "/materials/"+encodeURIComponent(input.materialId||'')+"/grade";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/grade";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.materialId);
 
     return this.cli.call("POST", this.url+path, input, opts);
@@ -85,6 +97,7 @@ export class MaterialService {
 }
 
 export type CreateMaterialInput = {
+  courseId?: string;
   material?: Material;
   moduleId?: string;
 }
@@ -95,6 +108,7 @@ export type CreateMaterialOutput = {
 
 export type UpdateMaterialInput = {
   patch?: string[];
+  courseId?: string;
   materialId?: string;
   material?: Material;
 }
@@ -102,6 +116,7 @@ export type UpdateMaterialInput = {
 export type UpdateMaterialOutput = Record<string, unknown>;
 
 export type MoveMaterialInput = {
+  courseId?: string;
   materialId?: string;
   newModuleId?: string;
   newIndex?: number;
@@ -111,12 +126,14 @@ export type MoveMaterialInput = {
 export type MoveMaterialOutput = Record<string, unknown>;
 
 export type DeleteMaterialInput = {
+  courseId?: string;
   materialId?: string;
 }
 
 export type DeleteMaterialOutput = Record<string, unknown>;
 
 export type DescribeMaterialInput = {
+  courseId?: string;
   materialId?: string;
   memberId?: string;
   extra?: string[];
@@ -127,6 +144,7 @@ export type DescribeMaterialOutput = {
 }
 
 export type ListMaterialsInput = {
+  courseId?: string;
   moduleId?: string;
   memberId?: string;
   search?: string;
@@ -149,6 +167,7 @@ export type ListMaterialsOutput = {
 }
 
 export type ReportProgressInput = {
+  courseId?: string;
   materialId?: string;
   progress?: number;
 }
@@ -156,6 +175,7 @@ export type ReportProgressInput = {
 export type ReportProgressOutput = Record<string, unknown>;
 
 export type GradeMaterialInput = {
+  courseId?: string;
   materialId?: string;
   memberId?: string;
   grade?: number;
