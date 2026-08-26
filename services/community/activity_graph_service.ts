@@ -16,13 +16,17 @@ export class ActivityGraphService {
   }
 
   DescribeActivityGraph(input: DescribeActivityGraphInput, opts?: any): Promise<DescribeActivityGraphOutput> {
-    const path = "/activity-graph";
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/activity-graph";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
 export type DescribeActivityGraphInput = {
+  memberId?: string;
   after?: string;
   before?: string;
   metric?: string;

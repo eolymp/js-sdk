@@ -17,46 +17,56 @@ export class PenaltyService {
   }
 
   CreatePenalty(input: CreatePenaltyInput, opts?: any): Promise<CreatePenaltyOutput> {
-    const path = "/penalties";
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/penalties";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdatePenalty(input: UpdatePenaltyInput, opts?: any): Promise<UpdatePenaltyOutput> {
-    const path = "/penalties/"+encodeURIComponent(input.penaltyId||'');
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/penalties/"+encodeURIComponent(input.penaltyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
     delete(input.penaltyId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeletePenalty(input: DeletePenaltyInput, opts?: any): Promise<DeletePenaltyOutput> {
-    const path = "/penalties/"+encodeURIComponent(input.penaltyId||'');
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/penalties/"+encodeURIComponent(input.penaltyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
     delete(input.penaltyId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribePenalty(input: DescribePenaltyInput, opts?: any): Promise<DescribePenaltyOutput> {
-    const path = "/penalties/"+encodeURIComponent(input.penaltyId||'');
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/penalties/"+encodeURIComponent(input.penaltyId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
     delete(input.penaltyId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListPenalties(input: ListPenaltiesInput, opts?: any): Promise<ListPenaltiesOutput> {
-    const path = "/penalties";
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/penalties";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
 export type CreatePenaltyInput = {
+  memberId?: string;
   penalty?: Penalty;
 }
 
@@ -66,6 +76,7 @@ export type CreatePenaltyOutput = {
 
 export type UpdatePenaltyInput = {
   patch?: string[];
+  memberId?: string;
   penaltyId?: string;
   penalty?: Penalty;
 }
@@ -73,12 +84,14 @@ export type UpdatePenaltyInput = {
 export type UpdatePenaltyOutput = Record<string, unknown>;
 
 export type DeletePenaltyInput = {
+  memberId?: string;
   penaltyId?: string;
 }
 
 export type DeletePenaltyOutput = Record<string, unknown>;
 
 export type DescribePenaltyInput = {
+  memberId?: string;
   penaltyId?: string;
   extra?: string[];
 }
@@ -88,6 +101,7 @@ export type DescribePenaltyOutput = {
 }
 
 export type ListPenaltiesInput = {
+  memberId?: string;
   offset?: number;
   size?: number;
   extra?: string[];
