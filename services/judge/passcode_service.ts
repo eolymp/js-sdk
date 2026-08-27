@@ -16,39 +16,48 @@ export class PasscodeService {
   }
 
   VerifyPasscode(input: VerifyPasscodeInput, opts?: any): Promise<VerifyPasscodeOutput> {
-    const path = "/verify-passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/verify-passcode";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   EnterPasscode(input: EnterPasscodeInput, opts?: any): Promise<EnterPasscodeOutput> {
-    const path = "/enter-passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/enter-passcode";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ResetPasscode(input: ResetPasscodeInput, opts?: any): Promise<ResetPasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   SetPasscode(input: SetPasscodeInput, opts?: any): Promise<SetPasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RemovePasscode(input: RemovePasscodeInput, opts?: any): Promise<RemovePasscodeOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/passcode";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
