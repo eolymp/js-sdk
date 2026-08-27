@@ -27,58 +27,69 @@ export class ScoreService {
   }
 
   DescribeViewerScore(input: DescribeViewerScoreInput, opts?: any): Promise<DescribeViewerScoreOutput> {
-    const path = "/introspect/score";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect/score";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchScore(input: WatchScoreInput, opts?: any): _Stream<WatchScoreOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/score/watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/score/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   DescribeScore(input: DescribeScoreInput, opts?: any): Promise<DescribeScoreOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/score";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/score";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListScoreTimeline(input: ListScoreTimelineInput, opts?: any): Promise<ListScoreTimelineOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/score-timeline";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/score-timeline";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ImportScore(input: ImportScoreInput, opts?: any): Promise<ImportScoreOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ExportScore(input: ExportScoreInput, opts?: any): Promise<ExportScoreOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/scores";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RebuildScore(input: RebuildScoreInput, opts?: any): Promise<RebuildScoreOutput> {
-    const path = "/rebuild";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/rebuild";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
