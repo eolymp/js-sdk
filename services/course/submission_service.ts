@@ -27,30 +27,38 @@ export class SubmissionService {
   }
 
   CreateSubmission(input: CreateSubmissionInput, opts?: any): Promise<CreateSubmissionOutput> {
-    const path = "/submissions";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListSubmissions(input: ListSubmissionsInput, opts?: any): Promise<ListSubmissionsOutput> {
-    const path = "/submissions";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeSubmission(input: DescribeSubmissionInput, opts?: any): Promise<DescribeSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.submissionId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchSubmission(input: WatchSubmissionInput, opts?: any): _Stream<WatchSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.submissionId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
@@ -58,6 +66,7 @@ export class SubmissionService {
 }
 
 export type CreateSubmissionInput = {
+  courseId?: string;
   materialId?: string;
   runtime?: string;
   source?: string;
@@ -69,6 +78,7 @@ export type CreateSubmissionOutput = {
 }
 
 export type ListSubmissionsInput = {
+  courseId?: string;
   after?: string;
   size?: number;
   filters?: ListSubmissionsInput_Filter;
@@ -93,6 +103,7 @@ export type ListSubmissionsOutput = {
 }
 
 export type DescribeSubmissionInput = {
+  courseId?: string;
   submissionId?: string;
 }
 
@@ -101,6 +112,7 @@ export type DescribeSubmissionOutput = {
 }
 
 export type WatchSubmissionInput = {
+  courseId?: string;
   submissionId?: string;
 }
 
