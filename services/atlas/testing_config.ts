@@ -10,5 +10,6 @@ export type TestingConfig = {
   cpuLimit?: number;
   memoryLimit?: string;
   instanceLimit?: number;
+  interactorTimeLimit?: number;
 }
 

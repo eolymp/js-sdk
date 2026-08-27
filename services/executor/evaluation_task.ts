@@ -16,6 +16,7 @@ export type EvaluationTask = {
   runCount?: number;
   interactiveFollowup?: boolean;
   instanceLimit?: number;
+  interactorTimeLimit?: number;
   preconditions?: EvaluationTask_Precondition[];
   constraints?: EvaluationTask_Constraint[];
   submission?: Script;
