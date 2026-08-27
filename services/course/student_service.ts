@@ -30,105 +30,126 @@ export class StudentService {
   }
 
   CreateStudent(input: CreateStudentInput, opts?: any): Promise<CreateStudentOutput> {
-    const path = "/students";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateStudent(input: UpdateStudentInput, opts?: any): Promise<UpdateStudentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteStudent(input: DeleteStudentInput, opts?: any): Promise<DeleteStudentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeStudent(input: DescribeStudentInput, opts?: any): Promise<DescribeStudentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListStudents(input: ListStudentsInput, opts?: any): Promise<ListStudentsOutput> {
-    const path = "/students";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchStudent(input: WatchStudentInput, opts?: any): _Stream<WatchStudentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/watch";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   JoinCourse(input: JoinCourseInput, opts?: any): Promise<JoinCourseOutput> {
-    const path = "/join";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/join";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
-    const path = "/viewer/student";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/viewer/student";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListStudentAssignments(input: ListStudentAssignmentsInput, opts?: any): Promise<ListStudentAssignmentsOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateStudentAssignment(input: UpdateStudentAssignmentInput, opts?: any): Promise<UpdateStudentAssignmentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteStudentAssignment(input: DeleteStudentAssignmentInput, opts?: any): Promise<DeleteStudentAssignmentOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'')+"/assignments";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListStudentGrades(input: ListStudentGradesInput, opts?: any): Promise<ListStudentGradesOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/grades";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'')+"/grades";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListModuleGrades(input: ListModuleGradesInput, opts?: any): Promise<ListModuleGradesOutput> {
-    const path = "/students/"+encodeURIComponent(input.memberId||'')+"/grades/"+encodeURIComponent(input.moduleId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/students/"+encodeURIComponent(input.memberId||'')+"/grades/"+encodeURIComponent(input.moduleId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
     delete(input.memberId);
     delete(input.moduleId);
 
@@ -137,6 +158,7 @@ export class StudentService {
 }
 
 export type CreateStudentInput = {
+  courseId?: string;
   student?: Student;
 }
 
@@ -145,6 +167,7 @@ export type CreateStudentOutput = {
 }
 
 export type UpdateStudentInput = {
+  courseId?: string;
   patch?: string[];
   memberId?: string;
   student?: Student;
@@ -153,12 +176,14 @@ export type UpdateStudentInput = {
 export type UpdateStudentOutput = Record<string, unknown>;
 
 export type DeleteStudentInput = {
+  courseId?: string;
   memberId?: string;
 }
 
 export type DeleteStudentOutput = Record<string, unknown>;
 
 export type DescribeStudentInput = {
+  courseId?: string;
   memberId?: string;
   extra?: string[];
 }
@@ -168,6 +193,7 @@ export type DescribeStudentOutput = {
 }
 
 export type ListStudentsInput = {
+  courseId?: string;
   after?: string;
   offset?: number;
   size?: number;
@@ -191,6 +217,7 @@ export type ListStudentsOutput = {
 }
 
 export type WatchStudentInput = {
+  courseId?: string;
   memberId?: string;
   extra?: string[];
 }
@@ -200,11 +227,14 @@ export type WatchStudentOutput = {
   event?: string;
 }
 
-export type JoinCourseInput = Record<string, unknown>;
+export type JoinCourseInput = {
+  courseId?: string;
+}
 
 export type JoinCourseOutput = Record<string, unknown>;
 
 export type DescribeViewerInput = {
+  courseId?: string;
   extra?: string[];
 }
 
@@ -213,6 +243,7 @@ export type DescribeViewerOutput = {
 }
 
 export type ListStudentAssignmentsInput = {
+  courseId?: string;
   memberId?: string;
   offset?: number;
   size?: number;
@@ -231,6 +262,7 @@ export type ListStudentAssignmentsOutput = {
 }
 
 export type UpdateStudentAssignmentInput = {
+  courseId?: string;
   memberId?: string;
   moduleId?: string;
   startAfter?: string;
@@ -242,6 +274,7 @@ export type UpdateStudentAssignmentInput = {
 export type UpdateStudentAssignmentOutput = Record<string, unknown>;
 
 export type DeleteStudentAssignmentInput = {
+  courseId?: string;
   memberId?: string;
   moduleId?: string;
 }
@@ -249,6 +282,7 @@ export type DeleteStudentAssignmentInput = {
 export type DeleteStudentAssignmentOutput = Record<string, unknown>;
 
 export type ListStudentGradesInput = {
+  courseId?: string;
   memberId?: string;
 }
 
@@ -257,6 +291,7 @@ export type ListStudentGradesOutput = {
 }
 
 export type ListModuleGradesInput = {
+  courseId?: string;
   memberId?: string;
   moduleId?: string;
 }
