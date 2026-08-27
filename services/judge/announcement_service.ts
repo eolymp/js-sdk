@@ -27,91 +27,113 @@ export class AnnouncementService {
   }
 
   CreateAnnouncement(input: CreateAnnouncementInput, opts?: any): Promise<CreateAnnouncementOutput> {
-    const path = "/announcements";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateAnnouncement(input: UpdateAnnouncementInput, opts?: any): Promise<UpdateAnnouncementOutput> {
-    const path = "/announcements/"+encodeURIComponent(input.announcementId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.announcementId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteAnnouncement(input: DeleteAnnouncementInput, opts?: any): Promise<DeleteAnnouncementOutput> {
-    const path = "/announcements/"+encodeURIComponent(input.announcementId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.announcementId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ReadAnnouncement(input: ReadAnnouncementInput, opts?: any): Promise<ReadAnnouncementOutput> {
-    const path = "/announcements/"+encodeURIComponent(input.announcementId||'')+"/read";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'')+"/read";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.announcementId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeAnnouncement(input: DescribeAnnouncementInput, opts?: any): Promise<DescribeAnnouncementOutput> {
-    const path = "/announcements/"+encodeURIComponent(input.announcementId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.announcementId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeAnnouncementStatus(input: DescribeAnnouncementStatusInput, opts?: any): Promise<DescribeAnnouncementStatusOutput> {
-    const path = "/announcements/"+encodeURIComponent(input.announcementId||'')+"/status";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'')+"/status";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.announcementId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListAnnouncements(input: ListAnnouncementsInput, opts?: any): Promise<ListAnnouncementsOutput> {
-    const path = "/announcements";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchAnnouncement(input: WatchAnnouncementInput, opts?: any): _Stream<WatchAnnouncementOutput> {
-    const path = "/announcements/"+encodeURIComponent(input.announcementId||'')+"/watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements/"+encodeURIComponent(input.announcementId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.announcementId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   WatchAnnouncementsList(input: WatchAnnouncementsListInput, opts?: any): _Stream<WatchAnnouncementsListOutput> {
-    const path = "/announcements:watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/announcements:watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   DescribeAnnouncementSummary(input: DescribeAnnouncementSummaryInput, opts?: any): Promise<DescribeAnnouncementSummaryOutput> {
-    const path = "/summary/announcements";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/summary/announcements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchAnnouncementSummary(input: WatchAnnouncementSummaryInput, opts?: any): _Stream<WatchAnnouncementSummaryOutput> {
-    const path = "/summary/announcements/watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/summary/announcements/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 }
 
 export type CreateAnnouncementInput = {
+  contestId?: string;
   announcement?: Announcement;
 }
 
@@ -120,6 +142,7 @@ export type CreateAnnouncementOutput = {
 }
 
 export type UpdateAnnouncementInput = {
+  contestId?: string;
   announcementId?: string;
   announcement?: Announcement;
 }
@@ -127,18 +150,21 @@ export type UpdateAnnouncementInput = {
 export type UpdateAnnouncementOutput = Record<string, unknown>;
 
 export type DeleteAnnouncementInput = {
+  contestId?: string;
   announcementId?: string;
 }
 
 export type DeleteAnnouncementOutput = Record<string, unknown>;
 
 export type ReadAnnouncementInput = {
+  contestId?: string;
   announcementId?: string;
 }
 
 export type ReadAnnouncementOutput = Record<string, unknown>;
 
 export type DescribeAnnouncementInput = {
+  contestId?: string;
   announcementId?: string;
   extra?: string[];
 }
@@ -148,6 +174,7 @@ export type DescribeAnnouncementOutput = {
 }
 
 export type DescribeAnnouncementStatusInput = {
+  contestId?: string;
   announcementId?: string;
 }
 
@@ -156,6 +183,7 @@ export type DescribeAnnouncementStatusOutput = {
 }
 
 export type ListAnnouncementsInput = {
+  contestId?: string;
   offset?: number;
   size?: number;
   filters?: ListAnnouncementsInput_Filter;
@@ -173,6 +201,7 @@ export type ListAnnouncementsOutput = {
 }
 
 export type WatchAnnouncementInput = {
+  contestId?: string;
   announcementId?: string;
   extra?: string[];
 }
@@ -183,6 +212,7 @@ export type WatchAnnouncementOutput = {
 }
 
 export type WatchAnnouncementsListInput = {
+  contestId?: string;
   extra?: string[];
 }
 
@@ -191,13 +221,17 @@ export type WatchAnnouncementsListOutput = {
   announcement?: Announcement;
 }
 
-export type DescribeAnnouncementSummaryInput = Record<string, unknown>;
+export type DescribeAnnouncementSummaryInput = {
+  contestId?: string;
+}
 
 export type DescribeAnnouncementSummaryOutput = {
   summary?: AnnouncementSummary;
 }
 
-export type WatchAnnouncementSummaryInput = Record<string, unknown>;
+export type WatchAnnouncementSummaryInput = {
+  contestId?: string;
+}
 
 export type WatchAnnouncementSummaryOutput = {
   summary?: AnnouncementSummary;
