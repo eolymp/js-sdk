@@ -28,93 +28,108 @@ export class SubmissionService {
   }
 
   CreateSubmission(input: CreateSubmissionInput, opts?: any): Promise<CreateSubmissionOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/submissions";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/submissions";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListSubmissions(input: ListSubmissionsInput, opts?: any): Promise<ListSubmissionsOutput> {
-    const path = "/submissions";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeSubmission(input: DescribeSubmissionInput, opts?: any): Promise<DescribeSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.submissionId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   PrintSubmission(input: PrintSubmissionInput, opts?: any): Promise<PrintSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/print";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/print";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.submissionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   WatchSubmission(input: WatchSubmissionInput, opts?: any): _Stream<WatchSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.submissionId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   WatchSubmissionsList(input: WatchSubmissionsListInput, opts?: any): _Stream<WatchSubmissionsListOutput> {
-    const path = "/submissions:watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions:watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   CompareSubmissions(input: CompareSubmissionsInput, opts?: any): Promise<CompareSubmissionsOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/compare";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/compare";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.submissionId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RetestSubmission(input: RetestSubmissionInput, opts?: any): Promise<RetestSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.submissionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteSubmission(input: DeleteSubmissionInput, opts?: any): Promise<DeleteSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.submissionId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   RestoreSubmission(input: RestoreSubmissionInput, opts?: any): Promise<RestoreSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/restore";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/restore";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.submissionId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   RetestProblem(input: RetestProblemInput, opts?: any): Promise<RetestProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/retest";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/retest";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
@@ -122,6 +137,7 @@ export class SubmissionService {
 }
 
 export type CompareSubmissionsInput = {
+  contestId?: string;
   submissionId?: string;
   otherSubmissionId?: string;
 }
