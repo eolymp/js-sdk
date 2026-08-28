@@ -18,25 +18,30 @@ export class AchievementService {
   }
 
   AssignAchievement(input: AssignAchievementInput, opts?: any): Promise<AssignAchievementOutput> {
-    const path = "/achievements/"+encodeURIComponent(input.achievementId||'');
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/achievements/"+encodeURIComponent(input.achievementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
     delete(input.achievementId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   UnassignAchievement(input: UnassignAchievementInput, opts?: any): Promise<UnassignAchievementOutput> {
-    const path = "/achievements/"+encodeURIComponent(input.achievementId||'');
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/achievements/"+encodeURIComponent(input.achievementId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
     delete(input.achievementId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListAchievements(input: ListAchievementsInput, opts?: any): Promise<ListAchievementsOutput> {
-    const path = "/achievements";
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/achievements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -52,6 +57,7 @@ export type AchievementAssignedEvent = {
 }
 
 export type AssignAchievementInput = {
+  memberId?: string;
   achievementId?: string;
   setTo?: number;
   incBy?: number;
@@ -64,12 +70,14 @@ export type AssignAchievementOutput = {
 }
 
 export type UnassignAchievementInput = {
+  memberId?: string;
   achievementId?: string;
 }
 
 export type UnassignAchievementOutput = Record<string, unknown>;
 
 export type ListAchievementsInput = {
+  memberId?: string;
   locale?: string;
   after?: string;
   size?: number;
