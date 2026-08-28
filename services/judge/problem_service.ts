@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Editorial } from "../atlas/editorial"
+import { Question } from "../atlas/question"
 import { Runtime } from "../runtime/runtime"
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Template } from "./template"
@@ -90,6 +91,16 @@ export class ProblemService {
 
   ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListQuestions(input: ListQuestionsInput, opts?: any): Promise<ListQuestionsOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/questions";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -230,6 +241,16 @@ export type ListStatementsInput = {
 export type ListStatementsOutput = {
   total?: number;
   items?: Problem_Statement[];
+}
+
+export type ListQuestionsInput = {
+  contestId?: string;
+  problemId?: string;
+}
+
+export type ListQuestionsOutput = {
+  total?: number;
+  items?: Question[];
 }
 
 export type DescribeEditorialInput = {

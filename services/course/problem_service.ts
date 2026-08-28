@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Template } from "../atlas/code_template"
+import { Question } from "../atlas/question"
 import { Statement } from "../atlas/statement"
 import { Test } from "../atlas/testing_test"
 import { Runtime } from "../runtime/runtime"
@@ -32,6 +33,12 @@ export class ProblemService {
 
   ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
     const path = "/statements";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListQuestions(input: ListQuestionsInput, opts?: any): Promise<ListQuestionsOutput> {
+    const path = "/questions";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -120,6 +127,13 @@ export type ListStatementsInput = Record<string, unknown>;
 export type ListStatementsOutput = {
   total?: number;
   items?: Statement[];
+}
+
+export type ListQuestionsInput = Record<string, unknown>;
+
+export type ListQuestionsOutput = {
+  total?: number;
+  items?: Question[];
 }
 
 export type LookupStatementInput = {
