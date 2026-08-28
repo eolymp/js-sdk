@@ -30,106 +30,134 @@ export class ParticipantService {
   }
 
   AssignParticipant(input: AssignParticipantInput, opts?: any): Promise<AssignParticipantOutput> {
-    const path = "/participants";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   EnableParticipant(input: EnableParticipantInput, opts?: any): Promise<EnableParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/enable";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/enable";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DisableParticipant(input: DisableParticipantInput, opts?: any): Promise<DisableParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/disable";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/disable";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateParticipant(input: UpdateParticipantInput, opts?: any): Promise<UpdateParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DisqualifyParticipant(input: DisqualifyParticipantInput, opts?: any): Promise<DisqualifyParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/disqualify";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/disqualify";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteParticipant(input: DeleteParticipantInput, opts?: any): Promise<DeleteParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeParticipant(input: DescribeParticipantInput, opts?: any): Promise<DescribeParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListParticipants(input: ListParticipantsInput, opts?: any): Promise<ListParticipantsOutput> {
-    const path = "/participants";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchParticipant(input: WatchParticipantInput, opts?: any): _Stream<WatchParticipantOutput> {
-    const path = "/participants/"+encodeURIComponent(input.participantId||'')+"/watch";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.participantId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   JoinContest(input: JoinContestInput, opts?: any): Promise<JoinContestOutput> {
-    const path = "/join";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/join";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
-    const path = "/introspect";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   StartContest(input: StartContestInput, opts?: any): Promise<StartContestOutput> {
-    const path = "/start";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/start";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   PauseContest(input: PauseContestInput, opts?: any): Promise<PauseContestOutput> {
-    const path = "/pause";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/pause";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   FinishContest(input: FinishContestInput, opts?: any): Promise<FinishContestOutput> {
-    const path = "/finish";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/finish";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
