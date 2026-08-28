@@ -20,114 +20,136 @@ export class LocalizationService {
   }
 
   CreateTerm(input: CreateTermInput, opts?: any): Promise<CreateTermOutput> {
-    const path = "/terms";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListTerms(input: ListTermsInput, opts?: any): Promise<ListTermsOutput> {
-    const path = "/terms";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   UpdateTerm(input: UpdateTermInput, opts?: any): Promise<UpdateTermOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RestoreTerm(input: RestoreTermInput, opts?: any): Promise<RestoreTermOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/restore";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/restore";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeprecateTerm(input: DeprecateTermInput, opts?: any): Promise<DeprecateTermOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/deprecate";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/deprecate";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DeleteTerm(input: DeleteTermInput, opts?: any): Promise<DeleteTermOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeTerm(input: DescribeTermInput, opts?: any): Promise<DescribeTermOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ImportTerms(input: ImportTermsInput, opts?: any): Promise<ImportTermsOutput> {
-    const path = "/terms";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   AddLocale(input: AddLocaleInput, opts?: any): Promise<AddLocaleOutput> {
-    const path = "/locales/"+encodeURIComponent(input.localeCode||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/locales/"+encodeURIComponent(input.localeCode||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.localeCode);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RemoveLocale(input: RemoveLocaleInput, opts?: any): Promise<RemoveLocaleOutput> {
-    const path = "/locales/"+encodeURIComponent(input.localeCode||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/locales/"+encodeURIComponent(input.localeCode||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.localeCode);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   ListLocales(input: ListLocalesInput, opts?: any): Promise<ListLocalesOutput> {
-    const path = "/locales";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/locales";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   TranslateTerm(input: TranslateTermInput, opts?: any): Promise<TranslateTermOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListTranslations(input: ListTranslationsInput, opts?: any): Promise<ListTranslationsOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/translations";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DeleteTranslation(input: DeleteTranslationInput, opts?: any): Promise<DeleteTranslationOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
     delete(input.translationId);
 
@@ -135,9 +157,10 @@ export class LocalizationService {
   }
 
   SuggestTranslation(input: SuggestTranslationInput, opts?: any): Promise<SuggestTranslationOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/suggestions/"+encodeURIComponent(input.locale||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/suggestions/"+encodeURIComponent(input.locale||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
     delete(input.locale);
 
@@ -145,9 +168,10 @@ export class LocalizationService {
   }
 
   UpdateTranslation(input: UpdateTranslationInput, opts?: any): Promise<UpdateTranslationOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
     delete(input.translationId);
 
@@ -155,9 +179,10 @@ export class LocalizationService {
   }
 
   ApproveTranslation(input: ApproveTranslationInput, opts?: any): Promise<ApproveTranslationOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'')+"/approve";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'')+"/approve";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
     delete(input.translationId);
 
@@ -165,9 +190,10 @@ export class LocalizationService {
   }
 
   RejectTranslation(input: RejectTranslationInput, opts?: any): Promise<RejectTranslationOutput> {
-    const path = "/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'')+"/reject";
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/terms/"+encodeURIComponent(input.termId||'')+"/translations/"+encodeURIComponent(input.translationId||'')+"/reject";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.termId);
     delete(input.translationId);
 
@@ -175,27 +201,30 @@ export class LocalizationService {
   }
 
   ImportTranslations(input: ImportTranslationsInput, opts?: any): Promise<ImportTranslationsOutput> {
-    const path = "/translations/"+encodeURIComponent(input.locale||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/translations/"+encodeURIComponent(input.locale||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.locale);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   ExportTranslations(input: ExportTranslationsInput, opts?: any): Promise<ExportTranslationsOutput> {
-    const path = "/translations/"+encodeURIComponent(input.locale||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/translations/"+encodeURIComponent(input.locale||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.locale);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListTranslationPairs(input: ListTranslationPairsInput, opts?: any): Promise<ListTranslationPairsOutput> {
-    const path = "/translate/"+encodeURIComponent(input.locale||'');
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/translate/"+encodeURIComponent(input.locale||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
     delete(input.locale);
 
     return this.cli.call("GET", this.url+path, input, opts);
@@ -203,6 +232,7 @@ export class LocalizationService {
 }
 
 export type CreateTermInput = {
+  projectId?: string;
   term?: Term;
 }
 
@@ -211,6 +241,7 @@ export type CreateTermOutput = {
 }
 
 export type ImportTermsInput = {
+  projectId?: string;
   terms?: Term[];
 }
 
@@ -221,6 +252,7 @@ export type ImportTermsOutput = {
 }
 
 export type ListTermsInput = {
+  projectId?: string;
   offset?: number;
   size?: number;
   filters?: ListTermsInput_Filter;
@@ -246,6 +278,7 @@ export type ListTermsOutput = {
 }
 
 export type UpdateTermInput = {
+  projectId?: string;
   termId?: string;
   term?: Term;
 }
@@ -253,24 +286,28 @@ export type UpdateTermInput = {
 export type UpdateTermOutput = Record<string, unknown>;
 
 export type RestoreTermInput = {
+  projectId?: string;
   termId?: string;
 }
 
 export type RestoreTermOutput = Record<string, unknown>;
 
 export type DeprecateTermInput = {
+  projectId?: string;
   termId?: string;
 }
 
 export type DeprecateTermOutput = Record<string, unknown>;
 
 export type DeleteTermInput = {
+  projectId?: string;
   termId?: string;
 }
 
 export type DeleteTermOutput = Record<string, unknown>;
 
 export type DescribeTermInput = {
+  projectId?: string;
   termId?: string;
 }
 
@@ -279,18 +316,21 @@ export type DescribeTermOutput = {
 }
 
 export type AddLocaleInput = {
+  projectId?: string;
   localeCode?: string;
 }
 
 export type AddLocaleOutput = Record<string, unknown>;
 
 export type RemoveLocaleInput = {
+  projectId?: string;
   localeCode?: string;
 }
 
 export type RemoveLocaleOutput = Record<string, unknown>;
 
 export type ListLocalesInput = {
+  projectId?: string;
   offset?: number;
   size?: number;
   filters?: ListLocalesInput_Filter;
@@ -315,6 +355,7 @@ export type ListLocalesOutput_Locale = {
 }
 
 export type TranslateTermInput = {
+  projectId?: string;
   termId?: string;
   translation?: Translation;
 }
@@ -324,6 +365,7 @@ export type TranslateTermOutput = {
 }
 
 export type ListTranslationsInput = {
+  projectId?: string;
   termId?: string;
   offset?: number;
   size?: number;
@@ -343,6 +385,7 @@ export type ListTranslationsOutput = {
 }
 
 export type SuggestTranslationInput = {
+  projectId?: string;
   termId?: string;
   locale?: string;
 }
@@ -352,6 +395,7 @@ export type SuggestTranslationOutput = {
 }
 
 export type UpdateTranslationInput = {
+  projectId?: string;
   termId?: string;
   translationId?: string;
   translation?: Translation;
@@ -360,6 +404,7 @@ export type UpdateTranslationInput = {
 export type UpdateTranslationOutput = Record<string, unknown>;
 
 export type ApproveTranslationInput = {
+  projectId?: string;
   termId?: string;
   translationId?: string;
 }
@@ -367,6 +412,7 @@ export type ApproveTranslationInput = {
 export type ApproveTranslationOutput = Record<string, unknown>;
 
 export type RejectTranslationInput = {
+  projectId?: string;
   termId?: string;
   translationId?: string;
 }
@@ -374,6 +420,7 @@ export type RejectTranslationInput = {
 export type RejectTranslationOutput = Record<string, unknown>;
 
 export type DeleteTranslationInput = {
+  projectId?: string;
   termId?: string;
   translationId?: string;
 }
@@ -381,6 +428,7 @@ export type DeleteTranslationInput = {
 export type DeleteTranslationOutput = Record<string, unknown>;
 
 export type DescribeTranslationInput = {
+  projectId?: string;
   termId?: string;
 }
 
@@ -389,6 +437,7 @@ export type DescribeTranslationOutput = {
 }
 
 export type ImportTranslationsInput = {
+  projectId?: string;
   locale?: string;
   translations?: Record<string, string>;
 }
@@ -398,6 +447,7 @@ export type ImportTranslationsOutput = {
 }
 
 export type ExportTranslationsInput = {
+  projectId?: string;
   locale?: string;
 }
 
@@ -406,6 +456,7 @@ export type ExportTranslationsOutput = {
 }
 
 export type ListTranslationPairsInput = {
+  projectId?: string;
   locale?: string;
   source?: string;
   size?: number;
