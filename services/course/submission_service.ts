@@ -79,6 +79,7 @@ export type CreateSubmissionOutput = {
 }
 
 export type ListSubmissionsInput = {
+  materialId?: string;
   courseId?: string;
   after?: string;
   size?: number;
@@ -104,6 +105,7 @@ export type ListSubmissionsOutput = {
 }
 
 export type DescribeSubmissionInput = {
+  materialId?: string;
   courseId?: string;
   submissionId?: string;
 }
@@ -113,6 +115,7 @@ export type DescribeSubmissionOutput = {
 }
 
 export type WatchSubmissionInput = {
+  materialId?: string;
   courseId?: string;
   submissionId?: string;
 }

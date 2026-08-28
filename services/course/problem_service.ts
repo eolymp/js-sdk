@@ -32,104 +32,154 @@ export class ProblemService {
   }
 
   ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
-    const path = "/statements";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/statements";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListQuestions(input: ListQuestionsInput, opts?: any): Promise<ListQuestionsOutput> {
-    const path = "/questions";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/questions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   LookupStatement(input: LookupStatementInput, opts?: any): Promise<LookupStatementOutput> {
-    const path = "/statements:lookup";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/statements:lookup";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {
-    const path = "/examples";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/examples";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateSubmission(input: CreateSubmissionInput, opts?: any): Promise<CreateSubmissionOutput> {
-    const path = "/submissions";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListSubmissions(input: ListSubmissionsInput, opts?: any): Promise<ListSubmissionsOutput> {
-    const path = "/submissions";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/submissions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeSubmission(input: DescribeSubmissionInput, opts?: any): Promise<DescribeSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
     delete(input.submissionId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchSubmission(input: WatchSubmissionInput, opts?: any): _Stream<WatchSubmissionOutput> {
-    const path = "/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/submissions/"+encodeURIComponent(input.submissionId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
     delete(input.submissionId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
-    const path = "/template";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/template";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   CreateRun(input: CreateRunInput, opts?: any): Promise<CreateRunOutput> {
-    const path = "/runs";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/runs";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   DescribeRun(input: DescribeRunInput, opts?: any): Promise<DescribeRunOutput> {
-    const path = "/runs/"+encodeURIComponent(input.runId||'');
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/runs/"+encodeURIComponent(input.runId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
     delete(input.runId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   WatchRun(input: WatchRunInput, opts?: any): _Stream<WatchRunOutput> {
-    const path = "/runs/"+encodeURIComponent(input.runId||'')+"/watch";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/runs/"+encodeURIComponent(input.runId||'')+"/watch";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
     delete(input.runId);
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
 
   ListRuntimes(input: ListRuntimesInput, opts?: any): Promise<ListRuntimesOutput> {
-    const path = "/runtime";
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/runtime";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
-export type ListStatementsInput = Record<string, unknown>;
+export type ListStatementsInput = {
+  courseId?: string;
+  materialId?: string;
+}
 
 export type ListStatementsOutput = {
   total?: number;
   items?: Statement[];
 }
 
-export type ListQuestionsInput = Record<string, unknown>;
+export type ListQuestionsInput = {
+  courseId?: string;
+  materialId?: string;
+}
 
 export type ListQuestionsOutput = {
   total?: number;
@@ -137,6 +187,8 @@ export type ListQuestionsOutput = {
 }
 
 export type LookupStatementInput = {
+  courseId?: string;
+  materialId?: string;
   locale?: string;
 }
 
@@ -144,13 +196,18 @@ export type LookupStatementOutput = {
   statement?: Statement;
 }
 
-export type ListExamplesInput = Record<string, unknown>;
+export type ListExamplesInput = {
+  courseId?: string;
+  materialId?: string;
+}
 
 export type ListExamplesOutput = {
   examples?: Test[];
 }
 
 export type LookupCodeTemplateInput = {
+  courseId?: string;
+  materialId?: string;
   runtime?: string;
 }
 
@@ -158,7 +215,10 @@ export type LookupCodeTemplateOutput = {
   template?: Template;
 }
 
-export type ListRuntimesInput = Record<string, unknown>;
+export type ListRuntimesInput = {
+  courseId?: string;
+  materialId?: string;
+}
 
 export type ListRuntimesOutput = {
   total?: number;
