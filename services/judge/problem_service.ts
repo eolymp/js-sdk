@@ -20,57 +20,68 @@ export class ProblemService {
   }
 
   ImportProblem(input: ImportProblemInput, opts?: any): Promise<ImportProblemOutput> {
-    const path = "/problems";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateProblem(input: UpdateProblemInput, opts?: any): Promise<UpdateProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   ListProblems(input: ListProblemsInput, opts?: any): Promise<ListProblemsOutput> {
-    const path = "/problems";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeProblem(input: DescribeProblemInput, opts?: any): Promise<DescribeProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DeleteProblem(input: DeleteProblemInput, opts?: any): Promise<DeleteProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   LookupCodeTemplate(input: LookupCodeTemplateInput, opts?: any): Promise<LookupCodeTemplateOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/lookup-template";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/lookup-template";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeCodeTemplate(input: DescribeCodeTemplateInput, opts?: any): Promise<DescribeCodeTemplateOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/templates/"+encodeURIComponent(input.templateId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
     delete(input.templateId);
 
@@ -78,58 +89,67 @@ export class ProblemService {
   }
 
   ListStatements(input: ListStatementsInput, opts?: any): Promise<ListStatementsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/statements";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   DescribeEditorial(input: DescribeEditorialInput, opts?: any): Promise<DescribeEditorialOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/editorial";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/editorial";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListAttachments(input: ListAttachmentsInput, opts?: any): Promise<ListAttachmentsOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListExamples(input: ListExamplesInput, opts?: any): Promise<ListExamplesOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/examples";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListRuntimes(input: ListRuntimesInput, opts?: any): Promise<ListRuntimesOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/runtime";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/runtime";
 
     // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
     delete(input.problemId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ExportProblems(input: ExportProblemsInput, opts?: any): Promise<ExportProblemsOutput> {
-    const path = "/problems:export";
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems:export";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
 export type ImportProblemInput = {
+  contestId?: string;
   importId?: string;
   importIds?: string[];
   index?: number;
@@ -143,6 +163,7 @@ export type ImportProblemOutput = {
 }
 
 export type UpdateProblemInput = {
+  contestId?: string;
   patch?: string[];
   problemId?: string;
   problem?: Problem;
@@ -151,12 +172,14 @@ export type UpdateProblemInput = {
 export type UpdateProblemOutput = Record<string, unknown>;
 
 export type DeleteProblemInput = {
+  contestId?: string;
   problemId?: string;
 }
 
 export type DeleteProblemOutput = Record<string, unknown>;
 
 export type ListProblemsInput = {
+  contestId?: string;
   offset?: number;
   size?: number;
   locale?: string;
@@ -169,6 +192,7 @@ export type ListProblemsOutput = {
 }
 
 export type DescribeProblemInput = {
+  contestId?: string;
   problemId?: string;
   locale?: string;
   extra?: string[];
@@ -179,6 +203,7 @@ export type DescribeProblemOutput = {
 }
 
 export type DescribeCodeTemplateInput = {
+  contestId?: string;
   problemId?: string;
   templateId?: string;
 }
@@ -188,6 +213,7 @@ export type DescribeCodeTemplateOutput = {
 }
 
 export type LookupCodeTemplateInput = {
+  contestId?: string;
   problemId?: string;
   runtime?: string;
 }
@@ -197,6 +223,7 @@ export type LookupCodeTemplateOutput = {
 }
 
 export type ListStatementsInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -206,6 +233,7 @@ export type ListStatementsOutput = {
 }
 
 export type DescribeEditorialInput = {
+  contestId?: string;
   problemId?: string;
   locale?: string;
   extra?: string[];
@@ -216,6 +244,7 @@ export type DescribeEditorialOutput = {
 }
 
 export type ListAttachmentsInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -225,6 +254,7 @@ export type ListAttachmentsOutput = {
 }
 
 export type ListExamplesInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -234,6 +264,7 @@ export type ListExamplesOutput = {
 }
 
 export type ListRuntimesInput = {
+  contestId?: string;
   problemId?: string;
 }
 
@@ -243,6 +274,7 @@ export type ListRuntimesOutput = {
 }
 
 export type ExportProblemsInput = {
+  contestId?: string;
   problems?: string[];
   locale?: string;
 }
