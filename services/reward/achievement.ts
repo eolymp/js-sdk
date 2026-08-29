@@ -12,13 +12,17 @@ export type Achievement = {
   name?: string;
   imageUrl?: string;
   summary?: Content;
+  locale?: string;
+  locales?: string[];
   cursor?: string;
 }
 
-export type Achievement_Translation = {
-  id?: string;
-  locale?: string;
+export type Achievement_Patch = {
+  value?: number;
+  threshold?: number;
+  multiAward?: boolean;
   name?: string;
+  imageUrl?: string;
   summary?: Content;
 }
 
