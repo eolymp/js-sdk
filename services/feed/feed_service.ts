@@ -18,13 +18,17 @@ export class FeedService {
   }
 
   ListEntries(input: ListEntriesInput, opts?: any): Promise<ListEntriesOutput> {
-    const path = "/feed";
+    const path = "/members/"+encodeURIComponent(input.memberId||'')+"/feed";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.memberId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 }
 
 export type ListEntriesInput = {
+  memberId?: string;
   size?: number;
   after?: string;
   filters?: ListEntriesInput_Filter;
