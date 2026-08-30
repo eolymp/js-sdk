@@ -7,13 +7,11 @@ export type Quota = {
   singleSingOn?: boolean;
   dedicatedUserDatabase?: boolean;
   attributesPerSpace?: number;
-  customerSupportReplyTime?: number;
   allowDiscussions?: boolean;
   auditLog?: boolean;
   achievementsPerSpace?: number;
   printersPerSpace?: number;
   evaluationsBySeatPerMonth?: number;
-  priorityEvaluationQueue?: boolean;
   plagiarismAnalysis?: boolean;
   submissionEvaluationLimit?: number;
   membersPerSpace?: number;
