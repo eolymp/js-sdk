@@ -84,6 +84,7 @@ export type MessageChangedEvent = {
 }
 
 export type DescribeMessageInput = {
+  threadId?: string;
   messageId?: string;
   render?: boolean;
   extra?: string[];
@@ -94,6 +95,7 @@ export type DescribeMessageOutput = {
 }
 
 export type ListMessagesInput = {
+  threadId?: string;
   render?: boolean;
   after?: string;
   size?: number;
@@ -120,6 +122,7 @@ export type ListMessagesOutput = {
 }
 
 export type PostMessageInput = {
+  threadId?: string;
   message?: Message;
   replyTo?: string;
 }
@@ -129,6 +132,7 @@ export type PostMessageOutput = {
 }
 
 export type UpdateMessageInput = {
+  threadId?: string;
   messageId?: string;
   message?: Message;
 }
@@ -136,6 +140,7 @@ export type UpdateMessageInput = {
 export type UpdateMessageOutput = Record<string, unknown>;
 
 export type DeleteMessageInput = {
+  threadId?: string;
   messageId?: string;
   reason?: string;
 }
@@ -143,6 +148,7 @@ export type DeleteMessageInput = {
 export type DeleteMessageOutput = Record<string, unknown>;
 
 export type VoteMessageInput = {
+  threadId?: string;
   messageId?: string;
   vote?: number;
 }
@@ -152,6 +158,7 @@ export type VoteMessageOutput = {
 }
 
 export type ListMessageChangesInput = {
+  threadId?: string;
   messageId?: string;
 }
 

@@ -29,13 +29,16 @@ export class SubscriptionService {
   }
 }
 
-export type DescribeSubscriptionInput = Record<string, unknown>;
+export type DescribeSubscriptionInput = {
+  threadId?: string;
+}
 
 export type DescribeSubscriptionOutput = {
   subscription?: Subscription;
 }
 
 export type UpdateSubscriptionInput = {
+  threadId?: string;
   subscription?: Subscription;
 }
 
