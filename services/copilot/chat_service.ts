@@ -107,6 +107,7 @@ export type DescribeChatOutput = {
 export type ListChatsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   query?: string;
   filters?: ListChatsInput_Filter;
   sort?: string;

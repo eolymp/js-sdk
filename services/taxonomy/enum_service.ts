@@ -171,6 +171,7 @@ export type DescribeEnumOutput = {
 export type ListEnumsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListEnumsInput_Filter;
 }
 
@@ -224,6 +225,7 @@ export type ListValuesInput = {
   enumId?: string;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListValuesInput_Filter;
   locale?: string;
 }

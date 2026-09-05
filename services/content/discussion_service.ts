@@ -124,6 +124,7 @@ export type ListMessagesInput = {
   size?: number;
   sort?: string;
   order?: string;
+  search?: string;
   filters?: ListMessagesInput_Filter;
   extra?: string[];
 }

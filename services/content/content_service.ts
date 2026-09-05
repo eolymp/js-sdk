@@ -97,6 +97,7 @@ export type DescribeFragmentOutput = {
 export type ListFragmentsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListFragmentsInput_Filter;
   sort?: string;
   order?: string;

@@ -96,6 +96,7 @@ export type DescribePolicyOutput = {
 export type ListPoliciesInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListPoliciesInput_Filter;
 }
 

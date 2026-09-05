@@ -82,6 +82,7 @@ export type ListAchievementsInput = {
   after?: string;
   size?: number;
   offset?: number;
+  search?: string;
   filters?: ListAchievementsInput_Filter;
   extra?: string[];
 }

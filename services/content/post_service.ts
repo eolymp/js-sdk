@@ -131,6 +131,7 @@ export type ListPostsInput = {
   offset?: number;
   sort?: string;
   order?: string;
+  search?: string;
   filters?: ListPostsInput_Filter;
   locale?: string;
   extra?: string[];

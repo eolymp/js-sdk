@@ -44,6 +44,7 @@ export type DescribeInstitutionOutput = {
 export type ListInstitutionsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListInstitutionsInput_Filter;
 }
 

@@ -255,6 +255,7 @@ export type ListTermsInput = {
   projectId?: string;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListTermsInput_Filter;
 }
 
@@ -463,6 +464,7 @@ export type ListTranslationPairsInput = {
   offset?: number;
   after?: string;
   before?: string;
+  search?: string;
   filters?: ListTranslationPairsInput_Filter;
 }
 

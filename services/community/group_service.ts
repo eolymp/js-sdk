@@ -95,6 +95,7 @@ export type DescribeGroupOutput = {
 export type ListGroupsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListGroupsInput_Filter;
 }
 

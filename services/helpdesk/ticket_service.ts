@@ -173,6 +173,7 @@ export type ListTicketsInput = {
   render?: boolean;
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListTicketsInput_Filter;
 }
 

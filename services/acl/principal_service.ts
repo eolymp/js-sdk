@@ -90,6 +90,7 @@ export type DescribePrincipalOutput = {
 export type ListPrincipalsInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListPrincipalsInput_Filter;
   sort?: string;
   order?: string;

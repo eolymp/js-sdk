@@ -125,6 +125,7 @@ export type UpdateQuotaOutput = Record<string, unknown>;
 export type ListSpacesInput = {
   offset?: number;
   size?: number;
+  search?: string;
   filters?: ListSpacesInput_Filter;
   extra?: string[];
 }
