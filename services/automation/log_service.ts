@@ -49,6 +49,15 @@ export class LogService {
 
     return this.cli.stream("GET", this.url+path, input, opts);
   }
+
+  InterruptLog(input: InterruptLogInput, opts?: any): Promise<InterruptLogOutput> {
+    const path = "/automation/logs/"+encodeURIComponent(input.logId||'')+"/interrupt";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.logId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ListLogsInput = {
@@ -90,4 +99,10 @@ export type WatchLogOutput = {
   log?: Log;
   message?: Log_Message;
 }
+
+export type InterruptLogInput = {
+  logId?: string;
+}
+
+export type InterruptLogOutput = Record<string, unknown>;
 
