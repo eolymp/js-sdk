@@ -53,6 +53,25 @@ export class ScoreboardService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  AddContestAttribute(input: AddContestAttributeInput, opts?: any): Promise<AddContestAttributeOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard/attributes";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  RemoveContestAttribute(input: RemoveContestAttributeInput, opts?: any): Promise<RemoveContestAttributeOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard/attributes/"+encodeURIComponent(input.attributeKey||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.attributeKey);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
 }
 
 export type DescribeScoreboardInput = {
@@ -101,4 +120,20 @@ export type ExportScoreboardInput = {
 export type ExportScoreboardOutput = {
   exportUrl?: string;
 }
+
+export type AddContestAttributeInput = {
+  contestId?: string;
+  attributeKey?: string;
+  index?: number;
+  label?: string;
+}
+
+export type AddContestAttributeOutput = Record<string, unknown>;
+
+export type RemoveContestAttributeInput = {
+  contestId?: string;
+  attributeKey?: string;
+}
+
+export type RemoveContestAttributeOutput = Record<string, unknown>;
 
