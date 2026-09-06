@@ -3,6 +3,7 @@
 
 import { Editorial } from "../atlas/editorial"
 import { Question } from "../atlas/question"
+import { Widget } from "../atlas/widget"
 import { Runtime } from "../runtime/runtime"
 import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
 import { Template } from "./template"
@@ -101,6 +102,16 @@ export class ProblemService {
 
   ListQuestions(input: ListQuestionsInput, opts?: any): Promise<ListQuestionsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/questions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeWidget(input: DescribeWidgetInput, opts?: any): Promise<DescribeWidgetOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/widget";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -251,6 +262,15 @@ export type ListQuestionsInput = {
 export type ListQuestionsOutput = {
   total?: number;
   items?: Question[];
+}
+
+export type DescribeWidgetInput = {
+  contestId?: string;
+  problemId?: string;
+}
+
+export type DescribeWidgetOutput = {
+  widget?: Widget;
 }
 
 export type DescribeEditorialInput = {

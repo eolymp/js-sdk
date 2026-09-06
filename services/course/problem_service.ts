@@ -5,6 +5,7 @@ import { Template } from "../atlas/code_template"
 import { Question } from "../atlas/question"
 import { Statement } from "../atlas/statement"
 import { Test } from "../atlas/testing_test"
+import { Widget } from "../atlas/widget"
 import { Runtime } from "../runtime/runtime"
 import { CreateRunInput, CreateRunOutput, DescribeRunInput, DescribeRunOutput, WatchRunInput, WatchRunOutput } from "./run_service"
 import { CreateSubmissionInput, CreateSubmissionOutput, DescribeSubmissionInput, DescribeSubmissionOutput, ListSubmissionsInput, ListSubmissionsOutput, WatchSubmissionInput, WatchSubmissionOutput } from "./submission_service"
@@ -43,6 +44,16 @@ export class ProblemService {
 
   ListQuestions(input: ListQuestionsInput, opts?: any): Promise<ListQuestionsOutput> {
     const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/questions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.courseId);
+    delete(input.materialId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeWidget(input: DescribeWidgetInput, opts?: any): Promise<DescribeWidgetOutput> {
+    const path = "/courses/"+encodeURIComponent(input.courseId||'')+"/materials/"+encodeURIComponent(input.materialId||'')+"/widget";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.courseId);
@@ -184,6 +195,15 @@ export type ListQuestionsInput = {
 export type ListQuestionsOutput = {
   total?: number;
   items?: Question[];
+}
+
+export type DescribeWidgetInput = {
+  courseId?: string;
+  materialId?: string;
+}
+
+export type DescribeWidgetOutput = {
+  widget?: Widget;
 }
 
 export type LookupStatementInput = {

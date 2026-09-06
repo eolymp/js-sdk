@@ -19,6 +19,7 @@ export type Submission = {
   sourceUrl?: string;
   quiz?: Submission_Quiz;
   output?: Submission_Output;
+  widget?: Submission_Widget;
   signature?: string;
   status?: string;
   verdict?: string;
@@ -100,6 +101,10 @@ export type Submission_Output_Answer = {
   index?: number;
   filename?: string;
   outputUrl?: string;
+}
+
+export type Submission_Widget = {
+  answer?: string;
 }
 
 export type Submission_Fingerprint = {

@@ -48,6 +48,12 @@ export class AssetService {
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
+  UploadBundle(input: UploadBundleInput, opts?: any): Promise<UploadBundleOutput> {
+    const path = "/assets/bundles";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   StartMultipartUpload(input: StartMultipartUploadInput, opts?: any): Promise<StartMultipartUploadOutput> {
     const path = "/uploads";
 
@@ -220,6 +226,18 @@ export type CloseStreamInput = {
 }
 
 export type CloseStreamOutput = Record<string, unknown>;
+
+export type UploadBundleInput = {
+  name?: string;
+  entrypoint?: string;
+  data?: string;
+}
+
+export type UploadBundleOutput = {
+  bundleUrl?: string;
+  size?: number;
+  files?: string[];
+}
 
 export type UseAssetInput = {
   resource?: string;
