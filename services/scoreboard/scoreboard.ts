@@ -10,6 +10,7 @@ export type Scoreboard = {
   modes?: string[];
   contests?: Scoreboard_Contest[];
   attributes?: Scoreboard_Attribute[];
+  filters?: Scoreboard_Filter[];
 }
 
 export type Scoreboard_Contest = {
@@ -24,6 +25,14 @@ export type Scoreboard_Problem = {
   problemId?: string;
   index?: number;
   title?: string;
+}
+
+export type Scoreboard_Filter = {
+  attributeKey?: string;
+  label?: string;
+  type?: string;
+  choices?: string[];
+  constraints?: string[];
 }
 
 export type Scoreboard_Attribute = {
