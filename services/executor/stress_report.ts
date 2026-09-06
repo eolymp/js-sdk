@@ -9,15 +9,29 @@ export type StressReport = {
   origin?: string;
   metadata?: Record<string, string>;
   agent?: string;
+  status?: string;
   runs?: StressReport_Run[];
   errorMessage?: string;
 }
 
-export type StressReport_Run = {
-  iteration?: number;
+export type StressReport_Result = {
+  name?: string;
   status?: string;
+  unexpected?: boolean;
+  outputUrl?: string;
+  stats?: Stats;
+  checkerStats?: Stats;
+}
+
+export type StressReport_Run = {
+  index?: number;
+  verdict?: string;
+  arguments?: string[];
   inputUrl?: string;
+  answerUrl?: string;
   generatorStats?: Stats;
-  solutionStats?: Stats;
+  validatorStats?: Stats;
+  referenceStats?: Stats;
+  results?: StressReport_Result[];
 }
 
