@@ -13,6 +13,7 @@ export type Test = {
   inactive?: boolean;
   secret?: boolean;
   score?: number;
+  scripted?: boolean;
   generatedInputUrl?: string;
   generatedAnswerUrl?: string;
   inputUrl?: string;

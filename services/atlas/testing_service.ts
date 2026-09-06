@@ -93,6 +93,24 @@ export class TestingService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  DescribeTestScript(input: DescribeTestScriptInput, opts?: any): Promise<DescribeTestScriptOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/test-script";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  RunTestScript(input: RunTestScriptInput, opts?: any): Promise<RunTestScriptOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/test-script";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   CreateTestset(input: CreateTestsetInput, opts?: any): Promise<CreateTestsetOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets";
 
@@ -304,6 +322,31 @@ export type DescribeValidatorInput = {
 
 export type DescribeValidatorOutput = {
   validator?: Validator;
+}
+
+export type DescribeTestScriptInput = {
+  problemId?: string;
+  version?: number;
+}
+
+export type DescribeTestScriptOutput = {
+  source?: string;
+}
+
+export type RunTestScriptInput = {
+  problemId?: string;
+  source?: string;
+  dryRun?: boolean;
+}
+
+export type RunTestScriptOutput = {
+  changes?: RunTestScriptOutput_Change[];
+  output?: string[];
+}
+
+export type RunTestScriptOutput_Change = {
+  operation?: string;
+  test?: Test;
 }
 
 export type ListTestsetsInput = {
