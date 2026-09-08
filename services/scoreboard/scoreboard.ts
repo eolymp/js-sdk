@@ -90,6 +90,7 @@ export type Row_ContestScore = {
 
 export type Row_AttributeValue = {
   attributeKey?: string;
+  type?: string;
   string?: string;
   number?: number;
 }
