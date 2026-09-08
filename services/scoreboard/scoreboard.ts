@@ -18,6 +18,9 @@ export type Scoreboard_Contest = {
   index?: number;
   name?: string;
   imageUrl?: string;
+  status?: string;
+  startsAt?: string;
+  endsAt?: string;
   problems?: Scoreboard_Problem[];
 }
 
