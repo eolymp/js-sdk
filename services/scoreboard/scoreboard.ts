@@ -7,6 +7,7 @@ export type Scoreboard = {
   slug?: string;
   name?: string;
   bestOf?: number;
+  visibility?: string;
   modes?: string[];
   contests?: Scoreboard_Contest[];
   attributes?: Scoreboard_Attribute[];
@@ -49,6 +50,7 @@ export type Scoreboard_Patch = {
   slug?: string;
   name?: string;
   bestOf?: number;
+  visibility?: string;
 }
 
 export type Row = {
