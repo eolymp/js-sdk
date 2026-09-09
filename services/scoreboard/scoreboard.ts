@@ -25,6 +25,10 @@ export type Scoreboard_Contest = {
   problems?: Scoreboard_Problem[];
 }
 
+export type Scoreboard_Contest_Patch = {
+  index?: number;
+}
+
 export type Scoreboard_Problem = {
   problemId?: string;
   index?: number;
@@ -44,6 +48,11 @@ export type Scoreboard_Attribute = {
   index?: number;
   label?: string;
   type?: string;
+}
+
+export type Scoreboard_Attribute_Patch = {
+  index?: number;
+  label?: string;
 }
 
 export type Scoreboard_Patch = {

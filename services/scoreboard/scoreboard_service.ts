@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Row, Scoreboard, Scoreboard_Patch } from "./scoreboard"
+import { Row, Scoreboard, Scoreboard_Attribute_Patch, Scoreboard_Contest_Patch, Scoreboard_Patch } from "./scoreboard"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -65,6 +65,16 @@ export class ScoreboardService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  UpdateScoreboardContest(input: UpdateScoreboardContestInput, opts?: any): Promise<UpdateScoreboardContestOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/contests/"+encodeURIComponent(input.contestId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+    delete(input.contestId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
   RemoveScoreboardContest(input: RemoveScoreboardContestInput, opts?: any): Promise<RemoveScoreboardContestOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/contests/"+encodeURIComponent(input.contestId||'');
 
@@ -82,6 +92,16 @@ export class ScoreboardService {
     delete(input.scoreboardId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateScoreboardAttribute(input: UpdateScoreboardAttributeInput, opts?: any): Promise<UpdateScoreboardAttributeOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/attributes/"+encodeURIComponent(input.attributeKey||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+    delete(input.attributeKey);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   RemoveScoreboardAttribute(input: RemoveScoreboardAttributeInput, opts?: any): Promise<RemoveScoreboardAttributeOutput> {
@@ -178,6 +198,14 @@ export type AddScoreboardContestInput = {
 
 export type AddScoreboardContestOutput = Record<string, unknown>;
 
+export type UpdateScoreboardContestInput = {
+  scoreboardId?: string;
+  contestId?: string;
+  contest?: Scoreboard_Contest_Patch;
+}
+
+export type UpdateScoreboardContestOutput = Record<string, unknown>;
+
 export type RemoveScoreboardContestInput = {
   scoreboardId?: string;
   contestId?: string;
@@ -193,6 +221,14 @@ export type AddScoreboardAttributeInput = {
 }
 
 export type AddScoreboardAttributeOutput = Record<string, unknown>;
+
+export type UpdateScoreboardAttributeInput = {
+  scoreboardId?: string;
+  attributeKey?: string;
+  attribute?: Scoreboard_Attribute_Patch;
+}
+
+export type UpdateScoreboardAttributeOutput = Record<string, unknown>;
 
 export type RemoveScoreboardAttributeInput = {
   scoreboardId?: string;
