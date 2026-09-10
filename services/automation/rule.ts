@@ -12,6 +12,7 @@ export type Rule = {
   inactive?: boolean;
   dryRun?: boolean;
   label?: string;
+  schedule?: string;
   triggerCount?: number;
   actions?: Action[];
   createdAt?: string;
