@@ -215,6 +215,8 @@ export type ListContestsInput = {
   size?: number;
   search?: string;
   filters?: ListContestsInput_Filter;
+  sort?: string;
+  order?: string;
   extra?: string[];
 }
 

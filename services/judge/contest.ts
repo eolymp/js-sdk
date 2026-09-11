@@ -11,6 +11,7 @@ export type Contest = {
   consoleLink?: string;
   name?: string;
   imageUrl?: string;
+  createdAt?: string;
   startsAt?: string;
   endsAt?: string;
   duration?: number;
