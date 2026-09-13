@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Row, Scoreboard, Scoreboard_Attribute_Patch, Scoreboard_Contest_Patch, Scoreboard_Patch } from "./scoreboard"
+import { Row, Scoreboard, Scoreboard_Attribute, Scoreboard_Attribute_Patch, Scoreboard_Contest, Scoreboard_Contest_Patch, Scoreboard_Patch } from "./scoreboard"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -75,6 +75,15 @@ export class ScoreboardService {
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
+  ListScoreboardContests(input: ListScoreboardContestsInput, opts?: any): Promise<ListScoreboardContestsOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/contests";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   RemoveScoreboardContest(input: RemoveScoreboardContestInput, opts?: any): Promise<RemoveScoreboardContestOutput> {
     const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/contests/"+encodeURIComponent(input.contestId||'');
 
@@ -102,6 +111,15 @@ export class ScoreboardService {
     delete(input.attributeKey);
 
     return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  ListScoreboardAttributes(input: ListScoreboardAttributesInput, opts?: any): Promise<ListScoreboardAttributesOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/attributes";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RemoveScoreboardAttribute(input: RemoveScoreboardAttributeInput, opts?: any): Promise<RemoveScoreboardAttributeOutput> {
@@ -206,6 +224,17 @@ export type UpdateScoreboardContestInput = {
 
 export type UpdateScoreboardContestOutput = Record<string, unknown>;
 
+export type ListScoreboardContestsInput = {
+  scoreboardId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListScoreboardContestsOutput = {
+  total?: number;
+  items?: Scoreboard_Contest[];
+}
+
 export type RemoveScoreboardContestInput = {
   scoreboardId?: string;
   contestId?: string;
@@ -229,6 +258,17 @@ export type UpdateScoreboardAttributeInput = {
 }
 
 export type UpdateScoreboardAttributeOutput = Record<string, unknown>;
+
+export type ListScoreboardAttributesInput = {
+  scoreboardId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListScoreboardAttributesOutput = {
+  total?: number;
+  items?: Scoreboard_Attribute[];
+}
 
 export type RemoveScoreboardAttributeInput = {
   scoreboardId?: string;
