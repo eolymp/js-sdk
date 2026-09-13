@@ -30,6 +30,7 @@ export type Submission = {
   percentage?: number;
   timeUsage?: number;
   cpuUsage?: number;
+  timeLimit?: number;
   memoryUsage?: string;
   resourceUsage?: number;
   groups?: Submission_Group[];
@@ -45,6 +46,7 @@ export type Submission_Run = {
   index?: number;
   timeUsage?: number;
   cpuUsage?: number;
+  timeLimit?: number;
   memoryUsage?: string;
   resourceUsage?: number;
   inputUrl?: string;
@@ -71,6 +73,7 @@ export type Submission_Group = {
   feedbackPolicy?: string;
   timeUsage?: number;
   cpuUsage?: number;
+  timeLimit?: number;
   memoryUsage?: string;
   resourceUsage?: number;
   runs?: Submission_Run[];
