@@ -2,7 +2,6 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Contest } from "../judge/contest"
-import { Scoreboard } from "../ranker/scoreboard"
 import { Space } from "../universe/space"
 
 interface _Client {
@@ -55,7 +54,6 @@ export type ResolveNameOutput = {
   target?: Record_Target;
   space?: Space;
   contest?: Contest;
-  scoreboard?: Scoreboard;
   oauth2?: Authorization_OAuth2;
 }
 
