@@ -29,6 +29,7 @@ export type Submission = {
   score?: number;
   percentage?: number;
   timeUsage?: number;
+  timeLimit?: number;
   cpuUsage?: number;
   memoryUsage?: string;
   resourceUsage?: number;
@@ -42,6 +43,8 @@ export type Submission_Run = {
   testId?: string;
   cost?: number;
   score?: number;
+  timeUsage?: number;
+  timeLimit?: number;
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
   memoryUsage?: string;
@@ -59,6 +62,8 @@ export type Submission_Group = {
   score?: number;
   scoringMode?: string;
   feedbackPolicy?: string;
+  timeUsage?: number;
+  timeLimit?: number;
   wallTimeUsage?: number;
   cpuTimeUsage?: number;
   memoryUsage?: string;
