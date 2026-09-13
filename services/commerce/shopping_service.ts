@@ -138,5 +138,6 @@ export type PlaceOrderInput = Record<string, unknown>;
 export type PlaceOrderOutput = {
   orderId?: string;
   orderNumber?: string;
+  checkoutUrl?: string;
 }
 

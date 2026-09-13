@@ -18,6 +18,9 @@ export type ShoppingCart = {
   taxRate?: number;
   taxNote?: string;
   grandTotal?: number;
+  creditAmount?: number;
+  creditDiscount?: number;
+  payableAmount?: number;
 }
 
 export type ShoppingCart_Item = {

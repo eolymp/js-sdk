@@ -75,6 +75,7 @@ export type ListOrdersInput_Filter = {
   reference?: ExpressionID[];
   memberId?: ExpressionID[];
   status?: ExpressionEnum[];
+  paymentStatus?: ExpressionEnum[];
 }
 
 export type ListOrdersOutput = {

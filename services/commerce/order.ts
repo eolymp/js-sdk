@@ -21,11 +21,19 @@ export type Order = {
   taxRate?: number;
   taxNote?: string;
   grandTotal?: number;
+  creditAmount?: number;
+  creditDiscount?: number;
+  payableAmount?: number;
+  paymentStatus?: string;
+  checkoutUrl?: string;
+  paymentId?: string;
   trackingLink?: string;
   trackingNumber?: string;
   createdAt?: string;
   updatedAt?: string;
 }
+
+export type Order_Payment = Record<string, unknown>;
 
 export type Order_Item = {
   id?: string;
