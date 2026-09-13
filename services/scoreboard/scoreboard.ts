@@ -8,6 +8,7 @@ export type Scoreboard = {
   name?: string;
   bestOf?: number;
   visibility?: string;
+  format?: string;
   modes?: string[];
   contests?: Scoreboard_Contest[];
   attributes?: Scoreboard_Attribute[];
