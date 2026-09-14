@@ -18,6 +18,8 @@ export type Product = {
   regularPrice?: number;
   attributes?: Product_Attribute[];
   variants?: Product_Variant[];
+  stripeProductId?: string;
+  stripePriceId?: string;
   cursor?: string;
 }
 

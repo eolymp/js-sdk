@@ -27,6 +27,12 @@ export class StoreService {
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
+
+  SyncCatalog(input: SyncCatalogInput, opts?: any): Promise<SyncCatalogOutput> {
+    const path = "/store/catalog:sync";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type DescribeStoreInput = Record<string, unknown>;
@@ -40,4 +46,10 @@ export type UpdateStoreInput = {
 }
 
 export type UpdateStoreOutput = Record<string, unknown>;
+
+export type SyncCatalogInput = Record<string, unknown>;
+
+export type SyncCatalogOutput = {
+  synced?: number;
+}
 

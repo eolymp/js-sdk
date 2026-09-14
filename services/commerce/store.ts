@@ -5,10 +5,24 @@
 export type Store = {
   currency?: string;
   creditValue?: number;
+  stripeLiveMode?: boolean;
+  stripeLive?: Store_Stripe;
+  stripeTest?: Store_Stripe;
+  catalogSyncedAt?: string;
 }
 
 export type Store_Patch = {
   currency?: string;
   creditValue?: number;
+  stripeLiveMode?: boolean;
+  stripeLive?: Store_Stripe;
+  stripeTest?: Store_Stripe;
+}
+
+export type Store_Stripe = {
+  secretKey?: string;
+  webhookSecret?: string;
+  configured?: boolean;
+  webhookUrl?: string;
 }
 
