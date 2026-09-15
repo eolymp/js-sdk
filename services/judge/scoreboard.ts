@@ -47,6 +47,7 @@ export type Scoreboard_Row = {
 
 export type Scoreboard_Row_Value = {
   columnId?: string;
+  type?: string;
   problemScore?: Scoreboard_Row_ProblemScore;
   string?: string;
   number?: string;
