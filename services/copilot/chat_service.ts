@@ -140,6 +140,7 @@ export type DeleteChatOutput = Record<string, unknown>;
 export type SendMessageInput = {
   chatId?: string;
   model?: string;
+  approveAll?: boolean;
   message?: SendMessageInput_Message;
   approval?: SendMessageInput_Approval;
 }
