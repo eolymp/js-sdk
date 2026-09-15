@@ -212,6 +212,7 @@ export type AddScoreboardContestInput = {
   scoreboardId?: string;
   contestId?: string;
   index?: number;
+  label?: string;
 }
 
 export type AddScoreboardContestOutput = Record<string, unknown>;

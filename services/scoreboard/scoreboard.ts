@@ -18,6 +18,7 @@ export type Scoreboard = {
 export type Scoreboard_Contest = {
   contestId?: string;
   index?: number;
+  label?: string;
   name?: string;
   imageUrl?: string;
   status?: string;
@@ -28,6 +29,7 @@ export type Scoreboard_Contest = {
 
 export type Scoreboard_Contest_Patch = {
   index?: number;
+  label?: string;
 }
 
 export type Scoreboard_Problem = {
