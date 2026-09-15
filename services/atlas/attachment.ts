@@ -7,5 +7,6 @@ export type Attachment = {
   problemId?: string;
   name?: string;
   link?: string;
+  content?: string;
 }
 
