@@ -16,6 +16,18 @@ export type Scoreboard_Column = {
   filterable?: boolean;
 }
 
+export type Scoreboard_Attribute = {
+  attributeKey?: string;
+  index?: number;
+  label?: string;
+  type?: string;
+}
+
+export type Scoreboard_Attribute_Patch = {
+  index?: number;
+  label?: string;
+}
+
 export type Scoreboard_Row = {
   id?: string;
   memberId?: string;

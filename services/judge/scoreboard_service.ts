@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Scoreboard, Scoreboard_Row } from "./scoreboard"
+import { Scoreboard, Scoreboard_Attribute, Scoreboard_Attribute_Patch, Scoreboard_Row } from "./scoreboard"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -61,6 +61,25 @@ export class ScoreboardService {
     delete(input.contestId);
 
     return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateContestAttribute(input: UpdateContestAttributeInput, opts?: any): Promise<UpdateContestAttributeOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard/attributes/"+encodeURIComponent(input.attributeKey||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.attributeKey);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  ListContestAttributes(input: ListContestAttributesInput, opts?: any): Promise<ListContestAttributesOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/scoreboard/attributes";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
   }
 
   RemoveContestAttribute(input: RemoveContestAttributeInput, opts?: any): Promise<RemoveContestAttributeOutput> {
@@ -136,6 +155,25 @@ export type AddContestAttributeInput = {
 }
 
 export type AddContestAttributeOutput = Record<string, unknown>;
+
+export type UpdateContestAttributeInput = {
+  contestId?: string;
+  attributeKey?: string;
+  attribute?: Scoreboard_Attribute_Patch;
+}
+
+export type UpdateContestAttributeOutput = Record<string, unknown>;
+
+export type ListContestAttributesInput = {
+  contestId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListContestAttributesOutput = {
+  total?: number;
+  items?: Scoreboard_Attribute[];
+}
 
 export type RemoveContestAttributeInput = {
   contestId?: string;
