@@ -160,11 +160,10 @@ export class TestingService {
   }
 
   CreateTest(input: CreateTestInput, opts?: any): Promise<CreateTestOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/testsets/"+encodeURIComponent(input.testsetId||'')+"/tests";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/tests";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
-    delete(input.testsetId);
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
