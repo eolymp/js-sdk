@@ -247,6 +247,7 @@ export type ListTicketsOutput = {
 export type ReplyTicketInput = {
   ticketId?: string;
   message?: Content;
+  canned?: string;
   changeStatusTo?: string;
 }
 

@@ -8,6 +8,7 @@ export type Reply = {
   ticketId?: string;
   userId?: string;
   memberId?: string;
+  canned?: string;
   message?: Content;
   createdAt?: string;
 }
