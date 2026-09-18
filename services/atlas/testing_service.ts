@@ -4,7 +4,7 @@
 import { Checker } from "./testing_checker"
 import { TestingConfig } from "./testing_config"
 import { Interactor } from "./testing_interactor"
-import { Test } from "./testing_test"
+import { Test, Test_Patch } from "./testing_test"
 import { Testset } from "./testing_testset"
 import { Validator } from "./testing_validator"
 
@@ -436,11 +436,10 @@ export type CreateTestOutput = {
 }
 
 export type UpdateTestInput = {
-  patch?: string[];
   problemId?: string;
   testsetId?: string;
   testId?: string;
-  test?: Test;
+  test?: Test_Patch;
 }
 
 export type UpdateTestOutput = Record<string, unknown>;

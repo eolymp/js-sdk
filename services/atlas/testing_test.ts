@@ -28,7 +28,25 @@ export type Test = {
   exampleAnswerContent?: string;
 }
 
-export type Test_Patch = Record<string, unknown>;
+export type Test_Patch = {
+  testsetId?: string;
+  index?: number;
+  example?: boolean;
+  score?: number;
+  secret?: boolean;
+  inputUrl?: string;
+  inputGenerator?: Test_Generator;
+  inputContent?: string;
+  answerUrl?: string;
+  answerGenerator?: Test_Generator;
+  answerContent?: string;
+  exampleInputUrl?: string;
+  exampleInputContent?: string;
+  exampleAnswerUrl?: string;
+  exampleAnswerContent?: string;
+  unsetExampleInput?: boolean;
+  unsetExampleAnswer?: boolean;
+}
 
 export type Test_Generator = {
   scriptName?: string;
