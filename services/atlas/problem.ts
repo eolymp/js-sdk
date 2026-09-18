@@ -34,7 +34,15 @@ export type Problem = {
 
 export type Problem_Extra = Record<string, unknown>;
 
-export type Problem_Patch = Record<string, unknown>;
+export type Problem_Patch = {
+  number?: number;
+  visible?: boolean;
+  origin?: string;
+  topics?: string[];
+  difficulty?: number;
+  untopic?: boolean;
+  type?: string;
+}
 
 export type Problem_Constraints = {
   timeLimitMin?: number;

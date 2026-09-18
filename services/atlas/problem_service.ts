@@ -3,7 +3,7 @@
 
 import { Runtime } from "../runtime/runtime"
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Problem } from "./problem"
+import { Problem, Problem_Patch } from "./problem"
 import { Statement } from "./statement"
 import { Version } from "./version"
 
@@ -179,9 +179,8 @@ export type UpdatePrivacyInput = {
 export type UpdatePrivacyOutput = Record<string, unknown>;
 
 export type UpdateProblemInput = {
-  patch?: string[];
   problemId?: string;
-  problem?: Problem;
+  problem?: Problem_Patch;
 }
 
 export type UpdateProblemOutput = Record<string, unknown>;

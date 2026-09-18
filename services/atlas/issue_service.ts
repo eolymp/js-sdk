@@ -2,8 +2,8 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionInt } from "../wellknown/expression"
-import { Issue } from "./issue"
-import { IssueActivity, IssueActivity_Comment } from "./issue_activity"
+import { Issue, Issue_Patch } from "./issue"
+import { IssueActivity, IssueActivity_Comment, IssueActivity_Patch } from "./issue_activity"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -146,9 +146,8 @@ export type CreateIssueOutput = {
 }
 
 export type UpdateIssueInput = {
-  patch?: string[];
   issueId?: string;
-  issue?: Issue;
+  issue?: Issue_Patch;
 }
 
 export type UpdateIssueOutput = Record<string, unknown>;
@@ -183,10 +182,9 @@ export type CreateIssueCommentOutput = {
 }
 
 export type UpdateIssueCommentInput = {
-  patch?: string[];
   issueId?: string;
   commentId?: string;
-  comment?: IssueActivity_Comment;
+  comment?: IssueActivity_Patch;
 }
 
 export type UpdateIssueCommentOutput = Record<string, unknown>;

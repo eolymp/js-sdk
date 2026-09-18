@@ -17,7 +17,9 @@ export type IssueActivity = {
 
 export type IssueActivity_Extra = Record<string, unknown>;
 
-export type IssueActivity_Patch = Record<string, unknown>;
+export type IssueActivity_Patch = {
+  message?: Content;
+}
 
 export type IssueActivity_Comment = {
   message?: Content;

@@ -8,5 +8,9 @@ export type Config = {
   tracingEnabled?: boolean;
 }
 
-export type Config_Patch = Record<string, unknown>;
+export type Config_Patch = {
+  hourlyIpSubmissionLimit?: number;
+  dailyIpSubmissionLimit?: number;
+  tracingEnabled?: boolean;
+}
 

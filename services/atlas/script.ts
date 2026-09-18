@@ -14,5 +14,12 @@ export type Script = {
 
 export type Script_Extra = Record<string, unknown>;
 
-export type Script_Patch = Record<string, unknown>;
+export type Script_Patch = {
+  name?: string;
+  secret?: boolean;
+  runtime?: string;
+  source?: string;
+  files?: File[];
+  unsetFiles?: boolean;
+}
 

@@ -20,5 +20,12 @@ export type Issue = {
 
 export type Issue_Extra = Record<string, unknown>;
 
-export type Issue_Patch = Record<string, unknown>;
+export type Issue_Patch = {
+  status?: string;
+  description?: Content;
+  title?: string;
+  assignee?: string;
+  tags?: string[];
+  untag?: boolean;
+}
 

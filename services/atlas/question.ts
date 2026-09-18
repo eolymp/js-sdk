@@ -16,7 +16,15 @@ export type Question = {
 
 export type Question_Extra = Record<string, unknown>;
 
-export type Question_Patch = Record<string, unknown>;
+export type Question_Patch = {
+  index?: number;
+  type?: string;
+  content?: Content;
+  score?: number;
+  multiple?: boolean;
+  options?: Question_Option[];
+  answers?: string[];
+}
 
 export type Question_Option = {
   id?: string;

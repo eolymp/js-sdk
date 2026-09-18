@@ -15,5 +15,12 @@ export type Editorial = {
 
 export type Editorial_Extra = Record<string, unknown>;
 
-export type Editorial_Patch = Record<string, unknown>;
+export type Editorial_Patch = {
+  locale?: string;
+  content?: Content;
+  downloadLink?: string;
+  automatic?: boolean;
+  draft?: boolean;
+  authorId?: string;
+}
 

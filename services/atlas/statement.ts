@@ -18,5 +18,15 @@ export type Statement = {
 
 export type Statement_Extra = Record<string, unknown>;
 
-export type Statement_Patch = Record<string, unknown>;
+export type Statement_Patch = {
+  locale?: string;
+  title?: string;
+  content?: Content;
+  downloadLink?: string;
+  automatic?: boolean;
+  draft?: boolean;
+  author?: string;
+  source?: string;
+  authorId?: string;
+}
 

@@ -13,5 +13,11 @@ export type Solution = {
   submissionId?: string;
 }
 
-export type Solution_Patch = Record<string, unknown>;
+export type Solution_Patch = {
+  name?: string;
+  secret?: boolean;
+  runtime?: string;
+  source?: string;
+  type?: string;
+}
 
