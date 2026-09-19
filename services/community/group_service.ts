@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Group } from "./group"
+import { Group, Group_Patch } from "./group"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -71,9 +71,8 @@ export type CreateGroupOutput = {
 }
 
 export type UpdateGroupInput = {
-  patch?: string[];
   groupId?: string;
-  group?: Group;
+  group?: Group_Patch;
 }
 
 export type UpdateGroupOutput = Record<string, unknown>;

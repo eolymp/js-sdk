@@ -7,3 +7,7 @@ export type Team = {
   staffed?: boolean;
 }
 
+export type Team_Patch = {
+  name?: string;
+}
+

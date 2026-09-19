@@ -6,3 +6,7 @@ export type Ghost = {
   name?: string;
 }
 
+export type Ghost_Patch = {
+  name?: string;
+}
+

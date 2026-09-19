@@ -13,5 +13,12 @@ export type Group = {
   metadata?: Record<string, string>;
 }
 
-export type Group_Patch = Record<string, unknown>;
+export type Group_Patch = {
+  name?: string;
+  description?: string;
+  externalRef?: string;
+  icon?: string;
+  badge?: string;
+  color?: string;
+}
 

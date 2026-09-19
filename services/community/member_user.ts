@@ -30,6 +30,26 @@ export type User_Preferences = {
   runtime?: string;
 }
 
+export type User_Preferences_Patch = {
+  locale?: string;
+  timezone?: string;
+  runtime?: string;
+}
+
+export type User_Patch = {
+  nickname?: string;
+  email?: string;
+  emailSubscriptions?: string[];
+  unsubscribe?: boolean;
+  password?: string;
+  name?: string;
+  birthday?: string;
+  country?: string;
+  city?: string;
+  pronoun?: string;
+  preferences?: User_Preferences_Patch;
+}
+
 export type User_Alias = {
   nickname?: string;
   changedAt?: string;

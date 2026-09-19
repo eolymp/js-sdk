@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Member, Member_Reference } from "./member"
+import { Member, Member_Patch, Member_Reference } from "./member"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -119,9 +119,8 @@ export type CreateMemberOutput = {
 }
 
 export type UpdateMemberInput = {
-  patch?: string[];
   memberId?: string;
-  member?: Member;
+  member?: Member_Patch;
 }
 
 export type UpdateMemberOutput = Record<string, unknown>;
