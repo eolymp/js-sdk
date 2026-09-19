@@ -20,5 +20,7 @@ export type Group_Patch = {
   icon?: string;
   badge?: string;
   color?: string;
+  metadata?: Record<string, string>;
+  unsetMetadata?: boolean;
 }
 
