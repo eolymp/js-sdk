@@ -31,7 +31,7 @@ export type Message_Patch = {
   title?: string;
   content?: Content;
   channelIds?: string[];
-  clearChannelIds?: boolean;
+  unsetChannelIds?: boolean;
   scheduledAt?: string;
   unschedule?: boolean;
   reference?: string;
