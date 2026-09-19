@@ -27,7 +27,14 @@ export type Space = {
 
 export type Space_Extra = Record<string, unknown>;
 
-export type Space_Patch = Record<string, unknown>;
+export type Space_Patch = {
+  key?: string;
+  name?: string;
+  image?: string;
+  visibility?: string;
+  locales?: string[];
+  unlocalise?: boolean;
+}
 
 export type Space_Subscription = {
   plan?: string;

@@ -25,7 +25,19 @@ export type Product = {
 
 export type Product_Extra = Record<string, unknown>;
 
-export type Product_Patch = Record<string, unknown>;
+export type Product_Patch = {
+  name?: string;
+  summary?: Content;
+  description?: Content;
+  images?: string[];
+  unimage?: boolean;
+  price?: number;
+  regularPrice?: number;
+  featured?: boolean;
+  inactive?: boolean;
+  backorder?: boolean;
+  attributes?: Product_Attribute[];
+}
 
 export type Product_Attribute = {
   key?: string;
@@ -43,7 +55,13 @@ export type Product_Variant = {
   availableQuantity?: number;
 }
 
-export type Product_Variant_Patch = Record<string, unknown>;
+export type Product_Variant_Patch = {
+  name?: string;
+  values?: Record<string, string>;
+  images?: string[];
+  unimage?: boolean;
+  availableQuantity?: number;
+}
 
 export type Product_Translation = {
   id?: string;

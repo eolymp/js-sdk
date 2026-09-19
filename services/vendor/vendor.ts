@@ -23,5 +23,19 @@ export type Vendor = {
   updatedAt?: string;
 }
 
-export type Vendor_Patch = Record<string, unknown>;
+export type Vendor_Patch = {
+  firstName?: string;
+  lastName?: string;
+  birthday?: string;
+  email?: string;
+  phone?: string;
+  taxId?: string;
+  companyName?: string;
+  country?: string;
+  state?: string;
+  postalCode?: string;
+  city?: string;
+  line1?: string;
+  line2?: string;
+}
 

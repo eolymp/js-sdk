@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Product, Product_Variant } from "./product"
+import { Product, Product_Patch, Product_Variant, Product_Variant_Patch } from "./product"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -114,9 +114,8 @@ export type CreateProductOutput = {
 }
 
 export type UpdateProductInput = {
-  patch?: string[];
   productId?: string;
-  product?: Product;
+  product?: Product_Patch;
 }
 
 export type UpdateProductOutput = Record<string, unknown>;
@@ -171,10 +170,9 @@ export type CreateProductVariantOutput = {
 }
 
 export type UpdateProductVariantInput = {
-  patch?: string[];
   productId?: string;
   variantId?: string;
-  variant?: Product_Variant;
+  variant?: Product_Variant_Patch;
 }
 
 export type UpdateProductVariantOutput = Record<string, unknown>;

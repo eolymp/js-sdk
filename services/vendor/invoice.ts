@@ -28,5 +28,14 @@ export type Invoice_Line = {
   totalPrice?: number;
 }
 
-export type Invoice_Patch = Record<string, unknown>;
+export type Invoice_Patch = {
+  number?: string;
+  invoiceDate?: string;
+  dueDate?: string;
+  lines?: Invoice_Line[];
+  taxAmount?: number;
+  currency?: string;
+  statusReason?: string;
+  paymentMethodId?: string;
+}
 

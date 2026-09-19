@@ -3,7 +3,7 @@
 
 import { ExpressionBool, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Quota } from "./quota"
-import { Space } from "./space"
+import { Space, Space_Patch } from "./space"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -76,9 +76,8 @@ export type CreateSpaceOutput = {
 }
 
 export type UpdateSpaceInput = {
-  patch?: string[];
   spaceId?: string;
-  space?: Space;
+  space?: Space_Patch;
 }
 
 export type UpdateSpaceOutput = Record<string, unknown>;
