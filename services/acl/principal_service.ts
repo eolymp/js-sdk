@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Principal } from "./principal"
+import { Principal, Principal_Patch } from "./principal"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -66,9 +66,8 @@ export type CreatePrincipalOutput = {
 }
 
 export type UpdatePrincipalInput = {
-  patch?: string[];
   principalId?: string;
-  principal?: Principal;
+  principal?: Principal_Patch;
 }
 
 export type UpdatePrincipalOutput = Record<string, unknown>;

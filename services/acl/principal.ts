@@ -10,5 +10,10 @@ export type Principal = {
   allows?: string[];
 }
 
-export type Principal_Patch = Record<string, unknown>;
+export type Principal_Patch = {
+  name?: string;
+  role?: string;
+  allows?: string[];
+  disallow?: boolean;
+}
 
