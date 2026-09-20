@@ -19,5 +19,15 @@ export type Rule = {
   updatedAt?: string;
 }
 
-export type Rule_Patch = Record<string, unknown>;
+export type Rule_Patch = {
+  name?: string;
+  trigger?: string;
+  conditions?: Condition[];
+  uncondition?: boolean;
+  inactive?: boolean;
+  dryRun?: boolean;
+  label?: string;
+  schedule?: string;
+  actions?: Action[];
+}
 

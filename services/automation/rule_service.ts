@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Rule } from "./rule"
+import { Rule, Rule_Patch } from "./rule"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -110,9 +110,8 @@ export type DescribeRuleOutput = {
 }
 
 export type UpdateRuleInput = {
-  patch?: string[];
   ruleId?: string;
-  rule?: Rule;
+  rule?: Rule_Patch;
 }
 
 export type UpdateRuleOutput = Record<string, unknown>;
