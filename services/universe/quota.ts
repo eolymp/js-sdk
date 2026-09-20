@@ -11,6 +11,7 @@ export type Quota = {
   auditLog?: boolean;
   achievementsPerSpace?: number;
   printersPerSpace?: number;
+  notificationChannelsPerSpace?: number;
   evaluationsBySeatPerMonth?: number;
   plagiarismAnalysis?: boolean;
   submissionEvaluationLimit?: number;
