@@ -25,7 +25,6 @@ export type Order = {
   creditDiscount?: number;
   payableAmount?: number;
   paymentStatus?: string;
-  checkoutUrl?: string;
   paymentId?: string;
   trackingLink?: string;
   trackingNumber?: string;

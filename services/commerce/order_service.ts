@@ -26,6 +26,15 @@ export class OrderService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  PayOrder(input: PayOrderInput, opts?: any): Promise<PayOrderOutput> {
+    const path = "/store/orders/"+encodeURIComponent(input.orderId||'')+"/pay";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.orderId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeOrder(input: DescribeOrderInput, opts?: any): Promise<DescribeOrderOutput> {
     const path = "/store/orders/"+encodeURIComponent(input.orderId||'');
 
@@ -52,6 +61,14 @@ export type CancelOrderInput = {
 }
 
 export type CancelOrderOutput = Record<string, unknown>;
+
+export type PayOrderInput = {
+  orderId?: string;
+}
+
+export type PayOrderOutput = {
+  checkoutUrl?: string;
+}
 
 export type DescribeOrderInput = {
   orderId?: string;
