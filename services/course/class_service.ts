@@ -107,10 +107,8 @@ export type CreateClassOutput = {
 }
 
 export type UpdateClassInput = {
-  patch?: string[];
   courseId?: string;
   groupId?: string;
-  class?: Class;
 }
 
 export type UpdateClassOutput = Record<string, unknown>;

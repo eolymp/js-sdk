@@ -21,6 +21,16 @@ export type Module = {
   assignment?: Assignment;
 }
 
+export type Module_Patch = {
+  draft?: boolean;
+  name?: string;
+  imageUrl?: string;
+  index?: number;
+  extra?: boolean;
+  weight?: number;
+  description?: Content;
+}
+
 export type Module_Progress = {
   status?: string;
   percentage?: number;

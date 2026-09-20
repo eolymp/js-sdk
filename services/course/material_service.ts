@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionInt } from "../wellknown/expression"
-import { Material } from "./material"
+import { Material, Material_Patch } from "./material"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -107,10 +107,9 @@ export type CreateMaterialOutput = {
 }
 
 export type UpdateMaterialInput = {
-  patch?: string[];
   courseId?: string;
   materialId?: string;
-  material?: Material;
+  material?: Material_Patch;
 }
 
 export type UpdateMaterialOutput = Record<string, unknown>;

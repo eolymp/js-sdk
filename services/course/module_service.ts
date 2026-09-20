@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionInt } from "../wellknown/expression"
-import { Module } from "./module"
+import { Module, Module_Patch } from "./module"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -96,10 +96,9 @@ export type CreateModuleOutput = {
 }
 
 export type UpdateModuleInput = {
-  patch?: string[];
   courseId?: string;
   moduleId?: string;
-  module?: Module;
+  module?: Module_Patch;
 }
 
 export type UpdateModuleOutput = Record<string, unknown>;

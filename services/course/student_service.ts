@@ -5,7 +5,7 @@ import { ExpressionID } from "../wellknown/expression"
 import { Assignment } from "./assignment"
 import { Material_Progress } from "./material"
 import { Module_Progress } from "./module"
-import { Student } from "./student"
+import { Student, Student_Patch } from "./student"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -168,9 +168,8 @@ export type CreateStudentOutput = {
 
 export type UpdateStudentInput = {
   courseId?: string;
-  patch?: string[];
   memberId?: string;
-  student?: Student;
+  student?: Student_Patch;
 }
 
 export type UpdateStudentOutput = Record<string, unknown>;

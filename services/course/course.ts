@@ -19,3 +19,14 @@ export type Course = {
   estimate?: number;
 }
 
+export type Course_Patch = {
+  locale?: string;
+  name?: string;
+  description?: Content;
+  imageUrl?: string;
+  visibility?: string;
+  duration?: number;
+  topics?: string[];
+  untopic?: boolean;
+}
+

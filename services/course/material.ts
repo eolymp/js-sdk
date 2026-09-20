@@ -20,6 +20,17 @@ export type Material = {
   progress?: Material_Progress;
 }
 
+export type Material_Patch = {
+  draft?: boolean;
+  name?: string;
+  imageUrl?: string;
+  index?: number;
+  depth?: number;
+  grading?: Material_Grading;
+  document?: Material_Document;
+  task?: Material_Task;
+}
+
 export type Material_Document = {
   content?: Content;
 }

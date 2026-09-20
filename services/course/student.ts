@@ -17,6 +17,11 @@ export type Student = {
   cursor?: string;
 }
 
+export type Student_Patch = {
+  inactive?: boolean;
+  assignAll?: boolean;
+}
+
 export type Student_Grade = {
   moduleId?: string;
   grade?: number;
