@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Attribute } from "./attribute"
+import { Attribute, Attribute_Patch } from "./attribute"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -65,9 +65,8 @@ export type CreateAttributeInput = {
 export type CreateAttributeOutput = Record<string, unknown>;
 
 export type UpdateAttributeInput = {
-  patch?: string[];
   attributeKey?: string;
-  attribute?: Attribute;
+  attribute?: Attribute_Patch;
 }
 
 export type UpdateAttributeOutput = Record<string, unknown>;

@@ -21,6 +21,24 @@ export type Attribute = {
   constraints?: string[];
 }
 
+export type Attribute_Patch = {
+  label?: string;
+  help?: string;
+  type?: string;
+  index?: number;
+  required?: boolean;
+  readonly?: boolean;
+  visibility?: string;
+  regexp?: string;
+  min?: number;
+  max?: number;
+  choices?: string[];
+  unsetChoices?: boolean;
+  country?: string;
+  constraints?: string[];
+  unsetConstraints?: boolean;
+}
+
 export type Attribute_Description = {
   locale?: string;
   label?: string;

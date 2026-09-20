@@ -16,3 +16,11 @@ export type Webhook = {
   failureCount?: number;
 }
 
+export type Webhook_Patch = {
+  name?: string;
+  endpoint?: string;
+  inactive?: boolean;
+  events?: string[];
+  unsubscribe?: boolean;
+}
+
