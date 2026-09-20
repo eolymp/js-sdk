@@ -14,3 +14,11 @@ export type Penalty = {
   cancelledAt?: string;
 }
 
+export type Penalty_Patch = {
+  summary?: string;
+  description?: Content;
+  scope?: string[];
+  unscope?: boolean;
+  expiresAt?: string;
+}
+
