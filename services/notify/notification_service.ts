@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Notification } from "./notification"
-import { Preferences } from "./preferences"
+import { Preferences, Preferences_Patch } from "./preferences"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -112,9 +112,8 @@ export type DescribePreferencesOutput = {
 }
 
 export type UpdatePreferencesInput = {
-  patch?: string[];
   spaceId?: string;
-  preferences?: Preferences;
+  preferences?: Preferences_Patch;
 }
 
 export type UpdatePreferencesOutput = Record<string, unknown>;

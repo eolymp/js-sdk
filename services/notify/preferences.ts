@@ -6,6 +6,13 @@ export type Preferences = {
   subscriptions?: Preferences_Subscription[];
 }
 
+export type Preferences_Patch = {
+  subscriptions?: Preferences_Subscription[];
+  addSubscriptions?: Preferences_Subscription[];
+  removeSubscriptions?: Preferences_Subscription[];
+  unsubscribe?: boolean;
+}
+
 export type Preferences_Subscription = {
   topic?: string;
   digest?: string;

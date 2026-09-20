@@ -12,3 +12,12 @@ export type Policy = {
   allows?: string[];
 }
 
+export type Policy_Patch = {
+  name?: string;
+  principal?: string;
+  resource?: string;
+  allowAll?: boolean;
+  allows?: string[];
+  disallow?: boolean;
+}
+
