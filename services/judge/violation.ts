@@ -18,5 +18,8 @@ export type Violation = {
   confirmedAt?: string;
 }
 
-export type Violation_Patch = Record<string, unknown>;
+export type Violation_Patch = {
+  summary?: Content;
+  status?: string;
+}
 

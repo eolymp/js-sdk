@@ -23,7 +23,15 @@ export type Participant = {
   submits?: Participant_Submit[];
 }
 
-export type Participant_Patch = Record<string, unknown>;
+export type Participant_Patch = {
+  displayName?: string;
+  bonusTime?: number;
+  unofficial?: boolean;
+  medal?: string;
+  inactive?: boolean;
+  passcode?: string;
+  role?: string;
+}
 
 export type Participant_Submit = {
   problemId?: string;

@@ -3,7 +3,7 @@
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
 import { Activity } from "./activity"
-import { Contest } from "./contest"
+import { Contest, Contest_Patch } from "./contest"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -183,9 +183,8 @@ export type DeleteContestInput = {
 export type DeleteContestOutput = Record<string, unknown>;
 
 export type UpdateContestInput = {
-  patch?: string[];
   contestId?: string;
-  contest?: Contest;
+  contest?: Contest_Patch;
 }
 
 export type UpdateContestOutput = Record<string, unknown>;

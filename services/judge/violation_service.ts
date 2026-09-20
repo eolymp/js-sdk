@@ -3,7 +3,7 @@
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
 import { Evidence } from "./evidence"
-import { Violation } from "./violation"
+import { Violation, Violation_Patch } from "./violation"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -88,10 +88,9 @@ export type CreateViolationOutput = {
 }
 
 export type UpdateViolationInput = {
-  patch?: string[];
-  contestId?: string;
   violationId?: string;
-  violation?: Violation;
+  contestId?: string;
+  violation?: Violation_Patch;
 }
 
 export type UpdateViolationOutput = Record<string, unknown>;

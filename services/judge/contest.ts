@@ -47,7 +47,33 @@ export type Contest = {
   staff?: Contest_Staff[];
 }
 
-export type Contest_Patch = Record<string, unknown>;
+export type Contest_Patch = {
+  name?: string;
+  imageUrl?: string;
+  startsAt?: string;
+  duration?: number;
+  enableReminderNotification?: boolean;
+  endsAt?: string;
+  enableResultNotification?: boolean;
+  visibility?: string;
+  joinUnofficially?: boolean;
+  requireAdmission?: boolean;
+  allowPause?: boolean;
+  allowFinishEarly?: boolean;
+  allowUpsolve?: boolean;
+  allowFollowup?: boolean;
+  key?: string;
+  displayEditorials?: boolean;
+  slug?: string;
+  hideJuryIdentity?: boolean;
+  featuredUntil?: string;
+  printerId?: string;
+  scoreboardConfig?: Contest_ScoreboardConfig;
+  classification?: Contest_Classification;
+  environmentConfig?: Contest_EnvironmentConfig;
+  certificationConfig?: Contest_CertificationConfig;
+  ratingConfig?: Contest_RatingConfig;
+}
 
 export type Contest_Extra = Record<string, unknown>;
 

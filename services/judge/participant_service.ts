@@ -3,7 +3,7 @@
 
 import { Content } from "../ecm/content"
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
-import { Participant } from "./participant"
+import { Participant, Participant_Patch } from "./participant"
 import { Score } from "./score"
 import { Scoreboard_Row } from "./scoreboard"
 
@@ -214,10 +214,9 @@ export type DisableParticipantInput = {
 export type DisableParticipantOutput = Record<string, unknown>;
 
 export type UpdateParticipantInput = {
-  patch?: string[];
   contestId?: string;
   participantId?: string;
-  participant?: Participant;
+  participant?: Participant_Patch;
 }
 
 export type UpdateParticipantOutput = Record<string, unknown>;
