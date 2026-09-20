@@ -29,6 +29,12 @@ export type Problem = {
   examples?: Problem_Example[];
 }
 
+export type Problem_Patch = {
+  index?: number;
+  submitLimit?: number;
+  scoreByBestTestset?: boolean;
+}
+
 export type Problem_Statement = {
   locale?: string;
   title?: string;

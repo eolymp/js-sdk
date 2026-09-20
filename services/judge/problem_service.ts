@@ -5,7 +5,7 @@ import { Editorial } from "../atlas/editorial"
 import { Question } from "../atlas/question"
 import { Widget } from "../atlas/widget"
 import { Runtime } from "../runtime/runtime"
-import { Problem, Problem_Attachment, Problem_Statement, Problem_Test } from "./problem"
+import { Problem, Problem_Attachment, Problem_Patch, Problem_Statement, Problem_Test } from "./problem"
 import { Template } from "./template"
 
 interface _Client {
@@ -186,9 +186,8 @@ export type ImportProblemOutput = {
 
 export type UpdateProblemInput = {
   contestId?: string;
-  patch?: string[];
   problemId?: string;
-  problem?: Problem;
+  problem?: Problem_Patch;
 }
 
 export type UpdateProblemOutput = Record<string, unknown>;

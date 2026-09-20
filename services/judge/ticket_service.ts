@@ -3,7 +3,7 @@
 
 import { Content } from "../ecm/content"
 import { ExpressionBool, ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Ticket, TicketSummary } from "./ticket"
+import { Ticket, TicketSummary, Ticket_Patch } from "./ticket"
 import { Reply } from "./ticket_reply"
 
 interface _Client {
@@ -185,9 +185,8 @@ export type CreateTicketOutput = {
 }
 
 export type UpdateTicketInput = {
-  patch?: string[];
   ticketId?: string;
-  ticket?: Ticket;
+  ticket?: Ticket_Patch;
 }
 
 export type UpdateTicketOutput = Record<string, unknown>;

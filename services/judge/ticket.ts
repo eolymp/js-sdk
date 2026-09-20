@@ -21,6 +21,11 @@ export type Ticket = {
   cursor?: string;
 }
 
+export type Ticket_Patch = {
+  status?: string;
+  subject?: string;
+}
+
 export type TicketSummary = {
   unreadCount?: number;
   unresolvedCount?: number;
