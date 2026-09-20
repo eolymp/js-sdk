@@ -11,5 +11,8 @@ export type Client = {
   updatedAt?: string;
 }
 
-export type Client_Patch = Record<string, unknown>;
+export type Client_Patch = {
+  name?: string;
+  redirectUri?: string[];
+}
 
