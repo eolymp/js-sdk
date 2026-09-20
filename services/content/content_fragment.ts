@@ -9,6 +9,9 @@ export type Fragment = {
   spaceLink?: string;
   consoleLink?: string;
   path?: string;
+  parentId?: string;
+  slug?: string;
+  position?: number;
   locale?: string;
   locales?: string[];
   draft?: boolean;
@@ -25,6 +28,9 @@ export type Fragment_Extra = Record<string, unknown>;
 
 export type Fragment_Patch = {
   path?: string;
+  parentId?: string;
+  slug?: string;
+  position?: number;
   draft?: boolean;
   automatic?: boolean;
   title?: string;

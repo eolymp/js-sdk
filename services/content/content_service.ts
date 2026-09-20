@@ -110,6 +110,7 @@ export type ListFragmentsInput_Filter = {
   id?: ExpressionID[];
   path?: ExpressionString[];
   label?: ExpressionEnum[];
+  parent?: ExpressionID[];
 }
 
 export type ListFragmentsOutput = {
@@ -136,6 +137,7 @@ export type UpdateFragmentOutput = Record<string, unknown>;
 export type DeleteFragmentInput = {
   fragmentId?: string;
   locale?: string;
+  recursive?: boolean;
 }
 
 export type DeleteFragmentOutput = Record<string, unknown>;
