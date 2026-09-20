@@ -11,6 +11,15 @@ export type Value = {
   keywords?: string[];
 }
 
+export type Value_Patch = {
+  name?: string;
+  summary?: string;
+  abbr?: string;
+  image?: string;
+  keywords?: string[];
+  unsetKeywords?: boolean;
+}
+
 export type Value_Translation = {
   locale?: string;
   name?: string;

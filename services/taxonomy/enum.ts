@@ -7,3 +7,7 @@ export type Enum = {
   name?: string;
 }
 
+export type Enum_Patch = {
+  name?: string;
+}
+

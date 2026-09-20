@@ -2,8 +2,8 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
-import { Enum } from "./enum"
-import { Value, Value_Translation } from "./enum_value"
+import { Enum, Enum_Patch } from "./enum"
+import { Value, Value_Patch, Value_Translation } from "./enum_value"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -153,9 +153,8 @@ export type DeleteEnumInput = {
 export type DeleteEnumOutput = Record<string, unknown>;
 
 export type UpdateEnumInput = {
-  patch?: string[];
   enumId?: string;
-  enum?: Enum;
+  enum?: Enum_Patch;
 }
 
 export type UpdateEnumOutput = Record<string, unknown>;
@@ -203,10 +202,9 @@ export type DeleteValueInput = {
 export type DeleteValueOutput = Record<string, unknown>;
 
 export type UpdateValueInput = {
-  patch?: string[];
   enumId?: string;
   valueId?: string;
-  value?: Value;
+  value?: Value_Patch;
 }
 
 export type UpdateValueOutput = Record<string, unknown>;
