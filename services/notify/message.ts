@@ -33,7 +33,7 @@ export type Message_Patch = {
   channelIds?: string[];
   unsetChannelIds?: boolean;
   scheduledAt?: string;
-  unschedule?: boolean;
+  unsetScheduledAt?: boolean;
   reference?: string;
 }
 

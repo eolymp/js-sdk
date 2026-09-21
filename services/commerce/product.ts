@@ -30,7 +30,7 @@ export type Product_Patch = {
   summary?: Content;
   description?: Content;
   images?: string[];
-  unimage?: boolean;
+  unsetImages?: boolean;
   price?: number;
   regularPrice?: number;
   featured?: boolean;
@@ -59,7 +59,7 @@ export type Product_Variant_Patch = {
   name?: string;
   values?: Record<string, string>;
   images?: string[];
-  unimage?: boolean;
+  unsetImages?: boolean;
   availableQuantity?: number;
 }
 

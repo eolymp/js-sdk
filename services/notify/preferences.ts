@@ -8,9 +8,9 @@ export type Preferences = {
 
 export type Preferences_Patch = {
   subscriptions?: Preferences_Subscription[];
-  addSubscriptions?: Preferences_Subscription[];
+  unsetSubscriptions?: boolean;
   removeSubscriptions?: Preferences_Subscription[];
-  unsubscribe?: boolean;
+  addSubscriptions?: Preferences_Subscription[];
 }
 
 export type Preferences_Subscription = {

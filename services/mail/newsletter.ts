@@ -29,6 +29,6 @@ export type Newsletter_Patch = {
   content?: Content;
   automatic?: boolean;
   scheduledAt?: string;
-  unschedule?: boolean;
+  unsetScheduledAt?: boolean;
 }
 

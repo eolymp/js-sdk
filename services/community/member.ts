@@ -51,9 +51,9 @@ export type Member_Patch = {
   activePeriodStart?: string;
   activePeriodEnd?: string;
   groups?: string[];
-  addGroups?: string[];
+  unsetGroups?: boolean;
   removeGroups?: string[];
-  ungroup?: boolean;
+  addGroups?: string[];
   attributes?: Attribute_Value[];
   user?: User_Patch;
   team?: Team_Patch;

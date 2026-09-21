@@ -40,7 +40,7 @@ export type Problem_Patch = {
   origin?: string;
   topics?: string[];
   difficulty?: number;
-  untopic?: boolean;
+  unsetTopics?: boolean;
   type?: string;
 }
 

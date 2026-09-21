@@ -40,7 +40,7 @@ export type User_Patch = {
   nickname?: string;
   email?: string;
   emailSubscriptions?: string[];
-  unsubscribe?: boolean;
+  unsetEmailSubscriptions?: boolean;
   password?: string;
   name?: string;
   birthday?: string;

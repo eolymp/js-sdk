@@ -27,6 +27,6 @@ export type Course_Patch = {
   visibility?: string;
   duration?: number;
   topics?: string[];
-  untopic?: boolean;
+  unsetTopics?: boolean;
 }
 

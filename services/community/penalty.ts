@@ -18,7 +18,7 @@ export type Penalty_Patch = {
   summary?: string;
   description?: Content;
   scope?: string[];
-  unscope?: boolean;
+  unsetScope?: boolean;
   expiresAt?: string;
 }
 

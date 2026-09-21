@@ -26,6 +26,6 @@ export type Issue_Patch = {
   title?: string;
   assignee?: string;
   tags?: string[];
-  untag?: boolean;
+  unsetTags?: boolean;
 }
 

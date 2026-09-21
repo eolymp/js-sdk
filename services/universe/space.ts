@@ -33,7 +33,7 @@ export type Space_Patch = {
   image?: string;
   visibility?: string;
   locales?: string[];
-  unlocalise?: boolean;
+  unsetLocales?: boolean;
 }
 
 export type Space_Subscription = {

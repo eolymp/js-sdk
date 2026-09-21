@@ -21,6 +21,6 @@ export type Webhook_Patch = {
   endpoint?: string;
   inactive?: boolean;
   events?: string[];
-  unsubscribe?: boolean;
+  unsetEvents?: boolean;
 }
 

@@ -23,7 +23,7 @@ export type Rule_Patch = {
   name?: string;
   trigger?: string;
   conditions?: Condition[];
-  uncondition?: boolean;
+  unsetConditions?: boolean;
   inactive?: boolean;
   dryRun?: boolean;
   label?: string;

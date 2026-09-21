@@ -37,6 +37,6 @@ export type Fragment_Patch = {
   visibility?: string;
   content?: Content;
   labels?: string[];
-  unlabel?: boolean;
+  unsetLabels?: boolean;
 }
 

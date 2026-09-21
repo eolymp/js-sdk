@@ -45,7 +45,7 @@ export type Post_Patch = {
   automatic?: boolean;
   content?: Content;
   labels?: string[];
-  unlabel?: boolean;
+  unsetLabels?: boolean;
 }
 
 export type Post_Image = {
