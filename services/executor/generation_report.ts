@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Stats } from "./stats"
+import { Warning } from "./warning"
 
 export type GenerationReport = {
   taskId?: string;
@@ -12,6 +13,7 @@ export type GenerationReport = {
   status?: string;
   runs?: GenerationReport_Run[];
   errorMessage?: string;
+  warnings?: Warning[];
 }
 
 export type GenerationReport_Run = {
