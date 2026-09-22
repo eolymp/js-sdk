@@ -111,6 +111,7 @@ export type ListFragmentsInput_Filter = {
   path?: ExpressionString[];
   label?: ExpressionEnum[];
   parent?: ExpressionID[];
+  visibility?: ExpressionEnum[];
 }
 
 export type ListFragmentsOutput = {
