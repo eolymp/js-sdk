@@ -19,9 +19,14 @@ export type Fragment = {
   visibility?: string;
   title?: string;
   content?: Content;
+  link?: Fragment_Link;
   createdAt?: string;
   updatedAt?: string;
   labels?: string[];
+}
+
+export type Fragment_Link = {
+  url?: string;
 }
 
 export type Fragment_Extra = Record<string, unknown>;
@@ -36,6 +41,7 @@ export type Fragment_Patch = {
   title?: string;
   visibility?: string;
   content?: Content;
+  link?: Fragment_Link;
   labels?: string[];
   unsetLabels?: boolean;
 }
