@@ -21,5 +21,6 @@ export type Claims = {
   pronoun?: string;
   preferredRuntime?: string;
   restrictions?: string;
+  escalated?: boolean;
 }
 

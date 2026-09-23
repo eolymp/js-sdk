@@ -29,6 +29,7 @@ export type IssueTokenInput = {
   scope?: string;
   refreshToken?: string;
   redirectUri?: string;
+  subjectToken?: string;
 }
 
 export type IssueTokenOutput = {
