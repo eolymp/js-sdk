@@ -68,6 +68,15 @@ export class ProblemService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ImportProblem(input: ImportProblemInput, opts?: any): Promise<ImportProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/import";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   VoteProblem(input: VoteProblemInput, opts?: any): Promise<VoteProblemOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/vote";
 
@@ -190,6 +199,13 @@ export type SyncProblemInput = {
 }
 
 export type SyncProblemOutput = Record<string, unknown>;
+
+export type ImportProblemInput = {
+  problemId?: string;
+  archiveUrl?: string;
+}
+
+export type ImportProblemOutput = Record<string, unknown>;
 
 export type ListVersionsInput = {
   problemId?: string;
