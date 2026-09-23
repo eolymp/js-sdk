@@ -11,6 +11,7 @@ export type TokenInput = {
   scope?: string;
   refresh_token?: string;
   redirect_uri?: string;
+  subject_token?: string;
 };
 
 export type TokenOutput = {
@@ -39,6 +40,7 @@ export type UserInfoOutput = {
   email_verified?: boolean;
   email_restricted?: boolean;
   locale?: string;
+  escalated?: boolean;
 }
 
 export type OAuthConfig = {
