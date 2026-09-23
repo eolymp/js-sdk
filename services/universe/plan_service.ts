@@ -30,6 +30,24 @@ export class PlanService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  AssignPlan(input: AssignPlanInput, opts?: any): Promise<AssignPlanOutput> {
+    const path = "/plans/"+encodeURIComponent(input.planId||'')+"/assignment";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.planId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  UnassignPlan(input: UnassignPlanInput, opts?: any): Promise<UnassignPlanOutput> {
+    const path = "/plans/"+encodeURIComponent(input.planId||'')+"/assignment";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.planId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
 }
 
 export type DescribePlanInput = {
@@ -55,4 +73,16 @@ export type ListPlansOutput = {
   total?: number;
   items?: Plan[];
 }
+
+export type AssignPlanInput = {
+  planId?: string;
+}
+
+export type AssignPlanOutput = Record<string, unknown>;
+
+export type UnassignPlanInput = {
+  planId?: string;
+}
+
+export type UnassignPlanOutput = Record<string, unknown>;
 
