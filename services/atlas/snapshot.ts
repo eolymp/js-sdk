@@ -17,6 +17,7 @@ import { Testset } from "./testing_testset"
 import { Validator } from "./testing_validator"
 
 export type Snapshot = {
+  schema?: string;
   problem?: Problem;
   testing?: TestingConfig;
   checker?: Checker;
