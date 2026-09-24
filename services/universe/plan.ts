@@ -12,7 +12,6 @@ export type Plan = {
   labels?: string[];
   requiresApproval?: boolean;
   visibility?: string;
-  assigned?: boolean;
   minSeats?: number;
   maxSeats?: number;
   variants?: Plan_Variant[];

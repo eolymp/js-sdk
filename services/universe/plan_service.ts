@@ -76,12 +76,14 @@ export type ListPlansOutput = {
 
 export type AssignPlanInput = {
   planId?: string;
+  spaceId?: string;
 }
 
 export type AssignPlanOutput = Record<string, unknown>;
 
 export type UnassignPlanInput = {
   planId?: string;
+  spaceId?: string;
 }
 
 export type UnassignPlanOutput = Record<string, unknown>;
