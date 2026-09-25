@@ -2,15 +2,16 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Translation = {
+export type GlossaryEntry = {
   id?: string;
+  term?: string;
+  translation?: string;
   locale?: string;
-  message?: string;
-  status?: string;
-  needsReview?: boolean;
-  machineTranslated?: boolean;
-  createdBy?: string;
-  createdAt?: string;
-  approvedAt?: string;
+}
+
+export type GlossaryEntry_Patch = {
+  term?: string;
+  translation?: string;
+  locale?: string;
 }
 

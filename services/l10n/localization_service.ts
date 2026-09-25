@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionString } from "../wellknown/expression"
+import { GlossaryEntry, GlossaryEntry_Patch } from "./glossary_entry"
 import { Term } from "./term"
 import { Translation } from "./translation"
 import { TranslationPair } from "./translation_pair"
@@ -226,6 +227,54 @@ export class LocalizationService {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.projectId);
     delete(input.locale);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  CreateGlossaryEntry(input: CreateGlossaryEntryInput, opts?: any): Promise<CreateGlossaryEntryOutput> {
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  UpdateGlossaryEntry(input: UpdateGlossaryEntryInput, opts?: any): Promise<UpdateGlossaryEntryOutput> {
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary/"+encodeURIComponent(input.entryId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
+    delete(input.entryId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  DeleteGlossaryEntry(input: DeleteGlossaryEntryInput, opts?: any): Promise<DeleteGlossaryEntryOutput> {
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary/"+encodeURIComponent(input.entryId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
+    delete(input.entryId);
+
+    return this.cli.call("DELETE", this.url+path, input, opts);
+  }
+
+  DescribeGlossaryEntry(input: DescribeGlossaryEntryInput, opts?: any): Promise<DescribeGlossaryEntryOutput> {
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary/"+encodeURIComponent(input.entryId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
+    delete(input.entryId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ListGlossaryEntries(input: ListGlossaryEntriesInput, opts?: any): Promise<ListGlossaryEntriesOutput> {
+    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.projectId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -481,5 +530,63 @@ export type ListTranslationPairsOutput = {
   total?: number;
   hasMore?: boolean;
   items?: TranslationPair[];
+}
+
+export type CreateGlossaryEntryInput = {
+  projectId?: string;
+  entry?: GlossaryEntry;
+}
+
+export type CreateGlossaryEntryOutput = {
+  entryId?: string;
+}
+
+export type UpdateGlossaryEntryInput = {
+  projectId?: string;
+  entryId?: string;
+  entry?: GlossaryEntry_Patch;
+}
+
+export type UpdateGlossaryEntryOutput = Record<string, unknown>;
+
+export type DeleteGlossaryEntryInput = {
+  projectId?: string;
+  entryId?: string;
+}
+
+export type DeleteGlossaryEntryOutput = Record<string, unknown>;
+
+export type DescribeGlossaryEntryInput = {
+  projectId?: string;
+  entryId?: string;
+}
+
+export type DescribeGlossaryEntryOutput = {
+  entry?: GlossaryEntry;
+}
+
+export type ListGlossaryEntriesInput = {
+  projectId?: string;
+  offset?: number;
+  size?: number;
+  search?: string;
+  filters?: ListGlossaryEntriesInput_Filter;
+}
+
+export type ListGlossaryEntriesInput_Filter = {
+  id?: ExpressionID[];
+  term?: ExpressionString[];
+  locale?: ExpressionEnum[];
+}
+
+export type ListGlossaryEntriesOutput = {
+  total?: number;
+  items?: GlossaryEntry[];
+}
+
+export type TermChangedEvent = {
+  projectId?: string;
+  before?: Term;
+  after?: Term;
 }
 
