@@ -18,7 +18,7 @@ export interface ClientOptions {
   credentials?: RequestCredentials;
   redirect?: RequestRedirect;
   cache?: RequestCache;
-  token?: string;
+  token?: string | (() => string | undefined);
   middleware?: Middleware[];
   authenticate?: () => Promise<string>;
 }
@@ -30,6 +30,8 @@ export class Client {
   private readonly headers: Record<string, string>;
 
   private token?: string;
+  private readonly source?: () => string | undefined;
+  private stale = false;
   private authenticate?: () => Promise<string>;
   private credentials: RequestCredentials = 'omit';
   private redirect: RequestRedirect = 'follow';
@@ -37,7 +39,11 @@ export class Client {
 
   constructor(opts: ClientOptions = {}) {
     this.retry = opts.retry || 3;
-    this.token = opts.token || undefined;
+    if (typeof opts.token === 'function') {
+      this.source = opts.token;
+    } else {
+      this.token = opts.token || undefined;
+    }
     this.headers = opts.headers || {};
     this.authenticate = opts.authenticate || undefined;
     this.credentials = opts.credentials || 'omit';
@@ -58,8 +64,13 @@ export class Client {
     for (let retry = 0; retry < max; retry++) {
       const last = retry >= max - 1
 
+      if (this.source && !this.stale) {
+        this.token = this.source() || undefined;
+      }
+
       if (!this.token && this.authenticate) {
         this.token = await this.authenticate()
+        this.stale = false;
       }
 
       const headers = new Headers(this.headers);
@@ -94,6 +105,7 @@ export class Client {
       if (response.status === 401) {
         if (retry === 0 && this.authenticate) { // if we got 401 on first attempt, reset token and retry
           this.token = undefined;
+          this.stale = true;
           continue;
         }
 
@@ -180,6 +192,7 @@ export class Client {
     }
 
     this.token = await this.authenticate()
+    this.stale = false;
 
     return this.token;
   }
@@ -188,6 +201,7 @@ export class Client {
   // returns true if token can be refreshed, or false otherwise
   expire(): boolean {
     this.token = undefined;
+    this.stale = true;
     return this.authenticate !== undefined;
   }
 
