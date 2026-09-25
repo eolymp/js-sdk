@@ -232,49 +232,40 @@ export class LocalizationService {
   }
 
   CreateGlossaryEntry(input: CreateGlossaryEntryInput, opts?: any): Promise<CreateGlossaryEntryOutput> {
-    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.projectId);
+    const path = "/glossary";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
   UpdateGlossaryEntry(input: UpdateGlossaryEntryInput, opts?: any): Promise<UpdateGlossaryEntryOutput> {
-    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary/"+encodeURIComponent(input.entryId||'');
+    const path = "/glossary/"+encodeURIComponent(input.entryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.projectId);
     delete(input.entryId);
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteGlossaryEntry(input: DeleteGlossaryEntryInput, opts?: any): Promise<DeleteGlossaryEntryOutput> {
-    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary/"+encodeURIComponent(input.entryId||'');
+    const path = "/glossary/"+encodeURIComponent(input.entryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.projectId);
     delete(input.entryId);
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
 
   DescribeGlossaryEntry(input: DescribeGlossaryEntryInput, opts?: any): Promise<DescribeGlossaryEntryOutput> {
-    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary/"+encodeURIComponent(input.entryId||'');
+    const path = "/glossary/"+encodeURIComponent(input.entryId||'');
 
     // Cleanup URL parameters to avoid any ambiguity
-    delete(input.projectId);
     delete(input.entryId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
   ListGlossaryEntries(input: ListGlossaryEntriesInput, opts?: any): Promise<ListGlossaryEntriesOutput> {
-    const path = "/projects/"+encodeURIComponent(input.projectId||'')+"/glossary";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.projectId);
+    const path = "/glossary";
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -533,7 +524,6 @@ export type ListTranslationPairsOutput = {
 }
 
 export type CreateGlossaryEntryInput = {
-  projectId?: string;
   entry?: GlossaryEntry;
 }
 
@@ -542,7 +532,6 @@ export type CreateGlossaryEntryOutput = {
 }
 
 export type UpdateGlossaryEntryInput = {
-  projectId?: string;
   entryId?: string;
   entry?: GlossaryEntry_Patch;
 }
@@ -550,14 +539,12 @@ export type UpdateGlossaryEntryInput = {
 export type UpdateGlossaryEntryOutput = Record<string, unknown>;
 
 export type DeleteGlossaryEntryInput = {
-  projectId?: string;
   entryId?: string;
 }
 
 export type DeleteGlossaryEntryOutput = Record<string, unknown>;
 
 export type DescribeGlossaryEntryInput = {
-  projectId?: string;
   entryId?: string;
 }
 
@@ -566,7 +553,6 @@ export type DescribeGlossaryEntryOutput = {
 }
 
 export type ListGlossaryEntriesInput = {
-  projectId?: string;
   offset?: number;
   size?: number;
   search?: string;
