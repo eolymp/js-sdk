@@ -32,6 +32,7 @@ export type Space_Patch = {
   name?: string;
   image?: string;
   visibility?: string;
+  affiliation?: string;
   locales?: string[];
   unsetLocales?: boolean;
 }
