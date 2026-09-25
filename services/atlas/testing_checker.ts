@@ -13,5 +13,27 @@ export type Checker = {
   precision?: number;
   caseSensitive?: boolean;
   orderSensitive?: boolean;
+  tokens?: Checker_Tokens;
+  lines?: Checker_Lines;
+  program?: Checker_Program;
+  queryResults?: Checker_QueryResults;
+}
+
+export type Checker_Tokens = {
+  precision?: number;
+  caseSensitive?: boolean;
+}
+
+export type Checker_Lines = Record<string, unknown>;
+
+export type Checker_Program = {
+  mode?: string;
+  runtime?: string;
+  source?: string;
+  files?: File[];
+}
+
+export type Checker_QueryResults = {
+  orderSensitive?: boolean;
 }
 

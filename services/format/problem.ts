@@ -71,13 +71,28 @@ export type Problem_Template = {
 }
 
 export type Problem_Checker = {
-  type?: string;
+  tokens?: Problem_Checker_Tokens;
+  lines?: Problem_Checker_Lines;
+  program?: Problem_Checker_Program;
+  queryResults?: Problem_Checker_QueryResults;
+}
+
+export type Problem_Checker_Tokens = {
   precision?: number;
   caseSensitive?: boolean;
-  orderSensitive?: boolean;
+}
+
+export type Problem_Checker_Lines = Record<string, unknown>;
+
+export type Problem_Checker_Program = {
+  mode?: string;
   runtime?: string;
   source?: string;
   files?: Problem_File[];
+}
+
+export type Problem_Checker_QueryResults = {
+  orderSensitive?: boolean;
 }
 
 export type Problem_Interactor = {
