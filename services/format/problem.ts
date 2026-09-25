@@ -134,8 +134,6 @@ export type Problem_Testset_Test = {
   exampleInputContent?: string;
   exampleAnswerUrl?: string;
   exampleAnswerContent?: string;
-  generatedInputUrl?: string;
-  generatedAnswerUrl?: string;
 }
 
 export type Problem_Testset_Test_Generator = {
