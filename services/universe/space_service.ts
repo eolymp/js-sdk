@@ -65,6 +65,33 @@ export class SpaceService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  DescribeQuota(input: DescribeQuotaInput, opts?: any): Promise<DescribeQuotaOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/quota";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateQuota(input: UpdateQuotaInput, opts?: any): Promise<UpdateQuotaOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/quota";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
+
+  UpdateBilling(input: UpdateBillingInput, opts?: any): Promise<UpdateBillingOutput> {
+    const path = "/spaces/"+encodeURIComponent(input.spaceId||'')+"/billing";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.spaceId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
 }
 
 export type CreateSpaceInput = {
@@ -120,6 +147,16 @@ export type UpdateQuotaInput = {
 }
 
 export type UpdateQuotaOutput = Record<string, unknown>;
+
+export type UpdateBillingInput = {
+  spaceId?: string;
+  planId?: string;
+  seats?: number;
+  billingPeriodStart?: string;
+  billingPeriodEnd?: string;
+}
+
+export type UpdateBillingOutput = Record<string, unknown>;
 
 export type ListSpacesInput = {
   offset?: number;
