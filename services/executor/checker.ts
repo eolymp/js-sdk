@@ -4,13 +4,6 @@
 import { File } from "./file"
 
 export type Checker = {
-  type?: string;
-  runtime?: string;
-  sourceUrl?: string;
-  precision?: number;
-  caseSensitive?: boolean;
-  orderSensitive?: boolean;
-  files?: File[];
   tokens?: Checker_Tokens;
   lines?: Checker_Lines;
   program?: Checker_Program;
