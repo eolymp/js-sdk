@@ -171,6 +171,16 @@ export class ParticipantService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ListRecordings(input: ListRecordingsInput, opts?: any): Promise<ListRecordingsOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/participants/"+encodeURIComponent(input.participantId||'')+"/recordings";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.participantId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
 }
 
 export type ParticipantChangedEvent = {
@@ -334,5 +344,14 @@ export type CreateRecordingInput = {
 
 export type CreateRecordingOutput = {
   uploadUrl?: string;
+}
+
+export type ListRecordingsInput = {
+  contestId?: string;
+  participantId?: string;
+}
+
+export type ListRecordingsOutput = {
+  items?: Recording[];
 }
 

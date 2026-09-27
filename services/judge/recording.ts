@@ -8,5 +8,6 @@ export type Recording = {
   duration?: number;
   size?: number;
   contentType?: string;
+  url?: string;
 }
 
