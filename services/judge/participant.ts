@@ -20,6 +20,7 @@ export type Participant = {
   violationCount?: number;
   passcode?: string;
   certificateId?: string;
+  proctoringStatus?: string;
   submits?: Participant_Submit[];
 }
 

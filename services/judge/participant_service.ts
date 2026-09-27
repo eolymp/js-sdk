@@ -4,6 +4,7 @@
 import { Content } from "../ecm/content"
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 import { Participant, Participant_Patch } from "./participant"
+import { Recording } from "./recording"
 import { Score } from "./score"
 import { Scoreboard_Row } from "./scoreboard"
 
@@ -161,6 +162,15 @@ export class ParticipantService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  CreateRecording(input: CreateRecordingInput, opts?: any): Promise<CreateRecordingOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/recordings";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ParticipantChangedEvent = {
@@ -316,4 +326,13 @@ export type FinishContestInput = {
 }
 
 export type FinishContestOutput = Record<string, unknown>;
+
+export type CreateRecordingInput = {
+  contestId?: string;
+  recording?: Recording;
+}
+
+export type CreateRecordingOutput = {
+  uploadUrl?: string;
+}
 

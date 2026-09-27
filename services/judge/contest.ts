@@ -44,6 +44,7 @@ export type Contest = {
   environmentConfig?: Contest_EnvironmentConfig;
   certificationConfig?: Contest_CertificationConfig;
   ratingConfig?: Contest_RatingConfig;
+  proctoringConfig?: Contest_ProctoringConfig;
   staff?: Contest_Staff[];
 }
 
@@ -73,6 +74,7 @@ export type Contest_Patch = {
   environmentConfig?: Contest_EnvironmentConfig;
   certificationConfig?: Contest_CertificationConfig;
   ratingConfig?: Contest_RatingConfig;
+  proctoringConfig?: Contest_ProctoringConfig;
 }
 
 export type Contest_Extra = Record<string, unknown>;
@@ -112,6 +114,10 @@ export type Contest_CertificationConfig = {
 export type Contest_CertificationConfig_Signer = {
   name?: string;
   title?: string;
+}
+
+export type Contest_ProctoringConfig = {
+  enabled?: boolean;
 }
 
 export type Contest_EnvironmentConfig = {
