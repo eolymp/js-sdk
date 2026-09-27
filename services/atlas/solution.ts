@@ -9,8 +9,14 @@ export type Solution = {
   runtime?: string;
   source?: string;
   type?: string;
+  assertions?: Solution_Assertion[];
   status?: string;
   submissionId?: string;
+}
+
+export type Solution_Assertion = {
+  testsetId?: string;
+  type?: string;
 }
 
 export type Solution_Patch = {
@@ -19,5 +25,7 @@ export type Solution_Patch = {
   runtime?: string;
   source?: string;
   type?: string;
+  assertions?: Solution_Assertion[];
+  clearAssertions?: boolean;
 }
 
