@@ -9,5 +9,7 @@ export type Warning = {
   column?: number;
   message?: string;
   severity?: string;
+  code?: string;
+  count?: number;
 }
 
