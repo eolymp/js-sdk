@@ -20,7 +20,7 @@ export type Participant = {
   violationCount?: number;
   passcode?: string;
   certificateId?: string;
-  proctoringStatus?: string;
+  proctoring?: Participant_Proctoring;
   submits?: Participant_Submit[];
 }
 
@@ -32,6 +32,16 @@ export type Participant_Patch = {
   inactive?: boolean;
   passcode?: string;
   role?: string;
+}
+
+export type Participant_Proctoring = {
+  status?: string;
+  streams?: Participant_Proctoring_Stream[];
+}
+
+export type Participant_Proctoring_Stream = {
+  source?: string;
+  playlistUrl?: string;
 }
 
 export type Participant_Submit = {
