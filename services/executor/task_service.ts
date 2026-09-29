@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { EvaluationTask } from "./evaluation_task"
+import { ExecutionTask } from "./execution_task"
 import { GenerationTask } from "./generation_task"
 import { StressTask } from "./stress_task"
 import { ValidationTask } from "./validation_task"
@@ -25,6 +26,7 @@ export type CreateTaskInput = {
   generation?: GenerationTask;
   stress?: StressTask;
   validation?: ValidationTask;
+  execution?: ExecutionTask;
 }
 
 export type CreateTaskOutput = {
