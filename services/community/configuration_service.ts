@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { IdentityConfig } from "./configuration_identity"
+import { NotebookConfig } from "./notebook_config"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -27,6 +28,18 @@ export class ConfigurationService {
 
     return this.cli.call("PUT", this.url+path, input, opts);
   }
+
+  DescribeNotebookConfig(input: DescribeNotebookConfigInput, opts?: any): Promise<DescribeNotebookConfigOutput> {
+    const path = "/configs/notebook";
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  ConfigureNotebookConfig(input: ConfigureNotebookConfigInput, opts?: any): Promise<ConfigureNotebookConfigOutput> {
+    const path = "/configs/notebook";
+
+    return this.cli.call("PUT", this.url+path, input, opts);
+  }
 }
 
 export type DescribeIdentityConfigInput = Record<string, unknown>;
@@ -40,4 +53,16 @@ export type ConfigureIdentityConfigInput = {
 }
 
 export type ConfigureIdentityConfigOutput = Record<string, unknown>;
+
+export type DescribeNotebookConfigInput = Record<string, unknown>;
+
+export type DescribeNotebookConfigOutput = {
+  config?: NotebookConfig;
+}
+
+export type ConfigureNotebookConfigInput = {
+  config?: NotebookConfig;
+}
+
+export type ConfigureNotebookConfigOutput = Record<string, unknown>;
 
