@@ -9,7 +9,6 @@ export type Action = {
 
 export type Action_AgenticAction = {
   instructions?: string;
-  tools?: string[];
 }
 
 export type Action_ScriptedAction = {
