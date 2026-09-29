@@ -6,16 +6,11 @@ export type Recording = {
   id?: string;
   memberId?: string;
   status?: string;
-  startsAt?: string;
-  endsAt?: string;
-  streamUrl?: string;
+  startedAt?: string;
+  endedAt?: string;
+  gapDuration?: number;
   streams?: Recording_Stream[];
   createdAt?: string;
-}
-
-export type Recording_Patch = {
-  startsAt?: string;
-  endsAt?: string;
 }
 
 export type Recording_Stream = {
