@@ -22,6 +22,7 @@ export type Validation_Run = {
   verdict?: string;
   inputUrl?: string;
   outputUrl?: string;
+  answerAccepted?: boolean;
 }
 
 export type Validation_Group = {

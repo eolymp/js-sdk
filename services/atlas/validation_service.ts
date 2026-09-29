@@ -35,6 +35,15 @@ export class ValidationService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  ValidateProblem(input: ValidateProblemInput, opts?: any): Promise<ValidateProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/validate";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeValidation(input: DescribeValidationInput, opts?: any): Promise<DescribeValidationOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/validations/"+encodeURIComponent(input.validationId||'');
 
@@ -64,6 +73,14 @@ export type RunValidationInput = {
 export type RunValidationOutput = {
   validationId?: string;
   validation?: Validation;
+}
+
+export type ValidateProblemInput = {
+  problemId?: string;
+}
+
+export type ValidateProblemOutput = {
+  validationId?: string;
 }
 
 export type DescribeValidationInput = {
