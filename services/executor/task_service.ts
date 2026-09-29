@@ -4,6 +4,7 @@
 import { EvaluationTask } from "./evaluation_task"
 import { GenerationTask } from "./generation_task"
 import { StressTask } from "./stress_task"
+import { ValidationTask } from "./validation_task"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -23,6 +24,7 @@ export type CreateTaskInput = {
   evaluation?: EvaluationTask;
   generation?: GenerationTask;
   stress?: StressTask;
+  validation?: ValidationTask;
 }
 
 export type CreateTaskOutput = {
