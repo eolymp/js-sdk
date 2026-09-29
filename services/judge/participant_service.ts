@@ -161,6 +161,15 @@ export class ParticipantService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  RequestProctoring(input: RequestProctoringInput, opts?: any): Promise<RequestProctoringOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/proctoring";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ParticipantChangedEvent = {
@@ -304,6 +313,14 @@ export type StartContestInput = {
 }
 
 export type StartContestOutput = Record<string, unknown>;
+
+export type RequestProctoringInput = {
+  contestId?: string;
+}
+
+export type RequestProctoringOutput = {
+  streamUrl?: string;
+}
 
 export type PauseContestInput = {
   contestId?: string;
