@@ -277,6 +277,7 @@ export type ListParticipantsInput_Filter = {
   role?: ExpressionEnum[];
   staff?: ExpressionBool[];
   hasViolations?: ExpressionBool[];
+  proctoringStatus?: ExpressionEnum[];
 }
 
 export type ListParticipantsOutput = {
