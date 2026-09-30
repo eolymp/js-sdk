@@ -22,6 +22,12 @@ export class RenderService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  RenderFigure(input: RenderFigureInput, opts?: any): Promise<RenderFigureOutput> {
+    const path = "/figures:render";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type RenderContentInput = {
@@ -30,5 +36,22 @@ export type RenderContentInput = {
 
 export type RenderContentOutput = {
   render?: Node;
+}
+
+export type RenderFigureInput = {
+  typst?: string;
+}
+
+export type RenderFigureOutput = {
+  svg?: string;
+  diagnostics?: RenderFigureOutput_Diagnostic[];
+}
+
+export type RenderFigureOutput_Diagnostic = {
+  severity?: string;
+  line?: number;
+  column?: number;
+  message?: string;
+  hints?: string[];
 }
 
