@@ -60,7 +60,6 @@ export class NotebookService {
 export type UploadNotebookInput = {
   memberId?: string;
   name?: string;
-  type?: string;
   contentUrl?: string;
 }
 
