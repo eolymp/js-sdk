@@ -61,7 +61,7 @@ export type UploadNotebookInput = {
   memberId?: string;
   name?: string;
   type?: string;
-  data?: string;
+  contentUrl?: string;
 }
 
 export type UploadNotebookOutput = {
