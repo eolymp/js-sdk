@@ -188,6 +188,7 @@ export type ListMembersInput_Filter = {
   birthday?: ExpressionTimestamp[];
   country?: ExpressionID[];
   score?: ExpressionInt[];
+  activeAt?: ExpressionTimestamp[];
   attribute?: ListMembersInput_ExpressionAttribute[];
 }
 
@@ -249,6 +250,7 @@ export type StreamMemberReferencesInput_Filter = {
   country?: ExpressionID[];
   score?: ExpressionInt[];
   createdAt?: ExpressionTimestamp[];
+  activeAt?: ExpressionTimestamp[];
   attribute?: StreamMemberReferencesInput_Filter_ExpressionAttribute[];
 }
 

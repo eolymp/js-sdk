@@ -245,6 +245,7 @@ export type ImportRecipientInput_Filter = {
   country?: ExpressionID[];
   score?: ExpressionInt[];
   createdAt?: ExpressionTimestamp[];
+  activeAt?: ExpressionTimestamp[];
   attribute?: ImportRecipientInput_Filter_ExpressionAttribute[];
 }
 
