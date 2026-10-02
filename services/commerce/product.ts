@@ -48,6 +48,7 @@ export type Product_Variant = {
   id?: string;
   productId?: string;
   name?: string;
+  position?: number;
   values?: Record<string, string>;
   images?: string[];
   outOfStock?: boolean;
@@ -57,6 +58,7 @@ export type Product_Variant = {
 
 export type Product_Variant_Patch = {
   name?: string;
+  position?: number;
   values?: Record<string, string>;
   images?: string[];
   unsetImages?: boolean;
