@@ -17,7 +17,6 @@ export type Attribute = {
   min?: number;
   max?: number;
   choices?: string[];
-  country?: string;
   constraints?: string[];
 }
 
@@ -34,7 +33,6 @@ export type Attribute_Patch = {
   max?: number;
   choices?: string[];
   unsetChoices?: boolean;
-  country?: string;
   constraints?: string[];
   unsetConstraints?: boolean;
 }
