@@ -23,6 +23,7 @@ export type Space = {
   affiliation?: string;
   discordGuildId?: string;
   locales?: string[];
+  primaryColor?: string;
 }
 
 export type Space_Extra = Record<string, unknown>;
@@ -35,6 +36,7 @@ export type Space_Patch = {
   affiliation?: string;
   locales?: string[];
   unsetLocales?: boolean;
+  primaryColor?: string;
 }
 
 export type Space_Subscription = {
