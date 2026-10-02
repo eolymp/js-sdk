@@ -20,6 +20,7 @@ export type Member = {
   level?: number;
   inactive?: boolean;
   incomplete?: boolean;
+  invited?: boolean;
   unofficial?: boolean;
   secret?: boolean;
   activePeriodStart?: string;

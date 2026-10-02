@@ -19,5 +19,6 @@ export type Task = {
   finishedAt?: string;
   createdBy?: string;
   resourceLink?: string;
+  outputUrl?: string;
 }
 

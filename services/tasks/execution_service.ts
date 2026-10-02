@@ -27,6 +27,7 @@ export type ExecuteTaskOutput = {
   progress?: ExecuteTaskOutput_Progress;
   checkpoint?: ExecuteTaskOutput_Checkpoint;
   record?: ExecuteTaskOutput_Record;
+  output?: ExecuteTaskOutput_Output;
 }
 
 export type ExecuteTaskOutput_Progress = {
@@ -41,5 +42,9 @@ export type ExecuteTaskOutput_Checkpoint = {
 
 export type ExecuteTaskOutput_Record = {
   line?: string;
+}
+
+export type ExecuteTaskOutput_Output = {
+  url?: string;
 }
 

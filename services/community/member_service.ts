@@ -99,6 +99,18 @@ export class MemberService {
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
+
+  ImportMembers(input: ImportMembersInput, opts?: any): Promise<ImportMembersOutput> {
+    const path = "/members:import";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ExportMembers(input: ExportMembersInput, opts?: any): Promise<ExportMembersOutput> {
+    const path = "/members:export";
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type MemberChangedEvent = {
@@ -189,12 +201,29 @@ export type ListMembersInput_Filter = {
   country?: ExpressionID[];
   score?: ExpressionInt[];
   activeAt?: ExpressionTimestamp[];
+  invited?: ExpressionBool[];
   attribute?: ListMembersInput_ExpressionAttribute[];
 }
 
 export type ListMembersOutput = {
   total?: number;
   items?: Member[];
+}
+
+export type ImportMembersInput = {
+  data?: string;
+}
+
+export type ImportMembersOutput = {
+  taskId?: string;
+}
+
+export type ExportMembersInput = {
+  filters?: ListMembersInput_Filter;
+}
+
+export type ExportMembersOutput = {
+  taskId?: string;
 }
 
 export type AssignMemberInput = {
