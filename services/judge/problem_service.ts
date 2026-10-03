@@ -168,6 +168,15 @@ export class ProblemService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  ExportEditorials(input: ExportEditorialsInput, opts?: any): Promise<ExportEditorialsOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/editorials:export";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type ImportProblemInput = {
@@ -320,6 +329,16 @@ export type ExportProblemsInput = {
 }
 
 export type ExportProblemsOutput = {
+  downloadUrl?: string;
+}
+
+export type ExportEditorialsInput = {
+  contestId?: string;
+  problems?: string[];
+  locale?: string;
+}
+
+export type ExportEditorialsOutput = {
   downloadUrl?: string;
 }
 
