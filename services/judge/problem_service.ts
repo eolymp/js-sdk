@@ -340,5 +340,12 @@ export type ExportEditorialsInput = {
 
 export type ExportEditorialsOutput = {
   downloadUrl?: string;
+  omittedProblems?: ExportEditorialsOutput_OmittedProblem[];
+}
+
+export type ExportEditorialsOutput_OmittedProblem = {
+  problemId?: string;
+  label?: string;
+  title?: string;
 }
 
