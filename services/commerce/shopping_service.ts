@@ -133,7 +133,10 @@ export type ListShippingMethodsOutput = {
   items?: ShippingMethod[];
 }
 
-export type PlaceOrderInput = Record<string, unknown>;
+export type PlaceOrderInput = {
+  shippingAddress?: Address;
+  shippingMethodId?: string;
+}
 
 export type PlaceOrderOutput = {
   orderId?: string;
