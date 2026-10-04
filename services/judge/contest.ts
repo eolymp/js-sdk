@@ -117,7 +117,7 @@ export type Contest_CertificationConfig_Signer = {
 }
 
 export type Contest_ProctoringConfig = {
-  enabled?: boolean;
+  mode?: string;
 }
 
 export type Contest_EnvironmentConfig = {
