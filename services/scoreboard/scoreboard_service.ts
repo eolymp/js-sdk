@@ -324,3 +324,8 @@ export type RebuildScoreboardOutput = {
   taskId?: string;
 }
 
+export type ScoreboardChangedEvent = {
+  before?: Scoreboard;
+  after?: Scoreboard;
+}
+
