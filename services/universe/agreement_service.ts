@@ -26,8 +26,6 @@ export type RequestDataProcessingAgreementInput = {
   organizationName?: string;
   organizationAddress?: string;
   organizationTaxId?: string;
-  signerName?: string;
-  signerEmail?: string;
 }
 
 export type RequestDataProcessingAgreementOutput = Record<string, unknown>;
