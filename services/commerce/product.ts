@@ -16,6 +16,8 @@ export type Product = {
   currency?: string;
   price?: number;
   regularPrice?: number;
+  creditPrice?: number;
+  creditRegularPrice?: number;
   attributes?: Product_Attribute[];
   variants?: Product_Variant[];
   stripeProductId?: string;
