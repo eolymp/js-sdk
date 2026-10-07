@@ -79,7 +79,10 @@ export class ShoppingService {
   }
 }
 
-export type DescribeShoppingCartInput = Record<string, unknown>;
+export type DescribeShoppingCartInput = {
+  country?: string;
+  shippingMethodId?: string;
+}
 
 export type DescribeShoppingCartOutput = {
   cart?: ShoppingCart;
