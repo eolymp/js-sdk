@@ -127,7 +127,9 @@ export type UpdateShippingMethodInput = {
 
 export type UpdateShippingMethodOutput = Record<string, unknown>;
 
-export type ListShippingMethodsInput = Record<string, unknown>;
+export type ListShippingMethodsInput = {
+  country?: string;
+}
 
 export type ListShippingMethodsOutput = {
   items?: ShippingMethod[];
