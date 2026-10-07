@@ -320,9 +320,7 @@ export type RebuildScoreboardInput = {
   scoreboardId?: string;
 }
 
-export type RebuildScoreboardOutput = {
-  taskId?: string;
-}
+export type RebuildScoreboardOutput = Record<string, unknown>;
 
 export type ScoreboardChangedEvent = {
   before?: Scoreboard;
