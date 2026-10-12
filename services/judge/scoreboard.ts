@@ -64,21 +64,3 @@ export type Scoreboard_Row_ProblemScore = {
   firstToSolve?: boolean;
 }
 
-export type Scoreboard_Stats = {
-  participants?: number;
-  problems?: Scoreboard_Stats_Problem[];
-}
-
-export type Scoreboard_Stats_Problem = {
-  columnId?: string;
-  tried?: number;
-  scored?: number;
-  solved?: number;
-  attempts?: number;
-  pending?: number;
-  pendingParticipants?: number;
-  score?: number;
-  firstSolvedIn?: number;
-  firstSolverId?: string;
-}
-

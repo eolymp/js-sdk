@@ -10,7 +10,6 @@ export type Question = {
   content?: Content;
   score?: number;
   multiple?: boolean;
-  decimalPlaces?: number;
   options?: Question_Option[];
   answers?: string[];
 }
@@ -23,7 +22,6 @@ export type Question_Patch = {
   content?: Content;
   score?: number;
   multiple?: boolean;
-  decimalPlaces?: number;
   options?: Question_Option[];
   answers?: string[];
 }
