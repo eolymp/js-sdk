@@ -164,6 +164,7 @@ export type Problem_Question = {
   content?: Content;
   score?: number;
   multiple?: boolean;
+  decimalPlaces?: number;
   options?: Problem_Question_Option[];
   answers?: string[];
 }
