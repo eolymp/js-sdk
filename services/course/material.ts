@@ -37,6 +37,7 @@ export type Material_Document = {
 
 export type Material_Task = {
   problemId?: string;
+  type?: string;
 }
 
 export type Material_Grading = {
