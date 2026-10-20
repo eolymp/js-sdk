@@ -6,11 +6,13 @@ export type Config = {
   hourlyIpSubmissionLimit?: number;
   dailyIpSubmissionLimit?: number;
   tracingEnabled?: boolean;
+  ratingEnabled?: boolean;
 }
 
 export type Config_Patch = {
   hourlyIpSubmissionLimit?: number;
   dailyIpSubmissionLimit?: number;
   tracingEnabled?: boolean;
+  ratingEnabled?: boolean;
 }
 

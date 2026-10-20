@@ -26,6 +26,7 @@ export type Problem = {
   acceptanceRate?: number;
   submissionsCount?: number;
   submissionsAccepted?: number;
+  rating?: Problem_Rating;
   difficulty?: number;
   examples?: Problem_Example[];
 }
@@ -49,6 +50,13 @@ export type Problem_Constraints = {
   cpuLimitMax?: number;
   memoryLimitMin?: string;
   memoryLimitMax?: string;
+}
+
+export type Problem_Rating = {
+  average?: number;
+  count?: number;
+  distribution?: Record<number, number>;
+  value?: number;
 }
 
 export type Problem_Example = {

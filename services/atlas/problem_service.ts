@@ -3,7 +3,7 @@
 
 import { Runtime } from "../runtime/runtime"
 import { ExpressionBool, ExpressionEnum, ExpressionFloat, ExpressionID, ExpressionInt, ExpressionString, ExpressionTimestamp } from "../wellknown/expression"
-import { Problem, Problem_Patch } from "./problem"
+import { Problem, Problem_Patch, Problem_Rating } from "./problem"
 import { Statement } from "./statement"
 import { Version } from "./version"
 
@@ -70,6 +70,15 @@ export class ProblemService {
 
   ImportProblem(input: ImportProblemInput, opts?: any): Promise<ImportProblemOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/import";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  RateProblem(input: RateProblemInput, opts?: any): Promise<RateProblemOutput> {
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/rating";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
@@ -218,6 +227,16 @@ export type ListVersionsOutput = {
   total?: number;
   items?: Version[];
   nextPageCursor?: string;
+}
+
+export type RateProblemInput = {
+  problemId?: string;
+  stars?: number;
+  comment?: string;
+}
+
+export type RateProblemOutput = {
+  rating?: Problem_Rating;
 }
 
 export type ListRuntimesInput = {
