@@ -26,8 +26,6 @@ export type Problem = {
   acceptanceRate?: number;
   submissionsCount?: number;
   submissionsAccepted?: number;
-  vote?: number;
-  voteCount?: number;
   difficulty?: number;
   examples?: Problem_Example[];
 }

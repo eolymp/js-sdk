@@ -77,15 +77,6 @@ export class ProblemService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
-  VoteProblem(input: VoteProblemInput, opts?: any): Promise<VoteProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/vote";
-
-    // Cleanup URL parameters to avoid any ambiguity
-    delete(input.problemId);
-
-    return this.cli.call("POST", this.url+path, input, opts);
-  }
-
   ListVersions(input: ListVersionsInput, opts?: any): Promise<ListVersionsOutput> {
     const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/versions";
 
@@ -227,15 +218,6 @@ export type ListVersionsOutput = {
   total?: number;
   items?: Version[];
   nextPageCursor?: string;
-}
-
-export type VoteProblemInput = {
-  problemId?: string;
-  vote?: number;
-}
-
-export type VoteProblemOutput = {
-  voteCount?: number;
 }
 
 export type ListRuntimesInput = {
