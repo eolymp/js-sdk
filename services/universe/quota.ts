@@ -46,5 +46,6 @@ export type Quota = {
   ghostParticipants?: boolean;
   unofficialParticipants?: boolean;
   proctoring?: boolean;
+  contestChecklist?: boolean;
 }
 
