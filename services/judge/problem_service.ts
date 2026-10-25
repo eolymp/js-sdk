@@ -130,6 +130,16 @@ export class ProblemService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  RateProblem(input: RateProblemInput, opts?: any): Promise<RateProblemOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/ratings";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   ListAttachments(input: ListAttachmentsInput, opts?: any): Promise<ListAttachmentsOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/attachments";
 
@@ -291,6 +301,15 @@ export type DescribeEditorialInput = {
 export type DescribeEditorialOutput = {
   editorial?: Editorial;
 }
+
+export type RateProblemInput = {
+  contestId?: string;
+  problemId?: string;
+  stars?: number;
+  comment?: string;
+}
+
+export type RateProblemOutput = Record<string, unknown>;
 
 export type ListAttachmentsInput = {
   contestId?: string;
