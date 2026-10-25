@@ -78,7 +78,7 @@ export class ProblemService {
   }
 
   RateProblem(input: RateProblemInput, opts?: any): Promise<RateProblemOutput> {
-    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/rating";
+    const path = "/problems/"+encodeURIComponent(input.problemId||'')+"/ratings";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.problemId);
