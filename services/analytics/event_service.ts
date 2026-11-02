@@ -60,6 +60,7 @@ export type AggregateEventsInput_Filter = {
   browser?: ExpressionEnum[];
   os?: ExpressionEnum[];
   authenticated?: ExpressionBool[];
+  country?: ExpressionEnum[];
 }
 
 export type AggregateEventsOutput = {
