@@ -196,6 +196,7 @@ export type ImportProblemInput = {
   index?: number;
   submitLimit?: number;
   scoreByBestTestset?: boolean;
+  deferredResults?: boolean;
 }
 
 export type ImportProblemOutput = {

@@ -14,6 +14,7 @@ export type Problem = {
   baseId?: string;
   feedbackPolicy?: string;
   scoreByBestTestset?: boolean;
+  deferredResults?: boolean;
   timeLimit?: number;
   cpuLimit?: number;
   memoryLimit?: string;
@@ -33,6 +34,7 @@ export type Problem_Patch = {
   index?: number;
   submitLimit?: number;
   scoreByBestTestset?: boolean;
+  deferredResults?: boolean;
 }
 
 export type Problem_Statement = {
