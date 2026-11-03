@@ -7,6 +7,7 @@ export type User = {
   username?: string;
   email?: string;
   active?: boolean;
+  bot?: boolean;
   rating?: number;
   name?: string;
   picture?: string;

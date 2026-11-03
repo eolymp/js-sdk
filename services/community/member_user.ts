@@ -5,6 +5,7 @@
 export type User = {
   issuer?: string;
   subject?: string;
+  bot?: boolean;
   nickname?: string;
   nicknameChangeTimeout?: number;
   aliases?: User_Alias[];
