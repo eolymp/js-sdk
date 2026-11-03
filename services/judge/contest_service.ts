@@ -168,6 +168,14 @@ export type ContestChangedEvent = {
   after?: Contest;
 }
 
+export type ContestStartedEvent = {
+  contest?: Contest;
+}
+
+export type ContestEndedEvent = {
+  contest?: Contest;
+}
+
 export type CreateContestInput = {
   contest?: Contest;
 }
