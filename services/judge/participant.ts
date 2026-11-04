@@ -21,6 +21,8 @@ export type Participant = {
   violationCount?: number;
   passcode?: string;
   certificateId?: string;
+  rating?: number;
+  ratingDiff?: number;
   proctoring?: Participant_Proctoring;
   submits?: Participant_Submit[];
   roster?: Participant_Member[];
