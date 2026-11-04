@@ -126,6 +126,15 @@ export class ParticipantService {
     return this.cli.call("POST", this.url+path, input, opts);
   }
 
+  LeaveContest(input: LeaveContestInput, opts?: any): Promise<LeaveContestOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/leave";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
   DescribeViewer(input: DescribeViewerInput, opts?: any): Promise<DescribeViewerOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/introspect";
 
@@ -278,6 +287,7 @@ export type ListParticipantsInput_Filter = {
   staff?: ExpressionBool[];
   hasViolations?: ExpressionBool[];
   proctoringStatus?: ExpressionEnum[];
+  teamId?: ExpressionID[];
 }
 
 export type ListParticipantsOutput = {
@@ -305,9 +315,17 @@ export type DescribeViewerOutput = {
 
 export type JoinContestInput = {
   contestId?: string;
+  teamId?: string;
+  memberIds?: string[];
 }
 
 export type JoinContestOutput = Record<string, unknown>;
+
+export type LeaveContestInput = {
+  contestId?: string;
+}
+
+export type LeaveContestOutput = Record<string, unknown>;
 
 export type StartContestInput = {
   contestId?: string;

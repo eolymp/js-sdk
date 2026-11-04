@@ -12,6 +12,7 @@ export type Submission = {
   contestId?: string;
   problemId?: string;
   participantId?: string;
+  memberId?: string;
   submittedAt?: string;
   deleted?: boolean;
   lang?: string;

@@ -27,6 +27,9 @@ export type Contest = {
   displayEditorials?: boolean;
   slug?: string;
   hideJuryIdentity?: boolean;
+  participantType?: string;
+  minTeamSize?: number;
+  maxTeamSize?: number;
   format?: string;
   key?: string;
   problemCount?: number;
@@ -67,6 +70,9 @@ export type Contest_Patch = {
   displayEditorials?: boolean;
   slug?: string;
   hideJuryIdentity?: boolean;
+  participantType?: string;
+  minTeamSize?: number;
+  maxTeamSize?: number;
   featuredUntil?: string;
   printerId?: string;
   scoreboardConfig?: Contest_ScoreboardConfig;

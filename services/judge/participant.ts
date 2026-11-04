@@ -5,6 +5,7 @@
 export type Participant = {
   id?: string;
   memberId?: string;
+  teamId?: string;
   displayName?: string;
   role?: string;
   unofficial?: boolean;
@@ -22,6 +23,7 @@ export type Participant = {
   certificateId?: string;
   proctoring?: Participant_Proctoring;
   submits?: Participant_Submit[];
+  roster?: Participant_Member[];
 }
 
 export type Participant_Patch = {
@@ -42,6 +44,11 @@ export type Participant_Proctoring = {
 export type Participant_Proctoring_Stream = {
   source?: string;
   playlistUrl?: string;
+}
+
+export type Participant_Member = {
+  memberId?: string;
+  displayName?: string;
 }
 
 export type Participant_Submit = {
