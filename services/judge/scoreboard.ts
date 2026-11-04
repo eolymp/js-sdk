@@ -44,6 +44,8 @@ export type Scoreboard_Row = {
   unofficial?: boolean;
   disqualified?: boolean;
   medal?: string;
+  rating?: number;
+  ratingDiff?: number;
   values?: Scoreboard_Row_Value[];
   roster?: Participant_Member[];
 }
