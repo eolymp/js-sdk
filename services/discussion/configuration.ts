@@ -3,7 +3,6 @@
 
 
 export type Configuration = {
-  membersCanCreatePosts?: boolean;
   membersCanCommentOnPosts?: boolean;
   membersCanCommentOnProblems?: boolean;
   postModeration?: string;
