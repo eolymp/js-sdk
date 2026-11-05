@@ -65,6 +65,32 @@ export type Scoreboard_Patch = {
   visibility?: string;
 }
 
+export type Scoreboard_Stats = {
+  participants?: number;
+  contests?: Scoreboard_Stats_Contest[];
+}
+
+export type Scoreboard_Stats_Problem = {
+  problemId?: string;
+  tried?: number;
+  scored?: number;
+  solved?: number;
+  attempts?: number;
+  pending?: number;
+  pendingParticipants?: number;
+  score?: number;
+  firstSolvedIn?: number;
+  firstSolverId?: string;
+}
+
+export type Scoreboard_Stats_Contest = {
+  contestId?: string;
+  participants?: number;
+  scored?: number;
+  score?: number;
+  problems?: Scoreboard_Stats_Problem[];
+}
+
 export type Row = {
   memberId?: string;
   displayName?: string;

@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionID, ExpressionInt, ExpressionString } from "../wellknown/expression"
-import { Row, Scoreboard, Scoreboard_Attribute, Scoreboard_Attribute_Patch, Scoreboard_Contest, Scoreboard_Contest_Patch, Scoreboard_Patch } from "./scoreboard"
+import { Row, Scoreboard, Scoreboard_Attribute, Scoreboard_Attribute_Patch, Scoreboard_Contest, Scoreboard_Contest_Patch, Scoreboard_Patch, Scoreboard_Stats } from "./scoreboard"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -147,6 +147,15 @@ export class ScoreboardService {
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.scoreboardId);
     delete(input.memberId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  DescribeScoreboardStats(input: DescribeScoreboardStatsInput, opts?: any): Promise<DescribeScoreboardStatsOutput> {
+    const path = "/scoreboards/"+encodeURIComponent(input.scoreboardId||'')+"/stats";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.scoreboardId);
 
     return this.cli.call("GET", this.url+path, input, opts);
   }
@@ -314,6 +323,15 @@ export type DescribeScoreboardRowInput = {
 
 export type DescribeScoreboardRowOutput = {
   row?: Row;
+}
+
+export type DescribeScoreboardStatsInput = {
+  scoreboardId?: string;
+  mode?: string;
+}
+
+export type DescribeScoreboardStatsOutput = {
+  stats?: Scoreboard_Stats;
 }
 
 export type RebuildScoreboardInput = {
