@@ -33,6 +33,7 @@ export type Scoreboard_Row = {
   id?: string;
   memberId?: string;
   teamId?: string;
+  displayName?: string;
   index?: number;
   rank?: number;
   rankLength?: number;
