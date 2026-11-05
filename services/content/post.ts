@@ -19,7 +19,6 @@ export type Post = {
   pinned?: boolean;
   moderation?: string;
   userId?: string;
-  memberId?: string;
   createdAt?: string;
   publishedAt?: string;
   updatedAt?: string;

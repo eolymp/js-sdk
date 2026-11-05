@@ -142,7 +142,6 @@ export type ListPostsInput_Filter = {
   id?: ExpressionID[];
   sourceId?: ExpressionID[];
   userId?: ExpressionID[];
-  memberId?: ExpressionID[];
   typeId?: ExpressionID[];
   createdAt?: ExpressionTimestamp[];
   publishedAt?: ExpressionTimestamp[];
