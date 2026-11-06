@@ -26,6 +26,7 @@ export type CreateRecordingInput = {
 export type CreateRecordingOutput = {
   recordingId?: string;
   streamUrl?: string;
+  additionalCameraUrl?: string;
 }
 
 export type ResumeRecordingInput = {
@@ -35,6 +36,7 @@ export type ResumeRecordingInput = {
 
 export type ResumeRecordingOutput = {
   streamUrl?: string;
+  additionalCameraUrl?: string;
 }
 
 export type DeleteRecordingInput = {

@@ -339,6 +339,7 @@ export type RequestProctoringInput = {
 
 export type RequestProctoringOutput = {
   streamUrl?: string;
+  additionalCameraUrl?: string;
 }
 
 export type PauseContestInput = {
