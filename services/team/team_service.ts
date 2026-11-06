@@ -84,6 +84,15 @@ export class TeamService {
 
     return this.cli.call("DELETE", this.url+path, input, opts);
   }
+
+  LeaveTeam(input: LeaveTeamInput, opts?: any): Promise<LeaveTeamOutput> {
+    const path = "/teams/"+encodeURIComponent(input.teamId||'')+"/leave";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.teamId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
 }
 
 export type CreateTeamInput = {
@@ -156,4 +165,10 @@ export type RemoveTeamMemberInput = {
 }
 
 export type RemoveTeamMemberOutput = Record<string, unknown>;
+
+export type LeaveTeamInput = {
+  teamId?: string;
+}
+
+export type LeaveTeamOutput = Record<string, unknown>;
 

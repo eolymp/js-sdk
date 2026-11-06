@@ -4,9 +4,9 @@
 
 export type Participant = {
   id?: string;
-  memberId?: string;
-  teamId?: string;
   displayName?: string;
+  member?: Participant_Member;
+  team?: Participant_Team;
   role?: string;
   unofficial?: boolean;
   inactive?: boolean;
@@ -25,7 +25,6 @@ export type Participant = {
   ratingDiff?: number;
   proctoring?: Participant_Proctoring;
   submits?: Participant_Submit[];
-  roster?: Participant_Member[];
 }
 
 export type Participant_Patch = {
@@ -49,6 +48,15 @@ export type Participant_Proctoring_Stream = {
 }
 
 export type Participant_Member = {
+  memberId?: string;
+}
+
+export type Participant_Team = {
+  teamId?: string;
+  roster?: Participant_Team_Member[];
+}
+
+export type Participant_Team_Member = {
   memberId?: string;
   displayName?: string;
 }
