@@ -17,7 +17,6 @@ export type Post = {
   public?: boolean;
   featured?: boolean;
   pinned?: boolean;
-  moderation?: string;
   userId?: string;
   createdAt?: string;
   publishedAt?: string;

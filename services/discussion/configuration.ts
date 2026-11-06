@@ -5,7 +5,6 @@
 export type Configuration = {
   membersCanCommentOnPosts?: boolean;
   membersCanCommentOnProblems?: boolean;
-  postModeration?: string;
   commentModeration?: string;
 }
 
