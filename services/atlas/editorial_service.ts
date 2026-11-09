@@ -92,6 +92,12 @@ export class EditorialService {
   }
 }
 
+export type EditorialChangedEvent = {
+  problemId?: string;
+  before?: Editorial;
+  after?: Editorial;
+}
+
 export type ListEditorialsInput = {
   problemId?: string;
   offset?: number;
