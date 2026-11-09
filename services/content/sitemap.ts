@@ -11,8 +11,13 @@ export type Sitemap_Chunk = {
 }
 
 export type Sitemap_Entry = {
-  url?: string;
+  type?: string;
+  resourceLink?: string;
+  title?: string;
   languages?: string[];
+  imageLink?: string;
+  attributes?: Record<string, string>;
+  createdAt?: string;
   updatedAt?: string;
 }
 
