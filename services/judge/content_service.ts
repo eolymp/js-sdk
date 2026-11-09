@@ -190,3 +190,9 @@ export type ListParentsOutput = {
   items?: Fragment[];
 }
 
+export type FragmentChangedEvent = {
+  contestId?: string;
+  before?: Fragment;
+  after?: Fragment;
+}
+
