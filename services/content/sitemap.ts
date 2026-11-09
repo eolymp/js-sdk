@@ -2,15 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 
-export type Sitemap = Record<string, unknown>;
-
-export type Sitemap_Chunk = {
-  id?: string;
-  size?: number;
-  updatedAt?: string;
-}
-
-export type Sitemap_Entry = {
+export type SitemapEntry = {
   type?: string;
   resourceLink?: string;
   title?: string;
