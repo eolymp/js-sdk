@@ -89,6 +89,7 @@ export type CreateTopicOutput = {
 
 export type UpdateTopicInput = {
   topicId?: string;
+  locale?: string;
   topic?: Topic;
 }
 
@@ -96,6 +97,7 @@ export type UpdateTopicOutput = Record<string, unknown>;
 
 export type DeleteTopicInput = {
   topicId?: string;
+  locale?: string;
 }
 
 export type DeleteTopicOutput = Record<string, unknown>;
