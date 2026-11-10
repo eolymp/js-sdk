@@ -5,6 +5,8 @@ import { Content } from "../ecm/content"
 
 export type Product = {
   id?: string;
+  resourceLink?: string;
+  spaceLink?: string;
   name?: string;
   summary?: Content;
   description?: Content;

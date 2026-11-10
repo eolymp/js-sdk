@@ -126,6 +126,11 @@ export type DeleteProductInput = {
 
 export type DeleteProductOutput = Record<string, unknown>;
 
+export type ProductChangedEvent = {
+  before?: Product;
+  after?: Product;
+}
+
 export type DescribeProductInput = {
   productId?: string;
   locale?: string;

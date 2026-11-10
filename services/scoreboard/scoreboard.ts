@@ -4,6 +4,8 @@
 
 export type Scoreboard = {
   id?: string;
+  resourceLink?: string;
+  spaceLink?: string;
   slug?: string;
   name?: string;
   bestOf?: number;
