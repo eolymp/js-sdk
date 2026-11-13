@@ -17,6 +17,7 @@ export type Fragment = {
   draft?: boolean;
   automatic?: boolean;
   visibility?: string;
+  allowFeedback?: boolean;
   title?: string;
   content?: Content;
   link?: Fragment_Link;
@@ -40,6 +41,7 @@ export type Fragment_Patch = {
   automatic?: boolean;
   title?: string;
   visibility?: string;
+  allowFeedback?: boolean;
   content?: Content;
   link?: Fragment_Link;
   labels?: string[];
