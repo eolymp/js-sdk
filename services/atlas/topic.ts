@@ -11,5 +11,7 @@ export type Topic = {
   description?: Content;
   locale?: string;
   locales?: string[];
+  imageUrl?: string;
+  problemCount?: number;
 }
 
