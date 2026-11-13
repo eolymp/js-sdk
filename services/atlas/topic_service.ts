@@ -56,6 +56,11 @@ export class TopicService {
   }
 }
 
+export type TopicChangedEvent = {
+  before?: Topic;
+  after?: Topic;
+}
+
 export type DescribeTopicInput = {
   topicId?: string;
   locale?: string;
