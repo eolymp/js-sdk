@@ -11,13 +11,5 @@ export type Topic = {
   description?: Content;
   locale?: string;
   locales?: string[];
-  variants?: Topic_Variant[];
-}
-
-export type Topic_Variant = {
-  locale?: string;
-  name?: string;
-  summary?: string;
-  keywords?: string[];
 }
 
