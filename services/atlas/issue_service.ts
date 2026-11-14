@@ -103,6 +103,12 @@ export type IssueChangedEvent = {
   actorId?: string;
 }
 
+export type IssueActivityChangedEvent = {
+  problemId?: string;
+  before?: IssueActivity;
+  after?: IssueActivity;
+}
+
 export type ListIssuesInput = {
   offset?: number;
   size?: number;

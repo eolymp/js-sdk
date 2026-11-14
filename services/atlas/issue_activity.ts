@@ -19,10 +19,12 @@ export type IssueActivity_Extra = Record<string, unknown>;
 
 export type IssueActivity_Patch = {
   message?: Content;
+  public?: boolean;
 }
 
 export type IssueActivity_Comment = {
   message?: Content;
+  public?: boolean;
 }
 
 export type IssueActivity_Change = {
