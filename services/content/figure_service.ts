@@ -27,10 +27,12 @@ export type RequestFiguresInput = {
   request?: string;
   context?: string;
   figures?: Figure[];
+  threadId?: string;
 }
 
 export type RequestFiguresOutput = {
   reply?: string;
   figures?: Figure[];
+  threadId?: string;
 }
 
