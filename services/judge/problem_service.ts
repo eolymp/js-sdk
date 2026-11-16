@@ -4,6 +4,7 @@
 import { Editorial } from "../atlas/editorial"
 import { Question } from "../atlas/question"
 import { Widget } from "../atlas/widget"
+import { Content } from "../ecm/content"
 import { Runtime } from "../runtime/runtime"
 import { Problem, Problem_Attachment, Problem_Patch, Problem_Statement, Problem_Test } from "./problem"
 import { Template } from "./template"
@@ -132,6 +133,16 @@ export class ProblemService {
 
   RateProblem(input: RateProblemInput, opts?: any): Promise<RateProblemOutput> {
     const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/ratings";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+    delete(input.problemId);
+
+    return this.cli.call("POST", this.url+path, input, opts);
+  }
+
+  ReportIssue(input: ReportIssueInput, opts?: any): Promise<ReportIssueOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/problems/"+encodeURIComponent(input.problemId||'')+"/issues";
 
     // Cleanup URL parameters to avoid any ambiguity
     delete(input.contestId);
@@ -311,6 +322,17 @@ export type RateProblemInput = {
 }
 
 export type RateProblemOutput = Record<string, unknown>;
+
+export type ReportIssueInput = {
+  contestId?: string;
+  problemId?: string;
+  title?: string;
+  description?: Content;
+}
+
+export type ReportIssueOutput = {
+  issueId?: string;
+}
 
 export type ListAttachmentsInput = {
   contestId?: string;
