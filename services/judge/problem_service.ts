@@ -328,6 +328,7 @@ export type ReportIssueInput = {
   problemId?: string;
   title?: string;
   description?: Content;
+  tags?: string[];
 }
 
 export type ReportIssueOutput = {
