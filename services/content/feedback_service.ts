@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionInt, ExpressionTimestamp } from "../wellknown/expression"
-import { Feedback } from "./content_feedback"
+import { Feedback, Feedback_Patch } from "./content_feedback"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -33,6 +33,15 @@ export class FeedbackService {
     delete(input.feedbackId);
 
     return this.cli.call("GET", this.url+path, input, opts);
+  }
+
+  UpdateFeedback(input: UpdateFeedbackInput, opts?: any): Promise<UpdateFeedbackOutput> {
+    const path = "/content/feedback/"+encodeURIComponent(input.feedbackId||'');
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.feedbackId);
+
+    return this.cli.call("PUT", this.url+path, input, opts);
   }
 
   DeleteFeedback(input: DeleteFeedbackInput, opts?: any): Promise<DeleteFeedbackOutput> {
@@ -68,6 +77,13 @@ export type DescribeFeedbackOutput = {
   feedback?: Feedback;
 }
 
+export type UpdateFeedbackInput = {
+  feedbackId?: string;
+  feedback?: Feedback_Patch;
+}
+
+export type UpdateFeedbackOutput = Record<string, unknown>;
+
 export type DeleteFeedbackInput = {
   feedbackId?: string;
 }
@@ -87,6 +103,8 @@ export type ListFeedbackInput_Filter = {
   blockIndex?: ExpressionInt[];
   fragmentLocale?: ExpressionEnum[];
   createdAt?: ExpressionTimestamp[];
+  status?: ExpressionEnum[];
+  label?: ExpressionEnum[];
 }
 
 export type ListFeedbackOutput = {

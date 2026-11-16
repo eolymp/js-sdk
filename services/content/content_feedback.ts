@@ -11,6 +11,17 @@ export type Feedback = {
   blockIndex?: number;
   blockText?: string;
   memberId?: string;
+  status?: string;
+  resolution?: string;
+  labels?: string[];
   createdAt?: string;
+  resolvedAt?: string;
+}
+
+export type Feedback_Patch = {
+  status?: string;
+  resolution?: string;
+  labels?: string[];
+  unsetLabels?: boolean;
 }
 
