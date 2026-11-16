@@ -43,7 +43,7 @@ export type RenderFigureInput = {
 }
 
 export type RenderFigureOutput = {
-  svg?: string;
+  pages?: string[];
   diagnostics?: RenderFigureOutput_Diagnostic[];
 }
 
