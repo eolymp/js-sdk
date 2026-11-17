@@ -50,6 +50,15 @@ export class SkillService {
     return this.cli.call("GET", this.url+path, input, opts);
   }
 
+  ListSkillVersions(input: ListSkillVersionsInput, opts?: any): Promise<ListSkillVersionsOutput> {
+    const path = "/copilot/skills/"+encodeURIComponent(input.skillId||'')+"/versions";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.skillId);
+
+    return this.cli.call("GET", this.url+path, input, opts);
+  }
+
   ListSkills(input: ListSkillsInput, opts?: any): Promise<ListSkillsOutput> {
     const path = "/copilot/skills";
 
@@ -80,6 +89,7 @@ export type DeleteSkillOutput = Record<string, unknown>;
 
 export type DescribeSkillInput = {
   skillId?: string;
+  version?: number;
 }
 
 export type DescribeSkillOutput = {
@@ -99,6 +109,17 @@ export type ListSkillsInput_Filter = {
 }
 
 export type ListSkillsOutput = {
+  total?: number;
+  items?: Skill[];
+}
+
+export type ListSkillVersionsInput = {
+  skillId?: string;
+  offset?: number;
+  size?: number;
+}
+
+export type ListSkillVersionsOutput = {
   total?: number;
   items?: Skill[];
 }

@@ -7,6 +7,9 @@ export type Skill = {
   path?: string;
   title?: string;
   content?: string;
+  version?: number;
+  updatedAt?: string;
+  updatedBy?: string;
 }
 
 export type Skill_Patch = {
