@@ -160,6 +160,7 @@ export type UpdatePostInput = {
   postId?: string;
   locale?: string;
   post?: Post_Patch;
+  ifMatchDigest?: string;
 }
 
 export type UpdatePostOutput = Record<string, unknown>;

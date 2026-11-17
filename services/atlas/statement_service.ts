@@ -190,6 +190,7 @@ export type UpdateStatementInput = {
   problemId?: string;
   statementId?: string;
   statement?: Statement_Patch;
+  ifMatchDigest?: string;
 }
 
 export type UpdateStatementOutput = Record<string, unknown>;

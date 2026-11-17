@@ -131,6 +131,7 @@ export type UpdateFragmentInput = {
   fragmentId?: string;
   locale?: string;
   fragment?: Fragment_Patch;
+  ifMatchDigest?: string;
 }
 
 export type UpdateFragmentOutput = Record<string, unknown>;

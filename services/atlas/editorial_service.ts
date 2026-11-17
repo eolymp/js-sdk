@@ -155,6 +155,7 @@ export type UpdateEditorialInput = {
   problemId?: string;
   editorialId?: string;
   editorial?: Editorial_Patch;
+  ifMatchDigest?: string;
 }
 
 export type UpdateEditorialOutput = Record<string, unknown>;
