@@ -53,6 +53,8 @@ export type RenderFigureOutput = {
 
 export type RenderFigureOutput_Page = {
   data?: string;
+  width?: number;
+  height?: number;
 }
 
 export type RenderFigureOutput_Diagnostic = {
