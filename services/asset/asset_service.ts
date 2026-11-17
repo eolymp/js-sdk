@@ -152,6 +152,7 @@ export type UploadAssetOutput = {
 
 export type LookupAssetInput = {
   key?: string;
+  sha256?: string;
 }
 
 export type LookupAssetOutput = {
