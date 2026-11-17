@@ -141,7 +141,6 @@ export type UploadFileOutput = {
 export type UploadAssetInput = {
   name?: string;
   type?: string;
-  keys?: string[];
   ttl?: number;
   data?: string;
 }
@@ -151,7 +150,6 @@ export type UploadAssetOutput = {
 }
 
 export type LookupAssetInput = {
-  key?: string;
   sha256?: string;
 }
 
@@ -168,7 +166,6 @@ export type DeleteAssetOutput = Record<string, unknown>;
 export type StartMultipartUploadInput = {
   name?: string;
   type?: string;
-  keys?: string[];
   ttl?: number;
 }
 
@@ -194,9 +191,6 @@ export type CompleteMultipartUploadInput = {
 export type CompleteMultipartUploadInput_Part = {
   number?: number;
   token?: string;
-  checksumMd5?: string;
-  checksumSha1?: string;
-  checksumSha256?: string;
 }
 
 export type CompleteMultipartUploadOutput = {
