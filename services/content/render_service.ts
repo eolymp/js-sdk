@@ -40,11 +40,19 @@ export type RenderContentOutput = {
 
 export type RenderFigureInput = {
   typst?: string;
+  format?: string;
+  offset?: number;
+  size?: number;
 }
 
 export type RenderFigureOutput = {
-  pages?: string[];
+  pages?: RenderFigureOutput_Page[];
   diagnostics?: RenderFigureOutput_Diagnostic[];
+  total?: number;
+}
+
+export type RenderFigureOutput_Page = {
+  data?: string;
 }
 
 export type RenderFigureOutput_Diagnostic = {
