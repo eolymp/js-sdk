@@ -16,21 +16,21 @@ export class FigureService {
     this.url = url;
   }
 
-  RequestFigures(input: RequestFiguresInput, opts?: any): Promise<RequestFiguresOutput> {
-    const path = "/figures:request";
+  DrawFigures(input: DrawFiguresInput, opts?: any): Promise<DrawFiguresOutput> {
+    const path = "/figures:draw";
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
 }
 
-export type RequestFiguresInput = {
+export type DrawFiguresInput = {
   request?: string;
   context?: string;
   figures?: Figure[];
   threadId?: string;
 }
 
-export type RequestFiguresOutput = {
+export type DrawFiguresOutput = {
   reply?: string;
   figures?: Figure[];
   threadId?: string;
