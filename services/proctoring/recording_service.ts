@@ -2,7 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { ExpressionEnum, ExpressionID } from "../wellknown/expression"
-import { Recording } from "./recording"
+import { Recording, Recording_Patch } from "./recording"
 
 interface _Client {
   call<R, E, O>(verb: string, url: string, args: R, opts?: any): Promise<E>;
@@ -27,6 +27,16 @@ export type CreateRecordingOutput = {
   recordingId?: string;
   streamUrl?: string;
   additionalCameraUrl?: string;
+  token?: string;
+}
+
+export type UpdateRecordingInput = {
+  recordingId?: string;
+  recording?: Recording_Patch;
+}
+
+export type UpdateRecordingOutput = {
+  token?: string;
 }
 
 export type ResumeRecordingInput = {

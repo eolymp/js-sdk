@@ -11,6 +11,17 @@ export type Recording = {
   gapDuration?: number;
   streams?: Recording_Stream[];
   createdAt?: string;
+  captureFrom?: string;
+  captureTo?: string;
+  uploadUntil?: string;
+  requiredSources?: string[];
+}
+
+export type Recording_Patch = {
+  captureFrom?: string;
+  captureTo?: string;
+  uploadUntil?: string;
+  requiredSources?: string[];
 }
 
 export type Recording_Stream = {
