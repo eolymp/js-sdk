@@ -15,6 +15,8 @@ export type Recording = {
   captureTo?: string;
   uploadUntil?: string;
   requiredSources?: string[];
+  state?: string;
+  slots?: Recording_Slot[];
 }
 
 export type Recording_Patch = {
@@ -22,6 +24,19 @@ export type Recording_Patch = {
   captureTo?: string;
   uploadUntil?: string;
   requiredSources?: string[];
+}
+
+export type Recording_Extra = Record<string, unknown>;
+
+export type Recording_Slot = {
+  source?: string;
+  state?: string;
+  holder?: Recording_Slot_Holder;
+}
+
+export type Recording_Slot_Holder = {
+  kind?: string;
+  version?: string;
 }
 
 export type Recording_Stream = {

@@ -2,6 +2,7 @@
 // See https://github.com/eolymp/contracts/tree/main/cmd/protoc-gen-js-esdk for more details.
 
 import { Content } from "../ecm/content"
+import { Recording } from "../proctoring/recording"
 import { ExpressionBool, ExpressionEnum, ExpressionID, ExpressionTimestamp } from "../wellknown/expression"
 import { Participant, Participant_Patch } from "./participant"
 import { Score } from "./score"
@@ -170,6 +171,15 @@ export class ParticipantService {
 
     return this.cli.call("POST", this.url+path, input, opts);
   }
+
+  WatchProctoring(input: WatchProctoringInput, opts?: any): _Stream<WatchProctoringOutput> {
+    const path = "/contests/"+encodeURIComponent(input.contestId||'')+"/proctoring/watch";
+
+    // Cleanup URL parameters to avoid any ambiguity
+    delete(input.contestId);
+
+    return this.cli.stream("GET", this.url+path, input, opts);
+  }
 }
 
 export type ParticipantChangedEvent = {
@@ -324,6 +334,15 @@ export type RequestProctoringInput = {
 
 export type RequestProctoringOutput = {
   token?: string;
+}
+
+export type WatchProctoringInput = {
+  contestId?: string;
+}
+
+export type WatchProctoringOutput = {
+  event?: string;
+  recording?: Recording;
 }
 
 export type PauseContestInput = {

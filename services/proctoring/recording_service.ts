@@ -44,9 +44,20 @@ export type DeleteRecordingOutput = Record<string, unknown>;
 
 export type DescribeRecordingInput = {
   recordingId?: string;
+  extra?: string[];
 }
 
 export type DescribeRecordingOutput = {
+  recording?: Recording;
+}
+
+export type WatchRecordingInput = {
+  recordingId?: string;
+  extra?: string[];
+}
+
+export type WatchRecordingOutput = {
+  event?: string;
   recording?: Recording;
 }
 
