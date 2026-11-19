@@ -323,8 +323,6 @@ export type RequestProctoringInput = {
 }
 
 export type RequestProctoringOutput = {
-  streamUrl?: string;
-  additionalCameraUrl?: string;
   token?: string;
 }
 

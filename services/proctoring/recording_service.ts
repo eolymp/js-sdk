@@ -20,13 +20,10 @@ export class RecordingService {
 
 export type CreateRecordingInput = {
   recording?: Recording;
-  expiresAt?: string;
 }
 
 export type CreateRecordingOutput = {
   recordingId?: string;
-  streamUrl?: string;
-  additionalCameraUrl?: string;
   token?: string;
 }
 
@@ -37,16 +34,6 @@ export type UpdateRecordingInput = {
 
 export type UpdateRecordingOutput = {
   token?: string;
-}
-
-export type ResumeRecordingInput = {
-  recordingId?: string;
-  expiresAt?: string;
-}
-
-export type ResumeRecordingOutput = {
-  streamUrl?: string;
-  additionalCameraUrl?: string;
 }
 
 export type DeleteRecordingInput = {
