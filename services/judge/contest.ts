@@ -124,6 +124,7 @@ export type Contest_CertificationConfig_Signer = {
 
 export type Contest_ProctoringConfig = {
   mode?: string;
+  uploadTolerance?: number;
 }
 
 export type Contest_EnvironmentConfig = {
