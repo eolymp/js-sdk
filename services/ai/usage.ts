@@ -8,5 +8,6 @@ export type Usage = {
   thinkingTokens?: string;
   totalTokens?: string;
   cachedPromptTokens?: string;
+  cacheWriteTokens?: string;
 }
 
